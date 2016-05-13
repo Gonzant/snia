@@ -1,0 +1,122 @@
+/*jslint browser: true*/
+/*global document, alert, require*/
+
+/*
+ * js/snia/app
+ * 
+ * Nota: El código fuente JavaScript de este documento puede ser copiado y
+ * reutilizado sin ninguna restricción.
+ */
+var snia;
+if (!snia) {
+    snia = {};
+}
+snia.app = {
+    iniciar : function () {
+        "use strict";
+        require(["dojo/on",
+            "dojo/dom",
+            "dojo/parser",
+            "dojo/_base/array",
+            "dojo/json",
+            "dojox/widget/Standby",
+            "esri/layers/ArcGISTiledMapServiceLayer",
+            "esri/layers/ArcGISDynamicMapServiceLayer",
+            "modulos/HerramientaDialog",
+            "widgets/BarraHerramientasWidget",
+            "widgets/MapaWidget",
+            "dojo/text!config/todo.json",
+            "dojo/dom-style",
+            "esri/urlUtils",
+            "dojo/domReady!"], function (on, dom, parser, arrayUtil, JSON, Standby,
+            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
+            HerramientaDialog,
+            BarraHerramientasWidget,
+            MapaWidget, appConfigJSON, domStyle, urlUtils) {
+            //variables
+            var
+                standby, appConfig, mapa,
+                barra,
+                initCapas, initControles;
+            //metodos
+            initCapas = function () {
+                //dynamicLayers
+                var dynLayers = appConfig.mapa.dynamicLayers;
+                arrayUtil.forEach(dynLayers, function (dataLayer) {
+                    var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                    mapa.agregarCapa(l);
+                });
+            };
+            initControles = function () {
+                dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
+                standby.set("text", "Cargando librerias...");
+                var widgetNames = arrayUtil.map(appConfig.barraHerramientas, function (herramientaConfig) {
+                    return herramientaConfig.widget;
+                });
+                require(widgetNames, function () {
+                    var herramientas = [];
+                    arrayUtil.forEach(appConfig.barraHerramientas, function (herramientaConfig) {
+                        standby.set("text", "Iniciando " + herramientaConfig.title + "...");
+                        var WidgetClass = require(herramientaConfig.widget),
+                            widgetConfig = herramientaConfig.widgetConfig,
+                            title = herramientaConfig.title,
+                            startsOpen = herramientaConfig.startsOpen,
+                            icono = herramientaConfig.icono,
+                            msgToolTip = herramientaConfig.msgToolTip;
+                        if (WidgetClass) {
+                            herramientas.push({
+                                herramienta: new HerramientaDialog({
+                                    startsOpen: startsOpen,
+                                    widget: new WidgetClass({ mapa: mapa, config: widgetConfig }),
+                                    dialogParams: { title : title }
+                                }),
+                                etiqueta: title,
+                                icono: icono,
+                                msgToolTip: msgToolTip
+                            });
+                        }
+                    });
+                    barra = new BarraHerramientasWidget({
+                        herramientasOptions: herramientas,
+                        vertical: false
+                    }, 'divToolbar');
+                    barra.startup();
+                });
+            };
+            //comienzo
+            parser.parse();
+            standby = new Standby({
+                target: dom.byId("divStandby"),
+                color: 'lightgray',
+                centerIndicator: 'text'
+            });
+            document.body.appendChild(standby.domNode);
+            standby.startup();
+            standby.set("text", "Cargando configuración ...");
+            standby.show();
+            appConfig = JSON.parse(appConfigJSON);
+            standby.set("text", "Cargando mapa ...");
+            if (appConfig.app.proxyRules.length > 0) {
+                arrayUtil.forEach(appConfig.app.proxyRules, function (rule) {
+                    urlUtils.addProxyRule(rule);
+                });
+            }
+            //mapa
+            mapa = new MapaWidget({
+                mapOptions : {
+                    slider: false,
+                    logo: false
+                },
+                baseMapLayer: new ArcGISTiledMapServiceLayer(appConfig.mapa.baseMapLayer)
+            }, "divMapa");
+            on(mapa, "load", function () {
+                initCapas();
+                initControles();
+                standby.hide();
+                domStyle.set(dom.byId('divContenedorIndex'), 'display', 'block');
+            });
+            mapa.startup();
+        });
+    }
+};
+snia.app.iniciar();

@@ -1,0 +1,297 @@
+<div class='${theme}'>
+<!-- ---------- ------------------ -->
+<div class="divEstilos" >
+<!--TABCONTAINER -->
+    <div data-dojo-type="dijit/layout/TabContainer" style="width: 1000px; height: 400px;" 
+                data-dojo-attach-point="_tabEstilos">
+        <!--NUMBER SPINNER -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabNumberSpinner}">
+            <br>
+            <div> NumberSpinner Basic (declarative):
+            <input data-dojo-type="dijit/form/NumberSpinner" id="integerspinner2" value="1000"
+                data-dojo-props="smallDelta:10, constraints:{min:9,max:1550,places:0}"
+                name="someNumber" />
+            </div>
+            <br> <br>
+            <div> NumberSpinner (Sizing the Box)- Programmatic
+                <div id="spinnerId"></div>
+            </div>
+            <br> <br>
+            </div> <!-- FIN NUMBER SPINNER -->
+        <!--BOTONES -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabBotones}">
+            <div data-dojo-attach-point="nav">
+                <button data-dojo-type="dijit/form/Button"  class="SmallButton">s </button> 
+                <button data-dojo-type="dijit/form/Button" class="MediumButton">m</button> 
+                <button data-dojo-type="dijit/form/Button" class="BigButton">b</button> 
+                <button data-dojo-type="dijit/form/Button" class="VBigButton">vb</button> 
+                <br>
+                <button data-dojo-type="dijit/form/Button" class="STextButton">texto</button> 
+                <button data-dojo-type="dijit/form/Button" class="MTextButton">texto</button> 
+                <button data-dojo-type="dijit/form/Button" class="GTextButton">texto</button>
+            </div>
+            <br>
+            <div>Botones para los iconos : 
+               <br>
+               <br>
+               <button data-dojo-type="dijit/form/Button" class="SmallButton" id="tTbtnMapaBase"> 
+                   <img src="js/snia/img/mapabase.png" width="20px" height="20px" >
+               </button> 
+               
+               <div data-dojo-type="dijit/form/Button" class="SmallButton" id="btnNavegar"> 
+               <img src="js/snia/img/coordenadas.png" width="25px" height="25px"></div> 
+               <div dojoType="dijit.Tooltip" connectId="btnNavegar" position="above">
+                   <b>Navegar </b> <br>
+                   Herramienta para acercar
+                </div>
+               
+               <button data-dojo-type="dijit/form/Button"  class="SmallButton" id="btnContenido"> 
+                   <img src="js/snia/img/contenido.png" width="25px" height="25px">
+                </button> 
+               <div dojoType="dijit.Tooltip" connectId="btnContenido" position="below">
+                  <b>navegar </b> <br>
+                  Muestra la leyenda de las capas y permite prender y apagar 
+                </div>
+               
+               
+            </div>
+            
+        </div>  <!-- FIN BOTONES -->
+        <!--TEXTO -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabTexto}">
+            <div>
+                <br>
+                <label class="verySmallText"> Muy Pequeño</label>
+                <label class="smallText"> Pequeño</label>
+                <label class="mediumText"> Mediano </label>
+                <label class="bigText"> Grande </label>
+            </div>
+        </div> <!--FIN TEXTO -->
+        <!--COMBO BOX -->
+        <div data-dojo-type="dijit/layout/ContentPane" title=" ${_i18n.widgets.EstilosWidget.tTabComboBox}">
+            <div> ComboBox Declarative
+                <div data-dojo-type="dojo/store/Memory" data-dojo-id="stateStore"
+                    data-dojo-props="data: [{id: 'y', name: 'yes'}, {id: 'n', name: 'no'}]"></div>
+                <input data-dojo-type="dijit/form/ComboBox" value="yes"
+                    data-dojo-props="store:stateStore, searchAttr:'name'"
+                    name="state" data-dojo-attach-point="stateInput" />
+            </div>
+            <br>
+            <div data-dojo-type="dijit/form/ComboButton">
+                <span>get all mail</span>
+                <div data-dojo-type="dijit/DropDownMenu">
+                    <div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){console.log('hi!')}">Yahoo</div>
+                    <div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){console.log('ho!')}">Google</div>
+                </div>
+            </div>
+        </div>  <!-- FIN COMBO BOX -->
+        <!--RADIO BUTTON  -->
+        <div data-dojo-type="dijit/layout/ContentPane" title=" ${_i18n.widgets.EstilosWidget.tTabRadioButtonYCheckBox}">
+            <br>
+            <form data-dojo-attach-point="myform" class="smallRadioButton">
+                <input type="radio" name="drink" data-dojo-attach-point="radioOne" checked value="tea"/> <label for="radioOne">Tea</label> <br />
+                <input type="radio" name="drink" data-dojo-attach-point="radioTwo" value="coffee"/> <label for="radioTwo">Coffee</label> <br />
+            </form>
+            <br>
+            <form data-dojo-attach-point="myform" class="mediumRadioButton">
+                <input type="radio" data-dojo-attach-point="radioOne"/> 
+                            <label for="radioOne"> RadioButton mediano</label> <br />
+            </form>
+            <br>
+            <form data-dojo-attach-point="myform" class="bigRadioButton">
+                <input type="radio" data-dojo-attach-point="radioOne"/> 
+                    <label for="radioOne"> RadioButton Grande negrita</label> <br />
+            </form>
+            <br>
+            <br>
+            <br>
+            <div> CheckBox Declarative
+                <br>
+                  <br>
+                <input id="checkAcuerdo" name="checkAcuerdo" data-dojo-type="dijit/form/CheckBox" value="agreed" 
+                       checked onChange="alert('onChange called with parameter = ' + arguments[0] + ', \n\
+                        and widget value = ' + this.get('value'))" /> <label for="checkAcuerdo">I agree</label>
+                <br>
+                <br>
+                CheckBox Programmatic
+                <br>
+                <br>
+                <input id="checkBox" /> <label for="checkBox">De acuerdo</label>
+                <br>
+                <br>
+            </div>
+        </div> <!-- FIN RADIO BUTTON  -->
+        
+        <!-- TEXT BOX  -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabTextBox}">
+            <div> Declarative <br> <br>
+                <label for="income1"> Dollars</label>
+                <input type="text" name="income1" data-dojo-attach-point="income1" value="54775.53" required="true"
+                    data-dojo-type="dijit/form/CurrencyTextBox"
+                    data-dojo-props="constraints:{fractional:true}, currency:'USD',
+                    invalidMessage:'Invalid amount. Cents are required.'" />
+            <br> 
+            <div>
+                <label for="dtb">A default textbox:</label> <input data-dojo-attach-point="dtb" data-dojo-type="dijit/form/TextBox" />
+                <br>  
+                <label for="ltb">A large textbox:</label> <input data-dojo-attach-point="ltb" style="width: 50em;" data-dojo-type="dijit/form/TextBox" />
+                <br>  
+                <label for="stb">A small textbox:</label> <input data-dojo-attach-point="stb" style="width: 10em;" data-dojo-type="dijit/form/TextBox" />
+                <br>                
+            </div>
+            <br>
+            <div> Number TextBox:
+                <label for="q05">Valores entre:-2000 to +2000:</label>
+                <input data-dojo-attach-point="q05" type="text" data-dojo-type="dijit/form/NumberTextBox"
+                    name= "elevation" required="true" value="3000" data-dojo-props="constraints:{min:-20000,max:20000,places:0},
+                    invalidMessage:'Please enter a numeric value.', rangeMessage:'Invalid elevation.'" />
+                <label for="zeroPadded">Fractional value:</label>
+                <input data-dojo-attach-point="zeroPadded" type="text"
+                    data-dojo-type="dijit/form/NumberTextBox" name= "decimal" value="0"
+                    constraints="{pattern: '+0.000;-0.000'}"
+                    required="true" />
+            </div>
+            <br>
+            </div>
+            <div>Programmatic :
+                <br>
+                <input id="firstname" />
+            </div>
+        </div> <!-- FIN TEXT BOX  -->
+        <!--TEXT AREA -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabTextArea}">
+            <div> Declarative TextArea:
+                <br>  
+            </div> 
+            <br>  
+            
+                       
+        </div> <!--FIN TEXT AREA -->
+        <!-- TABS  -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabTabs}">
+            <div> Programmatic : </div>
+               <div data-dojo-attach-point="_tabProgramatic"></div>
+            <br>
+            <div> Declarative : </div>
+                 <div data-dojo-type="dijit/layout/TabContainer" style="width: 300px; height: 100px;">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="CP 1" data-dojo-props="selected:true">
+                         Contenido 1...
+                    </div>
+                    <div data-dojo-type="dijit/layout/ContentPane" title="CP 2">
+                        Contenido 2...  
+                    </div>
+                    <div data-dojo-type="dijit/layout/ContentPane" title="CP 3">
+                        Contenido 3...  
+                    </div>
+                </div>
+            <br>
+            <div> Mixto : </div>
+                <div data-dojo-type="dijit/layout/TabContainer" style="width: 200px; height: 100px;"
+                    data-dojo-attach-point="_tabMixto">
+                </div>           
+        </div> <!-- FIN TABS  -->
+        <!-- MENU  -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabMenu}">
+            <br>
+            <div>Programmatic  menu
+                <br>
+                <div id="_menu"></div>
+            </div>
+            <br>
+            <div> Declarative menu : </div>
+            <div data-dojo-type="dijit/DropDownMenu" data-dojo-attach-point="navMenu">
+                <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconCut',
+                    onClick:function(){alert('cut!')}">Cut</div>
+                <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconCopy',
+                    onClick:function(){alert('copy!')}">Copy</div>
+                <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'dijitEditorIcon dijitEditorIconPaste',
+                    onClick:function(){alert('paste!')}">Paste</div>
+                <div data-dojo-type="dijit/MenuSeparator"></div>
+                <div data-dojo-type="dijit/PopupMenuItem">
+                    <span>Action</span>
+                    <div data-dojo-type="dijit/DropDownMenu" data-dojo-attach-point="submenu2">
+                        <div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('nested #1!')}">Nested #1</div>
+                        <div data-dojo-type="dijit/MenuItem" onclick="alert('nested #2!')">Nested #2</div>
+                    </div>
+                </div>
+            </div>
+        </div> <!--FIN MENU -->
+        <!--TREE -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabTree}">
+            <div>Programmatic Tree</div>
+            <div class="Titulo1" id="_tree"></div>
+          <br>
+           <br>
+           <div>CheckBox Tree
+             <br>
+         </div>
+            <br>
+            <div data-dojo-attach-point="_bcA">
+            </div>  
+
+        </div> <!--FIN TREE -->
+        <!--Togglebutton -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabTogglebutton}">
+            <div>Declarative:  
+                <button data-dojo-type="dijit/form/ToggleButton" data-dojo-props="iconClass:'dijitCheckBoxIcon', checked: true">
+                    Toggle me
+                </button>
+            </div>
+            <div>Programmatic:
+                <button id="programmatic"></button>
+            </div>
+           
+        </div>
+        <!--Fin Togglebutton -->
+        <!--MULTI SELECT -->
+        <div data-dojo-type="dijit/layout/ContentPane" title="${_i18n.widgets.EstilosWidget.tTabOtros}">
+            <div>MultiSelect  <br>
+            <select data-dojo-type="dijit/form/MultiSelect" id="fruit" name="fruit" size="4">
+                <option value="AP">Apples</option>
+                <option value="OR">Oranges</option>
+                <option value="PE" selected="selected">Pears</option>
+            </select>
+            </div>
+            <div name="select3" value="AK" data-dojo-type="dijit/form/Select">
+                <span value="AL"><b>Alabama</b></span>
+                <span value="AK"><font color="red">A</font><font color="orange">l</font><font color="yellow">a</font><font color="green">s</font><font color="blue">k</font><font color="purple">a</font></span>
+                <span value="AZ"><i>Arizona</i></span>
+                <span value="AR"><span class="ark">Arkansas</span></span>
+                <span value="CA"><span style="font-size:25%">C</span><span style="font-size:50%">a</span><span style="font-size:75%">l</span><span style="font-size:90%">i</span><span style="font-size:100%">f</span><span style="font-size:125%">o</span><span style="font-size:133%">r</span><span style="font-size:150%">n</span><span style="font-size:175%">i</span><span style="font-size:200%">a</span></span>
+                <span value="NM" disabled="disabled">New<br>  Mexico</span>
+                <br>
+            </div>  
+            <br>  <br>  <br>
+            <div> HorizontalSlider
+              <div id="slider"></div>
+              <p><input type="text" id="sliderValue" data-dojo-type="dijit/form/TextBox" /></p>
+            </div>
+            <br>
+            <div>TooltipDialog
+                <div data-dojo-type="dijit/form/DropDownButton"> 
+                <span>Register</span>
+                <div data-dojo-type="dijit/TooltipDialog">
+                    <label for="name2">Name:</label> <input data-dojo-type="dijit/form/TextBox" id="name2" name="name2" /><br />
+                    <label for="hobby2">Hobby:</label> <input data-dojo-type="dijit/form/TextBox" id="hobby2" name="hobby2" /><br />
+                    <button data-dojo-type="dijit/form/Button" type="submit">Save</button>
+                </div>
+            </div> 
+           
+            </div>
+        </div>
+        <!--FIN MULTI SELECT -->
+        
+         <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-attach-point="_bcEstilos" data-dojo-props="design:'sidebar', gutters:true, liveSplitters:true" style="width: 100%; height: 100%">
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'leading'" style="width: 100px;">Hi, I'm leading pane</div>
+                <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region:'center'">Hi, I'm center pane</div>
+            </div>
+        </div> <!--FIN de TABCONTAINER -->
+
+ </div> <!--FIN DIV ESTILOS -->
+</div>
+
+
+    
+
+
+

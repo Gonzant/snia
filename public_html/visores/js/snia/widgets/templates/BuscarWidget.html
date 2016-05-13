@@ -1,0 +1,46 @@
+<div style="width:500px;">
+    
+       <br>
+    <label for="id2">${_i18n.widgets.BuscarWidget.lbdepartamento}</label>
+    
+    <input data-dojo-attach-point="_departamentosCombo">
+    <br><br>
+    <label>${_i18n.widgets.BuscarWidget.lbID2}</label>
+    <input type="text" name="id2"
+        data-dojo-type="dijit/form/TextBox"
+        data-dojo-props="trim:true, propercase:true" id="id2"
+        data-dojo-attach-point="_id2Node"/>
+    <div data-dojo-type="dijit/form/Button"
+         data-dojo-attach-point="_buscarNode">
+        ${_i18n.widgets.BuscarWidget.bBuscar}</div>
+    <br><br>
+    <div data-dojo-attach-point="_resultadoNode"></div>
+    <br><br>
+    <div id="loadingOverlay" class="pageOverlay loadingOverlay">
+            <div class="claseloadingOverlay">
+            <div class="loadingMessage">Cargando...</div>
+            </div>
+             
+    </div>
+    <div class="gridDivBuscar" data-dojo-attach-point="_gridDiv" >
+        
+    </div>
+    <div class="divEstilos">   
+        <button data-dojo-attach-point="_acercarSeleccionNode" data-dojo-type="dijit/form/Button" class="SmallButton"> 
+            <img class="iconAcercarSeleccionBuscar" >
+        </button> 
+        <button data-dojo-attach-point="_desSeleccionNode" data-dojo-type="dijit/form/Button" class="SmallButton" > 
+            <img class="iconDesSeleccionBuscar" >
+        </button> 
+        <button data-dojo-attach-point="_seleccionarTodoNode" data-dojo-type="dijit/form/Button" class="SmallButton"> 
+            <img class="iconDeleccionarTodoBuscar" >
+        </button>  
+        <button data-dojo-attach-point="_croquisNode" data-dojo-type="dijit/form/Button" class="SmallButton" > 
+            <img class="iconCroquisBuscar" >
+        </button>  
+        <button data-dojo-attach-point="_cubrimientoNode" data-dojo-type="dijit/form/Button" class="SmallButton" > 
+            <img class="iconCubrimientoBuscar" >
+        </button> 
+    </div>
+
+</div>
