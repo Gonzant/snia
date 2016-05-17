@@ -31,8 +31,7 @@ define([
     "dojox/grid/DataGrid",
     "dojo/data/ObjectStore",
     "dojo/_base/array",
-    "dijit/Tooltip",
-    "dojo/text!config/configInfoSuelos.json",
+    "dijit/Tooltip",    
     "dojo/json",
     "dojo/dom-construct",
     "dojox/widget/Standby",
@@ -41,7 +40,7 @@ define([
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle,
     SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect,
-    DataGrid, ObjectStore, baseArray, Tooltip, ConfigJSON, JSON, domConstruct, Standby ) {
+    DataGrid, ObjectStore, baseArray, Tooltip, JSON, domConstruct, Standby ) {
 //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -74,7 +73,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             // classes
-
+            this.ConfigJSON = defaults.config.Herramienta;
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -157,17 +156,17 @@ define([
 //            document.body.appendChild(this._standby.domNode);
             this._standby.startup();
             this._standby.show();
-            this._config = JSON.parse(ConfigJSON);
+            this._config = this.ConfigJSON;
             this._symbol = new SimpleFillSymbol("solid",
                 new SimpleLineSymbol("solid", new Color([0, 255, 255, 0.8]), 2), null);
             this._cg3sr = new CapaGrafica3SR({ id: "infoSuelos" });
             this._cg3sr.agregarMapa(this.mapa);
             this._cg3srPunto = new CapaGrafica3SR({ id: "infoSuelosPunto" });
             this._cg3srPunto.agregarMapa(this.mapa);
-            this._urlQuery = this._config.Herramienta.Servicio;
+            this._urlQuery = this._config.Servicio;
             this._queryTask = new QueryTask(this._urlQuery);
-            this._queryTaskUnaidadMapeo = new QueryTask(this._config.Herramienta.ServicioUnidadMapeo);
-            this._queryTaskPerfil = new QueryTask(this._config.Herramienta.ServicioPerfil);
+            this._queryTaskUnaidadMapeo = new QueryTask(this._config.ServicioUnidadMapeo);
+            this._queryTaskPerfil = new QueryTask(this._config.ServicioPerfil);
             this._query = new Query();
             this._query.outSpatialReference = new SpatialReference(this.mapa.map.spatialReference.wkid);
             this._query.returnGeometry = false;
@@ -253,7 +252,7 @@ define([
         _acercarSeleccionPerfil : function () {
             this._cg3srPunto.limpiar();
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
-            this._query.where = this._config.Herramienta.CampoIdServicioPerfil + " = '" + this._elemento.SeriePerfilRepresentativo + "'";
+            this._query.where = this._config.CampoIdServicioPerfil + " = '" + this._elemento.SeriePerfilRepresentativo + "'";
             this._query.returnGeometry = true;
             this._queryTaskPerfil.execute(this._query, lang.hitch(this, this._queryTaskCallbackGeometryPerfil),
                 lang.hitch(this, this._queryTaskErrbackGeometry));
@@ -280,9 +279,9 @@ define([
         _initGrid: function () {
             var grid, estructura;
             estructura = [[
-                { name: "Unidad Mapeo", field: this._config.Herramienta.CampoEtiquetaUnidadMapeo, width: "84px" },
-                { name: "Serie", field: this._config.Herramienta.CampoSimboloSerie, width: "84px" },
-                { name: "Perfil", field: this._config.Herramienta.CampoIdPerfilRepresentativo, width: "115px" },
+                { name: "Unidad Mapeo", field: this._config.CampoEtiquetaUnidadMapeo, width: "84px" },
+                { name: "Serie", field: this._config.CampoSimboloSerie, width: "84px" },
+                { name: "Perfil", field: this._config.CampoIdPerfilRepresentativo, width: "115px" },
                 { name: "&nbsp", field: "", width: "54px" }
             ]];
 
@@ -310,17 +309,17 @@ define([
                 elemento = rowData.UM;
                 elemento = elemento.replace(/\+/g, ".");
                 elemento = elemento.replace(/\//g, ",");
-                url = this._config.Herramienta.UrlUnidadMapeo + "/" + elemento + ".pdf";
+                url = this._config.UrlUnidadMapeo + "/" + elemento + ".pdf";
                 break;
             case 1:
                 this._elemento = rowData;
                 elemento = rowData.SerieSimbolo;
-                url = this._config.Herramienta.UrlSerie + "/" + elemento + ".pdf";
+                url = this._config.UrlSerie + "/" + elemento + ".pdf";
                 break;
             case 2:
                 this._elemento = rowData;
                 elemento = rowData.SeriePerfilRepresentativo;
-                url = this._config.Herramienta.UrlPerfil + "/" + elemento + ".pdf";
+                url = this._config.UrlPerfil + "/" + elemento + ".pdf";
                 break;
             case 3:
                 this._elemento = rowData;
@@ -339,15 +338,15 @@ define([
             var filtro = {};
             switch (this._filtro) {
             case '2':
-                filtro[this._config.Herramienta.CampoEtiquetaUnidadMapeo] = "*" + this._filtroTexto.value + "*";
+                filtro[this._config.CampoEtiquetaUnidadMapeo] = "*" + this._filtroTexto.value + "*";
                 this._grid.filter(filtro);
                 break;
             case '3':
-                filtro[this._config.Herramienta.CampoSimboloSerie] = "*" + this._filtroTexto.value + "*";
+                filtro[this._config.CampoSimboloSerie] = "*" + this._filtroTexto.value + "*";
                 this._grid.filter(filtro);
                 break;
             case '4':
-                filtro[this._config.Herramienta.CampoIdPerfilRepresentativo] = "*" + this._filtroTexto.value + "*";
+                filtro[this._config.CampoIdPerfilRepresentativo] = "*" + this._filtroTexto.value + "*";
                 this._grid.filter(filtro);
                 break;
             }

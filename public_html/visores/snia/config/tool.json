@@ -1,70 +1,4 @@
-{
-    "app": {
-        "titulo": "SNIA",
-		 "proxyRules":[
-            {
-                "urlPrefix": "http://sit.mvotma.gub.uy/arcgis",
-                "proxyUrl": "https://web.renare.gub.uy/proxy/proxy.ashx?"
-            }
-        ]
-    },
-    "mapa": {
-        "mapConfig": {
-            "slider": false,
-            "logo": false
-        },
-        "baseMapLayer": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-        "dynamicLayers": [             
-            {
-                "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/SIT/cobertura/MapServer",
-                "options": {
-                        "id": "Cobertura (SIT)",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
-                "options": {
-                        "id": "Administrativo",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Suelos/MapServer",
-                "options": {
-                        "id": "Suelos",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Produccion/MapServer",
-                "options": {
-                        "id": "Producción",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/RiesgoGeo/MapServer",
-                "options": {
-                        "id": "Riesgo Ambiental - Sta. Lucia",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/AreasSensibles/MapServer",
-                "options": {
-                        "id": "Areas Sensibles",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            }
-        ]
-    },
+{       
     "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
@@ -97,22 +31,6 @@
             "toggle": false,
             "widgetConfig": {
                 
-            }
-        },
-        {
-            "widget": "widgets/TiempoWidget",
-            "title": "Tiempo",
-            "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
-            "icono": "../js/snia/img/tiempo_gris.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "sTime": "01/11/2013",
-                "eTime": "01/04/2014" ,
-                "timeSlider": {
-                    "unidad":"esriTimeUnitsWeeks",
-                    "cantidad": "1",
-                    "velocidad": "2000"
-                }                
             }
         },
         {
@@ -220,7 +138,7 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                            "Contenido": "Servicio de consulta interno. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
                             "Estilo": "Normal"
                         }
                       ]
@@ -847,97 +765,6 @@
                     ]
                 }
             },
-        {"name": "Novedades",
-            "id":"17",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Novedades",
-                              "Estilo": "Indice1"
-                            }
-            },
-            "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Novedades",
-                              "Estilo": "Titulo1"
-                            }
-                },
-                "elementos": [
-                    {
-                    "Texto":[
-                    {
-                        "Contenido": "14/07/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Se agrego una herramienta que muestra el cubrimiento de los grupos en un padrón (sin necesidad de generar el croquis) y permite exportar la información a PDF y texto",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Se agrego información referente : 'Prioridad Forestal'",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "28/05/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "23/04/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Se actualizó el mapa base vectorial",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Se actualizó la apariencia de la aplicación",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "03/02/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] En el reporte aparecen los padrones por defecto (1475, 1476, ARTIGAS)",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "20/01/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] La superficie catastral en la ventana de búsqueda siempre muestra 0",
-                        "Estilo": "Normal" 
-                    }, 
-                    {
-                        "Contenido": "[RESUELTO] La superficie catastral en el reporte de padrones esta multiplicada por 10",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] El reporte se abre en varias ventanas",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Simbología del mapa administrativo",
-                        "Estilo": "Normal" 
-                    }, 
-                    {
-                        "Contenido": "15/01/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Primera versión de la Nueva Consulta CONEAT",
-                        "Estilo": "Normal" 
-                    }                    
-                ]
-                    }
-                ]
-            },
-            "padre": "si"
-        },
         {"name": "Atribuciones",
             "id":"18",
             "parent":"root",
@@ -1046,7 +873,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
+                              "Contenido": "Constituyente 1476, Montevideo, Uruguay",
                               "Estilo": "Normal"
                             },
                             {
@@ -1054,7 +881,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "23096008, 23097025",
+                              "Contenido": "24104155-58 int. 411",
                               "Estilo": "Normal"
                             },
                             {
@@ -1062,7 +889,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
+                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor ingrese a",
                               "Estilo": "Normal"
                             }
                         ]

@@ -1,0 +1,27 @@
+{
+	"mapa": {
+        "mapConfig": {
+            "slider": false,
+            "logo": false
+        },
+        "baseMapLayer": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+        "dynamicLayers": [ 
+			{
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
+                "options": {
+                        "id": "Administrativo",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer",
+                "options": {
+                        "id": "Suelo",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }
+        ]
+    }
+}

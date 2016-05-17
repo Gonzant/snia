@@ -25,23 +25,26 @@ snia.app = {
             "modulos/HerramientaDialog",
             "widgets/BarraHerramientasWidget",
             "widgets/MapaWidget",
-            "dojo/text!config/todo.json",
+            "dojo/text!config/app.json",
+            "dojo/text!config/mapa.json",
+            "dojo/text!config/tool.json",
             "dojo/dom-style",
             "esri/urlUtils",
             "dojo/domReady!"], function (on, dom, parser, arrayUtil, JSON, Standby,
             ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
-            MapaWidget, appConfigJSON, domStyle, urlUtils) {
+            MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
+            domStyle, urlUtils) {
             //variables
             var
-                standby, appConfig, mapa,
+                standby, appConfig, mapa, mapaConfig, toolConfig,
                 barra,
                 initCapas, initControles;
             //metodos
             initCapas = function () {
                 //dynamicLayers
-                var dynLayers = appConfig.mapa.dynamicLayers;
+                var dynLayers = mapaConfig.mapa.dynamicLayers;
                 arrayUtil.forEach(dynLayers, function (dataLayer) {
                     var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                     mapa.agregarCapa(l);
@@ -50,12 +53,12 @@ snia.app = {
             initControles = function () {
                 dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
                 standby.set("text", "Cargando librerias...");
-                var widgetNames = arrayUtil.map(appConfig.barraHerramientas, function (herramientaConfig) {
+                var widgetNames = arrayUtil.map(toolConfig.barraHerramientas, function (herramientaConfig) {
                     return herramientaConfig.widget;
                 });
                 require(widgetNames, function () {
                     var herramientas = [];
-                    arrayUtil.forEach(appConfig.barraHerramientas, function (herramientaConfig) {
+                    arrayUtil.forEach(toolConfig.barraHerramientas, function (herramientaConfig) {
                         standby.set("text", "Iniciando " + herramientaConfig.title + "...");
                         var WidgetClass = require(herramientaConfig.widget),
                             widgetConfig = herramientaConfig.widgetConfig,
@@ -102,13 +105,16 @@ snia.app = {
                 });
             }
             //mapa
+            mapaConfig = JSON.parse(mapaConfigJSON);
             mapa = new MapaWidget({
                 mapOptions : {
                     slider: false,
                     logo: false
                 },
-                baseMapLayer: new ArcGISTiledMapServiceLayer(appConfig.mapa.baseMapLayer)
+                baseMapLayer: new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayer)
             }, "divMapa");
+            //tool
+            toolConfig = JSON.parse(toolConfigJSON);
             on(mapa, "load", function () {
                 initCapas();
                 initControles();

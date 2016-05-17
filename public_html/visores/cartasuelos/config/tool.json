@@ -1,47 +1,4 @@
-{
-    "app": {
-        "titulo": "FRUTICULTURA",
-        "proxyRules":[
-            {
-                "urlPrefix": "http://sit.mvotma.gub.uy/arcgis",
-                "proxyUrl": "https://web.renare.gub.uy/proxy/proxy.ashx?"
-            }
-        ]
-    },
-    "mapa": {
-        "mapConfig": {
-            "slider": false,
-            "logo": false
-        },
-        "baseMapLayer": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-        "dynamicLayers": [             
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Especies/MapServer",
-                "options": {
-                        "id": "Especies",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasZ1314/MapServer",
-                "options": {
-                        "id": "Plagas",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/HuertaBase/MapServer",
-                "options": {
-                        "id": "Base",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            }
-            
-        ]
-    },
+{        
     "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
@@ -52,7 +9,7 @@
             "widgetConfig": {
                 "mapasBase": [
                     {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
 					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
@@ -78,25 +35,9 @@
             }
         },
         {
-            "widget": "widgets/TiempoWidget",
-            "title": "Tiempo",
-            "msgToolTip": "Herramienta para manejar el espacio temporal de la informaci√≥n del mapa.",
-            "icono": "../js/snia/img/tiempo_gris.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "sTime": "01/11/2013",
-                "eTime": "01/04/2014" ,
-                "timeSlider": {
-                    "unidad":"esriTimeUnitsWeeks",
-                    "cantidad": "1",
-                    "velocidad": "2000"
-                }                
-            }
-        },
-        {
             "widget": "widgets/IdentificarWidget",
             "title": "Identificar",
-            "msgToolTip": "Muestra la informaci√≥n de los elementos en un punto.",
+            "msgToolTip": "Muestra la informaciÛn de los elementos en un punto.",
             "icono": "../js/snia/img/identificar.png",            
             "toggle": false,
             "widgetConfig": {
@@ -111,12 +52,40 @@
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
                 "productividad": "IND_CONEAT"
+            }
+        },
+		{
+            "widget": "widgets/InformacionSuelosWidget",
+            "title": "Informacion Suelos Widget",
+            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "icono": "../js/snia/img/infoCartografia.png",
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "departamento": "DEPTO",
+                "padron": "PADRON",
+                "catastral": "AREAHA",
+                "productividad": "IND_CONEAT",				
+			    "Herramienta": {
+					"CampoEtiquetaUnidadMapeo": "UnidadDeMapeoEtiqueta",
+					"CampoSimboloSerie": "SerieSimbolo",
+					"CampoIdPerfilRepresentativo": "SeriePerfilRepresentativo",
+					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
+					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
+					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
+					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/1",
+					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
+					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
+					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
+					"CampoIdServicioPerfil": "Id_Perfil"
+				}
             }
         }, 
         {
@@ -146,7 +115,7 @@
             "icono": "../js/snia/img/imprimir.png",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 
@@ -163,9 +132,10 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e informaci√≥n sobre CONEAT. ",
+            "msgToolTip": "Muestra el manual de usuario e informaciÛn sobre Carta Suelos. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
+            "startsOpen": true,
             "widgetConfig": {
                 "data": [
     {
@@ -175,13 +145,13 @@
         "esPadre": true
 	
     },
-        {"name": "Introducci√≥n",
+        {"name": "IntroducciÛn",
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
                            {
-                              "Contenido": "Introducci√≥n",
+                              "Contenido": "IntroducciÛn",
                               "Estilo": "Indice1"
                             }
                         
@@ -190,7 +160,7 @@
                 "titulo":{
                         "Texto":
                            {
-                              "Contenido": "Introducci√≥n",
+                              "Contenido": "IntroducciÛn",
                               "Estilo": "Titulo1"
                             }
                     },
@@ -198,15 +168,40 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "Servicio de consulta interno del registro de lugares de producci√≥n y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganader√≠a y Pesca y a t√©cnicos autorizados.",
+                            "Contenido": "La CRSU76 que ha estado disponible hasta la fecha es una carta de reconocimiento de suelos de quinto orden que fue publicada a escala 1:1000.000. Las unidades de mapeo en ese levantamiento son asociaciones de Familias de suelos. ",
                             "Estilo": "Normal"
+                        },
+                        { 
+                            "Contenido": "RENARE comienza a publicar los primeros resultados de una nueva carta de suelos a nivel nacional con trabajos iniciados en el 2013. Este trabajo se viene implementando en apoyo a la elaboraciÛn de los Planes de Uso y Manejo Responsable de los Suelos y ser· una herramienta fundamental para apoyar el Programa Nacional de ConservaciÛn de Suelos y la investigaciÛn agrÌcola en suelos y cultivos.",
+                            "Estilo": "Normal"
+                        },
+                        { 
+                            "Contenido": "La nueva cartografÌa CRSU14 es mucho m·s detallada, de tercer orden, y se publica a escala 1:40.000 sobre im·genes de Google Earth, lo que facilita enormemente su utilizaciÛn. Por otra parte, las unidades de mapeo se definen en base a Series de suelos. La Serie es una subdivisiÛn de las Familias, o sea, una unidad taxonÛmica definida con mucho mayor detalle, lo que aumenta el valor de la carta.",
+                            "Estilo": "Normal"
+                        },
+                        { 
+                           "Contenido": "",
+                           "Estilo": "Normal" 
                         }
                       ]
-                    }
-                     
+                    },
+                    {
+                        "Texto":[
+                           {
+                              "Contenido": "Ver tÈrminos y condiciones en",
+                              "Estilo": "Normal"
+                            }]
+                    },
+                    {
+                    "Enlace":[
+                        {
+                            "Contenido": "www.snia.gub.uy",
+                            "URL": "www.snia.gub.uy"
+                        }
+                    ] 
+                   }
                 ]
-            }
-            
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
@@ -231,14 +226,14 @@
                     {
                         "Texto":[
                             {
-                            "Contenido": "En esta secci√≥n se describe y se explica como se utilizan las herramientas de la aplicaci√≥n.",
+                            "Contenido": "En esta secciÛn se describe y se explica como se utilizan las herramientas de la aplicaciÛn.",
                             "Estilo": "Normal" 
                             }
                         ]
                     }
-                ],
-                "esPadre": true
-            }
+                ]
+            },
+            "esPadre": true
         },
             {
                 "name": "Mapa Base",
@@ -274,7 +269,7 @@
                     {
                         "Texto":[
                         {
-                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Im√°genes y Relieve. Simplemente seleccione el que desee visualizar.",
+                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Im·genes y Relieve. Simplemente seleccione el que desee visualizar.",
                            "Estilo": "Normal"
                         }
                         ]    
@@ -285,8 +280,8 @@
             },
             {
                 "name": "Contenidos",
-                "id":"4",
-                "parent":"2",
+                "id":"3",
+                "parent":"1",
                 "seccionTitulo":{
                     "Texto":
                            {
@@ -317,7 +312,7 @@
                     {
                         "Texto":[
                         {
-                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. Tambi√©n admite manejar la opacidad de las diferentes capas por separado.",
+                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. TambiÈn admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
                         }
                         ]    
@@ -328,7 +323,7 @@
             },
             {
                "name": "Navegar",
-               "id":"3",
+               "id":"4",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -360,7 +355,7 @@
                         {
                            "Texto":[
                            {
-                              "Contenido": "Esta herramienta despliega una ventana con las herramientas b√°sicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
+                              "Contenido": "Esta herramienta despliega una ventana con las herramientas b·sicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -379,7 +374,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Presione el bot√≥n derecho del rat√≥n y desplace dibujando un rect√°ngulo, libere el bot√≥n para terminar. El mapa se acercara al √°rea dibujada aline√°ndose al centro de la misma.",
+                              "Contenido": "Presione el botÛn derecho del ratÛn y desplace dibujando un rect·ngulo, libere el botÛn para terminar. El mapa se acercara al ·rea dibujada aline·ndose al centro de la misma.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -388,7 +383,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/zoomout.png",
+                              "URL":"../js/snia/img/zoomout.png",
                               "Alto":30
                             }
                         },
@@ -399,7 +394,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Presione el bot√≥n derecho del rat√≥n y desplace dibujando un rect√°ngulo, libere el bot√≥n para terminar. El mapa se alejara de forma proporcional al √°rea dibujada y aline√°ndose al centro de la misma.",
+                              "Contenido": "Presione el botÛn derecho del ratÛn y desplace dibujando un rect·ngulo, libere el botÛn para terminar. El mapa se alejara de forma proporcional al ·rea dibujada y aline·ndose al centro de la misma.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -408,7 +403,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/pan.png",
+                              "URL":"../js/snia/img/pan.png",
                               "Alto":30
                             }
                         },
@@ -419,7 +414,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Presione el bot√≥n derecho del rat√≥n y desplace en una direcci√≥n, libere el bot√≥n para terminar. El mapa se desplazara en la direcci√≥n seleccionada.",
+                              "Contenido": "Presione el botÛn derecho del ratÛn y desplace en una direcciÛn, libere el botÛn para terminar. El mapa se desplazara en la direcciÛn seleccionada.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -427,18 +422,18 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/fullextent.png",
+                              "URL":"../js/snia/img/fullextent.png",
                               "Alto":30
                             }
                         },
                         {
                          "Texto":[
                            {
-                              "Contenido": "Extensi√≥n m√°xima",
+                              "Contenido": "ExtensiÛn m·xima",
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Posiciona el mapa en su m√°xima extensi√≥n.",
+                              "Contenido": "Posiciona el mapa en su m·xima extensiÛn.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -446,7 +441,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/prevextent.png",
+                              "URL":"../js/snia/img/prevextent.png",
                               "Alto":30
                             }
                         },
@@ -457,7 +452,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Posiciona el mapa a la √∫ltima vista (anterior al √∫ltimo acercamiento, alejamiento o desplazamiento).",
+                              "Contenido": "Posiciona el mapa a la ˙ltima vista (anterior al ˙ltimo acercamiento, alejamiento o desplazamiento).",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -465,7 +460,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/sigextent.png",
+                              "URL":"../js/snia/img/sigextent.png",
                               "Alto":30
                             }
                         },
@@ -486,50 +481,8 @@
                
             },
             {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
-            },
-            {
                "name": "Identificar",
-               "id":"4",
+               "id":"5",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -561,7 +514,7 @@
                         {
                            "Texto":[
                            {
-                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la informaci√≥n de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el bot√≥n derecho del rat√≥n.",
+                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la informaciÛn de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botÛn derecho del ratÛn.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -571,7 +524,7 @@
             },
             {
                "name": "Buscar Padrones",
-               "id":"5",
+               "id":"6",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -602,11 +555,11 @@
                     "elementos": [
                         {"Texto":[
                            {
-                              "Contenido": "Esta herramienta permite buscar padrones rurales para visualizar sus √≠ndices y generar el reporte CONEAT (croquis). Para esto simplemente seleccione el departamento e ingrese el n√∫mero de padr√≥n, y luego presione el bot√≥n buscar. Si el padr√≥n existe aparecer√° en la grilla resultado y autom√°ticamente se acercara al mismo en el mapa.",
+                              "Contenido": "Esta herramienta permite buscar padrones rurales para visualizar sus Ìndices y generar el reporte CONEAT (croquis). Para esto simplemente seleccione el departamento e ingrese el n˙mero de padrÛn, y luego presione el botÛn buscar. Si el padrÛn existe aparecer· en la grilla resultado y autom·ticamente se acercara al mismo en el mapa.",
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hay varios resultados de b√∫squedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padr√≥n con el bot√≥n derecho del rat√≥n. Para seleccionar varios mantenga presionado la tecla ‚Äúctrl‚Äù.",
+                              "Contenido": "Si hay varios resultados de b˙squedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrÛn con el botÛn derecho del ratÛn. Para seleccionar varios mantenga presionado la tecla ìctrlî.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -619,7 +572,7 @@
                         },
                         { "Texto":[
                            {
-                              "Contenido": "Acercar selecci√≥n",
+                              "Contenido": "Acercar selecciÛn",
                               "Estilo": "Titulo3"
                             },
                             {
@@ -636,7 +589,7 @@
                         },
                         { "Texto":[
                            {
-                              "Contenido": "Remover selecci√≥n",
+                              "Contenido": "Remover selecciÛn",
                               "Estilo": "Titulo3"
                             },
                             {
@@ -670,7 +623,7 @@
                         },
                         { "Texto":[
                            {
-                              "Contenido": "Croquis selecci√≥n",
+                              "Contenido": "Croquis selecciÛn",
                               "Estilo": "Titulo3"
                             },
                             {
@@ -680,12 +633,167 @@
                            ]
                         }
                     ]
+                }
+            },
+            {
+               "name": "Navegar",
+               "id":"7",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Navegar",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":
+                            {
+                              "URL":"../js/snia/img/navegar.png",
+                              "Alto":20
+                            }
+                        
                 },
-               "hijos": "no"
+               "seccionContenido":{
+                    "titulo":{
+                         "Imagen":
+                        {
+                              "URL":"../js/snia/img/areas.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                           {
+                              "Contenido": "¡reas CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite al usuario dibujar polÌgonos en el mapa para luego obtener el reporte CONEAT de los mismos.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/agregar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Agregar ·rea",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite dibujar una nueva ·rea en el mapa. Para esto indique en forma de anillo los puntos del polÌgono utilizando el botÛn derecho del ratÛn, para finalizar haga doble clic derecho. Vera el ·rea ingresada en el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/cancelarAgregar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Cancelar agregar ·rea",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite cancelar el proceso de dibujo del ·rea, simplemente en medio del proceso de ingresar una nueva ·rea presione esta opciÛn.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/deseleccionar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Desmarcar ·rea",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite desmarcar el ·rea seleccionada.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/remover.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Remover ·rea",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Elimina el ·rea marcada. Para marcar un ·rea simplemente utilice el botÛn derecho del ratÛn sobre el ·rea en el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/limpiar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Remover todas las ·reas",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Elimina todas las ·reas dibujadas.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/reporte.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Croquis de las ·reas",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Genera un reporte con todas las ·reas dibujadas.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
             },
             {
                "name": "Medir",
-               "id":"7",
+               "id":"8",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -721,11 +829,11 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si la elecci√≥n es dibujar, la herramienta brinda distintas geometr√≠as a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
+                              "Contenido": "Si la elecciÛn es dibujar, la herramienta brinda distintas geometrÌas a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el bot√≥n derecho del rat√≥n sobre el mapa.",
+                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botÛn derecho del ratÛn sobre el mapa.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -735,7 +843,7 @@
             },
             {
                "name": "Coordenadas",
-               "id":"8",
+               "id":"9",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -767,52 +875,10 @@
                         {
                            "Texto":[
                            {
-                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar las coordenadas del punto del mapa indicado por el puntero del rat√≥n, en tres sistemas de referencia espacial, UTM 21 sur, coordenadas geogr√°ficas y Web Mercator.",
+                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar las coordenadas del punto del mapa indicado por el puntero del ratÛn, en tres sistemas de referencia espacial, UTM 21 sur, coordenadas geogr·ficas y Web Mercator.",
                               "Estilo": "Normal"
                             }
                            ]    
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Mapa de Referencia",
-               "id":"9",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                          "Texto":[
-                              {
-                                "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
-                                "Estilo": "Normal"
-                              }
-                          ]  
                         }
                     ]
                 }
@@ -851,11 +917,11 @@
                         {
                            "Texto":[
                            {
-                              "Contenido": "Esta herramienta permite obtener una impresi√≥n del mapa, y para esto despliega una ventana con una vista previa permitiendo al usuario visualizar como quedar√≠a la impresi√≥n.",
+                              "Contenido": "Esta herramienta permite obtener una impresiÛn del mapa, y para esto despliega una ventana con una vista previa permitiendo al usuario visualizar como quedarÌa la impresiÛn.",
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite adem√°s agregar la leyenda y el mapa de referencia.",
+                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite adem·s agregar la leyenda y el mapa de referencia.",
                               "Estilo": "Normal"
                             },
                             {
@@ -868,8 +934,9 @@
                     ]
                 }
             },
+            
         {"name": "Atribuciones",
-            "id":"18",
+            "id":"12",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
@@ -891,7 +958,7 @@
                     {
                     "Texto":[
                         {
-                            "Contenido": "Esta aplicaci√≥n utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
+                            "Contenido": "Esta aplicaciÛn utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
                             "Estilo": "Normal"
                         }
                       ]  
@@ -923,7 +990,7 @@
                     {
                     "Texto":[
                       {
-                        "Contenido": "Los √≠conos originales fueron hechos por Freepik de Flaticon, est√°n bajo licencia CC BY 3.0",
+                        "Contenido": "Los Ìconos originales fueron hechos por Freepik de Flaticon, est·n bajo licencia CC BY 3.0",
                         "Estilo": "Normal"
                       }
                     ]
@@ -972,15 +1039,15 @@
                     {
                         "Texto":[
                             {
-                              "Contenido": "Direcci√≥n",
+                              "Contenido": "DirecciÛn",
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Avenida Garz√≥n 456, Montevideo, Uruguay (CP 11900)",
+                              "Contenido": "Avenida GarzÛn 456, Montevideo, Uruguay (CP 11900)",
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Tel√©fonos",
+                              "Contenido": "TelÈfonos",
                               "Estilo": "Titulo2"
                             },
                             {
@@ -992,7 +1059,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Nos interesa su opini√≥n, cualquier consulta, cr√≠tica o sugerencia por favor escribanos a",
+                              "Contenido": "Nos interesa su opiniÛn, cualquier consulta, crÌtica o sugerencia por favor escribanos a",
                               "Estilo": "Normal"
                             }
                         ]
@@ -1000,14 +1067,13 @@
                     {
                     "Enlace":[
                         {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
+                            "Contenido": "renare@mgap.gub.uy",
+                            "URL": "mailto:renare@mgap.gub.uy"
                         }
                     ] 
                     }
                 ]
-            },
-            "padre": "si"
+            }
         }
         
 ]

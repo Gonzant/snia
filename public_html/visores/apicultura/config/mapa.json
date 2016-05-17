@@ -1,0 +1,67 @@
+{
+	"mapa": {
+        "mapConfig": {
+            "slider": false,
+            "logo": false
+        },
+        "baseMapLayer": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+        "dynamicLayers": [             
+            {
+                "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/SIT/cobertura/MapServer",
+                "options": {
+                        "id": "Cobertura (SIT)",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
+                "options": {
+                        "id": "Administrativo",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/PlanesRotaciones/MapServer",
+                "options": {
+                        "id": "Agricultura",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Forestacion/MapServer",
+                "options": {
+                        "id": "Forestacion",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Especies/MapServer",
+                "options": {
+                        "id": "Especies",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Citricultura/MapServer",
+                "options": {
+                        "id": "Citricultura",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Apicultura/MapServer",
+                "options": {
+                        "id": "Apicultura",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }
+        ]
+    }
+}

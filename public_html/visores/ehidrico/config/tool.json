@@ -1,33 +1,4 @@
-{
-    "app": {
-        "titulo": "Carta de Suelos",
-        "proxyRules":[]
-    },
-    "mapa": {
-        "mapConfig": {
-            "slider": false,
-            "logo": false
-        },
-        "baseMapLayer": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-        "dynamicLayers": [ 
-			{
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
-                "options": {
-                        "id": "Administrativo",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer",
-                "options": {
-                        "id": "Suelo",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            }
-        ]
-    },
+{        
     "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
@@ -89,21 +60,6 @@
                 "productividad": "IND_CONEAT"
             }
         },
-		{
-            "widget": "widgets/InformacionSuelosWidget",
-            "title": "Informacion Suelos Widget",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
-            "icono": "../js/snia/img/infoCartografia.png",
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
-                "departamento": "DEPTO",
-                "padron": "PADRON",
-                "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
-            }
-        }, 
         {
             "widget": "widgets/MedirWidget",
             "title": "Medir",
@@ -184,15 +140,7 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "La CRSU76 que ha estado disponible hasta la fecha es una carta de reconocimiento de suelos de quinto orden que fue publicada a escala 1:1000.000. Las unidades de mapeo en ese levantamiento son asociaciones de Familias de suelos. ",
-                            "Estilo": "Normal"
-                        },
-                        { 
-                            "Contenido": "RENARE comienza a publicar los primeros resultados de una nueva carta de suelos a nivel nacional con trabajos iniciados en el 2013. Este trabajo se viene implementando en apoyo a la elaboración de los Planes de Uso y Manejo Responsable de los Suelos y será una herramienta fundamental para apoyar el Programa Nacional de Conservación de Suelos y la investigación agrícola en suelos y cultivos.",
-                            "Estilo": "Normal"
-                        },
-                        { 
-                            "Contenido": "La nueva cartografía CRSU14 es mucho más detallada, de tercer orden, y se publica a escala 1:40.000 sobre imágenes de Google Earth, lo que facilita enormemente su utilización. Por otra parte, las unidades de mapeo se definen en base a Series de suelos. La Serie es una subdivisión de las Familias, o sea, una unidad taxonómica definida con mucho mayor detalle, lo que aumenta el valor de la carta.",
+                            "Contenido": "Relevamiento de excesos hídricos mediante imagenes MODIS y LANDSAT 2016. ",
                             "Estilo": "Normal"
                         },
                         { 
@@ -212,7 +160,7 @@
                     "Enlace":[
                         {
                             "Contenido": "www.snia.gub.uy",
-                            "URL": "www.snia.gub.uy"
+                            "URL": "http://www.snia.gub.uy"
                         }
                     ] 
                    }
@@ -950,7 +898,6 @@
                     ]
                 }
             },
-            
         {"name": "Atribuciones",
             "id":"12",
             "parent":"root",
@@ -1059,7 +1006,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
+                              "Contenido": "Constituyente 1476, Montevideo, Uruguay",
                               "Estilo": "Normal"
                             },
                             {
@@ -1067,7 +1014,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "23096008, 23097025",
+                              "Contenido": "24104155-58 int. 411",
                               "Estilo": "Normal"
                             },
                             {
@@ -1075,7 +1022,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
+                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor ingrese a",
                               "Estilo": "Normal"
                             }
                         ]
@@ -1083,8 +1030,8 @@
                     {
                     "Enlace":[
                         {
-                            "Contenido": "renare@mgap.gub.uy",
-                            "URL": "mailto:renare@mgap.gub.uy"
+                            "Contenido": "snia@mgap.gub.uy",
+                            "URL": "mailto:snia@mgap.gub.uy"
                         }
                     ] 
                     }

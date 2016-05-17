@@ -1,0 +1,27 @@
+{
+	"mapa": {
+        "mapConfig": {
+            "slider": false,
+            "logo": false
+        },
+        "baseMapLayer": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+        "dynamicLayers": [ 
+			{
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/CuencaSantaLucia/MapServer",
+                "options": {
+                        "id": "BASE",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/RiesgoGeo/MapServer",
+                "options": {
+                        "id": "RIESGO",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }
+        ]
+    }
+}
