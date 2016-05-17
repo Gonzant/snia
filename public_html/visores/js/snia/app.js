@@ -30,12 +30,13 @@ snia.app = {
             "dojo/text!config/tool.json",
             "dojo/dom-style",
             "esri/urlUtils",
+            "esri/geometry/Extent",
             "dojo/domReady!"], function (on, dom, parser, arrayUtil, JSON, Standby,
             ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
-            domStyle, urlUtils) {
+            domStyle, urlUtils, Extent) {
             //variables
             var
                 standby, appConfig, mapa, mapaConfig, toolConfig,
@@ -109,9 +110,10 @@ snia.app = {
             mapa = new MapaWidget({
                 mapOptions : {
                     slider: false,
-                    logo: false
+                    logo: false,
+                    extent: new Extent(mapaConfig.mapa.baseMapLayer.extent)
                 },
-                baseMapLayer: new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayer)
+                baseMapLayer: new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayer.url)
             }, "divMapa");
             //tool
             toolConfig = JSON.parse(toolConfigJSON);
