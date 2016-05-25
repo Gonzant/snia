@@ -39,7 +39,8 @@ define({
                 tbExtensionPosterior: "Vista Posterior"
             },
             "ImprimirWidget": {
-                lbTemplateSelect: "Formato"
+                lbTemplateSelect: "Formato",
+                lbEscala: "Escala"
             },
             "EstilosWidget": {
                 tTabMenu: "Menu",
@@ -86,7 +87,7 @@ define({
                 lbAcercarPerfil: "Acercar a Perfil seleccionado",
                 lbSinElementos: "No se encontró ningun elemento",
                 lbLimpiar: "Limpiar Selección"
-            },
+            },            
             "ContenidosWidget": {
                 bColapsar: "Colapsar",
                 bExpandir: "Expandir"

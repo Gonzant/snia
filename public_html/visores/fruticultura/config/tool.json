@@ -41,8 +41,8 @@
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
             "widgetConfig": {
-                "sTime": "01/11/2013",
-                "eTime": "01/04/2014" ,
+                "fechaAtributo": "DIA",
+                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasZ1314/MapServer/1",
                 "timeSlider": {
                     "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",

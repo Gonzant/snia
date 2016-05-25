@@ -8,8 +8,9 @@
             "toggle": false,
             "widgetConfig": {
                 "mapasBase": [
-					{"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
+					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
         },
@@ -31,6 +32,22 @@
             "toggle": false,
             "widgetConfig": {
                 
+            }
+        },
+        {
+            "widget": "widgets/TiempoWidget",
+            "title": "Tiempo",
+            "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
+            "icono": "../js/snia/img/tiempo_gris.png",            
+            "toggle": false,
+            "widgetConfig": {                
+                "fechaAtributo": "acq",
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer/0",
+                "timeSlider": {
+                    "unidad":"esriTimeUnitsDays",
+                    "cantidad": "1",
+                    "velocidad": "200"
+                }                
             }
         },
         {
@@ -224,6 +241,49 @@
                 }
             },
             {
+                "name": "Contenidos",
+                "id":"4",
+                "parent":"2",
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Contenidos",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":
+                            {
+                              "URL":"../js/snia/img/contenido.png",
+                              "Alto":20
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen":
+                        {
+                              "URL":"../js/snia/img/contenido.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                        {
+                              "Contenido": "Contenidos",
+                              "Estilo": "Titulo2"
+                        }
+                    },
+                    "elementos": [
+                    {
+                        "Texto":[
+                        {
+                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }
+                        
+                    ]
+                }
+            },
+            {
                "name": "Navegar",
                "id":"3",
                "parent":"1",
@@ -350,7 +410,7 @@
                         {
                          "Texto":[
                            {
-                              "Contenido": "Vista previa",
+                              "Contenido": "Vista anterior",
                               "Estilo": "Titulo3"
                             },
                             {
@@ -373,7 +433,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Posiciona el mapa a la vista anterior a la vista previa.",
+                              "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -765,97 +825,6 @@
                     ]
                 }
             },
-        {"name": "Novedades",
-            "id":"17",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Novedades",
-                              "Estilo": "Indice1"
-                            }
-            },
-            "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Novedades",
-                              "Estilo": "Titulo1"
-                            }
-                },
-                "elementos": [
-                    {
-                    "Texto":[
-                    {
-                        "Contenido": "14/07/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Se agrego una herramienta que muestra el cubrimiento de los grupos en un padrón (sin necesidad de generar el croquis) y permite exportar la información a PDF y texto",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Se agrego información referente : 'Prioridad Forestal'",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "28/05/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "23/04/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Se actualizó el mapa base vectorial",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Se actualizó la apariencia de la aplicación",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "03/02/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] En el reporte aparecen los padrones por defecto (1475, 1476, ARTIGAS)",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "20/01/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] La superficie catastral en la ventana de búsqueda siempre muestra 0",
-                        "Estilo": "Normal" 
-                    }, 
-                    {
-                        "Contenido": "[RESUELTO] La superficie catastral en el reporte de padrones esta multiplicada por 10",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] El reporte se abre en varias ventanas",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Simbología del mapa administrativo",
-                        "Estilo": "Normal" 
-                    }, 
-                    {
-                        "Contenido": "15/01/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Primera versión de la Nueva Consulta CONEAT",
-                        "Estilo": "Normal" 
-                    }                    
-                ]
-                    }
-                ]
-            },
-            "padre": "si"
-        },
         {"name": "Atribuciones",
             "id":"18",
             "parent":"root",

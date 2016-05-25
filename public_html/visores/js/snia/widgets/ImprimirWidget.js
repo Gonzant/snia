@@ -171,7 +171,8 @@ define([
             });
             return nuevoTemplate;
         },
-        _imprimirClick: function () {            
+        _imprimirClick: function () {
+            console.log(this.mapa)
             var templateImprimir, parametros;
             //Se selecciona el template que el usuario eligio           
             templateImprimir = this._elegirTemplate(this._comboBoxImprimir.value);
