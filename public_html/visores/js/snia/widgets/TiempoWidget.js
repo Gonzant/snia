@@ -19,12 +19,10 @@ define([
     "dojo/on",
     "esri/TimeExtent",
     "esri/dijit/TimeSlider",
-    "dojo/dom-attr",
-    "esri/tasks/query",
-    "esri/tasks/QueryTask"
+    "dojo/dom-attr"
 ], function (Evented, declare, lang, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, arrayUtil, on,
-     TimeExtent, TimeSlider, domAttr, Query, QueryTask) {
+    TimeExtent, TimeSlider, domAttr) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -136,7 +134,7 @@ define([
             this.set("loaded", true);
             this.emit("load", {});
             on(this.mapa, "reload", lang.hitch(this, this._reload));
-            this._getDates();            
+            this._getDates();
         },
         _reconstruirTimeSlider: function () {
             this.mapa.map.setTimeSlider(this.timeSlider);
@@ -158,21 +156,20 @@ define([
                 var l, primero;
                 primero = true;
                 l  = this.mapa.map.getLayer(item);
-                console.log(l);
-                if (l.hasOwnProperty("timeInfo")){
-                    console.log(l.timeInfo);
-                    if (primero){
+
+                if (l.hasOwnProperty("timeInfo")) {
+                    if (primero) {
                         min = l.timeInfo.timeExtent.startTime;
                         max = l.timeInfo.timeExtent.endTime;
-                    }else{
-                        if (l.timeInfo.timeExtent.startTime < min){
+                    } else {
+                        if (l.timeInfo.timeExtent.startTime < min) {
                             min = l.timeInfo.timeExtent.startTime;
                         }
-                        if (l.timeInfo.timeExtent.endTime > max){
+                        if (l.timeInfo.timeExtent.endTime > max) {
                             max = l.timeInfo.timeExtent.endTime;
                         }
-                    }                    
-                }                
+                    }
+                }
             }));
             this._sTime = min;
             this._eTime = max;
@@ -197,7 +194,7 @@ define([
             timeExtent = new TimeExtent();
             timeExtent.startTime = new Date(this._sTime + " UTC");
             timeExtent.endTime = new Date(this._eTime + " UTC");
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" +timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "<\/i>");
+            domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "<\/i>");
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             this.timeSlider.setThumbCount(2);
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
@@ -219,7 +216,7 @@ define([
             this.timeSlider.on("time-extent-change", lang.hitch(this, this._timeChange));
         },
         _timeChange: function (evt) {
-            var startValString, endValString;            
+            var startValString, endValString;
             startValString = evt.startTime.getUTCDate() + "/" + (evt.startTime.getUTCMonth() + 1) + "/" + evt.startTime.getUTCFullYear();
             endValString = evt.endTime.getUTCDate() + "/" + (evt.endTime.getUTCMonth() + 1) + "/" + evt.endTime.getUTCFullYear();
             domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + startValString + "-" + endValString  + "<\/i>");
