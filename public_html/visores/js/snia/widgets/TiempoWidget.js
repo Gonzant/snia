@@ -151,8 +151,8 @@ define([
             }
         },
         _getDates: function () {
-            var min, max;
-            arrayUtil.forEach(this.mapa.map.layerIds, lang.hitch(this, function (item, index) {
+            var min, max, yesterday, tomorrow;
+            arrayUtil.forEach(this.mapa.map.layerIds, lang.hitch(this, function (item) {
                 var l, primero;
                 primero = true;
                 l  = this.mapa.map.getLayer(item);
@@ -171,19 +171,14 @@ define([
                     }
                 }
             }));
-            this._sTime = min;
-            this._eTime = max;
+            yesterday = new Date(min);
+            yesterday.setDate(min.getDate() - 1);
+            this._sTime = yesterday;
+            tomorrow = new Date(max);
+            tomorrow.setDate(max.getDate() + 1);
+            this._eTime = tomorrow;
             this._initSlider();
         },
-//        _queryTaskCallbackCombo: function(result){   
-//            console.log(result);
-//            this._sTime = result.features[0].attributes.acq;
-//            this._eTime = result.features[result.features.length-1].attributes.acq;
-//            this._initSlider();
-//        },
-//        _queryTaskErrbackCombo: function(){
-//            console.log("Error");
-//        },
         _initSlider: function () {
             var timeExtent, labels;
             this.timeSlider = new TimeSlider({
