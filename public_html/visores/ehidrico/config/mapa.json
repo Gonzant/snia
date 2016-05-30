@@ -58,9 +58,17 @@
                 }
             },
 			{
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgMediaResolucion/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgMediaResolucionAbril2016/MapServer",
                 "options": {
-                        "id": "Imagen media resolución",
+                        "id": "Imagen media resolución Abril 2016",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+			{
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgMediaResolucionMayo2015/MapServer",
+                "options": {
+                        "id": "Imagen media resolución Marzo 2015",
                         "opacity": 0.7,
                         "visible": false
                 }
