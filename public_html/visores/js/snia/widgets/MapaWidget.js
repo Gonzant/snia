@@ -105,7 +105,7 @@ define([
         agregarCapa: function (layer, index) {
             if (layer && (layer instanceof ArcGISDynamicMapServiceLayer
                     || layer instanceof FeatureLayer)) {
-                if (index) {
+                if (typeof index !== 'undefined') {
                     this.mapLayers.splice(index, 0, layer);
                     this.map.addLayer(layer, index);
                 } else {
