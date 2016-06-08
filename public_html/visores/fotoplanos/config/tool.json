@@ -132,12 +132,7 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Introducción", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
