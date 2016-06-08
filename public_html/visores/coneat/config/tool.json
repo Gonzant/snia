@@ -1,6 +1,17 @@
 {    
     "barraHerramientas": [
         {
+            "widget": "widgets/FechaImagenWidget",
+            "title": "FechaImagenWidget",
+            "msgToolTip": "bla bla . ",
+            "icono": "../js/snia/img/coordenadas.png",            
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },        
+        
+        {
             "widget": "widgets/MapasBaseWidget",
             "title": "Mapa Base",
             "msgToolTip": "Permite seleccionar el mapa de base.",
@@ -133,29 +144,18 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Introducción", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
-                    },
+                        "Texto": {"Contenido": "Introducción", "Estilo": "Titulo1"}
+                },
                 "elementos":[
                     {
                       "Texto":[
-                        { 
-                            "Contenido": "La consulta CONEAT cambió su apariencia gráfica e infraestructura para brindar una mejor experiencia a todos los usuarios. Con la nueva infraestructura se ha logrado que la consulta sea más robusta y eficiente.",
-                            "Estilo": "Normal"
-                        },
-                        { 
-                            "Contenido": "La nueva consulta permite elegir entre diversos mapas base: cartografía básica vectorial, imágenes satelitales de alta definición actualizadas o mapa de relieve. Permite al usuario además visualizar las capas a elección.",
+                        {"Contenido": "La consulta CONEAT cambió su apariencia gráfica e infraestructura para brindar una mejor experiencia a todos los usuarios. Con la nueva infraestructura se ha logrado que la consulta sea más robusta y eficiente.",
+                         "Estilo": "Normal"},
+                        {"Contenido": "La nueva consulta permite elegir entre diversos mapas base: cartografía básica vectorial, imágenes satelitales de alta definición actualizadas o mapa de relieve. Permite al usuario además visualizar las capas a elección.",
                             "Estilo": "Normal"
                         },
                         { 
@@ -168,12 +168,10 @@
                         },
                         { 
                             "Contenido": "A las antiguas herramientas se agrego la herramienta coordenadas y la herramienta áreas, esta última permite al usuario dibujar polígonos y obtener sus correspondientes índices.",
-                            "Estilo": "Normal"
-                        },
+                            "Estilo": "Normal"},
                         {
                            "Contenido": "Se modernizo el reporte (croquis) y se agregó un nuevo mapa temático que permite visualizar el índice de productividad CONEAT.",
-                           "Estilo": "Normal" 
-                        }
+                           "Estilo": "Normal"}
                       ]
                     }
                      
@@ -261,29 +259,15 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
+                           { "Contenido": "Contenidos", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/contenido.png", "Alto":20}
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
                         "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        { "Contenido": "Contenidos", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -304,10 +288,7 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
                             {
                               "URL":"../js/snia/img/navegar.png",
@@ -991,18 +972,12 @@
                "parent":"11" ,
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Aspectos Generales",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Aspectos Generales", "Estilo": "Indice1"}
                 },
                "seccionContenido":{
                     "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Aspectos Generales",
-                              "Estilo": "Titulo2"
+                           {"Contenido": "Aspectos Generales", "Estilo": "Titulo2"
                             }
                     },
                     "elementos": [
@@ -1313,36 +1288,18 @@
                       }
                     ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
-                    ]
-                    },
+                    {"Enlace":[{ "Contenido": "ESRI", "URL": "http://www.esri.com" } ] },
                     {
                     "Texto":[
-                      {
-                        "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
-                        "Estilo": "Normal"
-                      }
+                      {"Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0", "Estilo": "Normal"}
                     ]
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
-                    ]
+                    "Enlace":[{"Contenido": "Flaticon", "URL": "http://www.flaticon.com"} ]
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
+                        {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}
                     ]
                     }
                     
@@ -1353,64 +1310,31 @@
             "id":"19",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Contacto", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
+                           {"Contenido": "Contacto", "Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
-                        "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "23096008, 23097025",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
-                              "Estilo": "Normal"
-                            }
-                        ]
-                    },
+                    "Texto":[
+                        {"Contenido": "Dirección", "Estilo": "Titulo2"},
+                        {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)", "Estilo": "Normal"},
+                        {"Contenido": "Teléfonos", "Estilo": "Titulo2"},
+                        {"Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                        {"Contenido": "Consultas y Sugerencias", "Estilo": "Titulo2"},
+                        {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a", "Estilo": "Normal"} 
+                    ] },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "coneat@mgap.gub.uy",
-                            "URL": "mailto:coneat@mgap.gub.uy"
-                        }
-                    ] 
+                    "Enlace":[{"Contenido": "coneat@mgap.gub.uy", "URL": "mailto:coneat@mgap.gub.uy"} ] 
                     }
                 ]
             }
         }
-        
-]
-            }
+        ]
+        }
         }       
     ]
 }

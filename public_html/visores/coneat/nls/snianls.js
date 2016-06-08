@@ -1,6 +1,11 @@
 define({
     "root": ({
         "widgets": {
+            "FechaImagenWidget": {
+                lbUTM: "UTM21S/WGS84  ",
+                
+            },   
+            
             "MapasBaseWidget": {
                 rbVectorial: "Vectorial",
                 rbImagen: "Imagen"

@@ -1,5 +1,16 @@
-{        
+{    
     "barraHerramientas": [
+        {
+            "widget": "widgets/FechaImagenWidget",
+            "title": "FechaImagenWidget",
+            "msgToolTip": "bla bla . ",
+            "icono": "../js/snia/img/coordenadas.png",            
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },        
+        
         {
             "widget": "widgets/MapasBaseWidget",
             "title": "Mapa Base",
@@ -9,7 +20,7 @@
             "widgetConfig": {
                 "mapasBase": [
                     {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
 					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
@@ -35,22 +46,6 @@
             }
         },
         {
-            "widget": "widgets/TiempoWidget",
-            "title": "Tiempo",
-            "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
-            "icono": "../js/snia/img/tiempo_gris.png",            
-            "toggle": false,
-            "widgetConfig": {                
-                "fechaAtributo": "acq",
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer/0",
-                "timeSlider": {
-                    "unidad":"esriTimeUnitsDays",
-                    "cantidad": "1",
-                    "velocidad": "200"
-                }                
-            }
-        },
-        {
             "widget": "widgets/IdentificarWidget",
             "title": "Identificar",
             "msgToolTip": "Muestra la información de los elementos en un punto.",
@@ -68,14 +63,25 @@
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
+                "productividad": "IND_CONEAT",
+				"valorreal": "IND_VR"
             }
         }, 
+        {
+            "widget": "widgets/AreasConeatWidget",
+            "title": "Areas CONEAT",
+            "msgToolTip": "Permite ingresar áreas y generar el reporte CONEAT a partir de ellas.",
+            "icono": "../js/snia/img/areas.png",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
         {
             "widget": "widgets/MedirWidget",
             "title": "Medir",
@@ -103,7 +109,7 @@
             "icono": "../js/snia/img/imprimir.png",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 
@@ -123,6 +129,7 @@
             "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
+            "startsOpen": true,
             "widgetConfig": {
                 "data": [
     {
@@ -137,52 +144,50 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Introducción", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
-                    },
+                        "Texto": {"Contenido": "Introducción", "Estilo": "Titulo1"}
+                },
                 "elementos":[
                     {
                       "Texto":[
-                        { 
-                            "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                        {"Contenido": "La consulta CONEAT cambió su apariencia gráfica e infraestructura para brindar una mejor experiencia a todos los usuarios. Con la nueva infraestructura se ha logrado que la consulta sea más robusta y eficiente.",
+                         "Estilo": "Normal"},
+                        {"Contenido": "La nueva consulta permite elegir entre diversos mapas base: cartografía básica vectorial, imágenes satelitales de alta definición actualizadas o mapa de relieve. Permite al usuario además visualizar las capas a elección.",
                             "Estilo": "Normal"
-                        }
+                        },
+                        { 
+                            "Contenido": "Se han actualizado las herramientas de navegación, identificación, búsqueda de padrones, mapa de referencia e impresión.",
+                            "Estilo": "Normal"
+                        },
+                        { 
+                           "Contenido": "Se mejoró la herramienta de medición de la antigua consulta, la misma ahora permite obtener medidas de diversos elementos en todas las capas vectoriales: puntos, devuelve las coordenadas; líneas, mide la longitud y polígonos de diversas formas dibujados por el usuario a los cuales mide el área permitiendo cambiar las unidades de medida.",
+                           "Estilo": "Normal" 
+                        },
+                        { 
+                            "Contenido": "A las antiguas herramientas se agrego la herramienta coordenadas y la herramienta áreas, esta última permite al usuario dibujar polígonos y obtener sus correspondientes índices.",
+                            "Estilo": "Normal"},
+                        {
+                           "Contenido": "Se modernizo el reporte (croquis) y se agregó un nuevo mapa temático que permite visualizar el índice de productividad CONEAT.",
+                           "Estilo": "Normal"}
                       ]
                     }
-                     
                 ]
-            }
-            
+            }           
         },       
         {"name": "Herramientas",
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           { "Contenido": "Herramientas", "Estilo": "Indice1"}           
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
+                           {"Contenido": "Herramientas", "Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
@@ -193,9 +198,9 @@
                             }
                         ]
                     }
-                ],
-                "esPadre": true
-            }
+                ]
+            },
+            "esPadre": true
         },
             {
                 "name": "Mapa Base",
@@ -203,72 +208,40 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Mapa Base", "Estilo": "Indice1" },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/mapabase.png", "Alto":20}
                 },
                 "seccionContenido":{
                     "titulo":{
                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/mapabase.png", "Alto":30},
                         "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        {"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
                         "Texto":[
                         {
                            "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
-                           "Estilo": "Normal"
-                        }
+                           "Estilo": "Normal"}
                         ]    
                     }
-                        
                     ]
                 }
             },
             {
                 "name": "Contenidos",
                 "id":"4",
-                "parent":"2",
+                "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":20}
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                       "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                       "Texto":  { "Contenido": "Contenidos", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -278,8 +251,7 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    } 
                     ]
                 }
             },
@@ -288,30 +260,14 @@
                "id":"3",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen": { "URL":"../js/snia/img/navegar.png", "Alto":20}
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
+                         "Imagen": {"URL":"../js/snia/img/navegar.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -323,163 +279,52 @@
                            ]    
                         },
                         { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
+                            "Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":30}
                         },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
-                              "Estilo": "Normal"
-                            }
+                           {"Contenido": "Acercar", "Estilo": "Normal"},
+                           {"Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.", "Estilo": "Normal"}
                            ] 
                            
                         },
                         { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/zoomout.png",
-                              "Alto":30
-                            }
+                            "Imagen":{"URL":"../js/snia/img/zoomout.png", "Alto":30}
                         },
                         {
                          "Texto":[
+                           {"Contenido": "Alejar", "Estilo": "Titulo3"},
                            {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
                               "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }
                            ] 
                            
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/pan.png",
-                              "Alto":30
-                            }
+                        {"Imagen":{"URL":"../js/snia/img/pan.png", "Alto":30} },
+                        {"Texto":[
+                           {"Contenido": "Desplazar", "Estilo": "Titulo3"},
+                           {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.", "Estilo": "Normal"}
+                        ] 
                         },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
-                              "Estilo": "Normal"
-                            }
+                        {"Imagen": {"URL":"../js/snia/img/fullextent.png", "Alto":30}},
+                        {"Texto":[
+                           {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
+                           {"Contenido": "Posiciona el mapa en su máxima extensión.", "Estilo": "Normal"}
+                         ] 
+                        },
+                        {"Imagen":{ "URL":"../js/snia/img/prevextent.png", "Alto":30}},
+                        {"Texto":[
+                           {"Contenido": "Vista anterior", "Estilo": "Titulo3"},
+                            {"Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).", "Estilo": "Normal"}
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/sigextent.png", "Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa en su máxima extensión.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
+                            { "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.", "Estilo": "Normal"}
                            ] 
-                        },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/prevextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista anterior",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
-                              "Estilo": "Normal"
-                            }
-                           ] 
-                        },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista posterior",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
-                              "Estilo": "Normal"
-                            }
-                           ] 
-                        }
-                    ]
-                }
-               
-            },
-            {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
                         }
                     ]
                 }
@@ -490,15 +335,9 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Identificar", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
+                            {"URL":"../js/snia/img/identificar.png", "Alto":20}
                         
                 },
                "seccionContenido":{
@@ -509,10 +348,7 @@
                               "Alto":30
                         },                        
                         "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -532,15 +368,10 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
+                           {"Contenido": "Buscar Padrones", "Estilo": "Indice1"
                             },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":20
-                            }
+                            { "URL":"../js/snia/img/buscar.png", "Alto":20}
                         
                 },
                "seccionContenido":{
@@ -637,8 +468,163 @@
                            ]
                         }
                     ]
+                }
+            },
+            {
+               "name": "Navegar",
+               "id":"6",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Navegar",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":
+                            {
+                              "URL":"../js/snia/img/navegar.png",
+                              "Alto":20
+                            }
+                        
                 },
-               "hijos": "no"
+               "seccionContenido":{
+                    "titulo":{
+                         "Imagen":
+                        {
+                              "URL":"../js/snia/img/areas.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                           {
+                              "Contenido": "Áreas CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite al usuario dibujar polígonos en el mapa para luego obtener el reporte CONEAT de los mismos.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/agregar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Agregar área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite dibujar una nueva área en el mapa. Para esto indique en forma de anillo los puntos del polígono utilizando el botón derecho del ratón, para finalizar haga doble clic derecho. Vera el área ingresada en el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/cancelarAgregar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Cancelar agregar área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite cancelar el proceso de dibujo del área, simplemente en medio del proceso de ingresar una nueva área presione esta opción.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/deseleccionar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Desmarcar área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite desmarcar el área seleccionada.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/remover.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Remover área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Elimina el área marcada. Para marcar un área simplemente utilice el botón derecho del ratón sobre el área en el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/limpiar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Remover todas las áreas",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Elimina todas las áreas dibujadas.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/reporte.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Croquis de las áreas",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Genera un reporte con todas las áreas dibujadas.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
             },
             {
                "name": "Medir",
@@ -825,6 +811,316 @@
                     ]
                 }
             },
+        {"name": "CONEAT",
+            "id":"11",
+            "parent":"root",
+            "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "CONEAT",
+                              "Estilo": "Indice1"
+                            }
+                        
+            },
+            "seccionContenido":{
+                "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "CONEAT",
+                              "Estilo": "Titulo1"
+                            }
+                },
+                "elementos":[
+                {
+                    "Texto":[
+                        {
+                        "Contenido": "Esta sección refiere a las definiciones básicas de los grupos CONEAT, los antecedentes en la elaboración de la cartografía original y la descripción de la información provista en la aplicación CONEAT en Internet.",
+                        "Estilo": "Normal" 
+                        }
+                    ]
+                }
+                ]
+            },
+            "esPadre": true
+        },
+            {
+               "name": "Aspectos Generales",
+               "id":"12",
+               "parent":"11" ,
+               "seccionTitulo":{
+                    "Texto":
+                           {"Contenido": "Aspectos Generales", "Estilo": "Indice1"}
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {"Contenido": "Aspectos Generales", "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "La ley 13.695 (Art. 65 al 68) del 24 de octubre de 1968 creó la Comisión Nacional de Estudio Agronómico de la Tierra (CO.N.E.A.T.) y estableció como su principal cometido el definir las normas técnicas para fijar la capacidad productiva de cada inmueble rural y el promedio del país.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Dicha comisión está integrada por:",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Presidente (Nombrado por Poder Ejecutivo)",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Secretario (Nombrado por la Comisión)",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Delegados (Ministerio de Ganadería Agricultura y Pesca, Ministerio de Economía y Finanzas, Oficina de Planeamiento y Presupuesto, Dirección de Estadísticas Agropecuarias (DIEA), Instituto Nacional de Colonización, Asociación Rural del Uruguay, Federación Rural del Uruguay, Funcionarios técnicos, Servicio Geográfico Militar, Grupo Fotográfico de la Fuerza Aérea Uruguaya, Dirección Nacional del Catastro Nacional, División Suelos y Aguas, Oficina de Programación y Política Agropecuaria (OPYPA))",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Observadores (Asociación de Ingenieros Agrónomos del Uruguay, Federación Uruguaya de Centros Regionales de Experimentación Agropecuaria (FUCREA))",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Grupos CONEAT",
+               "id":"13",
+               "parent":"11", 
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Grupos CONEAT",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Grupos CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Los grupos CONEAT no son estrictamente unidades cartográficas básicas de suelo, sino que constituyen áreas homogéneas, definidas por su capacidad productiva en términos de carne bovina, ovina y lana en pie (Art. 65 de la Ley mencionada). Esta capacidad se expresa por un índice relativo a la capacidad productiva media del país, a la que corresponde el índice 100.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Dichos grupos se caracterizaron mediante fotointerpretación a escala 1:40.000, verificaciones de campo y análisis físico-químicos de los suelos.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Desde el punto de vista edafológico, la productividad se considera como la capacidad inicial del suelo para producir un cierto rendimiento por hectárea y por año, que teóricamente se puede expresar como porcentaje del rendimiento óptimo que se obtiene en el suelo en las condiciones más favorables, bajo cierta tecnología definida. Esta definición de productividad implica un concepto potencial y abarca a todos los rubros agropecuarios; para estimarla existe una metodología, aplicable en función de la disponibilidad de información para todos los rubros. Ello puede ser posible, solamente, continuando y profundizando la investigación, tanto en levantamiento de suelos como en producción agropecuaria, a nivel de sus rubros individuales y en su integración en sistemas de producción.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los índices de Productividad corresponden a 188 agrupamientos de suelos (Grupos de suelos), con similar productividad (desde 0 hasta 263), resultantes de interpretar la aptitud de los mismos para producir carne y lana.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La descripción de los grupos CONEAT se realiza definiendo los suelos dominantes y asociados según la Clasificación de Suelos del Uruguay, MGAP, 1976. Los grupos se relacionan con las unidades de la Carta de Reconocimiento de Suelos del Uruguay a escala 1:1.000.000. Se indican para cada grupo, algunas propiedades importantes de los suelos y características asociadas del paisaje. La nomenclatura de los grupos CONEAT se correlaciona con las Zonas de Uso y Manejo de los Suelos del Uruguay (Comisión de Inversiones y Desarrollo Económico (CIDE), 1967).",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los Grupos de Suelos se superponen al parcelario rural y se representan en la cartografía CONEAT a escala 1:20.000.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                        "Enlace":[
+                            {
+                                "Contenido": "CONEAT - Grupos e Indices",
+                                "URL": "http://www.cebra.com.uy/renare/media/CONEAT_Grupos_e_-Indices.pdf"
+                            }
+                        ] 
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Generación de la cartografia",
+               "id":"14",
+               "parent":"11",
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Generación de la cartografia",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Generación de la cartografia",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "La programación y coordinación de estas tareas estuvieron a cargo de CONEAT y se desarrollaron a fines de la década del 60.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La Dirección de Suelos y Fertilizantes (actual División de Suelos y Aguas) del MGAP realizó la cartografía de grupos de suelos del territorio nacional, la cual se concretó mediante las siguientes etapas:",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Fotointerpretación de las fotografías aéreas a escala 1:40.000, delimitándose áreas de paisaje homogéneos en base a la observación del relieve y la topografía, el padrón de drenaje superficial, los tonos fotográficos, la vegetación natural y el uso de la tierra, la existencia de afloramientos rocosos y su naturaleza. Las áreas así delimitadas corresponden a asociaciones de suelo definidas.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Verificación en el campo de los límites de las unidades de fotointerpretación y determinación de los suelos que integran cada asociación, descripción de los -perfiles correspondientes y extracción de muestras representativas para su caracterización física y química de laboratorio.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Transferencia de las líneas de fotointerpretación desde las fotografías 1:40.000 a fotoplanos controlados a escala 1:50.000.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Síntesis de las unidades cartográficas definitivas, llegándose a conformar 188 asociaciones de suelos que constituyen los grupos CONEAT propiamente dichos.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "El Servicio Geográfico Militar (SGM) tuvo a su cargo la elaboración del material foto cartográfica en el que se delinearon los grupos CONEAT y el catastro rural. Dicho material estuvo constituido por 301 fotoplanos controlados a escala 1:50.000, obtenidos a partir de las fotografías aéreas a escala 1:40.000, y 1.204 fotoplanos a escala 1:20.000 en película estable tramada, de formato 0,7 x 1 metro, obtenidos por ampliación de los fotoplanos 1:50.000.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La Dirección de Catastro realizó una tarea cartográfica que consistió en las siguientes etapas:",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Identificación sobre fotografías aéreas a escala 1:20.000 de los predios rurales, volcando en las primeras la información preexistente del parcelario rural.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Transferencia de la información anterior desde las fotografías 1:20.000 a los fotopositivos tramados de igual escala preparados por el S.G.M.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Confección de la nueva lámina definitiva en material transparente indeformable calcando la información volcada al fotopositivo tramado y agregando la rotulación e información marginal necesaria para su correcta y rápida localización e identificación.1",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La operación cartográfica final consistió en superponer la plancha catastral con la cartografía de los grupos de suelos CONEAT (ambos documentos a escala 1:20.000) y obtener luego de un proceso fotográfico realizado en la División de Suelos y Aguas, una lámina definitiva en material estable, que comprende las dos informaciones, es decir, la infraestructura, los padrones y los grupos CONEAT.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Esta aplicación CONEAT",
+               "id":"15",
+               "parent":"11" ,
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Esta aplicacion CONEAT",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Esta aplicacion CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Se utilizan básicamente dos capas de información geográfica: los Grupos de Suelos CONEAT y el Catastro Rural.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los Grupos de Suelos CONEAT surgen a partir de la ya mencionada cartografía CONEAT actualizada y a escala gráfica 1:20.000, en tanto que el Catastro rural proviene de la cartografía rural 1:20.000 de la Dirección Nacional de Catastro y su compatibilización con el parcelario rural de la cartografía CONEAT 1:20.000; a excepción del departamento de Montevideo, que es consistente con la cartografía rural de la Intendencia Municipal de Montevideo.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "A partir de febrero de 2013, periódicamente se actualiza el parcelario rural de acuerdo a la información geográfica suministrada por la Dirección Nacional de Catastro, la cual se compatibiliza, mediante procesos diversos, para su incorporación a la Consulta.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los diversos procesos de digitalización de la información cartográfica dan origen a una base de datos geográfica, que junto a procedimientos de programación permiten la generación del croquis digital y el cálculo geográfico del Índice de Productividad a nivel de cada padrón. Este último involucra una superposición topológica de las dos capas georreferenciadas y un cálculo matemático preciso, sustituye al procedimiento gráfico tradicional de cálculo manual con lámina de puntos.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "El Índice CONEAT (o índice de productividad final) del padrón se obtiene a partir del índice de productividad mencionado y un factor extrínseco asociado a los padrones y las láminas CONEAT (éstas se corresponden a los fotoplanos 1:20.000), este factor varía en función de la ubicación del padrón (la productividad de un campo suele estar influenciado por su localización al determinar diferentes costos de explotación). Además de esta información, se presenta el Índice de valor real del padrón, para lo cual se afecta al índice CONEAT del padrón con la proximidad de éste a los centros poblados y su ubicación con respecto a las rutas, habiendo casos más específicos de afectaciones especiales.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La Superficie Catastral del padrón descrito en la consulta es la información de mensura suministrada por Catastro y no el área calculada a través del Sistema de Información Geográfica.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Referencias",
+               "id":"16",
+               "parent":"11",
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Referencias",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Referencias",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                            "Enlace":[
+                            {
+                                "Contenido": "Ley 13.695 (Art. 65 al 68)",
+                                "URL": "http://www.prenader.gub.uy/coneat/doc/Ley_art65al68.htm"
+                            }
+                    ] 
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "DURAN, A. 'La Cartografía de Suelos CONEAT y sus posibilidades de utilización.' Montevideo. Facultad de Agronomía, 1987.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "URUGUAY. Ministerio de Ganadería, Agricultura y Pesca. Dirección General de Recursos Naturales Renovables, Comisión Nacional de Estudio Agroeconómico de la Tierra. Indices de Productividad, Grupos CONEAT. Montevideo, 1996.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
         {"name": "Atribuciones",
             "id":"18",
             "parent":"root",
@@ -869,106 +1165,53 @@
                       }
                     ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
-                    ]
-                    },
+                    {"Enlace":[{ "Contenido": "ESRI", "URL": "http://www.esri.com" } ] },
                     {
                     "Texto":[
-                      {
-                        "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
-                        "Estilo": "Normal"
-                      }
+                      {"Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0", "Estilo": "Normal"}
                     ]
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
-                    ]
+                    "Enlace":[{"Contenido": "Flaticon", "URL": "http://www.flaticon.com"} ]
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
+                        {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}
                     ]
                     }
                     
                 ]
-            },
-            "padre": "si"
+            }
         },
         {"name": "Contacto",
             "id":"19",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Contacto", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
+                           {"Contenido": "Contacto", "Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
-                        "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "23096008, 23097025",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
-                              "Estilo": "Normal"
-                            }
-                        ]
-                    },
+                    "Texto":[
+                        {"Contenido": "Dirección", "Estilo": "Titulo2"},
+                        {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)", "Estilo": "Normal"},
+                        {"Contenido": "Teléfonos", "Estilo": "Titulo2"},
+                        {"Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                        {"Contenido": "Consultas y Sugerencias", "Estilo": "Titulo2"},
+                        {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a", "Estilo": "Normal"} 
+                    ] },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
-                        }
-                    ] 
+                    "Enlace":[{"Contenido": "coneat@mgap.gub.uy", "URL": "mailto:coneat@mgap.gub.uy"} ] 
                     }
                 ]
-            },
-            "padre": "si"
-        }
-        
-]
             }
+        }
+        ]
+        }
         }       
     ]
 }
