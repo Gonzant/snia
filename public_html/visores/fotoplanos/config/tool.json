@@ -136,23 +136,10 @@
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Introducción", "Estilo": "Titulo1"}
                     },
                 "elementos":[
-                    {
-                      "Texto":[
-                        { 
-                            "Contenido": "Visualizador de FotoPlanos",
-                            "Estilo": "Normal"
-                        }
-                        
-                      ]
-                    }
-                     
+                    {"Texto":[{"Contenido": "Visualizador de FotoPlanos", "Estilo": "Normal"} ] }
                 ]
             }           
         },       
@@ -160,24 +147,14 @@
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Herramientas", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto": {"Contenido": "Herramientas", "Estilo": "Titulo1"}
                 },
                 "elementos": [
-                    {
-                        "Texto":[
+                    {"Texto":[
                             {
                             "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
@@ -193,30 +170,13 @@
                 "id":"2",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Mapa Base", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":30},
+                        "Texto":{"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -226,8 +186,7 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    }  
                     ]
                 }
             },
@@ -236,30 +195,13 @@
                 "id":"4",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":20}
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto": { "Contenido": "Contenidos", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -269,9 +211,7 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
-                    ]
+                    } ]
                 }
             },
             {
@@ -280,9 +220,7 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
+                           {"Contenido": "Navegar", "Estilo": "Indice1"
                             },
                     "Imagen":
                             {
@@ -322,34 +260,17 @@
                         },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
-                              "Estilo": "Normal"
-                            }
+                             {"Contenido": "Acercar", "Estilo": "Normal"},
+                             {"Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.", "Estilo": "Normal"}
                            ] 
                            
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomout.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{ "URL":"../js/snia/img/zoomout.png", "Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
-                              "Estilo": "Normal"
-                            }
+                           {"Contenido": "Alejar", "Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
+                              "Estilo": "Normal"}
                            ] 
                            
                         },
@@ -500,10 +421,7 @@
                               "Alto":30
                         },
                         "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Buscar Padrones", "Estilo": "Titulo2" }
                     },
                     "elementos": [
                         {"Texto":[
@@ -518,16 +436,10 @@
                            ]    
                         },
                         {"Imagen":
-                            {
-                              "URL":"../js/snia/img/acercar.png",
-                              "Alto":30
-                            }
+                            {"URL":"../js/snia/img/acercar.png", "Alto":30}
                         },
                         { "Texto":[
-                           {
-                              "Contenido": "Acercar selección",
-                              "Estilo": "Titulo3"
-                            },
+                           {"Contenido": "Acercar selección", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.",
                               "Estilo": "Normal"
@@ -541,14 +453,8 @@
                             }
                         },
                         { "Texto":[
-                           {
-                              "Contenido": "Remover selección",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Remueve de la lista de resultados los padrones seleccionados.",
-                              "Estilo": "Normal"
-                            }
+                           {"Contenido": "Remover selección", "Estilo": "Titulo3"},
+                           {"Contenido": "Remueve de la lista de resultados los padrones seleccionados.", "Estilo": "Normal"}
                            ]
                         },
                         {"Imagen":
@@ -584,162 +490,6 @@
                               "Estilo": "Normal"
                             }
                            ]
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Navegar",
-               "id":"6",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/areas.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Áreas CONEAT",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite al usuario dibujar polígonos en el mapa para luego obtener el reporte CONEAT de los mismos.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                             "Imagen":
-                            {
-                              "URL":"../js/snia/img/agregar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Agregar área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Permite dibujar una nueva área en el mapa. Para esto indique en forma de anillo los puntos del polígono utilizando el botón derecho del ratón, para finalizar haga doble clic derecho. Vera el área ingresada en el mapa.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                             "Imagen":
-                            {
-                              "URL":"../js/snia/img/cancelarAgregar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Cancelar agregar área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Permite cancelar el proceso de dibujo del área, simplemente en medio del proceso de ingresar una nueva área presione esta opción.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                             "Imagen":
-                            {
-                              "URL":"../js/snia/img/deseleccionar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Desmarcar área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Permite desmarcar el área seleccionada.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/remover.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Remover área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Elimina el área marcada. Para marcar un área simplemente utilice el botón derecho del ratón sobre el área en el mapa.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/limpiar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Remover todas las áreas",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Elimina todas las áreas dibujadas.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/reporte.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Croquis de las áreas",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Genera un reporte con todas las áreas dibujadas.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
                         }
                     ]
                 }
@@ -934,19 +684,12 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "CONEAT",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "CONEAT", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "CONEAT",
-                              "Estilo": "Titulo1"
-                            }
+                           {"Contenido": "CONEAT", "Estilo": "Titulo1" }
                 },
                 "elementos":[
                 {
@@ -967,11 +710,7 @@
                "parent":"11" ,
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Aspectos Generales",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Aspectos Generales", "Estilo": "Indice1"}                        
                 },
                "seccionContenido":{
                     "titulo":{
@@ -1019,19 +758,11 @@
                "parent":"11", 
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Grupos CONEAT",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Grupos CONEAT", "Estilo": "Indice1"}
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Grupos CONEAT",
-                              "Estilo": "Titulo2"
-                            }
+                        "Texto":{"Contenido": "Grupos CONEAT", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -1079,19 +810,12 @@
                "parent":"11",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Generación de la cartografia",
-                              "Estilo": "Indice1"
-                            }
+                           {"Contenido": "Generación de la cartografia", "Estilo": "Indice1"}
                         
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Generación de la cartografia",
-                              "Estilo": "Titulo2"
-                            }
+                        "Texto":{"Contenido": "Generación de la cartografia", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -1154,20 +878,11 @@
                "id":"15",
                "parent":"11" ,
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Esta aplicacion CONEAT",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Esta aplicacion CONEAT", "Estilo": "Indice1"}
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Esta aplicacion CONEAT",
-                              "Estilo": "Titulo2"
-                            }
+                        "Texto":{ "Contenido": "Esta aplicacion CONEAT", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -1206,28 +921,17 @@
                "id":"16",
                "parent":"11",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Referencias",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Referencias", "Estilo": "Indice1"}                        
                 },
                 "seccionContenido":{
                     "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Referencias",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Referencias", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
                             "Enlace":[
-                            {
-                                "Contenido": "Ley 13.695 (Art. 65 al 68)",
-                                "URL": "http://www.prenader.gub.uy/coneat/doc/Ley_art65al68.htm"
-                            }
+                            {"Contenido": "Ley 13.695 (Art. 65 al 68)", "URL": "http://www.prenader.gub.uy/coneat/doc/Ley_art65al68.html"}
                     ] 
                         },
                         {
@@ -1249,20 +953,11 @@
             "id":"18",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Atribuciones", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Atribuciones", "Estilo": "Titulo1"}
                 },
                 "elementos":[
                     {
@@ -1274,28 +969,13 @@
                       ]  
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "SIT",
-                            "URL": "http://sit.mvotma.gub.uy"
-                        }
-                    ] 
+                    "Enlace":[{"Contenido": "SIT", "URL": "http://sit.mvotma.gub.uy"}] 
                     },
                     {
-                    "Texto":[
-                      {
-                        "Contenido": "El servicio de imagenes es de ESRI",
-                        "Estilo": "Normal"
-                      }
-                    ]
+                    "Texto":[{"Contenido": "El servicio de imagenes es de ESRI", "Estilo": "Normal"}]
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
-                    ]
+                    "Enlace":[{"Contenido": "ESRI", "URL": "http://www.esri.com"}]
                     },
                     {
                     "Texto":[
@@ -1307,21 +987,12 @@
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
+                        {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}
                     ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
-                    ]
-                    }
-                    
+                    {"Enlace":[
+                        {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}
+                    ]}
                 ]
             }
         },
@@ -1330,61 +1001,27 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Contacto", "Estilo": "Indice1"}
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto": {"Contenido": "Contacto", "Estilo": "Titulo1"}
                 },
                  "elementos": [
                     {
                         "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "23096008, 23097025",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Dirección", "Estilo": "Titulo2"},
+                            {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)", "Estilo": "Normal"},
+                            {"Contenido": "Teléfonos", "Estilo": "Titulo2"},
+                            {"Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                            {"Contenido": "Consultas y Sugerencias", "Estilo": "Titulo2"},
+                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a", "Estilo": "Normal"}
                         ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
-                        }
-                    ] 
-                    }
+                    {"Enlace":[{"Contenido": "snia@mgap.gub.uy", "URL": "mailto:snia@mgap.gub.uy"}] }
                 ]
             }
         }
-        
 ]
             }
         }       
