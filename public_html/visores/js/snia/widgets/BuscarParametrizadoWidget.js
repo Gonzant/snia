@@ -28,19 +28,21 @@ define([
     "esri/symbols/SimpleFillSymbol",
     "dojo/store/Memory",
     "dijit/form/FilteringSelect",
+    "dijit/form/TextBox",
     "dojox/grid/DataGrid",
     "dojo/data/ObjectStore",
     "dojo/_base/array",
     "dijit/Tooltip",
     "dojox/widget/Standby",
     "dojo/dom-construct",
+    "dojo/dom-attr",
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle,
-    SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect,
+    SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, TextBox,
     DataGrid, ObjectStore, baseArray, Tooltip, Standby, domConstruct) {
-//"use strict";
+    //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         isLayoutContainer: true,
@@ -71,15 +73,24 @@ define([
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
+            this._arrayFiltros = [];
+            this._tipoFiltros = [];
+            this._valoresFiltros = [];
             this._urlQuery = defaults.config.urlQuery;
             this._areasVisible = defaults.config.areasVisible;
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
             };
+            this._filtros = defaults.config.filtros;
             this._campoFiltro = defaults.config.campoFiltro;
             this._lblcampoFiltro = defaults.config.lblcampoFiltro;
+            this._campoFiltro2 = defaults.config.campoFiltro2;
+            this._lblcampoFiltro2 = defaults.config.lblcampoFiltro2;
             this._columnas = defaults.config.columnas;
+            this._placeHoldFiltro = defaults.config.placeHoldFiltro;
+            this._placeHoldFiltro2 = defaults.config.placeHoldFiltro2;
+            this._standbyCount = 0;
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -161,7 +172,7 @@ define([
             this._query = new Query();
             this._query.outSpatialReference = new SpatialReference(this.mapa.map.spatialReference.wkid);
             this._query.returnGeometry = false;
-            this._query.outFields = [this._campoFiltro];
+            this._query.outFields = ["*"];
             this._query.returnDistinctValues = true;
             this._queryCombo();
             this._store = new Memory();
@@ -171,7 +182,6 @@ define([
             this.emit("load", {});
             lang.hitch(this, this._templateIni());
             this._cg3sr.limpiar();
-            this._label.innerHTML = this._lblcampoFiltro;
              /*ToolTips*/
             TooltipAcercar = new Tooltip({
                 connectId: [this._acercarSeleccionNode.domNode],
@@ -195,32 +205,78 @@ define([
             this._standby.show();
         },
         _templateIni : function () {
-            this._departamentosStore = new Memory({});
-            this._select = new FilteringSelect({
-                name: "departamentos",
-                placeHolder: "seleccione departamento",
-                readonly: "True",
-                onChange: lang.hitch(this, function (state) {
-                    this._valor = state;
-                }),
-                store: this._departamentosStore
-            }, this._departamentosCombo);
-            this._select.startup();
+            var  divEtiqueta, filtro, divfiltro, storeFiltro;
+            // itero en todos los filtros y los agrego programaticamente
+            arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index) {
+                this._tipoFiltros[index] = feature.tipo;
+                storeFiltro = new Memory({});
+                divEtiqueta = domConstruct.create("div", { innerHTML: feature.lblcampoFiltro + "&nbsp&nbsp"});
+//                domAttr.set(divEtiqueta, "innerHTML", feature.lblcampoFiltro+ "<br></br>");
+                divfiltro = domConstruct.create("div");
+                domConstruct.place(divfiltro, divEtiqueta);
+                domConstruct.place(divEtiqueta, this._principal, "before");
+                if (feature.combo === 1) {
+                    filtro = new FilteringSelect({
+                        name: feature.campoFiltro,
+                        placeHolder: feature.placeHoldFiltro,
+                        readonly: "True",
+                        id: index,
+    //                    required :"False",
+                        onChange: lang.hitch(this, function (state) {
+                            lang.hitch(this, this._cambioComboTexto(state, index));
+                        }),
+                        store: storeFiltro
+                    }, divfiltro);
+                    filtro.startup();
+                } else {
+                    filtro = new TextBox({
+                        name: "firstname",
+                        value: "",
+                        placeHolder: feature.placeHoldFiltro
+                    }, divfiltro);
+                    this.own(
+                        on(filtro, "Change", lang.hitch(this, function (state) {
+                            this._cambioComboTexto(state, index);
+                        })
+                            )
+                    );
+                }
+                this._arrayFiltros.push({filtro: filtro, id: index });
+            }));
             lang.hitch(this, this._initGrid());
         },
         _queryCombo : function () {
-            this._query.where = " 1 = 1 ";
-            this._queryTask.execute(this._query, lang.hitch(this, this._queryTaskCallbackCombo),
-                lang.hitch(this, this._queryTaskErrbackCombo));
+            arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature) {
+                if (feature.dependencia === 0) {
+                    this._standbyCount = this._standbyCount + 1;
+                    this._query.outFields = [feature.campoFiltro];
+                    this._query.where = " 1 = 1 ";
+                    this._queryTask.execute(this._query, lang.hitch(this, this._queryTaskCallbackCombo),
+                        lang.hitch(this, this._queryTaskErrbackCombo));
+                }
+            }));
         },
         _buscarClick : function () {
-            var departamento, query;
-            departamento = this._valor;
+            var query;
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
             this._query.returnGeometry = true;
             this._query.outFields = ["*"];
             this._query.returnDistinctValues = false;
-            query = this._campoFiltro + "='" + departamento + " ' ";
+            arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index) {
+                if (index === 0) {
+                    if (this._tipoFiltros[index] === "numero") {
+                        query = feature.campoFiltro + "=" + this._valoresFiltros[index].state;
+                    } else {
+                        query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
+                    }
+                } else {
+                    if (this._tipoFiltros[index] === "numero") {
+                        query += " and " + feature.campoFiltro + "=" + this._valoresFiltros[index].state;
+                    } else {
+                        query += " and " + feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
+                    }
+                }
+            }));
             this._query.where =  query;
             this._queryTask.execute(this._query, lang.hitch(this, this._queryTaskCallback),
                 lang.hitch(this, this._queryTaskErrback));
@@ -287,20 +343,27 @@ define([
             return null;
         },
         _queryTaskCallbackCombo: function (results) {
-            var indice;
-            this._standby.hide();
-            if (results.features.length > 0) {
-                if (results.features[0].attributes.hasOwnProperty(this._campoFiltro)) {
-                    arrayUtil.forEach(results.features, lang.hitch(this, function (feature) {
-                        indice = feature.attributes.OBJECTID;
-                        feature.attributes.OBJECTID = indice;
-                        feature.attributes.id = indice;
-                        this._departamentosStore.put({id: feature.attributes[this._campoFiltro], name: feature.attributes[this._campoFiltro]});
-                    }));
-                }
-                this._select.store = this._departamentosStore; // = store_filter;
-                this._select.reset();
+            var indice, storeFiltro;
+            storeFiltro = new Memory({});
+            this._standbyCount = this._standbyCount - 1;
+            if (this._standbyCount === 0) {
+                this._standby.hide();
             }
+            arrayUtil.forEach(this._filtros, lang.hitch(this, function (filtro, index) {
+                if (results.fields[0].name === filtro.campoFiltro) {
+                    if (results.features.length > 0) {
+                        arrayUtil.forEach(results.features, lang.hitch(this, function (feature, id) {
+                            indice = id;
+                            feature.attributes.OBJECTID = indice;
+                            feature.attributes.id = indice;
+                            storeFiltro.put({id: feature.attributes[filtro.campoFiltro], name: feature.attributes[filtro.campoFiltro]});
+                        }));
+                        this._arrayFiltros[index].filtro.store = storeFiltro;
+                    } else {
+                        this._arrayFiltros[index].filtro.store = storeFiltro;
+                    }
+                }
+            }));
             return null;
         },
         _queryTaskErrbackCombo: function () {
@@ -362,6 +425,47 @@ define([
             this._store.put(atributos);
             test_store = new ObjectStore({objectStore: this._store});
             this._grid.setStore(test_store);
+        },
+        _cambioComboTexto: function (state, index) {
+            this._valoresFiltros[index] = {state: state, id: index };
+            this._valor = state;
+            //Cada vez que hay un cambio, se recorren todos los filtros a partir del cual hubo cambio
+            // Por cada filtro de esta iteracion, se buscan todos los acumulados hasta este para re armar su contenido
+            // incluyendo asi el cambio
+            // index = id del cambio
+            // index2 = id del filtro que voy a hacer el acumulado
+            // index3 = iterador que va acumulando
+            arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index2) {
+                var  acumulado, primera;
+                acumulado = "";
+                primera = 0;
+                if ((index2 > index) && (feature.dependencia === 1 || feature.combo === 1)) {
+                // Por cada combo que tiene dependencia, busco los acumulados hasta este.    
+                    arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index3) {
+                        if ((index3 < index2) && (this._valoresFiltros[index3])) {
+                            if (primera === 0) {
+                                if (this._tipoFiltros[index3] === "numero") {
+                                    acumulado = feature.campoFiltro + "  =" + this._valoresFiltros[index3].state;
+                                } else {
+                                    acumulado = feature.campoFiltro + "  = '" + this._valoresFiltros[index3].state + "'";
+                                }
+                                primera = 1;
+                            } else {
+                                if (this._tipoFiltros[index3] === "numero") {
+                                    acumulado += " and " + feature.campoFiltro + " = " + this._valoresFiltros[index3].state;
+                                } else {
+                                    acumulado += " and " + feature.campoFiltro + " = '" + this._valoresFiltros[index3].state + "'";
+                                }
+                            }
+                        }
+                    }));
+                    this._standbyCount = this._standbyCount + 1;
+                    this._query.outFields = [feature.campoFiltro];
+                    this._query.where = " 1 = 1 and " + acumulado;
+                    this._queryTask.execute(this._query, lang.hitch(this, this._queryTaskCallbackCombo),
+                        lang.hitch(this, this._queryTaskErrbackCombo));
+                }
+            }));
         }
     });
     return widget;
