@@ -139,6 +139,7 @@ define([
                     dynaLayersInfo.push({layer: l, title: l.id, collapsed: true, slider: true});
                 }
             }));
+            dynaLayersInfo.reverse(); //Mostrar las capas en el orden de la configuracion
             this._toc = new TOC({
                 map: this.mapa.map,
                 style: "inline",
