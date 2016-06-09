@@ -60,7 +60,31 @@
                 "productividad": "IND_CONEAT",
 				"valorreal": "IND_VR"
             }
-        }, 
+        },
+        {
+            "widget": "widgets/BuscarParametrizadoWidget",
+            "title": "Grilla de fotoplano",
+            "msgToolTip": "Busca y despliega la grilla de fotoplanos",
+            "icono": "../js/snia/img/fotoPlanoImg.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Grillas/MapServer/0",
+                "filtros": [
+                    {
+                    "campoFiltro" : "PLANCHA",
+                    "lblcampoFiltro" : "Fotoplano",
+                    "placeHoldFiltro": "Seleccione fotoplano",
+                    "dependencia": 0,
+                    "combo": 1,
+                    "tipo": "texto"
+                    }
+                ],
+                "columnas" : [
+                            {"name":"ID","field": "OBJECTID","width": "100px"},
+                            {"name":"PLANCHA ","field": "PLANCHA","width": "100px"}
+                    ]    
+            }
+        },
         {
             "widget": "widgets/AreasConeatWidget",
             "title": "Areas CONEAT",
