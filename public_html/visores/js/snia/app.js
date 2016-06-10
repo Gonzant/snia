@@ -49,7 +49,6 @@ snia.app = {
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                     if (index === 0) {
-                        //Mapa base
                         mapa.agregarCapa(l);
                     } else {
                         //Agregar capas de forma que las de mas arriba en la conf se muestren en el mapa por encima que las de mas abajo
