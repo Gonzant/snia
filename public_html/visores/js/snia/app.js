@@ -58,7 +58,7 @@ snia.app = {
                 });
             };
             initControles = function () {
-                dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
+                dom.byId("divToolbarTitulo").innerHTML = " <h1>" + appConfig.app.titulo + "</h1>" ;
                 standby.set("text", "Cargando librerias...");
                 var widgetNames = arrayUtil.map(toolConfig.barraHerramientas, function (herramientaConfig) {
                     return herramientaConfig.widget;
