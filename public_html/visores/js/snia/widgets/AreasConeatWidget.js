@@ -33,13 +33,14 @@ define([
     "esri/tasks/FeatureSet",
     "dojox/widget/Standby",
     "dojo/dom-construct",
+    "dijit/form/CheckBox",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol,
     Color, Tooltip, a11yclick, GeometryService, AreasAndLengthsParameters, Geoprocessor, FeatureSet,
-    Standby, domConstruct) {
+    Standby, domConstruct, CheckBox) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -125,10 +126,12 @@ define([
                 this._croquisAreas.setAttribute('enabled', true);
                 this._cpg3SR.agregarMapa(this.mapa);
                 this.emit("active-changed");
-                this._initDibujo;
+                this._initDibujo;                          
             } else {
                 this._dibujo.desactivar();
-                this._cpg3SR.removerMapa();
+                if (!this._mantenerGeom){
+                    this._cpg3SR.removerMapa();
+                }    
                 this._agregarArea.setAttribute('disabled', true);
                 this._cancelarAgregarArea.setAttribute('disabled', true);
                 //this._desmarcarArea.setAttribute('disabled', true);
@@ -160,7 +163,7 @@ define([
             }
         },
         _init: function () {
-            var server, ttAgregar, ttCancelar, tteliminar, ttcroquis;
+            var server, ttAgregar, ttCancelar, tteliminar, ttcroquis, checkBox;
             this._visible();
 //            this._active();
             this._i = 0;
@@ -225,6 +228,15 @@ define([
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");
             this._standbyAreas.startup();
+            
+            checkBox = new CheckBox({
+                name: "checkBox",
+                value: "",
+                checked: false,
+                onChange: lang.hitch(this, function (b) {
+                    this._mantenerGeom = b;
+                })
+            }, this._mantenerGeo).startup();
         },
         _desmarcarDibujoSeleccionado: function () {
             this._msgAgregarArea.innerHTML = " ";

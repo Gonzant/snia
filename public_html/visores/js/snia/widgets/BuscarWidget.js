@@ -28,6 +28,7 @@ define([
     "esri/symbols/SimpleFillSymbol",
     "dojo/store/Memory",
     "dijit/form/FilteringSelect",
+    "dijit/form/CheckBox",
     "dojox/grid/DataGrid",
     "dojo/data/ObjectStore",
     "dojo/_base/array",
@@ -40,7 +41,7 @@ define([
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle,
-    SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect,
+    SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect,CheckBox,
     DataGrid, ObjectStore, baseArray, Tooltip, Geoprocessor, Dialog, CubrimientoConeatWidget, dom) {
 //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -139,7 +140,9 @@ define([
         },
         _activar: function () {
             if (!this.get("active")) {
-                this._cg3sr.removerMapa();
+                if (!this._mantenerGeom){
+                    this._cg3sr.removerMapa();
+                }
             } else {
                 this._cg3sr.agregarMapa(this.mapa);
             }
@@ -231,7 +234,7 @@ define([
             }
         },
         _templateIni : function () {
-            var select, departamentosStore;
+            var select, departamentosStore, checkBox;
             departamentosStore = new Memory({
                 data: [
                     {name: "Artigas", id: "G"},
@@ -268,6 +271,14 @@ define([
             select.startup();
             var data = select.store.data;
             lang.hitch(this, this._initGrid());
+            checkBox = new CheckBox({
+                name: "checkBox",
+                value: "",
+                checked: false,
+                onChange: lang.hitch(this, function (b) {
+                    this._mantenerGeom = b;
+                })
+            }, this._mantenerGeo).startup();
         },
         _buscarClick : function () {
             var i, departamento, padrones, padronesArreglo, query;

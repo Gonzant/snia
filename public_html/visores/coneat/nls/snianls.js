@@ -23,11 +23,12 @@ define({
                 lbIngresePadron:"Por favor ingrese un número de padrón.",
                 lbEncontro: "Se encontro",
                 lbEncontraron: "Se encontraron",
-                lbElemento: "Elemento",
-                lbElementos: "Elementos",
+                lbElemento: "elemento",
+                lbElementos: "elementos",
                 lbErrorBuscar: "Error al buscar.",
                 lbErrorNoSeleccionCroquis: "Se necesita al menos un elemento seleccionado para el croquis.",
                 lbErrorNoSeleccionCubrimiento: "Se necesita al menos un elemento seleccionado para el cubrimiento.",
+                lbMantenerGeo: "Mantener geometría"
                 
             },
             "NavegarWidget": {
@@ -68,7 +69,7 @@ define({
                 
             },
             "AreasConeatWidget": {
-                
+                lbMantenerGeo: "Mantener geometría"   
             },
             "MedirWidget": {
                 lbArea: "Area",
