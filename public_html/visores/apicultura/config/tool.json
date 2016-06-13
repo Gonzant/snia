@@ -106,6 +106,7 @@
             "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
+            "startsOpen": false,
             "widgetConfig": {
                 "data": [
     {

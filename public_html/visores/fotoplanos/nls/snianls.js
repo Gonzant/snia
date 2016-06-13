@@ -23,12 +23,11 @@ define({
                 lbIngresePadron:"Por favor ingrese un número de padrón.",
                 lbEncontro: "Se encontro",
                 lbEncontraron: "Se encontraron",
-                lbElemento: "elemento",
-                lbElementos: "elementos",
+                lbElemento: "Elemento",
+                lbElementos: "Elementos",
                 lbErrorBuscar: "Error al buscar.",
                 lbErrorNoSeleccionCroquis: "Se necesita al menos un elemento seleccionado para el croquis.",
                 lbErrorNoSeleccionCubrimiento: "Se necesita al menos un elemento seleccionado para el cubrimiento.",
-                lbMantenerGeo: "Mantener geometría"
                 
             },
             "NavegarWidget": {
@@ -41,7 +40,7 @@ define({
             },
             "ImprimirWidget": {
                 lbTemplateSelect: "Formato",
-                lbEscala: "Escala"                
+                lbEscala: "Escala"
             },
             "EstilosWidget": {
                 tTabMenu: "Menu",
@@ -69,7 +68,7 @@ define({
                 
             },
             "AreasConeatWidget": {
-                lbMantenerGeo: "Mantener geometría"   
+                
             },
             "MedirWidget": {
                 lbArea: "Area",

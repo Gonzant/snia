@@ -135,7 +135,7 @@
             "msgToolTip": "Muestra el manual de usuario e información sobre Carta Suelos. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "widgetConfig": {
                 "data": [
     {
