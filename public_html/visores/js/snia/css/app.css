@@ -1280,3 +1280,10 @@ border: 1px solid red;
     border: 0px;
     background-color: transparent;   
 }
+
+.dijitCheckBoxIcon {
+    background-position: -15px;
+    background-image: url('../img/expandAll.png');
+    color: #3dc21b;
+    background-color: yellowgreen;
+}

@@ -1,18 +1,16 @@
-<div class='${theme}' data-dojo-attach-point="_basic2">   
+<div class='${theme}' data-dojo-attach-point="_basic2">  
+    <div data-dojo-attach-point="_principal" ></div>
     <br>
-    <label data-dojo-attach-point="_label" > 
-    </label>
-    
-    <input data-dojo-attach-point="_departamentosCombo">
     <br><br>
     <div data-dojo-type="dijit/form/Button"
          data-dojo-attach-point="_buscarNode">
         ${_i18n.widgets.BuscarWidget.bBuscar}</div>
     <br><br>
+    <label>${_i18n.widgets.BuscarWidget.lbMantenerGeo}</label>
+    <div data-dojo-attach-point="_mantenerGeo">&nbsp;</div>
     <div data-dojo-attach-point="_resultadoNode"></div>
     <br><br>
-    <div class="gridDivBuscar" data-dojo-attach-point="_gridDiv" >
-        
+    <div class="gridDivBuscar" data-dojo-attach-point="_gridDiv" >   
     </div>
     <br>
     <div class="divEstilos">   

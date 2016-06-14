@@ -49,7 +49,6 @@ snia.app = {
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                     if (index === 0) {
-                        //Mapa base
                         mapa.agregarCapa(l);
                     } else {
                         //Agregar capas de forma que las de mas arriba en la conf se muestren en el mapa por encima que las de mas abajo
@@ -121,6 +120,19 @@ snia.app = {
                 },
                 baseMapLayer: new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayer.url)
             }, "divMapa");
+            
+            //Configurar mapa base de backup si existe
+            if (mapaConfig.mapa.baseMapLayerBackup){
+                mapa.setMapaBaseBackup(
+                    { 
+                        slider: false,
+                        logo: false,
+                        extent: new Extent(mapaConfig.mapa.baseMapLayerBackup.extent)
+                    },
+                    new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayerBackup.url)
+                );
+            }
+            
             //tool
             toolConfig = JSON.parse(toolConfigJSON);
             on(mapa, "load", function () {
