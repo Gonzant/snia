@@ -218,6 +218,7 @@ define([
             this._visible();
             this.set("loaded", true);
             this.emit("reload", {});
+            this.emit("prueba",{});
         },
         _restartup: function () {
             // map no esta definido
