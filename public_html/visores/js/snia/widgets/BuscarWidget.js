@@ -140,7 +140,7 @@ define([
         },
         _activar: function () {
             if (!this.get("active")) {
-                if (!this._mantenerGeom){
+                if (!this._mantenerGeom) {
                     this._cg3sr.removerMapa();
                 }
             } else {
@@ -234,7 +234,7 @@ define([
             }
         },
         _templateIni : function () {
-            var select, departamentosStore, checkBox;
+            var select, departamentosStore, data;
             departamentosStore = new Memory({
                 data: [
                     {name: "Artigas", id: "G"},
@@ -269,9 +269,9 @@ define([
                 store: departamentosStore
             }, this._departamentosCombo);
             select.startup();
-            var data = select.store.data;
+            data = select.store.data;
             lang.hitch(this, this._initGrid());
-            checkBox = new CheckBox({
+            new CheckBox({
                 name: "checkBox",
                 value: "",
                 checked: false,
