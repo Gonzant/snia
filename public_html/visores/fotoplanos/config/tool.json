@@ -86,16 +86,6 @@
             }
         },
         {
-            "widget": "widgets/AreasConeatWidget",
-            "title": "Areas CONEAT",
-            "msgToolTip": "Permite ingresar áreas y generar el reporte CONEAT a partir de ellas.",
-            "icono": "../js/snia/img/areas.png",
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
             "widget": "widgets/MedirWidget",
             "title": "Medir",
             "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
