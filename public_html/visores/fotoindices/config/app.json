@@ -1,1 +1,6 @@
-{	"app": {        "titulo": "FOTOINDICES",        "proxyRules":[  ]    }}
+{
+	"app": {
+        "titulo": "FOTOPLANOS",
+        "proxyRules":[]
+    }
+}
