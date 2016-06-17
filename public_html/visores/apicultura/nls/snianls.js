@@ -28,7 +28,7 @@ define({
                 lbErrorBuscar: "Error al buscar.",
                 lbErrorNoSeleccionCroquis: "Se necesita al menos un elemento seleccionado para el croquis.",
                 lbErrorNoSeleccionCubrimiento: "Se necesita al menos un elemento seleccionado para el cubrimiento.",
-                
+                lbMantenerGeo: "Mantener geometría"
             },
             "NavegarWidget": {
                 tbAlejar: "Alejar",
@@ -68,7 +68,7 @@ define({
                 
             },
             "AreasConeatWidget": {
-                
+                lbMantenerGeo: "Mantener geometría"  
             },
             "MedirWidget": {
                 lbArea: "Area",

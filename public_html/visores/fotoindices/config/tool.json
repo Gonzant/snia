@@ -1,4 +1,4 @@
-{       
+{    
     "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
@@ -8,8 +8,9 @@
             "toggle": false,
             "widgetConfig": {
                 "mapasBase": [
-					{"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
+					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
         },
@@ -56,9 +57,34 @@
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
+                "productividad": "IND_CONEAT",
+				"valorreal": "IND_VR"
             }
-        }, 
+        },
+        {
+            "widget": "widgets/BuscarParametrizadoWidget",
+            "title": "Grilla de fotoplano",
+            "msgToolTip": "Busca y despliega la grilla de fotoplanos",
+            "icono": "../js/snia/img/fotoPlanoImg.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Grillas/MapServer/0",
+                "filtros": [
+                    {
+                    "campoFiltro" : "PLANCHA",
+                    "lblcampoFiltro" : "Fotoplano",
+                    "placeHoldFiltro": "Seleccione fotoplano",
+                    "dependencia": 0,
+                    "combo": 1,
+                    "tipo": "texto"
+                    }
+                ],
+                "columnas" : [
+                            {"name":"ID","field": "OBJECTID","width": "100px"},
+                            {"name":"PLANCHA ","field": "PLANCHA","width": "100px"}
+                    ]    
+            }
+        },
         {
             "widget": "widgets/MedirWidget",
             "title": "Medir",
@@ -103,7 +129,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el manual de usuario e información sobre FOTOPLANOS. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -139,15 +165,15 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "Servicio de consulta interno. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                            "Contenido": "Visualizador de FotoPlanos",
                             "Estilo": "Normal"
                         }
+                        
                       ]
                     }
                      
                 ]
-            }
-            
+            }           
         },       
         {"name": "Herramientas",
             "id":"1",
@@ -177,9 +203,9 @@
                             }
                         ]
                     }
-                ],
-                "esPadre": true
-            }
+                ]
+            },
+            "esPadre": true
         },
             {
                 "name": "Mapa Base",
@@ -216,6 +242,49 @@
                         "Texto":[
                         {
                            "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }
+                        
+                    ]
+                }
+            },
+            {
+                "name": "Contenidos",
+                "id":"4",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Contenidos",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":
+                            {
+                              "URL":"../js/snia/img/contenido.png",
+                              "Alto":20
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen":
+                        {
+                              "URL":"../js/snia/img/contenido.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                        {
+                              "Contenido": "Contenidos",
+                              "Estilo": "Titulo2"
+                        }
+                    },
+                    "elementos": [
+                    {
+                        "Texto":[
+                        {
+                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
                         }
                         ]    
@@ -286,7 +355,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/zoomout.png",
+                              "URL":"../js/snia/img/zoomout.png",
                               "Alto":30
                             }
                         },
@@ -306,7 +375,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/pan.png",
+                              "URL":"../js/snia/img/pan.png",
                               "Alto":30
                             }
                         },
@@ -325,7 +394,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/fullextent.png",
+                              "URL":"../js/snia/img/fullextent.png",
                               "Alto":30
                             }
                         },
@@ -344,14 +413,14 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/prevextent.png",
+                              "URL":"../js/snia/img/prevextent.png",
                               "Alto":30
                             }
                         },
                         {
                          "Texto":[
                            {
-                              "Contenido": "Vista previa",
+                              "Contenido": "Vista anterior",
                               "Estilo": "Titulo3"
                             },
                             {
@@ -363,7 +432,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/sigextent.png",
+                              "URL":"../js/snia/img/sigextent.png",
                               "Alto":30
                             }
                         },
@@ -374,7 +443,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Posiciona el mapa a la vista anterior a la vista previa.",
+                              "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -382,48 +451,6 @@
                     ]
                 }
                
-            },
-            {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
             },
             {
                "name": "Identificar",
@@ -578,8 +605,163 @@
                            ]
                         }
                     ]
+                }
+            },
+            {
+               "name": "Navegar",
+               "id":"6",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Navegar",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":
+                            {
+                              "URL":"../js/snia/img/navegar.png",
+                              "Alto":20
+                            }
+                        
                 },
-               "hijos": "no"
+               "seccionContenido":{
+                    "titulo":{
+                         "Imagen":
+                        {
+                              "URL":"../js/snia/img/areas.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                           {
+                              "Contenido": "Áreas CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite al usuario dibujar polígonos en el mapa para luego obtener el reporte CONEAT de los mismos.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/agregar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Agregar área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite dibujar una nueva área en el mapa. Para esto indique en forma de anillo los puntos del polígono utilizando el botón derecho del ratón, para finalizar haga doble clic derecho. Vera el área ingresada en el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/cancelarAgregar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Cancelar agregar área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite cancelar el proceso de dibujo del área, simplemente en medio del proceso de ingresar una nueva área presione esta opción.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                             "Imagen":
+                            {
+                              "URL":"../js/snia/img/deseleccionar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Desmarcar área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Permite desmarcar el área seleccionada.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/remover.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Remover área",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Elimina el área marcada. Para marcar un área simplemente utilice el botón derecho del ratón sobre el área en el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/limpiar.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Remover todas las áreas",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Elimina todas las áreas dibujadas.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                            "Imagen":
+                            {
+                              "URL":"../js/snia/img/reporte.png",
+                              "Alto":30
+                            }
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Croquis de las áreas",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Genera un reporte con todas las áreas dibujadas.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
             },
             {
                "name": "Medir",
@@ -766,7 +948,7 @@
                     ]
                 }
             },
-        {"name": "Atribuciones",
+    {"name": "Atribuciones",
             "id":"18",
             "parent":"root",
             "seccionTitulo":{
@@ -844,8 +1026,7 @@
                     }
                     
                 ]
-            },
-            "padre": "si"
+            }
         },
         {"name": "Contacto",
             "id":"19",
@@ -866,7 +1047,7 @@
                               "Estilo": "Titulo1"
                             }
                 },
-                "elementos": [
+                 "elementos": [
                     {
                         "Texto":[
                             {
@@ -874,7 +1055,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Constituyente 1476, Montevideo, Uruguay",
+                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
                               "Estilo": "Normal"
                             },
                             {
@@ -882,7 +1063,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "24104155-58 int. 411",
+                              "Contenido": "23096008, 23097025",
                               "Estilo": "Normal"
                             },
                             {
@@ -890,7 +1071,7 @@
                               "Estilo": "Titulo2"
                             },
                             {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor ingrese a",
+                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
                               "Estilo": "Normal"
                             }
                         ]
@@ -904,8 +1085,7 @@
                     ] 
                     }
                 ]
-            },
-            "padre": "si"
+            }
         }
         
 ]
