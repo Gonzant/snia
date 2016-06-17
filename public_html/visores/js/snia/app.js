@@ -57,7 +57,15 @@ snia.app = {
                 });
             };
             initControles = function () {
-                dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
+               
+                if (appConfig.app.titulo==="FOTOINDICES"){
+                   dom.byId("divToolbarTituloFotoIndices").innerHTML = appConfig.app.titulo 
+                           + "<br>" +appConfig.app.subtitulo;
+                }
+                else{
+                    dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
+                   
+                }
                 standby.set("text", "Cargando librerias...");
                 var widgetNames = arrayUtil.map(toolConfig.barraHerramientas, function (herramientaConfig) {
                     return herramientaConfig.widget;

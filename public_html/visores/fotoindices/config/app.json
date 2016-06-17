@@ -1,6 +1,7 @@
 {
 	"app": {
-        "titulo": "FOTOPLANOS",
+        "titulo": "FOTOINDICES",
+        "subtitulo": "Fotos Aéreas 1:20mil",
         "proxyRules":[]
     }
 }

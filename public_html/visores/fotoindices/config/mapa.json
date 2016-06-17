@@ -5,8 +5,8 @@
             "logo": false
         },
         "baseMapLayer": {
-			"url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-			"extent": {
+                "url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+                "extent": {
                 "xmin": -37867.16314808361,
                 "ymin": 5957313.020605681,
                 "xmax": 1220493.68690695,
@@ -18,9 +18,9 @@
 		},
         "dynamicLayers": [ 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/CurvasTopograficas/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/FOTOPLANOS/MapServer",
                 "options": {
-                        "id": "CurvasTopograficas",
+                        "id": "Grilla Fotoindices",
                         "opacity": 0.7,
                         "visible": false
                 }
@@ -34,57 +34,9 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/SulosMillon/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Fotoindices/MapServer",
                 "options": {
-                        "id": "Suelos Millon",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/SuelosCARN/MapServer",
-                "options": {
-                        "id": "Suelos C.A.R.N",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/Suelos200mil/MapServer",
-                "options": {
-                        "id": "Suelos.200Mil",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/Suelos100mil/MapServer",
-                "options": {
-                        "id": "Suelos.100Mil",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
-                "options": {
-                        "id": "CONEAT",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/MOSAICO_FOTOPLANOS/MapServer",
-                "options": {
-                        "id": "Mosaico Fotoplanos",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/RELIEVE/MapServer",
-                "options": {
-                        "id": "Relieve",
+                        "id": "Fotoindices",
                         "opacity": 0.7,
                         "visible": false
                 }
