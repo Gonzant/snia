@@ -9,7 +9,7 @@
             "widgetConfig": {
                 "mapasBase": [
 					{"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
                 ]
             }
         },
@@ -51,8 +51,8 @@
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -86,7 +86,7 @@
             "icono": "../js/snia/img/imprimir.png",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 
