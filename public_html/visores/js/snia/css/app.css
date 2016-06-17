@@ -83,7 +83,7 @@ html, body {
 .iconAyuda {
     background-image: url('../img/ayuda.png');    
     background-repeat: no-repeat; 
-    background-size: 20px 20px;
+    background-size: 2px 20px;
     width: 20px;
     height: 20px;     
 }
@@ -114,27 +114,27 @@ html, body {
 .iconAcercarSeleccionBuscar{
     background-image: url('../img/finder.png');    
     background-repeat: no-repeat; 
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px; 
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px; 
     border:0px;
     background-color: transparent;
 }
 .iconDesSeleccionBuscar{
     background-image: url('../img/remover.png');    
     background-repeat: no-repeat; 
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px; 
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px; 
     border:0px;
     background-color: transparent;
 }
 .iconDeleccionarTodoBuscar{
     background-image: url('../img/todo.png');    
     background-repeat: no-repeat; 
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px; 
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px; 
     border:0px;
     background-color: transparent;
 }
@@ -142,9 +142,9 @@ html, body {
 .iconCroquisBuscar{
     background-image: url('../img/reporte.png');    
     background-repeat: no-repeat; 
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px; 
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px; 
     border:0px;
     background-color: transparent;
 }
@@ -152,9 +152,9 @@ html, body {
 .iconCubrimientoBuscar{
     background-image: url('../img/contenido-negro.png');    
     background-repeat: no-repeat; 
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px; 
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px; 
     border:0px;
     background-color: transparent;
 }
@@ -836,7 +836,7 @@ Dialogos:
 .SmallButton {
     border-radius:5px;
     background-color: #FFC000;
-    padding:3px 1px;
+    padding:1px 1px;
     border-color: transparent !important
 }
 .SmallButton:hover{
