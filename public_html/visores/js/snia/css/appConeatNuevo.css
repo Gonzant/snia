@@ -711,7 +711,8 @@ tituloTPAyuda{
     
   }
 #divToolbarTitulo{
-/*    margin-top: 6px;
+     font-size: 22px;
+/*   margin-top: 6px;
     z-index: 3;
     right: 64px;
     padding: 7px;
@@ -1308,4 +1309,15 @@ border: 1px solid red;
     background-image: url('../img/expandAll.png');
     color: #3dc21b;
     background-color: yellowgreen;
+}
+
+.agsjsTOCRootLayerLabel {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #269abc;
+}
+
+.estiloBotonBarra{
+   width: 50px; 
+    
 }

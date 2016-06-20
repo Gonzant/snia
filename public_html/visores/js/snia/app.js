@@ -24,6 +24,7 @@ snia.app = {
             "esri/layers/ArcGISDynamicMapServiceLayer",
             "modulos/HerramientaDialog",
             "widgets/BarraHerramientasWidget",
+            "widgets/BarraHerramientasWidgetD",
             "widgets/MapaWidget",
             "dojo/text!config/app.json",
             "dojo/text!config/mapa.json",
@@ -34,7 +35,7 @@ snia.app = {
             "dojo/domReady!"], function (on, dom, parser, arrayUtil, JSON, Standby,
             ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
             HerramientaDialog,
-            BarraHerramientasWidget,
+            BarraHerramientasWidget, BarraHerramientasWidgetD,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
             domStyle, urlUtils, Extent) {
             //variables
@@ -98,6 +99,7 @@ snia.app = {
                         vertical: false
                     }, 'divToolbar');
                     barra.startup();
+                   
                 });
             };
             //comienzo

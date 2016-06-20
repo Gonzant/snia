@@ -1214,3 +1214,6 @@ div p {
     font-size: 12px;
     word-wrap: break-word;
 }
+.estiloBotonBarra{
+    width: 30px;
+}

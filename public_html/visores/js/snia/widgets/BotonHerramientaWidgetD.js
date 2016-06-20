@@ -1,50 +1,49 @@
 /*
- * js/snia/widgets/BarraHerramientasWidget
+ * js/snia/widgets/BotonHerramientaWidget
  * 
  */
 /*global define, console*/
 /*jslint nomen: true */
 define([
-    "dojo/dom-construct",
+    "dojo/on",
     "dojo/Evented",
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/array",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
-    "dojo/text!./templates/BarraHerramientasWidget.html",
+    "dijit/a11yclick",
+    "dojo/text!./templates/BotonHerramientaWidgetD.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
-    "widgets/BotonHerramientaWidget",
-    "widgets/BotonHerramientaWidgetD"
-], function (domConstruct, Evented, declare, lang, arrayUtil,
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
-    template, i18n, domClass, domStyle,
-    BotonHerramientaWidget, BotonHerramientaWidgetD
-    ) {
+    "dijit/Tooltip"
+], function (on, Evented, declare, lang,
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
+    template, i18n, domClass, domStyle, Tooltip) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         options : {
             theme: "sitWidget",
-            herramientasOptions: null,
-            vertical: true,
+            herramienta: null,
             visible: true,
-            active: true
+            active: true,
+            icono: 'xxx',
+            etiqueta: 'xxx', //nombre boton,
+            msgToolTip: 'xxx'
         },
-        _botones: null,
         constructor: function (options, srcRefNode) {
             //mezclar opciones usuario y default
             var defaults = lang.mixin({}, this.options, options);
             //nodo del widget
             this.domNode = srcRefNode;
             this._i18n = i18n;
-            this._botones = [];
+            this._etiqueta = defaults.etiqueta;
+            this._icono = defaults.icono;
+            this._msgToolTip = defaults.msgToolTip;
             //propiedades
-            this.set("herramientasOptions", defaults.herramientasOptions);
-            this.set("vertical", defaults.vertical);
+            this.set("herramienta", defaults.herramienta);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
@@ -57,10 +56,31 @@ define([
         },
         postCreate: function () {
             this.inherited(arguments);
+            this.own(
+                on(this._botonNode, a11yclick, lang.hitch(this, this._bBotonClick))
+            );
         },
         // inicio widget. invocado por el usuario
         startup: function () {
-            this._init();
+            // widget no definido
+            if (!this.herramienta) {
+                this.destroy();
+                console.log('BotonHerramienta::requiere una herramienta');
+            }
+            // widget no compatible
+            if (this.herramienta.execute === undefined ||
+                    this.herramienta.canExecute === undefined) {
+                this.destroy();
+                console.log('BotonHerramienta::herramienta requiere propiedad execute y canExecute');
+            }
+            if (!this.get("loaded")) {
+                this._init();
+            }
+            this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '" ' + "class=" + '"' + "estiloBotonBarra" + '"'+ "> <br>";
+            new Tooltip({
+                connectId: [this._botonNode],
+                label: "<b>" + this._etiqueta + "</b>" + "<br>" + "<p> " + this._msgToolTip + "</p>"
+            });
         },
         // connections/subscriptions se limpian durante la fase destroy()
         destroy: function () {
@@ -103,33 +123,25 @@ define([
         },
         _active: function () {
             if (this.get("active")) {
-                arrayUtil.forEach(this._botones, function (boton) {
-                    boton.activar();
-                });
+                this._botonEnable = true;
             } else {
-                arrayUtil.forEach(this._botones, function (boton) {
-                    boton.desactivar();
-                });
+                this._botonEnabled = false;
             }
-        },
-        _initBotonHerramienta: function (herramientaOptions) {
-            var tipo, node, node2, boton;
-            tipo = this.get('vertical') ? '<div></div>' : '<div> <td width=10px> </div>';
-            node = domConstruct.toDom(tipo);
-            node2 = domConstruct.place('<div></div>', node);
-            domConstruct.place(node, this._rootNode);
-            boton = new BotonHerramientaWidget(herramientaOptions, node2);
-            boton.startup();
-            this._botones.push(boton);
-
         },
         _init: function () {
             this._visible();
-            //creo los botones de las herramientas
-            arrayUtil.forEach(this.herramientasOptions, lang.hitch(this, this._initBotonHerramienta));
-            //fin
+            this.herramienta.on("can-execute-changed", lang.hitch(this, this._herramientaCanExecuteChanged));
+            this._active();
             this.set("loaded", true);
             this.emit("load", {});
+        },
+        _herramientaCanExecuteChanged: function () {
+            this._botonEnabled = !this.herramienta.canExecute;
+        },
+        _bBotonClick: function () {
+            if (this._botonEnable) {
+                this.herramienta.execute();
+            }
         }
     });
     return widget;

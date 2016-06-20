@@ -1,5 +1,5 @@
 /*
- * js/snia/widgets/BarraHerramientasWidget
+ * js/snia/widgets/BarraHerramientasWidgetD
  * 
  */
 /*global define, console*/
@@ -13,16 +13,15 @@ define([
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
-    "dojo/text!./templates/BarraHerramientasWidget.html",
+    "dojo/text!./templates/BarraHerramientasWidgetD.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
-    "widgets/BotonHerramientaWidget",
     "widgets/BotonHerramientaWidgetD"
 ], function (domConstruct, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle,
-    BotonHerramientaWidget, BotonHerramientaWidgetD
+    BotonHerramientaWidgetD
     ) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -118,7 +117,7 @@ define([
             node = domConstruct.toDom(tipo);
             node2 = domConstruct.place('<div></div>', node);
             domConstruct.place(node, this._rootNode);
-            boton = new BotonHerramientaWidget(herramientaOptions, node2);
+            boton = new BotonHerramientaWidgetD(herramientaOptions, node2);
             boton.startup();
             this._botones.push(boton);
 
