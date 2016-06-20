@@ -17,12 +17,11 @@ define([
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
-    "widgets/BotonHerramientaWidget",
-    "widgets/BotonHerramientaWidgetD"
+    "widgets/BotonHerramientaWidget"
 ], function (domConstruct, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle,
-    BotonHerramientaWidget, BotonHerramientaWidgetD
+    BotonHerramientaWidget
     ) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
