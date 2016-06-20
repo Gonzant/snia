@@ -706,10 +706,13 @@ tituloTPAyuda{
 
 #logoMGAP{
     z-index: 20;
-    height: 110px;
+    width: 140px;
     position: absolute;
-    right: 2px;
-    top: 5px;
+    right: 5px;
+    top: 15px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 130px;
 /*    background-image: url('../img/logo.png')*/
     
   }
