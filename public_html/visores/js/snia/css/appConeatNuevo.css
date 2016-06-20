@@ -31,27 +31,27 @@ html, body {
 .iconAgregarAreas {
     background-image: url('../img/agregar.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
 .iconCancelarAgregarAreas {
     background-image: url('../img/cancelarAgregar.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
 .iconCroquisAreas {
     background-image: url('../img/reporte.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
@@ -59,9 +59,9 @@ html, body {
 .iconRemoverTodasAreasArea {
     background-image: url('../img/limpiar.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
@@ -280,7 +280,7 @@ Dialogos:
 .claro .dijitDialogTitle {
     color: #000000;
     font-weight:bold;
-    font-size: 15px;
+    font-size: 19px;
     border:2px;
    
 }
@@ -318,6 +318,8 @@ Dialogos:
 .dijitButtonText {
     text-align: center;
     padding: 0 0em; 
+    border: 3px;
+    border-color: #269abc;
 }
 
 
@@ -765,7 +767,8 @@ Dialogos:
     padding: 2px 2px 2px 2px;
     border-radius: 4px;
     background-color: transparent;
-    border-color: transparent;
+    border-color: #269abc;
+    border:2px;
 }
 
 
@@ -819,10 +822,10 @@ Dialogos:
 
 .SmallButtonTransparent {
     cursor:pointer;
-    border-color: black;
-    border: 1px;
+    border: 1px #269abc solid;
     background-color: transparent;
-    padding:0px 0px;
+    padding:1px 1px;
+/*    height: 30px;*/
 }
 
 .MediumButton {
@@ -1155,7 +1158,7 @@ div p {
  display: inline; /* Para mostrarlo simplemente usamos display block por ejemplo */
 }
 
-.dijitIconSave, .dijitIconSearch, .dijitIconApplication, .dijitIconChart, .dijitIconConnector, .dijitIconDocuments, .dijitIconMail, .dijitLeaf, .dijitIconFile, .dijitIconFunction, .dijitIconKey, .dijitIconPackage, .dijitIconSample, .dijitIconUsers, .dijitFolderClosed, .dijitIconFolderClosed, .dijitFolderOpened, .dijitIconFolderOpen, .dijitIconError {
+.dijitIconSave, .dijitIconSearch, .dijitIconApplication, .dijitIconChart, .dijitIconConnector, .dijitIconDocuments, .dijitIconMail, .dijitIconFolderOpen, .dijitIconError {
     background-image: none;
     width: 16px;
     height: 16px;
@@ -1272,7 +1275,8 @@ border: 1px solid red;
     background-color: transparent;
     padding:1px 1px;
     right: 60px;
-    border-color: transparent !important
+    border-color: #269abc;
+    border: 1px solid #269abc;
 }
 
 .iconColapsarContenidos{
@@ -1281,8 +1285,6 @@ border: 1px solid red;
     background-size: 30px 30px;
     width: 30px;
     height: 30px;
-    border: 0px;
-    
     background-color: transparent;   
 }
 
@@ -1292,15 +1294,15 @@ border: 1px solid red;
     background-size: 30px 30px;
     width: 30px;
     height: 30px;
-    border: 0px;
-    background-color: transparent;   
+    background-color: transparent;  
+        
 }
 
 .dijitCheckBoxIcon {
     background-position: -15px;
     background-image: url('../img/expandAll.png');
     color: #3dc21b;
-    background-color: yellowgreen;
+    background-color: transparent;
 }
 
 .agsjsTOCRootLayerLabel {
@@ -1312,4 +1314,9 @@ border: 1px solid red;
 .estiloBotonBarra{
    width: 50px; 
     
+}
+
+.wAreas{
+    height: 104px;
+
 }
