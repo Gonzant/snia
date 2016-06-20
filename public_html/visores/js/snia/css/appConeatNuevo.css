@@ -24,8 +24,8 @@ html, body {
 }
 
 .claro .dijitDialogCloseIcon {
-    background-color:#FFC000;
-    border-color: #FFC000;
+    background-color:#269abc;
+    border-color: #269abc;
 }
 
 .iconAgregarAreas {
@@ -280,6 +280,7 @@ Dialogos:
 .claro .dijitDialogTitle {
     color: #000000;
     font-weight:bold;
+    font-size: 15px;
     border:2px;
    
 }
@@ -539,7 +540,7 @@ tituloTPAyuda{
 .Titulo1{
     font-family: sans-serif;
     font-size:18px;
-    color: #FFC000;
+    color: #269abc;
     font-weight:bold;
 }
 
@@ -559,7 +560,7 @@ tituloTPAyuda{
 
 .tree_root
  {
-    color: #FFC000;
+    color: #269abc;
     font-family: sans-serif;
     font-size:12px;
     background-image: none;
@@ -742,7 +743,7 @@ tituloTPAyuda{
     border-color: dimgray;
     border-style: solid;
     border-width: 5px;  
-    background-color:#FFC000;
+    background-color:#269abc;
     font-size: 20px;
     font-family:inherit;
     color:dimgray;
@@ -767,15 +768,6 @@ Dialogos:
     border-color: transparent;
 }
 
-
-.claro .dijitDialogTitle {
-    padding: 0 1px;
-    font-size: 1.091em ;
-    color: #000000;
-    border: 3px;
-    font-weight:bold;
-   
-}
 
 .BC{
     border: 0px;
@@ -1035,10 +1027,10 @@ tituloTPAyuda{
 }
 
 .claro .dijitTitlePaneContentOuter {
-    background: #E1E1E1;
+    background: transparent;
 }
 .claro .dijitBorderContainer-dijitContentPane {
-    background-color: #E1E1E1;
+    background-color: transparent;
 }
 
 .claro .dijitTreeRowSelected {
@@ -1073,7 +1065,7 @@ tituloTPAyuda{
 .Titulo1{
     font-family: sans-serif;
     font-size:18px;
-    color: #FFC000;
+    color: #269abc;
     font-weight:bold;
 }
 
@@ -1093,7 +1085,7 @@ tituloTPAyuda{
 
 .tree_root
  {
-    color: #FFC000;
+    color: #269abc;
     font-family: sans-serif;
     font-size:14px;
     background-image: none;
