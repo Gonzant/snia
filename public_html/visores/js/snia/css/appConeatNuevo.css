@@ -127,27 +127,27 @@ html, body {
 .iconAcercarSeleccionBuscar{
     background-image: url('../img/finder.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
 .iconDesSeleccionBuscar{
     background-image: url('../img/remover.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
 .iconDeleccionarTodoBuscar{
     background-image: url('../img/todo.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
@@ -155,9 +155,9 @@ html, body {
 .iconCroquisBuscar{
     background-image: url('../img/reporte.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
@@ -165,9 +165,9 @@ html, body {
 .iconCubrimientoBuscar{
     background-image: url('../img/contenido-negro.png');    
     background-repeat: no-repeat; 
-    background-size: 25px 25px;
-    width: 25px;
-    height: 25px; 
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px; 
     border:0px;
     background-color: transparent;
 }
@@ -639,7 +639,7 @@ tituloTPAyuda{
         
 }
 .gridDivBuscar {
-	width: 460px;
+	width: 490px;
 	height: 230px;
         font-size: small;
 }
@@ -810,12 +810,12 @@ Dialogos:
 
 .SmallButton {
     border-radius:5px;
-    background-color: #FFC000;
+    background-color: transparent;
     padding:1px 1px;
-    border-color: transparent !important
+    border: 2px #269abc solid !important
 }
 .SmallButton:hover{
-    border-color: #ffffff;
+    border-color: #269abc;
     border-style: solid;
     border-width: 1px;
 }
@@ -1320,3 +1320,28 @@ border: 1px solid red;
     height: 104px;
 
 }
+
+.btnTextoMedirDistancia{
+   border: 2px #269abc solid;
+   border-radius: 6px;   
+}
+.btnTextoMedirArea{
+   border: 2px #269abc solid;
+   border-radius: 6px; 
+   margin-left: 40px;
+}
+
+.btnTextoBuscar{
+   border: 2px #269abc solid;
+   border-radius: 6px; 
+}
+.agsjsTOCNode{
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+.agsjsTOCSlider {
+    padding: 5px 10px 5px 10px;
+    width: 200px;
+}
+
