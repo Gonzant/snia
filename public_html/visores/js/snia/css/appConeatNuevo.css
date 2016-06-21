@@ -22,27 +22,27 @@ html, body {
 .iconAgregarAreas {
     background-image: url('../img/agregar.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
-    border:0px;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
+    border:0px transparent solid;
     background-color: transparent;
 }
 .iconCancelarAgregarAreas {
     background-image: url('../img/cancelarAgregar.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
 .iconCroquisAreas {
     background-image: url('../img/reporte.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
@@ -50,9 +50,9 @@ html, body {
 .iconRemoverTodasAreasArea {
     background-image: url('../img/limpiar.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
@@ -831,7 +831,7 @@ Dialogos:
 
 .SmallButtonTransparent {
     cursor:pointer;
-    border: 1px #FFC000 solid;
+    border: 2px #FFC000 solid;
     background-color: transparent;
     padding:1px 1px;
 /*    height: 30px;*/
@@ -899,9 +899,9 @@ Dialogos:
 /*Botones con Texto*/
 
 .STextButton {
-	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
-	box-shadow: 0px 0px 0px 0px #FFC000;
-	background-color:#E1E1E1;
+	
+	box-shadow: 0px 0px 0px 0px #fff;
+	background-color:#FFC000;
 	-moz-border-radius:5px;
 	border-radius:6px;
 	border:1px solid #FFC000;
