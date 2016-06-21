@@ -1,14 +1,5 @@
 /*bootstrap*/
 
-.jumbotron-fm {
-  padding-top: 10px;
-/*  padding-bottom: 10px;*/
-  margin-bottom: 1px;
-  margin-left: 1px;
-  margin-right: 10px;
-  color: #666666;
-  background-color: #fff;
-}
 /*bootstrap fin*/
 
 html, body {
@@ -24,8 +15,8 @@ html, body {
 }
 
 .claro .dijitDialogCloseIcon {
-    background-color:#269abc;
-    border-color: #269abc;
+    background-color:#FFC000;
+    border-color: #FFC000;
 }
 
 .iconAgregarAreas {
@@ -281,7 +272,8 @@ Dialogos:
     color: #000000;
     font-weight:bold;
     font-size: 19px;
-    border:2px;
+    border:2px #FFC000;
+    
    
 }
 .claro .dijitDialogTitleBar {
@@ -319,7 +311,7 @@ Dialogos:
     text-align: center;
     padding: 0 0em; 
     border: 3px;
-    border-color: #269abc;
+    border-color: #FFC000;
 }
 
 
@@ -542,7 +534,7 @@ tituloTPAyuda{
 .Titulo1{
     font-family: sans-serif;
     font-size:18px;
-    color: #269abc;
+    color: #FFC000;
     font-weight:bold;
 }
 
@@ -562,7 +554,7 @@ tituloTPAyuda{
 
 .tree_root
  {
-    color: #269abc;
+    color: #FFC000;
     font-family: sans-serif;
     font-size:12px;
     background-image: none;
@@ -669,8 +661,8 @@ tituloTPAyuda{
 }
 
 .claro .dijitDialogCloseIcon {
-    background-color:#87cefa;
-    border-color: #87cefa;
+    background-color:#FFC000;
+    border-color: #FFC000;
     border: 2px;
 }
 
@@ -687,35 +679,52 @@ tituloTPAyuda{
 }
 #divToolbar {
     z-index: 2;
-    width: 6%;
+    width: 60px;
     position:absolute;
-    top: 73px;
-    padding-top: 3px;
-    padding-left: 5px;
-    padding-right: 12px;
+    top: 110px;
+    padding-top: 14px;
     padding-bottom: 1px;
-    right: 10px;
-    background-color: #fff;
+    right: 26px;
+    background-color: #FFC000;
     border-style: solid;
     border-width: 5px;
-    border-color: transparent;  
-    border-radius: 5px;
+    border-color: dimgray;  
+    border-radius: 15px;
 /*    height: 88%;*/
+}
+
+#divLogoMGAP{
+    width: 130px;
+    height: 130px;
+    z-index: 4;
+    position:absolute;    
+    top:6px;
+    padding: 10px;
+    right: 11px;
+    border-color: dimgray;
+    border-style: solid;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 130px;
 }
 
 #logoMGAP{
     z-index: 20;
-    height: 12%;
+    width: 112px;
     position: absolute;
-    right: 9px;
-    top: 1px;
- 
+    right: 1px;
+    top: 10px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 120px;
 /*    background-image: url('../img/logo.png')*/
     
   }
+
+
 #divToolbarTitulo{
-     font-size: 22px;
-/*   margin-top: 6px;
+    font-size: 22px;
+    margin-top: 6px;
     z-index: 3;
     right: 64px;
     padding: 7px;
@@ -730,7 +739,7 @@ tituloTPAyuda{
     font-family:inherit;
     color:dimgray;
     font-weight:bold;
-    border-radius: 130px;*/
+    border-radius: 130px;
 }
 
 
@@ -745,7 +754,7 @@ tituloTPAyuda{
     border-color: dimgray;
     border-style: solid;
     border-width: 5px;  
-    background-color:#269abc;
+    background-color: #FFC000;
     font-size: 20px;
     font-family:inherit;
     color:dimgray;
@@ -764,10 +773,10 @@ Dialogos:
 */
 
 .claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
-    padding: 2px 2px 2px 2px;
+    padding: 1px 1px 1px 1px;
     border-radius: 4px;
     background-color: transparent;
-    border-color: #269abc;
+    border-color: #FFC000;
     border:2px;
 }
 
@@ -800,7 +809,7 @@ Dialogos:
     border-radius:5px;
     background-color: transparent;
     padding:1px;
-    width: 10%;
+    width: 30px;
     border-color: transparent !important
 }
 .SmallButtonBH:hover{
@@ -812,17 +821,17 @@ Dialogos:
     border-radius:5px;
     background-color: transparent;
     padding:1px 1px;
-    border: 2px #269abc solid !important
+    border: 2px #FFC000 solid !important
 }
 .SmallButton:hover{
-    border-color: #269abc;
+    border-color: #FFC000;
     border-style: solid;
     border-width: 1px;
 }
 
 .SmallButtonTransparent {
     cursor:pointer;
-    border: 1px #269abc solid;
+    border: 1px #FFC000 solid;
     background-color: transparent;
     padding:1px 1px;
 /*    height: 30px;*/
@@ -1068,7 +1077,7 @@ tituloTPAyuda{
 .Titulo1{
     font-family: sans-serif;
     font-size:18px;
-    color: #269abc;
+    color: #FFC000;
     font-weight:bold;
 }
 
@@ -1088,7 +1097,7 @@ tituloTPAyuda{
 
 .tree_root
  {
-    color: #269abc;
+    color: #FFC000;
     font-family: sans-serif;
     font-size:14px;
     background-image: none;
@@ -1141,10 +1150,10 @@ div p {
 /* El tooltip */
 .cssToolTip span {
  background: #ffffff right 2px no-repeat; 
- border: solid #87cefa;
+ border: solid #FFC000;
  border-radius: 5px;
  box-shadow: 5px 5px 5px #333;
- color: #87cefa;
+ color: #FFC000;
  display: none; /* El tooltip por defecto estara oculto */
  font-size: 0.8em;
  max-width: 600px;
@@ -1251,15 +1260,16 @@ border: 1px solid red;
 }
 
 .dijitDialogPaneContent {
-    border-color: #87cefa;
     border-style: solid;
     background-color: #fff;
     border-width: 2px;
     border-radius: 5px;
+    border:1px #FFC000;
+    border-top: 1px solid #FFC000; 
 }
 
 .claro .dijitDialog {
-    border: 2px solid #87cefa;
+    border: 2px solid #FFC000;
     border-radius: 5px;
     
 }
@@ -1275,8 +1285,8 @@ border: 1px solid red;
     background-color: transparent;
     padding:1px 1px;
     right: 60px;
-    border-color: #269abc;
-    border: 1px solid #269abc;
+    border-color: #FFC000;
+    border: 1px solid #FFC000;
 }
 
 .iconColapsarContenidos{
@@ -1295,24 +1305,24 @@ border: 1px solid red;
     width: 30px;
     height: 30px;
     background-color: transparent;  
-        
 }
 
 .dijitCheckBoxIcon {
     background-position: -15px;
     background-image: url('../img/expandAll.png');
-    color: #3dc21b;
+    color: #FFC000;
     background-color: transparent;
 }
 
 .agsjsTOCRootLayerLabel {
     font-size: 14pt;
     font-weight: bold;
-    color: #269abc;
+    color: #FFC000;
 }
 
 .estiloBotonBarra{
-   width: 50px; 
+   width: 45px; 
+   cursor: pointer;
     
 }
 
@@ -1322,17 +1332,17 @@ border: 1px solid red;
 }
 
 .btnTextoMedirDistancia{
-   border: 2px #269abc solid;
+   border: 2px #FFC000 solid;
    border-radius: 6px;   
 }
 .btnTextoMedirArea{
-   border: 2px #269abc solid;
+   border: 2px #FFC000 solid;
    border-radius: 6px; 
    margin-left: 40px;
 }
 
 .btnTextoBuscar{
-   border: 2px #269abc solid;
+   border: 2px #FFC000 solid;
    border-radius: 6px; 
 }
 .agsjsTOCNode{
@@ -1345,3 +1355,13 @@ border: 1px solid red;
     width: 200px;
 }
 
+/*.container{
+    float: left;
+    margin: 5px;
+    padding: 15px;
+    max-width: 1000px;
+    height: 1000px;
+    border: 1px solid black;
+    position: absolute;
+    
+}*/

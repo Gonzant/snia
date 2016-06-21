@@ -9,7 +9,8 @@
         <!--<link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" />-->            
         <link href="../js/lib/bootstrap/css/estilos.css" rel="stylesheet">
         <link href="../js/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
         <link href="../js/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     </head>
@@ -18,20 +19,22 @@
         
         <div id="divStandby">
                  
-            <div id="divContenedorIndex" class="container-fluid" style="display: none" >
+            <div id="divContenedorIndex" class="w3-container" style="display: none" >
                 
-                <header class="jumbotron-fm"> 
-<!--                    <img id="logoMGAP" src="../js/snia/img/logoChico.png">-->
+                <div id="divLogoMGAP" class="divLogoMGAP">
+                    <img id="logoMGAP" src="../js/snia/img/logo.png">
+                </div>
+                   
                     
-                    <div id="divToolbarTitulo" class="divToolbarTitulo"> </div>
-                </header>
+               <div id="divToolbarTitulo" class="divToolbarTitulo w3-container"> </div>
+              
                 
-                <div id="divToolbar" class="divToolbar">
+                <div id="divToolbar" class="divToolbar w3-container">
                     
                 </div>               
             </div>
             
-            <div id="divMapa">
+            <div id="divMapa" class="w3-container">
             </div>
         </div>
         <!-- Configuro Dojo -->
@@ -52,5 +55,7 @@
         <script type="text/javascript" src="../js/lib/jspdf/jspdf.min.js"></script>
         <!-- TODO -->
         <script type="text/javascript" src="../js/snia/app.js"></script>
+                
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </body>
 </html>
