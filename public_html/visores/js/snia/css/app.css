@@ -1227,3 +1227,12 @@ div p {
     height: 40px;
     background-color: transparent;   
 }
+
+.iconExpandContenidos{
+    background-image: url('../img/expandAll.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;  
+}
