@@ -170,7 +170,7 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             width: 150
             },this._mapasRefNode);
             this._overviewMapDijit.startup();
-            this._overviewMapDijit.resize(1,1);
+            
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
