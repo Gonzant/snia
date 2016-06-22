@@ -1336,7 +1336,7 @@ border: 1px solid red;
     border: 2px #FFC000 solid;
     background-color: transparent;
     padding:1px 1px 1px 1px;
-    background-image: url('../img/collapseAll.png');
+    background-image: url('../img/collapseAllGris.png');
     background-repeat: no-repeat;
     background-size: 40px 40px;
     width: 40px;
@@ -1345,7 +1345,7 @@ border: 1px solid red;
 }
 
 .iconColapsarContenidos{
-    background-image: url('../img/collapseAll.png');
+    background-image: url('../img/collapseAllGris.png');
     background-repeat: no-repeat;
     background-size: 40px 40px;
     width: 40px;
@@ -1353,7 +1353,7 @@ border: 1px solid red;
     border: none;
 }
 .iconExpandContenidos{
-    background-image: url('../img/expandAll.png');
+    background-image: url('../img/expandAllGris.png');
     background-repeat: no-repeat;
     background-size: 40px 40px;
     width: 40px;
@@ -1367,7 +1367,6 @@ border: 1px solid red;
 
 .dijitCheckBoxIcon {
     background-position: -15px;
-    background-image: url('../img/expandAll.png');
     color: #FFC000;
     background-color: transparent;
 }
@@ -1422,6 +1421,8 @@ border: 1px solid red;
     position: absolute;
     
 }*/
+
+
 
 /*.claro .dijitTreeExpando {
     width: 40px;
