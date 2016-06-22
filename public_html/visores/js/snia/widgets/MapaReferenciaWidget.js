@@ -29,6 +29,11 @@ define([
     //"use strict";
 var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
+        resize : function () {
+            if (this._overviewMapDijit) {
+                this._overviewMapDijit.resize(1,1);
+            }
+        },
         options : {
             theme : "sitWidget",
             mapa : null,
@@ -160,11 +165,12 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             this._overviewMapDijit = new OverviewMap({
             map: this.mapa.map,
             visible: true,
-            expandFactor: 3,
+            expandFactor: 3,            
             height: 150,
             width: 150
             },this._mapasRefNode);
             this._overviewMapDijit.startup();
+            this._overviewMapDijit.resize(1,1);
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
@@ -187,18 +193,10 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
         },
         _reload: function (){
        
-            this._overviewMapDijit.overviewMap = this.mapa.map;
-            this._overviewMapDijit.resize(350,350);
-            console.log("ad");
+            this._overviewMapDijit.destroy();
             
-//            this._overviewMapDijit = new OverviewMap({
-//            map: this.mapa.map,
-//            visible: true,
-//            expandFactor: 3,
-//            height: 150,
-//            width: 150
-//            },this._mapasRefNode);
-//            this._overviewMapDijit.startup();
+            //lang.hitch(this,this._initOverviewMap());
+            this._initOverviewMap();
        
            
         }
