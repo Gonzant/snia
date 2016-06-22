@@ -162,25 +162,25 @@ define([
             this._i = 0;
             //Tooltip para botón Agregar Área
             ttAgregar = new Tooltip({
-                connectId: ["btnAgregarArea"],
+                connectId: [this._agregarArea.domNode],
                 label: this._i18n.widgets.AreasConeatWidget.lbTtAgregar,
                 position: ['below']
             });
             //Tooltip para botón Cancelar Agregar Área
             ttCancelar = new Tooltip({
-                connectId: ["btnCancelarAgregarArea"],
+                connectId: [this._cancelarAgregarArea.domNode],
                 label: this._i18n.widgets.AreasConeatWidget.lbTtCancelar,
                 position: ['below']
             });
             //Tooltip para botón Remover Todas Área
             new Tooltip({
-                connectId: ["btnRemoverTodasAreas"],
+                connectId: [this._removerTodasAreas.domNode],
                 label: this._i18n.widgets.AreasConeatWidget.lbTtRemoverT,
                 position: ['below']
             });
             //Tooltip para botón Croquis Área
             new Tooltip({
-                connectId: ["btnCroquisAreas"],
+                connectId: [this._croquisAreas.domNode],
                 label: this._i18n.widgets.AreasConeatWidget.lbTtCroquis,
                 position: ['below']
             });

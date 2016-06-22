@@ -34,7 +34,7 @@ html, body {
     background-size: 40px 40px;
     width: 40px;
     height: 40px; 
-    border:0px;
+    border:none;
     background-color: transparent;
 }
 .iconCroquisAreas {
@@ -266,6 +266,7 @@ Dialogos:
 
 .dijitButtonNode:hover {
     background: transparent;
+    border: 0px solid transparent;
 }
 
 .claro .dijitDialogTitle {
@@ -308,10 +309,12 @@ Dialogos:
 
 /*Imagenes*/
 .dijitButtonText {
+    border: 1px;
+    border-color: transparent;
+
+    padding: 0 0.0em;
     text-align: center;
-    padding: 0 0em; 
-    border: 3px;
-    border-color: #FFC000;
+
 }
 
 
@@ -684,7 +687,7 @@ tituloTPAyuda{
     top: 130px;
     padding-top: 14px;
     padding-bottom: 1px;
-    right: 28px;
+    right: 30px;
     background-color: #FFC000;
     border-style: solid;
     border-width: 5px;
@@ -776,7 +779,7 @@ Dialogos:
     padding: 1px 1px 1px 1px;
     border-radius: 4px;
     background-color: transparent;
-    border:2px;
+    border:0px transparent;
 }
 
 .BC{
@@ -801,6 +804,7 @@ Dialogos:
 .dijitButtonText {
     text-align: center;
     padding: 0 0em; 
+    border: 1px transparent;
 }
 
 .SmallButtonBH {
@@ -808,16 +812,16 @@ Dialogos:
     background-color: transparent;
     padding:1px;
     width: 30px;
-    border-color: transparent !important
+    border: 0px transparent !important
 }
 .SmallButtonBH:hover{
-    border-color: #ffffff;
+    border-color: transparent;
     border-style: solid;
 }
 
 .dijitReset {
-    /* margin: 0; */
-    /* border: 0; */
+     margin: 0; 
+     border: 0; 
     /* padding: 0; */
     /* font: inherit; */
      line-height: normal; 
@@ -840,7 +844,15 @@ Dialogos:
     cursor:pointer;
     border: 2px #FFC000 solid;
     background-color: transparent;
-    padding:1px 1px;
+    padding:1px 1px 1px 1px;
+/*    height: 30px;*/
+}
+
+.SmallButtonTransparentAmarillo {
+    cursor:pointer;
+    border: 2px #FFC000 solid;
+    background-color: #FFC000;
+    padding:1px 1px 1px 1px;
 /*    height: 30px;*/
 }
 
@@ -1050,6 +1062,7 @@ tituloTPAyuda{
 }
 .claro .dijitBorderContainer-dijitContentPane {
     background-color: transparent;
+    border-color: transparent;
 }
 
 .claro .dijitTreeRowSelected {
@@ -1075,6 +1088,7 @@ tituloTPAyuda{
 
 .claro .dijitContentPane {
      padding: 3px; 
+     border-color: transparent;
 }
 
 .claro .dijitBorderContainer {
@@ -1181,7 +1195,7 @@ div p {
 }
 
 .claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
-        border: 1px solid #FFC000;
+        border: 1px solid transparent;
 }
 
 
@@ -1316,22 +1330,39 @@ border: 1px solid red;
      border: solid #FFC000;   
 }
 
+
+.btnColapsarContenidos {
+    cursor:pointer;
+    border: 2px #FFC000 solid;
+    background-color: transparent;
+    padding:1px 1px 1px 1px;
+    background-image: url('../img/collapseAll.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
+/*    height: 30px;*/
+}
+
 .iconColapsarContenidos{
     background-image: url('../img/collapseAll.png');
     background-repeat: no-repeat;
     background-size: 40px 40px;
     width: 40px;
-    height: 40px;
-    background-color: transparent;   
+    height: 40px; 
+    border: none;
 }
-
 .iconExpandContenidos{
     background-image: url('../img/expandAll.png');
     background-repeat: no-repeat;
     background-size: 40px 40px;
     width: 40px;
-    height: 40px;
-    background-color: transparent;  
+    height: 40px; 
+    border: none;
+}
+
+.iconColpasarContenidos:focus{
+    border: 0 transparent;
 }
 
 .dijitCheckBoxIcon {
