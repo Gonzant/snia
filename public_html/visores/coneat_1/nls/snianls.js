@@ -69,7 +69,12 @@ define({
                 
             },
             "AreasConeatWidget": {
-                lbMantenerGeo: "Mantener geometría"   
+                lbMantenerGeo: "Mantener geometría",
+                lbTtAgregar: "Agregar Area",  
+                lbTtCancelar: "Cancelar Area",
+                lbTtRemoverT: "Remover todas las áreas",
+                lbTtCroquis: "Croquis de las áreas",
+                msgAgregarArea: "Se necesita al menos un área para el croquis"
             },
             "MedirWidget": {
                 lbArea: "Area",

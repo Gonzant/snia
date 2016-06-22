@@ -60,28 +60,28 @@ html, body {
 .iconMarcarUbicacion {
     background-image: url('../img/IconBandera.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     background-color: #E1E1E1;
 }
 
 .iconCancelarAgregar {
     background-image: url('../img/cancelarAgregar.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;   
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;   
 }
 
 
 .iconReporte {
     background-image: url('../img/reporte.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
+    background-size: 40px 40px;
     background-color: #E1E1E1;
-    width: 30px;
-    height: 30px;     
+    width: 40px;
+    height: 40px;     
 }
 
 .iconAyuda {
@@ -99,9 +99,9 @@ html, body {
 .iconPDFCubrimientoBuscar{
     background-image: url('../img/pdf.png');
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 35px;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 45px;
     border:0px;
     background-color: transparent;
 }
@@ -109,36 +109,36 @@ html, body {
 .iconTXTCubrimientoBuscar{
     background-image: url('../img/txt.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 35px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 45px; 
     border:0px;
     background-color: transparent;
 }
 .iconAcercarSeleccionBuscar{
     background-image: url('../img/finder.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
 .iconDesSeleccionBuscar{
     background-image: url('../img/remover.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
 .iconDeleccionarTodoBuscar{
     background-image: url('../img/todo.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
@@ -146,9 +146,9 @@ html, body {
 .iconCroquisBuscar{
     background-image: url('../img/reporte.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
@@ -156,9 +156,9 @@ html, body {
 .iconCubrimientoBuscar{
     background-image: url('../img/contenido-negro.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px; 
     border:0px;
     background-color: transparent;
 }
@@ -204,9 +204,9 @@ html, body {
 .iconImprimir{
     background-image: url('../img/imprimir.png');    
     background-repeat: no-repeat; 
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
 }
 
 .lbImprimir{
@@ -524,7 +524,7 @@ tituloTPAyuda{
 }
 
 .claro .dijitContentPane {
-     padding: 3px; 
+     padding: 2px; 
 }
 
 .claro .dijitBorderContainer {
@@ -776,10 +776,8 @@ Dialogos:
     padding: 1px 1px 1px 1px;
     border-radius: 4px;
     background-color: transparent;
-    border-color: #FFC000;
     border:2px;
 }
-
 
 .BC{
     border: 0px;
@@ -815,6 +813,15 @@ Dialogos:
 .SmallButtonBH:hover{
     border-color: #ffffff;
     border-style: solid;
+}
+
+.dijitReset {
+    /* margin: 0; */
+    /* border: 0; */
+    /* padding: 0; */
+    /* font: inherit; */
+     line-height: normal; 
+     color: inherit; 
 }
 
 .SmallButton {
@@ -1172,6 +1179,12 @@ div p {
     width: 16px;
     height: 16px;
 }
+
+.claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
+        border: 1px solid #FFC000;
+}
+
+
 .dojoxGrid .table {
     white-space: normal;
     line-height: normal;
@@ -1296,27 +1309,28 @@ border: 1px solid red;
 .colapsarButtonC {
     border-radius:5px;
     background-color: transparent;
-    padding:1px 1px;
-    right: 60px;
-    border-color: #FFC000;
     border: 2px solid #FFC000;
+}
+
+.colapsarButtonC:active{
+     border: solid #FFC000;   
 }
 
 .iconColapsarContenidos{
     background-image: url('../img/collapseAll.png');
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
     background-color: transparent;   
 }
 
 .iconExpandContenidos{
     background-image: url('../img/expandAll.png');
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
     background-color: transparent;  
 }
 
@@ -1378,9 +1392,9 @@ border: 1px solid red;
     
 }*/
 
-.claro .dijitTreeExpando {
-    width: 20px;
-    height: 20px;
-    background-position: -35px 0;
+/*.claro .dijitTreeExpando {
+    width: 40px;
+    height: 40px;
     background-repeat: no-repeat; 
-}
+    background-position: -25px 0; 
+}*/

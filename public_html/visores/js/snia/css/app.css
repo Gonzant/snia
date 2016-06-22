@@ -1217,3 +1217,13 @@ div p {
 .estiloBotonBarra{
     width: 30px;
 }
+
+
+.iconColapsarContenidos{
+    background-image: url('../img/collapseAll.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;   
+}

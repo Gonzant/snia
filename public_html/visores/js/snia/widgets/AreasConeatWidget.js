@@ -77,8 +77,6 @@ define([
                     on(this._agregarArea, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._cancelarAgregarArea, a11yclick, lang.hitch(this, this._cancelarAgregarDibujo)),
                     on(this._removerTodasAreas, a11yclick, lang.hitch(this, this._eliminarDibujos)),
-//                    on(this._desmarcarArea, a11yclick, lang.hitch(this, this._desmarcarDibujoSeleccionado)),
-//                    on(this._removerAreaSeleccionada, a11yclick, lang.hitch(this, this._removerDibujoSeleccionado)),
                     on(this._croquisAreas, a11yclick, lang.hitch(this, this._croquis))
                 );
             }
@@ -120,22 +118,18 @@ define([
             if (this.get("active")) {
                 this._agregarArea.setAttribute('enabled', true);
                 this._cancelarAgregarArea.setAttribute('enabled', true);
-                //this._desmarcarArea.setAttribute('enabled', true);
-                //this._removerAreaSeleccionada.setAttribute('enabled', true);
                 this._removerTodasAreas.setAttribute('enabled', true);
                 this._croquisAreas.setAttribute('enabled', true);
                 this._cpg3SR.agregarMapa(this.mapa);
                 this.emit("active-changed");
-                this._initDibujo;                          
+                this._initDibujo;
             } else {
                 this._dibujo.desactivar();
-                if (!this._mantenerGeom){
+                if (!this._mantenerGeom) {
                     this._cpg3SR.removerMapa();
-                }    
+                }
                 this._agregarArea.setAttribute('disabled', true);
                 this._cancelarAgregarArea.setAttribute('disabled', true);
-                //this._desmarcarArea.setAttribute('disabled', true);
-                //this._removerAreaSeleccionada.setAttribute('disabled', true);
                 this._removerTodasAreas.setAttribute('disabled', true);
                 this._croquisAreas.setAttribute('disabled', true);
                 this._desactivarDibujo();
@@ -165,42 +159,29 @@ define([
         _init: function () {
             var server, ttAgregar, ttCancelar, tteliminar, ttcroquis, checkBox;
             this._visible();
-//            this._active();
             this._i = 0;
             //Tooltip para botón Agregar Área
             ttAgregar = new Tooltip({
                 connectId: ["btnAgregarArea"],
-                label: "Agregar área",
+                label: this._i18n.widgets.AreasConeatWidget.lbTtAgregar,
                 position: ['below']
             });
             //Tooltip para botón Cancelar Agregar Área
-            ttCancelar= new Tooltip({
+            ttCancelar = new Tooltip({
                 connectId: ["btnCancelarAgregarArea"],
-                label: "Cancelar agregar área",
-                position: ['below']
-            });
-            //Tooltip para botón Desmarcar Área
-            tteliminar = new Tooltip({
-                connectId: ["btnDesmarcarArea"],
-                label: "Desmarcar área",
-                position:['below']
-            });
-            //Tooltip para botón Remover Área
-            ttcroquis= new Tooltip({
-                connectId: ["btnRemoverArea"],
-                label: "Remover área",
+                label: this._i18n.widgets.AreasConeatWidget.lbTtCancelar,
                 position: ['below']
             });
             //Tooltip para botón Remover Todas Área
             new Tooltip({
                 connectId: ["btnRemoverTodasAreas"],
-                label: "Remover todas las áreas",
+                label: this._i18n.widgets.AreasConeatWidget.lbTtRemoverT,
                 position: ['below']
             });
             //Tooltip para botón Croquis Área
             new Tooltip({
                 connectId: ["btnCroquisAreas"],
-                label: "Croquis de las áreas",
+                label: this._i18n.widgets.AreasConeatWidget.lbTtCroquis,
                 position: ['below']
             });
             this._markerSymbol = new SimpleMarkerSymbol();
@@ -228,7 +209,6 @@ define([
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");
             this._standbyAreas.startup();
-            
             checkBox = new CheckBox({
                 name: "checkBox",
                 value: "",
@@ -247,7 +227,7 @@ define([
         },
         _croquis: function () {
             if (this._i === 0) {
-                this._msgAgregarArea.innerHTML = "Se necesita al menos un área para el croquis";
+                this._msgAgregarArea.innerHTML = this._i18n.widgets.AreasConeatWidget.msgAgregarArea;
             } else {
                 this._msgAgregarArea.innerHTML = " ";
                 var g, area, featureSet, parametros, areas = [];

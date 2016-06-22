@@ -21,12 +21,13 @@ define([
     "agsjs/dijit/TOC",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
+    "dijit/Tooltip",
     "dojo/fx",
     "dojo/domReady!",
     "dojox/layout/ScrollPane"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC) {
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -64,15 +65,18 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                if (this.config.dynamicMapServiceLayers) {
-                    this._dynamicMapServiceLayers = this.config.dynamicMapServiceLayers;
-                }
-                this._loadDynamicMapServiceLayers();
-            }
+                
                 this.own(
                     on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
                     on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick))
                 );
+        
+                if (this.config.dynamicMapServiceLayers) {
+                    this._dynamicMapServiceLayers = this.config.dynamicMapServiceLayers;
+                }
+                this._loadDynamicMapServiceLayers();
+        }
+        
         },
         // start widget. called by user
         startup: function () {
@@ -118,10 +122,27 @@ define([
             }
         },
         _init: function () {
+            var ttColapsar, ttExpandir;
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
+             
+            //Tooltip para botón colapsar
+            ttColapsar= new Tooltip({
+                connectId: [this._colapsarNode.domNode],
+                label: "Colapsar",
+                position: ['below']               
+            });
+                      
+            //Tooltip para botón colapsar
+            ttExpandir= new Tooltip({
+                connectId: [this._expandirNode.domNode],
+                label: "Expandir Todo",
+                position: ['below']
+            });
+            
             this._active();
+            
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
