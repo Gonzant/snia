@@ -76,7 +76,7 @@
             "widget": "widgets/MedirWidget",
             "title": "Medir",
             "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
-            "icono": "../js/snia/img/regla.png",
+            "icono": "../js/snia/img/reglaGris.png",
             "toggle": false,
             "widgetConfig": {
                 
