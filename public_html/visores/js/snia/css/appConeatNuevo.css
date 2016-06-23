@@ -528,6 +528,7 @@ tituloTPAyuda{
 
 .claro .dijitContentPane {
      padding: 2px; 
+    background: transparent;
 }
 
 .claro .dijitBorderContainer {
