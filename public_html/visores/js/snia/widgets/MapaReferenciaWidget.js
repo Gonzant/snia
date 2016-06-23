@@ -59,7 +59,7 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._active);
-            this.watch("prueba", lang.hitch(this,this._reload));
+            this.watch("reloadMapaRef", lang.hitch(this,this._reload));
             this._overviewMapDijit = [];
             // classes
             this._css = {
@@ -123,9 +123,8 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             lang.hitch(this,this._initOverviewMap());
 
             this._active();
-            this.emit("load", {});
-            
-                on(this.mapa, "prueba", lang.hitch(this, this._reload))
+            this.emit("load", {});            
+                on(this.mapa, "reloadMapaRef", lang.hitch(this, this._reload))
                ;
        
         },
