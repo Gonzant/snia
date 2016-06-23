@@ -59,7 +59,7 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._active);
-            this.watch("prueba", this._reload);
+            this.watch("prueba", lang.hitch(this,this._reload));
             this._overviewMapDijit = [];
             // classes
             this._css = {
@@ -165,12 +165,14 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             this._overviewMapDijit = new OverviewMap({
             map: this.mapa.map,
             visible: true,
-            expandFactor: 3,            
-            height: 150,
-            width: 150
-            },this._mapasRefNode);
+            expandFactor: 3,  
+            attachTo: "bottom-left",
+            height: 170,
+            width: 170
+            });//,this._mapasRefNode);
             this._overviewMapDijit.startup();
-            
+            this._overviewMapDijit.placeAt(this._mapasRefNode);
+          
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
@@ -195,8 +197,8 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
        
             this._overviewMapDijit.destroy();
             
-            //lang.hitch(this,this._initOverviewMap());
-            this._initOverviewMap();
+            lang.hitch(this,this._initOverviewMap());
+            //this._initOverviewMap();
        
            
         }
