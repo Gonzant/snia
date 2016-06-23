@@ -63,47 +63,15 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             this._overviewMapDijit = [];
             // classes
             this._css = {
-//                baseClassRadioButton: "sniaRadioButton"
+
             };
         },
         postCreate: function () {
             this.inherited(arguments);
-            if (this.mapa) {
-                //var tr, td, boton, label;
+            if (this.mapa) {                
                 if (this.config.mapasBase) {
                     this._mapasBase = this.config.mapasBase;
-                }
-        
-              /*  arrayUtil.forEach(this._mapasBase, lang.hitch(this, function (item, index) {
-                    if (index % 4 === 0) {
-                        //Cada cuatro mapas creo una fila nueva
-                        tr = domConstruct.create("tr");
-                        domConstruct.place(tr, this._mapasBaseNode);
-                    }
-                    //Una celda para cada mapa
-                    td = domConstruct.create("td");
-                    domConstruct.place(td, tr);
-                   
-//                    //boton para seleccionar mapa
-                    boton = new Button({
-                        id: item.nombre,
-                        disabled: false,
-                        innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65"> <br>' + item.nombre,
-                        name: "mapasBaseOptions"
-                    });
-                    boton.placeAt(td).startup();
-                    
-                    this._botones.push(boton);
-                    
-                    //Cargo el mapa base para el boton
-                    item.map = new ArcGISTiledMapServiceLayer(this._mapasBase[index].url);
-                    //Listener para click en el boton    
-                    this.own(on(boton, a11yclick, lang.hitch(this, function () {
-                        boton.set('visible', false);
-                        this.mapa.setMapaBase(item.map);
-                        
-                    })));
-                }));*/
+                }                      
             }
         },
         // start widget. called by user
@@ -169,7 +137,7 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
             attachTo: "bottom-left",
             height: 170,
             width: 170
-            });//,this._mapasRefNode);
+            });
             this._overviewMapDijit.startup();
             this._overviewMapDijit.placeAt(this._mapasRefNode);
           
@@ -180,27 +148,12 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
                 domClass.add(this.domNode, newVal);
             }
         },
-        _active: function () {
-            if (this.get("active")) {
-                //alert("ddddddddd");
-                //this.show();
-                //this.destroy();
-            } else {
-               //this.startup();
-               //this._init();
-                    //this.hide();
-                    //alert("ccccccccccccc");
-            }
+        _active: function () {        
             this.emit("active-changed", {});
         },
-        _reload: function (){
-       
+        _reload: function (){      
             this._overviewMapDijit.destroy();
-            
-            lang.hitch(this,this._initOverviewMap());
-            //this._initOverviewMap();
-       
-           
+            lang.hitch(this,this._initOverviewMap());                            
         }
     });
     return widget;
