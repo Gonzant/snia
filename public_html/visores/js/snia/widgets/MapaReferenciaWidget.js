@@ -1,36 +1,35 @@
 /*
- * js/snia/widgets/MapasBaseWidget
+ * js/snia/widgets/MapasReferenciaWidget
  * 
  */
 /*global define, console*/
 /*jslint nomen: true */
+
 define([
     "dojo/on",
     "dojo/Evented",
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dojo/_base/array",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
-    "dijit/a11yclick",
-    "dojo/text!./templates/MapasBaseWidget.html",
+    "dojo/text!./templates/MapaReferenciaWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
-    "dojo/dom-construct",
-    "esri/layers/ArcGISTiledMapServiceLayer",
-    "dijit/form/RadioButton",    
-    "dijit/layout/ContentPane",
-    "dijit/form/Button"
-], function (on, Evented, declare, lang, arrayUtil,
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    template, i18n, domClass, domStyle, domConstruct,
-    ArcGISTiledMapServiceLayer,
-    RadioButton, Button) {
+    "esri/dijit/OverviewMap"
+], function (on, Evented, declare, lang,
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
+    template, i18n, domClass, domStyle,
+     OverviewMap) {
     //"use strict";
-    var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
+var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
+        resize : function () {
+            if (this._overviewMapDijit) {
+                this._overviewMapDijit.resize(1, 1);
+            }
+        },
         options : {
             theme : "sitWidget",
             mapa : null,
@@ -56,54 +55,19 @@ define([
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._active);
+            this.watch("reloadMapaRef", lang.hitch(this, this._reload));
+            this._overviewMapDijit = [];
             // classes
             this._css = {
-//                baseClassRadioButton: "sniaRadioButton"
+
             };
         },
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                var tr, td, boton, label;
                 if (this.config.mapasBase) {
                     this._mapasBase = this.config.mapasBase;
                 }
-                arrayUtil.forEach(this._mapasBase, lang.hitch(this, function (item, index) {
-                    if (index % 4 === 0) {
-                        //Cada cuatro mapas creo una fila nueva
-                        tr = domConstruct.create("tr");
-                        domConstruct.place(tr, this._mapasBaseNode);
-                    }
-                    //Una celda para cada mapa
-                    td = domConstruct.create("td");
-                    domConstruct.place(td, tr);
-                                     
-                    //boton para seleccionar mapa
-                    boton = new Button({
-                        id: item.nombre,
-                        disabled: false,
-                        innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65"> <br>' + item.nombre,
-                        name: "mapasBaseOptions"
-                    });
-                    boton.placeAt(td).startup();
-                    
-                    this._botones.push(boton);
-                    
-                    //Cargo el mapa base para el boton
-                    item.map = new ArcGISTiledMapServiceLayer(this._mapasBase[index].url);
-                    //Guardo el boton
-                    this._mapasBase[index].boton = boton;
-                    //Listener para remover el boton si el mapa falla
-                    on(item.map, 'error', lang.hitch(this, function () {
-                        this._mapasBase[index].boton.destroy();
-                    }));   
-                    //Listener para click en el boton    
-                    this.own(on(boton, a11yclick, lang.hitch(this, function () {
-                        boton.set('visible', false);
-                        this.mapa.setMapaBase(item.map);
-                        
-                    })));
-                }));
             }
         },
         // start widget. called by user
@@ -111,7 +75,7 @@ define([
             // mapa no definido
             if (!this.mapa) {
                 this.destroy();
-                console.log('MapasBaseWidget::requiere un mapa');
+                console.log('MapasReferenciaWidget::requiere un mapa');
             }
             //  mapa cargado
             if (this.mapa.loaded) {
@@ -152,28 +116,40 @@ define([
         _init: function () {
             this._visible();
             this.set("loaded", true);
+            lang.hitch(this, this._initOverviewMap());
+
             this._active();
             this.emit("load", {});
-            this._mapasBaseBoton=0;
+            on(this.mapa, "reloadMapaRef", lang.hitch(this, this._reload));
+
         },
-        _updateThemeWatch: function (attr, oldVal, newVal) {
+        _initOverviewMap: function () {
+            this._overviewMapDijit = new OverviewMap({
+                map: this.mapa.map,
+                visible: true,
+                expandFactor: 3,
+                attachTo: "bottom-left",
+                height: 170,
+                width: 170
+            });
+            this._overviewMapDijit.startup();
+            this._overviewMapDijit.placeAt(this._mapasRefNode);
+        },
+        _updateThemeWatch: function (oldVal, newVal) {
             if (this.get("loaded")) {
                 domClass.remove(this.domNode, oldVal);
                 domClass.add(this.domNode, newVal);
             }
         },
         _active: function () {
-            if (this.get("active")) {
-                arrayUtil.forEach(this._botones, function (boton) {
-                    boton.set('active', false);
-                });
-            } else {
-                arrayUtil.forEach(this._botones, function (boton) {
-                    boton.set('disabled', true);
-                });
-            }
             this.emit("active-changed", {});
+        },
+        _reload: function () {
+            this._overviewMapDijit.destroy();
+            lang.hitch(this, this._initOverviewMap());
         }
     });
     return widget;
 });
+
+
