@@ -228,6 +228,7 @@ define([
             this._visible();
             this.set("loaded", true);
             this.emit("reload", {});
+            this.emit("reloadMapaRef",{});
         },
         _restartup: function () {
             // map no esta definido
