@@ -22,13 +22,12 @@ define([
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/layers/FeatureLayer",
-    "esri/toolbars/navigation",
     "modulos/Grafico3SR"
 ], function (on, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,
     template, i18n, domClass, domStyle,
     Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,
-    Navigation, Grafico3SR) {
+    Grafico3SR) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, Evented], {
         templateString: template,
@@ -180,7 +179,6 @@ define([
                 map: this.map,
                 scalebarUnit: "metric"
             });
-            navToolbar = new Navigation(this.map);
            
         },
         _dibujoEnabledChanged: function () {
