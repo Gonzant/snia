@@ -231,7 +231,35 @@ html, body {
     z-index: 30;
     position: absolute;
     width: 0px;
-    height: 15%;
+    height: 7%;
+    background: #fff;
+    
+    width: 140px;
+    height: 38px;
+    position:absolute;
+    bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 5px;
+    left: 50px;
+    background-color: #fff;
+    
+    
+    
+}
+
+.escala{
+    
+/*    z-index: 21;
+    width: 80px;
+    height: 30px;
+    position:absolute;
+    bottom: 40px;
+    padding-top: 14px;
+    padding-bottom: 1px;
+    left: 60px;
+    background-color: #fff;*/
 }
 
 /*
@@ -284,8 +312,8 @@ Dialogos:
     border-color: transparent;
     border-top: none;    
     text-align: center;
-    background-color: #fff;
-    border-radius:7px;
+    background-color: #E1E1E1;
+    border-radius:4px;
 }
 .BC{
     border: 0px;
@@ -1289,7 +1317,7 @@ border: 1px solid red;
 
 .dijitDialogPaneContent {
     border-style: solid;
-    background: #fff no-repeat top left;
+    background: #E1E1E1 no-repeat top left;
     border-width: 2px;
     border-radius: 5px;
     border:1px #FFC000;
@@ -1303,7 +1331,7 @@ border: 1px solid red;
 }
 
 .claro .dijitDialogPaneContent {
-    background: #ffffff repeat-x top left;
+    background: #E1E1E1 repeat-x top left;
     border-top: 2px solid #FFC000;
     padding: 10px 8px;
     position: relative;
@@ -1327,11 +1355,6 @@ border: 1px solid red;
     border: 2px solid #FFC000;
 }
 
-.colapsarButtonC:active{
-     border: solid #FFC000;   
-}
-
-
 .btnColapsarContenidos {
     cursor:pointer;
     border: 2px #FFC000 solid;
@@ -1348,17 +1371,17 @@ border: 1px solid red;
 .iconColapsarContenidos{
     background-image: url('../img/collapseAllGris.png');
     background-repeat: no-repeat;
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
     border: none;
 }
 .iconExpandContenidos{
     background-image: url('../img/expandAllGris.png');
     background-repeat: no-repeat;
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
     border: none;
 }
 

@@ -21,10 +21,10 @@ define([
     "agsjs/dijit/TOC",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
-    "dijit/Tooltip",
     "dojo/fx",
     "dojo/domReady!",
-    "dojox/layout/ScrollPane"
+    "dojox/layout/ScrollPane",
+    "dijit/Tooltip"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip) {
@@ -131,7 +131,7 @@ define([
             ttColapsar= new Tooltip({
                 connectId: [this._colapsarNode.domNode],
                 label: "Colapsar",
-                position: ['below']               
+                position: ['above']               
             });
                       
             //Tooltip para botón colapsar
