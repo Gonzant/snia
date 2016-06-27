@@ -19,12 +19,12 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "agsjs/dijit/TOC",
+    "dijit/Tooltip",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
     "dojo/domReady!",
-    "dojox/layout/ScrollPane",
-    "dijit/Tooltip"
+    "dojox/layout/ScrollPane"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip) {
