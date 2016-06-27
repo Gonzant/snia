@@ -20,68 +20,65 @@ html, body {
 }
 
 .iconAgregarAreas {
-    background-image: url('../img/agregar.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px transparent solid;
-    background-color: transparent;
+    background-image: url('../img/agregarGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 .iconCancelarAgregarAreas {
-    background-image: url('../img/cancelarAgregar.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:none;
-    background-color: transparent;
+    background-image: url('../img/cancelarAgregarGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 .iconCroquisAreas {
-    background-image: url('../img/reporte.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/reporteGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 
 .iconRemoverTodasAreasArea {
-    background-image: url('../img/limpiar.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/limpiarGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 
 .iconMarcarUbicacion {
     background-image: url('../img/IconBandera.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    background-color: #E1E1E1;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 
 .iconCancelarAgregar {
-    background-image: url('../img/cancelarAgregar.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px;   
+    background-image: url('../img/cancelarAgregarGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;  
 }
 
 
 .iconReporte {
-    background-image: url('../img/reporte.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    background-color: #E1E1E1;
-    width: 40px;
-    height: 40px;     
+    background-image: url('../img/reporteGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;    
 }
 
 .iconAyuda {
@@ -113,54 +110,49 @@ html, body {
     width: 40px;
     height: 45px; 
     border:0px;
-    background-color: transparent;
+    background-color: #FFC000;
 }
 .iconAcercarSeleccionBuscar{
-    background-image: url('../img/finder.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/acercarGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 .iconDesSeleccionBuscar{
-    background-image: url('../img/remover.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/removerGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 .iconDeleccionarTodoBuscar{
-    background-image: url('../img/todo.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/todoGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 
 .iconCroquisBuscar{
-    background-image: url('../img/reporte.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/reporteGris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 
 .iconCubrimientoBuscar{
-    background-image: url('../img/contenido-negro.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 40px; 
-    border:0px;
-    background-color: transparent;
+    background-image: url('../img/contenido-gris.png');    
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px; 
+    border: none;
 }
 
 .riesgoTitulo{
@@ -234,7 +226,7 @@ html, body {
     height: 7%;
     background: #fff;
     
-    width: 140px;
+    width: 150px;
     height: 38px;
     position:absolute;
     padding-top: 10px;
@@ -592,7 +584,7 @@ tituloTPAyuda{
  
  .claro .dijitTreeRow {
     font-weight: bolder;
-    font-size: 8pt;
+    font-size: 12pt;
 }
 .enabled
  {
@@ -1406,7 +1398,7 @@ border: 1px solid red;
 }
 
 .wAreas{
-    height: 104px;
+    height: 124px;
 }
 
 .btnTextoMedirDistancia{
