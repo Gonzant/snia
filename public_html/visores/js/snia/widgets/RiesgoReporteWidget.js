@@ -17,7 +17,8 @@ define([
     "dojo/dom-class",
     "dojo/dom-style",
     "dojo/_base/array",
-    "dijit/form/Button"
+    "dijit/form/Button",
+    "jspdf/jspdf.min"
 ], function (on, Evented, declare, lang, _WidgetBase, _TemplatedMixin,
     _WidgetsInTemplateMixin, template, i18n, domClass, domStyle, arrayUtil,
     Button) {
@@ -202,7 +203,7 @@ define([
         },
         _generarPDF: function () {
             var doc, columnaDerecha, columnaIzquierda, letraGrande, letraChica,
-                fila, listEtiqPred, rp, rg, ra, listEtiqGeoU, listEtiqGeo;
+                fila, listEtiqPred, rp, rg, ra, listEtiqGeoU;
             doc = new jsPDF();
             //Init variables
             columnaDerecha = parseInt(this._pdf.columnaDerecha, 10);
@@ -267,16 +268,6 @@ define([
 
             listEtiqGeoU = this.etiquetasGeoU.split(";");
             arrayUtil.forEach(listEtiqGeoU, lang.hitch(this, function (eg) {
-                var aux = eg.split(":");
-                if (aux[0] !== "") {
-                    doc.text(columnaIzquierda, fila, aux[0]);
-                    doc.text(columnaDerecha, fila, aux[1]);
-                    fila = fila + 10;
-                }
-            }));
-
-            listEtiqGeo = this.etiquetasGeo.split(";");
-            arrayUtil.forEach(listEtiqGeo, lang.hitch(this, function (eg) {
                 var aux = eg.split(":");
                 if (aux[0] !== "") {
                     doc.text(columnaIzquierda, fila, aux[0]);
