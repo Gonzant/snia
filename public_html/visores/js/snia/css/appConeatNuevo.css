@@ -1397,6 +1397,11 @@ border: 1px solid red;
     
 }
 
+.agsjsTOCRootLayerLabel2 {
+    font-size: 15pt;
+    font-weight: bold;
+}
+
 .wAreas{
     height: 124px;
 }
