@@ -1386,7 +1386,7 @@ border: 1px solid red;
 }
 
 .agsjsTOCRootLayerLabel {
-    font-size: 14pt;
+    font-size: 15pt;
     font-weight: bold;
     color: #FFC000;
 }
@@ -1395,11 +1395,6 @@ border: 1px solid red;
    width: 45px; 
    cursor: pointer;
     
-}
-
-.agsjsTOCRootLayerLabel2 {
-    font-size: 15pt;
-    font-weight: bold;
 }
 
 .wAreas{
