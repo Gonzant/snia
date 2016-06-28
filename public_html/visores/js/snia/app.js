@@ -133,7 +133,6 @@ snia.app = {
             if (mapaConfig.mapa.baseMapLayerBackup){
                 mapa.setMapaBaseBackup(
                     { 
-                        slider: false,
                         logo: false,
                         extent: new Extent(mapaConfig.mapa.baseMapLayerBackup.extent)
                     },
