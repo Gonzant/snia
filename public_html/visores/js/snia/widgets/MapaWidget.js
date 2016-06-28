@@ -24,9 +24,9 @@ define([
     "esri/layers/FeatureLayer",
     "modulos/Grafico3SR"
 ], function (on, Evented, declare, lang, arrayUtil,
-    _WidgetBase, _TemplatedMixin,
+    _WidgetBase, _TemplatedMixin,  
     template, i18n, domClass, domStyle,
-    Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,
+    Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,  
     Grafico3SR) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, Evented], {
@@ -135,8 +135,7 @@ define([
                 this.map.destroy();
                 this.set("baseMapLayer", tiledLayer);
                 this.set("map", new Map(this._mapNode, {
-                    logo: false,
-                    slider: false
+                    logo: false
                 }));
                 if (this.baseMapLayer) {
                     this.map.addLayer(this.baseMapLayer);
@@ -184,8 +183,7 @@ define([
                 this.map.destroy();
                 this.set("baseMapLayer", tiledLayer);
                 this.set("map", new Map(this._mapNode, {
-                    logo: false,
-                    slider: false
+                    logo: false
                 }));
                 if (this.baseMapLayer) {
                     this.map.addLayer(this.baseMapLayer);
