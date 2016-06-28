@@ -34,7 +34,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Productores_Familiares_CRSL/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Productores_Familiares_CRSL/MapServer",
                 "options": {
                         "id": "Producción",
                         "opacity": 0.7,
