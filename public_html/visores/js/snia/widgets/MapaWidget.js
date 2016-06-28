@@ -170,7 +170,7 @@ define([
             }
         },
         _init: function () {
-            var scalebar;
+            var scalebar, navToolbar;
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
@@ -178,6 +178,7 @@ define([
                 map: this.map,
                 scalebarUnit: "metric"
             });
+           
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-change", this.dibujoEnable);

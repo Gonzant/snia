@@ -6,16 +6,17 @@
         <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
         <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
         <link rel="stylesheet" href="../js/snia/css/appConeatNuevo.css">
-        <link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" />            
+        <!--<link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" />-->            
         <link href="../js/lib/bootstrap/css/estilos.css" rel="stylesheet">
         <link href="../js/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!--<link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/themes/calcite/dijit/calcite.css">-->
+        <!--<link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/themes/calcite/esri/esri.css">-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
         <link href="../js/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     </head>
 
-    <body class="claro" >
+    <body class="calcite claro" >
         
         <div id="divStandby">
                  
@@ -34,7 +35,9 @@
                 </div>               
             </div>
             
-            <div id="divMapa" class="w3-container">
+            <div class="escala"></div>
+            <div id="navToolbar" data-dojo-type="dijit/Toolbar"></div>
+            <div id="divMapa">
             </div>
         </div>
         <!-- Configuro Dojo -->
