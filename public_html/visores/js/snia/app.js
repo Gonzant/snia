@@ -123,7 +123,6 @@ snia.app = {
             mapaConfig = JSON.parse(mapaConfigJSON);
             mapa = new MapaWidget({
                 mapOptions : {
-                    slider: false,
                     logo: false,
                     extent: new Extent(mapaConfig.mapa.baseMapLayer.extent)
                 },
