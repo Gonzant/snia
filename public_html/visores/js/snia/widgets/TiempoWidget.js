@@ -193,7 +193,12 @@ define([
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             this.timeSlider.setThumbCount(2);
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
-            this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+            if (this._timeSlider.defecto) {
+                this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
+            } else {
+                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+            }
+
             this._intervaloTiempo = this.timeSlider.thumbIndexes;
             this.timeSlider.setThumbMovingRate(this._timeSlider.velocidad);
             this.timeSlider.startup();
