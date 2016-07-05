@@ -46,7 +46,11 @@
                 "timeSlider": {
                     "unidad":"esriTimeUnitsDays",
                     "cantidad": "1",
-                    "velocidad": "200"
+                    "velocidad": "200",
+                    "defecto": {
+                        "inicial": "0", 
+                        "final": "140"                          
+                    }
                 }                
             }
         },
