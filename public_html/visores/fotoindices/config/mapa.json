@@ -16,7 +16,7 @@
                                     }
             }
         },
-               "dynamicLayers": [ 
+        "dynamicLayers": [ 
             {
                 "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/FOTOPLANOS/MapServer",
                 "options": {
