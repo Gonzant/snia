@@ -21,6 +21,8 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "startsOpen": true,
+            "closable": false,
+            "draggable": false,
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }

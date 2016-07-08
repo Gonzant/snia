@@ -13,7 +13,9 @@ define([
     "dojo/_base/array",
     "dojo/text!./templates/ContenidosWidget.html",
     "dojo/i18n!./nls/snianls.js",
-    "dojo/dom-class", "dojo/dom-style",
+    "dojo/dom-class", 
+    "dojo/dom-style",
+    "dojo/query",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
@@ -23,10 +25,11 @@ define([
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
-    "dojo/domReady!",
-    "dojox/layout/ScrollPane"
+    "dojox/layout/ScrollPane",
+    "dojo/NodeList-traverse",
+    "dojo/domReady!"
 ], function (on,
-    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
+    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle, query,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip) {
 
     //"use strict";
@@ -47,6 +50,7 @@ define([
             this._i18n = i18n;
             this._dynamicMapServiceLayers = [];
             this._toc = [];
+            this._firstActive = true;
             //propiedades
             this.set("mapa", defaults.mapa);
             this.set("theme", defaults.theme);
@@ -75,7 +79,7 @@ define([
                     this._dynamicMapServiceLayers = this.config.dynamicMapServiceLayers;
                 }
                 this._loadDynamicMapServiceLayers();
-        }
+            }
         
         },
         // start widget. called by user
@@ -171,6 +175,7 @@ define([
         _active: function () {
             //FIXME
             this.emit("active-changed", {});
+            this._fijarUbicacion();
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
@@ -188,7 +193,25 @@ define([
                     item._rootLayerNode.expand();
                 }
             }));
-        }
+        },
+        _minimizar: function () {
+            if (this.get("visible")) {
+                this.hide();
+            } else {
+                this.show();
+            }
+        },
+        _fijarUbicacion: function () {
+            var cw = query("#" + this.domNode.id).parent().parent()[0];
+            if (this._firstActive){
+                this.own(on(query(".dijitDialogTitleBar",cw), a11yclick, lang.hitch(this, this._minimizar)));
+                this._firstActive = false;
+            }
+            domStyle.set(cw, {
+                top: '90px',
+                left: '0px'
+            });
+        }        
     });
     return widget;
 });
