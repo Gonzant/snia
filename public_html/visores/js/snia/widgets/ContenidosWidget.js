@@ -208,8 +208,8 @@ define([
                 this._firstActive = false;
             }
             domStyle.set(cw, {
-                top: '90px',
-                left: '0px'
+                top: '95px',
+                left: '20px'
             });
         }        
     });
