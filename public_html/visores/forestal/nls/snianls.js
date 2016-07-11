@@ -1,7 +1,7 @@
 define({
     "root": ({
         "widgets": {
-            "MapasBaseWidget": {
+            "MapasBaseWidget": { 
                 rbVectorial: "Vectorial",
                 rbImagen: "Imagen"
             },

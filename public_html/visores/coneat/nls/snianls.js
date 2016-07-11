@@ -40,7 +40,7 @@ define({
             },
             "ImprimirWidget": {
                 lbTemplateSelect: "Formato",
-                lbEscala: "Escala"
+                lbEscala: "Escala"                
             },
             "EstilosWidget": {
                 tTabMenu: "Menu",
