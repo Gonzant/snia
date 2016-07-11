@@ -28,6 +28,7 @@ define([
     "esri/symbols/SimpleFillSymbol",
     "dojo/store/Memory",
     "dijit/form/FilteringSelect",
+    "dijit/form/CheckBox",
     "dijit/form/TextBox",
     "dojox/grid/DataGrid",
     "dojo/data/ObjectStore",
@@ -40,7 +41,7 @@ define([
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle,
-    SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, TextBox,
+    SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, CheckBox, TextBox,
     DataGrid, ObjectStore, baseArray, Tooltip, Standby, domConstruct) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -140,7 +141,9 @@ define([
         },
         _activar: function () {
             if (!this.get("active")) {
-                this._cg3sr.removerMapa();
+                if (!this._mantenerGeom){
+                    this._cg3sr.removerMapa();
+                }
             } else {
                 this._cg3sr.agregarMapa(this.mapa);
             }
@@ -244,6 +247,14 @@ define([
                 this._arrayFiltros.push({filtro: filtro, id: index });
             }));
             lang.hitch(this, this._initGrid());
+            new CheckBox({
+                name: "checkBox",
+                value: "",
+                checked: false,
+                onChange: lang.hitch(this, function (b) {
+                    this._mantenerGeom = b;
+                })
+            }, this._mantenerGeo).startup();
         },
         _queryCombo : function () {
             arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature) {
