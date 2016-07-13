@@ -207,10 +207,10 @@ define([
                 this.own(on(query(".dijitDialogTitleBar",cw), a11yclick, lang.hitch(this, this._minimizar)));
                 this._firstActive = false;
             }
-            domStyle.set(cw, {
+           /*domStyle.set(cw, {
                 top: '95px',
                 left: '20px'
-            });
+            });*/
         }        
     });
     return widget;

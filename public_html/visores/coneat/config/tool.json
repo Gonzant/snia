@@ -23,6 +23,7 @@
             "startsOpen": true,
             "closable": false,
             "draggable": false,
+            "style": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }

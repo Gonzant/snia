@@ -81,11 +81,13 @@ snia.app = {
                             icono = herramientaConfig.icono,
                             closable =  (typeof herramientaConfig.closable  === "undefined" ?  true : herramientaConfig.closable),
                             draggable = (typeof herramientaConfig.draggable  === "undefined" ?  true : herramientaConfig.draggable),
+                            style = herramientaConfig.style,
                             msgToolTip = herramientaConfig.msgToolTip;
                         if (WidgetClass) {
                             herramientas.push({
                                 herramienta: new HerramientaDialog({
                                     startsOpen: startsOpen,
+                                    style: style,
                                     widget: new WidgetClass({ mapa: mapa, config: widgetConfig }),
                                     dialogParams: { title : title, closable: closable, draggable: draggable }
                                 }),

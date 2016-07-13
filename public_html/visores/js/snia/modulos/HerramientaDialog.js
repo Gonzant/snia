@@ -8,8 +8,9 @@ define([
     "dojo/Evented",
     "dojo/_base/declare",
     "dojo/_base/lang",
+    "dojo/dom-style",
     "dijit/Dialog"
-], function (Evented, declare, lang, Dialog) {
+], function (Evented, declare, lang, domStyle, Dialog) {
 //    "use strict";
     return declare([Evented], {
         options : {
@@ -50,6 +51,9 @@ define([
             } else {
                 this._dialog.show();
                 this.options.widget.set('active', true);
+                if (this.options.style) {
+                    domStyle.set(this._dialog.domNode, this.options.style);
+                }
             }
             this._visible = !this._visible;
             this._updateCanExecute();
