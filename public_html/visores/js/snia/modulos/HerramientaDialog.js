@@ -34,6 +34,11 @@ define([
                         onHide: lang.hitch(this, this._dialogHide)
                     });
                 this._dialog = new Dialog(dialogParams, this.options.dialogSrcNodeRef);
+                if (this.options.position) {//Si se define una posicion fija
+                    this._dialog._position = lang.hitch(this, function(){
+                        domStyle.set(this._dialog.domNode, this.options.position);
+                    });
+                }
                 this.options.widget.on('active-changed', lang.hitch(this, this._widgetActiveChanged));
                 this.options.widget.on('dibujo-enabled-changed', lang.hitch(this, this._widgetDibujoEnabledChanged));
                 this.canExecute = true;
@@ -51,9 +56,6 @@ define([
             } else {
                 this._dialog.show();
                 this.options.widget.set('active', true);
-                if (this.options.style) {
-                    domStyle.set(this._dialog.domNode, this.options.style);
-                }
             }
             this._visible = !this._visible;
             this._updateCanExecute();
