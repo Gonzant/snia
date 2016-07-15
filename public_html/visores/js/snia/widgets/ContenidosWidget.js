@@ -175,7 +175,6 @@ define([
         _active: function () {
             //FIXME
             this.emit("active-changed", {});
-            //this._fijarUbicacion();
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
@@ -193,21 +192,7 @@ define([
                     item._rootLayerNode.expand();
                 }
             }));
-        },
-        _minimizar: function () {
-            if (this.get("visible")) {
-                this.hide();
-            } else {
-                this.show();
-            }
-        },
-        _fijarUbicacion: function () {
-            var cw = query("#" + this.domNode.id).parent().parent()[0];
-            if (this._firstActive){
-                this.own(on(query(".dijitDialogTitleBar",cw), a11yclick, lang.hitch(this, this._minimizar)));
-                this._firstActive = false;
-            }
-        }        
+        }   
     });
     return widget;
 });
