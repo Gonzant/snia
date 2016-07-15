@@ -6,6 +6,7 @@
 /*jslint nomen: true */
 define([
     "dojo/on",
+    "dojo/dom",
     "dojo/Evented",
     "dojo/_base/declare",
     "dojo/_base/lang",
@@ -23,7 +24,7 @@ define([
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/layers/FeatureLayer",
     "modulos/Grafico3SR"
-], function (on, Evented, declare, lang, arrayUtil,
+], function (on, dom, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,  
     template, i18n, domClass, domStyle,
     Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,  
@@ -152,7 +153,13 @@ define([
                 this.setMapaBase(baseMapLayerBackup);
                 this._init();
             }));            
-    },
+        },
+        showLoading: function () {
+            domStyle.set(dom.byId("loadingImg"), "display", "block");
+        },
+        hideLoading: function () {
+            domStyle.set(dom.byId("loadingImg"), "display", "none");
+        },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
