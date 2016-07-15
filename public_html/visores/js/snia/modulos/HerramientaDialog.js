@@ -9,8 +9,9 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/dom-style",
+    "dojo/dom-construct",
     "dijit/Dialog"
-], function (Evented, declare, lang, domStyle, Dialog) {
+], function (Evented, declare, lang, domStyle, domConstruct, Dialog) {
 //    "use strict";
     return declare([Evented], {
         options : {
@@ -34,11 +35,13 @@ define([
                         onHide: lang.hitch(this, this._dialogHide)
                     });
                 this._dialog = new Dialog(dialogParams, this.options.dialogSrcNodeRef);
-                if (this.options.position) {//Si se define una posicion fija
+                //Si se define una posicion fija no ubica el Dialog centrado
+                if (this.options.position) {
                     this._dialog._position = lang.hitch(this, function(){
                         domStyle.set(this._dialog.domNode, this.options.position);
                     });
                 }
+                //domConstruct.place("<span class='dijitDialogCloseIcon'>", this._dialog.titleBar, "last");
                 this.options.widget.on('active-changed', lang.hitch(this, this._widgetActiveChanged));
                 this.options.widget.on('dibujo-enabled-changed', lang.hitch(this, this._widgetDibujoEnabledChanged));
                 this.canExecute = true;

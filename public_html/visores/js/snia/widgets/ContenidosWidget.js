@@ -175,7 +175,7 @@ define([
         _active: function () {
             //FIXME
             this.emit("active-changed", {});
-            this._fijarUbicacion();
+            //this._fijarUbicacion();
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
@@ -207,10 +207,6 @@ define([
                 this.own(on(query(".dijitDialogTitleBar",cw), a11yclick, lang.hitch(this, this._minimizar)));
                 this._firstActive = false;
             }
-           /*domStyle.set(cw, {
-                top: '95px',
-                left: '20px'
-            });*/
         }        
     });
     return widget;

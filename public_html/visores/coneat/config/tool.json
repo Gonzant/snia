@@ -21,7 +21,6 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "startsOpen": true,
-            "closable": false,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
