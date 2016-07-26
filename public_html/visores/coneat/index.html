@@ -5,29 +5,31 @@
  
         <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
         <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
-        <link rel="stylesheet" href="../js/snia/css/app.css">
+        <link rel="stylesheet" href="../js/snia/css/appConeatNuevo.css">
         <link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" /> <!-- Contenidos -->                
         
     </head>
 
     <body class="claro" >
         <div id="divStandby">
-            <div id="divContenedorIndex" style="display: none" >
-                <div id="divToolbar" class="divToolbar"></div>
-                <div id="divLogoMGAP" class="divLogoMGAP">
-                    <img id="logoMGAP" class="logoMGAP" src="../js/snia/img/logo.png">
-                </div>
-                <div id="divToolbarTitulo" class="divToolbarTitulo"> 
-                  
-                </div>
-                 <div id="divToolbarTituloFotoIndices" class="divToolbarTituloFotoIndices"> 
-                  
+                 
+            <div id="divContenedorIndex" class="w3-container" style="display: none" >
                 
+                <div id="divLogoMGAP" class="divLogoMGAP">
+                    <img id="logoMGAP" src="../js/snia/img/logo.png">
                 </div>
-                 
-                 
+                   
+                    
+               <div id="divToolbarTitulo" class="divToolbarTitulo w3-container"> </div>
+              
+                
+                <div id="divToolbar" class="divToolbar w3-container">
+                    
+                </div>               
             </div>
             
+            <div class="escala"></div>
+            <div id="navToolbar" data-dojo-type="dijit/Toolbar"></div>
             <div id="divMapa">
             </div>
         </div>

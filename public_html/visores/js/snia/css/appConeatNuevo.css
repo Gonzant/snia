@@ -701,12 +701,12 @@ tituloTPAyuda{
 }
 #divToolbar {
     z-index: 2;
-    width: 60px;
+    width: 50px;
     position:absolute;
-    top: 130px;
+    top: 141px;
     padding-top: 14px;
     padding-bottom: 1px;
-    right: 30px;
+    right: 55px;
     background-color: #FFC000;
     border-style: solid;
     border-width: 5px;
@@ -716,8 +716,8 @@ tituloTPAyuda{
 }
 
 #divLogoMGAP{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     z-index: 4;
     position:absolute;    
     top:6px;
@@ -1392,7 +1392,7 @@ border: 1px solid red;
 }
 
 .estiloBotonBarra{
-   width: 45px; 
+   width: 40px; 
    cursor: pointer;
     
 }
