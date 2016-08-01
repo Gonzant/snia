@@ -16,6 +16,8 @@ define([
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
+    "dojo/dom-construct",
+    "dojox/widget/Standby",
     "esri/map",
     "esri/dijit/Scalebar",
     "esri/graphic",
@@ -25,7 +27,7 @@ define([
     "modulos/Grafico3SR"
 ], function (on, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,  
-    template, i18n, domClass, domStyle,
+    template, i18n, domClass, domStyle, domConstruct, Standby,
     Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,  
     Grafico3SR) {
     //"use strict";
@@ -178,6 +180,12 @@ define([
                 map: this.map,
                 scalebarUnit: "metric"
             });
+            //Rueda de espera
+            this._standbyTOC = new Standby({target: this._mapNode});
+            domConstruct.place(this._standbyTOC.domNode, this._mapNode, "after");
+            this._standbyTOC.startup();
+            on(this.map, 'update-start',lang.hitch(this,  function () { this._standbyTOC.show(); }));
+            on(this.map, 'update-end', lang.hitch(this, function () { this._standbyTOC.hide(); }));
            
         },
         _dibujoEnabledChanged: function () {
