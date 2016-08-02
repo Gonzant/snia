@@ -19,10 +19,13 @@ define([
     "dojo/on",
     "esri/TimeExtent",
     "esri/dijit/TimeSlider",
-    "dojo/dom-attr"
+    "dojo/dom-attr",
+    "dojo/store/Memory",
+    "dijit/form/FilteringSelect",
+    "dojo/dom-construct"
 ], function (Evented, declare, lang, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, arrayUtil, on,
-    TimeExtent, TimeSlider, domAttr) {
+    TimeExtent, TimeSlider, domAttr, Memory, FilteringSelect, domConstruct) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -58,6 +61,8 @@ define([
             };
             this._primero = true;
             this._resetOnClose = false;
+            this._yearsFiltroStore = new Memory({});
+            this._startYear = "";
         },
         _activar: function () {
             this.emit("active-changed");
@@ -151,7 +156,7 @@ define([
             }
         },
         _getDates: function () {
-            var min, max, yesterday, tomorrow, primero;
+            var min, max, yesterday, tomorrow, yesterdayAbs, tomorrowAbs,primero;
             primero = true;
             arrayUtil.forEach(this.mapa.map.layerIds, lang.hitch(this, function (item) {
                 var l, st, et;
@@ -179,6 +184,11 @@ define([
             tomorrow = max;
             tomorrow.setDate(max.getDate() + 1);
             this._eTime = tomorrow;
+            
+            this._sTimeAbs = yesterday.toUTCString();
+            this._eTimeAbs  = tomorrow.toUTCString();
+
+            this._comboYears();
             this._initSlider();
         },
         _initSlider: function () {
@@ -195,7 +205,7 @@ define([
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             this.timeSlider.setThumbCount(2);
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
-            if (this._timeSlider.defecto) {
+            if (this._timeSlider.defecto ) {
                 this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
             } else {
                 this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
@@ -225,6 +235,38 @@ define([
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
+        },
+        _comboYears: function (evt) {
+            var start, end;
+            start = this._sTime.getFullYear();
+            end = this._eTime.getFullYear();
+            this._yearsFiltroStore.put({id: 0, name: "Todos"});
+            for(var i=start; i<=end; i++){
+                this._yearsFiltroStore.put({id: i, name: i});
+              }
+            this._filtro = new FilteringSelect({
+               placeHolder: this._i18n.widgets.TiempoWidget.lbAño,
+               readonly: "True",
+               onChange: lang.hitch(this, function (state) {
+                   lang.hitch(this, this._setYearTimeSlider(state));
+               }),
+               store: this._yearsFiltroStore
+           }, this._yearsFilter);
+           this._filtro.startup();
+        },
+        _setYearTimeSlider: function (state) {        
+            this._startYear = state;
+            if (state!==0){
+                this._sTime = new Date();
+                this._eTime = new Date();
+                this._sTime.setFullYear(this._startYear, 1, 1);
+                this._eTime.setFullYear(this._startYear+1, 1, 1);
+            }else {
+                this._sTime = new Date(this._sTimeAbs);
+                this._eTime = new Date(this._eTimeAbs);
+            }
+            domConstruct.destroy(this.timeSlider.domNode);
+            this._initSlider();
         }
     });
     return widget;
