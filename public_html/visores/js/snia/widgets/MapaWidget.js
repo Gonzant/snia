@@ -6,6 +6,7 @@
 /*jslint nomen: true */
 define([
     "dojo/on",
+    "dojo/dom",
     "dojo/Evented",
     "dojo/_base/declare",
     "dojo/_base/lang",
@@ -16,8 +17,6 @@ define([
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
-    "dojo/dom-construct",
-    "dojox/widget/Standby",
     "esri/map",
     "esri/dijit/Scalebar",
     "esri/graphic",
@@ -25,9 +24,9 @@ define([
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/layers/FeatureLayer",
     "modulos/Grafico3SR"
-], function (on, Evented, declare, lang, arrayUtil,
+], function (on, dom, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,  
-    template, i18n, domClass, domStyle, domConstruct, Standby,
+    template, i18n, domClass, domStyle,
     Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,  
     Grafico3SR) {
     //"use strict";
@@ -180,13 +179,16 @@ define([
                 map: this.map,
                 scalebarUnit: "metric"
             });
-            //Rueda de espera
-            this._standbyTOC = new Standby({target: this._mapNode});
-            domConstruct.place(this._standbyTOC.domNode, this._mapNode, "after");
-            this._standbyTOC.startup();
-            on(this.map, 'update-start',lang.hitch(this,  function () { this._standbyTOC.show(); }));
-            on(this.map, 'update-end', lang.hitch(this, function () { this._standbyTOC.hide(); }));
-           
+            //Rueda de espera 
+            //No se usa el objeto Standby para que no bloquee al usuario mientras espera
+            this._standbyTOC = dom.byId("loadingImg");
+            on(this.map, 'update-start',lang.hitch(this,  function () {
+                domStyle.set(this._standbyTOC, "display", "block");
+            }));
+            on(this.map, 'update-end', lang.hitch(this, function () { 
+                domStyle.set(this._standbyTOC, "display", "none");
+            }));
+                       
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-change", this.dibujoEnable);

@@ -144,12 +144,7 @@ define([
                 label: "Expandir Todo",
                 position: ['below']
             });
-            
-            //Rueda de espera
-            /*this._standbyTOC = new Standby({target: this._ruedaEspera});
-            domConstruct.place(this._standbyTOC.domNode, this._ruedaEspera, "after");
-            this._standbyTOC.startup();*/
-            
+                    
             this._active();
             
         },
