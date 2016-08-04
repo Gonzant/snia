@@ -1341,6 +1341,7 @@ border: 1px solid red;
 
 .dijitDialogPaneContent {
     border-style: solid;
+    opacity: 0.8;
     background: #E1E1E1 no-repeat top left;
     border-width: 2px;
     border-radius: 5px;
