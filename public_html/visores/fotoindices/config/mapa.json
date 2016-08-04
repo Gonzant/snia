@@ -1,5 +1,5 @@
-{	
-    "mapa": {
+{
+	"mapa": {
         "mapConfig": {
             "slider": false,
             "logo": false
@@ -13,16 +13,16 @@
                 "ymax": 6874864.455708552,
                 "spatialReference": {
 					"wkid":32721
-				}
+                                    }
             }
-		},
+        },
         "dynamicLayers": [ 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/FOTOPLANOS/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Grillas/MapServer",
                 "options": {
-                        "id": "Grilla Fotoindices",
+                        "id": "Grillas de Fotoplanos",
                         "opacity": 0.7,
-                        "visible": false
+                        "visible": true
                 }
             },
             {
@@ -36,7 +36,7 @@
             {
                 "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Fotoindices/MapServer",
                 "options": {
-                        "id": "Fotoindices",
+                        "id": "Fotoindices Fotos 20.000",
                         "opacity": 0.7,
                         "visible": false
                 }

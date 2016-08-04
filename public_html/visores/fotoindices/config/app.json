@@ -1,7 +1,6 @@
 {
 	"app": {
-        "titulo": "FOTOINDICES",
-        "subtitulo": "Fotos Aéreas 1:20mil",
+        "titulo": "FOTOINDICES - Fotos 1:20.000 SGM",
         "proxyRules":[]
     }
 }

@@ -28,7 +28,6 @@ define({
                 lbErrorBuscar: "Error al buscar.",
                 lbErrorNoSeleccionCroquis: "Se necesita al menos un elemento seleccionado para el croquis.",
                 lbErrorNoSeleccionCubrimiento: "Se necesita al menos un elemento seleccionado para el cubrimiento.",
-                lbMantenerGeo: "Mantener geometría"
                 
             },
             "NavegarWidget": {
@@ -69,12 +68,7 @@ define({
                 
             },
             "AreasConeatWidget": {
-                lbMantenerGeo: "Mantener geometría" ,
-                lbTtAgregar: "Agregar Area",  
-                lbTtCancelar: "Cancelar Area",
-                lbTtRemoverT: "Remover todas las áreas",
-                lbTtCroquis: "Croquis de las áreas",
-                msgAgregarArea: "Se necesita al menos un área para el croquis"
+                
             },
             "MedirWidget": {
                 lbArea: "Area",

@@ -28,7 +28,7 @@ define([
     "esri/symbols/SimpleFillSymbol",
     "dojo/store/Memory",
     "dijit/form/FilteringSelect",
-     "dijit/form/CheckBox",
+    "dijit/form/CheckBox",
     "dijit/form/TextBox",
     "dojox/grid/DataGrid",
     "dojo/data/ObjectStore",

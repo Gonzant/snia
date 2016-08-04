@@ -1,4 +1,4 @@
-{    
+{        
     "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
@@ -57,32 +57,7 @@
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
-                "productividad": "IND_CONEAT",
-				"valorreal": "IND_VR"
-            }
-        },
-        {
-            "widget": "widgets/BuscarParametrizadoWidget",
-            "title": "Grilla de fotoplano",
-            "msgToolTip": "Busca y despliega la grilla de fotoplanos",
-            "icono": "../js/snia/img/fotoPlanoImg.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Grillas/MapServer/0",
-                "filtros": [
-                    {
-                    "campoFiltro" : "PLANCHA",
-                    "lblcampoFiltro" : "Fotoplano",
-                    "placeHoldFiltro": "Seleccione fotoplano",
-                    "dependencia": 0,
-                    "combo": 1,
-                    "tipo": "texto"
-                    }
-                ],
-                "columnas" : [
-                            {"name":"ID","field": "OBJECTID","width": "100px"},
-                            {"name":"PLANCHA ","field": "PLANCHA","width": "100px"}
-                    ]    
+                "productividad": "IND_CONEAT"
             }
         },
         {
@@ -129,7 +104,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre FOTOPLANOS. ",
+            "msgToolTip": "Muestra el manual de usuario e información sobre fotoindices. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -165,15 +140,40 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "Visualizador de FotoPlanos",
+                            "Contenido": "La CRSU76 que ha estado disponible hasta la fecha es una carta de reconocimiento de suelos de quinto orden que fue publicada a escala 1:1000.000. Las unidades de mapeo en ese levantamiento son asociaciones de Familias de suelos. ",
                             "Estilo": "Normal"
+                        },
+                        { 
+                            "Contenido": "RENARE comienza a publicar los primeros resultados de una nueva carta de suelos a nivel nacional con trabajos iniciados en el 2013. Este trabajo se viene implementando en apoyo a la elaboración de los Planes de Uso y Manejo Responsable de los Suelos y será una herramienta fundamental para apoyar el Programa Nacional de Conservación de Suelos y la investigación agrícola en suelos y cultivos.",
+                            "Estilo": "Normal"
+                        },
+                        { 
+                            "Contenido": "La nueva cartografía CRSU14 es mucho más detallada, de tercer orden, y se publica a escala 1:40.000 sobre imágenes de Google Earth, lo que facilita enormemente su utilización. Por otra parte, las unidades de mapeo se definen en base a Series de suelos. La Serie es una subdivisión de las Familias, o sea, una unidad taxonómica definida con mucho mayor detalle, lo que aumenta el valor de la carta.",
+                            "Estilo": "Normal"
+                        },
+                        { 
+                           "Contenido": "",
+                           "Estilo": "Normal" 
                         }
-                        
                       ]
-                    }
-                     
+                    },
+                    {
+                        "Texto":[
+                           {
+                              "Contenido": "Ver términos y condiciones en",
+                              "Estilo": "Normal"
+                            }]
+                    },
+                    {
+                    "Enlace":[
+                        {
+                            "Contenido": "www.snia.gub.uy",
+                            "URL": "www.snia.gub.uy"
+                        }
+                    ] 
+                   }
                 ]
-            }           
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
@@ -252,7 +252,7 @@
             },
             {
                 "name": "Contenidos",
-                "id":"4",
+                "id":"3",
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
@@ -295,7 +295,7 @@
             },
             {
                "name": "Navegar",
-               "id":"3",
+               "id":"4",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -454,7 +454,7 @@
             },
             {
                "name": "Identificar",
-               "id":"4",
+               "id":"5",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -496,7 +496,7 @@
             },
             {
                "name": "Buscar Padrones",
-               "id":"5",
+               "id":"6",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -609,7 +609,7 @@
             },
             {
                "name": "Navegar",
-               "id":"6",
+               "id":"7",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -765,7 +765,7 @@
             },
             {
                "name": "Medir",
-               "id":"7",
+               "id":"8",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -815,7 +815,7 @@
             },
             {
                "name": "Coordenadas",
-               "id":"8",
+               "id":"9",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -851,48 +851,6 @@
                               "Estilo": "Normal"
                             }
                            ]    
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Mapa de Referencia",
-               "id":"9",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                          "Texto":[
-                              {
-                                "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
-                                "Estilo": "Normal"
-                              }
-                          ]  
                         }
                     ]
                 }
@@ -948,8 +906,9 @@
                     ]
                 }
             },
-    {"name": "Atribuciones",
-            "id":"18",
+            
+        {"name": "Atribuciones",
+            "id":"12",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
@@ -1026,7 +985,8 @@
                     }
                     
                 ]
-            }
+            },
+            "padre": "si"
         },
         {"name": "Contacto",
             "id":"19",
@@ -1047,7 +1007,7 @@
                               "Estilo": "Titulo1"
                             }
                 },
-                 "elementos": [
+                "elementos": [
                     {
                         "Texto":[
                             {
@@ -1079,8 +1039,8 @@
                     {
                     "Enlace":[
                         {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
+                            "Contenido": "renare@mgap.gub.uy",
+                            "URL": "mailto:renare@mgap.gub.uy"
                         }
                     ] 
                     }
