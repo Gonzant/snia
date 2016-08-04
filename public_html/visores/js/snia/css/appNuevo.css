@@ -18,61 +18,61 @@ html, body {
 .iconAgregarAreas {
     background-image: url('../img/agregarGris.png');    
     background-repeat: no-repeat;
-    background-size: 35px 35px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 .iconCancelarAgregarAreas {
     background-image: url('../img/cancelarAgregarGris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 .iconCroquisAreas {
     background-image: url('../img/reporteGris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
 .iconRemoverTodasAreasArea {
     background-image: url('../img/limpiarGris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
 .iconMarcarUbicacion {
     background-image: url('../img/IconBandera.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
 .iconCancelarAgregar {
     background-image: url('../img/cancelarAgregarGris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;  
 }
 
 .iconReporte {
     background-image: url('../img/reporteGris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;    
 }
 
@@ -135,18 +135,18 @@ html, body {
 .iconCroquisBuscar{
     background-image: url('../img/reporteGris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
 .iconCubrimientoBuscar{
     background-image: url('../img/contenido-gris.png');    
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
@@ -293,14 +293,14 @@ Dialogos:
 .claro .dijitDialogTitle {
     color: dimgray;
     font-weight:bold;
-    font-size: 19px;
+    font-size: 16px;
     border:2px #FFC000;
     
    
 }
 .claro .dijitDialogTitleBar {
     border: 2px solid;
-    height: 40px;
+    height: 35px;
     padding-top: 10px;
     border-color: transparent;
     border-top: none;    
@@ -1397,17 +1397,17 @@ border: 1px solid red;
 .iconColapsarContenidos{
     background-image: url('../img/collapseAllGris.png');
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 .iconExpandContenidos{
     background-image: url('../img/expandAllGris.png');
     background-repeat: no-repeat;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px; 
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
