@@ -57,7 +57,7 @@ define({
                 tTabTextBox: "TextBox"
             },
             "IdentificarWidget": {
-                lbidentificando: "Idenificando...",
+                lbidentificando: "Identificando...",
                 lbNoCapas: "No hay capas visibles",
                 lbElementos: "elementos",
                 lbSeIdentificaron: "Se identificaron",
@@ -96,6 +96,10 @@ define({
             "ContenidosWidget": {
                 bColapsar: "Colapsar",
                 bExpandir: "Expandir"
+            },            
+            "TiempoWidget": {
+                lbSelectAño: "Seleccione año",
+                 lbAño: "año"
             }
         }
     })

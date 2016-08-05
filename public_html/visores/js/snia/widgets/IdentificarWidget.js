@@ -259,8 +259,8 @@ define([
                     this._identify = new IdentifyTask(layer.url);
                     this._identifyParams = new IdentifyParameters();
                     this._identifyParams.mapExtent = this.mapa.map.extent;
-                    this._identifyParams.mapExtent = this.mapa.map.extent;
                     this._identifyParams.returnGeometry = true;
+                    this._identifyParams.timeExtent = this.mapa.map.timeExtent;
                     this._identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;
                     this._identifyParams.tolerance = 2;
                     this._identifyParams.layerIds = layer.visibleLayers;
@@ -299,15 +299,16 @@ define([
             var currentCapa, flag;
             currentCapa = 0;
             flag = 0;
+            this._contador++;
             if (results.length > 0) {
                 arrayUtil.forEach(results, lang.hitch(this, function (feature) {
                     if ((flag === 0) || (feature.layerId !== currentCapa)) {
                         flag = 1;
                         currentCapa = feature.layerId + '-' + feature.layerName;
-                        this._store.add({id: currentCapa, name: feature.layerName, parent: "root", nodo: "raiz" });
+                        this._store.put({id: currentCapa, name: feature.layerName, parent: "root", nodo: "raiz" });
                     }
                     this._ext = this._ext + 1;
-                    this._store.add({id: currentCapa + "-" + feature.feature.attributes.OBJECTID, name: feature.value,  parent: currentCapa, atributos: feature.feature.attributes, geometry: feature.feature.geometry, nodo: "hoja" });
+                    this._store.put({id: currentCapa + "-" + feature.feature.attributes.OBJECTID, name: feature.value,  parent: currentCapa, atributos: feature.feature.attributes, geometry: feature.feature.geometry, nodo: "hoja" });
 //                    indice = feature.feature.attributes.OBJECTID;
                 }));
             }
