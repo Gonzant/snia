@@ -58,7 +58,7 @@ define({
                 tTabTextBox: "TextBox"
             },
             "IdentificarWidget": {
-                lbidentificando: "Idenificando...",
+                lbidentificando: "Identificando...",
                 lbNoCapas: "No hay capas visibles",
                 lbElementos: "elementos",
                 lbSeIdentificaron: "Se identificaron",
