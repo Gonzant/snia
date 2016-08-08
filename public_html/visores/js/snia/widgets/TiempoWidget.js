@@ -184,7 +184,6 @@ define([
             tomorrow = max;
             tomorrow.setDate(max.getDate() + 1);
             this._eTime = tomorrow;
-            
             this._sTimeAbs = yesterday.toUTCString();
             this._eTimeAbs  = tomorrow.toUTCString();
 
@@ -245,8 +244,8 @@ define([
                 this._yearsFiltroStore.put({id: i, name: i});
               }
             this._filtro = new FilteringSelect({
-               placeHolder: this._i18n.widgets.TiempoWidget.lbAño,
                readonly: "True",
+               value: 0,
                onChange: lang.hitch(this, function (state) {
                    lang.hitch(this, this._setYearTimeSlider(state));
                }),
