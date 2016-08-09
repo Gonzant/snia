@@ -13,7 +13,9 @@ define([
     "dojo/_base/array",
     "dojo/text!./templates/ContenidosWidget.html",
     "dojo/i18n!./nls/snianls.js",
-    "dojo/dom-class", "dojo/dom-style",
+    "dojo/dom-class", 
+    "dojo/dom-style",
+    "dojo/query",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
@@ -23,10 +25,11 @@ define([
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
-    "dojo/domReady!",
-    "dojox/layout/ScrollPane"
+    "dojox/layout/ScrollPane",
+    "dojo/NodeList-traverse",
+    "dojo/domReady!"
 ], function (on,
-    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
+    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle, query,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip) {
 
     //"use strict";
@@ -47,6 +50,7 @@ define([
             this._i18n = i18n;
             this._dynamicMapServiceLayers = [];
             this._toc = [];
+            this._firstActive = true;
             //propiedades
             this.set("mapa", defaults.mapa);
             this.set("theme", defaults.theme);
@@ -75,7 +79,7 @@ define([
                     this._dynamicMapServiceLayers = this.config.dynamicMapServiceLayers;
                 }
                 this._loadDynamicMapServiceLayers();
-        }
+            }
         
         },
         // start widget. called by user
@@ -188,7 +192,7 @@ define([
                     item._rootLayerNode.expand();
                 }
             }));
-        }
+        }   
     });
     return widget;
 });
