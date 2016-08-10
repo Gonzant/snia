@@ -130,7 +130,7 @@ var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Eve
                 expandFactor: 3,
                 attachTo: "bottom-left",
                 height: 170,
-                width: 170
+                width: 220
             });
             this._overviewMapDijit.startup();
             this._overviewMapDijit.placeAt(this._mapasRefNode);
