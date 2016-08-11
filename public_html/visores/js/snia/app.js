@@ -48,10 +48,10 @@ snia.app = {
                 var dynLayers = mapaConfig.mapa.dynamicLayers;
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
-                    if (dataLayer.subLayers){
+                    if (dataLayer.layers){
                         l.on("load", function (e) {
                             e.target._tocInfos = [];
-                            arrayUtil.forEach(dataLayer.subLayers, function (layerInfoIndex) {
+                            arrayUtil.forEach(dataLayer.layers, function (layerInfoIndex) {
                                 e.target._tocInfos.push(e.target.layerInfos[layerInfoIndex]);
                             });
                         });
