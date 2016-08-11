@@ -144,7 +144,7 @@ define([
                 label: "Expandir Todo",
                 position: ['below']
             });
-            
+                    
             this._active();
             
         },
@@ -171,6 +171,10 @@ define([
                 layerInfos: dynaLayersInfo
             }, this.tocDiv);
             this._toc.startup();
+            /* Se puede usar este método para realizar alguna accion al marcar algun item del TOC
+             * this._toc.onTOCNodeChecked= lang.hitch(this, function(rootLayer, serviceLayer, checked){
+		alert(checked);
+            });*/
         },
         _active: function () {
             //FIXME
