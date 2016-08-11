@@ -17,7 +17,7 @@
             }
 		},
         "dynamicLayers": [ 
-			{
+            {
                 "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
                 "options": {
                         "id": "Administrativo",
@@ -25,7 +25,7 @@
                         "visible": false
                 }
             },
-            {
+           {
                 "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
                 "options": {
                         "id": "Indices",
