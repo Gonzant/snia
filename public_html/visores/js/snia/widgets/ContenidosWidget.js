@@ -161,6 +161,13 @@ define([
                 var l;
                 l  = this.mapa.map.getLayer(item);
                 if (index > 0) {//0 es mapa base
+                    if(this._dynamicMapServiceLayers[l.id]){
+                        //En caso de que se configuren solo algunas capas disponibles en el menu
+                        l._tocInfos = [];
+                        arrayUtil.forEach(this._dynamicMapServiceLayers[l.id].layers, function (layerInfoIndex) {
+                            l._tocInfos.push(l.layerInfos[layerInfoIndex]);
+                        });
+                    }
                     dynaLayersInfo.push({layer: l, title: l.id, collapsed: true, slider: true});
                 }
             }));
