@@ -20,6 +20,9 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
+            "draggable": false,
+            "startsOpen": true,
+            "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }
@@ -116,7 +119,7 @@
                 "riesgoGeo": "Riesgo Geográfico",
                 "riesgoAmbiental": "Riesgo Ambiental",
                 "marcarUbicacion": "Marcar ubicación",
-                "mensajeMarcarUbicacion":"Por favor marque ubicación",
+                "mensajeMarcarUbicacion":"Por favor presione el botón Marcar Ubicación",
                 "desmarcarUbicacion": "Cancelar marcar ubicación",
                 "informacion": "Información",
                 "reporte": "Generar reporte",
