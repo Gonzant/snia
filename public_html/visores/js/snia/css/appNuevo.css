@@ -233,9 +233,7 @@ html, body {
     padding-bottom: 3px;
     padding-left: 10px;
     padding-right: 5px;
-    
     background-color: transparent;   
-    
 }
 esriScalebarLabel {
     
@@ -295,8 +293,6 @@ Dialogos:
     font-weight:bold;
     font-size: 19px;
     border:2px #FFC000;
-    
-   
 }
 .claro .dijitDialogTitleBar {
     border: 2px solid;
@@ -543,8 +539,7 @@ tituloTPAyuda{
 .claro .dijitTreeIsLast {
   background: url('../img/mapabase.png') no-repeat;
   width:40px;
-  height:40px;
-  
+  height:40px;  
 }
 
 .claro .dijitContentPane {
@@ -607,8 +602,7 @@ tituloTPAyuda{
     background-repeat: no-repeat;   
     width: 16px;
     height: 16px;
-    background-position: -35px 0;
-         
+    background-position: -35px 0;         
 }
 
 .pageOverlay {
@@ -647,8 +641,7 @@ tituloTPAyuda{
 }
 .gridDiv {
 	width: 480px;
-	height: 165px;
-        
+	height: 165px;        
 }
 .gridDivIdentificar {
 	width: 300px;
@@ -756,11 +749,8 @@ tituloTPAyuda{
     border-width: 6px;
     background-color:#FFC000;
     border-radius: 120px;
-/*    background-image: url('../img/logo.png')*/
-    
-  }
-  
-  
+/*    background-image: url('../img/logo.png')*/ 
+  }  
 .colorLabels{
     color:dimgray;
 }
@@ -1194,16 +1184,6 @@ tituloTPAyuda{
        background-color: transparent !important;
  }
  
-.custimg {   
-        background-image: url('../img/mapabase.png');   
-        background-repeat: no-repeat;   
-       width: 16px;
-    height: 16px;
-    background-position: -35px 0;
-         
-     
-         
-}
 
 div p {
         margin: 12px 0 0 0;
@@ -1346,12 +1326,10 @@ border: 1px solid red;
     border-radius: 5px;
     border:1px #FFC000;
     border-top: 1px solid #FFC000; 
-    
+    opacity: 0,8;
     border-top: 1px solid #FFC000;
     padding: 10px 8px;
-    position: relative;
-
-    
+    position: relative;    
 }
 
 .claro .dijitDialogPaneContent {
@@ -1428,8 +1406,7 @@ border: 1px solid red;
 
 .estiloBotonBarra{
    width: 40px; 
-   cursor: pointer;
-    
+   cursor: pointer;    
 }
 
 .wAreas{
