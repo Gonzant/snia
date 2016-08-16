@@ -1,12 +1,16 @@
-<div class='${theme}'>
-    <div data-dojo-attach-point="_contenidosNode" style="height:400px;width:300px;" dojotype="dijit.layout.ContentPane">
-    <div data-dojo-type="dijit/form/Button"
-        data-dojo-attach-point="_colapsarNode">
-       ${_i18n.widgets.ContenidosWidget.bColapsar}</div>
-    <div data-dojo-type="dijit/form/Button"
-        data-dojo-attach-point="_expandirNode">
-       ${_i18n.widgets.ContenidosWidget.bExpandir}</div>  
-    <br><br>
-    <div data-dojo-attach-point="tocDiv"  ></div> 
-</div>
+<div class='${theme}' data-dojo-attach-point="_contenidosParentNode" >
+    <div data-dojo-attach-point="_contenidosNode" style="width:200px;max-height: 400px; overflow: auto;" >
+            <button data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" 
+                    data-dojo-attach-point="_colapsarNode" id="colapsarContenidos"> 
+            <img class="iconColapsarContenidos" > </button> 
 
+            <button data-dojo-attach-point="_expandirNode" data-dojo-type="dijit/form/Button" id="buttonId" 
+                    class="SmallButtonTransparentAmarillo" > 
+                <img class="iconExpandContenidos" >
+            </button> 
+
+        <br><br>
+        <div data-dojo-attach-point="tocDiv" class="agsjsTOCRootLayerLabel2"></div> 
+        <br>
+    </div>
+</div>
