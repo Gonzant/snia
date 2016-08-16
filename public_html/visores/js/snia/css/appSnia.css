@@ -5,7 +5,38 @@ html, body {
     overflow:hidden;
     font: 12px Arial,clean,sans-serif;
 }
-
+#logoMGAPchico{
+    z-index: 20;
+    width: 110px;
+    position: absolute;
+    right: 23px;
+    top: 6px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 110px;
+/*    background-image: url('../img/logo.png')*/ 
+}
+#logochiquitoMiem{
+    z-index: 20;
+    width: 60px;
+    height: 40px;
+    position: absolute;
+    right: 75px;
+    top:73px;
+    border-width: 1px;
+    background-color:#FFC000;
+    border-radius: 12px;
+}
+#logochiquitoMvotma{
+    z-index: 20;
+    width: 70px;
+    position: absolute;
+    right: 5px;
+    top: 77px;
+    border-width: 1px;
+    background-color:#FFC000;
+    border-radius: 8px;
+}
 .iconAgregarAreas {
     background-image: url('../img/agregarGris.png');    
     background-repeat: no-repeat;
