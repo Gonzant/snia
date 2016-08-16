@@ -745,6 +745,8 @@ tituloTPAyuda{
   }  
 .colorLabels{
     color:dimgray;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 #logoMGAPSnia{
