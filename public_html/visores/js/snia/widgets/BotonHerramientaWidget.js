@@ -127,6 +127,7 @@ define([
             } else {
                 this._botonEnabled = false;
             }
+            this.show();
         },
         _init: function () {
             this._visible();
