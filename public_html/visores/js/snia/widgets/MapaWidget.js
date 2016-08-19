@@ -30,7 +30,7 @@ define([
     Grafico3SR) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, Evented], {
-        templateString: template,
+        templateString: template,        
         options : {
             theme : "sitWidget",
             mapOptions : {},
@@ -161,11 +161,10 @@ define([
             }
         },
         _init: function () {
-            var scalebar;
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
-            scalebar = new Scalebar({
+            this._scalebar = new Scalebar({
                 map: this.map,
                 scalebarUnit: "metric"
             });
@@ -206,6 +205,11 @@ define([
                 arrayUtil.forEach(this.mapLayers, lang.hitch(this, function (layer) {
                     this.map.addLayer(layer);
                 }));
+                this._scalebar.destroy();
+                this._scalebar = new Scalebar({
+                    map: this.map,
+                    scalebarUnit: "metric"
+                });
             }
         },
         _reinit: function () {
