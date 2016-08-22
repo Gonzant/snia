@@ -5,7 +5,7 @@
             "logo": false
         },
         "baseMapLayer": {
-            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
                 "xmin": -6364316,
                 "ymin": -4364316,
@@ -18,7 +18,7 @@
         },
         "dynamicLayers": [             
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -26,7 +26,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
@@ -34,7 +34,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografía",
                         "opacity": 0.7,
@@ -42,7 +42,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
                 "options": {
                         "id": "Cartas de Suelos",
                         "opacity": 0.7,
@@ -50,7 +50,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
                 "options": {
                         "id": "Cartas Temáticas",
                         "opacity": 0.7,
@@ -58,7 +58,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/VariablesClimaticas/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/VariablesClimaticas/MapServer",
                 "options": {
                         "id": "Variables Climáticas",
                         "opacity": 0.7,
@@ -66,7 +66,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
                 "options": {
                         "id": "Cobertura",
                         "opacity": 0.7,
@@ -74,7 +74,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
                 "options": {
                         "id": "Zonificación",
                         "opacity": 0.7,
@@ -82,15 +82,23 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Produccion/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Produccion/MapServer",
                 "options": {
-                        "id": "Producción",
+                        "id": "Logística (Producción)",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Relieve/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+                "options": {
+                        "id": "Cartografía Agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Relieve/MapServer",
                 "options": {
                         "id": "Relieve",
                         "opacity": 0.7,
@@ -98,7 +106,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
                 "options": {
                         "id": "Áreas sensibles para Aplicaciones Fitosanitarias",
                         "opacity": 0.7,

@@ -1,1 +1,1 @@
-{	"app": {        "titulo": "SNIA",		 "proxyRules":[]        }}
+{	"app": {        "titulo": "SNIA",		 "proxyRules":[                    {                        "urlPrefix": "http://sit.mvotma.gub.uy/arcgis",                        "proxyUrl": "https://web.renare.gub.uy/proxy/proxy.ashx?"                    }                 ]        }}
