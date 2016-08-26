@@ -93,7 +93,16 @@
                 
             }
         },
-        {
+           {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png",            
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
+            {
             "widget": "widgets/ImprimirWidget",
             "title": "Imprimir",
             "msgToolTip": "Imprime el mapa actual en distintos formatos.",
