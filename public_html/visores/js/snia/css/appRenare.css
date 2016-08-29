@@ -1095,7 +1095,14 @@ div p {
     height: 27px; 
     border: none;
 }
-
+.iconDownload{
+    background-image: url('../img/download.png');
+    background-repeat: no-repeat;
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
 .iconColpasarContenidos:focus{
     border: 0 transparent;
 }
