@@ -6,6 +6,7 @@
 /*jslint nomen: true */
 define([
     "dojo/on",
+    "dojo/dom",
     "dojo/Evented",
     "dojo/_base/declare",
     "dojo/_base/lang",
@@ -23,14 +24,14 @@ define([
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/layers/FeatureLayer",
     "modulos/Grafico3SR"
-], function (on, Evented, declare, lang, arrayUtil,
+], function (on, dom, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,
     template, i18n, domClass, domStyle,
     Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,
     Grafico3SR) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, Evented], {
-        templateString: template,
+        templateString: template,        
         options : {
             theme : "sitWidget",
             mapOptions : {},
@@ -171,14 +172,22 @@ define([
             }
         },
         _init: function () {
-            var scalebar;
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
-            scalebar = new Scalebar({
+            this._scalebar = new Scalebar({
                 map: this.map,
                 scalebarUnit: "metric"
             });
+            //Rueda de espera 
+            //No se usa el objeto Standby para que no bloquee al usuario mientras espera
+            this._standbyTOC = dom.byId("loadingImg");
+            on(this.map, 'update-start',lang.hitch(this,  function () {
+                domStyle.set(this._standbyTOC, "display", "block");
+            }));
+            on(this.map, 'update-end', lang.hitch(this, function () { 
+                domStyle.set(this._standbyTOC, "display", "none");
+            }));
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-change", this.dibujoEnable);
@@ -216,6 +225,11 @@ define([
                 arrayUtil.forEach(this.mapLayers, lang.hitch(this, function (layer) {
                     this.map.addLayer(layer);
                 }));
+                this._scalebar.destroy();
+                this._scalebar = new Scalebar({
+                    map: this.map,
+                    scalebarUnit: "metric"
+                });
             }
         },
         _reinit: function () {
