@@ -145,16 +145,6 @@ define([
                 this._restartup();
             }
         },
-        setMapaBaseBackup: function (mapOptionsBackup, baseMapLayerBackup) {
-            //Manejador para el evento de error en mapa base
-            on(this.baseMapLayer, 'error', lang.hitch(this, function () {
-                //Si falla al cargar el mapa base intenta con el de backup
-                this.map.destroy();
-                this.set("map", new Map(this._mapNode, mapOptionsBackup));
-                this.setMapaBase(baseMapLayerBackup);
-                this._init();
-            }));            
-    },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
