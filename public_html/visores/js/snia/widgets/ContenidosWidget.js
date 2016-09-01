@@ -23,6 +23,7 @@ define([
     "esri/tasks/Geoprocessor",
     "dojo/dom-construct",
     "dojox/widget/Standby",
+    "dojo/Deferred",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
@@ -30,7 +31,8 @@ define([
     "dojox/layout/ScrollPane"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby) {
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
+    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -123,6 +125,7 @@ define([
             }
         },
         _init: function () {
+            this._resultadoNodeContenidos.innerHTML ="";
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
@@ -195,8 +198,6 @@ define([
                     }
                 }
             }));
-            console.log(capasUrl);
-            console.log(capasNombre);
             capasArray = [capasUrl];
             nombresArray = [capasNombre];
             parametros = {
@@ -205,6 +206,7 @@ define([
                 NombreCapas : nombresArray
             };
             if (capasUrl) {
+                this._resultadoNodeContenidos.innerHTML = "Descargando capas..";
                 this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete));
                 this._standbyAreas.show();
             }
@@ -217,19 +219,28 @@ define([
             }));
         },
         _gpDescargarCapasComplete: function (jobInfo) {
-//            this._standbyAreas.show();
-            console.log("_gpDescargarCapasComplete");
             this._gpDescargarCapas.getResultData(jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
         },
         _gpCroquisResultDataCallBack: function (value) {
+            this._resultadoNodeContenidos.innerHTML ="";
             this._standbyAreas.hide();
             window.open(value.value.url);
-            console.log("llego");
         },
         _gpCroquisResultDataErr: function (value) {
-            console.log("error",value);
+            this._process = lang.hitch(this,this._asyncProcess());
+            this._proces.then(function(results){
+              this._resultadoNodeContenidos.innerHTML = "";
+            });
+            this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
-        }
+        },
+        _asyncProcess: function () {
+	var deferred = new Deferred();
+            setTimeout(function(){
+              deferred.resolve("success");
+            }, 2000);
+            return deferred.promise;
+        }        
     });
     return widget;
 });
