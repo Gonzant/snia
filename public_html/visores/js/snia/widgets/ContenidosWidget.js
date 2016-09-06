@@ -24,6 +24,7 @@ define([
     "dojo/dom-construct",
     "dojox/widget/Standby",
     "dojo/Deferred",
+    "esri/IdentityManager",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
@@ -32,7 +33,7 @@ define([
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
-    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred) {
+    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -200,15 +201,17 @@ define([
             }));
             capasArray = [capasUrl];
             nombresArray = [capasNombre];
+            
             parametros = {
                 ServicioCapas : capasArray,
                 Coordenadas : "",
                 NombreCapas : nombresArray
             };
             if (capasUrl) {
+                var cant = esriId.credentials.length;
                 this._resultadoNodeContenidos.innerHTML = "Descargando capas..";
-                this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete));
-                this._standbyAreas.show();
+//                this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete));
+//                this._standbyAreas.show();
             }
         },
         _expandirSeleccionadosClick: function () {
@@ -227,15 +230,22 @@ define([
             window.open(value.value.url);
         },
         _gpCroquisResultDataErr: function (value) {
-            this._process = lang.hitch(this,this._asyncProcess());
-            this._proces.then(function(results){
-              this._resultadoNodeContenidos.innerHTML = "";
-            });
+            function asyncProcess(){
+               var deferred = new Deferred();
+               setTimeout(function(){
+                 deferred.resolve("success");
+               }, 4000);
+               return deferred.promise;
+            } 
+            this._process  = asyncProcess();
+            this._process.then(lang.hitch(this,function(){
+                this._resultadoNodeContenidos.innerHTML = "";
+            }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
         },
         _asyncProcess: function () {
-	var deferred = new Deferred();
+            var deferred = new Deferred();
             setTimeout(function(){
               deferred.resolve("success");
             }, 2000);
