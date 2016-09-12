@@ -43,7 +43,9 @@ define([
             mapa : null,
             visible : true,
             active: false,
-            config: {}
+            config: {
+                "urlDescargarCapas": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+            }
         },
         constructor: function (options, srcRefNode) {
             //mezclar opciones usuario y default
@@ -63,6 +65,10 @@ define([
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._active);
+            this._urlQuery = defaults.config.urlDescargarCapas;
+            if (!this._urlQuery){
+                this._urlQuery = "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas";
+            }
             // classes
             this._css = {
                 //baseClassRadioButton: "sniaRadioButton"
@@ -130,10 +136,10 @@ define([
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
-            this._gpDescargarCapas = new Geoprocessor("http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas");
+            this._gpDescargarCapas = new Geoprocessor(this._urlQuery);
             this._active();
-            this._standbyAreas = new Standby({target: this._contenidosParentNode});
-            domConstruct.place(this._standbyAreas.domNode, this._contenidosParentNode, "after");
+            this._standbyAreas = new Standby({target: this._standBy});
+            domConstruct.place(this._standbyAreas.domNode, this._standBy, "after");
             this._standbyAreas.startup();
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
@@ -175,9 +181,10 @@ define([
             }));
         },
         _descargarClick: function () {
-            var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray ;
+            var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray, token ;
             capasUrl = "";
             capasNombre = "";
+            token = "";
             cantCapas = 0;
             primero = true;
             arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
@@ -189,10 +196,12 @@ define([
                                 primero = false;
                                 capasUrl = layer.url + "/" + entry;
                                 capasNombre = layer.layerInfos[entry].name;
+                                capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
 
                             } else {
                                 capasUrl += ";" + layer.url + "/" + entry;
                                 capasNombre += ";" + layer.layerInfos[entry].name;
+                                capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
                             }
                         });
                         capasNombre = capasNombre.replace("\"", '');
@@ -201,17 +210,19 @@ define([
             }));
             capasArray = [capasUrl];
             nombresArray = [capasNombre];
-            
+            if (esriId.credentials.length){
+                token = esriId.credentials[0].token;
+            }
             parametros = {
                 ServicioCapas : capasArray,
                 Coordenadas : "",
-                NombreCapas : nombresArray
+                NombreCapas : nombresArray,
+                Token : token
             };
             if (capasUrl) {
-                var cant = esriId.credentials.length;
                 this._resultadoNodeContenidos.innerHTML = "Descargando capas..";
-//                this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete));
-//                this._standbyAreas.show();
+                this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete), lang.hitch(this, this._gpCheckJob));
+                this._standbyAreas.show();
             }
         },
         _expandirSeleccionadosClick: function () {
@@ -221,13 +232,49 @@ define([
                 }
             }));
         },
-        _gpDescargarCapasComplete: function (jobInfo) {
-            this._gpDescargarCapas.getResultData(jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
+        _gpDescargarCapasComplete: function (jobInfo) { 
+            this._jobInfo= jobInfo;
+            this._gpDescargarCapas.getResultData(jobInfo.jobId, "resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
         },
-        _gpCroquisResultDataCallBack: function (value) {
+        _gpCheckJob: function (jobInfo) {
+            var msg;
+            
+            if (jobInfo.messages.length > 0 ){
+                msg = jobInfo.messages[jobInfo.messages.length -1];
+                if ((msg.description[0]!=="R") && (msg.description[0]!=="{")) {
+                        this._resultadoNodeContenidos.innerHTML = msg.description;
+                    }
+            }
+        },        
+        _gpCroquisResultZipDataCallBack: function (value) {
             this._resultadoNodeContenidos.innerHTML ="";
             this._standbyAreas.hide();
             window.open(value.value.url);
+        },
+        _gpCroquisResultZipDataErr: function (value) {
+            function asyncProcess(){
+               var deferred = new Deferred();
+               setTimeout(function(){
+                 deferred.resolve("success");
+               }, 4000);
+               return deferred.promise;
+            } 
+            this._process  = asyncProcess();
+            this._process.then(lang.hitch(this,function(){
+                this._resultadoNodeContenidos.innerHTML = "";
+            }));
+            this._resultadoNodeContenidos.innerHTML = value;
+            this._standbyAreas.hide();
+        },        
+        _gpCroquisResultDataCallBack: function (value) {
+            this._resultadoNodeContenidos.innerHTML ="";
+            this._standbyAreas.hide();
+          
+            if (value.value.Error === 1){
+                lang.hitch(this,this._gpCroquisResultDataErr(value.value.ErrorDescripcion));
+            }else{
+                this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
+            } 
         },
         _gpCroquisResultDataErr: function (value) {
             function asyncProcess(){
@@ -240,6 +287,7 @@ define([
             this._process  = asyncProcess();
             this._process.then(lang.hitch(this,function(){
                 this._resultadoNodeContenidos.innerHTML = "";
+                this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
             }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
