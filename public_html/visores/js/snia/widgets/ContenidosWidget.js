@@ -30,7 +30,7 @@ define([
     "dojo/fx",
     "dojo/domReady!",
     "dojox/layout/ScrollPane",
-     "dijit/focus",
+    "dijit/focus"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
@@ -83,11 +83,11 @@ define([
                 }
                 this._loadDynamicMapServiceLayers();
             }
-                this.own(
-                    on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
-                    on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
-                    on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
-                );
+            this.own(
+                on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
+                on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
+                on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
+            );
         },
         // start widget. called by user
         startup: function () {
@@ -170,10 +170,10 @@ define([
         _active: function () {
             this.emit("active-changed", {});
              // Quitar foco de boton por defecto al activar el widget
-            var fHandler = focusUtil.watch("curNode", function () {	
-                focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco		
-                fHandler.unwatch(); //Desactivar handler		
-          });
+//            var fHandler = focusUtil.watch("curNode", function () {
+//                focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco		
+//                fHandler.unwatch(); //Desactivar handler		
+//          });
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
