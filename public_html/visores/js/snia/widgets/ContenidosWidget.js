@@ -66,7 +66,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._active);
             this._urlQuery = defaults.config.urlDescargarCapas;
-            if (!this._urlQuery){
+            if (!this._urlQuery) {
                 this._urlQuery = "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas";
             }
             // classes
@@ -82,11 +82,11 @@ define([
                 }
                 this._loadDynamicMapServiceLayers();
             }
-                this.own(
-                    on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
-                    on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
-                    on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
-                );
+            this.own(
+                on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
+                on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
+                on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
+            );
         },
         // start widget. called by user
         startup: function () {
@@ -132,7 +132,7 @@ define([
             }
         },
         _init: function () {
-            this._resultadoNodeContenidos.innerHTML ="";
+            this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
@@ -181,7 +181,7 @@ define([
             }));
         },
         _descargarClick: function () {
-            var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray, token ;
+            var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray, token;
             capasUrl = "";
             capasNombre = "";
             token = "";
@@ -190,7 +190,7 @@ define([
             arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
                 if (layer instanceof ArcGISDynamicMapServiceLayer) {
                     cantCapas = layer.visibleLayers.length;
-                    if (layer.visible) {
+                    if ((layer.visible) && (cantCapas > 0)) {
                         dojo.forEach(layer.visibleLayers, function (entry) {
                             if (primero) {
                                 primero = false;
@@ -210,7 +210,7 @@ define([
             }));
             capasArray = [capasUrl];
             nombresArray = [capasNombre];
-            if (esriId.credentials.length){
+            if (esriId.credentials.length) {
                 token = esriId.credentials[0].token;
             }
             parametros = {
@@ -232,60 +232,58 @@ define([
                 }
             }));
         },
-        _gpDescargarCapasComplete: function (jobInfo) { 
-            this._jobInfo= jobInfo;
+        _gpDescargarCapasComplete: function (jobInfo) {
+            this._jobInfo = jobInfo;
             this._gpDescargarCapas.getResultData(jobInfo.jobId, "resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
         },
         _gpCheckJob: function (jobInfo) {
             var msg;
-            
-            if (jobInfo.messages.length > 0 ){
-                msg = jobInfo.messages[jobInfo.messages.length -1];
-                if ((msg.description[0]!=="R") && (msg.description[0]!=="{")) {
-                        this._resultadoNodeContenidos.innerHTML = msg.description;
-                    }
+            if (jobInfo.messages.length > 0) {
+                msg = jobInfo.messages[jobInfo.messages.length - 1];
+                if ((msg.description[0] !== "R") && (msg.description[0] !== "{")) {
+                    this._resultadoNodeContenidos.innerHTML = msg.description;
+                }
             }
-        },        
+        },
         _gpCroquisResultZipDataCallBack: function (value) {
-            this._resultadoNodeContenidos.innerHTML ="";
+            this._resultadoNodeContenidos.innerHTML = "";
             this._standbyAreas.hide();
             window.open(value.value.url);
         },
         _gpCroquisResultZipDataErr: function (value) {
-            function asyncProcess(){
-               var deferred = new Deferred();
-               setTimeout(function(){
-                 deferred.resolve("success");
-               }, 4000);
-               return deferred.promise;
-            } 
+            function asyncProcess() {
+                var deferred = new Deferred();
+                setTimeout(function () {
+                    deferred.resolve("success");
+                }, 4000);
+                return deferred.promise;
+            }
             this._process  = asyncProcess();
-            this._process.then(lang.hitch(this,function(){
+            this._process.then(lang.hitch(this, function () {
                 this._resultadoNodeContenidos.innerHTML = "";
             }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
-        },        
+        },
         _gpCroquisResultDataCallBack: function (value) {
-            this._resultadoNodeContenidos.innerHTML ="";
+            this._resultadoNodeContenidos.innerHTML = "";
             this._standbyAreas.hide();
-          
-            if (value.value.Error === 1){
-                lang.hitch(this,this._gpCroquisResultDataErr(value.value.ErrorDescripcion));
-            }else{
+            if (value.value.Error === 1) {
+                lang.hitch(this, this._gpCroquisResultDataErr(value.value.ErrorDescripcion));
+            } else {
                 this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
-            } 
+            }
         },
         _gpCroquisResultDataErr: function (value) {
-            function asyncProcess(){
-               var deferred = new Deferred();
-               setTimeout(function(){
-                 deferred.resolve("success");
-               }, 4000);
-               return deferred.promise;
-            } 
+            function asyncProcess() {
+                var deferred = new Deferred();
+                setTimeout(function () {
+                    deferred.resolve("success");
+                }, 4000);
+                return deferred.promise;
+            }
             this._process  = asyncProcess();
-            this._process.then(lang.hitch(this,function(){
+            this._process.then(lang.hitch(this, function () {
                 this._resultadoNodeContenidos.innerHTML = "";
                 this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
             }));
@@ -294,11 +292,11 @@ define([
         },
         _asyncProcess: function () {
             var deferred = new Deferred();
-            setTimeout(function(){
-              deferred.resolve("success");
+            setTimeout(function () {
+                deferred.resolve("success");
             }, 2000);
             return deferred.promise;
-        }        
+        }
     });
     return widget;
 });
