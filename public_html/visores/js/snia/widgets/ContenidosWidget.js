@@ -196,12 +196,12 @@ define([
                                 primero = false;
                                 capasUrl = layer.url + "/" + entry;
                                 capasNombre = layer.layerInfos[entry].name;
-                                capasNombre = capasNombre.replace(/ /g,'');
+                                capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
 
                             } else {
                                 capasUrl += ";" + layer.url + "/" + entry;
                                 capasNombre += ";" + layer.layerInfos[entry].name;
-                                capasNombre = capasNombre.replace(/ /g,'');
+                                capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
                             }
                         });
                         capasNombre = capasNombre.replace("\"", '');
