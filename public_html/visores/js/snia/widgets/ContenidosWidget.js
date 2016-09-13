@@ -29,11 +29,12 @@ define([
     "dijit/layout/ContentPane",
     "dojo/fx",
     "dojo/domReady!",
-    "dojox/layout/ScrollPane"
+    "dojox/layout/ScrollPane",
+     "dijit/focus",
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
-    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
+    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId, focusUtil) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -167,8 +168,12 @@ define([
             this._toc.startup();
         },
         _active: function () {
-            //FIXME
             this.emit("active-changed", {});
+             // Quitar foco de boton por defecto al activar el widget
+            var fHandler = focusUtil.watch("curNode", function () {	
+                focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco		
+                fHandler.unwatch(); //Desactivar handler		
+          });
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
