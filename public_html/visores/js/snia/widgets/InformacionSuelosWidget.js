@@ -371,9 +371,12 @@ define([
         _queryTaskCallbackGeometry: function (results) {
             var ext, indice;
             if (results.features.length > 0) {
-                arrayUtil.forEach(results.features, lang.hitch(this, function (feature) {
-                    // Supongo que por resultado tiene que haber solo un padron
-                    ext = feature.geometry.getExtent();
+                arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
+                    if (index === 0) {
+                        ext = feature.geometry.getExtent();
+                    } else {
+                        ext = ext.union(feature.geometry.getExtent());
+                    };
                     indice = feature.attributes.OBJECTID;
                     this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
                 }));

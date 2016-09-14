@@ -20,6 +20,8 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
+            "draggable": false,
+            "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }
@@ -40,13 +42,18 @@
             "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
+            "startsOpen": false,
             "widgetConfig": {                
                 "fechaAtributo": "acq",
                 "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer/0",
                 "timeSlider": {
-                    "unidad":"esriTimeUnitsDays",
+                    "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",
-                    "velocidad": "200"
+                    "velocidad": "200",
+                    "defecto": {
+                        "inicial": "0", 
+                        "final": "52"                          
+                    }
                 }                
             }
         },

@@ -76,7 +76,7 @@ define([
             if (!this.get("loaded")) {
                 this._init();
             }
-            this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '" ' + "width=" + '"' + "25px" + '"' + " height=" + '"' + "25px" + '"' + "> <br>";
+            this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '"' + "class=" + '"' + "estiloBotonBarra" + '"' + "> <br>";
             new Tooltip({
                 connectId: [this._botonNode],
                 label: "<b>" + this._etiqueta + "</b>" + "<br>" + "<p> " + this._msgToolTip + "</p>"
@@ -127,6 +127,7 @@ define([
             } else {
                 this._botonEnabled = false;
             }
+            this.show();
         },
         _init: function () {
             this._visible();
