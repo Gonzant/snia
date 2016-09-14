@@ -26,6 +26,7 @@ define([
     "esri/graphic",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/symbols/SimpleLineSymbol",
+    "esri/symbols/SimpleFillSymbol",
     "esri/Color",
     "dijit/form/Button",
     "esri/tasks/Geoprocessor",
@@ -40,7 +41,7 @@ define([
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, a11yclick, domClass, domStyle, ComboBox, TabContainer,
     ContentPane, domConst, arrayUtil, Memory,
-    Graphic, SimpleMarkerSymbol, SimpleLineSymbol, Color,
+    Graphic, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color,
     Button, Geoprocessor, FeatureSet, domAttr, Standby,
     Dialog, RiesgoReporteWidget, Dibujo, Draw, CapaGrafica3SR
     ) {
@@ -386,7 +387,7 @@ define([
             domConst.place(nodeBoton, node);
 
             this._nodeChild = new ContentPane({
-                title: "Variables prediales",
+                title: mA.Pestanas[0].Nombre,
                 iconClass: "iconVentana",
                 content: node
             });
@@ -546,9 +547,10 @@ define([
             botonIrVariableAmbiental.placeAt(nodeBoton);
             domConst.place(nodeBoton, node);
 
+            console.log(mA);
             //Agrego la ventana
             this._nodeChild = new ContentPane({
-                title: "Variables localización",
+                title: mA.Pestanas[1].Nombre,
                 iconClass: "iconVentana",
                 content: node
             });
@@ -582,7 +584,7 @@ define([
 
             //Agrego la ventana
             this._nodeChild = new ContentPane({
-                title: "Riesgo ambiental",
+                title: mA.Pestanas[2].Nombre,
                 iconClass: "iconVentana",
                 content: node
             });
@@ -614,7 +616,7 @@ define([
             }));
             //Agrego la ventana            
             this._nodeChild = new ContentPane({
-                title: "Objetivos y fundamentos",
+                title: mA.Pestanas[3].Nombre,
                 iconClass: "iconVentana",
                 content: node
             });
@@ -648,7 +650,7 @@ define([
 
             //Agrego la ventana
             this._nodeChild = new ContentPane({
-                title: "Marco normativo",
+                title: mA.Pestanas[4].Nombre,
                 iconClass: "iconVentana",
                 content: node
             });
@@ -694,7 +696,7 @@ define([
 
             //Agrego la ventana
             this._nodeChild = new ContentPane({
-                title: "Ayuda",
+                title: mA.Pestanas[5].Nombre,
                 iconClass: "iconAyuda",
                 showLabel: false,
                 content: node
@@ -730,10 +732,11 @@ define([
                 node = domConst.create("div");
                 newDiv = domConst.place("<div></div>", node, "after");
                 titulo = this._etiqDialogReporte.titulo + ' ' + matriz.substr(6);
-                strX = this._cg3sr._gs[0]._g_utm.geometry.x.toString();
-                strY = this._cg3sr._gs[0]._g_utm.geometry.y.toString();
-                coordenadas = strX.substring(0, strX.indexOf(".") + 3) + '; ' + strY.substring(0, strY.indexOf(".") + 3);
-
+                //console.log(this._cg3sr);
+                //strX = this._cg3sr._gs[0]._g_utm.geometry.x.toString();
+                //strY = this._cg3sr._gs[0]._g_utm.geometry.y.toString();
+                //coordenadas = strX.substring(0, strX.indexOf(".") + 3) + '; ' + strY.substring(0, strY.indexOf(".") + 3);
+                coordenadas = "";
                 etiquetasPredial = '';
                 arrayUtil.forEach(this._comboBoxesN, lang.hitch(this, function (cb) {
                     etiquetasPredial =  etiquetasPredial + cb.etiqueta + ':' + cb.combo.value + ';';
@@ -849,7 +852,7 @@ define([
             domStyle.set(this._riesgoNode, "display", "none");
             domAttr.set(this._msjUsuarioMarcarUbicacion, "innerHTML", "Marque la ubicación en el mapa");
             domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'block');
-            this._dibujo.activar(Draw.POINT);
+            this._dibujo.activar(Draw.POLYGON);
         },
         _initDibujo: function () {
             this._dibujo = new Dibujo();
@@ -861,7 +864,8 @@ define([
         },
         _dibujoComplete: function (evt) {
             var parametrosLlamada, features, featureSet, params,
-                markerSymbol;
+                markerSymbol, fillSymbol;
+            fillSymbol = new SimpleFillSymbol();
             markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CROSS, 10,
                     new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
                         new Color([0, 0, 0]), 1),
@@ -871,7 +875,7 @@ define([
                 this._puntoGrafico = undefined;
                 this._cg3sr.removerGrafico("0");
             }
-            this._puntoGrafico = new Graphic(evt.geometry, markerSymbol);
+            this._puntoGrafico = new Graphic(evt.geometry, fillSymbol);
             this._cg3sr.agregarGrafico("0", this._puntoGrafico);
 
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + this._matrizSeleccionadaString + ';';
