@@ -5,7 +5,7 @@
             "logo": false
         },
         "baseMapLayer": {
-            "url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "url":"httpr://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
             "extent": {
                 "xmin": -37867.16314808361,
                 "ymin": 5957313.020605681,
