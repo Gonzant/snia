@@ -21,23 +21,12 @@ define([
     "esri/tasks/PrintParameters",
     "esri/tasks/PrintTask",
     "esri/tasks/PrintTemplate",
-    "dojo/_base/array",
-    "dojo/dom",
-    "widgets/MapaWidget",
-    "esri/layers/ArcGISTiledMapServiceLayer",
-    "esri/layers/ArcGISDynamicMapServiceLayer",
-    "dojo/dom-attr",
-    "dojo/_base/array",
-    "esri/map",
-    "esri/geometry/Extent",
-    "esri/dijit/Scalebar"
+    "dojo/_base/array"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Memory, ComboBox,
     Button, PrintParameters,
-    PrintTask, PrintTemplate, array, dom, MapaWidget,
-    ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
-    attr, arrayUtil, Map, Extent, Scalebar
+    PrintTask, PrintTemplate, array
     ) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -58,35 +47,37 @@ define([
             this.set("mapa", defaults.mapa);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
-            this.set("active", defaults.active);
+
             this.set("_urlPrintTask", defaults.config.urlPrintTask);
             this.set("_lbImprimir", defaults.config.lbImprimir);
             this.set("_lbImprimiendo", defaults.config.lbImprimiendo);
-            this.set("_data", defaults.config.data);                        
+            this.set("_data", defaults.config.data);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
-            console.log("imprimirWidget");
-            this.watch("reload",this._reload);
-            this.watch("load",this._reload);
-            this.watch("active-change",this._reload);
+            this.watch("reload", this._reload);
+            this.watch("load", this._reload);
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
             };
         },
         _activar: function () {
-            this.emit("active-changed");
-            if (this.get("active")) {                                
-                this._initMapa();
-            } else {                
-                this._mapaImprimir.removeAllLayers();
-                this._mapaImprimir.destroy();
-                delete (this._mapaImprimir);
+            //this.emit("active-changed");
+            console.log("entra a activar _");
+            if (this.get("active")) {
+                console.log("entra a activar _ positivo");
+                //this._init();
+                this._crearTemplates();
+            } else {
+                console.log("entra a activar _ negativo");
+                this._comboBoxImprimir.destroy();
+                this._comboBoxEscala.destroy();
+                this._cambioZoom.remove();
             }
         },
-        _reload: function(){
+        _reload: function () {
             console.log("cambio el mapa base");
         },
         postCreate: function () {
@@ -150,45 +141,8 @@ define([
             this.emit("load", {});
             //Se crea el boton para imprimir
             this._crearBotonImprimir();
-            //Se crean los templates
-            this._crearTemplates();
             //Creo la tarea de imprimir
             this._printTask = new PrintTask(this._urlPrintTask);
-            //this._initMapa();
-        },
-        _initMapa: function () {
-            var e = new Extent(this.mapa.map.extent.toJson());
-            this._mapaImprimir = new Map(this._mapaImprimirNode, {
-                extent: e,
-                slider: false,
-                logo: false
-            });
-            //this._comboBoxEscala.set("value", ("1:"+(this._mapaImprimir.getScale())).substring(0,("1:"+(this._mapaImprimir.getScale())).indexOf(".")+3));
-            
-            var scalebar = new Scalebar({
-                map: this._mapaImprimir,
-                attachTo: "bottom-left",
-                scalebarUnit: "metric"
-            },this._mapaImprimirNode);            
-            var baseMapLayer = new ArcGISTiledMapServiceLayer(this.mapa.baseMapLayer.url);
-            this._mapaImprimir.addLayer(baseMapLayer);
-            
-            arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
-                var newLayer = new ArcGISDynamicMapServiceLayer(layer.url, {
-                    "id": layer.id,
-                    "opacity": layer.opacity,
-                    "visible": layer.visible
-                });
-                newLayer.setVisibleLayers(layer.visibleLayers);
-                //arrayUtil.forEach(layer, lang.hitch(this, function (layer) {
-                this._mapaImprimir.addLayer(newLayer);
-            }));
-            on (this._mapaImprimir, "zoom-end", lang.hitch(this, this._cambioZoom)); 
-            domStyle.set(this._mapaImprimirNode, "height", "421px");
-            domStyle.set(this._mapaImprimirNode, "width", "297.5px");
-        },
-        _reinitMapa: function () {
-
         },
         _crearBotonImprimir : function () {
             this._botonImprimir = new Button({
@@ -209,22 +163,22 @@ define([
             });
             templateEscala = new Memory({
                 data: [
-                        {"name": "1:1.000", "scale": 1000},
-                        {"name": "1:2.000", "scale": 2000},
-                        {"name": "1:4.000", "scale": 4000},
-                        {"name": "1:8.000", "scale": 8000},
-                        {"name": "1:16.000", "scale": 16000},
-                        {"name": "1:32.000", "scale": 32000},
-                        {"name": "1:64.000", "scale": 64000},
-                        {"name": "1:125.000", "scale": 125000},
-                        {"name": "1:250.000", "scale": 250000},
-                        {"name": "1:500.000", "scale": 500000},
-                        {"name": "1:1.000.000", "scale": 1000000},
-                        {"name": "1:2.000.000", "scale": 2000000},
-                        {"name": "1:4.000.000", "scale": 4000000},
-                        {"name": "1:8.000.000", "scale": 8000000},
-                        {"name": "1:16.000.000", "scale": 16000000}                        
-                    ]
+                    {"name": "1:1.000", "scale": 1000},
+                    {"name": "1:2.000", "scale": 2000},
+                    {"name": "1:4.000", "scale": 4000},
+                    {"name": "1:8.000", "scale": 8000},
+                    {"name": "1:16.000", "scale": 16000},
+                    {"name": "1:32.000", "scale": 32000},
+                    {"name": "1:64.000", "scale": 64000},
+                    {"name": "1:125.000", "scale": 125000},
+                    {"name": "1:250.000", "scale": 250000},
+                    {"name": "1:500.000", "scale": 500000},
+                    {"name": "1:1.000.000", "scale": 1000000},
+                    {"name": "1:2.000.000", "scale": 2000000},
+                    {"name": "1:4.000.000", "scale": 4000000},
+                    {"name": "1:8.000.000", "scale": 8000000},
+                    {"name": "1:16.000.000", "scale": 16000000}
+                ]
             });
 
             this._comboBoxImprimir = new ComboBox({
@@ -234,45 +188,32 @@ define([
                 searchAttr: "name"
             });
             this._comboBoxImprimir.placeAt(this._divCombo);
-            
+
             this._comboBoxEscala = new ComboBox({
                 name: "templateEscala",
-                value: 0,
+                value: "1:" + this.mapa.map.getScale(),
                 store: templateEscala,
-                searchAttr: "name"                
+                searchAttr: "name"
             });
             this._comboBoxEscala.placeAt(this._divEscala);
-            on(this._comboBoxEscala, "change", lang.hitch(this, this._cambioEscala));
-            on(this._comboBoxImprimir, "change", lang.hitch(this, this._cambioTemplate));
+            this._cambioZoom = on(this.mapa.map, 'zoom-end', lang.hitch(this, function () {
+                this.cambioZoomMapa = true;
+                this._comboBoxEscala.set("value", "1:" + this.mapa.map.getScale());
+            }));
+
+            this._cambioZoomCB = on(this._comboBoxEscala, "change", lang.hitch(this, this._cambioEscala));
         },
         _cambioEscala: function () {
-            //alert(this._mapaImprimir.getScale());            
-//            console.log("_cambioEscala");
-//            this._mapaImprimir.setScale(this._comboBoxEscala.item.scale);
-//            this._comboBoxEscala.set("value", this._comboBoxEscala.item.name);
-        },
-        _cambioZoom: function () {
-//            console.log("_cambioZoom");
-//            //Tengo que cambiar el comboBox value
-//            console.log(this._mapaImprimir.getScale());
-        },
-        _cambioTemplate: function () {
-            console.log(this._comboBoxImprimir);
-            var item = this._comboBoxImprimir.item;
-            if (this._comboBoxImprimir.item.direccion==='V'){
-                domStyle.set(this._mapaImprimirNode, "height", "421px");
-                domStyle.set(this._mapaImprimirNode, "width", "297.5px");
-            }else{
-                domStyle.set(this._mapaImprimirNode, "height", "297.5px");
-                domStyle.set(this._mapaImprimirNode, "width", "421px");
+            //alert(this._mapaImprimir.getScale());               
+            if (!this.cambioZoomMapa) {
+                this.mapa.map.setScale(this._comboBoxEscala.item.scale);
             }
-            
-//            console.log("_cambioZoom");
-//            //Tengo que cambiar el comboBox value
-//            console.log(this._mapaImprimir.getScale());
+            this.cambioZoomMapa = false;
+            //this._comboBoxEscala.set("value", this._comboBoxEscala.item.name);
         },
         _elegirTemplate: function (templateSelected) {
             var nuevoTemplate = new PrintTemplate();
+            console.log(this.mapa);
             array.forEach(this._data, function (hoja) {
                 if (hoja.name === templateSelected) {
                     nuevoTemplate.exportOptions = {
@@ -280,7 +221,11 @@ define([
                         height: hoja.height,
                         dpi: hoja.dpi,
                         format: hoja.format,
-                        layout : hoja.layout
+                        layout : hoja.layout,
+                        showAttribution: true,
+                        layoutOptions: {
+                            scalebarUnit: "Kilometers"
+                        }
                     };
                 }
             });
@@ -292,7 +237,7 @@ define([
             templateImprimir = this._elegirTemplate(this._comboBoxImprimir.value);
             parametros = new PrintParameters();
             parametros.template = templateImprimir;
-            parametros.map = this._mapaImprimir;
+            parametros.map = this.mapa.map;
             //Se desactiva el boton de imprimir
             this._botonImprimir.setAttribute("label", this._lbImprimiendo);
             this._botonImprimir.setAttribute("disabled", true);
