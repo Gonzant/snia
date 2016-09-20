@@ -47,7 +47,7 @@ define([
             this.set("mapa", defaults.mapa);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
-            this.set("active", defaults.active);
+
             this.set("_urlPrintTask", defaults.config.urlPrintTask);
             this.set("_lbImprimir", defaults.config.lbImprimir);
             this.set("_lbImprimiendo", defaults.config.lbImprimiendo);
@@ -56,13 +56,29 @@ define([
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
+            this.watch("reload", this._reload);
+            this.watch("load", this._reload);
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
             };
         },
         _activar: function () {
-            this.emit("active-changed");
+            //this.emit("active-changed");
+            console.log("entra a activar _");
+            if (this.get("active")) {
+                console.log("entra a activar _ positivo");
+                //this._init();
+                this._crearTemplates();
+            } else {
+                console.log("entra a activar _ negativo");
+                this._comboBoxImprimir.destroy();
+                this._comboBoxEscala.destroy();
+                this._cambioZoom.remove();
+            }
+        },
+        _reload: function () {
+            console.log("cambio el mapa base");
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -120,13 +136,11 @@ define([
         },
         _init: function () {
             this._visible();
-            this._activar();
+            //this._activar();
             this.set("loaded", true);
             this.emit("load", {});
             //Se crea el boton para imprimir
             this._crearBotonImprimir();
-            //Se crean los templates
-            this._crearTemplates();
             //Creo la tarea de imprimir
             this._printTask = new PrintTask(this._urlPrintTask);
         },
@@ -143,9 +157,28 @@ define([
             domStyle.set(this._imprimirNode, "margin-top", "5px");
         },
         _crearTemplates: function () {
-            var templateStore;
+            var templateStore, templateEscala;
             templateStore = new Memory({
                 data: this._data
+            });
+            templateEscala = new Memory({
+                data: [
+                    {"name": "1:1.000", "scale": 1000},
+                    {"name": "1:2.000", "scale": 2000},
+                    {"name": "1:4.000", "scale": 4000},
+                    {"name": "1:8.000", "scale": 8000},
+                    {"name": "1:16.000", "scale": 16000},
+                    {"name": "1:32.000", "scale": 32000},
+                    {"name": "1:64.000", "scale": 64000},
+                    {"name": "1:125.000", "scale": 125000},
+                    {"name": "1:250.000", "scale": 250000},
+                    {"name": "1:500.000", "scale": 500000},
+                    {"name": "1:1.000.000", "scale": 1000000},
+                    {"name": "1:2.000.000", "scale": 2000000},
+                    {"name": "1:4.000.000", "scale": 4000000},
+                    {"name": "1:8.000.000", "scale": 8000000},
+                    {"name": "1:16.000.000", "scale": 16000000}
+                ]
             });
 
             this._comboBoxImprimir = new ComboBox({
@@ -155,9 +188,32 @@ define([
                 searchAttr: "name"
             });
             this._comboBoxImprimir.placeAt(this._divCombo);
+
+            this._comboBoxEscala = new ComboBox({
+                name: "templateEscala",
+                value: "1:" + this.mapa.map.getScale(),
+                store: templateEscala,
+                searchAttr: "name"
+            });
+            this._comboBoxEscala.placeAt(this._divEscala);
+            this._cambioZoom = on(this.mapa.map, 'zoom-end', lang.hitch(this, function () {
+                this.cambioZoomMapa = true;
+                this._comboBoxEscala.set("value", "1:" + this.mapa.map.getScale());
+            }));
+
+            this._cambioZoomCB = on(this._comboBoxEscala, "change", lang.hitch(this, this._cambioEscala));
+        },
+        _cambioEscala: function () {
+            //alert(this._mapaImprimir.getScale());               
+            if (!this.cambioZoomMapa) {
+                this.mapa.map.setScale(this._comboBoxEscala.item.scale);
+            }
+            this.cambioZoomMapa = false;
+            //this._comboBoxEscala.set("value", this._comboBoxEscala.item.name);
         },
         _elegirTemplate: function (templateSelected) {
             var nuevoTemplate = new PrintTemplate();
+            console.log(this.mapa);
             array.forEach(this._data, function (hoja) {
                 if (hoja.name === templateSelected) {
                     nuevoTemplate.exportOptions = {
@@ -165,7 +221,11 @@ define([
                         height: hoja.height,
                         dpi: hoja.dpi,
                         format: hoja.format,
-                        layout : hoja.layout
+                        layout : hoja.layout,
+                        showAttribution: true,
+                        layoutOptions: {
+                            scalebarUnit: "Kilometers"
+                        }
                     };
                 }
             });

@@ -288,6 +288,10 @@ html, body {
     margin-top: 3px;
 }
 
+.controlImprimir{
+    margin-top:20px;    
+}
+
 .timpoWidget{
     width: 570px;
     height: 60px;
