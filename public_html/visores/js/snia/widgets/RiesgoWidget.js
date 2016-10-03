@@ -798,7 +798,7 @@ define([
             domStyle.set(this._resultadoRiesgoPredial, "backgroundColor", this._letraBackground(result.value));
         },
         _cambioValorCombo2S: function (value) {
-            var parametrosLlamada, params, features, featureSet;
+            var parametrosLlamada, params, features, featureSet, parametrosN;
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + value + ';';
             arrayUtil.forEach(this._comboBoxes2S, lang.hitch(this, function (cb) {
                 if (cb.consulta === "Usuario") {
@@ -811,8 +811,15 @@ define([
                 features.push(this._puntoGrafico);
                 featureSet = new FeatureSet();
                 featureSet.features = features;
-                params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet};
-                this._standby.show();
+                
+                parametrosN = ''; 
+                arrayUtil.forEach(this._comboBoxesN, lang.hitch(this, function (cb) {
+                    parametrosN =  parametrosN + cb.id + ':' + cb.combo.value + ';';
+                }));
+                
+                params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet, "EntradaVariablesN": parametrosN};
+                this._standby.show();                                
+                
                 this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
             } else {
                 domAttr.set(this._resultadoRiesgoGeo, "innerHTML", this._msjMarcarUbicacion);
@@ -864,7 +871,7 @@ define([
         },
         _dibujoComplete: function (evt) {
             var parametrosLlamada, features, featureSet, params,
-                markerSymbol, fillSymbol;
+                markerSymbol, fillSymbol, parametrosN;
             fillSymbol = new SimpleFillSymbol();
             markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CROSS, 10,
                     new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
@@ -888,7 +895,14 @@ define([
             features.push(this._puntoGrafico);
             featureSet = new FeatureSet();
             featureSet.features = features;
-            params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet};
+            
+            parametrosN = ''; 
+            arrayUtil.forEach(this._comboBoxesN, lang.hitch(this, function (cb) {
+                parametrosN =  parametrosN + cb.id + ':' + cb.combo.value + ';';
+            }));
+            
+            params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet, "EntradaVariablesN ": parametrosN};
+            console.log(params);
             this._standby.show();
             this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
         },
