@@ -8,8 +8,8 @@
             "toggle": false,
             "widgetConfig": {
                 "mapasBase": [
-					{"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
                 ]
             }
         },
@@ -19,8 +19,11 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
+            "draggable": false,
+            "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
-                "dynamicMapServiceLayers": []
+                "dynamicMapServiceLayers": [],
+                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
         {
@@ -51,8 +54,8 @@
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -66,8 +69,8 @@
             "icono": "../js/snia/img/infoCartografia.png",
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -76,13 +79,13 @@
 					"CampoEtiquetaUnidadMapeo": "UnidadDeMapeoEtiqueta",
 					"CampoSimboloSerie": "SerieSimbolo",
 					"CampoIdPerfilRepresentativo": "SeriePerfilRepresentativo",
-					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
-					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
-					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/1",
-					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
+					"UrlUnidadMapeo": "https://web.renare.gub.uy/Cartografia/UnidadesMapeo",
+					"UrlSerie": "https://web.renare.gub.uy/Cartografia/Series",
+					"UrlPerfil": "https://web.renare.gub.uy/Cartografia/Perfiles",
+					"Servicio": "https://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/1",
+					"ServicioUnidadMapeo": "https://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
 					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
-					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
+					"ServicioPerfil": "https://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
 					"CampoIdServicioPerfil": "Id_Perfil"
 				}
             }
@@ -114,7 +117,7 @@
             "icono": "../js/snia/img/imprimir.png",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 

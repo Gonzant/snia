@@ -20,6 +20,8 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
+            "draggable": false,
+            "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],
                 "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"

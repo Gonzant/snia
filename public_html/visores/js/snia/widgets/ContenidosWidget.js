@@ -14,6 +14,7 @@ define([
     "dojo/text!./templates/ContenidosWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class", "dojo/dom-style",
+    "dijit/focus",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
@@ -31,7 +32,7 @@ define([
     "dojo/domReady!",
     "dojox/layout/ScrollPane"
 ], function (on,
-    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle,
+    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle, focusUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
     ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
 
@@ -167,8 +168,12 @@ define([
             this._toc.startup();
         },
         _active: function () {
-            //FIXME
             this.emit("active-changed", {});
+            // Quitar foco de boton por defecto al activar el widget
+            var fHandler = focusUtil.watch("curNode", function () {
+                    focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
+                    fHandler.unwatch(); //Desactivar handler
+                });
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
@@ -189,22 +194,24 @@ define([
             primero = true;
             arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
                 if (layer instanceof ArcGISDynamicMapServiceLayer) {
-                    cantCapas = layer.visibleLayers.length;
-                    if ((layer.visible) && (cantCapas > 0) && (layer.visibleLayers[0] !== -1)) {
-                        dojo.forEach(layer.visibleLayers, function (entry) {
-                            if (primero) {
-                                primero = false;
-                                capasUrl = layer.url + "/" + entry;
-                                capasNombre = layer.layerInfos[entry].name;
-                                capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
+                    if (layer.visible) {
+                        cantCapas = layer.visibleLayers.length;
+                        if ((cantCapas > 0) && (layer.visibleLayers[0] !== -1)) {
+                            dojo.forEach(layer.visibleLayers, function (entry) {
+                                if (primero) {
+                                    primero = false;
+                                    capasUrl = layer.url + "/" + entry;
+                                    capasNombre = layer.layerInfos[entry].name;
+                                    capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
 
-                            } else {
-                                capasUrl += ";" + layer.url + "/" + entry;
-                                capasNombre += ";" + layer.layerInfos[entry].name;
-                                capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
-                            }
-                        });
-                        capasNombre = capasNombre.replace("\"", '');
+                                } else {
+                                    capasUrl += ";" + layer.url + "/" + entry;
+                                    capasNombre += ";" + layer.layerInfos[entry].name;
+                                    capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
+                                }
+                            });
+                            capasNombre = capasNombre.replace("\"", '');
+                        }
                     }
                 }
             }));
@@ -241,7 +248,7 @@ define([
             this._jobInfo = jobInfo;
             this._gpDescargarCapas.getResultData(jobInfo.jobId, "resultado", lang.hitch(this, this._gpCroquisResultResultadoDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
         },
-       _gpCroquisResultResultadoDataCallBack: function (value) {
+        _gpCroquisResultResultadoDataCallBack: function (value) {
             // Si no hay error llamo a _gpCroquisResultZipDataCallBack que abre el zip, si este falla llama tambien a _gpCroquisResultZipDataErr
             // Si hay error llamo a _gpCroquisResultDataErr para mostrarlo en pantalla
             this._resultadoNodeContenidos.innerHTML = "";
@@ -257,7 +264,7 @@ define([
             this._resultadoNodeContenidos.innerHTML = "";
             this._standbyAreas.hide();
             window.open(value.value.url);
-        }, 
+        },
         _gpCroquisResultZipDataErr: function (value) {
             // Mensaje de error si falla la consulta de "zip" o de "resultado"
             function asyncProcess() {
@@ -273,8 +280,8 @@ define([
             }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
-        }, 
-         _gpCroquisResultDataErr: function (value) {
+        },
+        _gpCroquisResultDataErr: function (value) {
             // Muestra el mensaje de error que vino en resultado
             function asyncProcess() {
                 var deferred = new Deferred();
@@ -290,7 +297,7 @@ define([
             }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
-        },       
+        },
         /***********Chequeo de status**************/
         _gpCheckJob: function (jobInfo) {
             // Es llamado para verificar el porcentaje de descargas
