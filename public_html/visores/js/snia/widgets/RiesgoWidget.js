@@ -548,7 +548,7 @@ define([
             botonIrVariableAmbiental.placeAt(nodeBoton);
             domConst.place(nodeBoton, node);
 
-            nodeAGGE = domConst.toDom("<div style='margin-left:10px'> <p>*AGGE: Áreas de Generación y Gestión de Efluentes </p> </div>");
+            nodeAGGE = domConst.toDom("<div style='margin-left:10px;font-style:italic'> <p>*AGGE: Áreas de Generación y Gestión de Efluentes </p> </div>");
             domConst.place(nodeAGGE, node);
             
             //Agrego la ventana
