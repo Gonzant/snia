@@ -227,9 +227,10 @@ define([
             doc.text(columnaDerecha, fila, this._dicoseInputNode.value);
             fila = fila + 10;
 
-            doc.text(columnaIzquierda, fila, this._pdf.coordenadas);
+            /*doc.text(columnaIzquierda, fila, this._pdf.coordenadas);
             doc.text(columnaDerecha, fila, "(" + this.coordenadas + ")");
-            fila = fila + 20;
+            fila = fila + 20;*/
+            fila = fila + 10;
 
             doc.setFontType("bold");
             doc.setFontSize(letraGrande);
