@@ -285,7 +285,8 @@ define([
                 botonMarcar, botonDesmarcar, nodeBoton,
                 botonReporte, nodeTituloPred, botonIrVariableAmbiental,
                 nodeTituloGeo, divBotones, nodeImgAmbiental,
-                divBM, divBD, normativa, nodeAyuda3, ayuda, nodeNombreT;
+                divBM, divBD, normativa, nodeAyuda3, ayuda, nodeNombreT,
+                nodeAGGE;
             this._archivoJSON = result.value;
             this._tabContainer = new TabContainer({
                 style: "height: 520px; width: 520px;"
@@ -547,7 +548,9 @@ define([
             botonIrVariableAmbiental.placeAt(nodeBoton);
             domConst.place(nodeBoton, node);
 
-            console.log(mA);
+            nodeAGGE = domConst.toDom("<div style='margin-left:10px'> <p>*AGGE: Áreas de Generación y Gestión de Efluentes </p> </div>");
+            domConst.place(nodeAGGE, node);
+            
             //Agrego la ventana
             this._nodeChild = new ContentPane({
                 title: mA.Pestanas[1].Nombre,
@@ -717,9 +720,9 @@ define([
             } else {
                 domStyle.set(this._advertenciaRiesgoGeo, "display", "block");
                 if (pestana === "1") {
-                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Por favor completar variables geográficas y marcar punto");
+                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Por favor completar variables geográficas y marcar AGGE*");
                 } else {
-                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Marque el punto en el mapa");
+                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Marque el AGGE* en el mapa");
                 }
                 this._tabContainer.selectChild(this._pestanas[1]);
             }
