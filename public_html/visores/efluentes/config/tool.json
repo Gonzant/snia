@@ -148,9 +148,9 @@
         },
         {
             "widget": "widgets/RiesgoCorralWidget",
-            "title": "Riesgo Corral Ambiental",
-            "msgToolTip": "Calcula el riesgo ambiental de un Corral.",
-            "icono": "../js/snia/img/calculoRiesgo_gris.png",
+            "title": "Riesgo ambiental de corral de engorde ",
+            "msgToolTip": "Calcula el riesgo ambiental de un corral de engorde.",
+            "icono": "../js/snia/img/calculoRiesgoCorral_gris.png",
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{

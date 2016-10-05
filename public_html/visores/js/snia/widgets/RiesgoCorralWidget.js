@@ -300,7 +300,7 @@ define([
             this._pestanas = [];
 
             // Matriz tambo es la 0
-            mA = this._archivoJSON.Herramienta.MatrizAmbiental[0];
+            mA = this._archivoJSON.Herramienta.MatrizAmbiental[1];
             this._matrizSeleccionadaString = mA.Id;
             //Cargo las variables de la matriz ambiental                                    
             this._riesgoPredial = mA.RiesgoPredial;
@@ -546,10 +546,7 @@ define([
                 })
             });
             botonIrVariableAmbiental.placeAt(nodeBoton);
-            domConst.place(nodeBoton, node);
-
-            nodeAGGE = domConst.toDom("<div style='margin-left:10px'> <p>*AGGE: Áreas de Generación y Gestión de Efluentes </p> </div>");
-            domConst.place(nodeAGGE, node);
+            domConst.place(nodeBoton, node);            
             
             //Agrego la ventana
             this._nodeChild = new ContentPane({
@@ -593,42 +590,10 @@ define([
             });
             this._pestanas.push(this._nodeChild);
             this._tabContainer.addChild(this._nodeChild);
-
-            // Pestana Objetivos
-            node = domConst.create("div");
-            //Itero sobre los objetivos
-            arrayUtil.forEach(mA.Informacion.Objetivos, lang.hitch(this, function (objetivo) {
-                var nodeTituloObjetivo, nodeTextoObjetivo, nodeLista;
-                if (objetivo.Nombre) {
-                    nodeTituloObjetivo = domConst.toDom("<div>" + objetivo.Nombre + "</div>");
-                    domClass.add(nodeTituloObjetivo, "riesgoTitulo");
-                    domConst.place(nodeTituloObjetivo, node);
-                }
-                if (objetivo.Texto) {
-                    nodeTextoObjetivo = domConst.toDom("<div>" + objetivo.Texto + "</div>");
-                    domClass.add(nodeTextoObjetivo, "riesgoObjetivo");
-                    domConst.place(nodeTextoObjetivo, node);
-                }
-                nodeLista = domConst.create("ul", null);
-                if (objetivo.Puntos) {
-                    arrayUtil.forEach(objetivo.Puntos, lang.hitch(this, function (punto) {
-                        domConst.create("li", { innerHTML: punto.Texto }, nodeLista);
-                    }));
-                }
-                domConst.place(nodeLista, node);
-            }));
-            //Agrego la ventana            
-            this._nodeChild = new ContentPane({
-                title: mA.Pestanas[3].Nombre,
-                iconClass: "iconVentana",
-                content: node
-            });
-            this._pestanas.push(this._nodeChild);
-            this._tabContainer.addChild(this._nodeChild);
-
+          
             // Pestana Normativa
             node = domConst.create("div");
-            normativa = mA.Informacion.Seccion[3];
+            normativa = mA.Informacion.Seccion[2];
             arrayUtil.forEach(normativa.NombreValorTexto, lang.hitch(this, function (nvtJson) {
                 var nodeSeccion, nodeNombre, nodeTexto, nodeValor;
                 nodeSeccion = domConst.create("div");
@@ -650,10 +615,10 @@ define([
                 domStyle.set(nodeSeccion, "margin-bottom", "10px");
                 domConst.place(nodeSeccion, node);
             }));
-
+            
             //Agrego la ventana
             this._nodeChild = new ContentPane({
-                title: mA.Pestanas[4].Nombre,
+                title: mA.Pestanas[3].Nombre,
                 iconClass: "iconVentana",
                 content: node
             });
@@ -670,7 +635,7 @@ define([
             nodeAyudaTexto = domConst.toDom("<div>" + this._archivoJSON.Herramienta.Ayuda.texto + "</div>");
             domClass.add(nodeAyudaTexto, "riesgoAyudaTexto");
             domConst.place(nodeAyudaTexto, node);
-            for (i = 0; i < 3; i = i + 1) {
+            for (i = 0; i < 2; i = i + 1) {
                 nodeAyuda3 = domConst.toDom("<div></div>");
                 domClass.add(nodeAyuda3, "riesgoAyudaNode3");
 
@@ -699,7 +664,7 @@ define([
 
             //Agrego la ventana
             this._nodeChild = new ContentPane({
-                title: mA.Pestanas[5].Nombre,
+                title: mA.Pestanas[4].Nombre,
                 iconClass: "iconAyuda",
                 showLabel: false,
                 content: node
@@ -720,9 +685,9 @@ define([
             } else {
                 domStyle.set(this._advertenciaRiesgoGeo, "display", "block");
                 if (pestana === "1") {
-                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Por favor completar variables geográficas y marcar AGGE*");
+                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Por favor completar variables geográficas y marcar punto");
                 } else {
-                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Marque el AGGE* en el mapa");
+                    domAttr.set(this._advertenciaRiesgoGeo, "innerHTML", "Marque el punto en el mapa");
                 }
                 this._tabContainer.selectChild(this._pestanas[1]);
             }
@@ -862,7 +827,7 @@ define([
             domStyle.set(this._riesgoNode, "display", "none");
             domAttr.set(this._msjUsuarioMarcarUbicacion, "innerHTML", "Marque la ubicación en el mapa");
             domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'block');
-            this._dibujo.activar(Draw.POLYGON);
+            this._dibujo.activar(Draw.POINT);
         },
         _initDibujo: function () {
             this._dibujo = new Dibujo();
@@ -885,7 +850,7 @@ define([
                 this._puntoGrafico = undefined;
                 this._cg3sr.removerGrafico("0");
             }
-            this._puntoGrafico = new Graphic(evt.geometry, fillSymbol);
+            this._puntoGrafico = new Graphic(evt.geometry, markerSymbol);
             this._cg3sr.agregarGrafico("0", this._puntoGrafico);
 
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + this._matrizSeleccionadaString + ';';
