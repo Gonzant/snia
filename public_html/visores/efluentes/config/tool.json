@@ -214,6 +214,9 @@
                         "nombrePdf":"ReporteRiesgo.pdf"
                     }
                 }
+            }
+        },
+        {
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
             "msgToolTip": "Muestra la referencia de la posición actual",
