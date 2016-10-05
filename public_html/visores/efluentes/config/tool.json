@@ -86,9 +86,9 @@
         },
         {
             "widget": "widgets/RiesgoWidget",
-            "title": "Riesgo Ambiental",
-            "msgToolTip": "Calcula el riesgo ambiental para un punto geográfico.",
-            "icono": "../js/snia/img/calculoRiesgo_gris.png",
+            "title": "Riesgo ambiental de tambos",
+            "msgToolTip": "Calcula el riesgo ambiental de tambos en un área de generación y gestión de efluentes.",
+            "icono": "../js/snia/img/calculoRiesgoTambo_gris.png",
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
@@ -110,8 +110,8 @@
                 "riesgoPredial": "Riesgo Predial",
                 "riesgoGeo": "Riesgo Geográfico",
                 "riesgoAmbiental": "Riesgo Ambiental",
-                "marcarUbicacion": "Marcar ubicación",
-                "mensajeMarcarUbicacion":"Por favor presione el botón Marcar Ubicación",
+                "marcarUbicacion": "Marcar ubicación de AGGE*",
+                "mensajeMarcarUbicacion":"Por favor presione el botón Marcar ubicación",
                 "desmarcarUbicacion": "Cancelar marcar ubicación",
                 "informacion": "Información",
                 "reporte": "Generar reporte",
@@ -120,7 +120,7 @@
                     "width": "300px",
                     "nombre" : "Reporte Riesgo",
                     "titulo": "Reporte Matriz de Riesgo",
-                    "marcarPunto": "Marque el punto en el mapa."
+                    "marcarPunto": "Marque el AGGE* en el mapa."
                 },
                 "dialogInformacion":{
                     "width": "300px",
