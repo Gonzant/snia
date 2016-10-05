@@ -17,9 +17,8 @@ html, body {
 /*    background-image: url('../img/logo.png')*/ 
 }
 #logochiquitoMiem{
-    z-index: 20;
-    width: 60px;
-    height: 40px;
+    z-index: 20;    
+    height: 60px;
     position: absolute;
     right: 75px;
     top:73px;
