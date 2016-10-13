@@ -20,6 +20,7 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "draggable": false,
+            "startsOpen": true,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],

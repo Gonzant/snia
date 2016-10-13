@@ -19,6 +19,7 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
+            "startsOpen": true,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
