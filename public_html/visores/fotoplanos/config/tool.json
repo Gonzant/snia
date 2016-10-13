@@ -48,6 +48,17 @@
             }
         },
         {
+            "widget": "widgets/IdentificarRapidoWidget",
+            "title": "IdentificarRapido",
+            "msgToolTip": "Identificar rapido - Muestra la información de los elementos en un punto.",
+            "icono": "../js/snia/img/identificar.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "campo": "id",
+                "valor": "valor"  
+            }
+        },        
+        {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
             "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
