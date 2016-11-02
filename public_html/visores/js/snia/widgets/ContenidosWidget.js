@@ -13,28 +13,34 @@ define([
     "dojo/_base/array",
     "dojo/text!./templates/ContenidosWidget.html",
     "dojo/i18n!./nls/snianls.js",
-    "dojo/dom-class", "dojo/dom-style",
+    "dojo/text!config/mapa.json",
+    "dojo/dom-class", "dojo/dom-style","dojo/dom-construct", "esri/request",
     "dijit/focus",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
-    "agsjs/dijit/TOC",
-    "esri/layers/ArcGISDynamicMapServiceLayer",
+    "dojo/store/Memory",
+    "dijit/Tree",
+    "dijit/tree/ObjectStoreModel",
+    "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
-    "dojo/dom-construct",
     "dojox/widget/Standby",
     "dojo/Deferred",
     "esri/IdentityManager",
+    "dijit/form/HorizontalSlider",
+    "dijit/form/CheckBox",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
     "dojo/domReady!",
     "dojox/layout/ScrollPane"
 ], function (on,
-    Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle, focusUtil,
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
-    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
+    Evented, declare, lang, arrayUtil, template, i18n, mapaConfigJSON,
+    domClass, domStyle, domConstruct,esriRequest,
+    focusUtil, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
+    Memory, Tree, ObjectStoreModel, scaleUtils, Geoprocessor,Standby, Deferred, esriId,
+    HorizontalSlider, CheckBox) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -56,6 +62,8 @@ define([
             this._i18n = i18n;
             this._dynamicMapServiceLayers = [];
             this._toc = [];
+            this._data = [];
+            this._tree = {};
             //propiedades
             this.set("mapa", defaults.mapa);
             this.set("theme", defaults.theme);
@@ -83,11 +91,11 @@ define([
                 }
                 this._loadDynamicMapServiceLayers();
             }
-            this.own(
-                on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
-                on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
-                on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
-            );
+                this.own(
+                    on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
+                    on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
+                    on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
+                );       
         },
         // start widget. called by user
         startup: function () {
@@ -134,6 +142,7 @@ define([
         },
         _init: function () {
             this._resultadoNodeContenidos.innerHTML = "";
+            this.cargarDOM();
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
@@ -160,32 +169,238 @@ define([
                 }
             }));
             dynaLayersInfo.reverse(); //Mostrar las capas en el orden de la configuracion
-            this._toc = new TOC({
-                map: this.mapa.map,
-                style: "inline",
-                layerInfos: dynaLayersInfo
-            }, this.tocDiv);
-            this._toc.startup();
+            this._generarData(mapaConfigJSON, this.mapa.map);
+            
         },
         _active: function () {
             this.emit("active-changed", {});
             // Quitar foco de boton por defecto al activar el widget
-            var fHandler = focusUtil.watch("curNode", function () {
-                    focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
-                    fHandler.unwatch(); //Desactivar handler
-                });
+            var fHandler = focusUtil.watch("curNode", function(){
+                 focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
+                 fHandler.unwatch(); //Desactivar handler
+           });
         },
         _colapsarClick: function () {
-            arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
-                item._rootLayerNode.collapse();
-            }));
+            this._tree.collapseAll();
+            
         },
         _expandirClick: function () {
-            arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
-                item._rootLayerNode.expand();
-            }));
+            //Expando todos los hijos de root para no abrir las leyendas
+            var nodes = this._tree.rootNode.getChildren();
+            arrayUtil.forEach(nodes, function(node){
+               this._tree._expandNode(node);
+            }, this);
         },
-        _descargarClick: function () {
+        _getLegendJSON:    function(url) {  
+                var requestHandle = esriRequest({  
+                    "url": url,  
+                    "content": {  
+                        "f": "pjson"  
+                    },  
+                    "callbackParamName": "callback"  
+                });  
+                requestHandle.then(lang.hitch(this, this._requestSucceeded), this._requestFailed);   
+        },
+        _requestSucceeded: function (response, io){
+            arrayUtil.forEach(response.layers, function (layer) {
+                var ul = domConstruct.create ("ul", {innerHTML:layer.layerName});
+                if (layer.legend.length === 1 && layer.legend[0].label===""){ // una hoja
+                        var legendImgNode = domConstruct.create("img", {  
+                            src: "data:" + layer.legend[0].contentType + ";base64," + layer.legend[0].imageData  
+                        });
+                        domConstruct.place(legendImgNode, ul, "first");
+                        var tocNode = arrayUtil.filter(this._data, function(item) {
+                             return item.id===layer.layerName;
+                        });
+                        if (tocNode.length > 0){
+                            tocNode[0].imageData =  layer.legend[0].imageData;
+                            tocNode[0].contentType = layer.legend[0].contentType;
+                        }
+                }else { // multiples hojas
+                    arrayUtil.forEach(layer.legend, function (layerLegend) {
+                        var legendImgNode = domConstruct.create("img", {  
+                            src: "data:" + layerLegend.contentType + ";base64," + layerLegend.imageData  
+                        });
+                        var legendTxtNode = domConstruct.create ("li", {innerHTML:layerLegend.label});
+
+                        domConstruct.place(legendImgNode, legendTxtNode, "first");
+                        domConstruct.place(legendTxtNode, ul);
+                        this._data.push ({ id:layerLegend.label, name: layerLegend.label, legend: true, parent:  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                    }, this);
+                }
+            }, this);
+        },
+       _requestFailed: function(){
+           
+       },
+       _adjustVisibility: function(item){
+            var scale = parseInt(scaleUtils.getScale(this.mapa.map));
+            var nodes = this._tree.rootNode.getChildren();
+            arrayUtil.forEach(nodes, function (node) {
+                if (!item || !item.id || (item.id && node.item.id === item.id)){
+                    var nodeOutScale = (node.item.maxScale !== 0 && scale < node.item.maxScale) || (node.item.minScale !== 0 && scale > node.item.minScale);
+                    if (nodeOutScale){
+                      domClass.add(node.domNode, 'TOCOutOfScale');
+                    } else {
+                        domClass.remove(node.domNode, 'TOCOutOfScale');
+                        if (node.hasChildren()){
+                            var layers = node.getChildren();
+                            arrayUtil.forEach(layers, function (layer) {
+                                var layerOutScale = (layer.item.maxScale !== 0 && scale < layer.item.maxScale) || (layer.item.minScale !== 0 && scale > layer.item.minScale);
+                                if (layerOutScale){
+                                    domClass.add(layer.domNode, 'TOCOutOfScale');
+                                } else {
+                                    domClass.remove(layer.domNode, 'TOCOutOfScale'); 
+                                }
+                            });
+                        }    
+                    }
+                }
+            });
+        },
+       _generarData: function(mapaConfigJSON, map){
+            var mapaConfig, dynLayers;
+            this._data = [{ id: 'root'}];
+            mapaConfig = JSON.parse(mapaConfigJSON);
+            dynLayers = mapaConfig.mapa.dynamicLayers;
+            arrayUtil.forEach(dynLayers, function (dataLayer, index) {
+                if (dataLayer.url){ //Nodo a partir de un map service
+                        var l= map.getLayer(dataLayer.options.id);
+                        this._data.push ({ id: dataLayer.options.id, name: dataLayer.options.id, type:'mapservice', maxScale:l.maxScale, minScale:l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
+                        l.on("visibility-change", lang.hitch(this, this._adjustVisibility));
+                        this._getLegendJSON(dataLayer.url + "/legend");
+                        arrayUtil.forEach(l.layerInfos, function (li) {
+                            if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id)>= 0){
+                                this._data.push ({ id:li.name, name: li.name, type:'layer', maxScale:li.maxScale, minScale:li.minScale, parent:  dataLayer.options.id });
+                            }
+                       }, this);
+                } else if (dataLayer.multiple){ //Nodo a partir de varios map services
+                     this._data.push ({ id: dataLayer.options.id, name: dataLayer.options.id, type:'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
+                     arrayUtil.forEach(dataLayer.multiple, function (dataLayer1, index) {
+                            this._getLegendJSON(dataLayer1.url + "/legend"); //Traigo todo ARREGLAR
+                            var l= map.getLayer(dataLayer.options.id+dataLayer1.url);
+                            arrayUtil.forEach(l.layerInfos, function (li) {
+                                if (!dataLayer1.layers || arrayUtil.indexOf(dataLayer1.layers, li.id)>= 0){
+                                    this._data.push ({ id:li.name, name: li.name, maxScale:li.maxScale, minScale:li.minScale, parent:  dataLayer.options.id, vparent: l.id });
+                                }
+                            }, this);
+                     }, this);
+                }
+            }, this);
+       },
+       _onItemClick: function (item, node) {
+                    var isNodeSelected = node.checkBox.get('checked');
+             
+             if (item.parent === "root"){ //Si es un map service
+                 
+                if (item.type === "multiple") {
+                    arrayUtil.forEach(item.multiple, function (url) {
+                        var l= this.mapa.map.getLayer(item.id+url.url);
+                        if (isNodeSelected){
+                            l.show();
+                        }else{
+                            l.hide();
+                        }
+                    }, this);
+                }else { 
+                    var l= this.mapa.map.getLayer(item.id);
+                    if (isNodeSelected){
+                        l.show();
+                    }else{
+                        l.hide();
+                    }
+                }
+             } else{ //Si es una subcapa
+                var l= this.mapa.map.getLayer(item.vparent || item.parent), visibleLayers = l.visibleLayers, i;
+
+                arrayUtil.forEach(l.layerInfos, function (li) {
+                    if (li.name === item.name){
+                        i = li.id;
+                    }
+                });
+                if (isNodeSelected){
+                   visibleLayers.push(i);
+                } else {
+                   visibleLayers.pop(i);
+                }
+                l.setVisibleLayers(visibleLayers);
+                if (l.visible){
+                    l.show();
+                }
+           }
+         },
+        _createTreeNode: function(args) {
+            var tnode = new Tree._TreeNode(args);
+            tnode.labelNode.innerHTML = args.label;
+            if (!args.item.legend) {
+                var cb = new CheckBox();
+                cb.placeAt(tnode.labelNode, "first");
+                tnode.checkBox = cb;
+            }
+            if (args.item.parent === "root"){ //Si está en el segundo nivel
+                var slider = new HorizontalSlider({
+                    showButtons: false,
+                    style: "width:75%;float:right;",
+                   // layoutAlign: 'right',
+                    value: args.item.opacity * 100,
+                    onChange: lang.hitch(this, function(value){
+                            if (args.item.parent === "root"){ 
+                                if (args.item.type === "mapservice") {//Si es un map service
+                                       var l= this.mapa.map.getLayer(args.item.id);
+                                       l.setOpacity(value / 100);
+                                } else { //Si es un nodo múltiple args.item.type === "multiple"
+                                    arrayUtil.forEach(args.item.multiple, function (dataLayer) {
+                                        var l= this.mapa.map.getLayer(args.item.id + dataLayer.url);
+                                        l.setOpacity(value / 100);
+                                    }, this);  
+                                }
+                            }
+                    })
+                });
+                slider.placeAt(tnode.labelNode, "last");
+                tnode.slider = slider;
+                slider.startup();
+            }
+            return tnode;
+        },
+        cargarDOM: function () {
+            var myStore, myModel;
+            
+            myStore = new Memory({
+                data: this._data,
+                getChildren: function(object){
+                    return this.query({parent: object.id});
+                }
+            });
+    
+            // Crear el modelo
+            myModel = new ObjectStoreModel({
+                store: myStore,
+                query: {id: 'root'},
+                mayHaveChildren: function (item) { return myStore.query({parent: item.id}).length > 0; }
+            });
+            // Crear el arbol
+            this._tree = new Tree({
+                model: myModel,
+                showRoot: false,
+                onClick: lang.hitch(this, this._onItemClick),
+                _createTreeNode: lang.hitch(this, this._createTreeNode),
+                getIconStyle:function(item, opened){
+                    if (item.imageData){
+                        var imgUri = "url(data:" + item.contentType  + ";base64," + item.imageData+ ")";
+                        return {backgroundImage: imgUri, backgroundRepeat: "no-repeat", backgroundPosition: "left center",  backgroundSize: "16px 16px"};
+                    }
+                }
+            });
+            this._tree.placeAt(this._treeNode);
+            this._tree.startup();
+            this._adjustVisibility();
+            on(this._tree, 'open', lang.hitch(this,  function (item){
+                this._adjustVisibility(item);
+            }));
+            on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
+        },
+       _descargarClick: function () {
             var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray, token;
             capasUrl = "";
             capasNombre = "";
@@ -231,13 +446,6 @@ define([
                 this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete), lang.hitch(this, this._gpCheckJob));
                 this._standbyAreas.show();
             }
-        },
-        _expandirSeleccionadosClick: function () {
-            arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
-                if (item._rootLayerNode.data.visible === true) {
-                    item._rootLayerNode.expand();
-                }
-            }));
         },
         /***********Descarga y apertura de zip**************/
         _gpDescargarCapasComplete: function (jobInfo) {
@@ -316,6 +524,7 @@ define([
             }, 2000);
             return deferred.promise;
         }
+        
     });
     return widget;
 });

@@ -1106,3 +1106,8 @@ div p {
 .iconColpasarContenidos:focus{
     border: 0 transparent;
 }
+
+.TOCOutOfScale{
+    color:grey;
+    opacity:.5;
+}
