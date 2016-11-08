@@ -569,12 +569,6 @@ tituloTPAyuda{
     border-color: transparent;
 }
 
-.claro .dijitTreeIsLast {
-  background: url('../img/mapabase.png') no-repeat;
-  width:40px;
-  height:40px;  
-}
-
 .claro .dijitContentPane {
      padding: 2px; 
     background: transparent;
