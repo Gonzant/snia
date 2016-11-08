@@ -70,7 +70,7 @@ html, body {
 .iconAyuda {
     background-image: url('../img/ayuda.png');    
     background-repeat: no-repeat; 
-    background-size: 2px 20px;
+    background-size: 20px 20px;
     width: 20px;
     height: 20px;     
 }
@@ -536,12 +536,6 @@ tituloTPAyuda{
 .claro .dijitTreeRowHover {
     background-color: transparent;
     border-color: transparent;
-}
-
-.claro .dijitTreeIsLast {
-  background: url('../img/mapabase.png') no-repeat;
-  width:40px;
-  height:40px;  
 }
 
 .claro .dijitContentPane {
@@ -1105,4 +1099,14 @@ div p {
 }
 .iconColpasarContenidos:focus{
     border: 0 transparent;
+}
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
+
+.ContenidosTree>.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
 }

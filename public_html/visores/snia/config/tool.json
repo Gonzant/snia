@@ -20,10 +20,12 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "draggable": false,
+            "startsOpen": true,
             "position": {"left": "20px", "top": "96px"},
             "startsOpen": false,
             "widgetConfig": {
-                "dynamicMapServiceLayers": []
+                "dynamicMapServiceLayers": [],
+                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
         {

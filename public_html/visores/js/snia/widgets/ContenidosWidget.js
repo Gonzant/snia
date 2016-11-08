@@ -67,7 +67,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._active);
             this._urlQuery = defaults.config.urlDescargarCapas;
-            if (!this._urlQuery){
+            if (!this._urlQuery) {
                 this._urlQuery = "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas";
             }
             // classes
@@ -133,7 +133,7 @@ define([
             }
         },
         _init: function () {
-            this._resultadoNodeContenidos.innerHTML ="";
+            this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
@@ -169,11 +169,11 @@ define([
         },
         _active: function () {
             this.emit("active-changed", {});
-             // Quitar foco de boton por defecto al activar el widget
-//            var fHandler = focusUtil.watch("curNode", function () {
-//                focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco		
-//                fHandler.unwatch(); //Desactivar handler		
-//          });
+            // Quitar foco de boton por defecto al activar el widget
+            var fHandler = focusUtil.watch("curNode", function () {
+                    focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
+                    fHandler.unwatch(); //Desactivar handler
+                });
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
@@ -237,73 +237,83 @@ define([
                 }
             }));
         },
-        _gpDescargarCapasComplete: function (jobInfo) { 
-            this._jobInfo= jobInfo;
-            this._gpDescargarCapas.getResultData(jobInfo.jobId, "resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
+        /***********Descarga y apertura de zip**************/
+        _gpDescargarCapasComplete: function (jobInfo) {
+            // Es llamado cuando se termino la descarga de capas, llama a _gpCroquisResultResultadoDataCallBack
+            // Con esto se obtiene el resultado del geoproceso, si esta ok se obtiene el zip
+            // En caso de error _gpCroquisResultZipDataErr
+
+            this._jobInfo = jobInfo;
+            this._gpDescargarCapas.getResultData(jobInfo.jobId, "resultado", lang.hitch(this, this._gpCroquisResultResultadoDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
         },
-        _gpCheckJob: function (jobInfo) {
-            var msg;
-            
-            if (jobInfo.messages.length > 0 ){
-                msg = jobInfo.messages[jobInfo.messages.length -1];
-                if ((msg.description[0]!=="R") && (msg.description[0]!=="{")) {
-                        this._resultadoNodeContenidos.innerHTML = msg.description;
-                    }
+        _gpCroquisResultResultadoDataCallBack: function (value) {
+            // Si no hay error llamo a _gpCroquisResultZipDataCallBack que abre el zip, si este falla llama tambien a _gpCroquisResultZipDataErr
+            // Si hay error llamo a _gpCroquisResultDataErr para mostrarlo en pantalla
+            this._resultadoNodeContenidos.innerHTML = "";
+            this._standbyAreas.hide();
+            if (value.value.Error === 1) {
+                lang.hitch(this, this._gpCroquisResultDataErr(value.value.ErrorDescripcion));
+            } else {
+                this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
             }
-        },        
+        },
         _gpCroquisResultZipDataCallBack: function (value) {
-            this._resultadoNodeContenidos.innerHTML ="";
+            // Abre el archivo descargado
+            this._resultadoNodeContenidos.innerHTML = "";
             this._standbyAreas.hide();
             window.open(value.value.url);
         },
         _gpCroquisResultZipDataErr: function (value) {
-            function asyncProcess(){
-               var deferred = new Deferred();
-               setTimeout(function(){
-                 deferred.resolve("success");
-               }, 4000);
-               return deferred.promise;
-            } 
+            // Mensaje de error si falla la consulta de "zip" o de "resultado"
+            function asyncProcess() {
+                var deferred = new Deferred();
+                setTimeout(function () {
+                    deferred.resolve("success");
+                }, 10000);
+                return deferred.promise;
+            }
             this._process  = asyncProcess();
-            this._process.then(lang.hitch(this,function(){
+            this._process.then(lang.hitch(this, function () {
                 this._resultadoNodeContenidos.innerHTML = "";
             }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
-        },        
-        _gpCroquisResultDataCallBack: function (value) {
-            this._resultadoNodeContenidos.innerHTML ="";
-            this._standbyAreas.hide();
-          
-            if (value.value.Error === 1){
-                lang.hitch(this,this._gpCroquisResultDataErr(value.value.ErrorDescripcion));
-            }else{
-                this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
-            } 
         },
         _gpCroquisResultDataErr: function (value) {
-            function asyncProcess(){
-               var deferred = new Deferred();
-               setTimeout(function(){
-                 deferred.resolve("success");
-               }, 4000);
-               return deferred.promise;
-            } 
+            // Muestra el mensaje de error que vino en resultado
+            function asyncProcess() {
+                var deferred = new Deferred();
+                setTimeout(function () {
+                    deferred.resolve("success");
+                }, 4000);
+                return deferred.promise;
+            }
             this._process  = asyncProcess();
-            this._process.then(lang.hitch(this,function(){
+            this._process.then(lang.hitch(this, function () {
                 this._resultadoNodeContenidos.innerHTML = "";
                 this._gpDescargarCapas.getResultData(this._jobInfo.jobId, "zip", lang.hitch(this, this._gpCroquisResultZipDataCallBack), lang.hitch(this, this._gpCroquisResultZipDataErr));
             }));
             this._resultadoNodeContenidos.innerHTML = value;
             this._standbyAreas.hide();
+        },
+        /***********Chequeo de status**************/
+        _gpCheckJob: function (jobInfo) {
+            // Es llamado para verificar el porcentaje de descargas
+            var msg;
+            if (jobInfo.messages.length > 0) {
+                msg = jobInfo.messages[jobInfo.messages.length - 1];
+                if ((msg.description[0] !== "R") && (msg.description[0] !== "{")) {
+                    this._resultadoNodeContenidos.innerHTML = msg.description;
+                }
+            }
         },
         _asyncProcess: function () {
             var deferred = new Deferred();
-            setTimeout(function(){
-              deferred.resolve("success");
+            setTimeout(function () {
+                deferred.resolve("success");
             }, 2000);
             return deferred.promise;
-        }        
+        }
     });
     return widget;
 });

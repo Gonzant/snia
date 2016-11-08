@@ -20,11 +20,13 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
+            "startsOpen": true,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
             "startsOpen": false,
             "widgetConfig": {
-                "dynamicMapServiceLayers": []
+                "dynamicMapServiceLayers": [],
+                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
         {
@@ -43,7 +45,7 @@
             "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
-            "startsOpen": false,
+            "startsOpen": true,
             "widgetConfig": {
                 "fechaAtributo": "DIA",
                 "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasZ1314/MapServer/1",
