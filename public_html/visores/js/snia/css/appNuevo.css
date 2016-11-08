@@ -1443,7 +1443,7 @@ border: 1px solid red;
    opacity:.5;
 }
 
-.dijitTree{
+.ContenidosTree>.dijitTree{
     height: 100%;
     overflow-y: hidden;
 }

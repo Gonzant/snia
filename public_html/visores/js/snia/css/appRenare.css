@@ -1106,7 +1106,7 @@ div p {
    opacity:.5;
 }
 
-.dijitTree{
+.ContenidosTree>.dijitTree{
     height: 100%;
     overflow-y: hidden;
 }
