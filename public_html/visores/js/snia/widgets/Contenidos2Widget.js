@@ -74,6 +74,9 @@ define([
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._active);
+            on(this.mapa, 'reload', lang.hitch(this, function () {
+              on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
+            }));
             this._urlQuery = defaults.config.urlDescargarCapas;
             if (!this._urlQuery) {
                 this._urlQuery = "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas";
