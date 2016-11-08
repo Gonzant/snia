@@ -11,7 +11,7 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
-    "dojo/text!./templates/ContenidosWidget.html",
+    "dojo/text!./templates/Contenidos2Widget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/text!config/mapa.json",
     "dojo/dom-class", "dojo/dom-style","dojo/dom-construct", "esri/request",
