@@ -1204,3 +1204,8 @@ div p {
     font-size: 12px;
     word-wrap: break-word;
 }
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}

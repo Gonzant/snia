@@ -1438,6 +1438,10 @@ border: 1px solid red;
     width: 170px;
 }
 
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
 /*.container{
     float: left;
     margin: 5px;
