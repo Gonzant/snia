@@ -1442,6 +1442,11 @@ border: 1px solid red;
    color:grey;
    opacity:.5;
 }
+
+.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
+}
 /*.container{
     float: left;
     margin: 5px;

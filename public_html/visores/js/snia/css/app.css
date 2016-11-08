@@ -1209,3 +1209,8 @@ div p {
    color:grey;
    opacity:.5;
 }
+
+.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
+}
