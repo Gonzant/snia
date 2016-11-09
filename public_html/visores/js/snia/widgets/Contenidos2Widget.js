@@ -14,7 +14,7 @@ define([
     "dojo/text!./templates/Contenidos2Widget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/text!config/mapa.json",
-    "dojo/dom-class", "dojo/dom-style","dojo/dom-construct", "esri/request",
+    "dojo/dom-class", "dojo/dom-style", "dojo/dom-construct", "esri/request",
     "dijit/focus",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
@@ -188,34 +188,35 @@ define([
         _expandirClick: function () {
             //Expando todos los hijos de root para no abrir las leyendas
             var nodes = this._tree.rootNode.getChildren();
-            arrayUtil.forEach(nodes, function  (node) {
+            arrayUtil.forEach(nodes, function (node) {
                 this._tree._expandNode(node);
             }, this);
         },
-        _getLegendJSON:    function(url) {
-            var requestHandle = esriRequest({  
+        _getLegendJSON:    function (url) {
+            var requestHandle = esriRequest({
                 "url": url,
                 "content": {
                     "f": "pjson"
-                },  
+                },
                 "callbackParamName": "callback"
             });
             requestHandle.then(lang.hitch(this, this._requestSucceeded), this._requestFailed);
         },
         _requestSucceeded: function (response) {
+            var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
-                if (layer.legend.length === 1 && layer.legend[0].label === "") { // una hoja
-                    var tocNode = arrayUtil.filter(this._data, function (item) {
-                         return item.id === layer.layerName;
-                    });
-                    if (tocNode.length > 0) {
+                tocNode = arrayUtil.filter(this._data, function (item) {
+                    return item.id === layer.layerName;
+                });
+                if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
+                    if (layer.legend.length === 1 && layer.legend[0].label === "") { // una hoja
                         tocNode[0].imageData =  layer.legend[0].imageData;
                         tocNode[0].contentType = layer.legend[0].contentType;
+                    } else { // multiples hojas
+                        arrayUtil.forEach(layer.legend, function (layerLegend) {
+                            this._data.push({ id: layerLegend.label, name: layerLegend.label, legend: true, parent:  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                        }, this);
                     }
-                } else { // multiples hojas
-                    arrayUtil.forEach(layer.legend, function (layerLegend) {
-                        this._data.push({ id: layerLegend.label, name: layerLegend.label, legend: true, parent:  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
-                    }, this);
                 }
             }, this);
         },
