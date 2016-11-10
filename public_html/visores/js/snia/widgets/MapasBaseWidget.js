@@ -68,7 +68,7 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                var tr, td, boton, label;
+                var tr, td, boton;
                 if (this.config.mapasBase) {
                     this._mapasBase = this.config.mapasBase;
                 }
@@ -88,8 +88,8 @@ define([
                         disabled: false,
                         innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65"> <br>' + item.nombre,
                         name: "mapasBaseOptions"
-                    });
-                    boton.placeAt(td).startup();
+                    }).placeAt(td);
+                    boton.startup();
                     
                     this._botones.push(boton);
                     
