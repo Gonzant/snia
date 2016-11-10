@@ -22,13 +22,17 @@ define([
     "esri/layers/ArcGISTiledMapServiceLayer",
     "dijit/form/RadioButton",
     "dijit/layout/ContentPane",
-    "dijit/form/Button"
+    "dijit/form/Button",
+    "dojo/parser",
+    "dojo/domReady!"
 ], function (on, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle, domConstruct,
     ArcGISTiledMapServiceLayer,
-    RadioButton, Button) {
+    RadioButton, Button, parser) {
     //"use strict";
+    
+   // parser.parse();
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         options : {

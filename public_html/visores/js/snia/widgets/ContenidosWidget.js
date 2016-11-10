@@ -170,10 +170,10 @@ define([
         _active: function () {
             this.emit("active-changed", {});
             // Quitar foco de boton por defecto al activar el widget
-            var fHandler = focusUtil.watch("curNode", function () {
+           /* var fHandler = focusUtil.watch("curNode", function () {
                     focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
                     fHandler.unwatch(); //Desactivar handler
-                });
+                });*/
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
