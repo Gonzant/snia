@@ -47,6 +47,18 @@
                 "valor": "valor"  
             }
         },
+        
+        {
+            "widget": "widgets/IdentificarRapidoWidget",
+            "title": "Identificar Rapido",
+            "msgToolTip": "Muestra la información de los elementos en un punto.",
+            "icono": "../js/snia/img/identificar.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "campo": "id",
+                "valor": "valor"  
+            }
+        },
         {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",

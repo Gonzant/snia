@@ -1,4 +1,4 @@
-/*
+/* 
  * js/snia/widgets/IdentificarWidget
  * 
  */

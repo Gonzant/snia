@@ -247,8 +247,7 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {"Contenido": "Navegar", "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
                             {
                               "URL":"../js/snia/img/navegar.png",
@@ -400,16 +399,9 @@
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
+                         "Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":30},                        
                         "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -428,11 +420,7 @@
                "id":"5",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
-                            },
+                    "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Indice1"},
                     "Imagen":
                             {
                               "URL":"../js/snia/img/buscar.png",
@@ -619,10 +607,7 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
+                           { "Contenido": "Mapa de Referencia","Estilo": "Indice1"},
                     "Imagen":
                             {
                               "URL":"../js/snia/img/mapabase.png",
@@ -680,10 +665,7 @@
                               "Alto":30
                         },
                         "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Imprimir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
