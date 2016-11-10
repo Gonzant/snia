@@ -38,34 +38,22 @@ html, body {
     border-radius: 8px;
 }
 .iconAgregarAreas {
-    background-image: url('../img/agregarGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 .iconCancelarAgregarAreas {
-    background-image: url('../img/cancelarAgregarGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 .iconCroquisAreas {
-    background-image: url('../img/reporteGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 
 .iconRemoverTodasAreasArea {
-    background-image: url('../img/limpiarGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
@@ -130,43 +118,28 @@ html, body {
     background-color: #FFC000;
 }
 .iconAcercarSeleccionBuscar{
-    background-image: url('../img/acercarGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 .iconDesSeleccionBuscar{
-    background-image: url('../img/removerGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 .iconDeleccionarTodoBuscar{
-    background-image: url('../img/todoGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 
 .iconCroquisBuscar{
-    background-image: url('../img/reporteGris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 
 .iconCubrimientoBuscar{
-    background-image: url('../img/contenido-gris.png');    
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: 27px;
@@ -1111,25 +1084,16 @@ div p {
 }
 
 .iconColapsarContenidos{
-    background-image: url('../img/collapseAllGris.png');
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 .iconExpandContenidos{
-    background-image: url('../img/expandAllGris.png');
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
 }
 .iconDownload{
-    background-image: url('../img/download.png');
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
     width: 27px;
     height: 27px; 
     border: none;
