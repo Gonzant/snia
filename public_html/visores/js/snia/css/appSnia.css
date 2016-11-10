@@ -1175,9 +1175,8 @@ div p {
 }
 
 .iconColapsarContenidos{
-    background-image: url('../img/collapseAllGris.png');
-    background-repeat: no-repeat;
     background-size: 27px 27px;
+
     width: 27px;
     height: 27px; 
     border: none;
