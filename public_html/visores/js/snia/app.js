@@ -23,6 +23,7 @@ snia.app = {
             "dojox/widget/Standby",
             "esri/layers/ArcGISTiledMapServiceLayer",
             "esri/layers/ArcGISDynamicMapServiceLayer",
+            "esri/layers/WMSLayer",
             "modulos/HerramientaDialog",
             "widgets/BarraHerramientasWidget",
             "widgets/MapaWidget",
@@ -33,7 +34,7 @@ snia.app = {
             "esri/urlUtils",
             "esri/geometry/Extent",
             "dojo/domReady!"], function (on, dom, parser, lang, arrayUtil, JSON, Standby,
-            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
+            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
@@ -49,7 +50,13 @@ snia.app = {
                 var dynLayers = mapaConfig.mapa.dynamicLayers;
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     if (dataLayer.url){ //Nodo a partir de un map service
-                        var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                        var l;
+                        if (dataLayer.wms){
+                            l = new WMSLayer(dataLayer.url, dataLayer.options);
+                        } else {
+                            l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                        }
+                        
                         if (index === 0) {
                             //Mapa base
                             mapa.agregarCapa(l);
