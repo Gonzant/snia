@@ -524,18 +524,10 @@ tituloTPAyuda{
 .claro .dijitBorderContainer-dijitContentPane {
     background-color: #E1E1E1;
 }
-.claro .dijitTreeRowSelected {
-    background-color: transparent;
-    border-color: transparent;
-}
+
 .claro .dijitTreeRow{
     font-weight:bold;
     color:dimgray;
-}
-
-.claro .dijitTreeRowHover {
-    background-color: transparent;
-    border-color: transparent;
 }
 
 .claro .dijitContentPane {
