@@ -44,14 +44,14 @@
             "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "widgetConfig": {
                 "fechaAtributo": "DIA",
                 "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasZ1314/MapServer/1",
                 "timeSlider": {
                     "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",
-                    "velocidad": "2000"
+                    "velocidad": "1000"
                 }                
             }
         },
