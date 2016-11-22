@@ -28,6 +28,7 @@ define([
     "dojox/widget/Standby",
     "dojo/Deferred",
     "esri/IdentityManager",
+    "dijit/Tooltip",
     "dijit/form/HorizontalSlider",
     "dijit/form/CheckBox",
     "dijit/layout/BorderContainer",
@@ -39,7 +40,7 @@ define([
     Evented, declare, lang, arrayUtil, template, i18n, mapaConfigJSON,
     domClass, domStyle, domConstruct, esriRequest,
     focusUtil, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    Memory, Tree, ObjectStoreModel, scaleUtils, Geoprocessor, Standby, Deferred, esriId,
+    Memory, Tree, ObjectStoreModel, scaleUtils, Geoprocessor, Standby, Deferred, esriId, Tooltip,
     HorizontalSlider, CheckBox) {
 
     //"use strict";
@@ -75,7 +76,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._active);
             on(this.mapa, 'reload', lang.hitch(this, function () {
-              on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
+               on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
             }));
             this._urlQuery = defaults.config.urlDescargarCapas;
             if (!this._urlQuery) {
@@ -200,9 +201,37 @@ define([
                 },
                 "callbackParamName": "callback"
             });
-            requestHandle.then(lang.hitch(this, this._requestSucceeded), this._requestFailed);
+            requestHandle.then(lang.hitch(this, this._requestSucceededJSON), this._requestFailed);
         },
-        _requestSucceeded: function (response) {
+        _getLegendWMS: function (url) {
+            var requestHandle = esriRequest({
+                "url": url,
+                "content": {
+                    "f": "pjson"
+                },
+                "callbackParamName": "callback"
+            });
+            requestHandle.then(lang.hitch(this, this._requestSucceededWMS), this._requestFailed);         
+        },
+        _requestSucceededJSON: function (response) {
+            var tocNode;
+            arrayUtil.forEach(response.layers, function (layer) {
+                tocNode = arrayUtil.filter(this._data, function (item) {
+                    return item.id === layer.layerName;
+                });
+                if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
+                    if (layer.legend.length === 1 && layer.legend[0].label === "") { // una hoja
+                        tocNode[0].imageData =  layer.legend[0].imageData;
+                        tocNode[0].contentType = layer.legend[0].contentType;
+                    } else { // multiples hojas
+                        arrayUtil.forEach(layer.legend, function (layerLegend) {
+                            this._data.push({ id: layerLegend.label, name: layerLegend.label, legend: true, parent:  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                        }, this);
+                    }
+                }
+            }, this);
+        },
+        _requestSucceededWMS: function (response) {
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
                 tocNode = arrayUtil.filter(this._data, function (item) {
@@ -249,31 +278,52 @@ define([
             });
         },
         _generarData: function (mapaConfigJSON, map) {
-            var mapaConfig, dynLayers, l;
+            var mapaConfig, dynLayers, l, sublayerTooltip;
             this._data = [{ id: 'root'}];
             mapaConfig = JSON.parse(mapaConfigJSON);
             dynLayers = mapaConfig.mapa.dynamicLayers;
             arrayUtil.forEach(dynLayers, function (dataLayer) {
                 if (dataLayer.url) { //Nodo a partir de un map service
                     l = map.getLayer(dataLayer.options.id);
-                    this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
-                    l.on("visibility-change", lang.hitch(this, this._adjustVisibility));
-                    this._getLegendJSON(dataLayer.url + "/legend");
-                    arrayUtil.forEach(l.layerInfos, function (li) {
-                        if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
-                            this._data.push({ id: li.name, name: li.name, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
+                    if (l !== null){
+                        this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
+                        l.on("visibility-change", lang.hitch(this, this._adjustVisibility));
+                        if (dataLayer.wms){ // Si es WMS
+                            arrayUtil.forEach(l.layerInfos, function (li) {
+                                if (dataLayer.sublayersTooltips){
+                                    sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
+                                } else {
+                                    sublayerTooltip = "";
+                                }
+                                this._data.push({ id: li.title, name: li.title, tooltip: sublayerTooltip, type: 'layer', maxScale: 0, minScale: 0, parent:  dataLayer.options.id });
+                                this._getLegendWMS(li.legendURL);
+                            }, this);
+                        } else {
+                            this._getLegendJSON(dataLayer.url + "/legend");
+                            arrayUtil.forEach(l.layerInfos, function (li) {
+                                if (dataLayer.sublayersTooltips){
+                                    sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
+                                } else {
+                                    sublayerTooltip = "";
+                                }
+                                if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
+                                    this._data.push({ id: li.name, name: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
+                                }
+                            }, this);                            
                         }
-                    }, this);
+                    }
                 } else if (dataLayer.multiple) { //Nodo a partir de varios map services
-                    this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
+                    this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
                     arrayUtil.forEach(dataLayer.multiple, function (dataLayer1) {
                         this._getLegendJSON(dataLayer1.url + "/legend"); //Traigo todo
                         l = map.getLayer(dataLayer.options.id + dataLayer1.url);
-                        arrayUtil.forEach(l.layerInfos, function (li) {
-                            if (!dataLayer1.layers || arrayUtil.indexOf(dataLayer1.layers, li.id) >= 0) {
-                                this._data.push({ id: li.name, name: li.name, maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id, vparent: l.id });
-                            }
-                        }, this);
+                        if (l !== null){
+                            arrayUtil.forEach(l.layerInfos, function (li) {
+                                if (!dataLayer1.layers || arrayUtil.indexOf(dataLayer1.layers, li.id) >= 0) {
+                                    this._data.push({ id: li.name, name: li.name, maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id, vparent: l.id });
+                                }
+                            }, this);
+                        }
                     }, this);
                 }
             }, this);
@@ -321,6 +371,12 @@ define([
         _createTreeNode: function (args) {
             var tnode = new Tree._TreeNode(args), cb, slider, l;
             tnode.labelNode.innerHTML = args.label;
+            if (args.item.tooltip && args.item.tooltip !== "") {
+                new Tooltip({
+                    connectId: [tnode.labelNode],
+                    label: args.item.tooltip
+                });
+            }
             if (!args.item.legend) {
                 cb = new CheckBox();
                 cb.placeAt(tnode.labelNode, "first");

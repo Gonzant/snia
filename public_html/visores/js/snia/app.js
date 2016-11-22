@@ -21,6 +21,7 @@ snia.app = {
             "dojo/_base/array",
             "dojo/json",
             "dojox/widget/Standby",
+            "esri/config",
             "esri/layers/ArcGISTiledMapServiceLayer",
             "esri/layers/ArcGISDynamicMapServiceLayer",
             "esri/layers/WMSLayer",
@@ -34,7 +35,7 @@ snia.app = {
             "esri/urlUtils",
             "esri/geometry/Extent",
             "dojo/domReady!"], function (on, dom, parser, lang, arrayUtil, JSON, Standby,
-            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer,
+            esriConfig, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
@@ -47,16 +48,17 @@ snia.app = {
             //metodos
             initCapas = function () {
                 //dynamicLayers
-                var dynLayers = mapaConfig.mapa.dynamicLayers;
+                var dynLayers = mapaConfig.mapa.dynamicLayers, l;
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
-                    if (dataLayer.url){ //Nodo a partir de un map service
+                    if (dataLayer.url) { //Nodo a partir de un map service
                         var l;
-                        if (dataLayer.wms){
+                        if (dataLayer.wms) {
+                            //esriConfig.defaults.io.proxyUrl = "https://web.renare.gub.uy/proxy/proxy.ashx?";
+                            esriConfig.defaults.io.corsEnabledServers.push("web.renare.gub.uy");
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
                         } else {
                             l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                         }
-                        
                         if (index === 0) {
                             //Mapa base
                             mapa.agregarCapa(l);
@@ -64,8 +66,7 @@ snia.app = {
                             //Agregar capas de forma que las de mas arriba en la conf se muestren en el mapa por encima que las de mas abajo
                             mapa.agregarCapa(l, 1);
                         }
-                    } else if (dataLayer.multiple){ //Nodo a partir de varios map services
-                        var l;
+                    } else if (dataLayer.multiple) { //Nodo a partir de varios map services
                         arrayUtil.forEach(dataLayer.multiple, function (dataLayer2) {
                             var dataLayerOptions = lang.clone(dataLayer.options);
                             dataLayerOptions.id = dataLayer.options.id + dataLayer2.url;
