@@ -295,8 +295,9 @@ define([
                                 } else {
                                     sublayerTooltip = "";
                                 }
-                                this._data.push({ id: li.title, name: li.title, tooltip: sublayerTooltip, type: 'layer', maxScale: 0, minScale: 0, parent:  dataLayer.options.id });
-                                this._getLegendWMS(li.legendURL);
+                                this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: 0, minScale: 0, parent:  dataLayer.options.id });
+                                this._data.push({ id: "prueba", name: li.name, type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
+                                //this._getLegendWMS(li.legendURL);
                             }, this);
                         } else {
                             this._getLegendJSON(dataLayer.url + "/legend");
@@ -307,7 +308,7 @@ define([
                                     sublayerTooltip = "";
                                 }
                                 if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
-                                    this._data.push({ id: li.name, name: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
+                                    this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
                                 }
                             }, this);                            
                         }
@@ -329,7 +330,7 @@ define([
             }, this);
         },
         _onItemClick: function (item, node) {
-            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, i;
+            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, i, name;
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
@@ -352,15 +353,15 @@ define([
                 l = this.mapa.map.getLayer(item.vparent || item.parent);
                 visibleLayers = l.visibleLayers;
 
-                arrayUtil.forEach(l.layerInfos, function (li) {
+                /** arrayUtil.forEach(l.layerInfos, function (li) {
                     if (li.name === item.name) {
                         i = li.id;
                     }
-                });
+                });**/
                 if (isNodeSelected) {
-                    visibleLayers.push(i);
+                    visibleLayers.push(item.index);
                 } else {
-                    visibleLayers.pop(i);
+                    visibleLayers.pop(item.index);
                 }
                 l.setVisibleLayers(visibleLayers);
                 if (l.visible) {
@@ -381,6 +382,9 @@ define([
                 cb = new CheckBox();
                 cb.placeAt(tnode.labelNode, "first");
                 tnode.checkBox = cb;
+            }
+            if (args.item.legendURL){
+                tnode.labelNode.innerHTML =  "<img src='"+args.item.legendURL+"'>";
             }
             if (args.item.parent === "root") { //Si está en el segundo nivel
                 slider = new HorizontalSlider({
@@ -432,6 +436,9 @@ define([
                     if (item.imageData) {
                         var imgUri = "url(data:" + item.contentType  + ";base64," + item.imageData + ")";
                         return {backgroundImage: imgUri, backgroundRepeat: "no-repeat", backgroundPosition: "left center",  backgroundSize: "16px 16px"};
+                    } else if (item.legendURL) { // WMS
+                        var imgUri = "url(" + item.legendURL + ")";
+                        return {backgroundImage: imgUri, backgroundRepeat: "no-repeat", backgroundPosition: "left center",  backgroundSize: "100px 200px"};
                     }
                 }
             });
