@@ -124,20 +124,20 @@ html, body {
 }
 
 .iconAcercarSeleccionBuscar{
-    width: 27px;
-    height: 27px; 
+    width: 30px;
+    height: 30px; 
     border: none;
 }
 
 
 .iconDesSeleccionBuscar{
-    width: 27px;
-    height: 27px; 
+    width: 30px;
+    height: 30px; 
     border: none;
 }
 .iconDeleccionarTodoBuscar{
-    width: 27px;
-    height: 27px; 
+    width: 30px;
+    height: 30px; 
     border: none;
 }
 
@@ -807,7 +807,7 @@ tituloTPAyuda{
     border: 0px #FFC000 solid;
     background-color: #FFC000;
     padding:1px 1px 1px 1px;
-    height: 30px;
+    /*height: 30px;*/
 }
 .agsjsTOCRootLayerLabel {
     font-size: 12pt;
