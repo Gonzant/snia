@@ -299,11 +299,11 @@ define([
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item, i) {
                 if (i !== 0) {
-                    extent = extent.union(capa.getGrafico(item.OBJECTID).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
+                    extent = extent.union(capa.getGrafico(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
                 } else {
-                    extent = capa.getGrafico(item.OBJECTID).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
+                    extent = capa.getGrafico(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
                 }
-                return item.OBJECTID;
+                return item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"];
             }, this);
             if (extent) {
                 this.mapa.map.setExtent(extent);
@@ -326,15 +326,23 @@ define([
             var ext, indice;
             this._standby.hide();
             if (results.features.length > 0) {
+                var cont =0;
+               
                 arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
                     // Supongo que por resultado tiene que haber solo un padron
+                   var a = results.features[cont];
+                   while (cont < results.features.length){
+                       
+                      cont ++; 
+                   }
+                   
                     if (index === 0) {
                         ext = feature.geometry.getExtent();
                     } else {
                         ext = ext.union(feature.geometry.getExtent());
                     }
-                    indice = feature.attributes.OBJECTID;
-                    feature.attributes.OBJECTID = indice;
+                    indice = feature.attributes["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"];
+                    feature.attributes["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"] = indice;
                     feature.attributes.id = indice;
                     this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
                     lang.hitch(this, this._setGrid(feature.attributes));
