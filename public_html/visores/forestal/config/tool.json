@@ -136,6 +136,645 @@
         },
         {
             "widget": "widgets/AyudaWidget",
+            "title": "Estadisticas",
+            "msgToolTip": "Muestra estadisticas",
+            "icono": "../js/snia/img/estadisticoGris.png",
+            "toggle": false,
+            "widgetConfig": {
+                "data": [
+                    {
+                        "name": "Estadisticas",
+                        "id": "root",
+                        "titulo":"Estadisticas",
+                        "esPadre": true
+
+                    },
+                    {"name": "Uruguay",
+                        "id":"0",
+                        "parent":"root",
+                        "seccionTitulo":{
+                                "Texto":{"Contenido": "Uruguay", "Estilo": "Indice1"}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Uruguay", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "Uruguay tiene una superficie de 17.594.069 has, de las cuales 849.023 has, corresponden a Bosque Natural y 694.991 has a Bosque Implantado, siendo ello el 4,83% del Bosque Natural y 3,95% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos con Prioridad Forestal, lo que representa el 23,81 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 640.197 has y Suelos con PF No Condicionada: 3.548.784 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 483.531 has están sobre suelos con prioridad forestal, lo que equivale al 69,57 %.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                     {
+                        "name": "Artigas",
+                        "id":"1",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{"Contenido": "Artigas","Estilo": "Indice1"},
+                            "Imagen":{"URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Artigas", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Artigas tiene una superficie de 1.190.460 has, de las cuales 43.029 has, corresponden a Bosque Natural y 6.254 has a Bosque Implantado, siendo ello el 0,24% del Bosque Natural y 0,04% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "El departamento cuenta con 31.910 has de Suelos con Prioridad Forestal, lo que representa el 2,7 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 11.687 has y Suelos con PF No Condicionada: 20.223 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 349 has están sobre suelos con prioridad forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                            }
+                    },
+                    {
+                        "name": "Canelones",
+                        "id":"3",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{"Contenido": "Canelones","Estilo": "Indice1"},
+                            "Imagen":{"URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Canelones", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Canelones tiene una superficie de 453.098 has, de las cuales 22.281 has, corresponden a Bosque Natural y 18.238 has a Bosque Implantado, siendo ello el 0,13% del Bosque Natural y 0,10% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "El departamento cuenta con 68.298 has de Suelos con Prioridad Forestal, lo que representa el 15,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 31.621 has y Suelos con PF No Condicionada: 36.677 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 8.514 has están sobre suelos con prioridad forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                            }
+                    },
+                    {
+                        "name": "Cerro Largo",
+                        "id":"4",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Cerro Largo","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Cerro Largo", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Cerro Largo tiene una superficie de 1.366.312 has, de las cuales 65.858 has, corresponden a Bosque Natural y 40.573 has a Bosque Implantado, siendo ello el 0,37% del Bosque Natural y 0,23% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 34.956 has están sobre suelos con prioridad forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Colonia",
+                        "id":"5",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Colonia","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Colonia", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Colonia tiene una superficie de 610.995 has, de las cuales 14.724 has, corresponden a Bosque Natural y 9.799 has a Bosque Implantado, siendo ello el 0,08% del Bosque Natural y 0,06% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Durazno",
+                        "id":"5",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Durazno","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Durazno", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Durazno tiene una superficie de 1.220.107 has, de las cuales 23.249 has, corresponden a Bosque Natural y 38.238 has a Bosque Implantado, siendo ello el 0,13% del Bosque Natural y 0,22% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 377.939 has de Suelos con Prioridad Forestal, lo que representa el 31,0 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 23.229 has y Suelos con PF No Condicionada: 354.710 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 23.668 has están sobre suelos con prioridad forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Flores",
+                        "id":"6",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Flores","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Flores", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Flores tiene una superficie de 514.114 has, de las cuales 4.737 has, corresponden a Bosque Natural y 3.251 has a Bosque Implantado, siendo ello el 0,03% del Bosque Natural y 0,02% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":40}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 38.136 has de Suelos con Prioridad Forestal, lo que representa el 7,4 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 0 has y Suelos con PF No Condicionada: 38.136 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 454 has están sobre suelos con prioridad forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Florida",
+                        "id":"7",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Florida","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Florida", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Florida tiene una superficie de 1.040.629 has, de las cuales 30.976 has, corresponden a Bosque Natural y 22.513 has a Bosque Implantado, siendo ello el 0,18% del Bosque Natural y 0,13% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 170.687 has de Suelos con Prioridad Forestal, lo que representa el 16,4 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 26.381 has y Suelos con PF No Condicionada: 144.306 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 10.497 has están sobre suelos con prioridad forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Lavalleja",
+                        "id":"8",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Lavalleja","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Lavalleja", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Lavalleja tiene una superficie de 1.002.775 has, de las cuales 95.129 has, corresponden a Bosque Natural y 37.586 has a Bosque Implantado, siendo ello el 0,54% del Bosque Natural y 0,21% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 517.296 has de Suelos con Prioridad Forestal, lo que representa el 51,6 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 108.023 has y Suelos con PF No Condicionada: 409.273 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 30.141 has están sobre suelos con prioridad forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Maldonado",
+                        "id":"9",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Maldonado","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Maldonado", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Maldonado tiene una superficie de 479.706 has, de las cuales 60.226 has, corresponden a Bosque Natural y 35.054 has a Bosque Implantado, siendo ello el 0,34% del Bosque Natural y 0,20% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 263.608 has de Suelos con Prioridad Forestal, lo que representa el 55,0 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 88.431 has y Suelos con PF No Condicionada: 175.177 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 26.031 has están sobre suelos con prioridad forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Montevideo",
+                        "id":"10",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Montevideo","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Montevideo", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Montevideo tiene una superficie de 53.053 has, de las cuales 772 has, corresponden a Bosque Natural y 1.673 has a Bosque Implantado, siendo ello el 0,00% del Bosque Natural y 0,01% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 8.141 has de Suelos con Prioridad Forestal, lo que representa el 15,3 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 6.839 has y Suelos con PF No Condicionada: 1.302 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Paysandú",
+                        "id":"11",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Paysandú","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Paysandú", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Paysandú tiene una superficie de 1.396.772 has, de las cuales 58.758 has, corresponden a Bosque Natural y 100.793 has a Bosque Implantado, siendo ello el 0,33% del Bosque Natural y 0,57% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Rio Negro",
+                        "id":"12",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Rio Negro","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Rio Negro", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Rio Negro tiene una superficie de 952.414 has, de las cuales 37.610 has, corresponden a Bosque Natural y 77.783 has a Bosque Implantado, siendo ello el 0,21% del Bosque Natural y 0,44% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Rivera",
+                        "id":"13",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Rivera","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Rivera", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Rivera tiene una superficie de 932.803 has, de las cuales 62.324 has, corresponden a Bosque Natural y 116.586 has a Bosque Implantado, siendo ello el 0,35% del Bosque Natural y 0,66% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Rocha",
+                        "id":"14",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Rocha","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Rocha", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Rocha tiene una superficie de 1.055.703 has, de las cuales 53.634 has, corresponden a Bosque Natural y 43.622 has a Bosque Implantado, siendo ello el 0,30% del Bosque Natural y  0,25% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Salto",
+                        "id":"15",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Salto","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Salto", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Salto tiene una superficie de 1.396.385 has, de las cuales 45.651 has, corresponden a Bosque Natural y 5.627 has a Bosque Implantado, siendo ello el 0,26% del Bosque Natural y 0,03% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "San Jose",
+                        "id":"16",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "San Jose","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "San Jose", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de San Jose tiene una superficie de 500.893 has, de las cuales 21.177 has, corresponden a Bosque Natural y 7.827 has a Bosque Implantado, siendo ello el 0,12% del Bosque Natural y 0,04% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Soriano",
+                        "id":"17",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Soriano","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Soriano", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Soriano tiene una superficie de 899.601 has, de las cuales 25.994 has, corresponden a Bosque Natural y 24.931 has a Bosque Implantado, siendo ello el 0,15% del Bosque Natural y 0,14% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Tacuarembo",
+                        "id":"18",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Tacuarembo","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Tacuarembo", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Tacuarembo tiene una superficie de 1.598.649 has, de las cuales 120.603 has, corresponden a Bosque Natural y 88.607 has a Bosque Implantado, siendo ello el 0,69% del Bosque Natural y 0,50% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Treinta y Tres",
+                        "id":"19",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Treinta y Tres","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Treinta y Tres", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Treinta y Tres tiene una superficie de 929.570 has, de las cuales 62.291 has, corresponden a Bosque Natural y 16.037 has a Bosque Implantado, siendo ello el 0,35% del Bosque Natural y 0,09% del Bosque Implantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                }
+                            ]                            
+                        }
+                    }
+                        
+                    
+                ]
+            }
+        },
+        
+        {
+            "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
             "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
             "icono": "../js/snia/img/ayuda.png",
@@ -154,9 +793,7 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
+                           {"Contenido": "Introducción","Estilo": "Indice1"
                             }
                         
             },
@@ -170,11 +807,9 @@
                     },
                 "elementos":[
                     {
-                      "Texto":[
-                        { 
+                      "Texto":[ { 
                             "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
-                            "Estilo": "Normal"
-                        }
+                            "Estilo": "Normal"}
                       ]
                     }
                      
@@ -233,8 +868,7 @@
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
+                        "Imagen":{
                               "URL":"../js/snia/img/mapabase.png",
                               "Alto":30
                         },
@@ -252,15 +886,14 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    }                        
                     ]
                 }
             },
             {
                 "name": "Contenidos",
                 "id":"4",
-                "parent":"2",
+                "parent":"1",
                 "seccionTitulo":{
                     "Texto":
                            {
@@ -643,10 +1276,7 @@
                             }
                         },
                         { "Texto":[
-                           {
-                              "Contenido": "Croquis selección",
-                              "Estilo": "Titulo3"
-                            },
+                           {"Contenido": "Croquis selección","Estilo": "Titulo3"},
                             {
                               "Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.",
                               "Estilo": "Normal"
@@ -662,44 +1292,23 @@
                "id":"7",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/medir.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{ "Contenido": "Medir", "Estilo": "Indice1" },
+                    "Imagen":{ "URL":"../js/snia/img/medir.png","Alto":20 }                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/regla.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Titulo2"
-                            }
+                         "Imagen":{ "URL":"../js/snia/img/regla.png","Alto":30 },
+                        "Texto": {"Contenido": "Medir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.",
+                        {"Texto":[
+                           {  "Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
+                            { "Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
+                            { "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -712,38 +1321,20 @@
                "id":"8",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{ "Contenido": "Coordenadas", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/coordenadas.png",
-                              "Alto":30
-                        },
+                         "Imagen":{"URL":"../js/snia/img/coordenadas.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Coordenadas","Estilo": "Titulo2" }
                     },
                     "elementos": [
                         {
-                           "Texto":[
-                           {
+                           "Texto":[{
                               "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar las coordenadas del punto del mapa indicado por el puntero del ratón, en tres sistemas de referencia espacial, UTM 21 sur, coordenadas geográficas y Web Mercator.",
-                              "Estilo": "Normal"
-                            }
+                              "Estilo": "Normal"}
                            ]    
                         }
                     ]
@@ -755,38 +1346,18 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                           {"Contenido": "Mapa de Referencia","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{ "URL":"../js/snia/img/referencia.png","Alto":30},
+                        "Texto":{ "Contenido": "Mapa de Referencia","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                          "Texto":[
-                              {
+                        {"Texto":[ {
                                 "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
-                                "Estilo": "Normal"
-                              }
-                          ]  
+                                "Estilo": "Normal"}  ]  
                         }
                     ]
                 }
@@ -846,12 +1417,7 @@
             "id":"18",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{ "Contenido": "Atribuciones","Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
@@ -864,35 +1430,17 @@
                 "elementos":[
                     {
                     "Texto":[
-                        {
-                            "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
-                            "Estilo": "Normal"
-                        }
+                        { "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
+                            "Estilo": "Normal"}
                       ]  
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "SIT",
-                            "URL": "http://sit.mvotma.gub.uy"
-                        }
-                    ] 
-                    },
-                    {
-                    "Texto":[
-                      {
-                        "Contenido": "El servicio de imagenes es de ESRI",
-                        "Estilo": "Normal"
-                      }
+                    {"Enlace":[{"Contenido": "SIT","URL": "http://sit.mvotma.gub.uy"}] },
+                    {"Texto":[
+                      {"Contenido": "El servicio de imagenes es de ESRI","Estilo": "Normal"}
                     ]
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
-                    ]
+                    "Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]
                     },
                     {
                     "Texto":[
@@ -902,20 +1450,10 @@
                       }
                     ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
-                    ]
+                    { "Enlace":[ {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}]
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
+                    "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}
                     ]
                     }
                     
@@ -983,9 +1521,8 @@
             },
             "padre": "si"
         }
-        
-]
-            }
+       ]
+          }
         }       
     ]
 }

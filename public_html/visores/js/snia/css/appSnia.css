@@ -694,7 +694,7 @@ tituloTPAyuda{
 }
 #divToolbar {
     z-index: 2;
-    width: 45px;
+    width: 40px;
     position:absolute;
     top: 140px;
     padding-top: 14px;
@@ -963,7 +963,7 @@ Dialogos:
 }
 
 .SmallButtonBH {
-    border-radius:5px;
+    border-radius:4px;
     background-color: #FFC000;
     padding:1px;
     border-color: transparent !important
@@ -1079,7 +1079,7 @@ div p {
     word-wrap: break-word;
 }
 .estiloBotonBarra{
-   width: 38px; 
+   width: 34px; 
    cursor: pointer;    
 }
 
