@@ -314,8 +314,8 @@ define([
             capa = this._cg3sr;
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item) {
-                capa.removerGrafico(item.OBJECTID);
-                this._store.remove(item.OBJECTID);
+                capa.removerGrafico(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]);
+                this._store.remove(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]);
             }, this);
             test_store = new ObjectStore({objectStore: this._store});
             this._grid.setStore(test_store);
