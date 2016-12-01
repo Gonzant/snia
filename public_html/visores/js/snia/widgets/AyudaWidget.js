@@ -210,6 +210,15 @@ define([
                                         contenido = contenido + link + " <br> ";
                                     }
                                 }
+                                else{
+                                    if (comun[i].Video) {
+                                     //   for (j = 0; j < comun[i].Video.length; j = j + 1) {
+                                            link = "<video src=" + '"' + comun[i].Video.URL + '" ' + "width=\"360\" height=\"300\"" + " controls></video>";
+                                            contenido = contenido + link + " <br> ";
+                                   // }
+                                }
+                                    
+                                }
                             }
                         }
                     }
