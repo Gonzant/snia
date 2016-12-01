@@ -174,6 +174,7 @@ define([
                 },
                 onOpen: lang.hitch(this, function (item, node) {
                     var children, c, nodoItem, esPadre, negEsPadre;
+                    var comun, i, j;
                     children = node.getChildren();
                     for (c in children) {
                         if (children.hasOwnProperty(c)) {
@@ -185,6 +186,9 @@ define([
                             }
                         }
                     }
+                    var contenido = "<p class=\"Normal\">Servicio de consulta del programa 'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.</p><video src=\"../js/snia/videos/VisorMRP.mp4\" width=\"360\" height=\"300\" controls></video>";
+                    var titulo = "<p class=\"Titulo1\">Introducción</p>";
+                    div2.innerHTML = titulo + contenido;                    
                 }),
                 onClick: lang.hitch(this, function () {
                     var comun, i, j;
@@ -209,6 +213,15 @@ define([
                                         link = "<a href=" + '"' + comun[i].Enlace[j].URL + '" ' + " target=" + '"' + "_blank" + '"' + ">" + comun[i].Enlace[j].Contenido + "</a>";
                                         contenido = contenido + link + " <br> ";
                                     }
+                                }
+                                else{
+                                    if (comun[i].Video) {
+                                     //   for (j = 0; j < comun[i].Video.length; j = j + 1) {
+                                            link = "<video src=" + '"' + comun[i].Video.URL + '" ' + "width=\"360\" height=\"300\"" + " controls></video>";
+                                            contenido = contenido + link + " <br> ";
+                                   // }
+                                }
+                                    
                                 }
                             }
                         }
