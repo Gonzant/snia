@@ -159,11 +159,11 @@
                             "titulo":{ "Texto":{"Contenido": "Uruguay", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "Uruguay tiene una superficie de 17.594.069 has, de las cuales 849.023 has, corresponden a Bosque Natural y 694.991 has a Bosque Implantado, siendo ello el 4,83% del Bosque Natural y 3,95% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "Uruguay tiene una superficie de 17.594.069 has, de las cuales 849.023 has, corresponden a Bosque Natural y 694.991 has a Bosque Plantado, siendo ello el 4,83% del Bosque Natural y 3,95% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/FUruguay.png","Alto":90}},
                                 {"Texto":[
                                     {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos con Prioridad Forestal, lo que representa el 23,81 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 640.197 has y Suelos con PF No Condicionada: 3.548.784 has.",
                                         "Estilo": "Normal"
@@ -171,7 +171,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 483.531 has están sobre suelos con prioridad forestal, lo que equivale al 69,57 %.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 483.531 has están sobre suelos con prioridad forestal, lo que equivale al 69,57 %.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -190,7 +190,7 @@
                             "titulo":{ "Texto":{"Contenido": "Artigas", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Artigas tiene una superficie de 1.190.460 has, de las cuales 43.029 has, corresponden a Bosque Natural y 6.254 has a Bosque Implantado, siendo ello el 0,24% del Bosque Natural y 0,04% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Artigas tiene una superficie de 1.190.460 has, de las cuales 43.029 has, corresponden a Bosque Natural y 6.254 has a Bosque Plantado, siendo ello el 0,24% del Bosque Natural y 0,04% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -202,7 +202,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 349 has están sobre suelos con prioridad forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 349 has están sobre suelos con prioridad forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -221,7 +221,7 @@
                             "titulo":{ "Texto":{"Contenido": "Canelones", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Canelones tiene una superficie de 453.098 has, de las cuales 22.281 has, corresponden a Bosque Natural y 18.238 has a Bosque Implantado, siendo ello el 0,13% del Bosque Natural y 0,10% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Canelones tiene una superficie de 453.098 has, de las cuales 22.281 has, corresponden a Bosque Natural y 18.238 has a Bosque Plantado, siendo ello el 0,13% del Bosque Natural y 0,10% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -233,7 +233,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 8.514 has están sobre suelos con prioridad forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 8.514 has están sobre suelos con prioridad forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -252,7 +252,7 @@
                             "titulo":{ "Texto":{"Contenido": "Cerro Largo", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Cerro Largo tiene una superficie de 1.366.312 has, de las cuales 65.858 has, corresponden a Bosque Natural y 40.573 has a Bosque Implantado, siendo ello el 0,37% del Bosque Natural y 0,23% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Cerro Largo tiene una superficie de 1.366.312 has, de las cuales 65.858 has, corresponden a Bosque Natural y 40.573 has a Bosque Plantado, siendo ello el 0,37% del Bosque Natural y 0,23% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -264,7 +264,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 34.956 has están sobre suelos con prioridad forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 34.956 has están sobre suelos con prioridad forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -283,7 +283,7 @@
                             "titulo":{ "Texto":{"Contenido": "Colonia", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Colonia tiene una superficie de 610.995 has, de las cuales 14.724 has, corresponden a Bosque Natural y 9.799 has a Bosque Implantado, siendo ello el 0,08% del Bosque Natural y 0,06% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Colonia tiene una superficie de 610.995 has, de las cuales 14.724 has, corresponden a Bosque Natural y 9.799 has a Bosque Plantado, siendo ello el 0,08% del Bosque Natural y 0,06% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -295,7 +295,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -314,7 +314,7 @@
                             "titulo":{ "Texto":{"Contenido": "Durazno", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Durazno tiene una superficie de 1.220.107 has, de las cuales 23.249 has, corresponden a Bosque Natural y 38.238 has a Bosque Implantado, siendo ello el 0,13% del Bosque Natural y 0,22% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Durazno tiene una superficie de 1.220.107 has, de las cuales 23.249 has, corresponden a Bosque Natural y 38.238 has a Bosque Plantado, siendo ello el 0,13% del Bosque Natural y 0,22% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -326,7 +326,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 23.668 has están sobre suelos con prioridad forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 23.668 has están sobre suelos con prioridad forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -345,7 +345,7 @@
                             "titulo":{ "Texto":{"Contenido": "Flores", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Flores tiene una superficie de 514.114 has, de las cuales 4.737 has, corresponden a Bosque Natural y 3.251 has a Bosque Implantado, siendo ello el 0,03% del Bosque Natural y 0,02% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Flores tiene una superficie de 514.114 has, de las cuales 4.737 has, corresponden a Bosque Natural y 3.251 has a Bosque Plantado, siendo ello el 0,03% del Bosque Natural y 0,02% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -357,7 +357,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 454 has están sobre suelos con prioridad forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 454 has están sobre suelos con prioridad forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -376,7 +376,7 @@
                             "titulo":{ "Texto":{"Contenido": "Florida", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Florida tiene una superficie de 1.040.629 has, de las cuales 30.976 has, corresponden a Bosque Natural y 22.513 has a Bosque Implantado, siendo ello el 0,18% del Bosque Natural y 0,13% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Florida tiene una superficie de 1.040.629 has, de las cuales 30.976 has, corresponden a Bosque Natural y 22.513 has a Bosque Plantado, siendo ello el 0,18% del Bosque Natural y 0,13% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -388,7 +388,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 10.497 has están sobre suelos con prioridad forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 10.497 has están sobre suelos con prioridad forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -407,7 +407,7 @@
                             "titulo":{ "Texto":{"Contenido": "Lavalleja", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Lavalleja tiene una superficie de 1.002.775 has, de las cuales 95.129 has, corresponden a Bosque Natural y 37.586 has a Bosque Implantado, siendo ello el 0,54% del Bosque Natural y 0,21% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Lavalleja tiene una superficie de 1.002.775 has, de las cuales 95.129 has, corresponden a Bosque Natural y 37.586 has a Bosque Plantado, siendo ello el 0,54% del Bosque Natural y 0,21% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -419,7 +419,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 30.141 has están sobre suelos con prioridad forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 30.141 has están sobre suelos con prioridad forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -438,7 +438,7 @@
                             "titulo":{ "Texto":{"Contenido": "Maldonado", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Maldonado tiene una superficie de 479.706 has, de las cuales 60.226 has, corresponden a Bosque Natural y 35.054 has a Bosque Implantado, siendo ello el 0,34% del Bosque Natural y 0,20% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Maldonado tiene una superficie de 479.706 has, de las cuales 60.226 has, corresponden a Bosque Natural y 35.054 has a Bosque Plantado, siendo ello el 0,34% del Bosque Natural y 0,20% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -450,7 +450,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 26.031 has están sobre suelos con prioridad forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 26.031 has están sobre suelos con prioridad forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -469,7 +469,7 @@
                             "titulo":{ "Texto":{"Contenido": "Montevideo", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Montevideo tiene una superficie de 53.053 has, de las cuales 772 has, corresponden a Bosque Natural y 1.673 has a Bosque Implantado, siendo ello el 0,00% del Bosque Natural y 0,01% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Montevideo tiene una superficie de 53.053 has, de las cuales 772 has, corresponden a Bosque Natural y 1.673 has a Bosque Plantado, siendo ello el 0,00% del Bosque Natural y 0,01% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -481,7 +481,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -500,7 +500,7 @@
                             "titulo":{ "Texto":{"Contenido": "Paysandú", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Paysandú tiene una superficie de 1.396.772 has, de las cuales 58.758 has, corresponden a Bosque Natural y 100.793 has a Bosque Implantado, siendo ello el 0,33% del Bosque Natural y 0,57% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Paysandú tiene una superficie de 1.396.772 has, de las cuales 58.758 has, corresponden a Bosque Natural y 100.793 has a Bosque Plantado, siendo ello el 0,33% del Bosque Natural y 0,57% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -512,7 +512,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 53.632 has están sobre suelos con prioridad forestal, lo que equivale al 53,21 % a nivel departamental y al 7,72 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 53.632 has están sobre suelos con prioridad forestal, lo que equivale al 53,21 % a nivel departamental y al 7,72 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -531,7 +531,7 @@
                             "titulo":{ "Texto":{"Contenido": "Rio Negro", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Rio Negro tiene una superficie de 952.414 has, de las cuales 37.610 has, corresponden a Bosque Natural y 77.783 has a Bosque Implantado, siendo ello el 0,21% del Bosque Natural y 0,44% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Rio Negro tiene una superficie de 952.414 has, de las cuales 37.610 has, corresponden a Bosque Natural y 77.783 has a Bosque Plantado, siendo ello el 0,21% del Bosque Natural y 0,44% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -543,7 +543,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 52.339 has están sobre suelos con prioridad forestal, lo que equivale al 67,29 % a nivel departamental y al 7,53 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 52.339 has están sobre suelos con prioridad forestal, lo que equivale al 67,29 % a nivel departamental y al 7,53 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -562,7 +562,7 @@
                             "titulo":{ "Texto":{"Contenido": "Rivera", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Rivera tiene una superficie de 932.803 has, de las cuales 62.324 has, corresponden a Bosque Natural y 116.586 has a Bosque Implantado, siendo ello el 0,35% del Bosque Natural y 0,66% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Rivera tiene una superficie de 932.803 has, de las cuales 62.324 has, corresponden a Bosque Natural y 116.586 has a Bosque Plantado, siendo ello el 0,35% del Bosque Natural y 0,66% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -574,7 +574,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 103.331 has están sobre suelos con prioridad forestal, lo que equivale al 88,63 % a nivel departamental y al 14,87 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 103.331 has están sobre suelos con prioridad forestal, lo que equivale al 88,63 % a nivel departamental y al 14,87 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -593,7 +593,7 @@
                             "titulo":{ "Texto":{"Contenido": "Rocha", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Rocha tiene una superficie de 1.055.703 has, de las cuales 53.634 has, corresponden a Bosque Natural y 43.622 has a Bosque Implantado, siendo ello el 0,30% del Bosque Natural y  0,25% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Rocha tiene una superficie de 1.055.703 has, de las cuales 53.634 has, corresponden a Bosque Natural y 43.622 has a Bosque Plantado, siendo ello el 0,30% del Bosque Natural y  0,25% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -605,7 +605,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 33.847 has están sobre suelos con prioridad forestal, lo que equivale al 77,59 % a nivel departamental y al 4,87 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 33.847 has están sobre suelos con prioridad forestal, lo que equivale al 77,59 % a nivel departamental y al 4,87 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -624,7 +624,7 @@
                             "titulo":{ "Texto":{"Contenido": "Salto", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Salto tiene una superficie de 1.396.385 has, de las cuales 45.651 has, corresponden a Bosque Natural y 5.627 has a Bosque Implantado, siendo ello el 0,26% del Bosque Natural y 0,03% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Salto tiene una superficie de 1.396.385 has, de las cuales 45.651 has, corresponden a Bosque Natural y 5.627 has a Bosque Plantado, siendo ello el 0,26% del Bosque Natural y 0,03% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -636,7 +636,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 717 has están sobre suelos con prioridad forestal, lo que equivale al 12,74 % a nivel departamental y al 0,10 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 717 has están sobre suelos con prioridad forestal, lo que equivale al 12,74 % a nivel departamental y al 0,10 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -655,7 +655,7 @@
                             "titulo":{ "Texto":{"Contenido": "San Jose", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de San Jose tiene una superficie de 500.893 has, de las cuales 21.177 has, corresponden a Bosque Natural y 7.827 has a Bosque Implantado, siendo ello el 0,12% del Bosque Natural y 0,04% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de San Jose tiene una superficie de 500.893 has, de las cuales 21.177 has, corresponden a Bosque Natural y 7.827 has a Bosque Plantado, siendo ello el 0,12% del Bosque Natural y 0,04% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -667,7 +667,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 1.135 has están sobre suelos con prioridad forestal, lo que equivale al 14,50 % a nivel departamental y al 0,16 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.135 has están sobre suelos con prioridad forestal, lo que equivale al 14,50 % a nivel departamental y al 0,16 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -686,7 +686,7 @@
                             "titulo":{ "Texto":{"Contenido": "Soriano", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Soriano tiene una superficie de 899.601 has, de las cuales 25.994 has, corresponden a Bosque Natural y 24.931 has a Bosque Implantado, siendo ello el 0,15% del Bosque Natural y 0,14% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Soriano tiene una superficie de 899.601 has, de las cuales 25.994 has, corresponden a Bosque Natural y 24.931 has a Bosque Plantado, siendo ello el 0,15% del Bosque Natural y 0,14% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -698,7 +698,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 13.426 has están sobre suelos con prioridad forestal, lo que equivale al 53,85 % a nivel departamental y al 1,93 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 13.426 has están sobre suelos con prioridad forestal, lo que equivale al 53,85 % a nivel departamental y al 1,93 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -717,7 +717,7 @@
                             "titulo":{ "Texto":{"Contenido": "Tacuarembo", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Tacuarembo tiene una superficie de 1.598.649 has, de las cuales 120.603 has, corresponden a Bosque Natural y 88.607 has a Bosque Implantado, siendo ello el 0,69% del Bosque Natural y 0,50% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Tacuarembo tiene una superficie de 1.598.649 has, de las cuales 120.603 has, corresponden a Bosque Natural y 88.607 has a Bosque Plantado, siendo ello el 0,69% del Bosque Natural y 0,50% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -729,7 +729,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 75.621 has están sobre suelos con prioridad forestal, lo que equivale al 85,34 % a nivel departamental y al 10,88 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 75.621 has están sobre suelos con prioridad forestal, lo que equivale al 85,34 % a nivel departamental y al 10,88 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -748,7 +748,7 @@
                             "titulo":{ "Texto":{"Contenido": "Treinta y Tres", "Estilo": "Titulo1"} },
                             "elementos":[
                                 {"Texto":[
-                                    {"Contenido": "El departamento de Treinta y Tres tiene una superficie de 929.570 has, de las cuales 62.291 has, corresponden a Bosque Natural y 16.037 has a Bosque Implantado, siendo ello el 0,35% del Bosque Natural y 0,09% del Bosque Implantado a nivel Nacional.",
+                                    {"Contenido": "El departamento de Treinta y Tres tiene una superficie de 929.570 has, de las cuales 62.291 has, corresponden a Bosque Natural y 16.037 has a Bosque Plantado, siendo ello el 0,35% del Bosque Natural y 0,09% del Bosque Plantado a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -760,7 +760,7 @@
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Implantado 12.741 has están sobre suelos con prioridad forestal, lo que equivale al 79,45 % a nivel departamental y al 1,83 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 12.741 has están sobre suelos con prioridad forestal, lo que equivale al 79,45 % a nivel departamental y al 1,83 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
