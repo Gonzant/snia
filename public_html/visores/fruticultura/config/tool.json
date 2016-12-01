@@ -369,7 +369,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/zoomout.png",
+                              "URL":"../js/snia/img/zoomout.png",
                               "Alto":30
                             }
                         },
@@ -389,7 +389,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/pan.png",
+                              "URL":"../js/snia/img/pan.png",
                               "Alto":30
                             }
                         },
@@ -408,7 +408,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/fullextent.png",
+                              "URL":"../js/snia/img/fullextent.png",
                               "Alto":30
                             }
                         },
@@ -427,7 +427,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/prevextent.png",
+                              "URL":"../js/snia/img/prevextent.png",
                               "Alto":30
                             }
                         },
@@ -446,7 +446,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/sigextent.png",
+                              "URL":"../js/snia/img/sigextent.png",
                               "Alto":30
                             }
                         },
