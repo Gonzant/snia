@@ -163,15 +163,23 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../forestal/img/forestacion/FUruguay.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/FUruguay.png","Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos con Prioridad Forestal, lo que representa el 23,81 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 640.197 has y Suelos con PF No Condicionada: 3.548.784 has.",
+                                    {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos de Prioridad Forestal, lo que representa el 23,81 %. A su vez, los suelos con prioridad forestal se divide en: Suelos de PF Condicionada: 640.197 has y Suelos de PF No Condicionada: 3.548.784 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/uruguay.png", "Alto":160, "Ancho":410}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 483.531 has están sobre suelos con prioridad forestal, lo que equivale al 69,57 %.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 483.531 has están sobre Suelos de Prioridad Forestal, lo que equivale al 69,57 %.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Texto":[
+                                    {"Contenido": " ", "Estilo": "Normal"}]
+                                },
+                                {"Texto":[
+                                    {"Contenido": "Fuente: ",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -194,15 +202,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/artigas.png","Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "El departamento cuenta con 31.910 has de Suelos con Prioridad Forestal, lo que representa el 2,7 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 11.687 has y Suelos con PF No Condicionada: 20.223 has.",
+                                    {"Contenido": "El departamento cuenta con 31.910 has de Suelos de Prioridad Forestal, lo que representa el 2,7 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 11.687 has y Suelos de PF No Condicionada: 20.223 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
                                 {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 349 has están sobre suelos con prioridad forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 349 has están sobre Suelos de Prioridad Forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }

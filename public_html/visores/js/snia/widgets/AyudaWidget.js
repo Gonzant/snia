@@ -193,28 +193,28 @@ define([
                     comun = this._tree.get("selectedItems")[0].seccionContenido.elementos;
                     seleccionado = this._tree.get("selectedItems")[0].seccionContenido.titulo.Texto.Contenido;
                     titulo = "<p class=" + '"' + this._tree.get("selectedItems")[0].seccionContenido.titulo.Texto.Estilo + '"' + ">"
-                            + seleccionado + "</p>";
+                            + seleccionado + "</p> <br>";
                     contenido = "";
                     for (i = 0; i < comun.length; i = i + 1) {
                         if (comun[i].Texto) {
                             for (j = 0; j < comun[i].Texto.length; j = j + 1) {
-                                contenido = contenido + "<p class=" + '"' + comun[i].Texto[j].Estilo + '"' + ">" + comun[i].Texto[j].Contenido + "</p>";
+                                contenido = contenido + "<p class=" + '"' + comun[i].Texto[j].Estilo + '"' + ">" + comun[i].Texto[j].Contenido + "</p>" + " <br> ";
                             }
                         } else {
                             if (comun[i].Imagen) {
                                 rutaImg = comun[i].Imagen.URL;
-                                imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + "20px" + '"' + " height=" + '"' + "20px" + '" ';
-                                contenido = contenido + imagen;
+                                imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagen.Ancho + 'px"' + " height=" + '"' + comun[i].Imagen.Alto + 'px>"';
+                                contenido = contenido + imagen + " <br> ";
                             } else {
                                 if (comun[i].Enlace) {
                                     for (j = 0; j < comun[i].Enlace.length; j = j + 1) {
-                                        link = "<a href=" + '"' + comun[i].Enlace[j].URL + '" ' + " target=" + '"' + "_blank" + '"' + ">" + comun[i].Enlace[j].Contenido + "</a>";
+                                        link = "<a href=" + '"' + comun[i].Enlace[j].URL + '" ' + " target=" + '"' + "_blank" + '"' + ">" + comun[i].Enlace[j].Contenido + "</a><br>";
                                         contenido = contenido + link + " <br> ";
                                     }
                                 }
                                 else{
                                     if (comun[i].Video) {
-                                        link = "<video src=" + '"' + comun[i].Video.URL + '" ' + "width=\"360\" height=\"300\"" + " controls></video>";
+                                        link = "<video src=" + '"' + comun[i].Video.URL + '" ' + "width=\"360\" height=\"300\"" + " controls></video><br>";
                                             contenido = contenido + link + " <br> ";
                                     }                                    
                                 }
