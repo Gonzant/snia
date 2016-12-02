@@ -102,6 +102,15 @@
                 
             }
         },
+           {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png",            
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
         {
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
@@ -138,12 +147,13 @@
             "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
+            "startsOpen": true,
             "widgetConfig": {
                 "data": [
     {
         "name": "Ayuda",
 	"id": "root",
-        "titulo":"prueba",
+        "titulo":"Fruticultura",
         "esPadre": true
 	
     },
@@ -170,11 +180,20 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                            "Contenido": "Servicio de consulta del programa  'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.",
                             "Estilo": "Normal"
                         }
+                        
+                        
                       ]
-                    }
+                    },
+                    { 
+                            "Video":
+                            {
+                              "URL":"../js/snia/videos/VisorMRP.mp4",
+                              "Alto":30
+                            }
+                        }
                      
                 ]
             }
@@ -257,8 +276,8 @@
             },
             {
                 "name": "Contenidos",
-                "id":"4",
-                "parent":"2",
+                "id":"3",
+                "parent":"1",
                 "seccionTitulo":{
                     "Texto":
                            {
@@ -360,7 +379,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/zoomout.png",
+                              "URL":"../js/snia/img/zoomout.png",
                               "Alto":30
                             }
                         },
@@ -380,7 +399,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/pan.png",
+                              "URL":"../js/snia/img/pan.png",
                               "Alto":30
                             }
                         },
@@ -399,7 +418,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/fullextent.png",
+                              "URL":"../js/snia/img/fullextent.png",
                               "Alto":30
                             }
                         },
@@ -418,7 +437,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/prevextent.png",
+                              "URL":"../js/snia/img/prevextent.png",
                               "Alto":30
                             }
                         },
@@ -437,7 +456,7 @@
                         { 
                             "Imagen":
                             {
-                              "URL":"js/snia/img/sigextent.png",
+                              "URL":"../js/snia/img/sigextent.png",
                               "Alto":30
                             }
                         },
