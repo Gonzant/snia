@@ -50,7 +50,7 @@
                 "timeSlider": {
                     "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",
-                    "velocidad": "800",
+                    "velocidad": "1000",
                     "defecto": {
                         "inicial": "0", 
                         "final": "52"                          
