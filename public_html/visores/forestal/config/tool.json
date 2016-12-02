@@ -152,9 +152,7 @@
                     {"name": "Uruguay",
                         "id":"0",
                         "parent":"root",
-                        "seccionTitulo":{
-                                "Texto":{"Contenido": "Uruguay", "Estilo": "Indice1"}
-                        },
+                        "seccionTitulo":{"Texto":{"Contenido": "Uruguay", "Estilo": "Indice1"}},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Uruguay", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -165,7 +163,7 @@
                                 },
                                 {"Imagen":{"URL":"../forestal/img/forestacion/FUruguay.png","Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos de Prioridad Forestal, lo que representa el 23,81 %. A su vez, los suelos con prioridad forestal se divide en: Suelos de PF Condicionada: 640.197 has y Suelos de PF No Condicionada: 3.548.784 has.",
+                                    {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos de Prioridad Forestal, lo que representa el 23,81 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 640.197 has y Suelos de PF No Condicionada: 3.548.784 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
@@ -175,14 +173,8 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Texto":[
-                                    {"Contenido": " ", "Estilo": "Normal"}]
-                                },
-                                {"Texto":[
-                                    {"Contenido": "Fuente: ",
-                                        "Estilo": "Normal"
-                                    }]
-                                }
+                                {"Texto":[{"Contenido": " ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": "Fuente: ","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -190,10 +182,7 @@
                         "name": "Artigas",
                         "id":"1",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{"Contenido": "Artigas","Estilo": "Indice1"},
-                            "Imagen":{"URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{"Texto":{"Contenido": "Artigas","Estilo": "Indice1"}},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Artigas", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -208,7 +197,7 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/artigas.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
                                     {"Contenido": "Del total de has de Bosque Plantado 349 has están sobre Suelos de Prioridad Forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
                                         "Estilo": "Normal"
@@ -221,10 +210,7 @@
                         "name": "Canelones",
                         "id":"3",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{"Contenido": "Canelones","Estilo": "Indice1"},
-                            "Imagen":{"URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{"Texto":{"Contenido": "Canelones","Estilo": "Indice1"}},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Canelones", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -233,15 +219,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/canelones.png","Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "El departamento cuenta con 68.298 has de Suelos con Prioridad Forestal, lo que representa el 15,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 31.621 has y Suelos con PF No Condicionada: 36.677 has.",
+                                    {"Contenido": "El departamento cuenta con 68.298 has de Suelos de Prioridad Forestal, lo que representa el 15,1 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 31.621 has y Suelos de PF No Condicionada: 36.677 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/canelones.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 8.514 has están sobre suelos con prioridad forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 8.514 has están sobre Suelos de Prioridad Forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -252,10 +238,7 @@
                         "name": "Cerro Largo",
                         "id":"4",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Cerro Largo","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Cerro Largo","Estilo": "Indice1" } },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Cerro Largo", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -264,15 +247,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/cerroLargo.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos de Prioridad Forestal, lo que representa el 44,1 %. A su vez, los Suelos de Prioridad forestal se divide en: Suelos de PF Condicionada: 123.781 has y Suelos de PF No Condicionada: 478.394 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/cerrolargo.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 34.956 has están sobre suelos con prioridad forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 34.956 has están sobre Suelos de Prioridad Forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -295,15 +278,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/colonia.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos con Prioridad Forestal, lo que representa el 44,1 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 123.781 has y Suelos con PF No Condicionada: 478.394 has.",
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos de Prioridad Forestal, lo que representa el 44,1 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 123.781 has y Suelos de PF No Condicionada: 478.394 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/colonia.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos de Prioridad Forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -314,10 +297,7 @@
                         "name": "Durazno",
                         "id":"5",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Durazno","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Durazno","Estilo": "Indice1" } },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Durazno", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -326,15 +306,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/durazno.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 377.939 has de Suelos con Prioridad Forestal, lo que representa el 31,0 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 23.229 has y Suelos con PF No Condicionada: 354.710 has.",
+                                    {"Contenido": "Este departamento cuenta con 377.939 has de Suelos de Prioridad Forestal, lo que representa el 31,0 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 23.229 has y Suelos de PF No Condicionada: 354.710 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/durazno.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 23.668 has están sobre suelos con prioridad forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 23.668 has están sobre Suelos de Prioridad Forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -345,10 +325,7 @@
                         "name": "Flores",
                         "id":"6",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Flores","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{"Texto":{ "Contenido": "Flores","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Flores", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -357,15 +334,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":40}},
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/flores.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 38.136 has de Suelos con Prioridad Forestal, lo que representa el 7,4 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 0 has y Suelos con PF No Condicionada: 38.136 has.",
+                                    {"Contenido": "Este departamento cuenta con 38.136 has de Suelos de Prioridad Forestal, lo que representa el 7,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 0 has y Suelos de PF No Condicionada: 38.136 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                               {"Imagen":{"URL":"../forestal/img/SPF/flores.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 454 has están sobre suelos con prioridad forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 454 has están sobre Suelos de Prioridad Forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -377,9 +354,7 @@
                         "id":"7",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "Florida","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                            "Texto":{ "Contenido": "Florida","Estilo": "Indice1" } },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Florida", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -388,15 +363,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/florida.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 170.687 has de Suelos con Prioridad Forestal, lo que representa el 16,4 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 26.381 has y Suelos con PF No Condicionada: 144.306 has.",
+                                    {"Contenido": "Este departamento cuenta con 170.687 has de Suelos de Prioridad Forestal, lo que representa el 16,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 26.381 has y Suelos de PF No Condicionada: 144.306 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                               {"Imagen":{"URL":"../forestal/img/SPF/florida.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 10.497 has están sobre suelos con prioridad forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 10.497 has están sobre Suelos de Prioridad Forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -407,10 +382,7 @@
                         "name": "Lavalleja",
                         "id":"8",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Lavalleja","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Lavalleja","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Lavalleja", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -419,15 +391,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/lavalleja.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 517.296 has de Suelos con Prioridad Forestal, lo que representa el 51,6 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 108.023 has y Suelos con PF No Condicionada: 409.273 has.",
+                                    {"Contenido": "Este departamento cuenta con 517.296 has de Suelos de Prioridad Forestal, lo que representa el 51,6 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 108.023 has y Suelos de PF No Condicionada: 409.273 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/lavalleja.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 30.141 has están sobre suelos con prioridad forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 30.141 has están sobre Suelos de Prioridad Forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -438,10 +410,7 @@
                         "name": "Maldonado",
                         "id":"9",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Maldonado","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{"Texto":{ "Contenido": "Maldonado","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Maldonado", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -450,15 +419,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/maldonado.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 263.608 has de Suelos con Prioridad Forestal, lo que representa el 55,0 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 88.431 has y Suelos con PF No Condicionada: 175.177 has.",
+                                    {"Contenido": "Este departamento cuenta con 263.608 has de Suelos de Prioridad Forestal, lo que representa el 55,0 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 88.431 has y Suelos de PF No Condicionada: 175.177 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/maldonado.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 26.031 has están sobre suelos con prioridad forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 26.031 has están sobre Suelos de Prioridad Forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -469,10 +438,7 @@
                         "name": "Montevideo",
                         "id":"10",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Montevideo","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{"Texto":{ "Contenido": "Montevideo","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Montevideo", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -481,15 +447,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/montevideo.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 8.141 has de Suelos con Prioridad Forestal, lo que representa el 15,3 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 6.839 has y Suelos con PF No Condicionada: 1.302 has.",
+                                    {"Contenido": "Este departamento cuenta con 8.141 has de Suelos de Prioridad Forestal, lo que representa el 15,3 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 6.839 has y Suelos de PF No Condicionada: 1.302 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/montevideo.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos con prioridad forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre Suelos de Prioridad Forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -501,8 +467,7 @@
                         "id":"11",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "Paysandú","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                            "Texto":{ "Contenido": "Paysandú","Estilo": "Indice1" }
                         },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Paysandú", "Estilo": "Titulo1"} },
@@ -512,15 +477,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/paysandu.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 257.859 has de Suelos con Prioridad Forestal, lo que representa el 18,5 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 0 has y Suelos con PF No Condicionada: 257.859 has.",
+                                    {"Contenido": "Este departamento cuenta con 257.859 has de Suelos de Prioridad Forestal, lo que representa el 18,5 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 0 has y Suelos de PF No Condicionada: 257.859 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/paysandu.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 53.632 has están sobre suelos con prioridad forestal, lo que equivale al 53,21 % a nivel departamental y al 7,72 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 53.632 has están sobre Suelos de Prioridad Forestal, lo que equivale al 53,21 % a nivel departamental y al 7,72 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -532,9 +497,7 @@
                         "id":"12",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "Rio Negro","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                            "Texto":{ "Contenido": "Rio Negro","Estilo": "Indice1" } },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Rio Negro", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -543,15 +506,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/rionegro.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 250.638 has de Suelos con Prioridad Forestal, lo que representa el 26,3 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 124 has y Suelos con PF No Condicionada: 250.514 has.",
+                                    {"Contenido": "Este departamento cuenta con 250.638 has de Suelos de Prioridad Forestal, lo que representa el 26,3 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 124 has y Suelos de PF No Condicionada: 250.514 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/rionegro.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 52.339 has están sobre suelos con prioridad forestal, lo que equivale al 67,29 % a nivel departamental y al 7,53 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 52.339 has están sobre Suelos de Prioridad Forestal, lo que equivale al 67,29 % a nivel departamental y al 7,53 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -562,10 +525,7 @@
                         "name": "Rivera",
                         "id":"13",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Rivera","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{"Texto":{ "Contenido": "Rivera","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Rivera", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -574,15 +534,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/rivera.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 391.225 has de Suelos con Prioridad Forestal, lo que representa el 41,9 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 199 has y Suelos con PF No Condicionada: 391.026 has.",
+                                    {"Contenido": "Este departamento cuenta con 391.225 has de Suelos de Prioridad Forestal, lo que representa el 41,9 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 199 has y Suelos de PF No Condicionada: 391.026 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/rivera.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 103.331 has están sobre suelos con prioridad forestal, lo que equivale al 88,63 % a nivel departamental y al 14,87 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 103.331 has están sobre Suelos de Prioridad Forestal, lo que equivale al 88,63 % a nivel departamental y al 14,87 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -594,8 +554,7 @@
                         "id":"14",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "Rocha","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                            "Texto":{ "Contenido": "Rocha","Estilo": "Indice1" }
                         },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Rocha", "Estilo": "Titulo1"} },
@@ -605,15 +564,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/rocha.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 256.184 has de Suelos con Prioridad Forestal, lo que representa el 24,3 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 51.661 has y Suelos con PF No Condicionada: 204.523 has.",
+                                    {"Contenido": "Este departamento cuenta con 256.184 has de Suelos de Prioridad Forestal, lo que representa el 24,3 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 51.661 has y Suelos de PF No Condicionada: 204.523 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/rocha.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 33.847 has están sobre suelos con prioridad forestal, lo que equivale al 77,59 % a nivel departamental y al 4,87 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 33.847 has están sobre Suelos de Prioridad Forestal, lo que equivale al 77,59 % a nivel departamental y al 4,87 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -625,9 +584,7 @@
                         "id":"15",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "Salto","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                            "Texto":{ "Contenido": "Salto","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Salto", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -636,15 +593,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/salto.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 25.591 has de Suelos con Prioridad Forestal, lo que representa el 1,8 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 11.671 has y Suelos con PF No Condicionada: 13.920 has.",
+                                    {"Contenido": "Este departamento cuenta con 25.591 has de Suelos de Prioridad Forestal, lo que representa el 1,8 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 11.671 has y Suelos de PF No Condicionada: 13.920 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/salto.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 717 has están sobre suelos con prioridad forestal, lo que equivale al 12,74 % a nivel departamental y al 0,10 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 717 has están sobre Suelos de Prioridad Forestal, lo que equivale al 12,74 % a nivel departamental y al 0,10 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -656,8 +613,7 @@
                         "id":"16",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "San Jose","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                            "Texto":{ "Contenido": "San Jose","Estilo": "Indice1" }
                         },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "San Jose", "Estilo": "Titulo1"} },
@@ -667,15 +623,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/sanjose.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 9.154 has de Suelos con Prioridad Forestal, lo que representa el 1,8 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 33 has y Suelos con PF No Condicionada: 9.121 has.",
+                                    {"Contenido": "Este departamento cuenta con 9.154 has de Suelos de Prioridad Forestal, lo que representa el 1,8 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 33 has y Suelos de PF No Condicionada: 9.121 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/sanjose.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 1.135 has están sobre suelos con prioridad forestal, lo que equivale al 14,50 % a nivel departamental y al 0,16 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.135 has están sobre Suelos de Prioridad Forestal, lo que equivale al 14,50 % a nivel departamental y al 0,16 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -687,8 +643,7 @@
                         "id":"17",
                         "parent":"0",
                         "seccionTitulo":{
-                            "Texto":{ "Contenido": "Soriano","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                            "Texto":{ "Contenido": "Soriano","Estilo": "Indice1" }
                         },
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Soriano", "Estilo": "Titulo1"} },
@@ -698,18 +653,17 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/soriano.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 104.190 has de Suelos con Prioridad Forestal, lo que representa el 11,6 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 86 has y Suelos con PF No Condicionada: 104.104 has.",
+                                    {"Contenido": "Este departamento cuenta con 104.190 has de Suelos de Prioridad Forestal, lo que representa el 11,6 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 86 has y Suelos de PF No Condicionada: 104.104 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/soriano.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 13.426 has están sobre suelos con prioridad forestal, lo que equivale al 53,85 % a nivel departamental y al 1,93 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 13.426 has están sobre Suelos de Prioridad Forestal, lo que equivale al 53,85 % a nivel departamental y al 1,93 % a nivel Nacional.",
                                         "Estilo": "Normal"
-                                    }]
-                                }
+                                    }]}
                             ]                            
                         }
                     },
@@ -729,15 +683,15 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/tacuarembo.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 374.353 has de Suelos con Prioridad Forestal, lo que representa el 23,4 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 18.750 has y Suelos con PF No Condicionada: 355.603 has.",
+                                    {"Contenido": "Este departamento cuenta con 374.353 has de Suelos de Prioridad Forestal, lo que representa el 23,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos con PF Condicionada: 18.750 has y Suelos con PF No Condicionada: 355.603 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                               {"Imagen":{"URL":"../forestal/img/SPF/tacuarembo.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 75.621 has están sobre suelos con prioridad forestal, lo que equivale al 85,34 % a nivel departamental y al 10,88 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 75.621 has están sobre Suelos de Prioridad Forestal, lo que equivale al 85,34 % a nivel departamental y al 10,88 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
@@ -748,10 +702,7 @@
                         "name": "Treinta y Tres",
                         "id":"19",
                         "parent":"0",
-                        "seccionTitulo":{
-                            "Texto":{ "Contenido": "Treinta y Tres","Estilo": "Indice1" },
-                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
-                        },
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Treinta y Tres","Estilo": "Indice1" }},
                         "seccionContenido":{
                             "titulo":{ "Texto":{"Contenido": "Treinta y Tres", "Estilo": "Titulo1"} },
                             "elementos":[
@@ -760,23 +711,21 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png","Alto":30}},
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/treintaytres.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Este departamento cuenta con 422.172 has de Suelos con Prioridad Forestal, lo que representa el 45,4 %. A su vez, los suelos con prioridad forestal se divide en: Suelos con PF Condicionada: 135.855 has y Suelos con PF No Condicionada: 286.317 has.",
+                                    {"Contenido": "Este departamento cuenta con 422.172 has de Suelos de Prioridad Forestal, lo que representa el 45,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 135.855 has y Suelos de PF No Condicionada: 286.317 has.",
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":90}},
+                                {"Imagen":{"URL":"../forestal/img/SPF/treintaytres.png", "Alto":150, "Ancho":370}},
                                 {"Texto":[
-                                    {"Contenido": "Del total de has de Bosque Plantado 12.741 has están sobre suelos con prioridad forestal, lo que equivale al 79,45 % a nivel departamental y al 1,83 % a nivel Nacional.",
+                                    {"Contenido": "Del total de has de Bosque Plantado 12.741 has están sobre Suelos de Prioridad Forestal, lo que equivale al 79,45 % a nivel departamental y al 1,83 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
                                 }
                             ]                            
                         }
                     }
-                        
-                    
                 ]
             }
         },
@@ -800,18 +749,10 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {"Contenido": "Introducción","Estilo": "Indice1"
-                            }
-                        
-            },
+                    "Texto":{"Contenido": "Introducción","Estilo": "Indice1"} },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Introducción","Estilo": "Titulo1"}
                     },
                 "elementos":[
                     {
@@ -830,25 +771,14 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Herramientas", "Estilo": "Indice1" }                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{ "Texto": { "Contenido": "Herramientas", "Estilo": "Titulo1" }},
                 "elementos": [
                     {
                         "Texto":[
-                            {
-                            "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
+                            { "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
                             }
                         ]
@@ -862,17 +792,8 @@
                 "id":"2",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": { "Contenido": "Mapa Base","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
@@ -1148,16 +1069,9 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Indice1"
-                            },
+                           { "Contenido": "Identificar","Estilo": "Indice1" },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/identificar.png","Alto":20 }                        
                 },
                "seccionContenido":{
                     "titulo":{
@@ -1189,16 +1103,8 @@
                "id":"5",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":20
-                            }
+                    "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Indice1" },
+                    "Imagen":{"URL":"../js/snia/img/buscar.png", "Alto":20}
                         
                 },
                "seccionContenido":{
@@ -1473,58 +1379,26 @@
             "id":"19",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Contacto","Estilo": "Indice1" }                        
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
-                        "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "23096008, 23097025",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
+                        "Texto":[{"Contenido": "Dirección","Estilo": "Titulo2"},
+                            {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
+                              "Estilo": "Normal"},
+                            {"Contenido": "Teléfonos","Estilo": "Titulo2"},
+                            { "Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                            {"Contenido": "Consultas y Sugerencias","Estilo": "Titulo2"},
+                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
                               "Estilo": "Normal"
                             }
                         ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
-                        }
-                    ] 
-                    }
+                    {"Enlace":[{"Contenido": "snia@mgap.gub.uy","URL": "mailto:snia@mgap.gub.uy"}]}
                 ]
             },
             "padre": "si"
