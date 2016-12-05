@@ -207,7 +207,7 @@ define([
                     for (i = 0; i < comun.length; i = i + 1) {
                         if (comun[i].Texto) {
                             for (j = 0; j < comun[i].Texto.length; j = j + 1) {
-                                contenido = contenido + "<p class=" + '"' + comun[i].Texto[j].Estilo + '"' + ">" + comun[i].Texto[j].Contenido + "</p>" + " <br> ";
+                                contenido = contenido + "<p class=" + '"' + comun[i].Texto[j].Estilo + '"' + ">" + comun[i].Texto[j].Contenido + "</p>";
                             }
                         } else {
                             if (comun[i].Imagen) {
@@ -217,13 +217,30 @@ define([
                             } else {
                                 if (comun[i].Enlace) {
                                     for (j = 0; j < comun[i].Enlace.length; j = j + 1) {
-                                        link = "<a href=" + '"' + comun[i].Enlace[j].URL + '" ' + " target=" + '"' + "_blank" + '"' + ">" + comun[i].Enlace[j].Contenido + "</a><br>";
-                                        contenido = contenido + link + " <br> ";
+                                        link = "<a href=" + '"' + comun[i].Enlace[j].URL + '" ' + " target=" + '"' + "_blank" + '"' + ">" + comun[i].Enlace[j].Contenido + "</a>";
+                                        contenido = contenido + link;
                                     }
                                 } else {
                                     if (comun[i].Video) {
                                         link = "<video src=" + '"' + comun[i].Video.URL + '" ' + "width=\"360\" height=\"300\"" + " controls></video><br>";
                                         contenido = contenido + link + " <br> ";
+                                    }
+                                    else{
+                                        if (comun[i].TextoSinEnter) {
+                                            contenido = contenido + "<label>"+ comun[i].TextoSinEnter[0].Contenido + " </label>";
+                                        }else{
+                                            if (comun[i].DescargarPDF) {
+                                                link = "<a href=" + '"' + comun[i].DescargarPDF[0].URL + '" ' + " target=" + '"' + "_blank" + '"' + "download=\"DatosForestal2011.pdf\"" + ">" + comun[i].DescargarPDF[0].Contenido + "</a>";
+                                                contenido = contenido + link;
+                                            }
+                                            else{
+                                                 if (comun[i].DescargarEXCEL) {
+                                                    link = "<a href=" + '"' + comun[i].DescargarEXCEL[0].URL + '" ' + " target=" + '"' + "_blank" + '"' + "download=\"DatosForestal2011.xls\"" + ">" + comun[i].DescargarEXCEL[0].Contenido + "</a>";
+                                                    contenido = contenido + link;
+                                                }                                                
+                                            }
+                                        }
+                                        
                                     }
                                 }
                             }
