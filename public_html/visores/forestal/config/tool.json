@@ -184,6 +184,7 @@
                                     }]
                                 },
                                 {"Texto":[{"Contenido": " ", "Estilo": "Normal"}]},
+                                {"Enlace":[ { "Contenido": "PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
                                 {"Texto":[{"Contenido": "Fuente: ","Estilo": "Normal"}]}
                             ]                            
                         }
@@ -738,8 +739,7 @@
                     }
                 ]
             }
-        },
-        
+        },        
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
@@ -770,11 +770,9 @@
                             "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
                             "Estilo": "Normal"}
                       ]
-                    }
-                     
+                    }                     
                 ]
-            }
-            
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
@@ -1008,21 +1006,11 @@
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"js/snia/img/sigextent.png","Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Vista posterior",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
+                           {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
+                           { "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -1036,40 +1024,16 @@
                "id":"4",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Tiempo", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":30},                        
+                        "Texto": { "Contenido": "Tiempo", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
+                        {"Texto":[{"Contenido": "", "Estilo": "Normal"}] }
                     ]
                 }
             },
@@ -1086,10 +1050,7 @@
                "seccionContenido":{
                     "titulo":{
                          "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
+                        {"URL":"../js/snia/img/identificar.png","Alto":30},                        
                         "Texto":
                            {
                               "Contenido": "Identificar",
@@ -1363,9 +1324,7 @@
                       {"Contenido": "El servicio de imagenes es de ESRI","Estilo": "Normal"}
                     ]
                     },
-                    {
-                    "Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]
-                    },
+                    {"Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]},
                     {
                     "Texto":[
                       {
