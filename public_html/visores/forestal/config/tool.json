@@ -136,14 +136,14 @@
         },
         {
             "widget": "widgets/AyudaWidget",
-            "title": "Estadisticas",
-            "msgToolTip": "Muestra estadisticas",
+            "title": "Datos de Bosques 2011",
+            "msgToolTip": "Se muestran datos de Bosques junto con Suelos de Prioridad Forestal",
             "icono": "../js/snia/img/estadisticoGris.png",
             "toggle": false,
             "widgetConfig": {
                 "data": [
                     {
-                        "name": "Estadisticas",
+                        "name": "Datos de Bosques 2011",
                         "id": "root",
                         "titulo":"Estadisticas",
                         "esPadre": true
@@ -173,9 +173,21 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Texto":[{"Contenido": " ", "Estilo": "Normal"}]},
-                                {"Enlace":[ { "Contenido": "PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
-                                {"Texto":[{"Contenido": "Fuente: ","Estilo": "Normal"}]}
+                                {"Texto":[{"Contenido": "<br> ","Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"Enlace":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"Enlace":[{"Contenido": ".XLS", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " ","Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": "Fuentes: DGF y DGRN, MGAP.","Estilo": "Negrita"}]},
+                                {"Texto":[
+                                        {"Contenido": "Cartografía Forestal 2011, Dirección General Forestal.","Estilo": "MargenTextoIzq"},
+                                        {"Contenido": "Grupo de Suelos e Indice de Productividad Coneat, Dirección General de Recursos Naturales.","Estilo": "MargenTextoIzq"},
+                                        {"Contenido": "Elaboración SNIA.","Estilo": "MargenTextoIzq"}
+                                        ]}
                             ]                            
                         }
                     },

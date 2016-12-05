@@ -564,6 +564,16 @@ tituloTPAyuda{
     font-weight:bold;
 }
 
+.Negrita{
+    font-family: sans-serif;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.MargenTextoIzq{
+  margin-left: 50px;
+}
+
 .Titulo2{
     font-family:cursive;
     font-size:15px;
