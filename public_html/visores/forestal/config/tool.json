@@ -176,9 +176,9 @@
                                 {"Texto":[{"Contenido": "<br> ","Estilo": "Normal"}]},
                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
                                 {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
-                                {"Enlace":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
                                 {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
-                                {"Enlace":[{"Contenido": ".XLS", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
                                 {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
                                 {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
                                 {"Texto":[{"Contenido": " ","Estilo": "Normal"}]},
@@ -1300,6 +1300,49 @@
                     ]
                 }
             },
+            {
+               "name": "Datos de Bosques 2011",
+               "id":"10",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Datos de Bosques 2011",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":{"URL":"../js/snia/img/estadisticoGris.png","Alto":20}
+                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                         "Imagen":
+                        {
+                              "URL":"../js/snia/img/estadisticoGris.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                           {
+                              "Contenido": "Datos de Bosques 2011",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite la visualización de datos de bosques naturales y plantados (con sus distintos estratos), tanto a nivel Nacional como a nivel Departamental.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "  A su vez, se muestran los bosques según el suelo donde se encuentre, ya sea de prioridad forestal o no.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                        
+                    ]
+                }
+            },
         {"name": "Atribuciones",
             "id":"18",
             "parent":"root",
@@ -1307,13 +1350,7 @@
                     "Texto":{ "Contenido": "Atribuciones","Estilo": "Indice1"}                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{ "Texto":{"Contenido": "Atribuciones","Estilo": "Titulo1"}},
                 "elementos":[
                     {
                     "Texto":[
@@ -1333,15 +1370,17 @@
                         "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
                         "Estilo": "Normal"
                       }
-                    ]
-                    },
+                    ]},
                     { "Enlace":[ {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}]
                     },
-                    {
-                    "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}
-                    ]
-                    }
-                    
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}] }, 
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGF", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-forestal"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGRN", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-de-recursos-naturales"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "SNIA", "URL": "http://snia.gub.uy/"}]  }
                 ]
             },
             "padre": "si"
