@@ -370,14 +370,18 @@ define([
             }
         },
         _createTreeNode: function (args) {
-            var tnode = new Tree._TreeNode(args), cb, slider, l;
+            var tnode = new Tree._TreeNode(args), cb, slider, l, tooltip;
             tnode.labelNode.innerHTML = args.label;
-            if (args.item.tooltip && args.item.tooltip !== "") {
-                new Tooltip({
-                    connectId: [tnode.labelNode],
-                    label: args.item.tooltip
-                });
+            if (!args.item.tooltip || args.item.tooltip === "") {
+                tooltip = args.label;
+            } else {
+                tooltip = args.item.tooltip;
             }
+            new Tooltip({
+                connectId: [tnode.labelNode],
+                label: tooltip
+            });
+
             if (!args.item.legend) {
                 cb = new CheckBox();
                 cb.placeAt(tnode.labelNode, "first");
