@@ -138,7 +138,7 @@ define([
             var area, demo = this._areas, anterior = null;
             if (results.features.length > 0) {
                 arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
-                    area = (feature.attributes.Shape_Area * 100 / feature.attributes.ELEM_AREA).toFixed(2);
+                    area = (feature.attributes['Shape.STArea()'] * 100 / feature.attributes.ELEM_AREA).toFixed(2);
                     if ((feature.attributes.ID2 !== anterior)) {
                         this._areas.innerHTML += "<label class='mediumText'> " + feature.attributes.PADRON + " </label>";
                         demo.innerHTML += "<br></br>";
@@ -165,7 +165,7 @@ define([
             primero = 20;
             if (results.features.length > 0) {
                 arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
-                    area = (feature.attributes.Shape_Area * 100 / feature.attributes.ELEM_AREA).toFixed(2);
+                    area = (feature.attributes['Shape.STArea()'] * 100 / feature.attributes.ELEM_AREA).toFixed(2);
                     if ((feature.attributes.ID2 !== anterior)) {
                         doc.setFontType("bold");
                         doc.text(20,  primero, feature.attributes.PADRON.toString());
@@ -185,7 +185,7 @@ define([
             texto = "";
             if (results.features.length > 0) {
                 arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
-                    area = (feature.attributes.Shape_Area * 100 / feature.attributes.ELEM_AREA).toFixed(2);
+                    area = (feature.attributes['Shape.STArea()'] * 100 / feature.attributes.ELEM_AREA).toFixed(2);
                     if ((feature.attributes.ID2 !== anterior)) {
                         texto += feature.attributes.PADRON.toString() + '\r\n';
                     }

@@ -135,7 +135,16 @@
                             {"name":"PADRON","field": "gis.SIGRENARE.CAT_PadronesRuralesConeat.PADRON","width": "150px"},
                             {"name":"DICOSE","field": "gis.SIGRENARE.Dico_Pad.DICOSE","width": "150px"}
                             
-                    ]    
+                    ] 
+            }
+        },
+           {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png",            
+            "toggle": false,
+            "widgetConfig": {                
             }
         },      
         {
