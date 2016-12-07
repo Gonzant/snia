@@ -162,11 +162,11 @@ define([
         },
         _setDates: function () {
             this._sTime = new Date(this._manual.inicioTiempo);
-            if (this._manual.finTiempo){
+            if (this._manual.finTiempo) {
                 this._eTime = new Date(this._manual.finTiempo);
             } else {
                 this._eTime = new Date();
-            }            
+            }
             this._sTimeAbs = this._sTime.toUTCString();
             this._eTimeAbs  = this._eTime.toUTCString();
 
@@ -198,17 +198,12 @@ define([
             }));
             yesterday = min;
             yesterday.setDate(min.getDate() - 1);
-            console.log("yesterday");
-            console.log(yesterday);
             this._sTime = yesterday;
             tomorrow = max;
             tomorrow.setDate(max.getDate() + 1);
-            console.log("tommorrow");
-            console.log(tomorrow);
             this._eTime = tomorrow;
             this._sTimeAbs = yesterday.toUTCString();
             this._eTimeAbs  = tomorrow.toUTCString();
-
             this._comboYears();
             this._initSlider();
         },
@@ -229,9 +224,12 @@ define([
             if (this._timeSlider.defecto) {
                 this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
             } else {
-                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
-            }
-
+                if (this._timeSlider.ultimaSemana === "True" && this._filtro.value === 0) {
+                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2, this.timeSlider._numTicks - 1]);
+                } else {
+                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                }
+            };
             this._intervaloTiempo = this.timeSlider.thumbIndexes;
             this.timeSlider.setThumbMovingRate(this._timeSlider.velocidad);
             this.timeSlider.startup();

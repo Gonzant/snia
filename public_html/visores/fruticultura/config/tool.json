@@ -54,7 +54,8 @@
                 "timeSlider": {
                     "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",
-                    "velocidad": "1000"
+                    "velocidad": "1000",
+                    "ultimaSemana": "True"
                 },
                 "manual": {                    
                     "inicioTiempo": "2013-01-01"                    
