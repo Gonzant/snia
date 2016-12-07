@@ -64,7 +64,7 @@ define([
             this._dynamicMapServiceLayers = [];
             this._toc = [];
             this._data = [];
-            this._tree = {};
+            this._tree = false;
             //propiedades
             this.set("mapa", defaults.mapa);
             this.set("theme", defaults.theme);
@@ -163,7 +163,7 @@ define([
             }
         },
         _loadDynamicMapServiceLayers: function () {
-            var dynaLayersInfo;
+           /* var dynaLayersInfo;
             dynaLayersInfo = [];
             arrayUtil.forEach(this.mapa.map.layerIds, lang.hitch(this, function (item, index) {
                 var l;
@@ -173,6 +173,7 @@ define([
                 }
             }));
             dynaLayersInfo.reverse(); //Mostrar las capas en el orden de la configuracion
+            */
             this._generarData(mapaConfigJSON, this.mapa.map);
         },
         _active: function () {
@@ -183,8 +184,34 @@ define([
                 fHandler.unwatch(); //Desactivar handler
             });
         },
+        refreshTree : function () {
+            if (this._tree) {
+                this._tree.dndController.selectNone(); // As per the answer below     
+                // Credit to this discussion: http://mail.dojotoolkit.org/pipermail/dojo-interest/2010-April/045180.html
+                // Close the store (So that the store will do a new fetch()).
+                this._tree.model.store.clearOnClose = true;
+               // this._tree.model.store.close();
+
+                // Completely delete every node from the dijit.Tree     
+                this._tree._itemNodesMap = {};
+                this._tree.rootNode.state = "UNCHECKED";
+                this._tree.model.root.children = null;
+
+                // Destroy the widget
+                this._tree.rootNode.destroyRecursive();
+
+                // Recreate the model, (with the model again)
+                this._tree.model.constructor(this._tree.model);
+
+                // Rebuild the tree
+                this._tree.postMixInProperties();
+                this._tree._load();
+            }
+        },
         _colapsarClick: function () {
             this._tree.collapseAll();
+            this._data.push({ id: "li.title", name: "li.title", index: "li.name", tooltip: "sublayerTooltip", type: 'layer', maxScale: 0, minScale: 0, parent:  "root" });
+            this.refreshTree();
         },
         _expandirClick: function () {
             //Expando todos los hijos de root para no abrir las leyendas
@@ -277,6 +304,34 @@ define([
                 }
             });
         },
+        _generarDataNodoSimple: function (l, dataLayer){
+            if (dataLayer.wms){ // Si es WMS
+                arrayUtil.forEach(l.layerInfos, function (li) {
+                    if (dataLayer.sublayersTooltips){
+                        sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
+                    } else {
+                        sublayerTooltip = "";
+                    }
+                    this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: 0, minScale: 0, parent:  dataLayer.options.id });
+                    this._data.push({ id: "prueba", name: li.name, type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
+                    //this._getLegendWMS(li.legendURL);
+                }, this);
+             } else {
+                this._getLegendJSON(dataLayer.url + "/legend");
+                arrayUtil.forEach(l.layerInfos, function (li) {
+                    if (dataLayer.sublayersTooltips){
+                        sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
+                    } else {
+                        sublayerTooltip = "";
+                    }
+                    if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
+                        this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
+                    }
+                }, this);                            
+             }
+            this.refreshTree();
+
+        },
         _generarData: function (mapaConfigJSON, map) {
             var mapaConfig, dynLayers, l, sublayerTooltip;
             this._data = [{ id: 'root'}];
@@ -288,29 +343,10 @@ define([
                     if (l !== null){
                         this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
                         l.on("visibility-change", lang.hitch(this, this._adjustVisibility));
-                        if (dataLayer.wms){ // Si es WMS
-                            arrayUtil.forEach(l.layerInfos, function (li) {
-                                if (dataLayer.sublayersTooltips){
-                                    sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
-                                } else {
-                                    sublayerTooltip = "";
-                                }
-                                this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: 0, minScale: 0, parent:  dataLayer.options.id });
-                                this._data.push({ id: "prueba", name: li.name, type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
-                                //this._getLegendWMS(li.legendURL);
-                            }, this);
+                        if (l.loaded){
+                            this._generarDataNodoSimple(l, dataLayer);
                         } else {
-                            this._getLegendJSON(dataLayer.url + "/legend");
-                            arrayUtil.forEach(l.layerInfos, function (li) {
-                                if (dataLayer.sublayersTooltips){
-                                    sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
-                                } else {
-                                    sublayerTooltip = "";
-                                }
-                                if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
-                                    this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
-                                }
-                            }, this);                            
+                            l.on("load", lang.hitch(this, this._generarDataNodoSimple, l, dataLayer));
                         }
                     }
                 } else if (dataLayer.multiple) { //Nodo a partir de varios map services
