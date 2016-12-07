@@ -47,7 +47,7 @@
             "toggle": false,
             "draggable": false,
             "startsOpen": true,
-            "position": {"bottom": "20px", "left":"28%"},
+            "position": {"bottom": "20px", "left":"240px"},
             "widgetConfig": {
                 "fechaAtributo": "DIA",
                 "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasZ1314/MapServer/1",
@@ -57,8 +57,7 @@
                     "velocidad": "1000"
                 },
                 "manual": {                    
-                    "inicioTiempo": "2013-01-01",
-                    "finTiempo": "2017-01-01"
+                    "inicioTiempo": "2013-01-01"                    
                 }
             }
         },

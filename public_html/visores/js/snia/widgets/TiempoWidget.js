@@ -162,7 +162,11 @@ define([
         },
         _setDates: function () {
             this._sTime = new Date(this._manual.inicioTiempo);
-            this._eTime = new Date(this._manual.finTiempo);
+            if (this._manual.finTiempo){
+                this._eTime = new Date(this._manual.finTiempo);
+            } else {
+                this._eTime = new Date();
+            }            
             this._sTimeAbs = this._sTime.toUTCString();
             this._eTimeAbs  = this._eTime.toUTCString();
 
