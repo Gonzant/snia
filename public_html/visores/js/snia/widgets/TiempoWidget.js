@@ -161,11 +161,14 @@ define([
             }
         },
         _setDates: function () {
+            var today;
             this._sTime = new Date(this._manual.inicioTiempo);
             if (this._manual.finTiempo) {
                 this._eTime = new Date(this._manual.finTiempo);
             } else {
-                this._eTime = new Date();
+                today = new Date();
+                today.setDate(today.getDate() - today.getDay() + 1);
+                this._eTime = new Date(today);
             }
             this._sTimeAbs = this._sTime.toUTCString();
             this._eTimeAbs  = this._eTime.toUTCString();
@@ -229,7 +232,7 @@ define([
                 } else {
                     this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
                 }
-            };
+            }
             this._intervaloTiempo = this.timeSlider.thumbIndexes;
             this.timeSlider.setThumbMovingRate(this._timeSlider.velocidad);
             this.timeSlider.startup();
