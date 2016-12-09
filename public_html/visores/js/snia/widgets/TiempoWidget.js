@@ -167,7 +167,7 @@ define([
                 this._eTime = new Date(this._manual.finTiempo);
             } else {
                 today = new Date();
-                today.setDate(today.getDate() - today.getDay() + 1);
+                today.setDate(today.getDate() - today.getDay());
                 this._eTime = new Date(today);
             }
             this._sTimeAbs = this._sTime.toUTCString();
