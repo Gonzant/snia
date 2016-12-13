@@ -274,11 +274,19 @@ define([
             this._query.outFields = ["*"];
             this._query.returnDistinctValues = false;
             arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index) {
+                var elementos = this._valoresFiltros[index].state.split(" ");
                 if (index === 0) {
                     if (this._tipoFiltros[index] === "numero") {
                         query = feature.campoFiltro + "=" + this._valoresFiltros[index].state;
                     } else {
-                        query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
+                         for (var i = 0; i < elementos.length; i = i + 1) {
+                             if (i === 0) {
+                                query = feature.campoFiltro + "='" + elementos[i] + "'";
+                            } else {
+                                query = query + " OR " + feature.campoFiltro + "='" +  elementos[i] + "'";
+                            }                             
+                         }                        
+                      //  query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
                     }
                 } else {
                     if (this._tipoFiltros[index] === "numero") {
