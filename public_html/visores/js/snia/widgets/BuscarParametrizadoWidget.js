@@ -268,24 +268,24 @@ define([
             }));
         },
         _buscarClick : function () {
-            var query;
+            var query, i, elementos;
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
             this._query.returnGeometry = true;
             this._query.outFields = ["*"];
             this._query.returnDistinctValues = false;
             arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index) {
-                var elementos = this._valoresFiltros[index].state.split(" ");
+                elementos = this._valoresFiltros[index].state.split(" ");
                 if (index === 0) {
                     if (this._tipoFiltros[index] === "numero") {
                         query = feature.campoFiltro + "=" + this._valoresFiltros[index].state;
                     } else {
-                         for (var i = 0; i < elementos.length; i = i + 1) {
-                             if (i === 0) {
+                        for (i = 0; i < elementos.length; i = i + 1) {
+                            if (i === 0) {
                                 query = feature.campoFiltro + "='" + elementos[i] + "'";
                             } else {
                                 query = query + " OR " + feature.campoFiltro + "='" +  elementos[i] + "'";
-                            }                             
-                         }                        
+                            }   
+                        }                   
                       //  query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
                     }
                 } else {
@@ -331,19 +331,16 @@ define([
         },
         //auxiliares
         _queryTaskCallback: function (results) {
-            var ext, indice;
+            var ext, indice, cont, a;
             this._standby.hide();
             if (results.features.length > 0) {
-                var cont =0;
-               
+                cont = 0;
                 arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
                     // Supongo que por resultado tiene que haber solo un padron
-                   var a = results.features[cont];
-                   while (cont < results.features.length){
-                       
-                      cont ++; 
-                   }
-                   
+                    a = results.features[cont];
+                    while (cont < results.features.length) {
+                        cont ++;
+                    }
                     if (index === 0) {
                         ext = feature.geometry.getExtent();
                     } else {
