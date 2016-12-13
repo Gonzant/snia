@@ -218,8 +218,8 @@ define([
             this._tiempoNode.appendChild(this.timeSlider.domNode);
             this.mapa.map.setTimeSlider(this.timeSlider);
             timeExtent = new TimeExtent();
-            timeExtent.startTime = new Date(this._sTime + " UTC");
-            timeExtent.endTime = new Date(this._eTime + " UTC");
+            timeExtent.startTime = new Date(this._sTime);
+            timeExtent.endTime = new Date(this._eTime);
             domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "<\/i>");
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             this.timeSlider.setThumbCount(2);

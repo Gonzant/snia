@@ -225,7 +225,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 349 has están sobre Suelos de Prioridad Forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                             }
                     },
@@ -253,7 +260,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 8.514 has están sobre Suelos de Prioridad Forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                             }
                     },
@@ -281,7 +295,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 34.956 has están sobre Suelos de Prioridad Forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -312,7 +333,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos de Prioridad Forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -340,7 +368,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 23.668 has están sobre Suelos de Prioridad Forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -368,7 +403,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 454 has están sobre Suelos de Prioridad Forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -397,7 +439,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 10.497 has están sobre Suelos de Prioridad Forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -425,7 +474,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 30.141 has están sobre Suelos de Prioridad Forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -453,7 +509,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 26.031 has están sobre Suelos de Prioridad Forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -481,7 +544,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre Suelos de Prioridad Forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -511,7 +581,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 53.632 has están sobre Suelos de Prioridad Forestal, lo que equivale al 53,21 % a nivel departamental y al 7,72 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -540,7 +617,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 52.339 has están sobre Suelos de Prioridad Forestal, lo que equivale al 67,29 % a nivel departamental y al 7,53 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -568,7 +652,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 103.331 has están sobre Suelos de Prioridad Forestal, lo que equivale al 88,63 % a nivel departamental y al 14,87 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -598,7 +689,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 33.847 has están sobre Suelos de Prioridad Forestal, lo que equivale al 77,59 % a nivel departamental y al 4,87 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -627,7 +725,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 717 has están sobre Suelos de Prioridad Forestal, lo que equivale al 12,74 % a nivel departamental y al 0,10 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -657,7 +762,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 1.135 has están sobre Suelos de Prioridad Forestal, lo que equivale al 14,50 % a nivel departamental y al 0,16 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -686,7 +798,14 @@
                                 {"Texto":[
                                     {"Contenido": "Del total de has de Bosque Plantado 13.426 has están sobre Suelos de Prioridad Forestal, lo que equivale al 53,85 % a nivel departamental y al 1,93 % a nivel Nacional.",
                                         "Estilo": "Normal"
-                                    }]}
+                                    }]},
+                             {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -717,7 +836,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 75.621 has están sobre Suelos de Prioridad Forestal, lo que equivale al 85,34 % a nivel departamental y al 10,88 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     },
@@ -745,7 +871,14 @@
                                     {"Contenido": "Del total de has de Bosque Plantado 12.741 has están sobre Suelos de Prioridad Forestal, lo que equivale al 79,45 % a nivel departamental y al 1,83 % a nivel Nacional.",
                                         "Estilo": "Normal"
                                     }]
-                                }
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
                             ]                            
                         }
                     }
@@ -817,26 +950,15 @@
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":{
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen":{ "URL":"../js/snia/img/mapabase.png","Alto":30},
+                        "Texto":{"Contenido": "Mapa Base","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                    {
-                        "Texto":[
-                        {
+                    {"Texto":[ {
                            "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
                            "Estilo": "Normal"
-                        }
-                        ]    
-                    }                        
-                    ]
+                        }]    
+                    } ]
                 }
             },
             {
@@ -844,41 +966,21 @@
                 "id":"4",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
-                        "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
+                       "Texto":[
+                        {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
-                        }
-                        ]    
-                    }
-                        
+                        }]    
+                    }                        
                     ]
                 }
             },
@@ -887,131 +989,51 @@
                "id":"3",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":30},
+                        "Texto":{"Contenido": "Navegar","Estilo": "Titulo2"}
                     },
-                    "elementos": [
-                        {
+                    "elementos": [{
                            "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
+                           { "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
                               "Estilo": "Normal"
-                            }
-                           ]    
+                           }]    
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
+                            {"Contenido": "Acercar","Estilo": "Normal"},
                             {
                               "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
                               "Estilo": "Normal"
-                            }
-                           ] 
-                           
+                            }]                           
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/zoomout.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
+                        {"Imagen":{"URL":"../js/snia/img/zoomout.png", "Alto":30}},
+                        {"Texto":[{"Contenido": "Alejar", "Estilo": "Titulo3"},
+                            { "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
-                            }
-                           ] 
-                           
+                            } ]                          
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/pan.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/pan.png","Alto":30}},
                         {
-                         "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                         "Texto":[ {"Contenido": "Desplazar","Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
                               "Estilo": "Normal"
-                            }
-                           ] 
+                            }] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/fullextent.png","Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa en su máxima extensión.",
-                              "Estilo": "Normal"
-                            }
-                           ] 
+                           {"Contenido": "Extensión máxima","Estilo": "Titulo3"},
+                           {"Contenido": "Posiciona el mapa en su máxima extensión.","Estilo": "Normal"}
+                         ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/prevextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista anterior",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"js/snia/img/prevextent.png", "Alto":30}},
+                        {"Texto":[{"Contenido": "Vista anterior", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
                               "Estilo": "Normal"
@@ -1019,8 +1041,7 @@
                            ] 
                         },
                         {"Imagen":{"URL":"js/snia/img/sigextent.png","Alto":30}},
-                        {
-                         "Texto":[
+                        {"Texto":[
                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
                            { "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
                               "Estilo": "Normal"
@@ -1028,8 +1049,7 @@
                            ] 
                         }
                     ]
-                }
-               
+                }               
             },
             {
                "name": "Tiempo",
@@ -1063,11 +1083,7 @@
                     "titulo":{
                          "Imagen":
                         {"URL":"../js/snia/img/identificar.png","Alto":30},                        
-                        "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Texto":{"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -1092,16 +1108,8 @@
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Titulo2"
-                            }
+                         "Imagen": {"URL":"../js/snia/img/buscar.png","Alto":30},
+                        "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {"Texto":[
@@ -1115,63 +1123,31 @@
                             }
                            ]    
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/acercar.png",
-                              "Alto":30
-                            }
-                        },
-                        { "Texto":[
-                           {
-                              "Contenido": "Acercar selección",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"../js/snia/img/acercar.png","Alto":30}},
+                        { "Texto":[{"Contenido": "Acercar selección","Estilo": "Titulo3"},
                             {
                               "Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.",
                               "Estilo": "Normal"
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/remover.png",
-                              "Alto":30
-                            }
-                        },
-                        { "Texto":[
-                           {
-                              "Contenido": "Remover selección",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"../js/snia/img/remover.png", "Alto":30}},
+                        { "Texto":[{"Contenido": "Remover selección","Estilo": "Titulo3"},
                             {
                               "Contenido": "Remueve de la lista de resultados los padrones seleccionados.",
                               "Estilo": "Normal"
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/todo.png",
-                              "Alto":30
-                            }
-                        },
-                        { "Texto":[
-                           {
-                              "Contenido": "Seleccionar todo",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{ "URL":"../js/snia/img/todo.png","Alto":30 }},
+                        { "Texto":[{"Contenido": "Seleccionar todo","Estilo": "Titulo3"},
                             {
                               "Contenido": "Selecciona todos los padrones de la lista de resultados.",
                               "Estilo": "Normal"
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/reporte.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/reporte.png", "Alto":30}},
                         { "Texto":[
                            {"Contenido": "Croquis selección","Estilo": "Titulo3"},
                             {
@@ -1264,30 +1240,12 @@
                "id":"10",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Imprimir","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                    "titulo":{"Imagen":{"URL":"../js/snia/img/imprimir.png", "Alto":30},
+                        "Texto":{"Contenido": "Imprimir","Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -1305,8 +1263,7 @@
                               "Estilo": "Normal"
                             }
                            ]    
-                        }
-                        
+                        }                        
                     ]
                 }
             },
@@ -1315,26 +1272,12 @@
                "id":"10",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Datos de Bosques 2011",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":{"URL":"../js/snia/img/estadisticoGris.png","Alto":20}
-                        
+                    "Texto":{ "Contenido": "Datos de Bosques 2011", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/estadisticoGris.png","Alto":20}                        
                 },
                "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/estadisticoGris.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Datos de Bosques 2011",
-                              "Estilo": "Titulo2"
-                            }
+                    "titulo":{"Imagen":{"URL":"../js/snia/img/estadisticoGris.png","Alto":30},
+                        "Texto":{"Contenido": "Datos de Bosques 2011","Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -1348,8 +1291,7 @@
                               "Estilo": "Normal"
                             }
                            ]    
-                        }
-                        
+                        }                        
                     ]
                 }
             },
@@ -1402,9 +1344,7 @@
                     "Texto": {"Contenido": "Contacto","Estilo": "Indice1" }                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}
-                },
+                "titulo":{"Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}},
                 "elementos": [
                     {
                         "Texto":[{"Contenido": "Dirección","Estilo": "Titulo2"},
