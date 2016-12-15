@@ -1,6 +1,65 @@
 {       
     "barraHerramientas": [
         {
+            "widget": "widgets/SicaWidget1",
+            "title": "Sica",
+            "msgToolTip": "Sica ",
+            "icono": "../js/snia/img/s.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "data": [
+                    {"0" : "Apertura1",
+                        "esta":true,
+                        "nombre":"Tamaño de la explotación (ha)"
+                    },
+                    {"1" : "Apertura2",
+                        "esta":true,
+                        "nombre":"Uso de la tierra (ha)"
+                    },
+                    {"2" : "Apertura3",
+                        "esta":false,
+                        "nombre":"Apertura3"
+                    },
+                    {"3" : "Apertura4",
+                        "esta":true,
+                        "nombre": "Tamaño del rodeo vacuno (Nº de cabezas)"
+                    },
+                    {"4" : "Apertura5",
+                        "esta":true,
+                        "nombre": "Tamaño de la majada (Nº de cabezas)"
+                    },
+                    {"5" : "Apertura6",
+                        "esta":true,
+                        "nombre": "Producción anual de leche (litros)"
+                    },
+                    {"6" : "Apertura7",
+                        "esta":true,
+                        "nombre": "Superficie con bosques artificiales (ha)"
+                    },
+                    {"7" : "Apertura8",
+                        "esta":true,
+                        "nombre": "Tamaño de plantación de cítricos (Nº de plantas)"
+                    },
+                    {"8" : "Apertura9",
+                        "esta":true,
+                        "nombre": "Tamaño de plantación de otros frutales (Nº de plantas)"
+                    },
+                    {"9" : "Apertura13",
+                        "esta":true,
+                        "nombre": "Superficie con praderas plurianuales (ha)"
+                    },
+                    {"10" : "Apertura14",
+                        "esta":true,
+                        "nombre": "Superficie con siembras en cobertura (ha)"
+                    },
+                    {"11" : "Apertura18",
+                        "esta":true,
+                        "nombre": "Principal fuente de ingreso agropecuario"
+                    }
+                  ]
+            }
+        },
+        {
             "widget": "widgets/MapasBaseWidget",
             "title": "Mapa Base",
             "msgToolTip": "Permite seleccionar el mapa de base.",
@@ -20,7 +79,7 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "draggable": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],
