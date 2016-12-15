@@ -18,6 +18,7 @@ define([
     "dojo/dom-style",
     "esri/graphic",
     "modulos/Grafico3SR",
+    "dijit/a11yclick",
     "dojo/store/Memory",
     "dijit/tree/ObjectStoreModel",
     "dojox/form/CheckedMultiSelect",
@@ -30,7 +31,7 @@ define([
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle,
-    Graphic, Grafico3SR, Memory, ObjectStoreModel, CheckedMultiSelect, DataStore, Select, MultiSelect, wkids, dom, win) {
+    Graphic, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect, DataStore, Select, MultiSelect, wkids, dom, win) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -61,7 +62,10 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                this._cargarDOM();
+                this._cargarComboAperturas();
+//                this.own(
+//                   // on(this._buscarNode, a11yclick, lang.hitch(this, this._buscarClick))
+//                );    
             }
             
         },
@@ -87,25 +91,11 @@ define([
             this.inherited(arguments);
         },
         
-        _cargarDOM: function () {
-             var memoryStore = new Memory({
-                  data: this._data
-             });
-//             
-////             var select = new Select({
-////                store: memoryStore,
-////                style: "width: 50px;"
-////            }, "stateSelect");
-////           
-//            var select = new Select({
-//                store: memoryStore                
-//            }, "stateSelect");
-//            select.startup();
-           // var sel = dom.byId('dynamic');
+        _cargarComboAperturas: function () {
             var n = 0;
             for(var i in this._data){
                 var c = win.doc.createElement('option');
-                c.innerHTML = this._data[i][i];
+                c.innerHTML = this._data[i].nombre;
                 c.value = n++;
                 if(this._data[i].esta === true)
                     this.dynamic.appendChild(c);
