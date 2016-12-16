@@ -27,6 +27,17 @@
                 "dynamicMapServiceLayers": []
             }
         },
+         {
+            "widget": "widgets/DataLibraryWidget",
+            "title": "WMS de la DL",
+            "msgToolTip": "Permite visualizar diferentes capas de la DataLibrary",
+            "icono": "../js/snia/img/calendar.png",
+            "toggle": false,
+            "startsOpen": true,
+            "widgetConfig": {
+                "dynamicMapServiceLayers": []
+            }
+        },
         {
             "widget": "widgets/NavegarWidget",
             "title": "Navegar",
