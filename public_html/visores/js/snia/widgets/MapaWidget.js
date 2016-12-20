@@ -22,12 +22,13 @@ define([
     "esri/graphic",
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/WMSLayer",
     "esri/layers/FeatureLayer",
     "modulos/Grafico3SR"
 ], function (on, dom, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,
     template, i18n, domClass, domStyle,
-    Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, FeatureLayer,
+    Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,WMSLayer, FeatureLayer,
     Grafico3SR) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, Evented], {
@@ -105,7 +106,7 @@ define([
         },
         agregarCapa: function (layer, index) {
             if (layer && (layer instanceof ArcGISDynamicMapServiceLayer
-                    || layer instanceof FeatureLayer)) {
+                    || layer instanceof FeatureLayer || layer instanceof WMSLayer)) {
                 if (typeof index !== 'undefined') {
                     this.mapLayers.splice(index, 0, layer);
                     this.map.addLayer(layer, index);

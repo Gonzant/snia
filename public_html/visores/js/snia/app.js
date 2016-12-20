@@ -21,7 +21,9 @@ snia.app = {
             "dojo/json",
             "dojox/widget/Standby",
             "esri/layers/ArcGISTiledMapServiceLayer",
-            "esri/layers/ArcGISDynamicMapServiceLayer",
+            "esri/layers/ArcGISDynamicMapServiceLayer",            
+            "esri/layers/WMSLayer",
+            "esri/config",
             "modulos/HerramientaDialog",
             "widgets/BarraHerramientasWidget",
             "widgets/MapaWidget",
@@ -32,7 +34,7 @@ snia.app = {
             "esri/urlUtils",
             "esri/geometry/Extent",
             "dojo/domReady!"], function (on, dom, parser, arrayUtil, JSON, Standby,
-            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
+            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,WMSLayer,esriConfig,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
@@ -46,8 +48,15 @@ snia.app = {
             initCapas = function () {
                 //dynamicLayers
                 var dynLayers = mapaConfig.mapa.dynamicLayers;
+                var l;
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
-                    var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                     if (dataLayer.wms) {
+                        esriConfig.defaults.io.corsEnabledServers.push("http://dlibrary.snia.gub.uy");
+                        l = new WMSLayer(dataLayer.url, dataLayer.options);
+                    } else {
+                        l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                     }
+                    //var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                     if (index === 0) {
                         //Mapa base
                         mapa.agregarCapa(l);

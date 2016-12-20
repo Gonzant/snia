@@ -18,7 +18,9 @@ define([
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
+    'esri/geometry/Extent',
     "esri/layers/WMSLayer",
+    'esri/layers/WMSLayerInfo',
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
@@ -26,7 +28,7 @@ define([
     "dojox/layout/ScrollPane"
 ], function (on,
     Evented, declare, lang,  template, i18n, domClass, domStyle, Map,  
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,WMSLayer) {
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, Extent, WMSLayer,WMSLayerInfo) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -135,15 +137,26 @@ define([
 //            }));
         },
 
-        _loadWMS: function () {
-             var wmsLayer = new WMSLayer("http://dlibrary.snia.gub.uy/SOURCES/.NOAA/.NCEP/.CPC/.CMORPH/.V1temp/.RAW/.daily/.prcp/T/378.5/VALUE/X/Y/fig-/colors/-fig/wms.xml", {
-            format: "gif",
-            opacity: 0.9,
-            visibleLayers: [0],
-            id:"data library"
-          });
-this.mapa.map.addLayer(wmsLayer);
-
+        _loadWMS: function () {           
+//        var layer1 = new WMSLayerInfo({
+//            name: 'x',
+//            title: 'x'
+//        });
+//        var resourceInfo = {
+//            extent: new Extent(-59, -35.125, -52.75, -30, {
+//            wkid: 4326
+//             }),
+//            layerInfos: [layer1]
+//        };
+//        var wmsLayer = new WMSLayer("http://dlibrary.snia.gub.uy/SOURCES/.NOAA/.NCEP/.CPC/.CMORPH/.V1temp/.RAW/.daily/.prcp/T/378.5/VALUE/X/Y/fig-/colors/-fig/wms.xml", {
+//            format: "gif",
+//            opacity: 0.9,
+//            resourceInfo: resourceInfo,
+//            visibleLayers: [0],
+//            id:"data library"
+//          });
+//        this.mapa.mapLayers.push(wmsLayer);
+//        this.mapa.map.addLayer(wmsLayer);
         }
     });
     return widget;
