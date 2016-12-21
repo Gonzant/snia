@@ -27,6 +27,7 @@ define([
     "esri/Color",
     "esri/tasks/GeometryService",
     "esri/tasks/Geoprocessor",
+    "dijit/Dialog",
     "esri/tasks/FeatureSet",
     "dojox/widget/Standby",
     "modulos/Grafico3SR",
@@ -38,6 +39,7 @@ define([
     "dijit/form/Select",
     "dijit/form/MultiSelect",
     "modulos/wkids",
+    "widgets/AperturasSICAWidget",
     "dojo/dom",
     "dojo/_base/window", 
     "dojo/dom-construct",
@@ -45,9 +47,10 @@ define([
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
-    SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor, FeatureSet,Standby,
+    SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor, 
+    Dialog, FeatureSet,Standby,
     Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect, DataStore, Select, MultiSelect, 
-    wkids, dom, win, domConstruct) {
+    wkids, AperturasSICAWidget, dom, win, domConstruct) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -122,7 +125,7 @@ define([
                 if(this._data[i].esta === true)
                     this.dynamic.appendChild(c);
             }
-            var myMultiSelect = new MultiSelect({ name: 'dynamic', multiple: 'true' }, this.dynamic).startup();
+           // this._dynamic2 = new MultiSelect({ name: 'dynamic', multiple: 'true' }, this.dynamic).startup();
         },
         
         /* ---------------- */
@@ -217,12 +220,25 @@ define([
                 this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
             }
         },
+       
         _gpCroquisComplete: function (jobInfo) {
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
         },
         _gpCroquisResultDataCallBack: function (value) {
             this._standbyAreas.hide();
+           // this._cruces = value.value;
+            this._aperturasSeleccionadas = this.dynamic.selectedOptions;
             this._cruces = value.value;
+            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas});
+            this._aperturasSICAWidget.startup();
+            this._aperturasSICAWidget.show();
+            var dialogo = new Dialog({
+                title : "Aperturas ",
+                style : "width: 240px",
+                content: this._aperturasSICAWidget
+            });
+            dialogo.startup();
+            dialogo.show(); 
         },
         _gpCroquisResultDataErr: function (err) {
             console.log(err.message);
