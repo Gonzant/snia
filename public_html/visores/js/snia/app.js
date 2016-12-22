@@ -53,8 +53,8 @@ snia.app = {
                     if (dataLayer.url) { //Nodo a partir de un map service
                         var l;
                         if (dataLayer.wms) {
-                            //esriConfig.defaults.io.proxyUrl = "https://web.renare.gub.uy/proxy/proxy.ashx?";
                             esriConfig.defaults.io.corsEnabledServers.push("web.renare.gub.uy");
+                            esriConfig.defaults.io.corsEnabledServers.push("http://dlibrary.snia.gub.uy");
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
                         } else {
                             l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
