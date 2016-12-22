@@ -121,6 +121,7 @@ define([
             for(var i in this._data){
                 var c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
+                c.label = this._data[i][i];
                 c.value = n++;
                 if(this._data[i].esta === true)
                     this.dynamic.appendChild(c);
@@ -156,6 +157,7 @@ define([
             }
         },
         _init: function () {
+            this._aperturasSeleccionadas=[];
             this._visible();
             this._i =0;
             this.set("loaded", true);
@@ -226,8 +228,16 @@ define([
         },
         _gpCroquisResultDataCallBack: function (value) {
             this._standbyAreas.hide();
+            var ap = new Object();          
+            
            // this._cruces = value.value;
-            this._aperturasSeleccionadas = this.dynamic.selectedOptions;
+           for (var i = 0; i < this.dynamic.selectedOptions.length; i = i+1){
+               ap.id = i;
+               ap.label = " " + this.dynamic.selectedOptions[i].innerHTML + " ";
+               ap.padre = 0;
+               this._aperturasSeleccionadas[i] = ap;  
+               ap = new Object();
+           }
             this._cruces = value.value;
             this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas});
             this._aperturasSICAWidget.startup();

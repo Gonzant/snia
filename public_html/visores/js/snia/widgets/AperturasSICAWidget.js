@@ -16,16 +16,36 @@ define([
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
+    "dojo/dom-construct",
+    "dojo/store/Memory",
+    "dijit/Tree",
+    "dijit/tree/ObjectStoreModel",
+    "dijit/layout/ContentPane",
+    "dijit/layout/BorderContainer",
     "esri/graphic",
     "modulos/Grafico3SR",
-    "modulos/wkids"
+    "modulos/wkids",
+    "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
-    template, i18n, domClass, domStyle,
+    template, i18n, domClass, domStyle, domConstruct,
+    Memory, Tree, ObjectStoreModel, ContentPane,
     Graphic, Grafico3SR, wkids) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
+        isLayoutContainer: true,
+         resize : function () {
+            if (this._bcAperturas) {
+                this._bcAperturas.resize();
+            }
+             if (this._cpIzq) {
+                this._cpIzq.resize();
+            }
+            if (this._cpIzqSC) {
+                this._cpIzqSC.resize();
+            }
+        },
         options : {
             theme : "sitWidget",
             mapa : null,
@@ -50,6 +70,9 @@ define([
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
             };
+            
+            this._data = defaults.data;
+            this._aperturas = defaults.aperturas;
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -92,7 +115,7 @@ define([
             this.set("visible", false);
         },
         desactive : function () {
-            this._mapMouseMoveListener.remove();
+//            this._mapMouseMoveListener.remove();
         },
         /* ---------------- */
         /* Funciones Privadas */
@@ -110,8 +133,32 @@ define([
                 style: "width: 180px; height: 400px;"
             });
             this._cpIzqSC.addChild(bI1);
-//            div1 = domConstruct.create('div', {}, bI1.containerNode);
-//            div2 = domConstruct.create('div', {}, bD1.containerNode);            
+            div1 = domConstruct.create('div', {}, bI1.containerNode);
+            div2 = domConstruct.create('div', {}, bD1.containerNode);  
+           this._store = new Memory({
+                data: [{ name: "raiz", id: "root"}],
+                getChildren: function (object) {
+                    return this.query({parent: object.id});
+                }
+            });
+            for (var i = 0; i < this._aperturas.length; i = i+1){                
+                this._store.put({id: i, name: this._aperturas[i].label, parent: "root", nodo: "raiz" });
+            }            
+            
+            this._myModel = new ObjectStoreModel({
+                store: this._store,
+                query: {id:  "root"}
+            });
+             this._tree = new Tree({
+                model: this._myModel,
+                showRoot: false,
+                getIconClass: function () {
+                    return "custimg";
+                }
+            });                     
+            this._tree.placeAt(div1);
+            this._tree.startup();         
+            
         },
         
         _visible: function () {
@@ -125,6 +172,7 @@ define([
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
+            this._cargarJSON();
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
