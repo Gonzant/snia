@@ -49,12 +49,12 @@ snia.app = {
             initCapas = function () {
                 //dynamicLayers
                 var dynLayers = mapaConfig.mapa.dynamicLayers, l;
+                esriConfig.defaults.io.corsEnabledServers.push("web.renare.gub.uy");
+                esriConfig.defaults.io.corsEnabledServers.push("http://dlibrary.snia.gub.uy");
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     if (dataLayer.url) { //Nodo a partir de un map service
                         var l;
                         if (dataLayer.wms) {
-                            esriConfig.defaults.io.corsEnabledServers.push("web.renare.gub.uy");
-                            esriConfig.defaults.io.corsEnabledServers.push("http://dlibrary.snia.gub.uy");
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
                         } else {
                             l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
@@ -70,7 +70,12 @@ snia.app = {
                         arrayUtil.forEach(dataLayer.multiple, function (dataLayer2) {
                             var dataLayerOptions = lang.clone(dataLayer.options);
                             dataLayerOptions.id = dataLayer.options.id + dataLayer2.url;
-                            l = new ArcGISDynamicMapServiceLayer(dataLayer2.url, dataLayerOptions);
+                            if (dataLayer2.wms) {
+                                l = new WMSLayer(dataLayer2.url, dataLayerOptions);
+                            } else {
+                                l = new ArcGISDynamicMapServiceLayer(dataLayer2.url, dataLayerOptions);
+                            }
+                            
                             mapa.agregarCapa(l);
                         });
                     }

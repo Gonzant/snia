@@ -301,54 +301,86 @@ define([
             }, this);
         },
         _generarNodoSimple: function (l, dataLayer) {
-            var sublayerTooltip;
-             this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
+            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
             //Procesar subcapas
             if (dataLayer.wms) { // Si es WMS
-                arrayUtil.forEach(l.layerInfos, function (li) {
-                    if (dataLayer.sublayersTooltips) {
-                        sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
-                    } else {
-                        sublayerTooltip = "";
-                    }
-
-                    ////this._getWMSInfo(dataLayer.url);
-                    this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  dataLayer.options.id });
-                    this._data.push({ id: "prueba", name: li.name, type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
-                    //this._getLegendWMS(li.legendURL);
-                }, this);
+                this._generarSubcapasWMS(l, dataLayer, dataLayer.options.id, false);
             } else {
-                this._getLegendJSON(dataLayer.url + "/legend");
-                arrayUtil.forEach(l.layerInfos, function (li) {
-                    if (dataLayer.sublayersTooltips) {
-                        sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
-                    } else {
-                        sublayerTooltip = "";
-                    }
-                    if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
-                        this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id });
-                    }
-                }, this);                            
+                this._generarSubcapasArcgis(l, dataLayer, dataLayer.options.id, false);
             }
             this.refreshTree();
 
         },
-        _generarNodoMultiple: function (dataLayer, map){
+        _generarSubcapasNodoMultiple: function (l, dataLayer, dataLayer1) {
+            /*var sublayerTooltip;
+            arrayUtil.forEach(l.layerInfos, function (li) {
+                if (dataLayer1.wms){
+                    if (dataLayer1.sublayersTooltips) {
+                        sublayerTooltip = dataLayer1.sublayersTooltips[li.title] || "";
+                    } else {
+                        sublayerTooltip = "";
+                    }
+                    this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'multiple', maxScale: li.maxScale || 0, minScale: li.minScale || 0, vparent:  l.title, parent: dataLayer.options.id });
+                    this._data.push({ id: "prueba", name: li.name, parent:  li.title, legend: true, legendURL: li.legendURL });
+  
+                } else {
+                   // if (!dataLayer1.layers || arrayUtil.indexOf(dataLayer1.layers, li.id) >= 0) {
+                   //     this._data.push({ id: li.name, name: li.name, maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id, vparent: l.id, wms: dataLayer1.wms });
+                   // }
+                }
+           }, this); 
+            */
+            if (dataLayer1.wms) {
+                this._generarSubcapasWMS(l, dataLayer1, dataLayer.options.id, l.title);
+            } else {
+                this._generarSubcapasArcgis(l, dataLayer1, dataLayer.options.id,  l.id);
+            }
+
+        },
+        _generarNodoMultiple: function (dataLayer, map) {
             this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
             arrayUtil.forEach(dataLayer.multiple, function (dataLayer1) {
-               this._getLegendJSON(dataLayer1.url + "/legend"); //Traigo todo
-               l = map.getLayer(dataLayer.options.id + dataLayer1.url);
-               if (l !== null){
-                   arrayUtil.forEach(l.layerInfos, function (li) {
-                       if (!dataLayer1.layers || arrayUtil.indexOf(dataLayer1.layers, li.id) >= 0) {
-                           this._data.push({ id: li.name, name: li.name, maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id, vparent: l.id });
-                       }
-                   }, this);
-               }
-           }, this);           
+                this._getLegendJSON(dataLayer1.url + "/legend"); //Traigo todo
+                var l = map.getLayer(dataLayer.options.id + dataLayer1.url);
+                if (l !== null) {
+                    if (l.loaded) {
+                        this._generarSubcapasNodoMultiple(l, dataLayer, dataLayer1);
+                    } else {
+                        l.on("load", lang.hitch(this, this._generarSubcapasNodoMultiple, l, dataLayer, dataLayer1));
+                    }
+                }
+            }, this);
+        },
+        _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
+            var sublayerTooltip;
+            arrayUtil.forEach(l.layerInfos, function (li) {
+                if (dataLayer.sublayersTooltips) {
+                    sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
+                } else {
+                    sublayerTooltip = "";
+                }
+                ////this._getWMSInfo(dataLayer.url);
+                this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  parent, vparent: vparent });
+                this._data.push({ id: "prueba", name: li.name, type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
+                //this._getLegendWMS(li.legendURL);
+            }, this);
+        },
+        _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
+            var sublayerTooltip;
+            this._getLegendJSON(dataLayer.url + "/legend");
+            arrayUtil.forEach(l.layerInfos, function (li) {
+                if (dataLayer.sublayerTooltips) {
+                    sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
+                } else {
+                    sublayerTooltip = "";
+                }
+                if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
+                    this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  parent, vparent: vparent });
+                }
+            }, this);
         },
         _generarData: function (mapaConfigJSON, map) {
-            var mapaConfig, dynLayers, l, sublayerTooltip;
+            var mapaConfig, dynLayers, l;
             this._data = [{ id: 'root'}];
             mapaConfig = JSON.parse(mapaConfigJSON);
             dynLayers = mapaConfig.mapa.dynamicLayers;
