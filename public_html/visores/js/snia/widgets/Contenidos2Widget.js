@@ -331,7 +331,7 @@ define([
            }, this); 
             */
             if (dataLayer1.wms) {
-                this._generarSubcapasWMS(l, dataLayer1, dataLayer.options.id, l.title);
+                this._generarSubcapasWMS(l, dataLayer1, dataLayer.options.id, l.id);
             } else {
                 this._generarSubcapasArcgis(l, dataLayer1, dataLayer.options.id,  l.id);
             }
@@ -369,7 +369,7 @@ define([
             var sublayerTooltip;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
-                if (dataLayer.sublayerTooltips) {
+                if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
                 } else {
                     sublayerTooltip = "";
@@ -455,12 +455,11 @@ define([
             }
             if (args.item.legendURL) {
                 tnode.labelNode.innerHTML =  "<img src='" + args.item.legendURL + "'>";
-                
             }
             if (args.item.parent === "root") { //Si está en el segundo nivel
                 slider = new HorizontalSlider({
                     showButtons: false,
-                    style: "width:75%;float:right;",
+                    style: "width:75%;float:left;max-width:150px;padding-left:50px;",
                    // layoutAlign: 'right',
                     value: args.item.opacity * 100,
                     onChange: lang.hitch(this, function (value) {
