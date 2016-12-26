@@ -49,12 +49,11 @@ snia.app = {
             initCapas = function () {
                 //dynamicLayers
                 var dynLayers = mapaConfig.mapa.dynamicLayers, l;
-                esriConfig.defaults.io.corsEnabledServers.push("web.renare.gub.uy");
-                esriConfig.defaults.io.corsEnabledServers.push("http://dlibrary.snia.gub.uy");
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     if (dataLayer.url) { //Nodo a partir de un map service
                         var l;
                         if (dataLayer.wms) {
+                            esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
                         } else {
                             l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
