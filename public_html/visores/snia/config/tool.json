@@ -9,53 +9,93 @@
             "widgetConfig": {
                 "data": [
                     {"0" : "Apertura1",
+                        "apertura": "Apertura1",
                         "esta":true,
                         "nombre":"Tamaño de la explotación (ha)",
-                        "filas": [
-                            "Total", "1 a 4", "5 a 9", "10 a 19", "20 a 49", "50 a 99", "100 a 199", "200 a 499", "500 a 999", "1.000 a 2.499", "2.500 a 4.999", "5.000 a 9.999", "10.000 y más"
-                          ]
+                        "filas": ["Total", "1 a 4", "5 a 9", "10 a 19", "20 a 49", "50 a 99", "100 a 199", "200 a 499", "500 a 999", "1.000 a 2.499", "2.500 a 4.999", "5.000 a 9.999", "10.000 y más"], 
+                        "columnas": ["Apertura 1", "Número", "Porcentaje (%)", "Hectáreas", "Porcentaje (%)"],
+                        "subDiv": [1,2,2],
+                        "divisiones": ["Tamaño de la explotación (ha)", "Explotaciones", "Superficie explotada"], 
+                        "cantCol": 5, 
+                        "tituloTabla": "Número de explotaciones y superficie explotada, según tamaño de la explotación"
                     },
                     {"1" : "Apertura2",
+                        "apertura": "Apertura2",
                         "esta":true,
                         "nombre":"Uso de la tierra (ha)",
-                        "filas": ["Bosques artificiales", "Bosques naturales", "Frutas cítricas", "Otros frutales (excluye cítricos)", "Viñedos", "Cultivos de huerta", "Cultivos cerealeros e industriales", "Cultivos cerealeros e industriales", "Tierra preparada pero no sembrada en el año censal", "Tierras de rastrojo", "Praderas artificiales", "Campo natural sembrado en cobertura", "Campo natural fertilizado", "Campo natural", "Tierras improductivas y espejos de agua", "Superficie total"]
+                        "filas": ["Bosques artificiales", "Bosques naturales", "Frutas cítricas", "Otros frutales (excluye cítricos)", "Viñedos", "Cultivos de huerta", "Cultivos cerealeros e industriales", "Cultivos cerealeros e industriales", "Tierra preparada pero no sembrada en el año censal", "Tierras de rastrojo", "Praderas artificiales", "Campo natural sembrado en cobertura", "Campo natural fertilizado", "Campo natural", "Tierras improductivas y espejos de agua", "Superficie total"],
+                        "columnas": ["Apertura 2", "Hectáreas", "Porcentaje (%)"],
+                        "subDiv": [1,2],
+                        "divisiones": ["Aprovechamiento de la tierra", "Superficie explotada"], 
+                        "cantCol": 3, 
+                        "tituloTabla": "Superficie explotada según aprovechamiento de la tierra"
                     },
                     {"2" : "Apertura4",
-                        "esta":false,
+                        "apertura": "Apertura4",
+                        "esta":true,
                         "nombre": "Tamaño del rodeo vacuno (Nº de cabezas)",
-                        "filas": ["Total", "Menos de 20", "De 20 a 100", "De 101 a 200", "De 201 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "Más de 2.000"]
+                        "filas": ["Total", "Menos de 20", "De 20 a 100", "De 101 a 200", "De 201 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "Más de 2.000"],
+                        "columnas": ["Apertura 4", "Total", "Toros", "Vacas y Vaq", "Vacas de Inv", "Nov + 3 años", "Nov de 2 a 3", "Nov de 1 a 2", "Vaq + 2 años", "Vaq de 1 a 2", "Ternero/as", "Bueyes"],
+                        "subDiv": [1, 1, 1, 1, 10],
+                        "divisiones": ["Tamaño de rodeo en cabezas", "Número de explotaciones", "Superficie explotada(ha)", "Existencias de vacunos", "Categorías"], 
+                        "cantCol": 14, 
+                        "tituloTabla": "Número de explotaciones con vacunos, superficie explotada y existencias de vacunos, según tamaño del rodeo"
                     },
                     {"3" : "Apertura5",
+                        "apertura": "Apertura5",
                         "esta":false,
-                        "nombre": "Tamaño de la majada (Nº de cabezas)"
+                        "nombre": "Tamaño de la majada (Nº de cabezas)",
+                        "cantCol": 11, 
+                        "tituloTabla": "Número de explotaciones con ovinos, superficie explotada y existencias de ovinos, según tamaño del rodeo"
                     },
                     {"5" : "Apertura6",
+                        "apertura": "Apertura6",
                         "esta":false,
-                        "nombre": "Producción anual de leche (litros)"
+                        "nombre": "Producción anual de leche (litros)",
+                        "cantCol": 8, 
+                        "tituloTabla": "Número de explotaciones con lechería comercial, superficie explotada, existencias de ganado lechero, producción de leche en el año censal, según producción anual de leche."
                     },
                     {"6" : "Apertura7",
+                        "apertura": "Apertura7",
                         "esta":false,
-                        "nombre": "Superficie con bosques artificiales (ha)"
+                        "nombre": "Superficie con bosques artificiales (ha)",
+                        "cantCol": 5, 
+                        "tituloTabla": "Bosques artificiales: Número de explotaciones y superficie plantada, según tamaño de la plantación (No incluye viveros)"
                     },
                     {"7" : "Apertura8",
+                        "apertura": "Apertura8",
                         "esta":false,
-                        "nombre": "Tamaño de plantación de cítricos (Nº de plantas)"
+                        "nombre": "Tamaño de plantación de cítricos (Nº de plantas)",
+                        "cantCol": 13, 
+                        "tituloTabla": "Cítricos: existencias de plantas (totales y en producción) por especie, según tamaño de la plantación"
                     },
                     {"8" : "Apertura9",
+                        "apertura": "Apertura9",
                         "esta":false,
-                        "nombre": "Tamaño de plantación de otros frutales (Nº de plantas)"
+                        "nombre": "Tamaño de plantación de otros frutales (Nº de plantas)",
+                        "cantCol": 19, 
+                        "tituloTabla": "Otros frutales (excluye cítricos): existencias de plantas (totales y en producción) por especie, según tamaño de la plantación"
                     },                    
                     {"9" : "Apertura13",
+                        "apertura": "Apertura13",
                         "esta":false,
-                        "nombre": "Superficie con praderas plurianuales (ha)"
+                        "nombre": "Superficie con praderas plurianuales (ha)",
+                        "cantCol": 7, 
+                        "tituloTabla": "Superficie con praderas plurianuales (ha)"
                     },
                     {"10" : "Apertura14",
+                        "apertura": "Apertura14",
                         "esta":false,
-                        "nombre": "Superficie con siembras en cobertura (ha)"
+                        "nombre": "Superficie con siembras en cobertura (ha)",
+                        "cantCol": 7, 
+                        "tituloTabla": "Superficie con siembras en cobertura (ha)"
                     },
                     {"11" : "Apertura18",
+                        "apertura": "Apertura18",
                         "esta":false,
-                        "nombre": "Principal fuente de ingreso agropecuario"
+                        "nombre": "Principal fuente de ingreso agropecuario",
+                        "cantCol": 5, 
+                        "tituloTabla": "Número de explotaciones y superficie explotada según principal fuente de ingreso"
                     }
                   ]
             }

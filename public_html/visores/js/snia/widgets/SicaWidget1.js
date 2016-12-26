@@ -57,7 +57,8 @@ define([
         options : {
             theme : "sitWidget",
             mapa : null,
-            visible : true
+            visible : true, 
+            config: null
         },
         constructor: function (options, srcRefNode) {
            //mezclar opciones usuario y default
@@ -70,6 +71,7 @@ define([
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("_data", defaults.config.data);
+            this.set("config", defaults.config);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -216,7 +218,7 @@ define([
                 featureSet = new FeatureSet();
                 featureSet.features = areas;
                 parametros = {
-                    Clase_Areas: featureSet
+                    Poligono: featureSet
                 };
                 this._standbyAreas.show();
                 this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
@@ -233,18 +235,18 @@ define([
            // this._cruces = value.value;
            for (var i = 0; i < this.dynamic.selectedOptions.length; i = i+1){
                ap.id = i;
-               ap.label = " " + this.dynamic.selectedOptions[i].innerHTML + " ";
-               ap.padre = 0;
+               ap.label = this.dynamic.selectedOptions[i].innerHTML + "";
+               ap.nombre = "" + this.dynamic.selectedOptions[i].label + "";
                this._aperturasSeleccionadas[i] = ap;  
                ap = new Object();
            }
             this._cruces = value.value;
-            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas});
+            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config});
             this._aperturasSICAWidget.startup();
             this._aperturasSICAWidget.show();
             var dialogo = new Dialog({
                 title : "Aperturas ",
-                style : "width: 240px",
+                style : "width: 840px",
                 content: this._aperturasSICAWidget
             });
             dialogo.startup();
