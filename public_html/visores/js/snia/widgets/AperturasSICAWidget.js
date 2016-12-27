@@ -1,6 +1,5 @@
 /*
  * js/snia/widgets/AperturasSICAWidget
- * 
  */
 /*global define, console*/
 /*jslint nomen: true */
@@ -38,11 +37,11 @@ define([
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         isLayoutContainer: true,
-         resize : function () {
+        resize : function () {
             if (this._bcAperturas) {
                 this._bcAperturas.resize();
             }
-             if (this._cpIzq) {
+            if (this._cpIzq) {
                 this._cpIzq.resize();
             }
             if (this._cpIzqSC) {
@@ -74,7 +73,7 @@ define([
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
-            };            
+            };
             this._data = defaults.data;
             this._config = defaults.config;
             this._aperturas = defaults.aperturas;
@@ -120,13 +119,12 @@ define([
             this.set("visible", false);
         },
         desactive : function () {
-//            this._mapMouseMoveListener.remove();
         },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
-        _cargarJSON: function() {
-            var bD1, bI1, div1, div2, item;
+        _cargarJSON: function () {
+            var bD1, bI1, div1, i;
             bD1 = new ContentPane({  //Derecho
                 region: "center",
                 style: "height: 400px;"
@@ -138,36 +136,35 @@ define([
             });
             this._cpIzqSC.addChild(bI1);
             div1 = domConstruct.create('div', {}, bI1.containerNode);
-            this._div2 = domConstruct.create('div', {}, bD1.containerNode);  
-           this._store = new Memory({
+            this._div2 = domConstruct.create('div', {}, bD1.containerNode);
+            this._store = new Memory({
                 data: [{ name: "raiz", id: "root"}],
                 getChildren: function (object) {
                     return this.query({parent: object.id});
                 }
             });
-            for (var i = 0; i < this._aperturas.length; i = i+1){                
+            for (i = 0; i < this._aperturas.length; i = i + 1) {
                 this._store.put({id: i, name: this._aperturas[i].label, parent: "root", nodo: "raiz" });
-            }            
-            
+            }
             this._myModel = new ObjectStoreModel({
                 store: this._store,
                 query: {id:  "root"}
             });
-             this._tree = new Tree({
+            this._tree = new Tree({
                 model: this._myModel,
                 showRoot: false,
-                openOnClick:true,
+                openOnClick: true,
                 autoExpand: true,
                 getIconClass: function () {
                     return "custimg";
-                }, 
+                },
                 onOpen: lang.hitch(this, function (item, node) {
                     var children, c, nodoItem, esHijo;
                     children = node.getChildren();
                     for (c in children) {
                         if (children.hasOwnProperty(c)) {
                             nodoItem = children[c].get('item');
-                            esHijo = nodoItem.nodo.toString()==="hijo";
+                            esHijo = nodoItem.nodo.toString() === "hijo";
                             if (this._tree && nodoItem && !esHijo) {
                                 this._tree._expandNode(children[c]);
                             }
@@ -175,83 +172,93 @@ define([
                     }
                 }),
                 onClick: lang.hitch(this, this._treeClick)
-            });                     
+            });
             this._tree.placeAt(div1);
-            this._tree.startup();         
-            
+            this._tree.startup();
         },
-         _treeClick : function (item) {
-            var indice, contenido, titulo;            
+        _treeClick : function (item) {
+            var contenido, titulo, complete = false, i, j, tr, a;
             titulo = "<p class= \"Titulo1\">" + item.name + "</p>";
-            var complete = false;
             this._tabla = " ";
             this._tabla = "<table class= \"gridSica\">";
             //this._data - el json que me pasa Fabi
             // this._aperturas  - mi json con lo que tengo buscar en el data
-            for (var i = 0; i< this._data.Cruces.length; i = i + 1){
-                for (var j = 0; j< this._aperturas.length; j = j + 1){
-                    for (var r = 0; r< this.config.data.length && !complete; r = r+1){
-                        if(this.config.data[r].nombre === this._aperturas[j].label && item.name === this._aperturas[j].label ){
-                            //estoy en la apertura a recorrer
-                           contenido =  "<tr><td colspan=" + "'"+ this.config.data[r].cantCol + "'>" + this.config.data[r].tituloTabla + "</td></tr>";
-                           var tr = "<tr>";
-                           for (var a = 0; a < this.config.data[r].divisiones.length; a = a+1){
-                                 tr = tr + "<td colspan=" + "'"+ (this.config.data[r].subDiv[a] -1) + "'>" + this.config.data[r].divisiones[a] + "</td><td>" + "" ;
-                           }
-                           tr = tr + "</tr>";
-                           for (var a = 0; a < this.config.data[r].columnas.length; a = a+1){
-                                 tr = tr + "<td>" + this.config.data[r].columnas[a] + "</td>";
-                           }  
-                           tr = tr + "</tr>";
-                            switch(this._aperturas[j].nombre) {
-                                case "Apertura1":
-                                   this._cargarApertura1 (i, j, r, contenido, tr);
-                                    break;
-                                case "Apertura2":
-                                    this._tabla = this._tabla + contenido + tr; 
-                                    break;
-                                case "Apertura4":
-                                    this._tabla = this._tabla + contenido + tr; 
-                                    break;   
-                                case "Apertura5":
-                                    this._tabla = this._tabla + contenido + tr; 
-                                    break;
-                                case "Apertura6":
-                                    this._tabla = this._tabla + contenido + tr; 
-                                    break;
-                                case "Apertura7":
-                                    this._tabla = this._tabla + contenido + tr; 
-                                    break;
-                            }
-                           complete = true;
-                       }
+            for (i = 0; i < this._data.Cruces.length; i = i + 1) {
+                for (j = 0; j < this._aperturas.length; j = j + 1) {
+                    if (this.config.data[i].nombre === this._aperturas[j].label && item.name === this._aperturas[j].label) {
+                        //estoy en la apertura a recorrer
+                        contenido =  "<tr><td colspan=" + "'" + this.config.data[i].cantCol + "'>" + this.config.data[i].tituloTabla + "</td></tr>";
+                        tr = "<tr>";
+                        for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
+                            tr = tr + "<td colspan=" + "'" + (this.config.data[i].subDiv[a]) + "'>" + this.config.data[i].divisiones[a] + "</td>";
+                        }
+                        tr = tr + "</tr>";
+                        for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
+                            tr = tr + "<td>" + this.config.data[i].columnas[a] + "</td>";
+                        }
+                        tr = tr + "</tr>";
+                        switch (this._aperturas[j].nombre) {
+                        case "Apertura1":
+                            this._cargarApertura1(i, contenido, tr);
+                            break;
+                        case "Apertura2":
+                            this._cargarApertura2(i, contenido, tr);
+                            break;
+                        case "Apertura4":
+                            this._cargarApertura4(i, contenido, tr);
+                            break;
+                        case "Apertura5":
+                            this._tabla = this._tabla + contenido + tr;
+                            break;
+                        case "Apertura6":
+                            this._tabla = this._tabla + contenido + tr;
+                            break;
+                        case "Apertura7":
+                            this._tabla = this._tabla + contenido + tr;
+                            break;
+                        }
+                        complete = true;
                     }
-                 }
+                }
             }
-            this._tabla = this._tabla + "</table>";  
-            this._div2.innerHTML = titulo + this._tabla + "";             
-         },
-         
-        _cargarApertura1 : function (i, j, r, contenido, tr){
-            for (var a = 0; a < this.config.data[r].filas.length; a = a + 1){
-                var totalNum = this._data.Cruces[i].Apertura1[0][0], num =0, hectareas =0;
-                var totalHec = this._data.Cruces[i].Apertura1[0][1];
-                 if(totalNum !== 0)
-                     num = this._data.Cruces[i].Apertura1[a][0] * 100 / totalNum;
-                 if(totalHec !== 0)
-                         hectareas = this._data.Cruces[i].Apertura1[a][1] * 100 / totalHec;
-                 tr = tr + "<tr><td>" + this.config.data[r].filas[a] + "</td><td>" + this._data.Cruces[i].Apertura1[a][0]+ "</td><td>  " + num.toFixed(0) +" </td><td>" + this._data.Cruces[i].Apertura1[a][1] + "</td><td>" + hectareas.toFixed(0) + " </td></tr>";
-            }                           
-            this._tabla = this._tabla + contenido + tr;             
-         },
-        _cargarApertura2 : function (i, j, r, contenido, tr){},
-        _cargarApertura4 : function (i, j, r, contenido, tr){},
-        _cargarApertura5 : function (i, j, r, contenido, tr){},
-        _cargarApertura6 : function (i, j, r, contenido, tr){},
-        _cargarApertura7 : function (i, j, r, contenido, tr){},
-        _cargarApertura8 : function (i, j, r, contenido, tr){},
-        _cargarApertura9 : function (i, j, r, contenido, tr){},
-        _cargarApertura13 : function (i, j, r, contenido, tr){},
+            this._tabla = this._tabla + "</table>";
+            this._div2.innerHTML = titulo + this._tabla + " ";
+        },
+        _cargarApertura1 : function (i, contenido, tr) {
+            var a, totalNum = this._data.Cruces[i].Apertura1[0][0], num = 0, hectareas = 0, totalHec = this._data.Cruces[i].Apertura1[0][1];
+            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
+                if (totalNum !== 0) { num = this._data.Cruces[i].Apertura1[a][0] * 100 / totalNum; }
+                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura1[a][1] * 100 / totalHec; }
+                tr = tr + "<tr><td>" + this.config.data[i].filas[a] + "</td><td>" + this._data.Cruces[i].Apertura1[a][0] + "</td><td>" + num.toFixed(0) + "</td><td>" + this._data.Cruces[i].Apertura1[a][1] + "</td><td>" + hectareas.toFixed(0) + "</td></tr>";
+            }
+            this._tabla = this._tabla + contenido + tr;
+        },
+        _cargarApertura2 : function (i, contenido, tr) {
+            var a, hectareas = 0, totalHec = this._data.Cruces[i].Apertura2[0];
+            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
+                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura2[a] * 100 / totalHec; }
+                tr = tr + "<tr><td>" + this.config.data[i].filas[a] + "</td><td>" + this._data.Cruces[i].Apertura2[a] + "</td><td>" + hectareas.toFixed(0) + "</td></tr>";
+            }
+            this._tabla = this._tabla + contenido + tr;
+        },
+        _cargarApertura4 : function (i, contenido, tr) {
+            var a;
+            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) { }
+            this._tabla = this._tabla + contenido + tr;
+        },
+        _cargarApertura5 : function (i, contenido, tr) {
+            this._tabla = this._tabla + contenido + tr;
+        },
+        _cargarApertura6 : function (i, contenido, tr) {
+            this._tabla = this._tabla + contenido + tr;
+        },
+        _cargarApertura7 : function (i, contenido, tr) {
+            for (var a = 0; a < this.config.data[i].filas.length; a = a + 1){ }
+            this._tabla = this._tabla + contenido + tr; 
+        },
+        _cargarApertura8 : function (i, contenido, tr){},
+        _cargarApertura9 : function (i, contenido, tr){},
+        _cargarApertura13 : function (i, contenido, tr){},
         _visible: function () {
             if (this.get("visible")) {
                 domStyle.set(this.domNode, 'display', 'block');

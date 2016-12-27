@@ -108,9 +108,9 @@ define([
                 }));
             }
         },
-        // connections/subscriptions se limpian durante la fase destroy()
         destroy: function () {
-         //   this._mapMouseMoveListener.remove();
+            this._dibujo.desactivar();
+            this._cpg3SR.removerMapa();
             this.inherited(arguments);
         },
         _initDibujo: function () {
