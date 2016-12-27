@@ -216,16 +216,6 @@ define([
             });
             requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON), this._requestFailed);
         },
-        /*_getLegendWMS: function (url) {
-            var requestHandle = esriRequest({
-                "url": url,
-                "content": {
-                    "f": "pjson"
-                },
-                "callbackParamName": "callback"
-            });
-            requestHandle.then(lang.hitch(this, this._requestSucceededLegendWMS), this._requestFailed);         
-        },*/
         /*_getWMSInfo: function (url) {
              //FIXME
         },*/
@@ -247,6 +237,16 @@ define([
                 }
             }, this);
         },
+        /*_getLegendWMS: function (url) {
+            var requestHandle = esriRequest({
+                "url": url,
+                "content": {
+                    "f": "pjson"
+                },
+                "callbackParamName": "callback"
+            });
+            requestHandle.then(lang.hitch(this, this._requestSucceededLegendWMS), this._requestFailed);         
+        },*/
         /*_requestSucceededLegendWMS: function (response) {
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
@@ -312,24 +312,6 @@ define([
 
         },
         _generarSubcapasNodoMultiple: function (l, dataLayer, dataLayer1) {
-            /*var sublayerTooltip;
-            arrayUtil.forEach(l.layerInfos, function (li) {
-                if (dataLayer1.wms){
-                    if (dataLayer1.sublayersTooltips) {
-                        sublayerTooltip = dataLayer1.sublayersTooltips[li.title] || "";
-                    } else {
-                        sublayerTooltip = "";
-                    }
-                    this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'multiple', maxScale: li.maxScale || 0, minScale: li.minScale || 0, vparent:  l.title, parent: dataLayer.options.id });
-                    this._data.push({ id: "prueba", name: li.name, parent:  li.title, legend: true, legendURL: li.legendURL });
-  
-                } else {
-                   // if (!dataLayer1.layers || arrayUtil.indexOf(dataLayer1.layers, li.id) >= 0) {
-                   //     this._data.push({ id: li.name, name: li.name, maxScale: li.maxScale, minScale: li.minScale, parent:  dataLayer.options.id, vparent: l.id, wms: dataLayer1.wms });
-                   // }
-                }
-           }, this); 
-            */
             if (dataLayer1.wms) {
                 this._generarSubcapasWMS(l, dataLayer1, dataLayer.options.id, l.id);
             } else {
@@ -437,6 +419,7 @@ define([
         },
         _createTreeNode: function (args) {
             var tnode = new Tree._TreeNode(args), cb, slider, l, tooltip, t;
+            domStyle.set(tnode.containerNode, "max-width", "200px");
             tnode.labelNode.innerHTML = args.label;
             if (!args.item.tooltip || args.item.tooltip === "") {
                 tooltip = args.label;
@@ -459,7 +442,7 @@ define([
             if (args.item.parent === "root") { //Si está en el segundo nivel
                 slider = new HorizontalSlider({
                     showButtons: false,
-                    style: "width:75%;float:left;max-width:150px;padding-left:50px;",
+                    style: "float:left;max-width:130px;margin-left:50px;",
                    // layoutAlign: 'right',
                     value: args.item.opacity * 100,
                     onChange: lang.hitch(this, function (value) {
@@ -476,9 +459,10 @@ define([
                         }
                     })
                 });
-                slider.placeAt(tnode.labelNode, "last");
+
                 tnode.slider = slider;
                 slider.startup();
+                slider.placeAt(tnode.rowNode, "last");
             }
             return tnode;
         },
