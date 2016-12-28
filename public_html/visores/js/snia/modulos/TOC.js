@@ -220,15 +220,15 @@ define([
         },
         _prenderPadresTree: function (node) {
            // var l = this.mapa.map.getLayer(item.vparent);
-           var p = node.getParent();
-           if (p && p.checkBox) {
-               p.checkBox.set('checked', true);
-               this._onItemClick(node.item, node);
-               this._prenderPadresTree(p);
-           }
+            var p = node.getParent();
+            if (p && (p.item.id !== "root") && p.checkBox && !p.checkBox.get('checked')) {
+                p.checkBox.set('checked', true);
+                this._onItemClick(p.item, p);
+                this._prenderPadresTree(p);
+            }
         },
         _onItemClick: function (item, node) {
-            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, i;
+            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers;
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
@@ -249,21 +249,23 @@ define([
                 }
             } else { //Si es una subcapa
                 l = this.mapa.map.getLayer(item.vparent);
-                visibleLayers = l.visibleLayers;
-                i = item.index;
-                if (i>=0 && !l.layerInfos[i].subLayerIds && isNodeSelected) {
+                visibleLayers = lang.clone(l.visibleLayers);
+
+                if (item.index >= 0 && !l.layerInfos[item.index].subLayerIds && isNodeSelected) {
                     if (visibleLayers.indexOf(item.index) === -1) {
-                        visibleLayers.push(item.index);
+                        visibleLayers.push(parseInt(item.index));
+                        l.setVisibleLayers(visibleLayers);
                         this._prenderPadresTree(node);
                     }
                 } else {
-                    i = visibleLayers.indexOf(item.index);
-                    if (i >= 0) {
-                        visibleLayers.splice(i, 1);
-                    }
+                        visibleLayers = [];
+                        arrayUtil.forEach(l.visibleLayers, function (laux) {
+                            if (parseInt(laux) !== parseInt(item.index) && laux !== "") {
+                                visibleLayers.push(parseInt(laux));
+                            }
+                        });
+                        l.setVisibleLayers(visibleLayers);
                 }
-                l.setVisibleLayers(visibleLayers);
-
             }
         },
         _createTreeNode: function (args) {
