@@ -5,22 +5,30 @@
             "logo": false
         },
         "baseMapLayer": {
-			"url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-			"extent": {
-                "xmin": -37867.16314808361,
-                "ymin": 5957313.020605681,
-                "xmax": 1220493.68690695,
-                "ymax": 6874864.455708552,
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "extent": {
+                "xmin": -6800000,
+                "ymin": -4500000,
+                "xmax": -5500000,
+                "ymax": -3400000,
                 "spatialReference": {
-					"wkid":32721
-				}
+                    "wkid":102100
+                }
             }
-		},
+        },
         "dynamicLayers": [             
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Especies/MapServer",
                 "options": {
-                        "id": "Especies",
+                        "id": "Fruticultura",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Horticultura/MapServer",
+                "options": {
+                        "id": "Horticultura",
                         "opacity": 0.7,
                         "visible": false
                 }

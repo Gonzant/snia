@@ -19,7 +19,7 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
@@ -81,6 +81,15 @@
             "toggle": false,
             "widgetConfig": {
                 
+            }
+        },
+           {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png",            
+            "toggle": false,
+            "widgetConfig": {                
             }
         },
         {
