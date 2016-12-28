@@ -48,12 +48,6 @@ define([
                 on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
             }));
         },
-        postCreate: function () {
-            /*this.inherited(arguments);
-            if (this.mapa) {
-                this._generarData();
-            }*/
-        },
         startup: function () {
             // mapa no definido
             if (!this.mapa) {
@@ -99,7 +93,7 @@ define([
                 onClick: lang.hitch(this, this._onItemClick),
                 _createTreeNode: lang.hitch(this, this._createTreeNode),
                 getIconStyle: function (item) {
-                    if (item.imageData) {
+                    if (item.imageData) {//Arcgis
                         var imgUri = "url(data:" + item.contentType  + ";base64," + item.imageData + ")";
                         return {backgroundImage: imgUri, backgroundRepeat: "no-repeat", backgroundPosition: "left center",  backgroundSize: "16px 16px"};
                     } //Si es WMS no se usa el icono
@@ -148,7 +142,7 @@ define([
         },
         _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip;
-            arrayUtil.forEach(l.layerInfos, function (li) {
+            arrayUtil.forEach(l.layerInfos, function (li, index) {
                 var tParent = parent;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
@@ -159,9 +153,17 @@ define([
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
-                this._data.push({ id: li.title, name: li.title, index: li.name, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  tParent, vparent: vparent, startChecked: li.defaultVisibility  });
-                this._data.push({ id: "prueba", name: li.name, type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
-                //this._getLegendWMS(li.legendURL);
+                this._data.push({ id: li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                if (li.subLayers.length > 0) {
+                    arrayUtil.forEach(li.subLayers, function (sl) {
+                        this._data.push({ id: "prueba", name: sl.title, type: 'layer', parent:  li.title, legend: true, legendURL: sl.legendURL });
+                    }, this);
+                } else {
+                    this._data.push({ id: "prueba", name: "", type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
+                }
+                //
+//
+//this._getLegendWMS(li.legendURL);
                 //this._borrarGruposDeVisibleLayers(l, li);
             }, this);
         },
@@ -216,10 +218,10 @@ define([
                 }
             }, this);
         },
-        _prenderPadresTree: function (node){
+        _prenderPadresTree: function (node) {
            // var l = this.mapa.map.getLayer(item.vparent);
            var p = node.getParent();
-           if (p) {
+           if (p && p.checkBox) {
                p.checkBox.set('checked', true);
                this._onItemClick(node.item, node);
                this._prenderPadresTree(p);
@@ -248,8 +250,8 @@ define([
             } else { //Si es una subcapa
                 l = this.mapa.map.getLayer(item.vparent);
                 visibleLayers = l.visibleLayers;
-
-                if (!l.layerInfos[item.index].subLayerIds && isNodeSelected) {
+                i = item.index;
+                if (i>=0 && !l.layerInfos[i].subLayerIds && isNodeSelected) {
                     if (visibleLayers.indexOf(item.index) === -1) {
                         visibleLayers.push(item.index);
                         this._prenderPadresTree(node);
@@ -286,7 +288,7 @@ define([
                 tnode.checkBox = cb;
             }
             if (args.item.legendURL) {
-                tnode.labelNode.innerHTML =  "<img src='" + args.item.legendURL + "'>";
+                tnode.labelNode.innerHTML =  "<img src='" + args.item.legendURL + "'>" + args.item.name;
             }
             if (args.item.parent === "root") { //Si está en el primer nivel
                 slider = new HorizontalSlider({
