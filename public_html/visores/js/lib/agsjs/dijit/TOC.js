@@ -764,7 +764,9 @@ define("agsjs/dijit/TOC",
       }
     },
     _adjustToState: function(){
-      this._rootLayerNode._adjustToState();
+        if (this._rootLayerNode){
+            this._rootLayerNode._adjustToState();
+        }
     },
     destroy: function(){
       if (this._visHandler) {

@@ -21,6 +21,7 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "draggable": false,
+            "startsOpen": true,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
@@ -42,14 +43,14 @@
             "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
-            "startsOpen": false,
+            "startsOpen": false,            
             "widgetConfig": {                
                 "fechaAtributo": "acq",
                 "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer/0",
                 "timeSlider": {
                     "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",
-                    "velocidad": "200",
+                    "velocidad": "1000",
                     "defecto": {
                         "inicial": "0", 
                         "final": "52"                          
@@ -103,6 +104,15 @@
                 
             }
         },
+           {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png",            
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
         {
             "widget": "widgets/ImprimirWidget",
             "title": "Imprimir",
@@ -126,6 +136,747 @@
         },
         {
             "widget": "widgets/AyudaWidget",
+            "title": "Datos de Bosques 2011",
+            "msgToolTip": "Se muestran datos de Bosques junto con Suelos de Prioridad Forestal",
+            "icono": "../js/snia/img/estadisticoGris.png",
+            "toggle": false,
+            "widgetConfig": {
+                "data": [
+                    {
+                        "name": "Datos de Bosques 2011",
+                        "id": "root",
+                        "titulo":"Estadisticas",
+                        "esPadre": true
+
+                    },
+                    {"name": "Uruguay",
+                        "id":"0",
+                        "parent":"root",
+                        "seccionTitulo":{"Texto":{"Contenido": "Uruguay", "Estilo": "Indice1"}},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Uruguay", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "Uruguay tiene una superficie de 17.594.069 has, de las cuales 849.023 has, corresponden a Bosque Natural y 694.991 has a Bosque Plantado, siendo ello el 4,83% del Bosque Natural y 3,95% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/FUruguay.png","Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Uruguay cuenta con 8.337.962 has de Suelos de Prioridad Forestal, lo que representa el 23,81 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 640.197 has y Suelos de PF No Condicionada: 3.548.784 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/uruguay.png", "Alto":160, "Ancho":410}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 483.531 has están sobre Suelos de Prioridad Forestal, lo que equivale al 69,57 %.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Texto":[{"Contenido": "<br> ","Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " ","Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": "Fuentes: DGF y DGRN, MGAP.","Estilo": "Negrita"}]},
+                                {"Texto":[
+                                        {"Contenido": "Cartografía Forestal 2011, Dirección General Forestal.","Estilo": "MargenTextoIzq"},
+                                        {"Contenido": "Grupo de Suelos e Indice de Productividad Coneat, Dirección General de Recursos Naturales.","Estilo": "MargenTextoIzq"},
+                                        {"Contenido": "Elaboración SNIA.","Estilo": "MargenTextoIzq"}
+                                        ]}
+                            ]                            
+                        }
+                    },
+                     {
+                        "name": "Artigas",
+                        "id":"1",
+                        "parent":"0",
+                        "seccionTitulo":{"Texto":{"Contenido": "Artigas","Estilo": "Indice1"}},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Artigas", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Artigas tiene una superficie de 1.190.460 has, de las cuales 43.029 has, corresponden a Bosque Natural y 6.254 has a Bosque Plantado, siendo ello el 0,24% del Bosque Natural y 0,04% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/artigas.png","Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "El departamento cuenta con 31.910 has de Suelos de Prioridad Forestal, lo que representa el 2,7 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 11.687 has y Suelos de PF No Condicionada: 20.223 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/artigas.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 349 has están sobre Suelos de Prioridad Forestal, lo que equivale al 5,58 % a nivel Departamental y al 0,05 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                            }
+                    },
+                    {
+                        "name": "Canelones",
+                        "id":"3",
+                        "parent":"0",
+                        "seccionTitulo":{"Texto":{"Contenido": "Canelones","Estilo": "Indice1"}},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Canelones", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Canelones tiene una superficie de 453.098 has, de las cuales 22.281 has, corresponden a Bosque Natural y 18.238 has a Bosque Plantado, siendo ello el 0,13% del Bosque Natural y 0,10% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/canelones.png","Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "El departamento cuenta con 68.298 has de Suelos de Prioridad Forestal, lo que representa el 15,1 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 31.621 has y Suelos de PF No Condicionada: 36.677 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/canelones.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 8.514 has están sobre Suelos de Prioridad Forestal, lo que equivale al 46,68 % a nivel Departamental y al 1,23 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                            }
+                    },
+                    {
+                        "name": "Cerro Largo",
+                        "id":"4",
+                        "parent":"0",
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Cerro Largo","Estilo": "Indice1" } },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Cerro Largo", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Cerro Largo tiene una superficie de 1.366.312 has, de las cuales 65.858 has, corresponden a Bosque Natural y 40.573 has a Bosque Plantado, siendo ello el 0,37% del Bosque Natural y 0,23% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/cerroLargo.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos de Prioridad Forestal, lo que representa el 44,1 %. A su vez, los Suelos de Prioridad forestal se divide en: Suelos de PF Condicionada: 123.781 has y Suelos de PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/cerrolargo.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 34.956 has están sobre Suelos de Prioridad Forestal, lo que equivale al 86,16 % a nivel departamental y al 5,03 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Colonia",
+                        "id":"5",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Colonia","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Colonia", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Colonia tiene una superficie de 610.995 has, de las cuales 14.724 has, corresponden a Bosque Natural y 9.799 has a Bosque Plantado, siendo ello el 0,08% del Bosque Natural y 0,06% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/colonia.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 602.175 has de Suelos de Prioridad Forestal, lo que representa el 44,1 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 123.781 has y Suelos de PF No Condicionada: 478.394 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/colonia.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre suelos de Prioridad Forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Durazno",
+                        "id":"5",
+                        "parent":"0",
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Durazno","Estilo": "Indice1" } },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Durazno", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Durazno tiene una superficie de 1.220.107 has, de las cuales 23.249 has, corresponden a Bosque Natural y 38.238 has a Bosque Plantado, siendo ello el 0,13% del Bosque Natural y 0,22% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/durazno.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 377.939 has de Suelos de Prioridad Forestal, lo que representa el 31,0 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 23.229 has y Suelos de PF No Condicionada: 354.710 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/durazno.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 23.668 has están sobre Suelos de Prioridad Forestal, lo que equivale al 61,90 % a nivel departamental y al 3,41 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Flores",
+                        "id":"6",
+                        "parent":"0",
+                        "seccionTitulo":{"Texto":{ "Contenido": "Flores","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Flores", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Flores tiene una superficie de 514.114 has, de las cuales 4.737 has, corresponden a Bosque Natural y 3.251 has a Bosque Plantado, siendo ello el 0,03% del Bosque Natural y 0,02% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/flores.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 38.136 has de Suelos de Prioridad Forestal, lo que representa el 7,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 0 has y Suelos de PF No Condicionada: 38.136 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                               {"Imagen":{"URL":"../forestal/img/SPF/flores.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 454 has están sobre Suelos de Prioridad Forestal, lo que equivale al 13,96 % a nivel departamental y al 0,07 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Florida",
+                        "id":"7",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Florida","Estilo": "Indice1" } },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Florida", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Florida tiene una superficie de 1.040.629 has, de las cuales 30.976 has, corresponden a Bosque Natural y 22.513 has a Bosque Plantado, siendo ello el 0,18% del Bosque Natural y 0,13% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/florida.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 170.687 has de Suelos de Prioridad Forestal, lo que representa el 16,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 26.381 has y Suelos de PF No Condicionada: 144.306 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                               {"Imagen":{"URL":"../forestal/img/SPF/florida.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 10.497 has están sobre Suelos de Prioridad Forestal, lo que equivale al 46,63 % a nivel departamental y al 1,51 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Lavalleja",
+                        "id":"8",
+                        "parent":"0",
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Lavalleja","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Lavalleja", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Lavalleja tiene una superficie de 1.002.775 has, de las cuales 95.129 has, corresponden a Bosque Natural y 37.586 has a Bosque Plantado, siendo ello el 0,54% del Bosque Natural y 0,21% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/lavalleja.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 517.296 has de Suelos de Prioridad Forestal, lo que representa el 51,6 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 108.023 has y Suelos de PF No Condicionada: 409.273 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/lavalleja.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 30.141 has están sobre Suelos de Prioridad Forestal, lo que equivale al 80,19 % a nivel departamental y al 4,34 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Maldonado",
+                        "id":"9",
+                        "parent":"0",
+                        "seccionTitulo":{"Texto":{ "Contenido": "Maldonado","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Maldonado", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Maldonado tiene una superficie de 479.706 has, de las cuales 60.226 has, corresponden a Bosque Natural y 35.054 has a Bosque Plantado, siendo ello el 0,34% del Bosque Natural y 0,20% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/maldonado.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 263.608 has de Suelos de Prioridad Forestal, lo que representa el 55,0 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 88.431 has y Suelos de PF No Condicionada: 175.177 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/maldonado.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 26.031 has están sobre Suelos de Prioridad Forestal, lo que equivale al 76,26 % a nivel departamental y al 3,75 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                    {
+                        "name": "Montevideo",
+                        "id":"10",
+                        "parent":"0",
+                        "seccionTitulo":{"Texto":{ "Contenido": "Montevideo","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Montevideo", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Montevideo tiene una superficie de 53.053 has, de las cuales 772 has, corresponden a Bosque Natural y 1.673 has a Bosque Plantado, siendo ello el 0,00% del Bosque Natural y 0,01% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/montevideo.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 8.141 has de Suelos de Prioridad Forestal, lo que representa el 15,3 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 6.839 has y Suelos de PF No Condicionada: 1.302 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/montevideo.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.501 has están sobre Suelos de Prioridad Forestal, lo que equivale al 15,32 % a nivel departamental y al 0,22 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Paysandú",
+                        "id":"11",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Paysandú","Estilo": "Indice1" }
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Paysandú", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Paysandú tiene una superficie de 1.396.772 has, de las cuales 58.758 has, corresponden a Bosque Natural y 100.793 has a Bosque Plantado, siendo ello el 0,33% del Bosque Natural y 0,57% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/paysandu.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 257.859 has de Suelos de Prioridad Forestal, lo que representa el 18,5 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 0 has y Suelos de PF No Condicionada: 257.859 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/paysandu.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 53.632 has están sobre Suelos de Prioridad Forestal, lo que equivale al 53,21 % a nivel departamental y al 7,72 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Rio Negro",
+                        "id":"12",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Rio Negro","Estilo": "Indice1" } },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Rio Negro", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Rio Negro tiene una superficie de 952.414 has, de las cuales 37.610 has, corresponden a Bosque Natural y 77.783 has a Bosque Plantado, siendo ello el 0,21% del Bosque Natural y 0,44% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/rionegro.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 250.638 has de Suelos de Prioridad Forestal, lo que representa el 26,3 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 124 has y Suelos de PF No Condicionada: 250.514 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/rionegro.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 52.339 has están sobre Suelos de Prioridad Forestal, lo que equivale al 67,29 % a nivel departamental y al 7,53 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Rivera",
+                        "id":"13",
+                        "parent":"0",
+                        "seccionTitulo":{"Texto":{ "Contenido": "Rivera","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Rivera", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Rivera tiene una superficie de 932.803 has, de las cuales 62.324 has, corresponden a Bosque Natural y 116.586 has a Bosque Plantado, siendo ello el 0,35% del Bosque Natural y 0,66% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/rivera.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 391.225 has de Suelos de Prioridad Forestal, lo que representa el 41,9 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 199 has y Suelos de PF No Condicionada: 391.026 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/rivera.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 103.331 has están sobre Suelos de Prioridad Forestal, lo que equivale al 88,63 % a nivel departamental y al 14,87 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Rocha",
+                        "id":"14",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Rocha","Estilo": "Indice1" }
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Rocha", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Rocha tiene una superficie de 1.055.703 has, de las cuales 53.634 has, corresponden a Bosque Natural y 43.622 has a Bosque Plantado, siendo ello el 0,30% del Bosque Natural y  0,25% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/rocha.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 256.184 has de Suelos de Prioridad Forestal, lo que representa el 24,3 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 51.661 has y Suelos de PF No Condicionada: 204.523 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/rocha.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 33.847 has están sobre Suelos de Prioridad Forestal, lo que equivale al 77,59 % a nivel departamental y al 4,87 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Salto",
+                        "id":"15",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Salto","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Salto", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Salto tiene una superficie de 1.396.385 has, de las cuales 45.651 has, corresponden a Bosque Natural y 5.627 has a Bosque Plantado, siendo ello el 0,26% del Bosque Natural y 0,03% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/salto.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 25.591 has de Suelos de Prioridad Forestal, lo que representa el 1,8 %. A su vez, los Suelos de prioridad forestal se divide en: Suelos de PF Condicionada: 11.671 has y Suelos de PF No Condicionada: 13.920 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/salto.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 717 has están sobre Suelos de Prioridad Forestal, lo que equivale al 12,74 % a nivel departamental y al 0,10 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "San Jose",
+                        "id":"16",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "San Jose","Estilo": "Indice1" }
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "San Jose", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de San Jose tiene una superficie de 500.893 has, de las cuales 21.177 has, corresponden a Bosque Natural y 7.827 has a Bosque Plantado, siendo ello el 0,12% del Bosque Natural y 0,04% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/sanjose.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 9.154 has de Suelos de Prioridad Forestal, lo que representa el 1,8 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 33 has y Suelos de PF No Condicionada: 9.121 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/sanjose.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 1.135 has están sobre Suelos de Prioridad Forestal, lo que equivale al 14,50 % a nivel departamental y al 0,16 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Soriano",
+                        "id":"17",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Soriano","Estilo": "Indice1" }
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Soriano", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Soriano tiene una superficie de 899.601 has, de las cuales 25.994 has, corresponden a Bosque Natural y 24.931 has a Bosque Plantado, siendo ello el 0,15% del Bosque Natural y 0,14% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/forestacion/soriano.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 104.190 has de Suelos de Prioridad Forestal, lo que representa el 11,6 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 86 has y Suelos de PF No Condicionada: 104.104 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/soriano.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 13.426 has están sobre Suelos de Prioridad Forestal, lo que equivale al 53,85 % a nivel departamental y al 1,93 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]},
+                             {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Tacuarembo",
+                        "id":"18",
+                        "parent":"0",
+                        "seccionTitulo":{
+                            "Texto":{ "Contenido": "Tacuarembo","Estilo": "Indice1" },
+                            "Imagen": { "URL":"../js/snia/img/mapabase.png","Alto":20}
+                        },
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Tacuarembo", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Tacuarembo tiene una superficie de 1.598.649 has, de las cuales 120.603 has, corresponden a Bosque Natural y 88.607 has a Bosque Plantado, siendo ello el 0,69% del Bosque Natural y 0,50% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/tacuarembo.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 374.353 has de Suelos de Prioridad Forestal, lo que representa el 23,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos con PF Condicionada: 18.750 has y Suelos con PF No Condicionada: 355.603 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                               {"Imagen":{"URL":"../forestal/img/SPF/tacuarembo.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 75.621 has están sobre Suelos de Prioridad Forestal, lo que equivale al 85,34 % a nivel departamental y al 10,88 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    },
+                   {
+                        "name": "Treinta y Tres",
+                        "id":"19",
+                        "parent":"0",
+                        "seccionTitulo":{ "Texto":{ "Contenido": "Treinta y Tres","Estilo": "Indice1" }},
+                        "seccionContenido":{
+                            "titulo":{ "Texto":{"Contenido": "Treinta y Tres", "Estilo": "Titulo1"} },
+                            "elementos":[
+                                {"Texto":[
+                                    {"Contenido": "El departamento de Treinta y Tres tiene una superficie de 929.570 has, de las cuales 62.291 has, corresponden a Bosque Natural y 16.037 has a Bosque Plantado, siendo ello el 0,35% del Bosque Natural y 0,09% del Bosque Plantado a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Imagen":{"URL":"../forestal/img/forestacion/treintaytres.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Este departamento cuenta con 422.172 has de Suelos de Prioridad Forestal, lo que representa el 45,4 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 135.855 has y Suelos de PF No Condicionada: 286.317 has.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                {"Imagen":{"URL":"../forestal/img/SPF/treintaytres.png", "Alto":150, "Ancho":370}},
+                                {"Texto":[
+                                    {"Contenido": "Del total de has de Bosque Plantado 12.741 has están sobre Suelos de Prioridad Forestal, lo que equivale al 79,45 % a nivel departamental y al 1,83 % a nivel Nacional.",
+                                        "Estilo": "Normal"
+                                    }]
+                                },
+                                 {"Texto":[{"Contenido": " <br> ","Estilo": "Normal"}]},
+                                {"TextoSinEnter":[{"Contenido": "Por mayor información dar click en", "Estilo": "Normal"}]},
+                                {"DescargarPDF":[{"Contenido": ".PDF", "URL": "../forestal/pdf/EstadisticasForestal.pdf"}]},
+                                {"TextoSinEnter":[{"Contenido": " o ", "Estilo": "Normal"}]},
+                                {"DescargarEXCEL":[{"Contenido": ".XLS", "URL": "../forestal/pdf/DatosBosques2011.xls"}]},
+                                {"TextoSinEnter":[{"Contenido": " según el formato que prefiera. ", "Estilo": "Normal"}]},
+                                {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]}
+                            ]                            
+                        }
+                    }
+                ]
+            }
+        },        
+        {
+            "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
             "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
             "icono": "../js/snia/img/ayuda.png",
@@ -143,59 +894,34 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
-            },
+                    "Texto":{"Contenido": "Introducción","Estilo": "Indice1"} },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Introducción","Estilo": "Titulo1"}
                     },
                 "elementos":[
                     {
-                      "Texto":[
-                        { 
+                      "Texto":[ { 
                             "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
-                            "Estilo": "Normal"
-                        }
+                            "Estilo": "Normal"}
                       ]
-                    }
-                     
+                    }                     
                 ]
-            }
-            
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Herramientas", "Estilo": "Indice1" }                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{ "Texto": { "Contenido": "Herramientas", "Estilo": "Titulo1" }},
                 "elementos": [
                     {
                         "Texto":[
-                            {
-                            "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
+                            { "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
                             }
                         ]
@@ -209,84 +935,42 @@
                 "id":"2",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": { "Contenido": "Mapa Base","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen":{ "URL":"../js/snia/img/mapabase.png","Alto":30},
+                        "Texto":{"Contenido": "Mapa Base","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                    {
-                        "Texto":[
-                        {
+                    {"Texto":[ {
                            "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
                            "Estilo": "Normal"
-                        }
-                        ]    
-                    }
-                        
-                    ]
+                        }]    
+                    } ]
                 }
             },
             {
                 "name": "Contenidos",
                 "id":"4",
-                "parent":"2",
+                "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
-                        "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
+                       "Texto":[
+                        {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
-                        }
-                        ]    
-                    }
-                        
+                        }]    
+                    }                        
                     ]
                 }
             },
@@ -295,199 +979,83 @@
                "id":"3",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":30},
+                        "Texto":{"Contenido": "Navegar","Estilo": "Titulo2"}
                     },
-                    "elementos": [
-                        {
+                    "elementos": [{
                            "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
+                           { "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
                               "Estilo": "Normal"
-                            }
-                           ]    
+                           }]    
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
+                            {"Contenido": "Acercar","Estilo": "Normal"},
                             {
                               "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
                               "Estilo": "Normal"
-                            }
-                           ] 
-                           
+                            }]                           
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/zoomout.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
+                        {"Imagen":{"URL":"../js/snia/img/zoomout.png", "Alto":30}},
+                        {"Texto":[{"Contenido": "Alejar", "Estilo": "Titulo3"},
+                            { "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
-                            }
-                           ] 
-                           
+                            } ]                          
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/pan.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/pan.png","Alto":30}},
                         {
-                         "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                         "Texto":[ {"Contenido": "Desplazar","Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
                               "Estilo": "Normal"
-                            }
-                           ] 
+                            }] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/fullextent.png","Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa en su máxima extensión.",
-                              "Estilo": "Normal"
-                            }
-                           ] 
+                           {"Contenido": "Extensión máxima","Estilo": "Titulo3"},
+                           {"Contenido": "Posiciona el mapa en su máxima extensión.","Estilo": "Normal"}
+                         ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/prevextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista anterior",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"js/snia/img/prevextent.png", "Alto":30}},
+                        {"Texto":[{"Contenido": "Vista anterior", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista posterior",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
+                        {"Imagen":{"URL":"js/snia/img/sigextent.png","Alto":30}},
+                        {"Texto":[
+                           {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
+                           { "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
                               "Estilo": "Normal"
                             }
                            ] 
                         }
                     ]
-                }
-               
+                }               
             },
             {
                "name": "Tiempo",
                "id":"4",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Tiempo", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":30},                        
+                        "Texto": { "Contenido": "Tiempo", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
+                        {"Texto":[{"Contenido": "", "Estilo": "Normal"}] }
                     ]
                 }
             },
@@ -497,29 +1065,15 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Indice1"
-                            },
+                           { "Contenido": "Identificar","Estilo": "Indice1" },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/identificar.png","Alto":20 }                        
                 },
                "seccionContenido":{
                     "titulo":{
                          "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                        {"URL":"../js/snia/img/identificar.png","Alto":30},                        
+                        "Texto":{"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -538,30 +1092,14 @@
                "id":"5",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":20
-                            }
+                    "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Indice1" },
+                    "Imagen":{"URL":"../js/snia/img/buscar.png", "Alto":20}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Titulo2"
-                            }
+                         "Imagen": {"URL":"../js/snia/img/buscar.png","Alto":30},
+                        "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {"Texto":[
@@ -575,68 +1113,33 @@
                             }
                            ]    
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/acercar.png",
-                              "Alto":30
-                            }
-                        },
-                        { "Texto":[
-                           {
-                              "Contenido": "Acercar selección",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"../js/snia/img/acercar.png","Alto":30}},
+                        { "Texto":[{"Contenido": "Acercar selección","Estilo": "Titulo3"},
                             {
                               "Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.",
                               "Estilo": "Normal"
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/remover.png",
-                              "Alto":30
-                            }
-                        },
-                        { "Texto":[
-                           {
-                              "Contenido": "Remover selección",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"../js/snia/img/remover.png", "Alto":30}},
+                        { "Texto":[{"Contenido": "Remover selección","Estilo": "Titulo3"},
                             {
                               "Contenido": "Remueve de la lista de resultados los padrones seleccionados.",
                               "Estilo": "Normal"
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/todo.png",
-                              "Alto":30
-                            }
-                        },
-                        { "Texto":[
-                           {
-                              "Contenido": "Seleccionar todo",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{ "URL":"../js/snia/img/todo.png","Alto":30 }},
+                        { "Texto":[{"Contenido": "Seleccionar todo","Estilo": "Titulo3"},
                             {
                               "Contenido": "Selecciona todos los padrones de la lista de resultados.",
                               "Estilo": "Normal"
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/reporte.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/reporte.png", "Alto":30}},
                         { "Texto":[
-                           {
-                              "Contenido": "Croquis selección",
-                              "Estilo": "Titulo3"
-                            },
+                           {"Contenido": "Croquis selección","Estilo": "Titulo3"},
                             {
                               "Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.",
                               "Estilo": "Normal"
@@ -652,44 +1155,23 @@
                "id":"7",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/medir.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{ "Contenido": "Medir", "Estilo": "Indice1" },
+                    "Imagen":{ "URL":"../js/snia/img/medir.png","Alto":20 }                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/regla.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Titulo2"
-                            }
+                         "Imagen":{ "URL":"../js/snia/img/regla.png","Alto":30 },
+                        "Texto": {"Contenido": "Medir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.",
+                        {"Texto":[
+                           {  "Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
+                            { "Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
+                            { "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -702,38 +1184,20 @@
                "id":"8",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{ "Contenido": "Coordenadas", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/coordenadas.png",
-                              "Alto":30
-                        },
+                         "Imagen":{"URL":"../js/snia/img/coordenadas.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Coordenadas","Estilo": "Titulo2" }
                     },
                     "elementos": [
                         {
-                           "Texto":[
-                           {
+                           "Texto":[{
                               "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar las coordenadas del punto del mapa indicado por el puntero del ratón, en tres sistemas de referencia espacial, UTM 21 sur, coordenadas geográficas y Web Mercator.",
-                              "Estilo": "Normal"
-                            }
+                              "Estilo": "Normal"}
                            ]    
                         }
                     ]
@@ -745,38 +1209,18 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                           {"Contenido": "Mapa de Referencia","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{ "URL":"../js/snia/img/referencia.png","Alto":30},
+                        "Texto":{ "Contenido": "Mapa de Referencia","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                          "Texto":[
-                              {
+                        {"Texto":[ {
                                 "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
-                                "Estilo": "Normal"
-                              }
-                          ]  
+                                "Estilo": "Normal"}  ]  
                         }
                     ]
                 }
@@ -786,30 +1230,12 @@
                "id":"10",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Imprimir","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                    "titulo":{"Imagen":{"URL":"../js/snia/img/imprimir.png", "Alto":30},
+                        "Texto":{"Contenido": "Imprimir","Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -827,8 +1253,35 @@
                               "Estilo": "Normal"
                             }
                            ]    
-                        }
-                        
+                        }                        
+                    ]
+                }
+            },
+            {
+               "name": "Datos de Bosques 2011",
+               "id":"10",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":{ "Contenido": "Datos de Bosques 2011", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/estadisticoGris.png","Alto":20}                        
+                },
+               "seccionContenido":{
+                    "titulo":{"Imagen":{"URL":"../js/snia/img/estadisticoGris.png","Alto":30},
+                        "Texto":{"Contenido": "Datos de Bosques 2011","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite la visualización de datos de bosques naturales y plantados (con sus distintos estratos), tanto a nivel Nacional como a nivel Departamental.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "  A su vez, se muestran los bosques según el suelo donde se encuentre, ya sea de prioridad forestal o no.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }                        
                     ]
                 }
             },
@@ -836,79 +1289,40 @@
             "id":"18",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{ "Contenido": "Atribuciones","Estilo": "Indice1"}                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{ "Texto":{"Contenido": "Atribuciones","Estilo": "Titulo1"}},
                 "elementos":[
                     {
                     "Texto":[
-                        {
-                            "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
-                            "Estilo": "Normal"
-                        }
+                        { "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
+                            "Estilo": "Normal"}
                       ]  
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "SIT",
-                            "URL": "http://sit.mvotma.gub.uy"
-                        }
-                    ] 
-                    },
-                    {
-                    "Texto":[
-                      {
-                        "Contenido": "El servicio de imagenes es de ESRI",
-                        "Estilo": "Normal"
-                      }
+                    {"Enlace":[{"Contenido": "SIT","URL": "http://sit.mvotma.gub.uy"}] },
+                    {"Texto":[
+                      {"Contenido": "El servicio de imagenes es de ESRI","Estilo": "Normal"}
                     ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
-                    ]
-                    },
+                    {"Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]},
                     {
                     "Texto":[
                       {
                         "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
                         "Estilo": "Normal"
                       }
-                    ]
+                    ]},
+                    { "Enlace":[ {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
-                    ]
-                    },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
-                    ]
-                    }
-                    
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}] }, 
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGF", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-forestal"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGRN", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-de-recursos-naturales"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "SNIA", "URL": "http://snia.gub.uy/"}]  }
                 ]
             },
             "padre": "si"
@@ -917,65 +1331,30 @@
             "id":"19",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Contacto","Estilo": "Indice1" }                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{"Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}},
                 "elementos": [
                     {
-                        "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "23096008, 23097025",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
+                        "Texto":[{"Contenido": "Dirección","Estilo": "Titulo2"},
+                            {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
+                              "Estilo": "Normal"},
+                            {"Contenido": "Teléfonos","Estilo": "Titulo2"},
+                            { "Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                            {"Contenido": "Consultas y Sugerencias","Estilo": "Titulo2"},
+                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
                               "Estilo": "Normal"
                             }
                         ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
-                        }
-                    ] 
-                    }
+                    {"Enlace":[{"Contenido": "snia@mgap.gub.uy","URL": "mailto:snia@mgap.gub.uy"}]}
                 ]
             },
             "padre": "si"
         }
-        
-]
-            }
+       ]
+          }
         }       
     ]
 }

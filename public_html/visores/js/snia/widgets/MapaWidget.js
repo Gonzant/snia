@@ -136,8 +136,7 @@ define([
                 this.map.destroy();
                 this.set("baseMapLayer", tiledLayer);
                 this.set("map", new Map(this._mapNode, {
-                    logo: false,
-                    slider: false
+                    logo: false
                 }));
                 if (this.baseMapLayer) {
                     this.map.addLayer(this.baseMapLayer);
@@ -204,8 +203,7 @@ define([
                 this.map.destroy();
                 this.set("baseMapLayer", tiledLayer);
                 this.set("map", new Map(this._mapNode, {
-                    logo: false,
-                    slider: false
+                    logo: false
                 }));
                 if (this.baseMapLayer) {
                     this.map.addLayer(this.baseMapLayer);
@@ -243,6 +241,7 @@ define([
             this._visible();
             this.set("loaded", true);
             this.emit("reload", {});
+            this.emit("reloadMapaRef",{});
         },
         _restartup: function () {
             // map no esta definido

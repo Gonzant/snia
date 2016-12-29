@@ -50,6 +50,7 @@ define([
             this.set("_fechaAtributo", defaults.config.fechaAtributo);
             this.set("_urlQuery", defaults.config.urlQuery);
             this.set("_timeSlider", defaults.config.timeSlider);
+            this.set("_manual", defaults.config.manual);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -139,7 +140,11 @@ define([
             this.set("loaded", true);
             this.emit("load", {});
             on(this.mapa, "reload", lang.hitch(this, this._reload));
-            this._getDates();
+            if (this._manual) {
+                this._setDates();
+            } else {
+                this._getDates();
+            }
         },
         _reconstruirTimeSlider: function () {
             this.mapa.map.setTimeSlider(this.timeSlider);
@@ -155,8 +160,24 @@ define([
                 domClass.add(this.domNode, newVal);
             }
         },
+        _setDates: function () {
+            var today;
+            this._sTime = new Date(this._manual.inicioTiempo);
+            if (this._manual.finTiempo) {
+                this._eTime = new Date(this._manual.finTiempo);
+            } else {
+                today = new Date();
+                today.setDate(today.getDate() - today.getDay());
+                this._eTime = new Date(today);
+            }
+            this._sTimeAbs = this._sTime.toUTCString();
+            this._eTimeAbs  = this._eTime.toUTCString();
+
+            this._comboYears();
+            this._initSlider();
+        },
         _getDates: function () {
-            var min, max, yesterday, tomorrow, yesterdayAbs, tomorrowAbs,primero;
+            var min, max, yesterday, tomorrow, primero;
             primero = true;
             arrayUtil.forEach(this.mapa.map.layerIds, lang.hitch(this, function (item) {
                 var l, st, et;
@@ -186,7 +207,6 @@ define([
             this._eTime = tomorrow;
             this._sTimeAbs = yesterday.toUTCString();
             this._eTimeAbs  = tomorrow.toUTCString();
-
             this._comboYears();
             this._initSlider();
         },
@@ -198,18 +218,21 @@ define([
             this._tiempoNode.appendChild(this.timeSlider.domNode);
             this.mapa.map.setTimeSlider(this.timeSlider);
             timeExtent = new TimeExtent();
-            timeExtent.startTime = new Date(this._sTime + " UTC");
-            timeExtent.endTime = new Date(this._eTime + " UTC");
+            timeExtent.startTime = new Date(this._sTime);
+            timeExtent.endTime = new Date(this._eTime);
             domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "<\/i>");
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             this.timeSlider.setThumbCount(2);
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
-            if (this._timeSlider.defecto ) {
+            if (this._timeSlider.defecto) {
                 this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
             } else {
-                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                if (this._timeSlider.ultimaSemana === "True" && this._filtro.value === 0) {
+                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2, this.timeSlider._numTicks - 1]);
+                } else {
+                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                }
             }
-
             this._intervaloTiempo = this.timeSlider.thumbIndexes;
             this.timeSlider.setThumbMovingRate(this._timeSlider.velocidad);
             this.timeSlider.startup();
@@ -236,31 +259,31 @@ define([
             }
         },
         _comboYears: function (evt) {
-            var start, end;
+            var start, end, i;
             start = this._sTime.getFullYear();
             end = this._eTime.getFullYear();
             this._yearsFiltroStore.put({id: 0, name: "Todos"});
-            for(var i=start; i<=end; i++){
+            for (i = start; i <= end; i++) {
                 this._yearsFiltroStore.put({id: i, name: i});
-              }
+            }
             this._filtro = new FilteringSelect({
-               readonly: "True",
-               value: 0,
-               onChange: lang.hitch(this, function (state) {
-                   lang.hitch(this, this._setYearTimeSlider(state));
-               }),
-               store: this._yearsFiltroStore
+                readonly: "True",
+                value: 0,
+                onChange: lang.hitch(this, function (state) {
+                    lang.hitch(this, this._setYearTimeSlider(state));
+                }),
+                store: this._yearsFiltroStore
            }, this._yearsFilter);
            this._filtro.startup();
         },
-        _setYearTimeSlider: function (state) {        
+        _setYearTimeSlider: function (state) {
             this._startYear = state;
-            if (state!==0){
+            if (state !== 0) {
                 this._sTime = new Date();
                 this._eTime = new Date();
                 this._sTime.setFullYear(this._startYear, 1, 1);
-                this._eTime.setFullYear(this._startYear+1, 1, 1);
-            }else {
+                this._eTime.setFullYear(this._startYear + 1, 1, 1);
+            } else {
                 this._sTime = new Date(this._sTimeAbs);
                 this._eTime = new Date(this._eTimeAbs);
             }

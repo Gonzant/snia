@@ -29,18 +29,19 @@
             }
         },
         "dynamicLayers": [             
+            
             {
-                "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/SIT/cobertura/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
                 "options": {
-                        "id": "Cobertura (SIT)",
+                        "id": "Administrativo",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
+                "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/SIT/cobertura/MapServer",
                 "options": {
-                        "id": "Administrativo",
+                        "id": "Cobertura (SIT)",
                         "opacity": 0.7,
                         "visible": false
                 }
