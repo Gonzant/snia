@@ -214,8 +214,7 @@ define([
                             store: this._store,
                             structure: layout,
                             rowSelector: '20px'
-                        });
-                       
+                        });                      
                         this._div2.innerHTML = titulo + this._tabla + " ";
                         this._grid .placeAt(this._div2);
                         
