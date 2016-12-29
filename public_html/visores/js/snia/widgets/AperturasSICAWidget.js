@@ -300,9 +300,9 @@ define([
 //                if (totalNum !== 0) { num = this._data.Cruces[i].Apertura7[a][0] * 100 / totalNum; }
 //                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura7[a][1] * 100 / totalHec; }
 //                tr = tr + "<tr><td>" + this.config.data[i].filas[a] + "</td><td>" + this._data.Cruces[i].Apertura7[a][0] + "</td><td>" + num.toFixed(0) + "</td><td>" + this._data.Cruces[i].Apertura7[a][1] + "</td><td>" + hectareas.toFixed(0) + "</td></tr>";
-                myNewItem = {total: this.config.data[i].filas[a]};
+                myNewItem = {Ap7: this.config.data[i].filas[a], nro:this._data.Cruces[i].Apertura7[a][0] };
                 this._store.newItem(myNewItem);    
-            }
+            }//"Ap7", "nro", "pocN", "hect", "nroH"],
         },
         _cargarApertura8 : function (i){
             var a, myNewItem;
