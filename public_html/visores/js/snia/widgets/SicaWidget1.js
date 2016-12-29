@@ -1,6 +1,5 @@
 /*
  * js/snia/widgets/SicaWidget1
- * 
  */
 /*global define, console*/
 /*jslint nomen: true */
@@ -38,26 +37,24 @@ define([
     "dojo/store/DataStore",
     "dijit/form/Select",
     "dijit/form/MultiSelect",
-    "modulos/wkids",
     "widgets/AperturasSICAWidget",
     "dojo/dom",
-    "dojo/_base/window", 
+    "dojo/_base/window",
     "dojo/dom-construct",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
-    SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor, 
-    Dialog, FeatureSet,Standby,
-    Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect, DataStore, Select, MultiSelect, 
-    wkids, AperturasSICAWidget, dom, win, domConstruct) {
+    SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
+    Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect,
+    DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, domConstruct) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         options : {
             theme : "sitWidget",
             mapa : null,
-            visible : true, 
+            visible : true,
             config: null
         },
         constructor: function (options, srcRefNode) {
@@ -84,13 +81,12 @@ define([
             this.inherited(arguments);
             if (this.mapa) {
                 this._cargarComboAperturas();
-                  this.own(
+                this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
                 );
             }
-            
         },
         // start widget. called by user
         startup: function () {
@@ -98,8 +94,7 @@ define([
             if (!this.mapa) {
                 this.destroy();
                 console.log('SicaWidget1::requiere un mapa');
-            }
-            //  mapa cargado
+            } //  mapa cargado
             if (this.mapa.loaded) {
                 this._init();
             } else {
@@ -119,18 +114,15 @@ define([
             this._cpg3SR.seleccionarGraficoClickeado();
         },
         _cargarComboAperturas: function () {
-            var n = 0;
-            for(var i in this._data){
-                var c = win.doc.createElement('option');
+            var n = 0, i, c;
+            for (i in this._data) {
+                c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
                 c.label = this._data[i][i];
-                c.value = n++;
-                if(this._data[i].esta === true)
-                    this.dynamic.appendChild(c);
+                c.value = n ++;
+                if (this._data[i].esta === true) this.dynamic.appendChild(c);
             }
-           // this._dynamic2 = new MultiSelect({ name: 'dynamic', multiple: 'true' }, this.dynamic).startup();
-        },
-        
+        },        
         /* ---------------- */
         /* Eventos Publicos */
         /* ---------------- */
@@ -201,38 +193,39 @@ define([
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } 
             else{
-                this._msgAgregarArea.innerHTML = " ";
-                var g, area, featureSet, parametros, areas = [];
-                for (area in this._cpg3SR._gs) {
-                    if (this._cpg3SR._gs.hasOwnProperty(area)) {
-                        g = this._cpg3SR._gs[area].grafico(wkids.UTM);
-                        g.setAttributes({
-                            OBJECTID: 0,
-                            ID: area,
-                            Shape_Length: 0,
-                            Shape_Area: 0
-                        });
-                        areas.push(g);
+                if(this.dynamic.selectedOptions.length === 0){ //no hay ninguno seleccionado
+                    this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
+                }else{                
+                    this._msgAgregarArea.innerHTML = " ";
+                    var g, area, featureSet, parametros, areas = [];
+                    for (area in this._cpg3SR._gs) {
+                        if (this._cpg3SR._gs.hasOwnProperty(area)) {
+                            g = this._cpg3SR._gs[area].grafico(wkids.UTM);
+                            g.setAttributes({
+                                OBJECTID: 0,
+                                ID: area,
+                                Shape_Length: 0,
+                                Shape_Area: 0
+                            });
+                            areas.push(g);
+                        }
                     }
+                    featureSet = new FeatureSet();
+                    featureSet.features = areas;
+                    parametros = {
+                        Poligono: featureSet
+                    };
+                    this._standbyAreas.show();
+                    this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
-                featureSet = new FeatureSet();
-                featureSet.features = areas;
-                parametros = {
-                    Poligono: featureSet
-                };
-                this._standbyAreas.show();
-                this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
             }
-        },
-       
+        },       
         _gpCroquisComplete: function (jobInfo) {
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
         },
         _gpCroquisResultDataCallBack: function (value) {
             this._standbyAreas.hide();
-            var ap = new Object();          
-            
-           // this._cruces = value.value;
+            var ap = new Object();        
            for (var i = 0; i < this.dynamic.selectedOptions.length; i = i+1){
                ap.id = i;
                ap.label = this.dynamic.selectedOptions[i].innerHTML + "";
@@ -246,7 +239,7 @@ define([
             this._aperturasSICAWidget.show();
             var dialogo = new Dialog({
                 title : "Aperturas ",
-                style : "width: 840px",
+                style : "width: 800px",
                 content: this._aperturasSICAWidget
             });
             dialogo.startup();

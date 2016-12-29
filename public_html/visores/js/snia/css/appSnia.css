@@ -5,6 +5,13 @@ html, body {
     overflow:hidden;
     font: 12px Arial,clean,sans-serif;
 }
+.dojoxGridHeaderE {
+    /*background-color: #EBEADB;*/
+    /* font-size: 10px; */
+    background: url(../../dojox/grid/resources/images/grid_dx_gradient.gif) #E8E1CF top repeat-x;
+    padding-bottom: 2px;
+}
+
 #logoMGAPchico{
     z-index: 20;
     width: 110px;
