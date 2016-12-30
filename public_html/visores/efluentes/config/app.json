@@ -1,6 +1,6 @@
 {
 	"app": {
-        "titulo": "EFLUENTES",
+        "titulo": "Determinación del Riesgo Ambiental",
         "proxyRules":[
             {
                 "urlPrefix": "http://sit.mvotma.gub.uy/arcgis",
