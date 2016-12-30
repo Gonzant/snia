@@ -41,13 +41,14 @@ define([
     "dojo/dom",
     "dojo/_base/window",
     "dojo/dom-construct",
+    "dijit/Tooltip",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
     Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect,
-    DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, domConstruct) {
+    DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, domConstruct, Tooltip) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -137,7 +138,8 @@ define([
             this.set("visible", false);
         },
         desactive : function () {
-           // this._mapMouseMoveListener.remove();
+           this._dibujo.desactivar();
+           this._cpg3SR.removerMapa();
         },
         /* ---------------- */
         /* Funciones Privadas */
@@ -151,6 +153,20 @@ define([
             }
         },
         _init: function () {
+            
+             /*ToolTips*/
+            var TooltipDibujar = new Tooltip({
+                connectId: [this._dibujarArea.domNode],
+                position: ['below'],
+                label: this._i18n.widgets.SicaWidget1.lbDibujar
+            });
+            var TooltipResultado = new Tooltip({
+                connectId: [this._eliminarArea.domNode],
+                position: ['below'],
+                label: this._i18n.widgets.SicaWidget1.lbRemoverDibujos
+            });
+                        
+            
             this._aperturasSeleccionadas=[];
             this._visible();
             this._i =0;

@@ -10,6 +10,7 @@ html, body {
     /* font-size: 10px; */
     background: url(../../dojox/grid/resources/images/grid_dx_gradient.gif) #E8E1CF top repeat-x;
     padding-bottom: 2px;
+    width: 10px;
 }
 
 #logoMGAPchico{
@@ -724,8 +725,8 @@ th, td {
     z-index: 2;
     width: 40px;
     position:absolute;
-    top: 140px;
-    padding-top: 14px;
+    top: 138px;
+    padding-top: 23px;
     padding-bottom: 1px;
     right: 35px;
     background-color: #FFC000;

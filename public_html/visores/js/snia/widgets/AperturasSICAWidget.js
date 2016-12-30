@@ -121,7 +121,9 @@ define([
         hide: function () {
             this.set("visible", false);
         },
-        desactive : function () {},
+        desactive : function () {
+            
+        },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
@@ -205,8 +207,7 @@ define([
                             ap.field =  this.config.data[i].columnasField[a];
                             ap.width =  this.config.data[i].columnasW[a];
                             l.push(ap);
-                        }
-                        
+                        }                        
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
                             ap = new Object();
                             ap.name =  this.config.data[i].divisiones[a];
@@ -236,7 +237,7 @@ define([
                             break;
                         case "Apertura2":
                             totalHec = this._data.Cruces[i].Apertura2[0];
-                             if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura2[a] * 100 / totalHec; }
+                            if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura2[a] * 100 / totalHec; }
                             myNewItem = {Ap2: this.config.data[i].filas[a], Hect: this._data.Cruces[i].Apertura2[a], Porc:hectareas.toFixed(0)};
                              this._store.newItem(myNewItem);
                             break;
@@ -256,16 +257,17 @@ define([
                             totalNum = this._data.Cruces[i].Apertura7[0][0];
                             totalHec = this._data.Cruces[i].Apertura7[0][1];
                             if (totalNum !== 0) { num = this._data.Cruces[i].Apertura7[a][0] * 100 / totalNum; }
-                            myNewItem = {Ap7: this.config.data[i].filas[a], nro: this._data.Cruces[i].Apertura7[a][0] , pocN: num.toFixed(0)};
-                            this._store.newItem(myNewItem); 
-                            break;
-                        case "Apertura8":
-                            myNewItem = {total: this.config.data[i].filas[a], enProd: this._data.Cruces[i].Apertura8[a][0], nt: this._data.Cruces[i].Apertura8[a][1], np: this._data.Cruces[i].Apertura8[a][2], mt: this._data.Cruces[i].Apertura8[a][3], mp: this._data.Cruces[i].Apertura8[a][4], lt: this._data.Cruces[i].Apertura8[a][5], lp: this._data.Cruces[i].Apertura8[a][6], pt: this._data.Cruces[i].Apertura8[a][7], pp: this._data.Cruces[i].Apertura8[a][8], qt: this._data.Cruces[i].Apertura8[a][9], qp: this._data.Cruces[i].Apertura8[a][10]};
+                            if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura7[a][1] * 100 / totalHec; }
+                            myNewItem = {Ap7: this.config.data[i].filas[a], nro: this._data.Cruces[i].Apertura7[a][0] , pocN: num.toFixed(0), hect:this._data.Cruces[i].Apertura7[a][1] , nroH: hectareas.toFixed(0)};
                             this._store.newItem(myNewItem);  
                             break;
+                        case "Apertura8":
+                            myNewItem = {Ap8: this.config.data[i].filas[a], total: this._data.Cruces[i].Apertura8[a][0], enProd: this._data.Cruces[i].Apertura8[a][1], nt: this._data.Cruces[i].Apertura8[a][2], np: this._data.Cruces[i].Apertura8[a][3], mt: this._data.Cruces[i].Apertura8[a][4], mp: this._data.Cruces[i].Apertura8[a][5], lt: this._data.Cruces[i].Apertura8[a][6], lp: this._data.Cruces[i].Apertura8[a][7], pt: this._data.Cruces[i].Apertura8[a][8], pp: this._data.Cruces[i].Apertura8[a][9], qt: this._data.Cruces[i].Apertura8[a][10], qp: this._data.Cruces[i].Apertura8[a][11]};
+                            this._store.newItem(myNewItem);                                                                                                                                                                                                                                                                                                                                                                           
+                            break;
                         case "Apertura9":
-                            myNewItem = {total: this.config.data[i].filas[a]};
-                            this._store.newItem(myNewItem); 
+                            myNewItem = {Ap9: this.config.data[i].filas[a], t: this._data.Cruces[i].Apertura9[a][0], ep: this._data.Cruces[i].Apertura9[a][1], mat: this._data.Cruces[i].Apertura9[a][2], map: this._data.Cruces[i].Apertura9[a][3], pt: this._data.Cruces[i].Apertura9[a][4], pp: this._data.Cruces[i].Apertura9[a][5], mt: this._data.Cruces[i].Apertura9[a][6], mp: this._data.Cruces[i].Apertura9[a][7], dt: this._data.Cruces[i].Apertura9[a][8], dp: this._data.Cruces[i].Apertura9[a][9], pet: this._data.Cruces[i].Apertura9[a][10], pep: this._data.Cruces[i].Apertura9[a][11], ct: this._data.Cruces[i].Apertura9[a][12], cp: this._data.Cruces[i].Apertura9[a][13], at: this._data.Cruces[i].Apertura9[a][14], ap: this._data.Cruces[i].Apertura9[a][15], ot: this._data.Cruces[i].Apertura9[a][16], op: this._data.Cruces[i].Apertura9[a][17]};
+                            this._store.newItem(myNewItem);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                             break;
                         case "Apertura13":
                            myNewItem = {total: this.config.data[i].filas[a]};
@@ -295,6 +297,7 @@ define([
             }
         },
         _init: function () {
+            
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
