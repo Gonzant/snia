@@ -186,7 +186,7 @@ define([
             on(this._dibujo, "dibujo-complete", lang.hitch(this, this._dibujoComplete));  
             var server = "http://web.renare.gub.uy/arcgis/rest/services/Utilities/Geometry/GeometryServer";
             this._geometryService = new GeometryService(server);
-            this._gpCroquis = new Geoprocessor("http://web.renare.gub.uy/arcgis/rest/services/SNIA/Sica2011/GPServer/Sica2011");
+            this._gpCroquis = new Geoprocessor("https://web.renare.gub.uy/arcgis/rest/services/SNIA/Sica2011/GPServer/Sica2011");
             //Rueda de espera
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");
