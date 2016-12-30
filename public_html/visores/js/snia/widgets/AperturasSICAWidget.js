@@ -198,13 +198,21 @@ define([
                         this._tabla = this._tabla + contenido + tr + "</tr>" + "</table>"; 
                         var data = { items: []  };
                         this._store = new ItemFileWriteStore({data: data});
-                        var layout = [], ap = new Object(), l = [];
+                        var layout = [], ap = new Object(), l = [], l2=[];
                         for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
                             ap = new Object();
                             ap.name =  this.config.data[i].columnas[a];
                             ap.field =  this.config.data[i].columnasField[a];
                             ap.width =  this.config.data[i].columnasW[a];
                             l.push(ap);
+                        }
+                        
+                        for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
+                            ap = new Object();
+                            ap.name =  this.config.data[i].divisiones[a];
+                            ap.field =  this.config.data[i].divisiones[a];
+                            ap.width =  this.config.data[i].divisiones[a];
+                            l2.push(ap);
                         }
                         layout.push(l);
                         this._grid = new DataGrid({
