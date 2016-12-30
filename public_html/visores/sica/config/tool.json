@@ -2,8 +2,8 @@
     "barraHerramientas": [
         {
             "widget": "widgets/SicaWidget1",
-            "title": "Sica",
-            "msgToolTip": "Sica ",
+            "title": "Sica II",
+            "msgToolTip": "Sica II ",
             "icono": "../js/snia/img/sica_gris.png",            
             "toggle": false,
             "widgetConfig": {
@@ -75,9 +75,9 @@
                     },    
                     {"5" : "Apertura7",
                         "apertura": "Apertura7",
-                        "esta":false,
+                        "esta":true,
                         "nombre": "Superficie con bosques artificiales (ha)",
-                        "filas": ["Total", "Menos de 3", "De 3 a 10", "De 11 a 20", "De 21 a 50", "De 51 a 100", "De 101 a 200", "De 201 a 300", "De 301 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "Más de 2.000"],
+                        "filas": ["Menos de 3", "De 3 a 10", "De 11 a 20", "De 21 a 50", "De 51 a 100", "De 101 a 200", "De 201 a 300", "De 301 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "Más de 2.000"],
                         "columnas": ["Apertura 7", "Número", "Porcentaje (%)", "Hectáreas", "Porcentaje (%)"],
                         "columnasField":["Ap7", "nro", "pocN", "hect", "nroH"],
                         "columnasW": ["80px", "80px", "80px"],
@@ -90,7 +90,7 @@
                         "apertura": "Apertura8",
                         "esta":true,
                         "nombre": "Tamaño de plantación de cítricos (Nº de plantas)",
-                        "filas": ["Total", "Menos de 1.000", "De 1.000 a 5.000", "De 5.001 a 10.000", "De 10.001 a 20.000", "De 20.001 a 50.000", "De 50.001 a 100.000", "De 100.001 a 150.000", "De 150.001 a 200.000", "Más de 200.000"],
+                        "filas": ["Menos de 1.000", "De 1.000 a 5.000", "De 5.001 a 10.000", "De 10.001 a 20.000", "De 20.001 a 50.000", "De 50.001 a 100.000", "De 100.001 a 150.000", "De 150.001 a 200.000", "Más de 200.000"],
                         "columnas":["Total", "En producción", "Naranjo (total)", "Naranjo (en producción)", "Mandarino (total)", "Mandarino (en producción)", "Limonero(total)", "Limonero (en producción)", "Pomelo (total)", "Pomelo (en producción)", "Quinotos(total)", "Quinotos (en producción)"],
                         "columnasField":["total", "enProd", "nt", "np", "mt", "mp", "lt", "lp", "pt", "pp", "qt", "qp"],
                         "columnasW": ["90px", "90px", "60px", "60px", "90px", "60px", "90px", "60px", "90px", "90px", "90px", "90px"],
