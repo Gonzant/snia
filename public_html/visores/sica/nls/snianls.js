@@ -91,6 +91,10 @@ define({
             "ContenidosWidget": {
                 bColapsar: "Colapsar",
                 bExpandir: "Expandir"
+            }, 
+            "SicaWidget1":{
+                lbDibujar: "Dibuja área en el mapa", 
+                lbRemoverDibujos: "Remover área/s del mapa"
             }
         }
     })

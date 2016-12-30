@@ -121,7 +121,9 @@ define([
         hide: function () {
             this.set("visible", false);
         },
-        desactive : function () {},
+        desactive : function () {
+            
+        },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
@@ -196,18 +198,22 @@ define([
                             tr = tr + "<td colspan=" + "'" + (this.config.data[i].subDiv[a]) + "'>" + this.config.data[i].divisiones[a] + "</td>";
                         }
                         this._tabla = this._tabla + contenido + tr + "</tr>" + "</table>"; 
-                        var data = {
-                            items: []
-                          };
+                        var data = { items: []  };
                         this._store = new ItemFileWriteStore({data: data});
-                        var layout = [], ap = new Object();  
-                        var l = [];
+                        var layout = [], ap = new Object(), l = [], l2=[];
                         for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
                             ap = new Object();
                             ap.name =  this.config.data[i].columnas[a];
                             ap.field =  this.config.data[i].columnasField[a];
                             ap.width =  this.config.data[i].columnasW[a];
                             l.push(ap);
+                        }                        
+                        for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
+                            ap = new Object();
+                            ap.name =  this.config.data[i].divisiones[a];
+                            ap.field =  this.config.data[i].divisiones[a];
+                            ap.width =  this.config.data[i].divisiones[a];
+                            l2.push(ap);
                         }
                         layout.push(l);
                         this._grid = new DataGrid({
@@ -217,127 +223,71 @@ define([
                         });                      
                         this._div2.innerHTML = titulo + this._tabla + " ";
                         this._grid .placeAt(this._div2);
-                        
+                                              
+                    for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {  
+                        var myNewItem, a, totalNum, num = 0, hectareas = 0, totalHec;
                         switch (this._aperturas[j].nombre) {
-                        case "Apertura1":                       
-                            this._cargarApertura1(i);
+                        case "Apertura1":   
+                            totalNum = this._data.Cruces[i].Apertura1[0][0];
+                            totalHec = this._data.Cruces[i].Apertura1[0][1];
+                            if (totalNum !== 0) { num = this._data.Cruces[i].Apertura1[a][0] * 100 / totalNum; }
+                            if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura1[a][1] * 100 / totalHec; }
+                            myNewItem = {Ap1: this.config.data[i].filas[a], Num: this._data.Cruces[i].Apertura1[a][0], PorcN: num.toFixed(0), Hect:this._data.Cruces[i].Apertura1[a][1] ,PorcH: hectareas.toFixed(0)};
+                            this._store.newItem(myNewItem);   
                             break;
                         case "Apertura2":
-                            this._cargarApertura2(i);
+                            totalHec = this._data.Cruces[i].Apertura2[0];
+                            if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura2[a] * 100 / totalHec; }
+                            myNewItem = {Ap2: this.config.data[i].filas[a], Hect: this._data.Cruces[i].Apertura2[a], Porc:hectareas.toFixed(0)};
+                             this._store.newItem(myNewItem);
                             break;
                         case "Apertura4":
-                            this._cargarApertura4(i);
+                            myNewItem = {Ap4: this.config.data[i].filas[a], ne:this._data.Cruces[i].Apertura4[a][0], se: this._data.Cruces[i].Apertura4[a][1], Total: this._data.Cruces[i].Apertura4[a][2], Toros: this._data.Cruces[i].Apertura4[a][3], VyV :this._data.Cruces[i].Apertura4[a][4] ,Vi: this._data.Cruces[i].Apertura4[a][5], Nov3: this._data.Cruces[i].Apertura4[a][6], Nov2:this._data.Cruces[i].Apertura4[a][7], Nov1:this._data.Cruces[i].Apertura4[a][8], Vaq2:this._data.Cruces[i].Apertura4[a][9], Vaq1:this._data.Cruces[i].Apertura4[a][10], Ter:this._data.Cruces[i].Apertura4[a][11], Buey:this._data.Cruces[i].Apertura4[a][12]};
+                            this._store.newItem(myNewItem); 
                             break;
                         case "Apertura5":
-                            this._cargarApertura5(i);
+                            myNewItem = {Ap5: this.config.data[i].filas[a], ne:this._data.Cruces[i].Apertura5[a][0], se: this._data.Cruces[i].Apertura5[a][1], Total: this._data.Cruces[i].Apertura5[a][2], Carn: this._data.Cruces[i].Apertura5[a][3], OveCria :this._data.Cruces[i].Apertura5[a][4] ,OvCons: this._data.Cruces[i].Apertura5[a][5], Borr2: this._data.Cruces[i].Apertura5[a][6], CordA:this._data.Cruces[i].Apertura5[a][7], CordO:this._data.Cruces[i].Apertura5[a][8], CordM:this._data.Cruces[i].Apertura5[a][9]};
+                            this._store.newItem(myNewItem);  
                             break;
                         case "Apertura6":
-                            this._cargarApertura6(i);
+                            myNewItem = {Ap6: this.config.data[i].filas[a], ne:this._data.Cruces[i].Apertura6[a][0], se: this._data.Cruces[i].Apertura6[a][1], total: this._data.Cruces[i].Apertura6[a][2], vs: this._data.Cruces[i].Apertura6[a][3], vo :this._data.Cruces[i].Apertura6[a][4], tm: this._data.Cruces[i].Apertura6[a][5], pl: this._data.Cruces[i].Apertura6[a][6]};
+                            this._store.newItem(myNewItem);  
                             break;
                         case "Apertura7":
-                            this._cargarApertura7(i);
+                            totalNum = this._data.Cruces[i].Apertura7[0][0];
+                            totalHec = this._data.Cruces[i].Apertura7[0][1];
+                            if (totalNum !== 0) { num = this._data.Cruces[i].Apertura7[a][0] * 100 / totalNum; }
+                            if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura7[a][1] * 100 / totalHec; }
+                            myNewItem = {Ap7: this.config.data[i].filas[a], nro: this._data.Cruces[i].Apertura7[a][0] , pocN: num.toFixed(0), hect:this._data.Cruces[i].Apertura7[a][1] , nroH: hectareas.toFixed(0)};
+                            this._store.newItem(myNewItem);  
                             break;
                         case "Apertura8":
-                            this._cargarApertura8(i);
+                            myNewItem = {Ap8: this.config.data[i].filas[a], total: this._data.Cruces[i].Apertura8[a][0], enProd: this._data.Cruces[i].Apertura8[a][1], nt: this._data.Cruces[i].Apertura8[a][2], np: this._data.Cruces[i].Apertura8[a][3], mt: this._data.Cruces[i].Apertura8[a][4], mp: this._data.Cruces[i].Apertura8[a][5], lt: this._data.Cruces[i].Apertura8[a][6], lp: this._data.Cruces[i].Apertura8[a][7], pt: this._data.Cruces[i].Apertura8[a][8], pp: this._data.Cruces[i].Apertura8[a][9], qt: this._data.Cruces[i].Apertura8[a][10], qp: this._data.Cruces[i].Apertura8[a][11]};
+                            this._store.newItem(myNewItem);                                                                                                                                                                                                                                                                                                                                                                           
                             break;
                         case "Apertura9":
-                            this._cargarApertura9(i);
+                            myNewItem = {Ap9: this.config.data[i].filas[a], tot: this._data.Cruces[i].Apertura9[a][0], ep: this._data.Cruces[i].Apertura9[a][1], mat: this._data.Cruces[i].Apertura9[a][2], map: this._data.Cruces[i].Apertura9[a][3], pt: this._data.Cruces[i].Apertura9[a][4], pp: this._data.Cruces[i].Apertura9[a][5], mt: this._data.Cruces[i].Apertura9[a][6], mp: this._data.Cruces[i].Apertura9[a][7], dt: this._data.Cruces[i].Apertura9[a][8], dp: this._data.Cruces[i].Apertura9[a][9], pet: this._data.Cruces[i].Apertura9[a][10], pep: this._data.Cruces[i].Apertura9[a][11], ct: this._data.Cruces[i].Apertura9[a][12], cp: this._data.Cruces[i].Apertura9[a][13], at: this._data.Cruces[i].Apertura9[a][14], ap: this._data.Cruces[i].Apertura9[a][15], ot: this._data.Cruces[i].Apertura9[a][16], op: this._data.Cruces[i].Apertura9[a][17]};
+                            this._store.newItem(myNewItem);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                             break;
                         case "Apertura13":
-                            this._cargarApertura13(i);
+                           myNewItem = {Ap13: this.config.data[i].filas[a], t: this._data.Cruces[i].Apertura13[a][0], mez: this._data.Cruces[i].Apertura13[a][1], al: this._data.Cruces[i].Apertura13[a][2], lc: this._data.Cruces[i].Apertura13[a][3], fes: this._data.Cruces[i].Apertura13[a][4], op: this._data.Cruces[i].Apertura13[a][5]}; 
+                           this._store.newItem(myNewItem);
                             break;
                         case "Apertura14":
-                            this._cargarApertura14(i);
+                            myNewItem = {total: this.config.data[i].filas[a]};
+                            this._store.newItem(myNewItem);  
+                            break;
+                        case "Apertura18":
+                            myNewItem = {total: this.config.data[i].filas[a]};
+                            this._store.newItem(myNewItem);  
                             break;
                         }
+                    }
                         complete = true;
                         this._grid.startup();
                     }
                 }
             }            
-        },
-        _cargarApertura1 : function (i) {
-            var myNewItem, a, totalNum = this._data.Cruces[i].Apertura1[0][0], num = 0, hectareas = 0, totalHec = this._data.Cruces[i].Apertura1[0][1];
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                if (totalNum !== 0) { num = this._data.Cruces[i].Apertura1[a][0] * 100 / totalNum; }
-                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura1[a][1] * 100 / totalHec; }
-                myNewItem = {Ap1: this.config.data[i].filas[a], Num: this._data.Cruces[i].Apertura1[a][0], PorcN: num.toFixed(0), Hect:this._data.Cruces[i].Apertura1[a][1] ,PorcH: hectareas.toFixed(0)};
-                this._store.newItem(myNewItem);              
-            }           
-        },
-        _cargarApertura2 : function (i) {
-            var a, hectareas = 0, totalHec = this._data.Cruces[i].Apertura2[0], myNewItem;;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura2[a] * 100 / totalHec; }
-                myNewItem = {Ap2: this.config.data[i].filas[a], Hect: this._data.Cruces[i].Apertura2[a], Porc:hectareas.toFixed(0)};
-                 this._store.newItem(myNewItem); 
-            }
-        },
-        _cargarApertura4 : function (i) {
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {Ap4: this.config.data[i].filas[a], ne:this._data.Cruces[i].Apertura4[a][0], se: this._data.Cruces[i].Apertura4[a][1], Total: this._data.Cruces[i].Apertura4[a][2], Toros: this._data.Cruces[i].Apertura4[a][3], VyV :this._data.Cruces[i].Apertura4[a][4] ,Vi: this._data.Cruces[i].Apertura4[a][5], Nov3: this._data.Cruces[i].Apertura4[a][6], Nov2:this._data.Cruces[i].Apertura4[a][7], Nov1:this._data.Cruces[i].Apertura4[a][8], Vaq2:this._data.Cruces[i].Apertura4[a][9], Vaq1:this._data.Cruces[i].Apertura4[a][10], Ter:this._data.Cruces[i].Apertura4[a][11], Buey:this._data.Cruces[i].Apertura4[a][12]};
-                this._store.newItem(myNewItem);  
-            }            
-        },
-        _cargarApertura5 : function (i) {
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {Ap5: this.config.data[i].filas[a], ne:this._data.Cruces[i].Apertura5[a][0], se: this._data.Cruces[i].Apertura5[a][1], Total: this._data.Cruces[i].Apertura5[a][2], Carn: this._data.Cruces[i].Apertura5[a][3], OveCria :this._data.Cruces[i].Apertura5[a][4] ,OvCons: this._data.Cruces[i].Apertura5[a][5], Borr2: this._data.Cruces[i].Apertura5[a][6], CordA:this._data.Cruces[i].Apertura5[a][7], CordO:this._data.Cruces[i].Apertura5[a][8], CordM:this._data.Cruces[i].Apertura5[a][9]};
-                this._store.newItem(myNewItem);  
-            }
-        },
-        _cargarApertura6 : function (i) {
-           var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {Ap6: this.config.data[i].filas[a], ne:this._data.Cruces[i].Apertura6[a][0], se: this._data.Cruces[i].Apertura6[a][1], total: this._data.Cruces[i].Apertura6[a][2], vs: this._data.Cruces[i].Apertura6[a][3], vo :this._data.Cruces[i].Apertura6[a][4], tm: this._data.Cruces[i].Apertura6[a][5], pl: this._data.Cruces[i].Apertura6[a][6]};
-                this._store.newItem(myNewItem);  
-            }                                                                                                                                                                                                                                                                                           
-        },
-        _cargarApertura7 : function (i) {
-            var a, myNewItem, totalNum = this._data.Cruces[i].Apertura7[0][0], num = 0, hectareas = 0, totalHec = this._data.Cruces[i].Apertura7[0][1];
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-//                if (totalNum !== 0) { num = this._data.Cruces[i].Apertura7[a][0] * 100 / totalNum; }
-//                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura7[a][1] * 100 / totalHec; }
-//                tr = tr + "<tr><td>" + this.config.data[i].filas[a] + "</td><td>" + this._data.Cruces[i].Apertura7[a][0] + "</td><td>" + num.toFixed(0) + "</td><td>" + this._data.Cruces[i].Apertura7[a][1] + "</td><td>" + hectareas.toFixed(0) + "</td></tr>";
-                myNewItem = {Ap7: this.config.data[i].filas[a], nro:this._data.Cruces[i].Apertura7[a][0] };
-                this._store.newItem(myNewItem);    
-            }//"Ap7", "nro", "pocN", "hect", "nroH"],
-        },
-        _cargarApertura8 : function (i){
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {total: this.config.data[i].filas[a]};
-                this._store.newItem(myNewItem);  
-            }              
-        },
-        _cargarApertura9 : function (i){
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {total: this.config.data[i].filas[a]};
-                this._store.newItem(myNewItem);  
-            }  
-        },
-        _cargarApertura13 : function (i){
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {total: this.config.data[i].filas[a]};
-                this._store.newItem(myNewItem);  
-            }             
-        },
-        _cargarApertura14 : function (i){
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {total: this.config.data[i].filas[a]};
-                this._store.newItem(myNewItem);  
-            } 
-        },
-        _cargarApertura18 : function (i){
-            var a, myNewItem;
-            for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
-                myNewItem = {total: this.config.data[i].filas[a]};
-                this._store.newItem(myNewItem);  
-            } 
         },
         _visible: function () {
             if (this.get("visible")) {
@@ -347,6 +297,7 @@ define([
             }
         },
         _init: function () {
+            
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
