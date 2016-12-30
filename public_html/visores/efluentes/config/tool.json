@@ -82,7 +82,7 @@
         },
         {
             "widget": "widgets/RiesgoWidget",
-            "title": "Riesgo ambiental de tambos",
+            "title": "Determinación del Riesgo Ambiental",
             "msgToolTip": "Calcula el riesgo ambiental de tambos en un área de generación y gestión de efluentes.",
             "icono": "../js/snia/img/calculoRiesgoTambo_gris.png",
             "toggle": false,
@@ -103,6 +103,7 @@
                         "gris":"#707070"
                     }                    
                 },
+                "definicionAGGEyoE" : "*AGGEy/oE: “Área de Generación y Gestión de Efluentes y/o Estiércol”. Comprende todos los puntos de generación de efluente liquido/solido (sala de ordeñe y áreas aledañas, patio/s de alimentación), el área donde se ubica el sistema de gestión de efluentes, y el área de disposición final del efluente liquido / sólidos.",
                 "riesgoPredial": "Riesgo Predial",
                 "riesgoGeo": "Riesgo Geográfico",
                 "riesgoAmbiental": "Riesgo Ambiental",
