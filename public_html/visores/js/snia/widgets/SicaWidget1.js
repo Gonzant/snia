@@ -164,8 +164,7 @@ define([
                 connectId: [this._eliminarArea.domNode],
                 position: ['below'],
                 label: this._i18n.widgets.SicaWidget1.lbRemoverDibujos
-            });
-                        
+            });                      
             
             this._aperturasSeleccionadas=[];
             this._visible();
