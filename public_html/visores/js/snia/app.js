@@ -124,6 +124,19 @@ snia.app = {
                 },
                 baseMapLayer: new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayer.url)
             }, "divMapa");
+            
+            //Configurar mapa base de backup si existe
+            if (mapaConfig.mapa.baseMapLayerBackup){
+                mapa.setMapaBaseBackup(
+                    { 
+                        slider: false,
+                        logo: false,
+                        extent: new Extent(mapaConfig.mapa.baseMapLayerBackup.extent)
+                    },
+                    new ArcGISTiledMapServiceLayer(mapaConfig.mapa.baseMapLayerBackup.url)
+                );
+            }
+            
             //tool
             toolConfig = JSON.parse(toolConfigJSON);
             on(mapa, "load", function () {

@@ -10,7 +10,7 @@
                 "mapasBase": [
                     {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
                     {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
-					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
+                    {"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
         },
