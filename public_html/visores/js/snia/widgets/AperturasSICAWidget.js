@@ -180,10 +180,11 @@ define([
         },
         _treeClick : function (item) {
             var titulo, complete = false, i, j, tr, a, layout = [], data = { items: []  }, myNewItem, a, totalNum, num = 0, hectareas = 0, totalHec;;
-            this._cpDerSC.domNode.innerHTML = "<div data-dojo-type=\"dijit/layout/BorderContainer\" style=\"background: transparent; border: transparent\" data-dojo-attach-point=\"_cpDerSC\"><div style=\"background: transparent; border: transparent\" data-dojo-attach-point=\"_divTitulo\"></div></div>";
+            
             titulo = "<p class= \"Titulo1\">" + item.name + "</p>";
             this._grid = " ";
-//            //this._data - el json que me pasa Fabi
+            
+             //this._data - el json que me pasa Fabi
 //            // this._aperturas  - mi json con lo que tengo buscar en el data
             for (i = 0; i < this._data.Cruces.length; i = i + 1) {
                 for (j = 0; j < this._aperturas.length; j = j + 1) {
@@ -199,12 +200,17 @@ define([
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
                             layout[1].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
                         }
+                        
+                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "</div> ";
+                        
+                        this._cpDerSC.domNode.innerHTML = "<div data-dojo-type=\"dijit/layout/BorderContainer\" style=\"background: transparent; border: transparent\" data-dojo-attach-point=\"_cpDerSC\"><div style=\"background: transparent; border: transparent\" data-dojo-attach-point=\"_divTitulo\"> " + titulo + this._tabla +" </div></div>";
+//           
                         this._grid = new DataGrid({
                             store: this._store,
                             structure: layout,
                             rowSelector: '20px'
                         });
-                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "</div> ";
+                       
                         this._grid.placeAt(this._cpDerSC);
                         for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
@@ -255,11 +261,15 @@ define([
                                 this._store.newItem(myNewItem);
                                 break;
                             case "Apertura14":
-                                myNewItem = {Ap14: this.config.data[i].filas[a], total: this._data.Cruces[i].Apertura14[a][0], mez: this._data.Cruces[i].Apertura14[a][1], tb: this._data.Cruces[i].Apertura14[a][2], lr: this._data.Cruces[i].Apertura14[a][3], lm: this._data.Cruces[i].Apertura14[a][4], op: this._data.Cruces[i].Apertura14[a][5]};
+                                myNewItem = {Ap14: this.config.data[i].filas[a], Total: this._data.Cruces[i].Apertura14[a][0], mez: this._data.Cruces[i].Apertura14[a][1], tb: this._data.Cruces[i].Apertura14[a][2], lr: this._data.Cruces[i].Apertura14[a][3], lm: this._data.Cruces[i].Apertura14[a][4], op: this._data.Cruces[i].Apertura14[a][5]};
                                 this._store.newItem(myNewItem);
                                 break;
                             case "Apertura18":
-                                myNewItem = {total: this.config.data[i].filas[a]};
+                                totalNum = this._data.Cruces[i].Apertura18[0][0];
+                                totalHec = this._data.Cruces[i].Apertura18[0][1];
+                                if (totalNum !== 0) { num = this._data.Cruces[i].Apertura18[a][0] * 100 / totalNum; }
+                                if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura18[a][1] * 100 / totalHec; }
+                                myNewItem = {Ap18: this.config.data[i].filas[a], nro: this._data.Cruces[i].Apertura18[a][0], porcN: num.toFixed(0), hec: this._data.Cruces[i].Apertura18[a][1], porcH: hectareas.toFixed(0)};
                                 this._store.newItem(myNewItem);
                                 break;
                             }
