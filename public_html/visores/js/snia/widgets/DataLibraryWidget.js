@@ -14,12 +14,14 @@ define([
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class", "dojo/dom-style",
     "esri/map",
+    "dijit/form/DateTextBox","dojo/parser",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     'esri/geometry/Extent',
     "esri/layers/WMSLayer",
+    "esri/config",
     'esri/layers/WMSLayerInfo',
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
@@ -27,8 +29,8 @@ define([
     "dojo/domReady!",
     "dojox/layout/ScrollPane"
 ], function (on,
-    Evented, declare, lang,  template, i18n, domClass, domStyle, Map,  
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, Extent, WMSLayer,WMSLayerInfo) {
+    Evented, declare, lang,  template, i18n, domClass, domStyle, Map,  DateTextBox,parser,
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, Extent, WMSLayer,esriConfig,WMSLayerInfo) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -132,12 +134,23 @@ define([
         },
  
         _calendarClick: function () {
+            
+            
 //            arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
 //                item._rootLayerNode.expand();
 //            }));
         },
 
         _loadWMS: function () {           
+            
+            this._selectedDate = new DateTextBox({
+                type:"text",
+                value: "2016-12-31",
+                name:"oooo",                        
+                onChange: lang.hitch(this, function (state) {
+                   lang.hitch(this, this._setYearTimeSlider(state));
+               }),
+           }, this._chosenDate);
 //        var layer1 = new WMSLayerInfo({
 //            name: 'x',
 //            title: 'x'
@@ -154,9 +167,27 @@ define([
 //            resourceInfo: resourceInfo,
 //            visibleLayers: [0],
 //            id:"data library"
-//          });
-//        this.mapa.mapLayers.push(wmsLayer);
-//        this.mapa.map.addLayer(wmsLayer);
+//          }); 
+//    this.mapa.map._layers["data library"].url="http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/X/Y/fig-/colors/-fig/wms.xml";
+//    this.mapa.map._layers["data library"]._url.path="http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/X/Y/fig-/colors/-fig/wms.xml";
+//    this.mapa.map._layers["data library"].getMapURL ="http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/X/Y/fig-/colors/-fig/wmsfigmap";
+//    this.mapa.map._layers["data library"]._getCapabilitiesURL="http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/X/Y/fig-/colors/-fig/wms.xml"; 
+//    
+     // this.mapa.map._layers["data library"].visibleLayers =1;
+//    this.mapa.map._layers["data library"].setDisableClientCaching=true;
+//    this.mapa.map._layers["data library"].refreshInterval = .1;//refresh();
+    
+    
+// this.mapa.map.removeLayer(this.mapa.map._layers["data library"]);
+//        var wmsLayer = new WMSLayer("http://dlibrary.snia.gub.uy/SOURCES/.NOAA/.NCEP/.CPC/.CMORPH/.V1temp/.RAW/.daily/.prcp/VALUE/X/Y/fig-/colors/-fig/wms.xml", {
+//            format: "gif",
+//            opacity: 0.9,
+//            visibleLayers: [0],
+//            id:"data library"
+//          }); 
+//           esriConfig.defaults.io.corsEnabledServers.push("http://dlibrary.snia.gub.uy");
+//           // this.mapLayers.splice(1, 0, wmsLayer);
+//            this.mapa.map.addLayer(wmsLayer);
         }
     });
     return widget;

@@ -42,13 +42,14 @@
                 }
             },
             {
-                "url": "http://dlibrary.snia.gub.uy/SOURCES/.NOAA/.NCEP/.CPC/.CMORPH/.V1temp/.RAW/.daily/.prcp/T/378.5/VALUE/X/Y/fig-/colors/-fig/wms.xml",
+                "url": "http://dlibrary.snia.gub.uy/SOURCES/.IRI/.DSI_scaled/.DSI/X/Y/fig-/colors/-fig/wms.xml",
                 "wms": true,
                 "options": {
                         "id": "data library",
                         "visibleLayers": [0],
                         "opacity": 0.7,
                         "format": "gif",
+                        "disableClientCaching": true,
                         "visible": false
                 }
             }   
