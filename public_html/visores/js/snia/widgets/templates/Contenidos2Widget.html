@@ -14,9 +14,41 @@
                     class="SmallButtonTransparentAmarillo" > 
                 <img src = "../js/snia/img/download.png" class="iconDownload" >
             </button> 
+            <button  data-dojo-type="dijit/form/Button" 
+                    class="SmallButtonTransparentAmarillo" onClick="agregarCapaDialog.show();" > Agregar Capa
+            </button> 
         </div>
     </div>
     <br><br>
     <div data-dojo-attach-point="tocDiv" class="agsjsTOCRootLayerLabel2 ContenidosTree" style="width:200px; max-height: 400px; overflow: auto;"></div> 
     <br>
+    <div data-dojo-type="dijit/Dialog" data-dojo-id="agregarCapaDialog" title="Agregar Capa">
+       <table class="dijitDialogPaneContentArea">
+           <tr>
+               <td><label for="name">Nombre:</label></td>
+               <td><input data-dojo-type="dijit/form/TextBox" name="nombreCapa" data-dojo-attach-point="_nombreCapa"></td>
+           </tr>
+           <tr>
+               <td><label for="address">URL:</label></td>
+               <td><input data-dojo-type="dijit/form/TextBox" name="urlCapa" data-dojo-attach-point="_urlCapa"></td>
+           </tr>
+           <tr>
+               <td><label for="address">Formato:</label></td>
+               <td>
+                    <select data-dojo-type="dijit/form/ComboBox" name="formatoCapa" data-dojo-attach-point="_formatoCapa">
+                    <option>ArcGIS</option>
+                    <option>WMS</option>
+                    </select>
+               </td>
+           </tr>
+       </table>
+
+       <div class="dijitDialogPaneActionBar">
+           <button data-dojo-type="dijit/form/Button" type="submit" data-dojo-attach-point="_agregarCapaNode" id="ok">OK</button>
+           <button data-dojo-type="dijit/form/Button" type="button" data-dojo-props="onClick:function(){agregarCapaDialog.hide();}"
+                   id="cancel">Cancel</button>
+       </div>
+   </div>
 </div>
+
+

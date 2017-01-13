@@ -84,6 +84,7 @@ define([
             this.own(
                 on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
                 on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
+                on(this._agregarCapaNode, a11yclick, lang.hitch(this, this._agregarCapaClick)),
                 on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
             );
         },
@@ -167,6 +168,18 @@ define([
         },
         _expandirClick: function () {
             this._toc.expandirClick();
+        },
+        _agregarCapaClick: function () {
+            var dataLayer = {
+                url: this._urlCapa.value, //"http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Vulnerabilidad/MapServer",
+                wms: (this._formatoCapa.value === "WMS"),
+                options: {
+                        id: this._nombreCapa.value || "undefined",
+                        opacity: 0.7,
+                        visible: false
+                    }
+                };
+            this._toc.agregarCapa(dataLayer);
         },
         _descargarClick: function () {
             var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray, token;

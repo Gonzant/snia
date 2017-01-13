@@ -17,6 +17,9 @@ define([
     "dijit/Tooltip",
     "dijit/form/HorizontalSlider",
     "dijit/form/CheckBox",
+    "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/config",
+    "esri/layers/WMSLayer",
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
@@ -24,7 +27,8 @@ define([
 ], function (on, Evented, declare, lang, arrayUtil,
      domClass, domStyle,
      Memory, Tree, ObjectStoreModel,
-     Tooltip, HorizontalSlider, CheckBox, scaleUtils, Geoprocessor,
+     Tooltip, HorizontalSlider, CheckBox, 
+     ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
@@ -476,6 +480,24 @@ define([
             arrayUtil.forEach(nodes, function (node) {
                 this._tree._expandNode(node);
             }, this);
+        },
+        agregarCapa: function (dataLayer) {
+            var l;
+            if (dataLayer.wms) {
+                esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
+                l = new WMSLayer(dataLayer.url, dataLayer.options);
+            } else {
+                l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+            }
+            if (l) {
+                this.mapa.agregarCapa(l);
+                if (l.loaded) {
+                    this._generarNodoSimple(l, dataLayer);
+                } else {
+                    l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
+                }
+                this.refreshTree();
+            }
         }
  
     });
