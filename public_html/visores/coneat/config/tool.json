@@ -22,9 +22,10 @@
             "toggle": false,
             "startsOpen": true,
             "draggable": false,
+            
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
-                "dynamicMapServiceLayers": []
+                "botonAgregarCapa": true
             }
         },
         {
