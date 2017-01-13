@@ -59,11 +59,13 @@ define([
             this.watch("visible", this._visible);
             this.watch("baseMapLayer", this._baseMapLayerChanged);
             this.watch("dibujoEnable", this._dibujoEnabledChanged);
+            this.watch("map", this._mapUpdateImg);
             // classes
             this._css = { };
         },
         postCreate: function () {
             this.inherited(arguments);
+            this._standbyTOC = dom.byId("loadingImg");
             this.set("map", new Map(this._mapNode, this.mapOptions));
             if (this.baseMapLayer) {
                 this.map.addLayer(this.baseMapLayer);
@@ -145,6 +147,17 @@ define([
                 this._restartup();
             }
         },
+        setMapaBaseBackup: function (mapOptionsBackup, baseMapLayerBackup) {
+            //Manejador para el evento de error en mapa base
+            on(this.baseMapLayer, 'error', lang.hitch(this, function () {
+                //Si falla al cargar el mapa base intenta con el de backup
+                this.map.destroy();
+                this.set("mapOptions", mapOptionsBackup);
+                this.set("baseMapLayer", baseMapLayerBackup);
+                this.postCreate();
+                this.startup();
+            }));            
+        },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
@@ -169,15 +182,7 @@ define([
                 map: this.map,
                 scalebarUnit: "metric"
             });
-            //Rueda de espera 
-            //No se usa el objeto Standby para que no bloquee al usuario mientras espera
-            this._standbyTOC = dom.byId("loadingImg");
-            on(this.map, 'update-start', lang.hitch(this,  function () {
-                domStyle.set(this._standbyTOC, "display", "block");
-            }));
-            on(this.map, 'update-end', lang.hitch(this, function () {
-                domStyle.set(this._standbyTOC, "display", "none");
-            }));
+            this._mapUpdateImg();
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-change", this.dibujoEnable);
@@ -247,6 +252,16 @@ define([
                     this._reinit();
                 }));
             }
+        },
+        _mapUpdateImg: function(){
+            //Rueda de espera 
+            //No se usa el objeto Standby para que no bloquee al usuario mientras espera
+            on(this.map, 'update-start',lang.hitch(this,  function () {
+                domStyle.set(this._standbyTOC, "display", "block");
+            }));
+            on(this.map, 'update-end', lang.hitch(this, function () { 
+                domStyle.set(this._standbyTOC, "display", "none");
+            }));
         }
     });
     return widget;

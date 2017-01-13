@@ -32,7 +32,7 @@ define([
             mapa : null,
             mapaConfigJSON: null,
             config: {
-                "proxyWMS2JSON": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/gpXMLToJSON/GPServer"
+                "proxyXML2JSON": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/gpXMLToJSON/GPServer/XmlToJSON"
             }
         },
         //publico
@@ -44,6 +44,7 @@ define([
             this._tree = false;
             this.mapa = defaults.mapa;
             this.mapaConfigJSON = defaults.mapaConfigJSON;
+            this.proxyXML2JSON = defaults.config.proxyXML2JSON;
             on(this.mapa, 'reload', lang.hitch(this, function () {
                 on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
             }));
@@ -71,6 +72,62 @@ define([
         _init: function () {
             this._generarData();
             this._crearTree();
+        },
+        _executeGP: function (url){
+            this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);
+            this._gpURL = url;
+            var params = {"UrlXMl":url};
+            this._gpXMLInfo.submitJob(params, lang.hitch(this, this._completeCallback), this._statusCallback);
+        },
+        _statusCallback:  function (jobInfo){
+            console.log(jobInfo.jobStatus);
+        },
+        _completeCallback: function (jobInfo) {
+            this._gpXMLInfo.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, function(json){
+                this._setScalesMinMax(json);
+                //VER CUADERNO
+                //Tengo que hacer un foreach sobre this.tree para encontrar la misma url del geoproceso
+                //y agregarle scaleMax y scaleMin. 
+                //Tengo que ver como hago para manejar que no sé si esto se ejecuta antes o después 
+                //que el código que genera las sub capas wms 
+            }));
+            this.refreshTree();
+        },
+        _setScalesMinMax: function (json) {
+          //do something with the results
+          //alert(jobInfo);
+            var children = this._tree.rootNode.getChildren(), r;
+            arrayUtil.forEach(children, function (tl) {
+                var ch = tl.getChildren(tl);
+                if (tl.item.wms && tl.item.url === this._gpURL) {
+                      var ch = tl.getChildren();
+                      r = this._getScaleMinMaxFromJson(json);
+                      arrayUtil.forEach(r, function (l, i) {
+                          if (i === 0){
+                                if (l.MaxScaleDenominator) tl.item.MaxScale = l.MaxScaleDenominator;
+                                if (l.MinScaleDenominator) tl.item.MinScale = l.MinScaleDenominator;  
+                          } else if (l.Title ===  ch[i-1].item.title){
+                                if (l.MaxScaleDenominator) ch[i-1].item.MaxScale = l.MaxScaleDenominator;
+                                if (l.MinScaleDenominator) ch[i-1].item.MinScale = l.MinScaleDenominator;                                
+                          }
+                      }, this);
+                }
+            }, this);
+        },
+        _getScaleMinMaxFromJson: function (json) {
+            var layer = json.value.WMS_Capabilities.Capability.Layer, r = [], i = 1;
+                r[0] = {};
+                r[0].MaxScaleDenominator = layer.MaxScaleDenominator;
+                r[0].MinScaleDenominator = layer.MinScaleDenominator;
+                arrayUtil.forEach(layer.Layer, function (l) {
+                    r[i] = {};
+                    r[i].Title = l.Title;
+                    r[i].Name = l.Name;
+                    r[i].MaxScaleDenominator = l.MaxScaleDenominator;
+                    r[i].MinScaleDenominator = l.MinScaleDenominator;
+                    i++;
+                });
+            return r;
         },
         _crearTree: function () {
             var myStore, myModel;
@@ -108,7 +165,7 @@ define([
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
         _generarNodoSimple: function (l, dataLayer) {
-            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity });
+            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
             //Procesar subcapas
             if (dataLayer.wms) { // Si es WMS
                 this._generarSubcapasWMS(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
@@ -162,10 +219,11 @@ define([
                     this._data.push({ id: "prueba", name: "", type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
                 }
                 //
-//
-//this._getLegendWMS(li.legendURL);
+                //
+                //this._getLegendWMS(li.legendURL);
                 //this._borrarGruposDeVisibleLayers(l, li);
             }, this);
+            //this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip, i;
@@ -410,6 +468,7 @@ define([
         },
         colapsarClick: function () {
             this._tree.collapseAll();
+            // this._executeGP("http://web.renare.gub.uy/arcgis/services/SNIA/Administrativo/MapServer/WMSServer?request=GetCapabilities&service=WMS"); 
         },
         expandirClick: function () {
             //Expando todos los hijos de root para no abrir las leyendas

@@ -91,6 +91,12 @@ define([
                     
                     //Cargo el mapa base para el boton
                     item.map = new ArcGISTiledMapServiceLayer(this._mapasBase[index].url);
+                    //Guardo el boton
+                    this._mapasBase[index].boton = boton;
+                    //Listener para remover el boton si el mapa falla
+                    on(item.map, 'error', lang.hitch(this, function () {
+                        this._mapasBase[index].boton.destroy();
+                    })); 
                     //Listener para click en el boton    
                     this.own(on(boton, a11yclick, lang.hitch(this, function () {
                         boton.set('visible', false);
