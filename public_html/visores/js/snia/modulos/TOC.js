@@ -77,7 +77,7 @@ define([
             this._generarData();
             this._crearTree();
         },
-        _executeGP: function (url){
+        _executeGP: function (url) {
             this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);
             this._gpURL = url;
             var params = {"UrlXMl":url};
@@ -87,7 +87,7 @@ define([
             console.log(jobInfo.jobStatus);
         },
         _completeCallback: function (jobInfo) {
-            this._gpXMLInfo.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, function(json){
+            this._gpXMLInfo.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, function (json) {
                 this._setScalesMinMax(json);
                 //VER CUADERNO
                 //Tengo que hacer un foreach sobre this.tree para encontrar la misma url del geoproceso
@@ -100,7 +100,7 @@ define([
         _setScalesMinMax: function (json) {
           //do something with the results
           //alert(jobInfo);
-            var children = this._tree.rootNode.getChildren(), r;
+           /* var children = this._tree.rootNode.getChildren(), r;
             arrayUtil.forEach(children, function (tl) {
                 var ch = tl.getChildren(tl);
                 if (tl.item.wms && tl.item.url === this._gpURL) {
@@ -116,19 +116,43 @@ define([
                           }
                       }, this);
                 }
+            }, this);*/
+           var sid, r;
+            r = this._getScaleMinMaxFromJson(json);
+            arrayUtil.forEach(this._data, function (tl) {
+                if (tl.wms && tl.url === this._gpURL) {
+                    sid = tl.id;
+                    //if (r.MaxScaleDenominator) { tl.MaxScale = 1,058267716535966 * r.MaxScaleDenominator; }
+                    //if (r.MinScaleDenominator) { tl.MinScale = 1,058267716535966 * r.MinScaleDenominator; }
+                }
+          }, this);
+            arrayUtil.forEach(this._data, function (tl) {
+                if (tl.parent === sid) {
+                    if (r[tl.id]) {
+                          if (r[tl.id].MaxScaleDenominator) {
+                              var values = r[tl.id].MaxScaleDenominator.split("."),
+                                v1 = parseFloat(values[0]),
+                                v2 = parseFloat(values[1]);
+                              
+                             // tl.MaxScale = (v1+(v2*0.1) * 1,058267716535966);
+                          }
+                          if (r[tl.id].MinScaleDenominator) {
+                             r[tl.id].MinScaleDenominator.replace(".", ","); 
+                             // tl.MinScale = r[tl.id].MinScaleDenominator * 1,058267716535966;
+                          }
+                          
+                      }
+                  }
             }, this);
         },
         _getScaleMinMaxFromJson: function (json) {
-            var layer = json.value.WMS_Capabilities.Capability.Layer, r = [], i = 1;
-                r[0] = {};
-                r[0].MaxScaleDenominator = layer.MaxScaleDenominator;
-                r[0].MinScaleDenominator = layer.MinScaleDenominator;
+            var layer = json.value.WMS_Capabilities.Capability.Layer, r = [], i = 1;      
+                //r.MaxScaleDenominator = layer.MaxScaleDenominator;
+                //r.MinScaleDenominator = layer.MinScaleDenominator;
                 arrayUtil.forEach(layer.Layer, function (l) {
-                    r[i] = {};
-                    r[i].Title = l.Title;
-                    r[i].Name = l.Name;
-                    r[i].MaxScaleDenominator = l.MaxScaleDenominator;
-                    r[i].MinScaleDenominator = l.MinScaleDenominator;
+                    r[l.Title] = {};
+                    r[l.Title].MaxScaleDenominator = l.MaxScaleDenominator;
+                    r[l.Title].MinScaleDenominator = l.MinScaleDenominator;
                     i++;
                 });
             return r;
@@ -268,7 +292,7 @@ define([
             arrayUtil.forEach(dynLayers, function (dataLayer) {
                 if (dataLayer.url) { //Nodo a partir de un map service
                     l = this.mapa.map.getLayer(dataLayer.options.id);
-                    if (l !== null) {
+                    if ((typeof l !== 'undefined') && (l !== null)) {
                         l.on("visibility-change", lang.hitch(this, this._adjustVisibility));
                         if (l.loaded) {
                             this._generarNodoSimple(l, dataLayer);
@@ -473,7 +497,6 @@ define([
         },
         colapsarClick: function () {
             this._tree.collapseAll();
-            // this._executeGP("http://web.renare.gub.uy/arcgis/services/SNIA/Administrativo/MapServer/WMSServer?request=GetCapabilities&service=WMS"); 
         },
         expandirClick: function () {
             //Expando todos los hijos de root para no abrir las leyendas
