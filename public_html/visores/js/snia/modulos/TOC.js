@@ -193,9 +193,9 @@ define([
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
         _generarNodoSimple: function (l, dataLayer) {
-            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
+            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
             //Procesar subcapas
-            if (dataLayer.wms) { // Si es WMS
+            if (dataLayer.wms || dataLayer.wfs) { // Si es WMS
                 this._generarSubcapasWMS(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
             } else {
                 this._generarSubcapasArcgis(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
@@ -204,7 +204,7 @@ define([
 
         },
         _generarSubcapasNodoMultiple: function (l, dataLayer, dataLayer1) {
-            if (dataLayer1.wms) {
+            if (dataLayer1.wms || dataLayer.wfs) {
                 this._generarSubcapasWMS(l, dataLayer1, dataLayer.options.id, l.id);
             } else {
                 this._generarSubcapasArcgis(l, dataLayer1, dataLayer.options.id,  l.id);
@@ -446,7 +446,7 @@ define([
             arrayUtil.forEach(nodes, function (node) {
                 if (!item || !item.id || (item.id && node.item.id === item.id)) {
                     var nodeOutScale;
-                    if (node.item.wms) {
+                    if (node.item.wms || node.item.wfs) {
                         l = this.mapa.map.getLayer(node.item.id);
                         nodeOutScale = !l.visibleAtMapScale;
                     } else {
@@ -510,6 +510,9 @@ define([
             if (dataLayer.wms) {
                 esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                 l = new WMSLayer(dataLayer.url, dataLayer.options);
+            } else if (dataLayer.wfs) {
+                esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
+                l = new WFSLayer(dataLayer.url, dataLayer.options);
             } else {
                 l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
             }

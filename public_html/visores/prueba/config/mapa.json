@@ -73,7 +73,7 @@
             {
                 "url": "http://www.dinama.gub.uy/geoserver/u19600217/wms?SERVICE=WMS&REQUEST=GetCapabilities",
                 "options": {
-                        "id": "WMSDinama",
+                        "id": "WFSDinama",
                         "opacity": 0.7,
                         "visible": false
                 },
