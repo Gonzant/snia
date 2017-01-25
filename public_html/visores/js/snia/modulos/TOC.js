@@ -254,7 +254,7 @@ define([
             //this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip, i;
+            var sublayerTooltip, i, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) { 
                 var tParent = parent;
@@ -271,6 +271,18 @@ define([
                     this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
+                if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility ) { 
+                    //ocultarla si por defecto esta visbile pero no se incluye en la lista
+                    li.defaultVisibility = false;
+                    visibleLayers = [];
+                    arrayUtil.forEach(l.visibleLayers, function (laux) {
+                        if (parseInt(laux) !== parseInt(li.id) && laux !== "") {
+                            visibleLayers.push(parseInt(laux));
+                        }
+                    }, this);
+                    l.setVisibleLayers(visibleLayers);
+                }
+                
             }, this);
         },
         _borrarGruposDeVisibleLayers: function (l, li){

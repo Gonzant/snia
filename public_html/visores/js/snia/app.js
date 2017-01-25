@@ -57,7 +57,7 @@ snia.app = {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
                             l.on("error", function (e) {
-                                alert(e.error.message);
+                                console.log(e.error.message);
                             });                            
                         } else if (dataLayer.wfs) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
