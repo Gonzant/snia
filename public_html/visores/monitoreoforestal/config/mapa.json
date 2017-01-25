@@ -73,6 +73,18 @@
                 "layers":[0]
             },
             {
+                "url": "http://dlibrary.snia.gub.uy/SOURCES/.IRI/.DSI_scaled/.DSI/X/Y/fig-/colors/-fig/wms.xml",
+                "options": {
+                        "id": "DSI",
+                        "opacity": 0.7,
+                        "format": "gif",
+                        "disableClientCaching": true,
+                        "visible": false
+                },
+                
+                "wms": true
+            },     
+            {
                 "url": "http://geoserver.snia.gub.uy/geoserver/cite/wms?service=WMS&version=1.1.0&request=GetCapabilities",
                 "options": {
                         "id": "WMSPrueba",
