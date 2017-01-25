@@ -48,6 +48,14 @@
                         "opacity": 0.7,
                         "visible": false
                 }
+            },
+            {
+                "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
+                "options": {
+                        "id": "Caminería",
+                        "opacity": 0.7,
+                        "visible": false
+                }
             }
             
         ]
