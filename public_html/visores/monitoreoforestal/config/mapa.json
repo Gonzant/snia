@@ -43,7 +43,8 @@
                         "id": "Administrativo",
                         "opacity": 0.7,
                         "visible": false
-                }
+                },
+                "tooltip": "Capa con los distintos límites geográficos/políticos del país"
             },
 
             {
@@ -65,10 +66,11 @@
             {
                 "url": "http://mintur.gub.uy/arcgis/rest/services/ITIS/MapServer",
                 "options": {
-                        "id": "Mintur",
+                        "id": "Turismo",
                         "opacity": 0.7,
                         "visible": false
-                }
+                },
+                "layers":[0]
             },
             {
                 "url": "http://geoserver.snia.gub.uy/geoserver/cite/wms?service=WMS&version=1.1.0&request=GetCapabilities",
