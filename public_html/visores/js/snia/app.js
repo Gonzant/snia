@@ -56,6 +56,9 @@ snia.app = {
                         if (dataLayer.wms) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
+                            l.on("error", function (e) {
+                                alert(e.error.message);
+                            });                            
                         } else if (dataLayer.wfs) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WFSLayer(dataLayer.url, dataLayer.options); 
@@ -74,6 +77,7 @@ snia.app = {
                             var dataLayerOptions = lang.clone(dataLayer.options);
                             dataLayerOptions.id = dataLayer.options.id + dataLayer2.url;
                             if (dataLayer2.wms) {
+                                esriConfig.defaults.io.corsEnabledServers.push(dataLayer2.url);
                                 l = new WMSLayer(dataLayer2.url, dataLayerOptions);
                             } else {
                                 l = new ArcGISDynamicMapServiceLayer(dataLayer2.url, dataLayerOptions);
