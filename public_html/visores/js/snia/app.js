@@ -25,6 +25,7 @@ snia.app = {
             "esri/layers/ArcGISTiledMapServiceLayer",
             "esri/layers/ArcGISDynamicMapServiceLayer",
             "esri/layers/WMSLayer",
+            "esri/layers/WFSLayer",
             "modulos/HerramientaDialog",
             "widgets/BarraHerramientasWidget",
             "widgets/MapaWidget",
@@ -35,7 +36,7 @@ snia.app = {
             "esri/urlUtils",
             "esri/geometry/Extent",
             "dojo/domReady!"], function (on, dom, parser, lang, arrayUtil, JSON, Standby,
-            esriConfig, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer,
+            esriConfig, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer, WFSLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
@@ -55,6 +56,12 @@ snia.app = {
                         if (dataLayer.wms) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WMSLayer(dataLayer.url, dataLayer.options);
+                            l.on("error", function (e) {
+                                console.log(e.error.message);
+                            });                            
+                        } else if (dataLayer.wfs) {
+                            esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
+                            l = new WFSLayer(dataLayer.url, dataLayer.options); 
                         } else {
                             l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                         }
@@ -70,6 +77,7 @@ snia.app = {
                             var dataLayerOptions = lang.clone(dataLayer.options);
                             dataLayerOptions.id = dataLayer.options.id + dataLayer2.url;
                             if (dataLayer2.wms) {
+                                esriConfig.defaults.io.corsEnabledServers.push(dataLayer2.url);
                                 l = new WMSLayer(dataLayer2.url, dataLayerOptions);
                             } else {
                                 l = new ArcGISDynamicMapServiceLayer(dataLayer2.url, dataLayerOptions);

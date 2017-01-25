@@ -13,7 +13,7 @@ define([
     "dojo/_base/array",
     "dojo/text!./templates/Contenidos2Widget.html",
     "dojo/i18n!./nls/snianls.js",
-     "dojo/text!config/mapa.json",
+    "dojo/text!config/mapa.json",
     "dojo/dom-class", "dojo/dom-style",
     "dijit/focus",
     "dijit/_WidgetBase",
@@ -63,6 +63,7 @@ define([
             this.set("visible", defaults.visible);
             this.set("config", defaults.config);
             this.set("active", defaults.active);
+            this.set("botonAgregarCapaVisible", defaults.config.botonAgregarCapa);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -84,6 +85,7 @@ define([
             this.own(
                 on(this._colapsarNode, a11yclick, lang.hitch(this, this._colapsarClick)),
                 on(this._expandirNode, a11yclick, lang.hitch(this, this._expandirClick)),
+                on(this._agregarCapaNode, a11yclick, lang.hitch(this, this._agregarCapaClick)),
                 on(this._descargarCapas, a11yclick, lang.hitch(this, this._descargarClick))
             );
         },
@@ -140,6 +142,9 @@ define([
             this._standbyAreas = new Standby({target: this._standBy});
             domConstruct.place(this._standbyAreas.domNode, this._standBy, "after");
             this._standbyAreas.startup();
+            if (this.botonAgregarCapaVisible) {
+                domStyle.set(this._bAgregarCapa, 'display', 'block');
+            }
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
@@ -167,6 +172,18 @@ define([
         },
         _expandirClick: function () {
             this._toc.expandirClick();
+        },
+        _agregarCapaClick: function () {
+            var dataLayer = {
+                url: this._urlCapa.value, //"http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Vulnerabilidad/MapServer",
+                wms: (this._formatoCapa.value === "WMS"),
+                options: {
+                        id: this._nombreCapa.value || "undefined",
+                        opacity: 0.7,
+                        visible: false
+                    }
+                };
+            this._toc.agregarCapa(dataLayer);
         },
         _descargarClick: function () {
             var capasUrl, cantCapas, primero, capasNombre, parametros, capasArray, nombresArray, token;
@@ -214,13 +231,6 @@ define([
                 this._gpDescargarCapas.submitJob(parametros, lang.hitch(this, this._gpDescargarCapasComplete), lang.hitch(this, this._gpCheckJob));
                 this._standbyAreas.show();
             }
-        },
-        _expandirSeleccionadosClick: function () {
-            arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {
-                if (item._rootLayerNode.data.visible === true) {
-                    item._rootLayerNode.expand();
-                }
-            }));
         },
         /***********Descarga y apertura de zip**************/
         _gpDescargarCapasComplete: function (jobInfo) {
