@@ -1,6 +1,7 @@
 {
 	"app": {
-        "titulo": "CONEAT",
-        "proxyRules":[]
+        "titulo": "MONITOREOFORESTAL",
+        "proxyRules":[
+        ]
     }
 }
