@@ -1,4 +1,4 @@
-{        
+{    
     "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
@@ -10,7 +10,7 @@
                 "mapasBase": [
                     {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
                     {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
-					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
+                    {"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
         },
@@ -23,7 +23,6 @@
             "startsOpen": true,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": true,
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }
@@ -61,37 +60,82 @@
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
-            }
-        },
-		{
-            "widget": "widgets/InformacionSuelosWidget",
-            "title": "Informacion Suelos Widget",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
-            "icono": "../js/snia/img/infoCartografia.png",
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
-                "departamento": "DEPTO",
-                "padron": "PADRON",
-                "catastral": "AREAHA",
-                "productividad": "IND_CONEAT",				
-			    "Herramienta": {
-					"CampoEtiquetaUnidadMapeo": "UnidadMapeo.UM_Nombre",
-					"CampoSimboloSerie": "Serie.Serie_Simbolo",
-					"CampoIdPerfilRepresentativo": "Serie.PerfilRepresentativo_Id",
-					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
-					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
-					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/4",
-					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
-					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
-					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
-					"CampoIdServicioPerfil": "Id_Perfil"
-				}
+                "productividad": "IND_CONEAT",
+				"valorreal": "IND_VR"
             }
         }, 
+        {
+            "widget": "widgets/BuscarParametrizadoWidget",
+            "title": "Buscar por fraccion",
+            "msgToolTip": "Busca y despliega ...",
+            "icono": "../js/snia/img/buscar.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/INC/colonias/MapServer/0",
+                "filtros": [
+                    {
+                    "campoFiltro" : "Inmueble",
+                    "lblcampoFiltro" : "Inmueble",
+                    "placeHoldFiltro": "Inmueble",
+                    "dependencia": 0,
+                    "combo": 0,
+                    "tipo": "texto"
+                    },
+                    {
+                    "campoFiltro" : "Fracción",
+                    "lblcampoFiltro" : "Fracción",
+                    "placeHoldFiltro": "Fracción",
+                    "dependencia": 1,
+                    "combo": 1,
+                    "tipo": "texto"
+                    }
+                ],
+                "columnas" : [
+                            {"name":"Departamento ","field": "DEPTO","width": "150px"},
+                            {"name":"Inmueble","field": "Inmueble","width": "150px"},
+                            {"name":"Fracción","field": "Fracción","width": "150px"},
+                            {"name":"Colono","field": "Colono","width": "150px"}
+                            
+                    ] 
+            }
+        },
+        {
+            "widget": "widgets/BuscarParametrizadoWidget",
+            "title": "Buscar por documento",
+            "msgToolTip": "Busca y despliega ...",
+            "icono": "../js/snia/img/buscar.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/INC/colonias/MapServer/0",
+                "filtros": [
+                    {
+                    "campoFiltro" : "Documento",
+                    "lblcampoFiltro" : "Documento",
+                    "placeHoldFiltro": "Documento",
+                    "dependencia": 0,
+                    "combo": 0,
+                    "tipo": "texto"
+                    }
+                ],
+                "columnas" : [
+                            {"name":"Departamento ","field": "DEPTO","width": "150px"},
+                            {"name":"Inmueble","field": "Inmueble","width": "150px"},
+                            {"name":"Fracción","field": "Fracción","width": "150px"},
+                            {"name":"Colono","field": "Colono","width": "150px"}
+                            
+                    ] 
+            }
+        },        
+        {
+            "widget": "widgets/AreasConeatWidget",
+            "title": "Areas CONEAT",
+            "msgToolTip": "Permite ingresar áreas y generar el reporte CONEAT a partir de ellas.",
+            "icono": "../js/snia/img/areas.png",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
         {
             "widget": "widgets/MedirWidget",
             "title": "Medir",
@@ -112,7 +156,7 @@
                 
             }
         },
-        {
+           {
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
             "msgToolTip": "Muestra la referencia de la posición actual",
@@ -121,7 +165,7 @@
             "widgetConfig": {                
             }
         },
-        {
+            {
             "widget": "widgets/ImprimirWidget",
             "title": "Imprimir",
             "msgToolTip": "Imprime el mapa actual en distintos formatos.",
@@ -145,7 +189,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre Carta Suelos. ",
+            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -181,40 +225,34 @@
                     {
                       "Texto":[
                         { 
-                            "Contenido": "La CRSU76 que ha estado disponible hasta la fecha es una carta de reconocimiento de suelos de quinto orden que fue publicada a escala 1:1000.000. Las unidades de mapeo en ese levantamiento son asociaciones de Familias de suelos. ",
+                            "Contenido": "La consulta CONEAT cambió su apariencia gráfica e infraestructura para brindar una mejor experiencia a todos los usuarios. Con la nueva infraestructura se ha logrado que la consulta sea más robusta y eficiente.",
                             "Estilo": "Normal"
                         },
                         { 
-                            "Contenido": "RENARE comienza a publicar los primeros resultados de una nueva carta de suelos a nivel nacional con trabajos iniciados en el 2013. Este trabajo se viene implementando en apoyo a la elaboración de los Planes de Uso y Manejo Responsable de los Suelos y será una herramienta fundamental para apoyar el Programa Nacional de Conservación de Suelos y la investigación agrícola en suelos y cultivos.",
+                            "Contenido": "La nueva consulta permite elegir entre diversos mapas base: cartografía básica vectorial, imágenes satelitales de alta definición actualizadas o mapa de relieve. Permite al usuario además visualizar las capas a elección.",
                             "Estilo": "Normal"
                         },
                         { 
-                            "Contenido": "La nueva cartografía CRSU14 es mucho más detallada, de tercer orden, y se publica a escala 1:40.000 sobre imágenes de Google Earth, lo que facilita enormemente su utilización. Por otra parte, las unidades de mapeo se definen en base a Series de suelos. La Serie es una subdivisión de las Familias, o sea, una unidad taxonómica definida con mucho mayor detalle, lo que aumenta el valor de la carta.",
+                            "Contenido": "Se han actualizado las herramientas de navegación, identificación, búsqueda de padrones, mapa de referencia e impresión.",
                             "Estilo": "Normal"
                         },
                         { 
-                           "Contenido": "",
+                           "Contenido": "Se mejoró la herramienta de medición de la antigua consulta, la misma ahora permite obtener medidas de diversos elementos en todas las capas vectoriales: puntos, devuelve las coordenadas; líneas, mide la longitud y polígonos de diversas formas dibujados por el usuario a los cuales mide el área permitiendo cambiar las unidades de medida.",
+                           "Estilo": "Normal" 
+                        },
+                        { 
+                            "Contenido": "A las antiguas herramientas se agrego la herramienta coordenadas y la herramienta áreas, esta última permite al usuario dibujar polígonos y obtener sus correspondientes índices.",
+                            "Estilo": "Normal"
+                        },
+                        {
+                           "Contenido": "Se modernizo el reporte (croquis) y se agregó un nuevo mapa temático que permite visualizar el índice de productividad CONEAT.",
                            "Estilo": "Normal" 
                         }
                       ]
-                    },
-                    {
-                        "Texto":[
-                           {
-                              "Contenido": "Ver términos y condiciones en",
-                              "Estilo": "Normal"
-                            }]
-                    },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "www.snia.gub.uy",
-                            "URL": "www.snia.gub.uy"
-                        }
-                    ] 
-                   }
+                    }
+                     
                 ]
-            }            
+            }           
         },       
         {"name": "Herramientas",
             "id":"1",
@@ -293,7 +331,7 @@
             },
             {
                 "name": "Contenidos",
-                "id":"3",
+                "id":"4",
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
@@ -336,7 +374,7 @@
             },
             {
                "name": "Navegar",
-               "id":"4",
+               "id":"3",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -495,7 +533,7 @@
             },
             {
                "name": "Identificar",
-               "id":"5",
+               "id":"4",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -537,7 +575,7 @@
             },
             {
                "name": "Buscar Padrones",
-               "id":"6",
+               "id":"5",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -650,7 +688,7 @@
             },
             {
                "name": "Navegar",
-               "id":"7",
+               "id":"6",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -806,7 +844,7 @@
             },
             {
                "name": "Medir",
-               "id":"8",
+               "id":"7",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -856,7 +894,7 @@
             },
             {
                "name": "Coordenadas",
-               "id":"9",
+               "id":"8",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -892,6 +930,48 @@
                               "Estilo": "Normal"
                             }
                            ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Mapa de Referencia",
+               "id":"9",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Mapa de Referencia",
+                              "Estilo": "Indice1"
+                            },
+                    "Imagen":
+                            {
+                              "URL":"../js/snia/img/mapabase.png",
+                              "Alto":20
+                            }
+                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":
+                        {
+                              "URL":"../js/snia/img/referencia.png",
+                              "Alto":30
+                        },
+                        "Texto":
+                           {
+                              "Contenido": "Mapa de Referencia",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                          "Texto":[
+                              {
+                                "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
+                                "Estilo": "Normal"
+                              }
+                          ]  
                         }
                     ]
                 }
@@ -947,9 +1027,324 @@
                     ]
                 }
             },
-            
+        {"name": "CONEAT",
+            "id":"11",
+            "parent":"root",
+            "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "CONEAT",
+                              "Estilo": "Indice1"
+                            }
+                        
+            },
+            "seccionContenido":{
+                "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "CONEAT",
+                              "Estilo": "Titulo1"
+                            }
+                },
+                "elementos":[
+                {
+                    "Texto":[
+                        {
+                        "Contenido": "Esta sección refiere a las definiciones básicas de los grupos CONEAT, los antecedentes en la elaboración de la cartografía original y la descripción de la información provista en la aplicación CONEAT en Internet.",
+                        "Estilo": "Normal" 
+                        }
+                    ]
+                }
+                ]
+            },
+            "esPadre": true
+        },
+            {
+               "name": "Aspectos Generales",
+               "id":"12",
+               "parent":"11" ,
+               "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Aspectos Generales",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Aspectos Generales",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "La ley 13.695 (Art. 65 al 68) del 24 de octubre de 1968 creó la Comisión Nacional de Estudio Agronómico de la Tierra (CO.N.E.A.T.) y estableció como su principal cometido el definir las normas técnicas para fijar la capacidad productiva de cada inmueble rural y el promedio del país.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Dicha comisión está integrada por:",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Presidente (Nombrado por Poder Ejecutivo)",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Secretario (Nombrado por la Comisión)",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Delegados (Ministerio de Ganadería Agricultura y Pesca, Ministerio de Economía y Finanzas, Oficina de Planeamiento y Presupuesto, Dirección de Estadísticas Agropecuarias (DIEA), Instituto Nacional de Colonización, Asociación Rural del Uruguay, Federación Rural del Uruguay, Funcionarios técnicos, Servicio Geográfico Militar, Grupo Fotográfico de la Fuerza Aérea Uruguaya, Dirección Nacional del Catastro Nacional, División Suelos y Aguas, Oficina de Programación y Política Agropecuaria (OPYPA))",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Observadores (Asociación de Ingenieros Agrónomos del Uruguay, Federación Uruguaya de Centros Regionales de Experimentación Agropecuaria (FUCREA))",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Grupos CONEAT",
+               "id":"13",
+               "parent":"11", 
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Grupos CONEAT",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Grupos CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Los grupos CONEAT no son estrictamente unidades cartográficas básicas de suelo, sino que constituyen áreas homogéneas, definidas por su capacidad productiva en términos de carne bovina, ovina y lana en pie (Art. 65 de la Ley mencionada). Esta capacidad se expresa por un índice relativo a la capacidad productiva media del país, a la que corresponde el índice 100.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Dichos grupos se caracterizaron mediante fotointerpretación a escala 1:40.000, verificaciones de campo y análisis físico-químicos de los suelos.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Desde el punto de vista edafológico, la productividad se considera como la capacidad inicial del suelo para producir un cierto rendimiento por hectárea y por año, que teóricamente se puede expresar como porcentaje del rendimiento óptimo que se obtiene en el suelo en las condiciones más favorables, bajo cierta tecnología definida. Esta definición de productividad implica un concepto potencial y abarca a todos los rubros agropecuarios; para estimarla existe una metodología, aplicable en función de la disponibilidad de información para todos los rubros. Ello puede ser posible, solamente, continuando y profundizando la investigación, tanto en levantamiento de suelos como en producción agropecuaria, a nivel de sus rubros individuales y en su integración en sistemas de producción.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los índices de Productividad corresponden a 188 agrupamientos de suelos (Grupos de suelos), con similar productividad (desde 0 hasta 263), resultantes de interpretar la aptitud de los mismos para producir carne y lana.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La descripción de los grupos CONEAT se realiza definiendo los suelos dominantes y asociados según la Clasificación de Suelos del Uruguay, MGAP, 1976. Los grupos se relacionan con las unidades de la Carta de Reconocimiento de Suelos del Uruguay a escala 1:1.000.000. Se indican para cada grupo, algunas propiedades importantes de los suelos y características asociadas del paisaje. La nomenclatura de los grupos CONEAT se correlaciona con las Zonas de Uso y Manejo de los Suelos del Uruguay (Comisión de Inversiones y Desarrollo Económico (CIDE), 1967).",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los Grupos de Suelos se superponen al parcelario rural y se representan en la cartografía CONEAT a escala 1:20.000.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {
+                        "Enlace":[
+                            {
+                                "Contenido": "CONEAT - Grupos e Indices",
+                                "URL": "http://www.cebra.com.uy/renare/media/CONEAT_Grupos_e_-Indices.pdf"
+                            }
+                        ] 
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Generación de la cartografia",
+               "id":"14",
+               "parent":"11",
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Generación de la cartografia",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Generación de la cartografia",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "La programación y coordinación de estas tareas estuvieron a cargo de CONEAT y se desarrollaron a fines de la década del 60.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La Dirección de Suelos y Fertilizantes (actual División de Suelos y Aguas) del MGAP realizó la cartografía de grupos de suelos del territorio nacional, la cual se concretó mediante las siguientes etapas:",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Fotointerpretación de las fotografías aéreas a escala 1:40.000, delimitándose áreas de paisaje homogéneos en base a la observación del relieve y la topografía, el padrón de drenaje superficial, los tonos fotográficos, la vegetación natural y el uso de la tierra, la existencia de afloramientos rocosos y su naturaleza. Las áreas así delimitadas corresponden a asociaciones de suelo definidas.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Verificación en el campo de los límites de las unidades de fotointerpretación y determinación de los suelos que integran cada asociación, descripción de los -perfiles correspondientes y extracción de muestras representativas para su caracterización física y química de laboratorio.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Transferencia de las líneas de fotointerpretación desde las fotografías 1:40.000 a fotoplanos controlados a escala 1:50.000.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Síntesis de las unidades cartográficas definitivas, llegándose a conformar 188 asociaciones de suelos que constituyen los grupos CONEAT propiamente dichos.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "El Servicio Geográfico Militar (SGM) tuvo a su cargo la elaboración del material foto cartográfica en el que se delinearon los grupos CONEAT y el catastro rural. Dicho material estuvo constituido por 301 fotoplanos controlados a escala 1:50.000, obtenidos a partir de las fotografías aéreas a escala 1:40.000, y 1.204 fotoplanos a escala 1:20.000 en película estable tramada, de formato 0,7 x 1 metro, obtenidos por ampliación de los fotoplanos 1:50.000.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La Dirección de Catastro realizó una tarea cartográfica que consistió en las siguientes etapas:",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Identificación sobre fotografías aéreas a escala 1:20.000 de los predios rurales, volcando en las primeras la información preexistente del parcelario rural.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Transferencia de la información anterior desde las fotografías 1:20.000 a los fotopositivos tramados de igual escala preparados por el S.G.M.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "   - Confección de la nueva lámina definitiva en material transparente indeformable calcando la información volcada al fotopositivo tramado y agregando la rotulación e información marginal necesaria para su correcta y rápida localización e identificación.1",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La operación cartográfica final consistió en superponer la plancha catastral con la cartografía de los grupos de suelos CONEAT (ambos documentos a escala 1:20.000) y obtener luego de un proceso fotográfico realizado en la División de Suelos y Aguas, una lámina definitiva en material estable, que comprende las dos informaciones, es decir, la infraestructura, los padrones y los grupos CONEAT.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Esta aplicación CONEAT",
+               "id":"15",
+               "parent":"11" ,
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Esta aplicacion CONEAT",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Esta aplicacion CONEAT",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Se utilizan básicamente dos capas de información geográfica: los Grupos de Suelos CONEAT y el Catastro Rural.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los Grupos de Suelos CONEAT surgen a partir de la ya mencionada cartografía CONEAT actualizada y a escala gráfica 1:20.000, en tanto que el Catastro rural proviene de la cartografía rural 1:20.000 de la Dirección Nacional de Catastro y su compatibilización con el parcelario rural de la cartografía CONEAT 1:20.000; a excepción del departamento de Montevideo, que es consistente con la cartografía rural de la Intendencia Municipal de Montevideo.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "A partir de febrero de 2013, periódicamente se actualiza el parcelario rural de acuerdo a la información geográfica suministrada por la Dirección Nacional de Catastro, la cual se compatibiliza, mediante procesos diversos, para su incorporación a la Consulta.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Los diversos procesos de digitalización de la información cartográfica dan origen a una base de datos geográfica, que junto a procedimientos de programación permiten la generación del croquis digital y el cálculo geográfico del Índice de Productividad a nivel de cada padrón. Este último involucra una superposición topológica de las dos capas georreferenciadas y un cálculo matemático preciso, sustituye al procedimiento gráfico tradicional de cálculo manual con lámina de puntos.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "El Índice CONEAT (o índice de productividad final) del padrón se obtiene a partir del índice de productividad mencionado y un factor extrínseco asociado a los padrones y las láminas CONEAT (éstas se corresponden a los fotoplanos 1:20.000), este factor varía en función de la ubicación del padrón (la productividad de un campo suele estar influenciado por su localización al determinar diferentes costos de explotación). Además de esta información, se presenta el Índice de valor real del padrón, para lo cual se afecta al índice CONEAT del padrón con la proximidad de éste a los centros poblados y su ubicación con respecto a las rutas, habiendo casos más específicos de afectaciones especiales.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La Superficie Catastral del padrón descrito en la consulta es la información de mensura suministrada por Catastro y no el área calculada a través del Sistema de Información Geográfica.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Referencias",
+               "id":"16",
+               "parent":"11",
+                "seccionTitulo":{
+                    "Texto":
+                           {
+                              "Contenido": "Referencias",
+                              "Estilo": "Indice1"
+                            }
+                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Texto":
+                           {
+                              "Contenido": "Referencias",
+                              "Estilo": "Titulo2"
+                            }
+                    },
+                    "elementos": [
+                        {
+                            "Enlace":[
+                            {
+                                "Contenido": "Ley 13.695 (Art. 65 al 68)",
+                                "URL": "http://www.prenader.gub.uy/coneat/doc/Ley_art65al68.htm"
+                            }
+                    ] 
+                        },
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "DURAN, A. 'La Cartografía de Suelos CONEAT y sus posibilidades de utilización.' Montevideo. Facultad de Agronomía, 1987.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "URUGUAY. Ministerio de Ganadería, Agricultura y Pesca. Dirección General de Recursos Naturales Renovables, Comisión Nacional de Estudio Agroeconómico de la Tierra. Indices de Productividad, Grupos CONEAT. Montevideo, 1996.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
         {"name": "Atribuciones",
-            "id":"12",
+            "id":"18",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
@@ -1026,8 +1421,7 @@
                     }
                     
                 ]
-            },
-            "padre": "si"
+            }
         },
         {"name": "Contacto",
             "id":"19",
@@ -1080,8 +1474,8 @@
                     {
                     "Enlace":[
                         {
-                            "Contenido": "renare@mgap.gub.uy",
-                            "URL": "mailto:renare@mgap.gub.uy"
+                            "Contenido": "coneat@mgap.gub.uy",
+                            "URL": "mailto:coneat@mgap.gub.uy"
                         }
                     ] 
                     }

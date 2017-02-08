@@ -1,8 +1,4 @@
-/*
- * js/snia/widgets/BuscarParametrizadoWidget
- * 
- */
-/*global define, console*/
+
 /*jslint nomen: true */
 define([
     "dojo/on",
@@ -284,9 +280,9 @@ define([
                                 query = feature.campoFiltro + "='" + elementos[i] + "'";
                             } else {
                                 query = query + " OR " + feature.campoFiltro + "='" +  elementos[i] + "'";
-                            }   
-                        }                   
-                      //  query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
+                            }
+                        }                      
+                        //  query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
                     }
                 } else {
                     if (this._tipoFiltros[index] === "numero") {
