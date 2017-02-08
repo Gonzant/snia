@@ -1,8 +1,4 @@
-/*
- * js/snia/widgets/BuscarParametrizadoWidget
- * 
- */
-/*global define, console*/
+
 /*jslint nomen: true */
 define([
     "dojo/on",
@@ -268,17 +264,25 @@ define([
             }));
         },
         _buscarClick : function () {
-            var query;
+            var query, i, elementos;
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
             this._query.returnGeometry = true;
             this._query.outFields = ["*"];
             this._query.returnDistinctValues = false;
             arrayUtil.forEach(this._filtros, lang.hitch(this, function (feature, index) {
+                elementos = this._valoresFiltros[index].state.split(" ");
                 if (index === 0) {
                     if (this._tipoFiltros[index] === "numero") {
                         query = feature.campoFiltro + "=" + this._valoresFiltros[index].state;
                     } else {
-                        query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
+                        for (i = 0; i < elementos.length; i = i + 1) {
+                            if (i === 0) {
+                                query = feature.campoFiltro + "='" + elementos[i] + "'";
+                            } else {
+                                query = query + " OR " + feature.campoFiltro + "='" +  elementos[i] + "'";
+                            }
+                        }                      
+                        //  query = feature.campoFiltro + "='" + this._valoresFiltros[index].state + "'";
                     }
                 } else {
                     if (this._tipoFiltros[index] === "numero") {
@@ -299,11 +303,11 @@ define([
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item, i) {
                 if (i !== 0) {
-                    extent = extent.union(capa.getGrafico(item.OBJECTID).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
+                    extent = extent.union(capa.getGrafico(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
                 } else {
-                    extent = capa.getGrafico(item.OBJECTID).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
+                    extent = capa.getGrafico(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
                 }
-                return item.OBJECTID;
+                return item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"];
             }, this);
             if (extent) {
                 this.mapa.map.setExtent(extent);
@@ -314,8 +318,8 @@ define([
             capa = this._cg3sr;
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item) {
-                capa.removerGrafico(item.OBJECTID);
-                this._store.remove(item.OBJECTID);
+                capa.removerGrafico(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]);
+                this._store.remove(item["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"]);
             }, this);
             test_store = new ObjectStore({objectStore: this._store});
             this._grid.setStore(test_store);
@@ -323,18 +327,23 @@ define([
         },
         //auxiliares
         _queryTaskCallback: function (results) {
-            var ext, indice;
+            var ext, indice, cont, a;
             this._standby.hide();
             if (results.features.length > 0) {
+                cont = 0;
                 arrayUtil.forEach(results.features, lang.hitch(this, function (feature, index) {
                     // Supongo que por resultado tiene que haber solo un padron
+                    a = results.features[cont];
+                    while (cont < results.features.length) {
+                        cont ++;
+                    }
                     if (index === 0) {
                         ext = feature.geometry.getExtent();
                     } else {
                         ext = ext.union(feature.geometry.getExtent());
                     }
-                    indice = feature.attributes.OBJECTID;
-                    feature.attributes.OBJECTID = indice;
+                    indice = feature.attributes["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"];
+                    feature.attributes["gis.SIGRENARE.CAT_PadronesRuralesConeat.OBJECTID"] = indice;
                     feature.attributes.id = indice;
                     this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
                     lang.hitch(this, this._setGrid(feature.attributes));
