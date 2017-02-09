@@ -4,16 +4,28 @@
             "slider": false,
             "logo": false
         },
-        "baseMapLayerBackup": {
-            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "baseMapLayer": {
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
-                "xmin": -6364316,
-                "ymin": -4364316,
-                "xmax": -5900316,
-                "ymax": -3364316,
+                "xmin": -6800000,
+                "ymin": -4500000,
+                "xmax": -5500000,
+                "ymax": -3400000,
                 "spatialReference": {
                     "wkid":102100
                 }
+            }
+        },
+        "baseMapLayerBackup": {
+            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "extent": {
+                "xmin": -37867.16314808361,
+                "ymin": 5957313.020605681,
+                "xmax": 1220493.68690695,
+                "ymax": 6874864.455708552,
+                "spatialReference": {
+					"wkid":32721
+				}
             }
         },
         "dynamicLayers": [             
@@ -58,7 +70,7 @@
                 }
             },
             {
-                "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
+                "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
                 "options": {
                         "id": "Caminería",
                         "opacity": 0.7,
