@@ -16,6 +16,18 @@
                 }
             }
         },
+        "baseMapLayerBackup": {
+            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "extent": {
+                "xmin": -37867.16314808361,
+                "ymin": 5957313.020605681,
+                "xmax": 1220493.68690695,
+                "ymax": 6874864.455708552,
+                "spatialReference": {
+					"wkid":32721
+				}
+            }
+        },
         "dynamicLayers": [             
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Especies/MapServer",
