@@ -4,6 +4,18 @@
             "slider": false,
             "logo": false
         },
+        "baseMapLayer": {
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "extent": {
+                "xmin": -6800000,
+                "ymin": -4500000,
+                "xmax": -5500000,
+                "ymax": -3400000,
+                "spatialReference": {
+                    "wkid":102100
+                }
+            }
+        },
         "baseMapLayerBackup": {
             "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
