@@ -48,9 +48,6 @@ define([
             if (this._cpIzqSC) {
                 this._cpIzqSC.resize();
             }
-            if (this._grid) {
-                this._grid.resize();
-            }
         },
         options : {
             theme : "sitWidget",
@@ -126,10 +123,10 @@ define([
         /* Funciones Privadas */
         /* ---------------- */
         _cargarJSON: function () {
-            var bD1, bI1, div1, i;
+            var bD1, bI1, div1, i, div2;
             bD1 = new ContentPane({  //Derecho
                 region: "center",
-                style: "height: 400px;"
+                style: "width: 280px; height: 400px;"
             });
             this._cpDerSC.addChild(bD1);
             bI1 = new ContentPane({ //Izquierdo
@@ -138,7 +135,7 @@ define([
             });
             this._cpIzqSC.addChild(bI1);
             div1 = domConstruct.create('div', {}, bI1.containerNode);
-            this._div2 = domConstruct.create('div', {}, bD1.containerNode);
+            div2 = domConstruct.create('div', {}, bD1.containerNode);
             this._store = new Memory({
                 data: [{ name: "raiz", id: "root"}],
                 getChildren: function (object) {
@@ -181,7 +178,7 @@ define([
         _treeClick : function (item) {
             var titulo, complete = false, i, j, tr, a, layout = [], data = { items: []  }, myNewItem, a, totalNum, num = 0, hectareas = 0, totalHec;;
             
-            titulo = "<p class= \"Titulo1\">" + item.name + "</p>";
+            this._divTitulo.innerHTML = item.name;
             this._grid = " ";
             
              //this._data - el json que me pasa Fabi
@@ -192,7 +189,7 @@ define([
 //                        //estoy en la apertura a recorrer
                         this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
                         this._store = new ItemFileWriteStore({data: data});
-                        layout = [{cells: [ ]}, { cells: [ [], []]}];
+                        layout = [{noscroll: true, cells: [ ]}, { cells: [ [], []]}];
                         layout[0].cells.push({name : this.config.data[i].columnas[0], field: this.config.data[i].columnasField[0], width: this.config.data[i].columnasW[0]});
                         for (a = 1; a < this.config.data[i].columnas.length; a = a + 1) {
                             layout[1].cells[0].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
@@ -210,7 +207,9 @@ define([
                             structure: layout,
                             rowSelector: '20px'
                         });
-                       
+                        var div2 = domConstruct.create('div', {}, this._cpDerTabla.containerNode);
+                        this._tree.placeAt(div2);
+                        this._tree.startup();
                         this._grid.placeAt(this._cpDerSC);
                         for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
