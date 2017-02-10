@@ -192,7 +192,7 @@ define([
 //                        //estoy en la apertura a recorrer
                         this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
                         this._store = new ItemFileWriteStore({data: data});
-                        layout = [{noscroll: true, cells: [ ]}, { cells: [ [], []]}];
+                        layout = [{cells: [ ]}, { cells: [ [], []]}];
                         layout[0].cells.push({name : this.config.data[i].columnas[0], field: this.config.data[i].columnasField[0], width: this.config.data[i].columnasW[0]});
                         for (a = 1; a < this.config.data[i].columnas.length; a = a + 1) {
                             layout[1].cells[0].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
