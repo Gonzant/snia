@@ -6,6 +6,7 @@
             "msgToolTip": "Sica II ",
             "icono": "../js/snia/img/sica_gris.png",            
             "toggle": false,
+            "startsOpen": true,
             "widgetConfig": {
                 "data": [
                     {"0" : "Apertura1",
@@ -577,48 +578,6 @@
                     ]
                 }
                
-            },
-            {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
             },
             {
                "name": "Identificar",
