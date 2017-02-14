@@ -6,7 +6,9 @@
             "msgToolTip": "Sica II ",
             "icono": "../js/snia/img/sica_gris.png",            
             "toggle": false,
+            "draggable": true,
             "startsOpen": true,
+            "position": {"bottom": "280px", "left":"15px"},
             "widgetConfig": {
                 "data": [
                     {"0" : "Apertura1",
@@ -257,16 +259,6 @@
             }
         },
         {
-            "widget": "widgets/CoordenadasWidget",
-            "title": "Coordenadas",
-            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
-            "icono": "../js/snia/img/coordenadas.png",            
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-           {
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
             "msgToolTip": "Muestra la referencia de la posición actual",

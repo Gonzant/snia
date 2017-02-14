@@ -62,6 +62,14 @@
                 }
             },
             {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasReestringido/MapServer",
+                "options": {
+                        "id": "Plagas Restringido",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/HuertaBase/MapServer",
                 "options": {
                         "id": "Base",

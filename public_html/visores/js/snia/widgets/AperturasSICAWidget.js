@@ -48,6 +48,12 @@ define([
             if (this._cpIzqSC) {
                 this._cpIzqSC.resize();
             }
+            if (this._grid) {
+                this._grid.resize();
+            }
+            if (this._cpTabla) {
+                this._cpTabla.resize();
+            }
         },
         options : {
             theme : "sitWidget",
@@ -176,11 +182,11 @@ define([
             this._tree.startup();
         },
         _treeClick : function (item) {
-            var titulo, complete = false, i, j, tr, a, layout = [], data = { items: []  }, myNewItem, a, totalNum, num = 0, hectareas = 0, totalHec;;
-            
-            this._divTitulo.innerHTML = item.name;
+            this._cpTabla.containerNode.innerHTML = " ";
+            this._cpTabla.containerNode.innerText = " ";
+            var titulo, complete = false, i, j, a, layout = [], data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;;
+            titulo = "<p class= \"Titulo1\">" + item.name + "</p>";
             this._grid = " ";
-            
              //this._data - el json que me pasa Fabi
 //            // this._aperturas  - mi json con lo que tengo buscar en el data
             for (i = 0; i < this._data.Cruces.length; i = i + 1) {
@@ -197,20 +203,13 @@ define([
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
                             layout[1].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
                         }
-                        
-                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "</div> ";
-                        
-                        this._cpDerSC.domNode.innerHTML = "<div data-dojo-type=\"dijit/layout/BorderContainer\" style=\"background: transparent; border: transparent\" data-dojo-attach-point=\"_cpDerSC\"><div style=\"background: transparent; border: transparent\" data-dojo-attach-point=\"_divTitulo\"> " + titulo + this._tabla +" </div></div>";
-//           
+                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
                         this._grid = new DataGrid({
                             store: this._store,
                             structure: layout,
                             rowSelector: '20px'
                         });
-                        var div2 = domConstruct.create('div', {}, this._cpDerTabla.containerNode);
-                        this._tree.placeAt(div2);
-                        this._tree.startup();
-                        this._grid.placeAt(this._cpDerSC);
+                        this._grid.placeAt(this._cpTabla);
                         for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
                             case "Apertura1":

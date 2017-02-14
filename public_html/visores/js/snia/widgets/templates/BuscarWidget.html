@@ -10,14 +10,16 @@
         data-dojo-type="dijit/form/TextBox"
         data-dojo-props="trim:true, propercase:true" id="id2"
         data-dojo-attach-point="_id2Node"/>
+    
     <div data-dojo-type="dijit/form/Button"
          data-dojo-attach-point="_buscarNode">
         ${_i18n.widgets.BuscarWidget.bBuscar}</div>
     <br><br>
     <label>${_i18n.widgets.BuscarWidget.lbMantenerGeo}</label>
+    
     <div data-dojo-attach-point="_mantenerGeo">&nbsp;</div>
     <div data-dojo-attach-point="_resultadoNode"></div>
-    <br><br>
+    <br>
     <div id="loadingOverlay" class="pageOverlay loadingOverlay">
             <div class="claseloadingOverlay">
             <div class="loadingMessage">Cargando...</div>

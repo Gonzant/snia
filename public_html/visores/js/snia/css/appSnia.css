@@ -385,7 +385,6 @@ Dialogos:
     background: #E1E1E1 !important;  
     border-color: #FFC000;
     border-style: solid;
-    border-width: 1px;
 }
 .BC{
     border: 0px;
@@ -613,6 +612,7 @@ tituloTPAyuda{
 }
 .claro .dijitBorderContainer-dijitContentPane {
     background-color: #E1E1E1;
+    top:0px;
 }
 .claro .dijitTreeRowSelected {
     background-color: transparent;
@@ -631,10 +631,6 @@ tituloTPAyuda{
 .claro .dijitContentPane {
      padding: 2px; 
     background: transparent;
-}
-
-.claro .dijitBorderContainer {
-     padding: 1px; 
 }
 
 .Titulo1{
@@ -741,6 +737,15 @@ tituloTPAyuda{
 	width: 390px;
 	height: 165px;  
         padding: 0px;
+        top: 70px;
+        font-size: small;
+        color: dimgray;
+}
+#gridSica {
+	width: 390px;
+	height: 165px;  
+        padding: 0px;
+        top: 70px;
         font-size: small;
         color: dimgray;
 }
@@ -758,6 +763,7 @@ th, td {
 	width: 490px;
 	height: 230px;
         font-size: small;
+        top: 0px;
 }
 
 .BuscarParametrizado {  
@@ -944,7 +950,7 @@ th, td {
 }
 .claro .dijitDialogPaneContent {
     background: #E1E1E1 repeat-x top left;
-    border-top: 2px solid #FFC000;
+    border-top: solid #FFC000;
     padding: 10px 8px;
     position: relative;
     opacity: 0.9;
@@ -1042,9 +1048,9 @@ Dialogos:
     border-width: 2px;
     border-radius: 5px;
     border:1px #FFC000;
-    border-top: 1px solid #FFC000; 
+    border-top: 0px solid #FFC000; 
     opacity: 0,8;
-    border-top: 1px solid #FFC000;
+    border-top: 0px solid #FFC000;
     padding: 10px 8px;
     position: relative;    
 }
@@ -1141,6 +1147,7 @@ div p {
     font-size: 10px;
     font-variant: normal;
     font-style: normal;
+    /*top: 20px;*/
 }
 .dojoxGrid {
     white-space: normal;
@@ -1149,6 +1156,7 @@ div p {
     font-size: 10px;
     font-variant: normal;
     font-style: normal;
+     /*top: 70px;*/
 }
 .grid {
     white-space: normal;
@@ -1211,4 +1219,21 @@ div p {
 .ContenidosTree>.dijitTree{
     height: 100%;
     overflow-y: hidden;
+}
+.dijitContentPaneSingleChild{
+    top:0px;
+    
+}
+.claro .dijitAlignLeading{
+    top:0px;
+    
+}
+
+.cpSica{
+    
+    width: 527px;
+    height: 386px;
+    background: transparent;
+    left: 249px;
+    top: 70px;
 }
