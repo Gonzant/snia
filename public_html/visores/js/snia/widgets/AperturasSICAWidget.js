@@ -195,13 +195,15 @@ define([
 //                        //estoy en la apertura a recorrer
                         this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
                         this._store = new ItemFileWriteStore({data: data});
-                        layout = [{noscroll: true, cells: [ ]}, { cells: [ [], []]}];
-                        layout[0].cells.push({name : this.config.data[i].columnas[0], field: this.config.data[i].columnasField[0], width: this.config.data[i].columnasW[0]});
-                        for (a = 1; a < this.config.data[i].columnas.length; a = a + 1) {
-                            layout[1].cells[0].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
+                       layout = [{cells: [[], [], []], onBeforeRow: function(inDataIndex, inSubRows){inSubRows[0].invisible = true; }}]; 
+                        for (a = 0; a < this.config.data[i].cantCol; a = a + 1) {                            
+                            layout[0].cells[0].push({width: 10});
                         }
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
-                            layout[1].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
+                            layout[0].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
+                        }
+                         for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
+                            layout[0].cells[2].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
                         }
                         this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
                         this._grid = new DataGrid({
