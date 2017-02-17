@@ -195,7 +195,10 @@ define([
 //                        //estoy en la apertura a recorrer
                         this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
                         this._store = new ItemFileWriteStore({data: data});
-                       layout = [{cells: [[{width: 10}, {width: 10}, {width: 10}, {width: 10}, {width: ''}], [], []], onBeforeRow: function(inDataIndex, inSubRows){inSubRows[0].invisible = true; }}]; 
+                       layout = [{cells: [[], [], []], onBeforeRow: function(inDataIndex, inSubRows){inSubRows[0].invisible = true; }}]; 
+                        for (a = 0; a < this.config.data[i].cantCol; a = a + 1) {                            
+                            layout[0].cells[0].push({width: 10});
+                        }
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
                             layout[0].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
                         }
