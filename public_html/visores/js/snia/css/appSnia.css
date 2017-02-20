@@ -1181,8 +1181,8 @@ div p {
     border: 1px solid;
     border-color: #EBEADB;
     border-right-color: #D5CDB5;
-    padding: 3px 3px 3px 3px;
-    text-align: left;
+    padding: 2px 2px 2px 2px;
+    text-align: center;
     overflow: hidden;
     font-size: 12px;
     word-wrap: break-word;

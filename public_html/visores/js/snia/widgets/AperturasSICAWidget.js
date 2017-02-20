@@ -129,7 +129,7 @@ define([
         /* Funciones Privadas */
         /* ---------------- */
         _cargarJSON: function () {
-            var bD1, bI1, div1, i, div2;
+            var bD1, bI1, div1, i;
             bD1 = new ContentPane({  //Derecho
                 region: "center",
                 style: "width: 280px; height: 400px;"
@@ -141,7 +141,7 @@ define([
             });
             this._cpIzqSC.addChild(bI1);
             div1 = domConstruct.create('div', {}, bI1.containerNode);
-            div2 = domConstruct.create('div', {}, bD1.containerNode);
+            
             this._store = new Memory({
                 data: [{ name: "raiz", id: "root"}],
                 getChildren: function (object) {
@@ -202,14 +202,14 @@ define([
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
                             layout[0].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
                         }
-                         for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
+                        for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
                             layout[0].cells[2].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
                         }
                         this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
                         this._grid = new DataGrid({
                             store: this._store,
                             structure: layout,
-                            rowSelector: '20px'
+                            rowSelector: '10px'
                         });
                         this._grid.placeAt(this._cpTabla);
                         for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
