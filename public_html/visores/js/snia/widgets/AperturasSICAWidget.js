@@ -25,12 +25,21 @@ define([
     "dojox/grid/DataGrid",
     "dojo/data/ObjectStore",
     "dojo/data/ItemFileWriteStore",
+    "dojox/charting/Chart",
+    "dojox/charting/axis2d/Default",
+    "dojox/charting/plot2d/Pie",
+    "dojox/charting/themes/PlotKit/green",
+    "dojox/charting/themes/PlotKit/blue",
+    "dojox/charting/widget/Legend",
+    "dojox/charting/action2d/Tooltip",
+    "dojox/charting/action2d/MoveSlice",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle, domConstruct,
     Memory, Tree, ObjectStoreModel, ContentPane,
-    wkids, DataGrid, ObjectStore, ItemFileWriteStore) {
+    wkids, DataGrid, ObjectStore, ItemFileWriteStore, Chart, Default, Pie, green, blue, Legend,
+    Tooltip, MoveSlice) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -184,19 +193,27 @@ define([
         _treeClick : function (item) {
             this._cpTabla.containerNode.innerHTML = " ";
             this._cpTabla.containerNode.innerText = " ";
-            var titulo, complete = false, i, j, a, layout = [], data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;;
+            var titulo, tip, legendTwo, complete = false, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;;
             titulo = "<p class= \"Titulo1\">" + item.name + "</p>";
             this._grid = " ";
-             //this._data - el json que me pasa Fabi
+             //grafico de torta
+            this._grafica.innerHTML = " ";
+            chart1 = new Chart("pieChart1");
+            chart1.addPlot("default", {type: Pie, labels: "none"});
+            chart1.setTheme(green);
+            chart1.addAxis("x");
+            chart1.addAxis("y", {vertical: true});
+            //this._data - el json que me pasa Fabi
 //            // this._aperturas  - mi json con lo que tengo buscar en el data
             for (i = 0; i < this._data.Cruces.length; i = i + 1) {
                 for (j = 0; j < this._aperturas.length; j = j + 1) {
-                    if (this.config.data[i].nombre === this._aperturas[j].label && item.name === this._aperturas[j].label) {
+                    if (this.config.data[i].nombre === this._aperturas[j].label &&
+                            item.name === this._aperturas[j].label) {
 //                        //estoy en la apertura a recorrer
                         this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
                         this._store = new ItemFileWriteStore({data: data});
-                       layout = [{cells: [[], [], []], onBeforeRow: function(inDataIndex, inSubRows){inSubRows[0].invisible = true; }}]; 
-                        for (a = 0; a < this.config.data[i].cantCol; a = a + 1) {                            
+                        layout = [{cells: [[], [], []], onBeforeRow: function (inDataIndex, inSubRows) {inSubRows[0].invisible = true; }}];
+                        for (a = 0; a < this.config.data[i].cantCol; a = a + 1) {
                             layout[0].cells[0].push({width: 10});
                         }
                         for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
@@ -220,25 +237,43 @@ define([
                                 if (totalNum !== 0) { num = this._data.Cruces[i].Apertura1[a][0] * 100 / totalNum; }
                                 if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura1[a][1] * 100 / totalHec; }
                                 myNewItem = {Ap1: this.config.data[i].filas[a], Num: this._data.Cruces[i].Apertura1[a][0], PorcN: num.toFixed(0), Hect: this._data.Cruces[i].Apertura1[a][1], PorcH: hectareas.toFixed(0)};
-                                this._store.newItem(myNewItem);
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura1[a][0] + " es " + num.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura1[a][0], text: this.config.data[i].filas[a], stroke: "white", tooltip: t});
+                                }
                                 break;
                             case "Apertura2":
                                 totalHec = this._data.Cruces[i].Apertura2[0];
                                 if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura2[a] * 100 / totalHec; }
                                 myNewItem = {Ap2: this.config.data[i].filas[a], Hect: this._data.Cruces[i].Apertura2[a], Porc: hectareas.toFixed(0)};
-                                this._store.newItem(myNewItem);
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura2[a] + " es " + hectareas.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura2[a], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura4":
                                 myNewItem = {Ap4: this.config.data[i].filas[a], ne: this._data.Cruces[i].Apertura4[a][0], se: this._data.Cruces[i].Apertura4[a][1], Total: this._data.Cruces[i].Apertura4[a][2], Toros: this._data.Cruces[i].Apertura4[a][3], VyV : this._data.Cruces[i].Apertura4[a][4], Vi: this._data.Cruces[i].Apertura4[a][5], Nov3: this._data.Cruces[i].Apertura4[a][6], Nov2: this._data.Cruces[i].Apertura4[a][7], Nov1: this._data.Cruces[i].Apertura4[a][8], Vaq2: this._data.Cruces[i].Apertura4[a][9], Vaq1: this._data.Cruces[i].Apertura4[a][10], Ter: this._data.Cruces[i].Apertura4[a][11], Buey: this._data.Cruces[i].Apertura4[a][12]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura4[a][0] * 100 / this._data.Cruces[i].Apertura4[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura4[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura4[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura5":
                                 myNewItem = {Ap5: this.config.data[i].filas[a], ne: this._data.Cruces[i].Apertura5[a][0], se: this._data.Cruces[i].Apertura5[a][1], Total: this._data.Cruces[i].Apertura5[a][2], Carn: this._data.Cruces[i].Apertura5[a][3], OveCria : this._data.Cruces[i].Apertura5[a][4], OvCons: this._data.Cruces[i].Apertura5[a][5], Borr2: this._data.Cruces[i].Apertura5[a][6], CordA: this._data.Cruces[i].Apertura5[a][7], CordO: this._data.Cruces[i].Apertura5[a][8], CordM: this._data.Cruces[i].Apertura5[a][9]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura5[a][0] * 100 / this._data.Cruces[i].Apertura5[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura5[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura5[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura6":
                                 myNewItem = {Ap6: this.config.data[i].filas[a], ne: this._data.Cruces[i].Apertura6[a][0], se: this._data.Cruces[i].Apertura6[a][1], total: this._data.Cruces[i].Apertura6[a][2], vs: this._data.Cruces[i].Apertura6[a][3], vo : this._data.Cruces[i].Apertura6[a][4], tm: this._data.Cruces[i].Apertura6[a][5], pl: this._data.Cruces[i].Apertura6[a][6]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura6[a][0] * 100 / this._data.Cruces[i].Apertura6[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura6[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura6[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura7":
                                 totalNum = this._data.Cruces[i].Apertura7[0][0];
@@ -246,23 +281,42 @@ define([
                                 if (totalNum !== 0) { num = this._data.Cruces[i].Apertura7[a][0] * 100 / totalNum; }
                                 if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura7[a][1] * 100 / totalHec; }
                                 myNewItem = {Ap7: this.config.data[i].filas[a], nro: this._data.Cruces[i].Apertura7[a][0], pocN: num.toFixed(0), hect: this._data.Cruces[i].Apertura7[a][1], nroH: hectareas.toFixed(0)};
-                                this._store.newItem(myNewItem);
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura7[a][0] + " es " + num.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura7[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura8":
                                 myNewItem = {Ap8: this.config.data[i].filas[a], total: this._data.Cruces[i].Apertura8[a][0], enProd: this._data.Cruces[i].Apertura8[a][1], nt: this._data.Cruces[i].Apertura8[a][2], np: this._data.Cruces[i].Apertura8[a][3], mt: this._data.Cruces[i].Apertura8[a][4], mp: this._data.Cruces[i].Apertura8[a][5], lt: this._data.Cruces[i].Apertura8[a][6], lp: this._data.Cruces[i].Apertura8[a][7], pt: this._data.Cruces[i].Apertura8[a][8], pp: this._data.Cruces[i].Apertura8[a][9], qt: this._data.Cruces[i].Apertura8[a][10], qp: this._data.Cruces[i].Apertura8[a][11]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura8[a][0] * 100 / this._data.Cruces[i].Apertura8[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura8[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura8[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura9":
                                 myNewItem = {Ap9: this.config.data[i].filas[a], tot: this._data.Cruces[i].Apertura9[a][0], ep: this._data.Cruces[i].Apertura9[a][1], mat: this._data.Cruces[i].Apertura9[a][2], map: this._data.Cruces[i].Apertura9[a][3], pt: this._data.Cruces[i].Apertura9[a][4], pp: this._data.Cruces[i].Apertura9[a][5], mt: this._data.Cruces[i].Apertura9[a][6], mp: this._data.Cruces[i].Apertura9[a][7], dt: this._data.Cruces[i].Apertura9[a][8], dp: this._data.Cruces[i].Apertura9[a][9], pet: this._data.Cruces[i].Apertura9[a][10], pep: this._data.Cruces[i].Apertura9[a][11], ct: this._data.Cruces[i].Apertura9[a][12], cp: this._data.Cruces[i].Apertura9[a][13], at: this._data.Cruces[i].Apertura9[a][14], ap: this._data.Cruces[i].Apertura9[a][15], ot: this._data.Cruces[i].Apertura9[a][16], op: this._data.Cruces[i].Apertura9[a][17]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura9[a][0] * 100 / this._data.Cruces[i].Apertura9[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura9[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura9[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura13":
                                 myNewItem = {Ap13: this.config.data[i].filas[a], t: this._data.Cruces[i].Apertura13[a][0], mez: this._data.Cruces[i].Apertura13[a][1], al: this._data.Cruces[i].Apertura13[a][2], lc: this._data.Cruces[i].Apertura13[a][3], fes: this._data.Cruces[i].Apertura13[a][4], op: this._data.Cruces[i].Apertura13[a][5]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura13[a][0] * 100 / this._data.Cruces[i].Apertura13[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura13[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura13[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura14":
                                 myNewItem = {Ap14: this.config.data[i].filas[a], Total: this._data.Cruces[i].Apertura14[a][0], mez: this._data.Cruces[i].Apertura14[a][1], tb: this._data.Cruces[i].Apertura14[a][2], lr: this._data.Cruces[i].Apertura14[a][3], lm: this._data.Cruces[i].Apertura14[a][4], op: this._data.Cruces[i].Apertura14[a][5]};
-                                this._store.newItem(myNewItem);
+                                porc = this._data.Cruces[i].Apertura14[a][0] * 100 / this._data.Cruces[i].Apertura9[0][0];
+                                if (a !== 0) {
+                                    t = this._data.Cruces[i].Apertura14[a][0] + " es " + porc.toFixed(0) + "%";
+                                    parametrosGrafica.push({y: this._data.Cruces[i].Apertura14[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
+                                }
                                 break;
                             case "Apertura18":
                                 totalNum = this._data.Cruces[i].Apertura18[0][0];
@@ -270,12 +324,17 @@ define([
                                 if (totalNum !== 0) { num = this._data.Cruces[i].Apertura18[a][0] * 100 / totalNum; }
                                 if (totalHec !== 0) { hectareas = this._data.Cruces[i].Apertura18[a][1] * 100 / totalHec; }
                                 myNewItem = {Ap18: this.config.data[i].filas[a], nro: this._data.Cruces[i].Apertura18[a][0], porcN: num.toFixed(0), hec: this._data.Cruces[i].Apertura18[a][1], porcH: hectareas.toFixed(0)};
-                                this._store.newItem(myNewItem);
                                 break;
                             }
+                            this._store.newItem(myNewItem);
                         }
                         complete = true;
                         this._grid.startup();
+                        chart1.addSeries(this._aperturas[j].nombre, parametrosGrafica);
+                        mag1 = new dojox.charting.action2d.MoveSlice(chart1, "default");
+                        chart1.render();
+                        legendTwo = new dojox.charting.widget.Legend({chart: chart1}, "legend");
+                        tip = new Tooltip(chart1, "default");
                     }
                 }
             }
