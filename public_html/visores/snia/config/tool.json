@@ -33,8 +33,7 @@
             "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
             "icono": "../js/snia/img/navegar.png",            
             "toggle": false,
-            "widgetConfig": {
-                
+            "widgetConfig": {                
             }
         },
         {
@@ -65,7 +64,7 @@
         },
         {
             "widget": "widgets/InformacionSuelosWidget",
-            "title": "Informacion Suelos Widget",
+            "title": "Información Suelos (Carta 1:40.000)",
             "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
             "icono": "../js/snia/img/infoCartografia.png",
             "toggle": false,
@@ -107,8 +106,7 @@
             "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
             "icono": "../js/snia/img/coordenadas.png",            
             "toggle": false,
-            "widgetConfig": {
-                
+            "widgetConfig": {                
             }
         },
            {
@@ -144,7 +142,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -160,66 +158,48 @@
         {"name": "Introducción",
             "id":"0",
             "parent":"root",
-            "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
-            },
+            "seccionTitulo":{"Texto":{"Contenido": "Introducción", "Estilo": "Indice1"}},
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
-                    },
+                "titulo":{"Texto":{"Contenido": "Introducción", "Estilo": "Titulo1"}},
                 "elementos":[
                     {
                       "Texto":[
-                        { 
-                            "Contenido": "Servicio de consulta interno. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                        {"Contenido": "Esta aplicación fue creada por el Sistema Nacional de Información Agropecuaria y tiene por objetivo el permitir y facilitar el acceso y la visualización de la información agropecuaria de manera integrada, rápida, y amigable mediante la utilización de diferentes capas de información.  En este visor Ud. encontrará información: Base (Centros poblados, MEVIR, Áreas Protegidas, etc.), Administrativa (Unidades Censales, Seccionales Policiales, Departamentos, etc.), Hidrográfica, de Cartas de Suelo (1:40.000, 1:1.000.000), de Variables Climáticas (Eventos Extremos, Excesos Hídricos, etc.), de Cobertura (Carta Forestal, Regiones Agropecuarias, etc.), de Zonificación (Zonas Geomorfológicas y Agroecológicas), de Logística (Cadenas de Producción), de Cartografía Agropecuaria (Planes de Uso, Apicultura, Productores Familiares, etc.),  de Relieve y sobre Áreas Sensibles para Aplicaciones Fitosanitarias (Terrestres y Aéreas).",
                             "Estilo": "Normal"
                         }
                       ]
+                    }, 
+                    {
+                      "Texto":[
+                        {"Contenido": "Ésta aplicación está dirigida a las autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados en su versión con autenticación y a productores agropecuarios y público general en su versión pública.",
+                            "Estilo": "Normal"
+                        }
+                      ]
+                    },
+                    {"Texto":[{"Contenido": "Ver términos y condiciones en: ", "Estilo": "Normal"}]},
+                    {
+                    "Enlace":[
+                        {"Contenido": "www.snia.gub.uy", "URL": "http://www.snia.gub.uy/files/T%C3%A9rminos%20y%20Condiciones%20Uso%20del%20Sistema%20Nacional%20de%20Informaci%C3%B3n%20Agropecuaria?es"}
+                    ] 
                     }
-                     
                 ]
-            }
-            
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
             "parent":"root",
-            "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
-            },
+            "seccionTitulo":{"Texto":{"Contenido": "Herramientas", "Estilo": "Indice1"}},
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{"Texto":{"Contenido": "Herramientas", "Estilo": "Titulo1"}},
                 "elementos": [
                     {
                         "Texto":[
-                            {
-                            "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
+                            {"Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
                             }
                         ]
                     }
-                ],
-                "esPadre": true
+                ], "esPadre": true
             }
         },
             {
@@ -227,73 +207,53 @@
                 "id":"2",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Mapa Base", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":30},
+                        "Texto":{"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
-                        "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
-                           "Estilo": "Normal"
-                        }
-                        ]    
-                    }
-                        
+                        "Texto":[{"Contenido": "Esta herramienta permite seleccionar el mapa de base de entre dos opciones, Vectorial e Imágenes. Simplemente seleccione el que desee visualizar.", "Estilo": "Normal"}]    
+                    }                        
+                    ]
+                }
+            },
+            {
+                "name": "Contenidos",
+                "id":"3",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                    {
+                       "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
+                    }                        
                     ]
                 }
             },
             {
                "name": "Navegar",
-               "id":"3",
+               "id":"4",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{ "URL":"../js/snia/img/navegar.png", "Alto":30},
+                        "Texto":{"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -304,13 +264,7 @@
                             }
                            ]    
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30} },
                         {
                          "Texto":[
                            {
@@ -401,13 +355,7 @@
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"js/snia/img/sigextent.png", "Alto":30}},
                         {
                          "Texto":[
                            {
@@ -426,7 +374,7 @@
             },
             {
                "name": "Tiempo",
-               "id":"4",
+               "id":"5",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -468,7 +416,7 @@
             },
             {
                "name": "Identificar",
-               "id":"4",
+               "id":"6",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -510,7 +458,7 @@
             },
             {
                "name": "Buscar Padrones",
-               "id":"5",
+               "id":"7",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
@@ -947,8 +895,7 @@
                 ]
             },
             "padre": "si"
-        }
-        
+        }        
 ]
             }
         }       
