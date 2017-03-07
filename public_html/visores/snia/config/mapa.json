@@ -30,9 +30,9 @@
         },
         "dynamicLayers": [             
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
                 "options": {
-                        "id": "Administrativo",
+                        "id": "Límites Administrativos",
                         "opacity": 0.7,
                         "visible": false
                 }
@@ -88,7 +88,7 @@
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
                 "options": {
-                        "id": "Cobertura",
+                        "id": "Cobertura y Uso de Suelo",
                         "opacity": 0.7,
                         "visible": false
                 }
