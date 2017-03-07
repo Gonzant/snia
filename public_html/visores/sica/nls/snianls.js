@@ -95,6 +95,13 @@ define({
             "SicaWidget1":{
                 lbDibujar: "Dibuja área en el mapa", 
                 lbRemoverDibujos: "Remover área/s del mapa"
+            }, 
+            "SicaWidget":{
+                lbDibujar: "Dibuja área en el mapa", 
+                lblTab1Simple: "Simple", 
+                lblTab1Cruces: "Cruces", 
+                lblSelCruzamiento: "Seleccione las aperturas para realizar el cruzamiento", 
+                lbRemoverDibujos: "Remover área/s del mapa"
             }
         }
     })
