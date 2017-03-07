@@ -38,7 +38,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/InformacionBase/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
                 "options": {
                         "id": "Información Base",
                         "opacity": 0.7,
