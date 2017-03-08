@@ -1,5 +1,5 @@
 /*
- * js/snia/widgets/SicaWidget1
+ * js/snia/widgets/SicaWidget
  */
 /*global define, console*/
 /*jslint nomen: true */
@@ -186,7 +186,6 @@ define([
         _init: function () {
             this._tabPrincipal.startup();
             this._tabSimple.startup();
-            
              /*ToolTips*/
             var TooltipDibujar = new Tooltip({
                 connectId: [this._dibujarArea.domNode],
