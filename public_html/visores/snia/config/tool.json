@@ -1,5 +1,5 @@
 {       
-    "barraHerramientas": [       
+    "barraHerramientas": [
         {
             "widget": "widgets/MapasBaseWidget",
             "title": "Mapa Base",
@@ -20,9 +20,8 @@
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "draggable": false,
-            "startsOpen": false,
+            "startsOpen": true,
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": false,
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],
                 "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
@@ -107,34 +106,7 @@
             "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
             "icono": "../js/snia/img/coordenadas.png",            
             "toggle": false,
-            "widgetConfig": {
-                
-            }
-        }, 
-        {
-            "widget": "widgets/BuscarParametrizadoWidget",
-            "title": "Buscar por DICOSE",
-            "msgToolTip": "Busca y despliega los padrones asociados al DICOSE ingresado",
-            "icono": "../js/snia/img/dicoseTranspOtro.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/TEMATICOS/Padrones_coneat_dicose/MapServer/0",
-                "filtros": [
-                    {
-                    "campoFiltro" : "DICOSE",
-                    "lblcampoFiltro" : "DICOSE",
-                    "placeHoldFiltro": "Ingrese Dicose",
-                    "dependencia": 0,
-                    "combo": 0,
-                    "tipo": "texto"
-                    }
-                ],
-                "columnas" : [
-                            {"name":"Depto ","field": "gis.SIGRENARE.CAT_PadronesRuralesConeat.DEPTO","width": "150px"},
-                            {"name":"PADRON","field": "gis.SIGRENARE.CAT_PadronesRuralesConeat.PADRON","width": "150px"},
-                            {"name":"DICOSE","field": "gis.SIGRENARE.Dico_Pad.DICOSE","width": "150px"}
-                            
-                    ] 
+            "widgetConfig": {                
             }
         },
            {
@@ -691,7 +663,7 @@
                     "Enlace":[
                         {
                             "Contenido": "ESRI",
-                            "URL": "https://www.esri.com"
+                            "URL": "http://www.esri.com"
                         }
                     ]
                     },
@@ -707,7 +679,7 @@
                     "Enlace":[
                         {
                             "Contenido": "Flaticon",
-                            "URL": "https://www.flaticon.com"
+                            "URL": "http://www.flaticon.com"
                         }
                     ]
                     },
@@ -715,7 +687,7 @@
                     "Enlace":[
                         {
                             "Contenido": "CC BY 3.0",
-                            "URL": "https://creativecommons.org/licenses/by/3.0/"
+                            "URL": "http://creativecommons.org/licenses/by/3.0/"
                         }
                     ]
                     }
