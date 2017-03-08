@@ -93,12 +93,11 @@ define([
             this.inherited(arguments);
             if (this.mapa) {
                 this._cargarComboAperturas();
-                this._tabSimple.startup();
-//                this.own(
-//                    on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
-//                    on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos))//,
-////                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
-//                );
+                this.own(
+                    on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
+                    on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos))//,
+//                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
+                );
             }
         },
         // start widget. called by user
@@ -133,7 +132,27 @@ define([
                 c.innerHTML = this._data[i].nombre;
                 c.label = this._data[i][i];
                 c.value = n ++;
-                if (this._data[i].esta === true) this.dynamic.appendChild(c);
+                if (this._data[i].esta === true) {
+                    this.dynamic.appendChild(c);
+                }
+            }
+             for (i in this._data) {
+                c = win.doc.createElement('option');
+                c.innerHTML = this._data[i].nombre;
+                c.label = this._data[i][i];
+                c.value = n ++;
+                if (this._data[i].esta === true) {
+                    this._cmbAperturasC1.appendChild(c);
+                }
+            }
+            for (i in this._data) {
+                c = win.doc.createElement('option');
+                c.innerHTML = this._data[i].nombre;
+                c.label = this._data[i][i];
+                c.value = n ++;
+                if (this._data[i].esta === true) {
+                    this._cmbAperturasC2.appendChild(c);
+                }
             }
         },        
         /* ---------------- */
@@ -166,19 +185,19 @@ define([
         },
         _init: function () {
             this._tabPrincipal.startup();
-            
+            this._tabSimple.startup();
             
              /*ToolTips*/
-//            var TooltipDibujar = new Tooltip({
-//                connectId: [this._dibujarArea.domNode],
-//                position: ['below'],
-//                label: this._i18n.widgets.SicaWidget1.lbDibujar
-//            });
-//            var TooltipResultado = new Tooltip({
-//                connectId: [this._eliminarArea.domNode],
-//                position: ['below'],
-//                label: this._i18n.widgets.SicaWidget1.lbRemoverDibujos
-//            });                      
+            var TooltipDibujar = new Tooltip({
+                connectId: [this._dibujarArea.domNode],
+                position: ['below'],
+                label: this._i18n.widgets.SicaWidget1.lbDibujar
+            });
+            var TooltipResultado = new Tooltip({
+                connectId: [this._eliminarArea.domNode],
+                position: ['below'],
+                label: this._i18n.widgets.SicaWidget1.lbRemoverDibujos
+            });                      
             
             this._aperturasSeleccionadas=[];
             this._visible();
