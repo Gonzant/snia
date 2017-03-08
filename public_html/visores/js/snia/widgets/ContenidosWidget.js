@@ -30,11 +30,12 @@ define([
     "dijit/layout/ContentPane",
     "dojo/fx",
     "dojo/domReady!",
-    "dojox/layout/ScrollPane"
+    "dojox/layout/ScrollPane",
+    "dijit/Tooltip"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle, focusUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
-    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
+    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId, Tooltip) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -133,6 +134,21 @@ define([
             }
         },
         _init: function () {
+            var ttComprimir = new Tooltip({
+                connectId: ["colapsarContenidos"],
+                label: "Comprimir contenido",
+                position: ['below']
+            });
+            new Tooltip({
+                connectId: ["expandirNode"],
+                label: "Expandir contenido",
+                position: ['below']
+            });
+            new Tooltip({
+                connectId: ["btnDescargar"],
+                label: "Descargar",
+                position:['below']
+            });
             this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);
