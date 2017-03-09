@@ -23,17 +23,21 @@
                 </div>
                 
                 <div data-dojo-type="dijit/layout/ContentPane" title="Predefinido">                    
-                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioDepto" value="depto" checked/>
+                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioDepto" data-dojo-attach-point = "_radioDepto" value="depto"/>
                          <label for="radioDepto">Departamentos</label> 
 
-                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioSP" value="sp"/>
+                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioSP" data-dojo-attach-point = "_radioSP" value="sp"/>
                         <label for="radioSP">Seccional Policial</label> 
                         <br>
-                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioAS" value="as"/>
+                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" data-dojo-attach-point = "_radioAS" id="radioAS" value="as"/>
                         <label for="radioAS">Áreas de Supervisión</label>
 
                         <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioAE" value="ae"/>
-                        <label for="radioAE">Áreas de Enumeración</label>                         
+                        <label for="radioAE">Áreas de Enumeración</label>   
+                        <br> <br>
+                        <div data-dojo-attach-point="_textSeleccione"> </div>
+                        
+                         <select id="dynamic" data-dojo-attach-point = "select_predef" multiple=""></select>
                 </div>                
               </div>            
             

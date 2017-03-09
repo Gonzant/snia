@@ -101,7 +101,8 @@ define({
                 lblTab1Simple: "Simple", 
                 lblTab1Cruces: "Cruces", 
                 lblSelCruzamiento: "Seleccione las aperturas para realizar el cruzamiento", 
-                lbRemoverDibujos: "Remover área/s del mapa"
+                lbRemoverDibujos: "Remover área/s del mapa",
+                lblAgregarArea: "Dibuje el area en el mapa, doble clic para finalizar"
             }
         }
     })

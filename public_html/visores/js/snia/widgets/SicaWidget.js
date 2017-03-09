@@ -95,7 +95,9 @@ define([
                 this._cargarComboAperturas();
                 this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
-                    on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos))//,
+                    on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
+                    on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
+                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP))
 //                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
                 );
             }
@@ -121,9 +123,15 @@ define([
             this.inherited(arguments);
         },
         _initDibujo: function () {
-            this._msgAgregarArea.innerHTML = "Dibuje el area en el mapa, doble clic para finalizar";
+            this._msgAgregarArea.innerHTML = this._i18n.widgets.SicaWidget1.lblAgregarArea;
             this._dibujo.activar(Draw.POLYGON);
             this._cpg3SR.seleccionarGraficoClickeado();
+        },
+        _cargarDeptos: function () {
+            this._textSeleccione.innerHTML = "Seleccione el/los Depto/s: ";
+        },
+        _cargarSP: function () {
+            this._textSeleccione.innerHTML = "Seleccione la/s SP: ";
         },
         _cargarComboAperturas: function () {
             var n = 0, i, c;
@@ -154,7 +162,7 @@ define([
                     this._cmbAperturasC2.appendChild(c);
                 }
             }
-        },        
+        },
         /* ---------------- */
         /* Eventos Publicos */
         /* ---------------- */
