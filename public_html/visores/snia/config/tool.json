@@ -47,6 +47,7 @@
                 "valor": "valor"  
             }
         },
+        
         {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
@@ -244,7 +245,10 @@
                     "elementos": [
                     {
                        "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
-                    }                        
+                    }, 
+                    {
+                        "TextoNegrita":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque no está autorizado o debe realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}]    
+                    }
                     ]
                 }
             },
@@ -285,7 +289,7 @@
                         {
                          "Texto":[
                             {"Contenido": "Desplazar", "Estilo": "Titulo3"},
-                            {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.", "Estilo": "Normal"}
+                            {"Contenido": "Presione el botón primario del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazará en la dirección seleccionada.", "Estilo": "Normal"}
                            ] 
                         },
                         {"Imagen": {"URL":"../js/snia/img/fullextent.png", "Alto":30}},
@@ -467,16 +471,8 @@
                "id":"8",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }                        
+                    "Texto":{"Contenido": "Coordenadas", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
@@ -524,20 +520,12 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":{"Contenido": "Imprimir","Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":20}                        
+                    "Imagen":{"URL":"../js/snia/img/imprimir.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/imprimir.png", "Alto":30},
+                        "Texto":{"Contenido": "Imprimir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -547,7 +535,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite además agregar la leyenda y el mapa de referencia.",
+                              "Contenido": "La herramienta permite seleccionar el formato de la hoja y la escala a la cual se desea visualizar el mapa.",
                               "Estilo": "Normal"
                             },
                             {
