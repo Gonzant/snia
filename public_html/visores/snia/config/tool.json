@@ -318,36 +318,18 @@
                "id":"5",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Tiempo", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/tiempo_gris.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/tiempo_gris.png", "Alto":30},                        
+                        "Texto":{"Contenido": "Tiempo", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
                            "Texto":[
-                           {
-                              "Contenido": "",
+                           {"Contenido": "Es una herramienta que permite manejar el espacio temporal de la informacion del mapa. Ud. podrá seleccionar especificamente un año o todo el periodo. Además, podrá elegir el rango de análisis temporal desde un minimo de una semana hasta un año.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -494,21 +476,12 @@
                             {
                               "URL":"../js/snia/img/identificar.png",
                               "Alto":20
-                            }
-                        
+                            }                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/coordenadas.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/coordenadas.png", "Alto":30},
+                        "Texto":{"Contenido": "Coordenadas", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -527,40 +500,21 @@
                "id":"9",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Mapa de Referencia", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/referencia.png", "Alto":30},
+                        "Texto": {"Contenido": "Mapa de Referencia", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                          "Texto":[
+                        {"Texto":[
                               {
                                 "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
                                 "Estilo": "Normal"
                               }
-                          ]  
-                        }
+                        ]}
                     ]
                 }
             },
@@ -569,17 +523,8 @@
                "id":"10",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Imprimir","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
