@@ -35,9 +35,13 @@
                         <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioAE" value="ae"/>
                         <label for="radioAE">Áreas de Enumeración</label>   
                         <br> <br>
-                        <div data-dojo-attach-point="_textSeleccione"> </div>
-                        
-                         <select id="dynamic" data-dojo-attach-point = "select_predef" multiple=""></select>
+                        <div>
+                            <div data-dojo-attach-point="_textSeleccione"> </div>
+                            <select id="dynamic" data-dojo-attach-point = "_select_predef" multiple=""></select>
+                            <button data-dojo-attach-point="_buscarAperturas" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px;"> 
+                                <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> 
+                        </button>
+                        </div>
                 </div>                
               </div>            
             

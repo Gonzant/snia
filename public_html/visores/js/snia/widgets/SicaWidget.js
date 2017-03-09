@@ -44,13 +44,15 @@ define([
     "dojo/dom-construct",
     "dijit/layout/ContentPane",
     "dijit/Tooltip",
+    "dijit/form/FilteringSelect",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
     Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect,
-    DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, TabContainer, domConstruct, ContentPane, Tooltip) {
+    DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, TabContainer, domConstruct,
+    ContentPane, Tooltip, FilteringSelect) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -97,8 +99,8 @@ define([
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
-                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP))
-//                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
+                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
+                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
                 );
             }
         },
@@ -128,6 +130,38 @@ define([
             this._cpg3SR.seleccionarGraficoClickeado();
         },
         _cargarDeptos: function () {
+            var select, i=0, c, departamentosStore;
+            departamentosStore = new Memory({
+                data: [
+                    {name: "Artigas", id: "G"},
+                    {name: "Canelones", id: "A"},
+                    {name: "Cerro Largo", id: "E"},
+                    {name: "Colonia", id: "L"},
+                    {name: "Durazno", id: "Q"},
+                    {name: "Flores", id: "N"},
+                    {name: "Florida", id: "O"},
+                    {name: "Lavalleja", id: "P"},
+                    {name: "Maldonado", id: "B"},
+                    {name: "Montevideo", id: "V"},
+                    {name: "Paysandu", id: "I"},
+                    {name: "Rio Negro", id: "J"},
+                    {name: "Paysandu", id: "I"},
+                    {name: "Rivera", id: "F"},
+                    {name: "Rocha", id: "C"},
+                    {name: "Salto", id: "H"},
+                    {name: "San Jose", id: "M"},
+                    {name: "Soriano", id: "K"},
+                    {name: "Tacuarembo", id: "R"},
+                    {name: "Treinta y tres", id: "D"}
+                ]
+            });
+            for (i = 0; i < departamentosStore.data.length; i = i + 1) {
+                c = win.doc.createElement('option');
+                c.innerHTML = departamentosStore.data[i].name;
+                c.label = departamentosStore.data[i].name;
+                c.value = i;
+                this._select_predef.appendChild(c);
+            }
             this._textSeleccione.innerHTML = "Seleccione el/los Depto/s: ";
         },
         _cargarSP: function () {
