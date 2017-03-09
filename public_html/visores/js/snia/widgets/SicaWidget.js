@@ -45,6 +45,7 @@ define([
     "dijit/layout/ContentPane",
     "dijit/Tooltip",
     "dijit/form/FilteringSelect",
+    "dojo/_base/array",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
@@ -52,7 +53,7 @@ define([
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
     Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect,
     DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, TabContainer, domConstruct,
-    ContentPane, Tooltip, FilteringSelect) {
+    ContentPane, Tooltip, FilteringSelect, baseArray) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -163,6 +164,18 @@ define([
                 this._select_predef.appendChild(c);
             }
             this._textSeleccione.innerHTML = "Seleccione el/los Depto/s: ";
+            this.own(
+                    on(this._acercarGeometria, a11yclick, lang.hitch(this, this._acercarDepto))
+            );
+        },
+        _acercarDepto: function (){
+            var extent, capa, items;
+            capa = this._cpg3SR;
+//            this._queryTask = new QueryTask(this._urlQuery);
+//            this._query = new Query();
+//            this._query.outSpatialReference = new SpatialReference(this.mapa.map.spatialReference.wkid);
+//            this._query.returnGeometry = true;
+//            this._query.outFields = ["*"];
         },
         _cargarSP: function () {
             this._textSeleccione.innerHTML = "Seleccione la/s SP: ";
@@ -264,6 +277,7 @@ define([
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");
             this._standbyAreas.startup();
+          
         },
          _dibujoComplete: function (evt) {
             this._i = this._i + 1;
