@@ -247,7 +247,7 @@
                        "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
                     }, 
                     {
-                        "TextoNegrita":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque no está autorizado o debe realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}]    
+                        "Texto":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque necesita realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}]    
                     }
                     ]
                 }
@@ -316,30 +316,6 @@
                         }
                     ]
                 }               
-            },
-            {
-               "name": "Tiempo",
-               "id":"5",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":{"Contenido": "Tiempo", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/tiempo_gris.png", "Alto":20}                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/tiempo_gris.png", "Alto":30},                        
-                        "Texto":{"Contenido": "Tiempo", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {"Contenido": "Es una herramienta que permite manejar el espacio temporal de la informacion del mapa. Ud. podrá seleccionar especificamente un año o todo el periodo. Además, podrá elegir el rango de análisis temporal desde un minimo de una semana hasta un año.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
             },
             {
                "name": "Identificar",
