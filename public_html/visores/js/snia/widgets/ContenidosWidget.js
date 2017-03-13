@@ -26,12 +26,12 @@ define([
     "dojox/widget/Standby",
     "dojo/Deferred",
     "esri/IdentityManager",
+    "dijit/Tooltip",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
     "dojo/domReady!",
-    "dojox/layout/ScrollPane",
-    "dijit/Tooltip"
+    "dojox/layout/ScrollPane"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, domClass, domStyle, focusUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
@@ -134,21 +134,21 @@ define([
             }
         },
         _init: function () {
-            var ttComprimir = new Tooltip({
-                connectId: ["colapsarContenidos"],
+            new Tooltip({
+                connectId: this._colapsarNode.domNode,
                 label: "Comprimir contenido",
                 position: ['below']
             });
             new Tooltip({
-                connectId: ["expandirNode"],
+                connectId: this._expandirNode.domNode,
                 label: "Expandir contenido",
                 position: ['below']
             });
             new Tooltip({
-                connectId: ["btnDescargar"],
+                connectId: this._descargarCapas.domNode,
                 label: "Descargar",
                 position:['below']
-            });
+            });            
             this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);

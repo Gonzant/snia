@@ -183,8 +183,8 @@ define([
             if (this._areaNode.get('checked')) {
                 options = [
                     { label: this._i18n.widgets.MedirWidget.lbm2, value: "square-meters", selected: true },
-                    { label: this._i18n.widgets.MedirWidget.lbha, value: "hectares"},
-                    { label: this._i18n.widgets.MedirWidget.lbkm2, value: "square-kilometers"}
+                    { label: this._i18n.widgets.MedirWidget.lbkm2, value: "square-kilometers" },
+                    { label: this._i18n.widgets.MedirWidget.lbha, value: "hectares" }
                 ];
             } else {
                 options = [
