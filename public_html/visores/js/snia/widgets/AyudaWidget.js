@@ -234,10 +234,18 @@ define([
                                                 contenido = contenido + link;
                                             }
                                             else{
-                                                 if (comun[i].DescargarEXCEL) {
+                                                if (comun[i].DescargarEXCEL) {
                                                     link = "<a href=" + '"' + comun[i].DescargarEXCEL[0].URL + '" ' + " target=" + '"' + "_blank" + '"' + "download=\"DatosForestal2011.xls\"" + ">" + comun[i].DescargarEXCEL[0].Contenido + "</a>";
                                                     contenido = contenido + link;
-                                                }                                                
+                                                }
+                                                else{
+                                                    if (comun[i].TextoNegrita) {
+                                                        for (j = 0; j < comun[i].TextoNegrita.length; j = j + 1) {
+                                                            contenido = contenido + "<b><p class=" + '"' + comun[i].TextoNegrita[j].Estilo + '"' + ">" + comun[i].TextoNegrita[j].Contenido + "</p></b>";
+                                                        }
+                                                    }
+                                                    
+                                                }
                                             }
                                         }
                                         

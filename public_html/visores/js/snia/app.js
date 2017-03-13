@@ -66,7 +66,7 @@ snia.app = {
                 require(widgetNames, function () {
                     var herramientas = [];
                     arrayUtil.forEach(toolConfig.barraHerramientas, function (herramientaConfig) {
-                        standby.set("text", "Iniciando " + herramientaConfig.title + "...");
+                        standby.set("text", "Iniciando  " + herramientaConfig.title + "...");
                         var WidgetClass = require(herramientaConfig.widget),
                             widgetConfig = herramientaConfig.widgetConfig,
                             title = herramientaConfig.title,

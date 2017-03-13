@@ -48,6 +48,7 @@
                 "valor": "valor"  
             }
         },
+        
         {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
@@ -254,14 +255,31 @@
                     },
                     "elementos": [
                     {
-                        "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
-                           "Estilo": "Normal"
-                        }
-                        ]    
+                        "Texto":[{"Contenido": "Esta herramienta permite seleccionar el mapa de base de entre dos opciones, Vectorial e Imágenes. Simplemente seleccione el que desee visualizar.", "Estilo": "Normal"}]    
+                    }                        
+                    ]
+                }
+            },
+            {
+                "name": "Contenidos",
+                "id":"3",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                    {
+                       "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
+                    }, 
+                    {
+                        "Texto":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque necesita realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}]    
                     }
-                        
                     ]
                 }
             },
@@ -353,14 +371,8 @@
                         },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Desplazar", "Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón primario del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazará en la dirección seleccionada.", "Estilo": "Normal"}
                            ] 
                         },
                         { 
@@ -421,50 +433,7 @@
                            ] 
                         }
                     ]
-                }
-               
-            },
-            {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
+                }               
             },
             {
                "name": "Identificar",
@@ -677,30 +646,13 @@
                "id":"8",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Coordenadas", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/coordenadas.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/coordenadas.png", "Alto":30},
+                        "Texto":{"Contenido": "Coordenadas", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -719,40 +671,21 @@
                "id":"9",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Mapa de Referencia", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Mapa de Referencia",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/referencia.png", "Alto":30},
+                        "Texto": {"Contenido": "Mapa de Referencia", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                          "Texto":[
+                        {"Texto":[
                               {
                                 "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
                                 "Estilo": "Normal"
                               }
-                          ]  
-                        }
+                        ]}
                     ]
                 }
             },
@@ -761,30 +694,13 @@
                "id":"10",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Imprimir","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/imprimir.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/imprimir.png", "Alto":30},
+                        "Texto":{"Contenido": "Imprimir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -794,7 +710,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite además agregar la leyenda y el mapa de referencia.",
+                              "Contenido": "La herramienta permite seleccionar el formato de hoja de impresión.",
                               "Estilo": "Normal"
                             },
                             {

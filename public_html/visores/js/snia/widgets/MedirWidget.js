@@ -189,7 +189,7 @@ define([
             } else {
                 options = [
                     { label: this._i18n.widgets.MedirWidget.lbm, value: "meters", selected: true },
-                    { label: this._i18n.widgets.MedirWidget.lbkm, value: "kilometers" },
+                    { label: this._i18n.widgets.MedirWidget.lbkm, value: "kilometers"},
                     { label: this._i18n.widgets.MedirWidget.lbmi, value: "miles" }
                 ];
             }
