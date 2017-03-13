@@ -490,7 +490,7 @@
                             },
                     "Imagen":
                             {
-                              "URL":"../js/snia/img/identificar.png",
+                              "URL":"../js/snia/img/tiempo.png",
                               "Alto":20
                             }
                         
@@ -499,7 +499,7 @@
                     "titulo":{
                          "Imagen":
                         {
-                              "URL":"../js/snia/img/identificar.png",
+                              "URL":"../js/snia/img/tiempo.png",
                               "Alto":30
                         },                        
                         "Texto":
