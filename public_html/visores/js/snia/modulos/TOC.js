@@ -193,7 +193,7 @@ define([
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
         _generarNodoSimple: function (l, dataLayer) {
-            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
             //Procesar subcapas
             if (dataLayer.wms || dataLayer.wfs) { // Si es WMS
                 this._generarSubcapasWMS(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
@@ -212,7 +212,7 @@ define([
 
         },
         _generarNodoMultiple: function (dataLayer) {
-            this._data.push({ id: dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
             arrayUtil.forEach(dataLayer.multiple, function (dataLayer1) {
                 this._getLegendJSON(dataLayer1.url + "/legend"); //Traigo todo
                 var l = this.mapa.map.getLayer(dataLayer.options.id + dataLayer1.url);
@@ -238,13 +238,13 @@ define([
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
-                this._data.push({ id: li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                this._data.push({ id: tParent + "->" + li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
                 if (li.subLayers.length > 0) {
                     arrayUtil.forEach(li.subLayers, function (sl) {
-                        this._data.push({ id: "prueba", name: sl.title, type: 'layer', parent:  li.title, legend: true, legendURL: sl.legendURL });
+                        this._data.push({ id: li.title + "->" + sl.title, name: sl.title, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
                     }, this);
                 } else {
-                    this._data.push({ id: "prueba", name: "", type: 'layer', parent:  li.title, legend: true, legendURL: li.legendURL });
+                    this._data.push({ id: li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
                 }
                 //
                 //
@@ -268,7 +268,7 @@ define([
                     if (i >= 0) { //Si es una sub-capa de segundo nivel
                         tParent = l.layerInfos[i].name;
                     }
-                    this._data.push({ id: li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  tParent, vparent: vparent, startChecked: li.defaultVisibility });
+                    this._data.push({ id: tParent + "->" + li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility ) { 
@@ -435,7 +435,7 @@ define([
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return item.id === layer.layerName;
+                    return item.name === layer.layerName;
                 });
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
                     if (layer.legend.length === 1 && layer.legend[0].label === "") { // una hoja
@@ -443,7 +443,7 @@ define([
                         tocNode[0].contentType = layer.legend[0].contentType;
                     } else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: layerLegend.label, name: layerLegend.label, legend: true, parent:  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                            this._data.push({ id: layer.layerName +  "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode.parent +"->" +layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
                     }
                 }
