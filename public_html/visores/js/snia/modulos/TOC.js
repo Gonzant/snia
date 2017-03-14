@@ -238,13 +238,13 @@ define([
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
-                this._data.push({ id: tParent + "->" + li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
                 if (li.subLayers.length > 0) {
                     arrayUtil.forEach(li.subLayers, function (sl) {
-                        this._data.push({ id: li.title + "->" + sl.title, name: sl.title, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
+                        this._data.push({ id: tParent + "->" +li.title + "->" + sl.title, name: sl.title, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
                     }, this);
                 } else {
-                    this._data.push({ id: li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
+                    this._data.push({ id: tParent + "->" + li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
                 }
                 //
                 //
@@ -268,7 +268,7 @@ define([
                     if (i >= 0) { //Si es una sub-capa de segundo nivel
                         tParent = l.layerInfos[i].name;
                     }
-                    this._data.push({ id: tParent + "->" + li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility ) { 
@@ -331,7 +331,7 @@ define([
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
-                        l = this.mapa.map.getLayer(item.id + url.url);
+                        l = this.mapa.map.getLayer(item.name + url.url);
                         if (isNodeSelected) {
                             l.show();
                         } else {
@@ -339,7 +339,7 @@ define([
                         }
                     }, this);
                 } else {
-                    l = this.mapa.map.getLayer(item.id);
+                    l = this.mapa.map.getLayer(item.name);
                     if (isNodeSelected) {
                         l.show();
                     } else {
@@ -443,7 +443,7 @@ define([
                         tocNode[0].contentType = layer.legend[0].contentType;
                     } else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: layer.layerName +  "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode.parent +"->" +layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                            this._data.push({ id: tocNode[0].parent +"->" +layer.layerName +  "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent +"->" +layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
                     }
                 }
