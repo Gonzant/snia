@@ -21,12 +21,14 @@ define([
     "esri/tasks/PrintParameters",
     "esri/tasks/PrintTask",
     "esri/tasks/PrintTemplate",
-    "dojo/_base/array"
+    "dojo/_base/array",
+    "dijit/TooltipDialog",
+    "dijit/popup"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Memory, ComboBox,
     Button, PrintParameters,
-    PrintTask, PrintTemplate, array
+    PrintTask, PrintTemplate, array, TooltipDialog, popup
     ) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -63,6 +65,11 @@ define([
         },
         _activar: function () {
             this.emit("active-changed");
+            if (this.get("active")) {
+                this._cambioEscala();
+            } else {
+                popup.close(this._myTooltipDialog);
+            }
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -129,8 +136,13 @@ define([
             this._crearTemplates();
             //Creo la tarea de imprimir
             this._printTask = new PrintTask(this._urlPrintTask);
+            on(this.mapa.map, 'zoom-end', lang.hitch(this, this._cambioEscala));
         },
         _crearBotonImprimir : function () {
+            this._myTooltipDialog = new TooltipDialog({
+                style: "width: 300px;",
+                content: "<p>Para imprimir el mapa realice menos zoom<p>"
+            });
             this._botonImprimir = new Button({
                 iconClass: "iconImprimir",
                 showLabel: true,
@@ -138,6 +150,7 @@ define([
                 disabled: false,
                 onClick: lang.hitch(this, this._imprimirClick)
             });
+
             this._imprimirNode.appendChild(this._botonImprimir.domNode);
             domStyle.set(this._imprimirNode, "margin-left", "122px");
             domStyle.set(this._imprimirNode, "margin-top", "5px");
@@ -158,6 +171,7 @@ define([
         },
         _elegirTemplate: function (templateSelected) {
             var nuevoTemplate = new PrintTemplate();
+            nuevoTemplate.preserveScale = true;
             array.forEach(this._data, function (hoja) {
                 if (hoja.name === templateSelected) {
                     nuevoTemplate.exportOptions = {
@@ -199,6 +213,18 @@ define([
         _hyperlinkClick: function () {
             this._eliminarHijos(this._imprimirNode);
             this._crearBotonImprimir();
+        },
+        _cambioEscala: function () {
+            if (((this.mapa.baseMapLayer.url === "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer") || (this.mapa.baseMapLayer.url === "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer")) && (this.mapa.map.getZoom() > 17)) {
+                this._botonImprimir.disabled = true;
+                popup.open({
+                    popup: this._myTooltipDialog,
+                    around: this._botonImprimir.domNode
+                });
+            } else {
+                popup.close(this._myTooltipDialog);
+                this._botonImprimir.disabled = false;
+            }
         }
     });
     return widget;
