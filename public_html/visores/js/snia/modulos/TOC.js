@@ -459,7 +459,7 @@ define([
                 if (!item || !item.id || (item.id && node.item.id === item.id)) {
                     var nodeOutScale;
                     if (node.item.wms || node.item.wfs) {
-                        l = this.mapa.map.getLayer(node.item.id);
+                        l = this.mapa.map.getLayer(node.item.name);
                         nodeOutScale = !l.visibleAtMapScale;
                     } else {
                         nodeOutScale = (node.item.maxScale !== 0 && scale < node.item.maxScale) || (node.item.minScale !== 0 && scale > node.item.minScale);
