@@ -30,7 +30,7 @@
         },
         "dynamicLayers": [             
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -76,11 +76,35 @@
                         "opacity": 0.7,
                         "visible": false
                 }
+            },  
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Censos_Agropecuarios/MapServer",
+                "options": {
+                        "id": "Censos Agropecuarios",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },  
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+                "options": {
+                        "id": "Cartografía Agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
+                "options": {
+                        "id": "Áreas sensibles para Aplicaciones Fitosanitarias",
+                        "opacity": 0.7,
+                        "visible": false
+                }
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
                 "options": {
-                        "id": "Cobertura",
+                        "id": "Coberturas",
                         "opacity": 0.7,
                         "visible": false
                 }
@@ -102,25 +126,9 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
-                "options": {
-                        "id": "Cartografía Agropecuaria",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Relieve/MapServer",
                 "options": {
                         "id": "Relieve",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
-                "options": {
-                        "id": "Áreas sensibles para Aplicaciones Fitosanitarias",
                         "opacity": 0.7,
                         "visible": false
                 }
