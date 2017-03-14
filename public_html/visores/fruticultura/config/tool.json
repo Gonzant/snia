@@ -140,7 +140,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": true,
@@ -178,9 +178,15 @@
                         { 
                             "Contenido": "Servicio de consulta del programa  'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.",
                             "Estilo": "Normal"
-                        }
-                        
-                        
+                        }                                                                        
+                      ]
+                    },   
+                    {
+                      "Texto":[
+                        { 
+                            "Contenido": "Servicio de consulta del programa  'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.",
+                            "Estilo": "Normal"
+                        }                                                                        
                       ]
                     },
                     { 
@@ -366,7 +372,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
+                              "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -386,7 +392,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
+                              "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -406,7 +412,7 @@
                               "Estilo": "Titulo3"
                             },
                             {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                              "Contenido": "Presione el botón primario del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
                               "Estilo": "Normal"
                             }
                            ] 
@@ -484,7 +490,7 @@
                             },
                     "Imagen":
                             {
-                              "URL":"../js/snia/img/identificar.png",
+                              "URL":"../js/snia/img/tiempo.png",
                               "Alto":20
                             }
                         
@@ -493,7 +499,7 @@
                     "titulo":{
                          "Imagen":
                         {
-                              "URL":"../js/snia/img/identificar.png",
+                              "URL":"../js/snia/img/tiempo.png",
                               "Alto":30
                         },                        
                         "Texto":
@@ -506,7 +512,7 @@
                         {
                            "Texto":[
                            {
-                              "Contenido": "",
+                              "Contenido": "Es una herramienta que permite manejar el espacio temporal de la informacion del mapa. Ud. podrá seleccionar especificamente un año o todo el periodo. Además, podrá elegir el rango de análisis temporal desde un minimo de una semana hasta un año.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -548,7 +554,7 @@
                         {
                            "Texto":[
                            {
-                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón derecho del ratón.",
+                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón secundario del ratón.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -593,7 +599,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón derecho del ratón. Para seleccionar varios mantenga presionado la tecla “ctrl”.",
+                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón secundario del ratón. Para seleccionar varios padrones mantenga presionado la tecla “ctrl”.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -665,6 +671,24 @@
                               "Estilo": "Normal"
                             }
                            ]
+                        },
+                        
+                        {"Imagen":
+                            {
+                              "URL":"../js/snia/img/contenido-negro.png",
+                              "Alto":30
+                            }
+                        },
+                        { "Texto":[
+                           {
+                              "Contenido": "Porcentaje de grupos CONEAT",
+                              "Estilo": "Titulo3"
+                            },
+                            {
+                              "Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.",
+                              "Estilo": "Normal"
+                            }
+                           ]
                         }
                     ]
                 },
@@ -712,7 +736,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
+                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón secundario del ratón sobre el mapa.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -842,7 +866,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite además agregar la leyenda y el mapa de referencia.",
+                              "Contenido": "La herramienta permite seleccionar el formato de hoja de impresión.",
                               "Estilo": "Normal"
                             },
                             {

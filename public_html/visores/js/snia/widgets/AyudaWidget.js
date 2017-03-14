@@ -186,8 +186,9 @@ define([
                         }
                     }
                     if (this.options.config.data[0].titulo === "Fruticultura") {
-                        contenido = "<p class=\"Normal\">Servicio de consulta del programa 'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.</p><video src=\"../js/snia/videos/VisorMRP.mp4\" width=\"360\" height=\"300\" controls></video>";
+                        contenido = "<p class=\"Normal\">Servicio de consulta del programa 'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.</p> <p class=\"Titulo2\">Tutorial de uso de la herramienta</p><video src=\"../js/snia/videos/VisorMRP.mp4\" width=\"360\" height=\"240\" controls></video>";
                         titulo = "<p class=\"Titulo1\">Introducción</p>";
+                        
                         div2.innerHTML = titulo + contenido;                             
                     }
 //                   if(this.options.config.data[0].titulo === "Estadisticas" ){
