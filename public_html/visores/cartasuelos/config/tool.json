@@ -67,7 +67,7 @@
             "widget": "widgets/BuscarParametrizadoWidget",
             "title": "Buscar por perfil",
             "msgToolTip": "Busca y despliega por perfil",
-            "icono": "../js/snia/img/buscar.png",            
+            "icono": "../js/snia/img/AdvaceSearch.png",            
             "toggle": false,
             "widgetConfig": {
                 "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/SISU/MapServer/0",
