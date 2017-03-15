@@ -405,7 +405,7 @@ define([
             return null;
         },
         _createLink: function (){
-    return ("<a href=policyinfo.jsp?policy="+data+">"+data+"</a>");
+    return ("<a href="+data+">"+data+"</a>");
 }
     });
     return widget;

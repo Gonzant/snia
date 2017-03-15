@@ -106,17 +106,17 @@
                 "catastral": "AREAHA",
                 "productividad": "IND_CONEAT",				
 			    "Herramienta": {
-					"CampoEtiquetaUnidadMapeo": "UnidadMapeo.UM_Nombre",
-					"CampoSimboloSerie": "Serie.Serie_Simbolo",
-					"CampoIdPerfilRepresentativo": "Serie.PerfilRepresentativo_Id",
+					"CampoEtiquetaUnidadMapeo": "SISU_PROD.dbo.UnidadMapeo.UM_Nombre",
+					"CampoSimboloSerie": "SISU_PROD.dbo.Serie.Serie_Simbolo",
+					"CampoIdPerfilRepresentativo": "SISU_PROD.dbo.Serie.PerfilRepresentativo_Id",
 					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
 					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
 					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/4",
+					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/3",
 					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
-					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
+					"CampoEtiquetaServicioUnidadMapeo": "UM",
 					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
-					"CampoIdServicioPerfil": "Id_Perfil"
+					"CampoIdServicioPerfil": "ID"
 				}
             }
         }, 
