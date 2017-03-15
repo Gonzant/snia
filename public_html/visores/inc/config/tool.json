@@ -72,6 +72,7 @@
             "toggle": false,
             "widgetConfig": {
                 "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/INC/colonias/MapServer/0",
+                "idFiltro": "OBJECTID",
                 "filtros": [
                     {
                     "campoFiltro" : "Inmueble",

@@ -64,7 +64,36 @@
                 "productividad": "IND_CONEAT"
             }
         },
-		{
+        {
+            "widget": "widgets/BuscarParametrizadoWidget",
+            "title": "Buscar por perfil",
+            "msgToolTip": "Busca y despliega por perfil",
+            "icono": "../js/snia/img/buscar.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/SISU/MapServer/0",
+                "tipo": "punto",
+                "idFiltro": "Perfiles_.OBJECTID",
+                "filtros": [
+                    {
+                    "campoFiltro" : "Perfil1.Perfil_Punto",
+                    "lblcampoFiltro" : "Perfil",
+                    "placeHoldFiltro": "Perfil",
+                    "dependencia": 0,
+                    "combo": 0,
+                    "tipo": "texto"
+                    }
+                ],
+                "columnas" : [
+                            {"name":"Perfil ","field": "Perfil1.Perfil_Punto","width": "150px"},
+                            {"name":"Fotoplano","field": "Perfil1.FotoplanoId","width": "150px"},
+                            {"name":"Orden","field": "Perfil1.CT_Orden_Id","width": "150px"},
+                            {"name":"Clase","field": "Perfil1.Clase_Id","width": "150px"}
+                            
+                    ] 
+          }
+        },
+        {
             "widget": "widgets/InformacionSuelosWidget",
             "title": "Informacion Suelos Widget",
             "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
