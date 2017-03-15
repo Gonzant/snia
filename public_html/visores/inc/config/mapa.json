@@ -17,7 +17,7 @@
             }
 	},
         "baseMapLayerBackup": {
-            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
                 "xmin": -6364316,
                 "ymin": -4364316,
@@ -30,7 +30,7 @@
         },
         "dynamicLayers": [ 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -38,7 +38,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/InformacionBase/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/InformacionBase/MapServer",
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
@@ -46,7 +46,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografia",
                         "opacity": 0.7,
@@ -54,7 +54,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/CartasSuelos/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SUELOS/CartasSuelos/MapServer",
                 "options": {
                         "id": "Cartas de suelos",
                         "opacity": 0.7,
@@ -62,7 +62,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
                 "options": {
                         "id": "Suelos",
                         "opacity": 0.7,

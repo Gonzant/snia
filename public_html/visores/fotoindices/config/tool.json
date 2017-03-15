@@ -23,7 +23,6 @@
             "draggable": false,
             "startsOpen": true,
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": true,
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }
@@ -84,7 +83,7 @@
                 
             }
         },
-        {
+           {
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
             "msgToolTip": "Muestra la referencia de la posición actual",

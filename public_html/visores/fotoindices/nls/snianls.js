@@ -73,7 +73,7 @@ define({
             "MedirWidget": {
                 lbArea: "Area",
                 lbDistancia: "Distancia",
-                lbm2:"Metros Cuadrados",
+                lbm2:"Metros cuadrados",
                 lbkm2:"Kilómetros cuadrados",
                 lbha:"Hectáreas",
                 lbm:"Metros",

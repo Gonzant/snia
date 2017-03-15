@@ -23,7 +23,6 @@
             "startsOpen": true,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": true,
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }
@@ -107,13 +106,13 @@
                 "catastral": "AREAHA",
                 "productividad": "IND_CONEAT",				
 			    "Herramienta": {
-					"CampoEtiquetaUnidadMapeo": "UnidadMapeo.UM_Nombre",
-					"CampoSimboloSerie": "Serie.Serie_Simbolo",
-					"CampoIdPerfilRepresentativo": "Serie.PerfilRepresentativo_Id",
+					"CampoEtiquetaUnidadMapeo": "UM",
+					"CampoSimboloSerie": "Serie",
+					"CampoIdPerfilRepresentativo": "Perfil",
 					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
 					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
 					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/4",
+					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/3",
 					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
 					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
 					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
@@ -142,12 +141,12 @@
             }
         },
         {
-            "widget": "widgets/MapaReferenciaWidget",
-            "title": "Mapa Referencia",
-            "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png",            
-            "toggle": false,
-            "widgetConfig": {                
+         "widget": "widgets/MapaReferenciaWidget",
+         "title": "Mapa Referencia",
+         "msgToolTip": "Muestra la referencia de la posición actual",
+         "icono": "../js/snia/img/referencia.png",            
+         "toggle": false,
+         "widgetConfig": {                
             }
         },
         {

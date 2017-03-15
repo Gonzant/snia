@@ -23,7 +23,6 @@
             "startsOpen": true,
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": false,
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],
                 "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
@@ -87,76 +86,9 @@
         },
         {
             "widget": "widgets/RiesgoWidget",
-            "title": "Determinación del Riesgo Ambiental",
-            "msgToolTip": "Calcula el riesgo ambiental de tambos en un área de generación y gestión de efluentes.",
-            "icono": "../js/snia/img/calculoRiesgoTambo_gris.png",
-            "toggle": false,
-            "widgetConfig": {
-                "gpRiesgo":{
-                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgo/GPServer/gpRiesgo",
-                    "configuracion": "OPERACION:Configuracion",
-                    "riesgoPredial":"OPERACION:RiesgoPredial;",
-                    "riesgoGeo":"OPERACION:RiesgoGeo;",
-                    "paramSalida": "Salida",
-                    "paramSalidaAmbiental": "RiesgoAmbiental",
-                    "paramSalidaVarEtiq": "VariablesEtiquetas",
-                    "colores":{
-                        "verde":"#24801C",
-                        "amarillo":"#FFF400",
-                        "naranja":"#FFA500",
-                        "rojo":"#FF0000",
-                        "gris":"#707070"
-                    }                    
-                },
-                "definicionAGGEyoE" : "*AGGEy/oE: “Área de Generación y Gestión de Efluentes y/o Estiércol”. Comprende todos los puntos de generación de efluente liquido/solido (sala de ordeñe y áreas aledañas, patio/s de alimentación), el área donde se ubica el sistema de gestión de efluentes, y el área de disposición final del efluente liquido / sólidos.",
-                "riesgoPredial": "Riesgo Predial",
-                "riesgoGeo": "Riesgo Geográfico",
-                "riesgoAmbiental": "Riesgo Ambiental",
-                "marcarUbicacion": "Marcar ubicación de AGGE*",
-                "mensajeMarcarUbicacion":"Por favor presione el botón Marcar ubicación",
-                "desmarcarUbicacion": "Cancelar marcar ubicación",
-                "informacion": "Información",
-                "reporte": "Generar reporte",
-                "ayuda": "Ayuda",
-                "dialogReporte":{
-                    "width": "300px",
-                    "nombre" : "Reporte Riesgo",
-                    "titulo": "Reporte Matriz de Riesgo",
-                    "marcarPunto": "Marque el AGGE* en el mapa."
-                },
-                "dialogInformacion":{
-                    "width": "300px",
-                    "titulo": "Información"
-                },
-                "widgetReporte":{
-                    "botonAceptar" : "Aceptar",
-                    "verde": [128, 255, 0],
-                    "amarillo": [255, 255, 0],
-                    "naranja": [255, 128, 0],
-                    "rojo": [255, 0, 0],
-                    "pdf":{
-                        "columnaDerecha" : "135",
-                        "columnaIzquierda" : "8",
-                        "letraGrande" : "22",
-                        "letraChica" : "13",
-                        "fila": "20",
-                        "mgap" : "MGAP",
-                        "dicose": "DICOSE",
-                        "coordenadas":"Coordenadas (x ; y) UTM21S",
-                        "infoPredial":"INFORMACION PREDIAL",                        
-                        "infoGeo":"INFORMACION GEOGRAFICA",
-                        "riesgo":"RIESGO",
-                        "riesgoAmbiental": "RIESGO AMBIENTAL",
-                        "nombrePdf":"ReporteRiesgo.pdf"
-                    }
-                }
-            }
-        },
-        {
-            "widget": "widgets/RiesgoCorralWidget",
-            "title": "Riesgo ambiental de corral de engorde ",
-            "msgToolTip": "Calcula el riesgo ambiental de un corral de engorde.",
-            "icono": "../js/snia/img/calculoRiesgoCorral_gris.png",
+            "title": "Riesgo Ambiental",
+            "msgToolTip": "Calcula el riesgo ambiental para un punto geográfico.",
+            "icono": "../js/snia/img/calculoRiesgo_gris.png",
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
@@ -179,7 +111,7 @@
                 "riesgoGeo": "Riesgo Geográfico",
                 "riesgoAmbiental": "Riesgo Ambiental",
                 "marcarUbicacion": "Marcar ubicación",
-                "mensajeMarcarUbicacion":"Por favor presione el botón Marcar Ubicación",
+                "mensajeMarcarUbicacion":"Por favor marque ubicación",
                 "desmarcarUbicacion": "Cancelar marcar ubicación",
                 "informacion": "Información",
                 "reporte": "Generar reporte",

@@ -140,7 +140,7 @@ define([
         },
         _activar: function () {
             if (!this.get("active")) {
-                if (!this._mantenerGeom) {
+                if (!this._mantenerGeom){
                     this._cg3sr.removerMapa();
                 }
             } else {
@@ -234,7 +234,7 @@ define([
             }
         },
         _templateIni : function () {
-            var select, departamentosStore, data;
+            var select, departamentosStore;
             departamentosStore = new Memory({
                 data: [
                     {name: "Artigas", id: "G"},
@@ -278,7 +278,7 @@ define([
                 onChange: lang.hitch(this, function (b) {
                     this._mantenerGeom = b;
                 })
-            }, this._mantenerGeo).startup();            
+            }, this._mantenerGeo).startup();
         },
         _buscarClick : function () {
             var i, departamento, padrones, padronesArreglo, query;
@@ -437,8 +437,8 @@ define([
                 this._cubrimientoConeatWidget.startup();
                 this._cubrimientoConeatWidget.show();
                 dialogo = new Dialog({
-                    title : "Cubrimiento Coneat",
-                    style : "width: 240px",
+                    title : "Porcentaje de Grupos Coneat",
+                    style : "width: 280px",
                     content: this._cubrimientoConeatWidget
                 });
                 dialogo.startup();

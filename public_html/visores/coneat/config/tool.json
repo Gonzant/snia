@@ -15,17 +15,16 @@
             }
         },
         {
-            "widget": "widgets/Contenidos2Widget",
+            "widget": "widgets/ContenidosWidget",
             "title": "Contenidos",
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
             "startsOpen": true,
             "draggable": false,
-            
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": true,
             "widgetConfig": {
+                "dynamicMapServiceLayers": []
             }
         },
         {
@@ -116,12 +115,12 @@
                 "lbImprimiendo":"Imprimiendo",
                 "data": 
                     [
-                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY", "direccion":"V"},
-                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY", "direccion":"H"},
-                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY", "direccion":"V"},
-                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY", "direccion":"H"},
-                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY", "direccion":"H"},
-                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY", "direccion":"H"}
+                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
                     ]
             }
         },

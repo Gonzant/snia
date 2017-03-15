@@ -86,29 +86,19 @@ html, body {
     border:0px;
     background-color: #FFC000;
 }
-
-
 .iconAcercarSeleccionBuscar{
-    width: 30px;
-    height: 30px; 
+    width: 27px;
+    height: 27px; 
     border: none;
 }
-
-
 .iconDesSeleccionBuscar{
-    width: 30px;
-    height: 30px; 
-    border: none;
-}
-
-.iconDesSeleccionBuscar{
-    width: 30px;
-    height: 30px; 
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 .iconDeleccionarTodoBuscar{
-    width: 30px;
-    height: 30px; 
+    width: 27px;
+    height: 27px; 
     border: none;
 }
 
@@ -265,7 +255,7 @@ Dialogos:
 
 .claro .dijitDialogTitleBar {
     border: 2px solid;
-    height: 30px;
+    height: 35px;
     padding-top: 10px;
     border-color: transparent;
     border-top: none;    
@@ -507,10 +497,24 @@ tituloTPAyuda{
 .claro .dijitBorderContainer-dijitContentPane {
     background-color: #E1E1E1;
 }
-
+.claro .dijitTreeRowSelected {
+    background-color: transparent;
+    border-color: transparent;
+}
 .claro .dijitTreeRow{
     font-weight:bold;
     color:dimgray;
+}
+
+.claro .dijitTreeRowHover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.claro .dijitTreeIsLast {
+  background: url('../img/mapabase.png') no-repeat;
+  width:40px;
+  height:40px;  
 }
 
 .claro .dijitContentPane {
@@ -1065,14 +1069,4 @@ div p {
 }
 .iconColpasarContenidos:focus{
     border: 0 transparent;
-}
-
-.TOCOutOfScale{
-   color:grey;
-   opacity:.5;
-}
-
-.ContenidosTree>.dijitTree{
-    height: 100%;
-    overflow-y: hidden;
 }

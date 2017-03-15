@@ -17,15 +17,11 @@ snia.app = {
         require(["dojo/on",
             "dojo/dom",
             "dojo/parser",
-            "dojo/_base/lang",
             "dojo/_base/array",
             "dojo/json",
             "dojox/widget/Standby",
-            "esri/config",
             "esri/layers/ArcGISTiledMapServiceLayer",
             "esri/layers/ArcGISDynamicMapServiceLayer",
-            "esri/layers/WMSLayer",
-            "esri/layers/WFSLayer",
             "modulos/HerramientaDialog",
             "widgets/BarraHerramientasWidget",
             "widgets/MapaWidget",
@@ -35,8 +31,8 @@ snia.app = {
             "dojo/dom-style",
             "esri/urlUtils",
             "esri/geometry/Extent",
-            "dojo/domReady!"], function (on, dom, parser, lang, arrayUtil, JSON, Standby,
-            esriConfig, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer, WFSLayer,
+            "dojo/domReady!"], function (on, dom, parser, arrayUtil, JSON, Standby,
+            ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
@@ -49,42 +45,15 @@ snia.app = {
             //metodos
             initCapas = function () {
                 //dynamicLayers
-                var dynLayers = mapaConfig.mapa.dynamicLayers, l;
+                var dynLayers = mapaConfig.mapa.dynamicLayers;
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
-                    if (dataLayer.url) { //Nodo a partir de un map service
-                        var l;
-                        if (dataLayer.wms) {
-                            esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                            l = new WMSLayer(dataLayer.url, dataLayer.options);
-                            l.on("error", function (e) {
-                                console.log(e.error.message);
-                            });                            
-                        } else if (dataLayer.wfs) {
-                            esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                            l = new WFSLayer(dataLayer.url, dataLayer.options); 
-                        } else {
-                            l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
-                        }
-                        if (index === 0) {
-                            //Mapa base
-                            mapa.agregarCapa(l);
-                        } else {
-                            //Agregar capas de forma que las de mas arriba en la conf se muestren en el mapa por encima que las de mas abajo
-                            mapa.agregarCapa(l, 1);
-                        }
-                    } else if (dataLayer.multiple) { //Nodo a partir de varios map services
-                        arrayUtil.forEach(dataLayer.multiple, function (dataLayer2) {
-                            var dataLayerOptions = lang.clone(dataLayer.options);
-                            dataLayerOptions.id = dataLayer.options.id + dataLayer2.url;
-                            if (dataLayer2.wms) {
-                                esriConfig.defaults.io.corsEnabledServers.push(dataLayer2.url);
-                                l = new WMSLayer(dataLayer2.url, dataLayerOptions);
-                            } else {
-                                l = new ArcGISDynamicMapServiceLayer(dataLayer2.url, dataLayerOptions);
-                            }
-                            
-                            mapa.agregarCapa(l);
-                        });
+                    var l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                    if (index === 0) {
+                        //Mapa base
+                        mapa.agregarCapa(l);
+                    } else {
+                        //Agregar capas de forma que las de mas arriba en la conf se muestren en el mapa por encima que las de mas abajo
+                        mapa.agregarCapa(l, 1);
                     }
                 });
             };
@@ -97,7 +66,7 @@ snia.app = {
                 require(widgetNames, function () {
                     var herramientas = [];
                     arrayUtil.forEach(toolConfig.barraHerramientas, function (herramientaConfig) {
-                        standby.set("text", "Iniciando " + herramientaConfig.title + "...");
+                        standby.set("text", "Iniciando  " + herramientaConfig.title + "...");
                         var WidgetClass = require(herramientaConfig.widget),
                             widgetConfig = herramientaConfig.widgetConfig,
                             title = herramientaConfig.title,

@@ -16,11 +16,31 @@
                 }
             }
         },
+        "baseMapLayerBackup": {
+            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "extent": {
+                "xmin": -37867.16314808361,
+                "ymin": 5957313.020605681,
+                "xmax": 1220493.68690695,
+                "ymax": 6874864.455708552,
+                "spatialReference": {
+					"wkid":32721
+				}
+            }
+        },
         "dynamicLayers": [             
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Especies/MapServer",
                 "options": {
                         "id": "Fruticultura",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Confusion_sexual/MapServer",
+                "options": {
+                        "id": "Confusión Sexual",
                         "opacity": 0.7,
                         "visible": false
                 }
@@ -42,6 +62,14 @@
                 }
             },
             {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasReestringido/MapServer",
+                "options": {
+                        "id": "Plagas Restringido",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/HuertaBase/MapServer",
                 "options": {
                         "id": "Base",
@@ -50,7 +78,7 @@
                 }
             },
             {
-                "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
+                "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
                 "options": {
                         "id": "Caminería",
                         "opacity": 0.7,
@@ -61,4 +89,3 @@
         ]
     }
 }
-

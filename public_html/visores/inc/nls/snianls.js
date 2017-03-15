@@ -28,7 +28,7 @@ define({
                 lbErrorBuscar: "Error al buscar.",
                 lbErrorNoSeleccionCroquis: "Se necesita al menos un elemento seleccionado para el croquis.",
                 lbErrorNoSeleccionCubrimiento: "Se necesita al menos un elemento seleccionado para el cubrimiento.",
-                lbMantenerGeo: "Mantener geometría"               
+                lbMantenerGeo: "Mantener geometría"                
             },
             "NavegarWidget": {
                 tbAlejar: "Alejar",
@@ -40,7 +40,7 @@ define({
             },
             "ImprimirWidget": {
                 lbTemplateSelect: "Formato",
-                lbEscala: "Escala"                
+                lbEscala: "Escala"
             },
             "EstilosWidget": {
                 tTabMenu: "Menu",
@@ -73,7 +73,7 @@ define({
             "MedirWidget": {
                 lbArea: "Area",
                 lbDistancia: "Distancia",
-                lbm2:"Metros Cuadrados",
+                lbm2:"Metros cuadrados",
                 lbkm2:"Kilómetros cuadrados",
                 lbha:"Hectáreas",
                 lbm:"Metros",
@@ -91,6 +91,10 @@ define({
             "ContenidosWidget": {
                 bColapsar: "Colapsar",
                 bExpandir: "Expandir"
+            },            
+            "TiempoWidget": {
+                lbSelectAño: "Seleccione año",
+                 lbAño: "año"
             }
         }
     })

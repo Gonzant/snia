@@ -22,17 +22,13 @@ define([
     "esri/layers/ArcGISTiledMapServiceLayer",
     "dijit/form/RadioButton",
     "dijit/layout/ContentPane",
-    "dijit/form/Button",
-    "dojo/parser",
-    "dojo/domReady!"
+    "dijit/form/Button"
 ], function (on, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle, domConstruct,
     ArcGISTiledMapServiceLayer,
-    RadioButton, Button, parser) {
+    RadioButton, Button) {
     //"use strict";
-    
-   // parser.parse();
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         options : {
@@ -68,7 +64,7 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                var tr, td, boton;
+                var tr, td, boton, label;
                 if (this.config.mapasBase) {
                     this._mapasBase = this.config.mapasBase;
                 }
@@ -88,8 +84,8 @@ define([
                         disabled: false,
                         innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65"> <br>' + item.nombre,
                         name: "mapasBaseOptions"
-                    }).placeAt(td);
-                    boton.startup();
+                    });
+                    boton.placeAt(td).startup();
                     
                     this._botones.push(boton);
                     

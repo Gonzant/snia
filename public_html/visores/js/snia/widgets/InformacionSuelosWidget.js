@@ -225,7 +225,7 @@ define([
             select.startup();
             filtrarStore = new Memory({
                 data: [
-                    {name: "Unidad Mapeo", id: "2", formatter: lang.hitch(this, this._createLink)},
+                    {name: "Unidad Mapeo", id: "2"},
                     {name: "Serie", id: "3"},
                     {name: "Perfil", id: "4"}
                 ]
@@ -244,7 +244,7 @@ define([
         _acercarSeleccionUnidadMapeo : function () {
             this._cg3sr.limpiar();
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
-            this._query.where = "UM = '" + this._elemento[this._config.CampoEtiquetaUnidadMapeo]+ "'";
+            this._query.where = "UM = '" + this._elemento.UM + "'";
             this._query.returnGeometry = true;
             this._queryTaskUnaidadMapeo.execute(this._query, lang.hitch(this, this._queryTaskCallbackGeometry),
                 lang.hitch(this, this._queryTaskErrbackGeometry));
@@ -252,7 +252,7 @@ define([
         _acercarSeleccionPerfil : function () {
             this._cg3srPunto.limpiar();
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
-            this._query.where = this._config + " = '" + this._elemento[this._config.CampoIdPerfilRepresentativo] + "'";
+            this._query.where = this._config.CampoIdServicioPerfil + " = '" + this._elemento.SeriePerfilRepresentativo + "'";
             this._query.returnGeometry = true;
             this._queryTaskPerfil.execute(this._query, lang.hitch(this, this._queryTaskCallbackGeometryPerfil),
                 lang.hitch(this, this._queryTaskErrbackGeometry));
@@ -306,19 +306,19 @@ define([
             switch (idy) {
             case 0:
                 this._elemento = rowData;
-                elemento = rowData[this._config.CampoEtiquetaUnidadMapeo];
+                elemento = rowData.UM;
                 elemento = elemento.replace(/\+/g, ".");
                 elemento = elemento.replace(/\//g, ",");
                 url = this._config.UrlUnidadMapeo + "/" + elemento + ".pdf";
                 break;
             case 1:
                 this._elemento = rowData;
-                elemento = rowData[this._config.CampoSimboloSerie];
+                elemento = rowData.SerieSimbolo;
                 url = this._config.UrlSerie + "/" + elemento + ".pdf";
                 break;
             case 2:
                 this._elemento = rowData;
-                elemento = rowData[this._config.CampoIdPerfilRepresentativo];
+                elemento = rowData.SeriePerfilRepresentativo;
                 url = this._config.UrlPerfil + "/" + elemento + ".pdf";
                 break;
             case 3:
@@ -403,10 +403,7 @@ define([
         _queryTaskErrbackGeometry: function () {
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbErrorBuscar;
             return null;
-        },
-        _createLink: function (){
-    return ("<a href=policyinfo.jsp?policy="+data+">"+data+"</a>");
-}
+        }
     });
     return widget;
 });

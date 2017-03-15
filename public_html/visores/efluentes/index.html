@@ -1,11 +1,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Determinación del Riesgo Ambiental</title>
+        <title>Efluentes</title>
  
         <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
         <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
-        <link rel="stylesheet" href="../js/snia/css/appSnia.css">
+        <link rel="stylesheet" href="../js/snia/css/appRenare.css">
         <link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" /> <!-- Contenidos -->
     </head>
 
@@ -14,11 +14,8 @@
             <div id="divContenedorIndex" style="display: none" >
                 <div id="divToolbar" class="divToolbar"></div>
                 <div id="divLogoMGAP" class="divLogoMGAP">
-                    <img id="logoMGAPchico" src="../js/snia/img/logoSnia.png">
-                    <img id="logochiquitoMiem" src="../js/snia/img/miem_transparent.png">
-                    <img id="logochiquitoMvotma" src="../js/snia/img/Logo-mvotma.png">
+                    <img id="logoMGAP" src="../js/snia/img/logo.png">
                 </div>
-
                 <div id="divToolbarTitulo" class="divToolbarTitulo"> </div>
             </div>
             
@@ -32,8 +29,6 @@
                     { name: "modulos", location: "/js/visores/js/snia/modulos" },
                     { name: "widgets", location: "/js/visores/js/snia/widgets" },
                     { name: "agsjs", location: "/js/visores/js/lib/agsjs" },
-                    //{ name: "bootstrap", location: "/js/visores/js/lib/bootstrap" },
-                    { name: "jspdf", location: "/js/visores/js/lib/jspdf" },
                     { name: "config", location: "/js/visores/efluentes/config" }
                 ]
 //                paths: { agsjs: location.pathname.replace(/\/[^/]+$/, '') + '/js/lib/agsjs'}
@@ -41,6 +36,8 @@
         </script>
         <!-- Cargo ESRI -->        
         <script type="text/javascript" src="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/init.js"></script>        
+        <!-- Cargo JSPDF -->        
+        <script type="text/javascript" src="../js/lib/jspdf/jspdf.min.js"></script>
         <!-- TODO -->
         <script type="text/javascript" src="../js/snia/app.js"></script>
     </body>

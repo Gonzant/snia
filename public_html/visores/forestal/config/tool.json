@@ -23,7 +23,6 @@
             "draggable": false,
             "startsOpen": true,
             "position": {"left": "20px", "top": "96px"},
-            "startsOpen": true,
             "widgetConfig": {
                 "dynamicMapServiceLayers": []
             }
@@ -205,7 +204,7 @@
                                         "Estilo": "Normal"
                                     }]
                                 },
-                                {"Imagen":{"URL":"../forestal/img/forestacion/artigas.PNG","Alto":150, "Ancho":370}},
+                                {"Imagen":{"URL":"../forestal/img/forestacion/artigas.png","Alto":150, "Ancho":370}},
                                 {"Texto":[
                                     {"Contenido": "El departamento cuenta con 31.910 has de Suelos de Prioridad Forestal, lo que representa el 2,7 %. A su vez, los Suelos de Prioridad Forestal se divide en: Suelos de PF Condicionada: 11.687 has y Suelos de PF No Condicionada: 20.223 has.",
                                         "Estilo": "Normal"
