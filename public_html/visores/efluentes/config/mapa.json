@@ -17,7 +17,7 @@
             }
 	},
         "baseMapLayerBackup": {
-            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
                 "xmin": -6364316,
                 "ymin": -4364316,

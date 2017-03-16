@@ -1,21 +1,21 @@
-{
-	"mapa": {
+{	
+    "mapa": {
         "mapConfig": {
             "slider": false,
             "logo": false
         },
         "baseMapLayer": {
-            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
             "extent": {
                 "xmin": -37867.16314808361,
                 "ymin": 5957313.020605681,
                 "xmax": 1220493.68690695,
                 "ymax": 6874864.455708552,
                 "spatialReference": {
-					"wkid":32721
-				}
+                    "wkid":32721
+		}
             }
-        },
+	},
         "baseMapLayerBackup": {
             "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
@@ -28,10 +28,9 @@
                 }
             }
         },
-        "dynamicLayers": [             
-            
+        "dynamicLayers": [ 
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -39,49 +38,49 @@
                 }
             },
             {
-                "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/SIT/cobertura/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/InformacionBase/MapServer",
                 "options": {
-                        "id": "Cobertura (SIT)",
+                        "id": "Información base",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/PlanesRotaciones/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
-                        "id": "Agricultura",
+                        "id": "Hidrografia",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Forestacion/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SUELOS/CartasSuelos/MapServer",
                 "options": {
-                        "id": "Forestacion",
+                        "id": "Cartas de suelos",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Especies/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
                 "options": {
-                        "id": "Especies",
+                        "id": "Suelos",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Citricultura/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
                 "options": {
-                        "id": "Citricultura",
+                        "id": "Cartografia Agropecuaria",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Apicultura/Apicultura/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/INC/colonias/MapServer",
                 "options": {
-                        "id": "Apicultura",
+                        "id": "Colonias",
                         "opacity": 0.7,
                         "visible": false
                 }
