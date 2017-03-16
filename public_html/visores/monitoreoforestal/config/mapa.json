@@ -85,12 +85,13 @@
                 "wms": true
             },     
             {
-                "url": "https://geoserver.snia.gub.uy/geoserver/cite/wms?service=WMS&version=1.1.0&request=GetCapabilities",
+                "url": "https://geoserver.snia.gub.uy/geoserver/ows?service=wfs&version=1.0.0&request=GetCapabilities",
                 "options": {
                         "id": "WMSPrueba",
                         "opacity": 0.7,
                         "visible": false
                 },
+                "wfs": true,
                 "wms": true
             },
             {

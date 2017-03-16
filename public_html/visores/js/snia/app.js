@@ -53,12 +53,9 @@ snia.app = {
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     if (dataLayer.url) { //Nodo a partir de un map service
                         var l;
-                        if (dataLayer.wms) {
+                        if (dataLayer.wms && !dataLayer.wfs) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                            l = new WMSLayer(dataLayer.url, dataLayer.options);
-                            l.on("error", function (e) {
-                                console.log(e.error.message);
-                            });                            
+                            l = new WMSLayer(dataLayer.url, dataLayer.options);                     
                         } else if (dataLayer.wfs) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WFSLayer(dataLayer.url, dataLayer.options); 
@@ -72,6 +69,9 @@ snia.app = {
                             //Agregar capas de forma que las de mas arriba en la conf se muestren en el mapa por encima que las de mas abajo
                             mapa.agregarCapa(l, 1);
                         }
+                        l.on("error", function (e) {
+                            console.log(e.error.message);
+                        });                         
                     } else if (dataLayer.multiple) { //Nodo a partir de varios map services
                         arrayUtil.forEach(dataLayer.multiple, function (dataLayer2) {
                             var dataLayerOptions = lang.clone(dataLayer.options);

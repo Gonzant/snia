@@ -400,11 +400,11 @@ define([
                     onChange: lang.hitch(this, function (value) {
                         if (args.item.parent === "root") {
                             if (args.item.type === "mapservice") {//Si es un map service
-                                l = this.mapa.map.getLayer(args.item.id);
+                                l = this.mapa.map.getLayer(args.item.name);
                                 l.setOpacity(value / 100);
                             } else { //Si es un nodo múltiple args.item.type === "multiple"
                                 arrayUtil.forEach(args.item.multiple, function (dataLayer) {
-                                    l = this.mapa.map.getLayer(args.item.id + dataLayer.url);
+                                    l = this.mapa.map.getLayer(args.item.name + dataLayer.url);
                                     l.setOpacity(value / 100);
                                 }, this);
                             }
