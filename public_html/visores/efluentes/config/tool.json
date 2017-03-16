@@ -20,12 +20,8 @@
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
             "toggle": false,
-            "startsOpen": true,
-            "draggable": false,
-            "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
-                "dynamicMapServiceLayers": [],
-                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+                "dynamicMapServiceLayers": []
             }
         },
         {
@@ -86,9 +82,9 @@
         },
         {
             "widget": "widgets/RiesgoWidget",
-            "title": "Riesgo Ambiental",
-            "msgToolTip": "Calcula el riesgo ambiental para un punto geográfico.",
-            "icono": "../js/snia/img/calculoRiesgo_gris.png",
+            "title": "Determinación del Riesgo Ambiental",
+            "msgToolTip": "Calcula el riesgo ambiental de tambos en un área de generación y gestión de efluentes.",
+            "icono": "../js/snia/img/calculoRiesgoTambo_gris.png",
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
@@ -107,11 +103,12 @@
                         "gris":"#707070"
                     }                    
                 },
+                "definicionAGGEyoE" : "*AGGEy/oE: “Área de Generación y Gestión de Efluentes y/o Estiércol”. Comprende todos los puntos de generación de efluente liquido/solido (sala de ordeñe y áreas aledañas, patio/s de alimentación), el área donde se ubica el sistema de gestión de efluentes, y el área de disposición final del efluente liquido / sólidos.",
                 "riesgoPredial": "Riesgo Predial",
                 "riesgoGeo": "Riesgo Geográfico",
                 "riesgoAmbiental": "Riesgo Ambiental",
-                "marcarUbicacion": "Marcar ubicación",
-                "mensajeMarcarUbicacion":"Por favor marque ubicación",
+                "marcarUbicacion": "Marcar ubicación de AGGE*",
+                "mensajeMarcarUbicacion":"Por favor presione el botón Marcar ubicación",
                 "desmarcarUbicacion": "Cancelar marcar ubicación",
                 "informacion": "Información",
                 "reporte": "Generar reporte",
@@ -120,7 +117,7 @@
                     "width": "300px",
                     "nombre" : "Reporte Riesgo",
                     "titulo": "Reporte Matriz de Riesgo",
-                    "marcarPunto": "Marque el punto en el mapa."
+                    "marcarPunto": "Marque el AGGE* en el mapa."
                 },
                 "dialogInformacion":{
                     "width": "300px",
@@ -148,15 +145,6 @@
                         "nombrePdf":"ReporteRiesgo.pdf"
                     }
                 }
-            }
-        },
-           {
-            "widget": "widgets/MapaReferenciaWidget",
-            "title": "Mapa Referencia",
-            "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png",            
-            "toggle": false,
-            "widgetConfig": {                
             }
         },
         {
