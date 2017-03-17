@@ -8,7 +8,7 @@
             "toggle": false,
             "widgetConfig": {
                 "mapasBase": [
-					{"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
                     {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
                 ]
             }
@@ -155,11 +155,7 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Herramientas", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
@@ -220,9 +216,7 @@
                     {
                        "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
                     }, 
-                    {
-                        "Texto":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque necesita realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}]    
-                    }
+                    {"Texto":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque necesita realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}] }
                     ]
                 }
             },            
@@ -240,10 +234,7 @@
                     "titulo":{
                         "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {"Texto":[
@@ -277,19 +268,10 @@
                               "Estilo": "Normal"}
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": { "URL":"../js/snia/img/fullextent.png", "Alto":30}                        },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
+                           {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa en su máxima extensión.",
                               "Estilo": "Normal"
@@ -315,48 +297,6 @@
                         }
                     ]
                 }               
-            },
-            {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
             },
             {
                "name": "Identificar",
