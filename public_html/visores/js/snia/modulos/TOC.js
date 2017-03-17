@@ -109,14 +109,14 @@ define([
                             v1 = parseFloat(values[0]),
                             v2 = parseFloat("0." + values[1]);
                               
-                            tl.minScale = ((v1+v2) * 1.058267716535966); //Swap MaxScaleDenominator por minScale
+                            tl.minScale = Math.round((v1+v2) * 1.058267716535966); //Swap MaxScaleDenominator por minScale
                           }
                           if (r[aux].MinScaleDenominator) {
                             var values = r[aux].MinScaleDenominator.split("."),
                             v1 = parseFloat(values[0]),
                             v2 = parseFloat("0." + values[1]);
 
-                            tl.maxScale = ((v1+v2) * 1.058267716535966); //Swap MinScaleDenominator por maxScale
+                            tl.maxScale = Math.round((v1+v2) * 1.058267716535966); //Swap MinScaleDenominator por maxScale
                           }
                           
                       }
@@ -125,8 +125,6 @@ define([
         },
         _getScaleMinMaxFromJson: function (json) {
             var layer = json.value.WMS_Capabilities.Capability.Layer, r = {}, i = 1;      
-                //r.MaxScaleDenominator = layer.MaxScaleDenominator;
-                //r.MinScaleDenominator = layer.MinScaleDenominator;
                 arrayUtil.forEach(layer.Layer, function (l) {
                     r[l.Title] = {};
                     r[l.Title].MaxScaleDenominator = l.MaxScaleDenominator;
