@@ -53,7 +53,7 @@ snia.app = {
                 arrayUtil.forEach(dynLayers, function (dataLayer, index) {
                     if (dataLayer.url) { //Nodo a partir de un map service
                         var l;
-                        if (dataLayer.wms && !dataLayer.wfs) {
+                        if (dataLayer.wms) {
                             esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                             l = new WMSLayer(dataLayer.url, dataLayer.options);                     
                         } else if (dataLayer.wfs) {

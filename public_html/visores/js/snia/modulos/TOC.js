@@ -89,56 +89,34 @@ define([
         _completeCallback: function (jobInfo) {
             this._gpXMLInfo.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, function (json) {
                 this._setScalesMinMax(json);
-                //VER CUADERNO
-                //Tengo que hacer un foreach sobre this.tree para encontrar la misma url del geoproceso
-                //y agregarle scaleMax y scaleMin. 
-                //Tengo que ver como hago para manejar que no sé si esto se ejecuta antes o después 
-                //que el código que genera las sub capas wms 
             }));
             this.refreshTree();
         },
         _setScalesMinMax: function (json) {
-          //do something with the results
-          //alert(jobInfo);
-           /* var children = this._tree.rootNode.getChildren(), r;
-            arrayUtil.forEach(children, function (tl) {
-                var ch = tl.getChildren(tl);
-                if (tl.item.wms && tl.item.url === this._gpURL) {
-                      var ch = tl.getChildren();
-                      r = this._getScaleMinMaxFromJson(json);
-                      arrayUtil.forEach(r, function (l, i) {
-                          if (i === 0){
-                                if (l.MaxScaleDenominator) tl.item.MaxScale = l.MaxScaleDenominator;
-                                if (l.MinScaleDenominator) tl.item.MinScale = l.MinScaleDenominator;  
-                          } else if (l.Title ===  ch[i-1].item.title){
-                                if (l.MaxScaleDenominator) ch[i-1].item.MaxScale = l.MaxScaleDenominator;
-                                if (l.MinScaleDenominator) ch[i-1].item.MinScale = l.MinScaleDenominator;                                
-                          }
-                      }, this);
-                }
-            }, this);*/
-           var sid, r;
+           var sid, r, aux;
             r = this._getScaleMinMaxFromJson(json);
             arrayUtil.forEach(this._data, function (tl) {
                 if (tl.wms && tl.url === this._gpURL) {
                     sid = tl.id;
-                    //if (r.MaxScaleDenominator) { tl.MaxScale = 1,058267716535966 * r.MaxScaleDenominator; }
-                    //if (r.MinScaleDenominator) { tl.MinScale = 1,058267716535966 * r.MinScaleDenominator; }
                 }
           }, this);
             arrayUtil.forEach(this._data, function (tl) {
                 if (tl.parent === sid) {
-                    if (r[tl.id]) {
-                          if (r[tl.id].MaxScaleDenominator) {
-                              var values = r[tl.id].MaxScaleDenominator.split("."),
-                                v1 = parseFloat(values[0]),
-                                v2 = parseFloat(values[1]);
+                    aux = tl.name;
+                    if (r[aux]) {
+                          if (r[aux].MaxScaleDenominator) {
+                            var values = r[aux].MaxScaleDenominator.split("."),
+                            v1 = parseFloat(values[0]),
+                            v2 = parseFloat("0." + values[1]);
                               
-                             // tl.MaxScale = (v1+(v2*0.1) * 1,058267716535966);
+                            tl.minScale = ((v1+v2) * 1.058267716535966); //Swap MaxScaleDenominator por minScale
                           }
-                          if (r[tl.id].MinScaleDenominator) {
-                             r[tl.id].MinScaleDenominator.replace(".", ","); 
-                             // tl.MinScale = r[tl.id].MinScaleDenominator * 1,058267716535966;
+                          if (r[aux].MinScaleDenominator) {
+                            var values = r[aux].MinScaleDenominator.split("."),
+                            v1 = parseFloat(values[0]),
+                            v2 = parseFloat("0." + values[1]);
+
+                            tl.maxScale = ((v1+v2) * 1.058267716535966); //Swap MinScaleDenominator por maxScale
                           }
                           
                       }
@@ -146,7 +124,7 @@ define([
             }, this);
         },
         _getScaleMinMaxFromJson: function (json) {
-            var layer = json.value.WMS_Capabilities.Capability.Layer, r = [], i = 1;      
+            var layer = json.value.WMS_Capabilities.Capability.Layer, r = {}, i = 1;      
                 //r.MaxScaleDenominator = layer.MaxScaleDenominator;
                 //r.MinScaleDenominator = layer.MinScaleDenominator;
                 arrayUtil.forEach(layer.Layer, function (l) {
@@ -154,7 +132,7 @@ define([
                     r[l.Title].MaxScaleDenominator = l.MaxScaleDenominator;
                     r[l.Title].MinScaleDenominator = l.MinScaleDenominator;
                     i++;
-                });
+                }, this);
             return r;
         },
         _crearTree: function () {
@@ -251,7 +229,7 @@ define([
                 //this._getLegendWMS(li.legendURL);
                 //this._borrarGruposDeVisibleLayers(l, li);
             }, this);
-            //this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
+            this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip, i, visibleLayers;
