@@ -538,29 +538,16 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Imprimir", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/identificar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
                          "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/imprimir.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Imprimir",  "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
