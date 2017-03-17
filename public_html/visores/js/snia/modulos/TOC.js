@@ -20,6 +20,7 @@ define([
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/config",
     "esri/layers/WMSLayer",
+    "esri/layers/WFSLayer",
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
@@ -27,8 +28,8 @@ define([
 ], function (on, Evented, declare, lang, arrayUtil,
      domClass, domStyle,
      Memory, Tree, ObjectStoreModel,
-     Tooltip, HorizontalSlider, CheckBox, 
-     ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
+     Tooltip, HorizontalSlider, CheckBox,
+     ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
@@ -80,10 +81,10 @@ define([
         _executeGP: function (url) {
             this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);
             this._gpURL = url;
-            var params = {"UrlXMl":url};
+            var params = {"UrlXMl": url};
             this._gpXMLInfo.submitJob(params, lang.hitch(this, this._completeCallback), this._statusCallback);
         },
-        _statusCallback:  function (jobInfo){
+        _statusCallback:  function (jobInfo) {
             console.log(jobInfo.jobStatus);
         },
         _completeCallback: function (jobInfo) {
@@ -93,44 +94,40 @@ define([
             this.refreshTree();
         },
         _setScalesMinMax: function (json) {
-           var sid, r, aux;
+            var sid, r, aux, values, v1, v2;
             r = this._getScaleMinMaxFromJson(json);
             arrayUtil.forEach(this._data, function (tl) {
                 if (tl.wms && tl.url === this._gpURL) {
                     sid = tl.id;
                 }
-          }, this);
+            }, this);
             arrayUtil.forEach(this._data, function (tl) {
                 if (tl.parent === sid) {
                     aux = tl.name;
                     if (r[aux]) {
-                          if (r[aux].MaxScaleDenominator) {
-                            var values = r[aux].MaxScaleDenominator.split("."),
-                            v1 = parseFloat(values[0]),
+                        if (r[aux].MaxScaleDenominator) {
+                            values = r[aux].MaxScaleDenominator.split(".");
+                            v1 = parseFloat(values[0]);
                             v2 = parseFloat("0." + values[1]);
-                              
-                            tl.minScale = Math.round((v1+v2) * 1.058267716535966); //Swap MaxScaleDenominator por minScale
-                          }
-                          if (r[aux].MinScaleDenominator) {
-                            var values = r[aux].MinScaleDenominator.split("."),
-                            v1 = parseFloat(values[0]),
+                            tl.minScale = Math.round((v1 + v2) * 1.058267716535966); //Swap MaxScaleDenominator por minScale
+                        }
+                        if (r[aux].MinScaleDenominator) {
+                            values = r[aux].MinScaleDenominator.split(".");
+                            v1 = parseFloat(values[0]);
                             v2 = parseFloat("0." + values[1]);
-
-                            tl.maxScale = Math.round((v1+v2) * 1.058267716535966); //Swap MinScaleDenominator por maxScale
-                          }
-                          
-                      }
-                  }
+                            tl.maxScale = Math.round((v1 + v2) * 1.058267716535966); //Swap MinScaleDenominator por maxScale
+                        }
+                    }
+                }
             }, this);
         },
         _getScaleMinMaxFromJson: function (json) {
-            var layer = json.value.WMS_Capabilities.Capability.Layer, r = {}, i = 1;      
-                arrayUtil.forEach(layer.Layer, function (l) {
-                    r[l.Title] = {};
-                    r[l.Title].MaxScaleDenominator = l.MaxScaleDenominator;
-                    r[l.Title].MinScaleDenominator = l.MinScaleDenominator;
-                    i++;
-                }, this);
+            var layer = json.value.WMS_Capabilities.Capability.Layer, r = {};
+            arrayUtil.forEach(layer.Layer, function (l) {
+                r[l.Title] = {};
+                r[l.Title].MaxScaleDenominator = l.MaxScaleDenominator;
+                r[l.Title].MinScaleDenominator = l.MinScaleDenominator;
+            }, this);
             return r;
         },
         _crearTree: function () {
@@ -210,21 +207,17 @@ define([
                 } else {
                     sublayerTooltip = "";
                 }
-                this._getWMSInfo(dataLayer.url);
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
                 this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
                 if (li.subLayers.length > 0) {
                     arrayUtil.forEach(li.subLayers, function (sl) {
-                        this._data.push({ id: tParent + "->" +li.title + "->" + sl.title, name: sl.title, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
+                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: sl.title, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
                     }, this);
                 } else {
                     this._data.push({ id: tParent + "->" + li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
                 }
-                //
-                //
-                //this._getLegendWMS(li.legendURL);
                 //this._borrarGruposDeVisibleLayers(l, li);
             }, this);
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
@@ -232,7 +225,7 @@ define([
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip, i, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
-            arrayUtil.forEach(l.layerInfos, function (li) { 
+            arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
@@ -247,7 +240,7 @@ define([
                     this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
-                if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility ) { 
+                if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
                     //ocultarla si por defecto esta visbile pero no se incluye en la lista
                     li.defaultVisibility = false;
                     visibleLayers = [];
@@ -258,10 +251,9 @@ define([
                     }, this);
                     l.setVisibleLayers(visibleLayers);
                 }
-                
             }, this);
         },
-        _borrarGruposDeVisibleLayers: function (l, li){
+        /*_borrarGruposDeVisibleLayers: function (l, li){
             //FIXME: eliminarla si no hace falta
             var i;
             if (li.subLayerIds && li.defaultVisibility) {//Si tiene sub-capas hijas y viene marcado
@@ -271,7 +263,7 @@ define([
                     l.setVisibleLayers(l.visibleLayers);
                 }
             }
-        },
+        },*/
         _generarData: function () {
             var mapaConfig, dynLayers, l;
             this._data = [{ id: 'root'}];
@@ -294,7 +286,6 @@ define([
             }, this);
         },
         _prenderPadresTree: function (node) {
-           // var l = this.mapa.map.getLayer(item.vparent);
             var p = node.getParent();
             if (p && (p.item.id !== "root") && p.checkBox && !p.checkBox.get('checked')) {
                 p.checkBox.set('checked', true);
@@ -333,13 +324,13 @@ define([
                         this._prenderPadresTree(node);
                     }
                 } else {
-                        visibleLayers = [];
-                        arrayUtil.forEach(l.visibleLayers, function (laux) {
-                            if (parseInt(laux) !== parseInt(item.index) && laux !== "") {
-                                visibleLayers.push(parseInt(laux));
-                            }
-                        });
-                        l.setVisibleLayers(visibleLayers);
+                    visibleLayers = [];
+                    arrayUtil.forEach(l.visibleLayers, function (laux) {
+                        if (parseInt(laux) !== parseInt(item.index) && laux !== "") {
+                            visibleLayers.push(parseInt(laux));
+                        }
+                    });
+                    l.setVisibleLayers(visibleLayers);
                 }
             }
         },
@@ -394,7 +385,7 @@ define([
             }
             return tnode;
         },
-       _getLegendJSON:    function (url) {
+        _getLegendJSON: function (url) {
             var requestHandle = esriRequest({
                 "url": url,
                 "content": {
@@ -403,9 +394,6 @@ define([
                 "callbackParamName": "callback"
             });
             requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON), this._requestFailed);
-        },
-        _getWMSInfo: function (url) {
-             //FIXME
         },
         _requestSucceededLegendJSON: function (response) {
             var tocNode;
@@ -419,14 +407,14 @@ define([
                         tocNode[0].contentType = layer.legend[0].contentType;
                     } else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: tocNode[0].parent +"->" +layer.layerName +  "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent +"->" +layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                            this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
                     }
                 }
             }, this);
         },
         _adjustVisibility: function (item) {
-        //FIXME: agregar soporte a segundo nivel capas WMS
+        //Actualizar visibilidad de items en el árbol de contenidos
             var scale = parseInt(scaleUtils.getScale(this.mapa.map)),
                 nodes = this._tree.rootNode.getChildren(),
                 layers,
@@ -514,7 +502,6 @@ define([
                 this.refreshTree();
             }
         }
- 
     });
     return TOC;
 });
