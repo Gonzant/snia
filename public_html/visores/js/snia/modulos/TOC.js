@@ -235,7 +235,7 @@ define([
                 if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
                     i = li.parentLayerId;
                     if (i >= 0) { //Si es una sub-capa de segundo nivel
-                        tParent = l.layerInfos[i].name;
+                        tParent = tParent +"->" + l.layerInfos[i].name;
                     }
                     this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
