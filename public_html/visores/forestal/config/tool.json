@@ -965,12 +965,18 @@
                         "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                    {
-                       "Texto":[
+                    {"Texto":[
                         {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
                         }]    
-                    }                        
+                    }, 
+                    {"Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }
                     ]
                 }
             },
@@ -1022,7 +1028,7 @@
                            {"Contenido": "Posiciona el mapa en su máxima extensión.","Estilo": "Normal"}
                          ] 
                         },
-                        {"Imagen":{"URL":"js/snia/img/prevextent.png", "Alto":30}},
+                        {"Imagen":{"URL":"../js/snia/img/prevextent.png", "Alto":30}},
                         {"Texto":[{"Contenido": "Vista anterior", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
@@ -1030,7 +1036,7 @@
                             }
                            ] 
                         },
-                        {"Imagen":{"URL":"js/snia/img/sigextent.png","Alto":30}},
+                        {"Imagen":{"URL":"../js/snia/img/sigextent.png","Alto":30}},
                         {"Texto":[
                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
                            { "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
@@ -1064,10 +1070,8 @@
                "id":"4",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           { "Contenido": "Identificar","Estilo": "Indice1" },
-                    "Imagen":
-                            {"URL":"../js/snia/img/identificar.png","Alto":20 }                        
+                    "Texto":{ "Contenido": "Identificar","Estilo": "Indice1" },
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20 }                        
                 },
                "seccionContenido":{
                     "titulo":{
