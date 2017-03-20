@@ -878,7 +878,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "widgetConfig": {
@@ -1004,20 +1004,20 @@
                          "Texto":[
                             {"Contenido": "Acercar","Estilo": "Normal"},
                             {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
+                              "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }]                           
                         },
                         {"Imagen":{"URL":"../js/snia/img/zoomout.png", "Alto":30}},
                         {"Texto":[{"Contenido": "Alejar", "Estilo": "Titulo3"},
-                            { "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
+                            { "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             } ]                          
                         },
                         {"Imagen":{"URL":"../js/snia/img/pan.png","Alto":30}},
                         {
                          "Texto":[ {"Contenido": "Desplazar","Estilo": "Titulo3"},
-                            {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                            {"Contenido": "Presione el botón primario del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección.",
                               "Estilo": "Normal"
                             }] 
                         },

@@ -127,7 +127,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -245,16 +245,9 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
+                           { "Contenido": "Contenidos", "Estilo": "Indice1" },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/contenido.png", "Alto":20 }                        
                 },
                 "seccionContenido":{
                     "titulo":{
