@@ -114,8 +114,12 @@ html, body {
     border: 27px;
 }
 
-
-.riesgoTitulo{
+/* Widget Riesgo */
+.riesgoEjemplo{ 
+    
+}
+    
+.riesgoTitulo{    
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
@@ -123,9 +127,33 @@ html, body {
     margin-bottom: 10px;
 }
 
+.riesgoImg img{
+    width:398px;    
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+}
+
+.riesgoObjetivo{        
+    margin-top:10px;
+    margin-left:10px;
+    margin-bottom:5px;
+}
+
+.riesgoAdvertencia{
+    background-color:#f2dede;
+    font-size: 14px;
+    font-weight: bold;
+    text-align:center;
+    padding: 8px;
+    margin: 10px;
+    margin-bottom: 16px;
+    display: none;
+}
+
 .riesgoEtiqCombo{
     height: 25px;
-    margin-left: 10px;
+    margin-left: 10px;    
 }
 
 .riesgoComboBox{
@@ -141,16 +169,58 @@ html, body {
     padding-top: 5px;
 }
 
+.riesgoAyuda{
+    margin-top:10px;
+    margin-left:10px;
+    margin-bottom:5px;
+}
+
 .riesgoAyudaTexto{
     font-size: 12px;
     font-weight: normal;
-    font-style: italic;
+    font-style: italic;    
+}
+
+.riesgoAyudaNombre1{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.riesgoAyudaNode3{
+    margin-top:10px;
+}
+
+.riesgoAyudaTexto3{
+    margin-top:5px;
+}
+
+.riesgoNormativaNombre{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.riesgoNormativaTexto{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.riesgoNormativaValor{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .riesgoBotones{
-    height: 40px;
-    width: 250px;        
-    margin-left: 10px;    
+    height: 40px;           
+    margin-left: 85px;    
+}
+
+.riesgoBotonesCentrado{
+    text-align: center;           
+    margin-top: 10px;    
 }
 
 .iconImprimir{
