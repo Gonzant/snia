@@ -358,15 +358,12 @@ define([
                                 visibleLayers.push(parseInt(laux));
                             }
                         }
-                    });
+                    }, this);
                     //Uncheck hijos
                     nodes = node.getChildren();
                     arrayUtil.forEach(nodes, function (n) {
                         n.checkBox.set('checked', false);
-                    }, this);
-                    
-       
-                    
+                    }, this);                
                     l.setVisibleLayers(visibleLayers);                    
                 }
             }
@@ -436,7 +433,7 @@ define([
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return item.name === layer.layerName;
+                    return item.type === "layer" && item.name === layer.layerName;
                 });
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
                     if (layer.legend.length === 1 && layer.legend[0].label === "") { // una hoja
