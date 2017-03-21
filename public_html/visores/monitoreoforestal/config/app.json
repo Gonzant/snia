@@ -4,7 +4,7 @@
         "proxyRules":[
             {
                "urlPrefix": "http://www.dinama.gub.uy/geoserver",
-                "proxyUrl": "http://web.renare.gub.uy/proxy/proxy.ashx?"
+                "proxyUrl": "http://localhost/proxy/proxy.php?"
             }
         ]
     }

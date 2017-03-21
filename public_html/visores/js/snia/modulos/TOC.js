@@ -290,11 +290,11 @@ define([
             if (p && (p.item.id !== "root") && p.checkBox && !p.checkBox.get('checked')) {
                 p.checkBox.set('checked', true);
                 this._onItemClick(p.item, p);
-                this._prenderPadresTree(p);
+                //this._prenderPadresTree(p);
             }
         },
         _onItemClick: function (item, node) {
-            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers;
+            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, nodes, hijosActivos = false;
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
@@ -313,24 +313,61 @@ define([
                         l.hide();
                     }
                 }
-            } else { //Si es una subcapa
+            } else { //Si es un nodo de segundo o tercer nivel
                 l = this.mapa.map.getLayer(item.vparent);
                 visibleLayers = lang.clone(l.visibleLayers);
-
-                if (item.index >= 0 && !l.layerInfos[item.index].subLayerIds && isNodeSelected) {
-                    if (visibleLayers.indexOf(item.index) === -1) {
-                        visibleLayers.push(parseInt(item.index));
-                        l.setVisibleLayers(visibleLayers);
-                        this._prenderPadresTree(node);
+                if (isNodeSelected) {
+                    //Si hay que activarlo
+                    if (item.index >= 0 && l.layerInfos[item.index].subLayerIds ) {
+                        //Si es nodo de segundo nivel con hijos
+                        this._prenderPadresTree(node); //Activo al padre
+                        
+                        //Activo los hijos
+                        nodes = node.getChildren();
+                        arrayUtil.forEach(nodes, function (n) {
+                            if (n.checkBox.get('checked')){
+                                hijosActivos = true;
+                            }
+                        }, this);
+                        if (!hijosActivos){
+                            arrayUtil.forEach(nodes, function (n) {
+                                n.checkBox.set('checked', true);
+                                //this._onItemClick(n.item, n);
+                            }, this);
+                            visibleLayers = [];
+                            arrayUtil.forEach( l.layerInfos[item.index].subLayerIds, function (laux) {
+                                    visibleLayers.push(parseInt(laux));
+                                }, this);
+                            l.setVisibleLayers(visibleLayers);
+                        }
+                    } else if (item.index >= 0 && !l.layerInfos[item.index].subLayerIds && isNodeSelected) {
+                        //Si es de segundo o tercer nivel sin hijos
+                        if (visibleLayers.indexOf(item.index) === -1) {
+                            //Si no está visible la hago visible
+                            visibleLayers.push(parseInt(item.index));
+                            l.setVisibleLayers(visibleLayers);
+                            this._prenderPadresTree(node);
+                        }
                     }
                 } else {
+                    //Si hay que desactivarlo
                     visibleLayers = [];
                     arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (parseInt(laux) !== parseInt(item.index) && laux !== "") {
-                            visibleLayers.push(parseInt(laux));
+                        if (parseInt(laux) !== parseInt(item.index) && laux !== "") {//Agrego todos menos el nodo
+                            if (!l.layerInfos[item.index].subLayerIds || l.layerInfos[item.index].subLayerIds.indexOf(parseInt(laux))=== -1){// Y sus hijos tampoco
+                                visibleLayers.push(parseInt(laux));
+                            }
                         }
                     });
-                    l.setVisibleLayers(visibleLayers);
+                    //Uncheck hijos
+                    nodes = node.getChildren();
+                    arrayUtil.forEach(nodes, function (n) {
+                        n.checkBox.set('checked', false);
+                    }, this);
+                    
+       
+                    
+                    l.setVisibleLayers(visibleLayers);                    
                 }
             }
         },
@@ -413,14 +450,27 @@ define([
                 }
             }, this);
         },
-        _adjustVisibility: function (item) {
+        _nodeAdjustVisibility: function (node, scale) {
+            if (node.hasChildren()){
+                arrayUtil.forEach(node.getChildren(), function (sublayer) {
+                    var layerOutScale = (sublayer.item.maxScale !== 0 && scale < sublayer.item.maxScale) || (sublayer.item.minScale !== 0 && scale > sublayer.item.minScale);
+                    if (layerOutScale) {
+                        domClass.add(sublayer.domNode, 'TOCOutOfScale');
+                    } else {
+                        domClass.remove(sublayer.domNode, 'TOCOutOfScale');
+                    }
+                    this._nodeAdjustVisibility(sublayer, scale);
+                }, this);
+            }
+        },
+        /*_adjustVisibilityOld: function (item) {
         //Actualizar visibilidad de items en el árbol de contenidos
             var scale = parseInt(scaleUtils.getScale(this.mapa.map)),
                 nodes = this._tree.rootNode.getChildren(),
-                layers,
                 l;
             arrayUtil.forEach(nodes, function (node) {
                 if (!item || !item.id || (item.id && node.item.id === item.id)) {
+                    //Si no se definió item o 
                     var nodeOutScale;
                     if (node.item.wms || node.item.wfs) {
                         l = this.mapa.map.getLayer(node.item.name);
@@ -432,21 +482,41 @@ define([
                         domClass.add(node.domNode, 'TOCOutOfScale');
                     } else {
                         domClass.remove(node.domNode, 'TOCOutOfScale');
-                        if (node.hasChildren()) {
-                            layers = node.getChildren();
-                            arrayUtil.forEach(layers, function (layer) {
-                                var layerOutScale = (layer.item.maxScale !== 0 && scale < layer.item.maxScale) || (layer.item.minScale !== 0 && scale > layer.item.minScale);
-                                if (layerOutScale) {
-                                    domClass.add(layer.domNode, 'TOCOutOfScale');
-                                } else {
-                                    domClass.remove(layer.domNode, 'TOCOutOfScale');
-                                }
-                            });
-                        }
                     }
+                    this._nodeAdjustVisibility(node, scale);
+                } else if (item.id && node.item.id === item.parent){
+                    this._nodeAdjustVisibility(node, scale);
                 }
             }, this);
-        },
+        },*/
+        _adjustVisibility: function (item) {
+        //Actualizar visibilidad de items en el árbol de contenidos
+            var scale = parseInt(scaleUtils.getScale(this.mapa.map));
+            if (item && item.id) {
+                //Si se definio el parametro item actualizo sólo ese y sus hijos
+                arrayUtil.forEach(this._tree.rootNode.getChildren(), function (node) {
+                    var itemNode;
+                    //Busco el nodo
+                    if (node.item.id === item.id){//Si encuentro el nodo en los hijos de root
+                        itemNode = node;
+                    } else if (node.item.id === item.parent){ //Si encuentro al padre del nodo entre los hijos de root
+                        arrayUtil.forEach(node.getChildren(), function (snode) {
+                            if (snode.item.id === item.id){
+                                itemNode = snode;
+                            } 
+                        }, this);
+                    }
+                    if (itemNode) {
+                        //Si encontre el nodo actualizo su estado en el arbol
+                        this._nodeAdjustVisibility(itemNode, scale);
+                    }
+
+                }, this);
+            } else {
+                //Si no se definió parámetro item actualizo todos los nodos
+                this._nodeAdjustVisibility(this._tree.rootNode, scale);
+            }
+        },        
         refreshTree : function () {
             if (this._tree) {
                 this._tree.dndController.selectNone(); // As per the answer below     
