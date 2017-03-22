@@ -293,7 +293,7 @@ define([
             this._features = [];
             this._archivoJSON = result.value;
             this._tabContainer = new TabContainer({
-                style: "height: 520px; width: 520px;"
+                style: "height: 520px; width: 720px;"
             }, this._riesgoTabContainerNode);
 
             //Inicializacion de variables
@@ -362,7 +362,7 @@ define([
                     divEtiqueta = domConst.toDom('<div></div>');
                     //divEtiqueta = domConst.create("div", { innerHTML: varN.Etiqueta});
                     domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 385px;">' + varN.Etiqueta + '</div>');
+                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;">' + varN.Etiqueta + '</div>');
                     domConst.place(etiqueta, divEtiqueta);
                     divCombo = domConst.create("div");
                     comboBox = new ComboBox({
@@ -372,7 +372,7 @@ define([
                         onChange: lang.hitch(this, function () {
                             lang.hitch(this, this._cambioValorComboN(mA.Id));
                         }),
-                        style: {width: '100px'}
+                        style: {width: '160px'}
                     });
                     comboBox.placeAt(divCombo);
                     domClass.add(divCombo, "riesgoComboBox");
@@ -406,7 +406,7 @@ define([
             botonIrVariableAmbiental.placeAt(nodeBoton);
             domConst.place(nodeBoton, node);
 
-            nodeAGGE = domConst.toDom("<div style='margin-left:10px;margin-bottom:10px'> <p>" + this._defAGGE + "</p> </div>");
+            nodeAGGE = domConst.toDom("<div style='margin-left:10px;margin-bottom:10px;margin-right:10px'> <p>" + this._defAGGE + "</p> </div>");
             domConst.place(nodeAGGE, node);
 
             this._nodeChild = new ContentPane({
@@ -469,7 +469,7 @@ define([
                     divEtiqueta = domConst.toDom('<div></div>');
                     //divEtiqueta = domConst.create("div", { innerHTML: varN.Etiqueta});
                     domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 330px;">' + var2S.Etiqueta + '</div>');
+                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;">' + var2S.Etiqueta + '</div>');
                     domConst.place(etiqueta, divEtiqueta);
 
                     divCombo = domConst.create("div");
@@ -480,7 +480,7 @@ define([
                         onChange: lang.hitch(this, function () {
                             lang.hitch(this, this._cambioValorCombo2S(mA.Id, params2S));
                         }),
-                        style: {width: '120px'}
+                        style: {width: '160px'}
                     };
 
                     comboBox = new ComboBox(params2S);
@@ -524,14 +524,14 @@ define([
 
                     divEtiqueta = domConst.create("div");
                     domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 330px;">' + var2S.Etiqueta + '</div>');
+                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;">' + var2S.Etiqueta + '</div>');
                     domConst.place(etiqueta, divEtiqueta);
                     divCombo = domConst.create("div");
                     params = {
                         value: this._primerTexto,
                         store: this._storeValorTexto[i],
                         searchAttr: "texto",
-                        style: {width: '120px'}
+                        style: {width: '160px'}
                     };
                     if (var2S.Consulta !== "Usuario") {
                         params.disabled = "disabled";
@@ -654,7 +654,7 @@ define([
             botonIrVariableAmbiental.placeAt(nodeBoton);
             domConst.place(nodeBoton, node);
 
-            nodeAGGE = domConst.toDom("<div style='margin-left:10px;margin-bottom:10px'> <p>" + this._defAGGE + "</p> </div>");
+            nodeAGGE = domConst.toDom("<div style='margin-left:10px;margin-bottom:10px;margin-right:10px'> <p>" + this._defAGGE + "</p> </div>");
             domConst.place(nodeAGGE, node);
 
             //Agrego la ventana

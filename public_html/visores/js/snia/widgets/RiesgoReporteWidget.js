@@ -18,10 +18,13 @@ define([
     "dojo/dom-style",
     "dojo/_base/array",
     "dijit/form/Button",
+    "esri/tasks/PrintParameters",
+    "esri/tasks/PrintTask",
+    "esri/tasks/PrintTemplate",
     "jspdf/jspdf.min"
 ], function (on, Evented, declare, lang, _WidgetBase, _TemplatedMixin,
-    _WidgetsInTemplateMixin, template, i18n, domClass, domStyle, arrayUtil,
-    Button) {
+    _WidgetsInTemplateMixin, template, i18n, domClass, domStyle, arrayUtil,    
+    Button, PrintParameters, PrintTask, PrintTemplate) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -146,9 +149,38 @@ define([
             this._botonReporte = new Button({
                 label: this._botonAceptar,
                 disabled: false,
-                onClick: lang.hitch(this, this._generarPDF)
+                onClick: lang.hitch(this, this._imprimirPDF)
             });
             this._reporteButtonNode.appendChild(this._botonReporte.domNode);
+        },
+        _imprimirPDF: function (){
+            console.log("entra a imprimir");
+            var url ='https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Template_Efluentes/GPServer/Export%20Web%20Map';
+            //var url = "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
+            var printTask = new PrintTask(url);
+            var params = new PrintParameters();
+            var template = new PrintTemplate();
+            template.exportOptions = {
+                width: 500,
+                height: 400,
+                dpi: 96
+            };
+            template.format = "PDF";
+            template.layout = "Template_Efluentes";
+            //template.preserveScale = false;
+            params.map = this.mapa.map;
+            params.template = template;
+            //parametros.template = templateImprimir;
+            console.log("printTask._getPrintDefinition(this.mapa.map)");
+            printTask.execute(params, lang.hitch(this, this._imprimirCompletado), lang.hitch(this, this._imprimirError));
+        },
+        _imprimirCompletado: function (result) {
+            console.log("asdldas");
+            window.open(result.url);
+            //this._hyperlinkClick();
+        },
+        _imprimirError: function (result) {
+            console.log(result);
         },
         _letraColorTexto: function (letra) {
             var verde, amarillo, naranja, rojo, ret;
