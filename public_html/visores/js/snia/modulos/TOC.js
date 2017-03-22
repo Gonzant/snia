@@ -267,8 +267,8 @@ define([
         _generarData: function () {
             var mapaConfig, dynLayers, l;
             this._data = [{ id: 'root'}];
-            mapaConfig = JSON.parse(this.mapaConfigJSON);
-            dynLayers = mapaConfig.mapa.dynamicLayers;
+            this.mapaConfig = JSON.parse(this.mapaConfigJSON);
+            dynLayers = this.mapaConfig.mapa.dynamicLayers;
             arrayUtil.forEach(dynLayers, function (dataLayer) {
                 if (dataLayer.url) { //Nodo a partir de un map service
                     l = this.mapa.map.getLayer(dataLayer.options.id);
@@ -513,7 +513,7 @@ define([
                 //Si no se definió parámetro item actualizo todos los nodos
                 this._nodeAdjustVisibility(this._tree.rootNode, scale);
             }
-        },        
+        },
         refreshTree : function () {
             if (this._tree) {
                 this._tree.dndController.selectNone(); // As per the answer below     
@@ -548,7 +548,8 @@ define([
                 this._tree._expandNode(node);
             }, this);
         },
-        agregarCapa: function (dataLayer) {
+        agregarCapa: function (dataLayer, nodoExistente) {
+        // El parametro nodoExistente es opcional, se asume falso
             var l;
             if (dataLayer.wms) {
                 esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
@@ -561,13 +562,44 @@ define([
             }
             if (l) {
                 this.mapa.agregarCapa(l);
-                if (l.loaded) {
-                    this._generarNodoSimple(l, dataLayer);
-                } else {
-                    l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
-                }
-                this.refreshTree();
+                if (!nodoExistente){
+                    if (l.loaded) {
+                        this._generarNodoSimple(l, dataLayer);
+                    } else {
+                        l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
+                    }
+                    this.refreshTree();
+                } 
             }
+        },
+        actualizarCapa: function (id, url) {
+            //Elimina el map service identificado por "id" y lo sustituye por uno nuevo 
+            //cargado a partir de la url "url" manteniendo las opciones que tenía
+            //Asume que las subcapas son exactamente las mismas
+            var dynLayers = this.mapaConfig.mapa.dynamicLayers;
+            arrayUtil.forEach(dynLayers, function (dataLayer) {
+                if (dataLayer.options.id === id) { //Nodo a partir de un map service
+                    var l = this.mapa.map.getLayer(dataLayer.options.id), 
+                    nodoExistente = true, visibleLayers, newl, visible;
+                    if ((typeof l !== 'undefined') && (l !== null)) {
+                        visibleLayers = lang.clone(l.visibleLayers);
+                        visible = l.visible;
+                        this.mapa.removerCapa(l);
+                        dataLayer.url = url;
+                        this.agregarCapa(dataLayer, nodoExistente);
+                        //Intento obtener la nueva capa y definir las subcapas visibles
+                        newl = this.mapa.map.getLayer(dataLayer.options.id);
+                        if ((typeof newl !== 'undefined') && (newl !== null)) {
+                            newl.setVisibleLayers(visibleLayers);
+                            if (visible){
+                                newl.show();
+                            } else {
+                                newl.hide();
+                            }
+                        }
+                    }
+                }
+            }, this);
         }
     });
     return TOC;
