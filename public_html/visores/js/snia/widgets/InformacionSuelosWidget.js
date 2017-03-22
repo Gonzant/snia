@@ -307,8 +307,8 @@ define([
             case 0:
                 this._elemento = rowData;
                 elemento = rowData[this._config.CampoEtiquetaUnidadMapeo];
-                elemento = elemento.replace(/\+/g, ".");
-                elemento = elemento.replace(/\//g, ",");
+//                elemento = elemento.replace(/\+/g, ".");
+//                elemento = elemento.replace(/\//g, ",");
                 url = this._config.UrlUnidadMapeo + "/" + elemento + ".pdf";
                 break;
             case 1:

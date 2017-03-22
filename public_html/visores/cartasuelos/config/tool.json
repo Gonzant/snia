@@ -94,7 +94,7 @@
         },
         {
             "widget": "widgets/InformacionSuelosWidget",
-            "title": "Informacion Suelos Widget",
+            "title": "Informacion Suelos",
             "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
             "icono": "../js/snia/img/infoCartografia.png",
             "toggle": false,
@@ -108,7 +108,7 @@
 			    "Herramienta": {
 					"CampoEtiquetaUnidadMapeo": "SISU_PROD.dbo.UnidadMapeo.UM_Nombre",
 					"CampoSimboloSerie": "SISU_PROD.dbo.Serie.Serie_Simbolo",
-					"CampoIdPerfilRepresentativo": "SISU_PROD.dbo.Serie.PerfilRepresentativo_Id",
+					"CampoIdPerfilRepresentativo": "SISU_PROD.dbo.Perfil1.Perfil_Punto",
 					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
 					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
 					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
