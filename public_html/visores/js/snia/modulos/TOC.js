@@ -166,12 +166,18 @@ define([
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
         _generarNodoRoot: function (l, dataLayer){
+            var nodePosition = this._data.length;
             this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
             if (l.loaded) {
                 this._generarNodoSimple(l, dataLayer);
             } else {
                 l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
+                l.on("error", lang.hitch(this, this._eliminarNodoRoot, nodePosition));
             }
+            this.refreshTree();
+        },
+        _eliminarNodoRoot: function(index) {
+            this._data.splice(index, 1); //Eliminar 1 elemento a partir de index
             this.refreshTree();
         },
         _generarNodoSimple: function (l, dataLayer) {
