@@ -165,15 +165,28 @@ define([
             }));
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
+        _generarNodoRoot: function (l, dataLayer){
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
+            if (l.loaded) {
+                this._generarNodoSimple(l, dataLayer);
+            } else {
+                l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
+            }
+        },
         _generarNodoSimple: function (l, dataLayer) {
-            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', maxScale: l.maxScale, minScale: l.minScale, parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
+            arrayUtil.forEach(this._data, function (d) {
+                if (d.name === dataLayer.options.id){
+                    d.maxScale = l.maxScale;
+                    d.minScale = l.minScale;
+                }
+            }, this);
             //Procesar subcapas
             if (dataLayer.wms || dataLayer.wfs) { // Si es WMS
                 this._generarSubcapasWMS(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
             } else {
                 this._generarSubcapasArcgis(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
             }
-            this.refreshTree();
+            //this.refreshTree();
 
         },
         _generarSubcapasNodoMultiple: function (l, dataLayer, dataLayer1) {
@@ -274,11 +287,7 @@ define([
                     l = this.mapa.map.getLayer(dataLayer.options.id);
                     if ((typeof l !== 'undefined') && (l !== null)) {
                         l.on("visibility-change", lang.hitch(this, this._adjustVisibility));
-                        if (l.loaded) {
-                            this._generarNodoSimple(l, dataLayer);
-                        } else {
-                            l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
-                        }
+                        this._generarNodoRoot(l, dataLayer);
                     }
                 } else if (dataLayer.multiple) { //Nodo a partir de varios map services
                     this._generarNodoMultiple(dataLayer);
@@ -429,6 +438,9 @@ define([
             });
             requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON), this._requestFailed);
         },
+        _requestFailed: function (){
+             console.log('TOC: Falla al cargar leyendas');
+        },
         _requestSucceededLegendJSON: function (response) {
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
@@ -436,7 +448,7 @@ define([
                     return item.name === layer.layerName && (!item.index || item.index === layer.layerId);
                 });
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    if (layer.legend.length === 1 && layer.legend[0].label === "") { // una hoja
+                    if (layer.legend.length === 1) { // una hoja
                         tocNode[0].imageData =  layer.legend[0].imageData;
                         tocNode[0].contentType = layer.legend[0].contentType;
                     } else { // multiples hojas
@@ -446,6 +458,7 @@ define([
                     }
                 }
             }, this);
+            this.refreshTree();
         },
         _nodeAdjustVisibility: function (node, scale) {
             if (node.hasChildren()){
@@ -540,6 +553,7 @@ define([
         },
         colapsarClick: function () {
             this._tree.collapseAll();
+            this._generarData();
         },
         expandirClick: function () {
             //Expando todos los hijos de root para no abrir las leyendas
@@ -563,11 +577,7 @@ define([
             if (l) {
                 this.mapa.agregarCapa(l);
                 if (!nodoExistente){
-                    if (l.loaded) {
-                        this._generarNodoSimple(l, dataLayer);
-                    } else {
-                        l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
-                    }
+                    this._generarNodoRoot(l, dataLayer);
                     this.refreshTree();
                 } 
             }
