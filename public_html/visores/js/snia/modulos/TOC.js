@@ -91,7 +91,7 @@ define([
             this._gpXMLInfo.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, function (json) {
                 this._setScalesMinMax(json);
             }));
-            this.refreshTree();
+            //this.refreshTree();
         },
         _setScalesMinMax: function (json) {
             var sid, r, aux, values, v1, v2;
@@ -172,6 +172,7 @@ define([
             } else {
                 l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
             }
+            this.refreshTree();
         },
         _generarNodoSimple: function (l, dataLayer) {
             arrayUtil.forEach(this._data, function (d) {
@@ -223,10 +224,10 @@ define([
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
-                this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, visLayId:li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
                 if (li.subLayers.length > 0) {
                     arrayUtil.forEach(li.subLayers, function (sl) {
-                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: sl.title, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
+                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: sl.title, visLayId:sl.name, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
                     }, this);
                 } else {
                     this._data.push({ id: tParent + "->" + li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
@@ -250,7 +251,7 @@ define([
                     if (i >= 0) { //Si es una sub-capa de segundo nivel
                         tParent = tParent +"->" + l.layerInfos[i].name;
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
@@ -349,11 +350,12 @@ define([
                                 }, this);
                             l.setVisibleLayers(visibleLayers);
                         }
+                        //FIXME: Para wms las subcapas están en SubLayers
                     } else if (item.index >= 0 && !l.layerInfos[item.index].subLayerIds && isNodeSelected) {
                         //Si es de segundo o tercer nivel sin hijos
-                        if (visibleLayers.indexOf(item.index) === -1) {
+                        if (visibleLayers.indexOf(item.visLayId) === -1) {
                             //Si no está visible la hago visible
-                            visibleLayers.push(parseInt(item.index));
+                            visibleLayers.push(item.visLayId);
                             l.setVisibleLayers(visibleLayers);
                             this._prenderPadresTree(node);
                         }
@@ -458,7 +460,7 @@ define([
                     }
                 }
             }, this);
-            this.refreshTree();
+            //this.refreshTree();
         },
         _nodeAdjustVisibility: function (node, scale) {
             if (node.hasChildren()){
@@ -578,7 +580,6 @@ define([
                 this.mapa.agregarCapa(l);
                 if (!nodoExistente){
                     this._generarNodoRoot(l, dataLayer);
-                    this.refreshTree();
                 } 
             }
         },
