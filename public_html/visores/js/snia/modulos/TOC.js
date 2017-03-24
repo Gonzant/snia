@@ -463,7 +463,7 @@ define([
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return item.name === layer.layerName && (!item.index || item.index === layer.layerId);
+                    return item.name === layer.layerName && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 });
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
                     if (layer.legend.length === 1) { // una hoja
