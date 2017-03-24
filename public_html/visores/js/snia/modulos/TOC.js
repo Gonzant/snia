@@ -167,7 +167,7 @@ define([
         },
         _generarNodoRoot: function (l, dataLayer){
             var nodePosition = this._data.length;
-            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url });
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
             if (l.loaded) {
                 this._generarNodoSimple(l, dataLayer);
             } else {
@@ -184,7 +184,7 @@ define([
             arrayUtil.forEach(this._data, function (d) {
                 if (d.name === dataLayer.options.id){
                     d.maxScale = l.maxScale;
-                    d.minScale = l.minScale;
+                    d.minScale = l.minScale; 
                 }
             }, this);
             //Procesar subcapas
