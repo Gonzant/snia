@@ -379,7 +379,9 @@ define([
                     //Uncheck hijos
                     nodes = node.getChildren();
                     arrayUtil.forEach(nodes, function (n) {
-                        n.checkBox.set('checked', false);
+                        if (n.checkBox){
+                            n.checkBox.set('checked', false);
+                        }
                     }, this);                
                     l.setVisibleLayers(visibleLayers);                    
                 }
