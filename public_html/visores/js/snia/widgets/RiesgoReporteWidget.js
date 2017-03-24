@@ -23,7 +23,7 @@ define([
     "esri/tasks/PrintTemplate",
     "jspdf/jspdf.min"
 ], function (on, Evented, declare, lang, _WidgetBase, _TemplatedMixin,
-    _WidgetsInTemplateMixin, template, i18n, domClass, domStyle, arrayUtil,    
+    _WidgetsInTemplateMixin, template, i18n, domClass, domStyle, arrayUtil,
     Button, PrintParameters, PrintTask, PrintTemplate) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -153,25 +153,21 @@ define([
             });
             this._reporteButtonNode.appendChild(this._botonReporte.domNode);
         },
-        _imprimirPDF: function (){
-            console.log("entra a imprimir");
-            var url ='https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Template_Efluentes/GPServer/Export%20Web%20Map';
+        _imprimirPDF: function () {
+            var url, printTask, params, templatePrint, etqPred, valPred, listEtiqPred,
+                etqLoc, valLoc, listEtiqGeoU;
+            url = 'https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Template_Efluentes/GPServer/Export%20Web%20Map';
             //var url = "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
-            var printTask = new PrintTask(url);
-            var params = new PrintParameters();
-            var template = new PrintTemplate();
-            
-            template.format = "PDF";
-            template.layout = "Template_Efluentes";
+            printTask = new PrintTask(url);
+            params = new PrintParameters();
+            templatePrint = new PrintTemplate();
+            templatePrint.format = "PDF";
+            templatePrint.layout = "Template_Efluentes";
             //template.preserveScale = false;
-            params.map = this.mapa.map;            
-            params.extraParameters = {
-                prueba:"asdasd"
-            };       
-            var x = this.etiquetasPredial;
-            var etqPred = [];            
-            var valPred = [];            
-            var listEtiqPred = this.etiquetasPredial.split(";");
+            params.map = this.mapa.map;
+            etqPred = [];
+            valPred = [];
+            listEtiqPred = this.etiquetasPredial.split(";");
             arrayUtil.forEach(listEtiqPred, lang.hitch(this, function (ep) {
                 var aux = ep.split(":");
                 if (aux[0] !== "") {
@@ -179,18 +175,18 @@ define([
                     valPred.push(aux[1]);
                 }
             }));
-            var etqLoc = [];
-            var valLoc = [];
-            var listEtiqGeoU = this.etiquetasGeoU.split(";");
+            etqLoc = [];
+            valLoc = [];
+            listEtiqGeoU = this.etiquetasGeoU.split(";");
             arrayUtil.forEach(listEtiqGeoU, lang.hitch(this, function (eg) {
                 var aux = eg.split(":");
                 if (aux[0] !== "") {
                     etqLoc.push(aux[0]);
-                    valLoc.push(aux[1]);                    
+                    valLoc.push(aux[1]);
                 }
             }));
-            
-            template.layoutOptions = {
+
+            templatePrint.layoutOptions = {
                 "customTextElements": [
                     {"1Lp": etqPred[0]},
                     {"1Vp": valPred[0]},
@@ -224,20 +220,15 @@ define([
                     {"9Vl": valLoc[8]},
                     {"10Ll": etqLoc[9]},
                     {"10Vl": valLoc[9]},
-                    {"Rp":this.resultadoPredial},
-                    {"Rl":this.resultadoGeo},
-                    {"Ra":this.resultadoAmbiental}
-                ]};
-            params.template = template;
-            //template.layoutOptions.customTextElements[0] = {"prueba":"user_text"};
-
-            
-            //parametros.template = templateImprimir;
-            console.log("printTask._getPrintDefinition(this.mapa.map)");
+                    {"Rp": this.resultadoPredial},
+                    {"Rl": this.resultadoGeo},
+                    {"Ra": this.resultadoAmbiental}
+                ]
+            };
+            params.template = templatePrint;
             printTask.execute(params, lang.hitch(this, this._imprimirCompletado), lang.hitch(this, this._imprimirError));
         },
         _imprimirCompletado: function (result) {
-            console.log("asdldas");
             window.open(result.url);
             //this._hyperlinkClick();
         },

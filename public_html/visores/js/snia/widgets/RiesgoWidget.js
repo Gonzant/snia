@@ -334,21 +334,19 @@ define([
             i = 0;
             //Itero sobre las variables N
             arrayUtil.forEach(this._archivoJSON.Herramienta.VariableN, lang.hitch(this, function (varN) {
-                var primero, divEtiqueta, divCombo, comboBox;
+                var primero, divEtiqueta, divCombo, comboBox, posicion, lugar;
                 if (arrayUtil.indexOf(this._riesgoPredialVar.Id, varN.Id) !== -1) {
                     this._variablesN.push({etiq: varN.Etiqueta, id: varN.Id, vt: varN.ValorTexto});
                     this._ValorTexto = [];
                     primero = false;
-                    
-                    var posicion = 0;
-                    var lugar;
-                    arrayUtil.forEach(this._archivoJSON.Herramienta.VariableN,lang.hitch(this, function (varN2){
-                        if (varN2.Id === varN.Id){
+                    posicion = 0;
+                    arrayUtil.forEach(this._archivoJSON.Herramienta.VariableN, lang.hitch(this, function (varN2) {
+                        if (varN2.Id === varN.Id) {
                             lugar = posicion;
-                        };
-                        posicion ++;
+                        }
+                        posicion = posicion + 1;
                     }));
-                    
+
                     arrayUtil.forEach(varN.ValorTexto, lang.hitch(this, function (vN) {
                         if (!primero) {
                             primero = true;
@@ -440,21 +438,20 @@ define([
 
             //Itero sobre las variables Variable2S
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S) {
-                var divEtiqueta, divCombo, comboBox, primero, params2S;
+                var divEtiqueta, divCombo, comboBox, primero, params2S, posicion, lugar;
                 if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Usuario")) {
                     console.log(var2S.Etiqueta);
                     this._variables2S.push({etiq: var2S.Etiqueta, id: var2S.Id, vt: var2S.ValorTexto});
                     this._ValorTexto = [];
-                    
-                    var posicion = 0;
-                    var lugar;
-                    arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S,lang.hitch(this, function (var2S3){
-                        if (var2S3.Id === var2S.Id){
+                    posicion = 0;
+
+                    arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S3) {
+                        if (var2S3.Id === var2S.Id) {
                             lugar = posicion;
-                        };
-                        posicion ++;
+                        }
+                        posicion = posicion + 1;
                     }));
-                    
+
                     primero = false;
                     arrayUtil.forEach(var2S.ValorTexto, lang.hitch(this, function (vS) {
                         if (!primero) {
@@ -497,21 +494,18 @@ define([
 
             //Itero sobre las variables Variable2S
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S) {
-                var divEtiqueta, divCombo, comboBox, primero, params;
+                var divEtiqueta, divCombo, comboBox, primero, params, posicion, lugar;
                 if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Capa")) {
                     this._variables2S.push({etiq: var2S.Etiqueta, id: var2S.Id, vt: var2S.ValorTexto});
                     this._ValorTexto = [];
                     primero = false;
-                    
-                    var posicion = 0;
-                    var lugar;
-                    arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S,lang.hitch(this, function (var2S2){
-                        if (var2S2.Id === var2S.Id){
+                    posicion = 0;
+                    arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S2) {
+                        if (var2S2.Id === var2S.Id) {
                             lugar = posicion;
-                        };
-                        posicion ++;
+                        }
+                        posicion = posicion + 1;
                     }));
-                    
                     arrayUtil.forEach(var2S.ValorTexto, lang.hitch(this, function (vS) {
                         if (!primero) {
                             primero = true;
@@ -548,7 +542,7 @@ define([
                 }
             }));
             console.log(this._storeValorTexto);
-            
+
             // Itero con las variables compuestas
             /*
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2C, lang.hitch(this, function (var2C) {
@@ -991,8 +985,8 @@ define([
             this._resultadoVariablesEtiquetas[arrayUtil.indexOf(this._matrices, this._matrizSeleccionadaString)] = result.value;
         },
         _marcarUbicacion: function () {
-            domStyle.set(this._riesgoNode, "display", "none");            
-            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'block');            
+            domStyle.set(this._riesgoNode, "display", "none");
+            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'block');
             this._dibujo.activar(Draw.POLYGON);
             this.resize();
         },
