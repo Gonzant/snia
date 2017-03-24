@@ -160,16 +160,78 @@ define([
             var printTask = new PrintTask(url);
             var params = new PrintParameters();
             var template = new PrintTemplate();
-            template.exportOptions = {
-                width: 500,
-                height: 400,
-                dpi: 96
-            };
+            
             template.format = "PDF";
             template.layout = "Template_Efluentes";
             //template.preserveScale = false;
-            params.map = this.mapa.map;
+            params.map = this.mapa.map;            
+            params.extraParameters = {
+                prueba:"asdasd"
+            };       
+            var x = this.etiquetasPredial;
+            var etqPred = [];            
+            var valPred = [];            
+            var listEtiqPred = this.etiquetasPredial.split(";");
+            arrayUtil.forEach(listEtiqPred, lang.hitch(this, function (ep) {
+                var aux = ep.split(":");
+                if (aux[0] !== "") {
+                    etqPred.push(aux[0]);
+                    valPred.push(aux[1]);
+                }
+            }));
+            var etqLoc = [];
+            var valLoc = [];
+            var listEtiqGeoU = this.etiquetasGeoU.split(";");
+            arrayUtil.forEach(listEtiqGeoU, lang.hitch(this, function (eg) {
+                var aux = eg.split(":");
+                if (aux[0] !== "") {
+                    etqLoc.push(aux[0]);
+                    valLoc.push(aux[1]);                    
+                }
+            }));
+            
+            template.layoutOptions = {
+                "customTextElements": [
+                    {"1Lp": etqPred[0]},
+                    {"1Vp": valPred[0]},
+                    {"2Lp": etqPred[1]},
+                    {"2Vp": valPred[1]},
+                    {"3Lp": etqPred[2]},
+                    {"3Vp": valPred[2]},
+                    {"4Lp": etqPred[3]},
+                    {"4Vp": valPred[3]},
+                    {"5Lp": etqPred[4]},
+                    {"5Vp": valPred[4]},
+                    {"6Lp": etqPred[5]},
+                    {"6Vp": valPred[5]},
+                    {"1Ll": etqLoc[0]},
+                    {"1Vl": valLoc[0]},
+                    {"2Ll": etqLoc[1]},
+                    {"2Vl": valLoc[1]},
+                    {"3Ll": etqLoc[2]},
+                    {"3Vl": valLoc[2]},
+                    {"4Ll": etqLoc[3]},
+                    {"4Vl": valLoc[3]},
+                    {"5Ll": etqLoc[4]},
+                    {"5Vl": valLoc[4]},
+                    {"6Ll": etqLoc[5]},
+                    {"6Vl": valLoc[5]},
+                    {"7Ll": etqLoc[6]},
+                    {"7Vl": valLoc[6]},
+                    {"8Ll": etqLoc[7]},
+                    {"8Vl": valLoc[7]},
+                    {"9Ll": etqLoc[8]},
+                    {"9Vl": valLoc[8]},
+                    {"10Ll": etqLoc[9]},
+                    {"10Vl": valLoc[9]},
+                    {"Rp":this.resultadoPredial},
+                    {"Rl":this.resultadoGeo},
+                    {"Ra":this.resultadoAmbiental}
+                ]};
             params.template = template;
+            //template.layoutOptions.customTextElements[0] = {"prueba":"user_text"};
+
+            
             //parametros.template = templateImprimir;
             console.log("printTask._getPrintDefinition(this.mapa.map)");
             printTask.execute(params, lang.hitch(this, this._imprimirCompletado), lang.hitch(this, this._imprimirError));
