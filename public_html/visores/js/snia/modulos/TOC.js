@@ -167,25 +167,32 @@ define([
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
         _generarNodoRoot: function (l, dataLayer){
-            var nodePosition = this._data.length;
-            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'root', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
             if (l.loaded) {
                 this._generarNodoSimple(l, dataLayer);
             } else {
                 l.on("load", lang.hitch(this, this._generarNodoSimple, l, dataLayer));
-                l.on("error", lang.hitch(this, this._eliminarNodoRoot, nodePosition));
+               // l.on("error", lang.hitch(this, this._eliminarNodoRoot, dataLayer.options.id));
             }
-            this.refreshTree();
+            //this.refreshTree();
         },
-        _eliminarNodoRoot: function(index) {
-            this._data.splice(index, 1); //Eliminar 1 elemento a partir de index
+        /*_eliminarNodoRoot: function(id) {
+            var index;
+            arrayUtil.forEach(this._data, function (d, i) {
+                if (d.parent === "root" && d.name === id ){
+                   index = i;
+                }
+            }, this);
+             this._data.splice(index, 1); //Eliminar 1 elemento a partir de index
+
             this.refreshTree();
-        },
+        },*/
         _generarNodoSimple: function (l, dataLayer) {
             arrayUtil.forEach(this._data, function (d) {
-                if (d.name === dataLayer.options.id){
+                if (d.name === dataLayer.options.id && d.type === 'mapservice'){
                     d.maxScale = l.maxScale;
                     d.minScale = l.minScale; 
+                    d.parent = "root";
                 }
             }, this);
             //Procesar subcapas
@@ -194,7 +201,7 @@ define([
             } else {
                 this._generarSubcapasArcgis(l, dataLayer, dataLayer.options.id, dataLayer.options.id);
             }
-            //this.refreshTree();
+            this.refreshTree();
 
         },
         _generarSubcapasNodoMultiple: function (l, dataLayer, dataLayer1) {
@@ -371,9 +378,9 @@ define([
                     //Si hay que desactivarlo
                     visibleLayers = [];
                     arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (parseInt(laux) !== parseInt(item.index) && laux !== "") {//Agrego todos menos el nodo
+                        if (laux !== item.visLayId && laux !== "") {//Agrego todos menos el nodo
                             if (!l.layerInfos[item.index].subLayerIds || l.layerInfos[item.index].subLayerIds.indexOf(parseInt(laux))=== -1){// Y sus hijos tampoco
-                                visibleLayers.push(parseInt(laux));
+                                visibleLayers.push(laux);
                             }
                         }
                     }, this);
