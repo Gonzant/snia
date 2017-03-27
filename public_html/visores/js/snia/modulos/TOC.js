@@ -319,6 +319,8 @@ define([
         },
         _onItemClick: function (item, node) {
             var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, nodes, hijosActivos = false;
+            //Despliego su contenido
+            this._tree._expandNode(node);
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
