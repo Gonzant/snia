@@ -340,9 +340,9 @@ define([
             } else { //Si es un nodo de segundo o tercer nivel
                 l = this.mapa.map.getLayer(item.vparent);
                 visibleLayers = lang.clone(l.visibleLayers);
-                if (isNodeSelected) {
+                if (isNodeSelected && item.index >= 0) {
                     //Si hay que activarlo
-                    if (item.index >= 0 && l.layerInfos[item.index].subLayerIds ) {
+                    if (l.layerInfos[item.index].subLayerIds ) {
                         //Si es nodo de segundo nivel con hijos
                         this._prenderPadresTree(node); //Activo al padre
                         
@@ -358,22 +358,22 @@ define([
                                 n.checkBox.set('checked', true);
                                 //this._onItemClick(n.item, n);
                             }, this);
-                            visibleLayers = [];
                             arrayUtil.forEach( l.layerInfos[item.index].subLayerIds, function (laux) {
                                     visibleLayers.push(parseInt(laux));
                                 }, this);
                             l.setVisibleLayers(visibleLayers);
                         }
                         //FIXME: Para wms las subcapas están en SubLayers
-                    } else if (item.index >= 0 && !l.layerInfos[item.index].subLayerIds && isNodeSelected) {
-                        //Si es de segundo o tercer nivel sin hijos
+                    } 
+                    if (!l.layerInfos[item.index].subLayerIds){
+                    //Si es de segundo o tercer nivel sin hijos
                         if (visibleLayers.indexOf(item.visLayId) === -1) {
                             //Si no está visible la hago visible
                             visibleLayers.push(item.visLayId);
                             l.setVisibleLayers(visibleLayers);
-                            this._prenderPadresTree(node);
                         }
                     }
+                    this._prenderPadresTree(node);
                 } else {
                     //Si hay que desactivarlo
                     visibleLayers = [];
