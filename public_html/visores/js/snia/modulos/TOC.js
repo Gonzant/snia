@@ -10,7 +10,7 @@ define([
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
-    "dojo/dom-class", "dojo/dom-style",
+    "dojo/dom-class", "dojo/dom-style", "dojo/dom-construct",
     "dojo/store/Memory",
     "dijit/Tree",
     "dijit/tree/ObjectStoreModel",
@@ -26,7 +26,7 @@ define([
     "esri/request",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang, arrayUtil,
-     domClass, domStyle,
+     domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
      ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
@@ -77,8 +77,10 @@ define([
         _init: function () {
             this._generarData();
             this._crearTree();
-            domStyle.set(this._tree.domNode, "overflow-x", "auto");
-            domStyle.set(this._tree.domNode, "overflow-y", "hidden");
+            //domStyle.set(this._tree.domNode, "overflow", "hidden");
+            domStyle.set(this._tree.dndController.node, "overflow-y", "hidden");
+            //domStyle.set(this.domNode, "overflow", "auto");
+            //domStyle.set(this._tree.domNode, "max-height", "400px;");
         },
         _executeGP: function (url) {
             this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);
@@ -400,7 +402,7 @@ define([
         },
         _createTreeNode: function (args) {
             var tnode = new Tree._TreeNode(args), cb, slider, l, tooltip, t;
-            domStyle.set(tnode.containerNode, "max-width", "200px");
+            //domStyle.set(tnode.containerNode, "max-width", "200px");
             tnode.labelNode.innerHTML = args.label;
             if (!args.item.tooltip || args.item.tooltip === "") {
                 tooltip = args.label;
@@ -445,6 +447,7 @@ define([
 
                 tnode.slider = slider;
                 slider.startup();
+                domConstruct.place("<br>", tnode.rowNode, "last");
                 slider.placeAt(tnode.rowNode, "last");
             }
             return tnode;
