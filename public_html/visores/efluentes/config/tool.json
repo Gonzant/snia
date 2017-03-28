@@ -832,7 +832,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
+                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón secundario del ratón sobre el mapa.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -962,7 +962,7 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite además agregar la leyenda y el mapa de referencia.",
+                              "Contenido": "La herramienta permite seleccionar el formato de hoja de impresión.",
                               "Estilo": "Normal"
                             },
                             {
