@@ -4,7 +4,7 @@
             "slider": false,
             "logo": false
         },
-        "baseMapLayer": {
+        "baseMapLayerBackup": {
 			"url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
 			"extent": {
                 "xmin": -37867.16314808361,
@@ -16,7 +16,7 @@
 				}
             }
 	},
-        "baseMapLayerBackup": {
+        "baseMapLayer": {
             "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
                 "xmin": -6364316,

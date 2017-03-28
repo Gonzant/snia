@@ -157,13 +157,12 @@ define([
             var url, printTask, params, templatePrint, etqPred, valPred, listEtiqPred,
                 etqLoc, valLoc, listEtiqGeoU;
             url = 'https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Template_Efluentes/GPServer/Export%20Web%20Map';
-            //var url = "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
             printTask = new PrintTask(url);
             params = new PrintParameters();
             templatePrint = new PrintTemplate();
             templatePrint.format = "PDF";
             templatePrint.layout = "Template_Efluentes";
-            //template.preserveScale = false;
+            template.preserveScale = true;
             params.map = this.mapa.map;
             etqPred = [];
             valPred = [];
