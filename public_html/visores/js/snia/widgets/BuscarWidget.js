@@ -437,7 +437,7 @@ define([
                 this._cubrimientoConeatWidget.startup();
                 this._cubrimientoConeatWidget.show();
                 dialogo = new Dialog({
-                    title : "Cubrimiento Coneat",
+                    title : "Porcentaje de grupos CONEAT",
                     style : "width: 240px",
                     content: this._cubrimientoConeatWidget
                 });
