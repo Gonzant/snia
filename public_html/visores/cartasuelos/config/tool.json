@@ -173,7 +173,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre Carta Suelos. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -325,29 +325,16 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
+                            {"Contenido": "Contenidos", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/contenido.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/contenido.png",  "Alto":30},
                         "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        {"Contenido": "Contenidos", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -357,8 +344,15 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    }, 
+                    {
+                        "Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }                        
                     ]
                 }
             },
@@ -368,16 +362,9 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
+                            {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
