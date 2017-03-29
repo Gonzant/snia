@@ -134,26 +134,26 @@ define([
             var select, i=0, c, departamentosStore;
             departamentosStore = new Memory({
                 data: [
-                    {name: "Artigas", id: "G"},
-                    {name: "Canelones", id: "A"},
-                    {name: "Cerro Largo", id: "E"},
-                    {name: "Colonia", id: "L"},
-                    {name: "Durazno", id: "Q"},
-                    {name: "Flores", id: "N"},
-                    {name: "Florida", id: "O"},
-                    {name: "Lavalleja", id: "P"},
-                    {name: "Maldonado", id: "B"},
-                    {name: "Montevideo", id: "V"},
-                    {name: "Paysandu", id: "I"},
-                    {name: "Rio Negro", id: "J"},
-                    {name: "Paysandu", id: "I"},
-                    {name: "Rivera", id: "F"},
-                    {name: "Rocha", id: "C"},
-                    {name: "Salto", id: "H"},
-                    {name: "San Jose", id: "M"},
-                    {name: "Soriano", id: "K"},
-                    {name: "Tacuarembo", id: "R"},
-                    {name: "Treinta y tres", id: "D"}
+                    {name: "Artigas", id: "DArtigas"},
+                    {name: "Canelones", id: "DCanelones"},
+                    {name: "Cerro Largo", id: "DCerroLargo"},
+                    {name: "Colonia", id: "DColonia"},
+                    {name: "Durazno", id: "DDurazno"},
+                    {name: "Flores", id: "DFlores"},
+                    {name: "Florida", id: "DFlorida"},
+                    {name: "Lavalleja", id: "DLavalleja"},
+                    {name: "Maldonado", id: "DMaldonado"},
+                    {name: "Montevideo", id: "DMontevideo"},
+                    {name: "Paysandu", id: "DPaysandu"},
+                    {name: "Rio Negro", id: "DRioNegro"},
+                    {name: "Paysandu", id: "DPaysandu"},
+                    {name: "Rivera", id: "DRivera"},
+                    {name: "Rocha", id: "DRocha"},
+                    {name: "Salto", id: "DSalto"},
+                    {name: "San Jose", id: "DSanJose"},
+                    {name: "Soriano", id: "Dsoriano"},
+                    {name: "Tacuarembo", id: "DTacuarembo"},
+                    {name: "Treinta y tres", id: "DTreintaYTres"}
                 ]
             });
             for (i = 0; i < departamentosStore.data.length; i = i + 1) {
