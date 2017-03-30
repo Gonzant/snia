@@ -30,8 +30,8 @@ define([
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
-    "dojo/domReady!",
-    "dojox/layout/ScrollPane"
+    "dojox/layout/ScrollPane",
+    "dojo/domReady!"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, mapaConfigJSON, domClass, domStyle, focusUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,

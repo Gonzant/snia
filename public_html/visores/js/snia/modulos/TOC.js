@@ -77,10 +77,8 @@ define([
         _init: function () {
             this._generarData();
             this._crearTree();
-            //domStyle.set(this._tree.domNode, "overflow", "hidden");
             domStyle.set(this._tree.dndController.node, "overflow-y", "hidden");
-            //domStyle.set(this.domNode, "overflow", "auto");
-            //domStyle.set(this._tree.domNode, "max-height", "400px;");
+            domStyle.set(this._tree.dndController.node, "overflow-x", "auto");
         },
         _executeGP: function (url) {
             this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);
