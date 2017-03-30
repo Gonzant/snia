@@ -95,6 +95,7 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
+                this._dibujoUsuario =0; //es 0 si no dibuja y 1 si dibuja
                 this._cargarComboAperturas();
                 this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
@@ -129,6 +130,7 @@ define([
             this._msgAgregarArea.innerHTML = this._i18n.widgets.SicaWidget1.lblAgregarArea;
             this._dibujo.activar(Draw.POLYGON);
             this._cpg3SR.seleccionarGraficoClickeado();
+            this._dibujoUsuario = 1;
         },
         _cargarDeptos: function () {
             var select, i=0, c, departamentosStore;
@@ -292,10 +294,10 @@ define([
             this._msgAgregarArea.innerHTML = " ";
         },
         _cargarAperturas: function () {
-            if (this._i === 0) {
-                this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
-            } 
-            else{
+//            if (this._i === 0) {
+//                this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
+//            } 
+//            else{
                 if(this.dynamic.selectedOptions.length === 0){ //no hay ninguno seleccionado
                     this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
                 }else{                
@@ -317,15 +319,27 @@ define([
                     featureSet.features = areas;
                     
                     //no es multiple -> cuando por ejemplo hago departamentos.  
-                    parametros = {
-                        variables: "1;2;4;5;6;7;8;9;13;14",
-                        multiple: true,
-                        Poligono: featureSet
-                    };
+                    
+                    if(this._dibujoUsuario === 0){
+                        parametros = {
+                            variables: "",
+                            multiple: true,
+                            Poligono: "",
+                            Predefinida:"a"
+                        };
+                    }
+                    else{
+                        parametros = {
+                            variables: "1;2;4;5;6;7;8;9;13;14",
+                            multiple: true,
+                            Poligono: featureSet,
+                            Predefinida :" "
+                        };
+                    }
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
-            }
+//            }
         },       
         _gpCroquisComplete: function (jobInfo) {
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
