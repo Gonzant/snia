@@ -92,6 +92,33 @@
                         "opacity": 0.7,
                         "visible": false
                 }
+            },
+            {
+                "url": "http://dlibrary.snia.gub.uy/SOURCES/.WORLDBATH/.bath/X/-58.6/-53.1/RANGE/Y/-35/-30/RANGE/SOURCES/.INIA/.GRAS/.PAD_Decadal_SP_desde_01-2015/.the_geom/SOURCES/.INIA/.GRAS/.PAD_Decadal_SP_desde_01-2015/.pad/1/index/SOURCES/.Features/.Political/.Departamentos_MTOP/.the_geom/X/Y/fig-/white/mask/fillby/thinnish/brown/stroke/black/stroke/-fig/wms.xml?plotaxislength=520&pad=.pad",
+                "options": {
+                        "id": "PAD",
+                        "opacity": 0.7,
+                        "visible": false
+                },
+                "wms": true
+            },
+            {
+                "url": "http://visualizadorgeominero.dinamige.gub.uy:8080/arcgis/services/Dinamige_GeoS/MapaBaseUnidadesGeologicasGeoS/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+                "options": {
+                        "id": "Cartas de Geología",
+                        "opacity": 0.7,
+                        "visible": false
+                },
+                "wms": true
+            },
+            {
+                "url": "http://visualizadorgeominero.dinamige.gub.uy:8080/arcgis/services/Dinamige_GeoS/HidrogeologiaGeoS/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+                "options": {
+                        "id": "Cartas de Hidrogeología",
+                        "opacity": 0.7,
+                        "visible": false
+                },
+                "wms": true
             }
         ]
     }
