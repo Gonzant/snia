@@ -164,9 +164,9 @@ define([
                 this._select_predef.appendChild(c);
             }
             this._textSeleccione.innerHTML = "Seleccione el/los Depto/s: ";
-            this.own(
-                    on(this._acercarGeometria, a11yclick, lang.hitch(this, this._acercarDepto))
-            );
+//            this.own(
+//                    on(this._acercarGeometria, a11yclick, lang.hitch(this, this._acercarDepto))
+//            );
         },
         _acercarDepto: function (){
             var extent, capa, items;
@@ -315,7 +315,11 @@ define([
                     }
                     featureSet = new FeatureSet();
                     featureSet.features = areas;
+                    
+                    //no es multiple -> cuando por ejemplo hago departamentos.  
                     parametros = {
+                        variables: "1;2;4;5;6;7;8;9;13;14",
+                        multiple: true,
                         Poligono: featureSet
                     };
                     this._standbyAreas.show();
