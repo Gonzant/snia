@@ -127,7 +127,7 @@ define([
             this.inherited(arguments);
         },
         _initDibujo: function () {
-            this._msgAgregarArea.innerHTML = this._i18n.widgets.SicaWidget1.lblAgregarArea;
+            this._msgAgregarArea.innerHTML = this._i18n.widgets.SicaWidget.lblAgregarArea;
             this._dibujo.activar(Draw.POLYGON);
             this._cpg3SR.seleccionarGraficoClickeado();
             this._dibujoUsuario = 1;
@@ -323,14 +323,14 @@ define([
                     if(this._dibujoUsuario === 0){
                         parametros = {
                             variables: "",
-                            multiple: true,
+                            multiple: false,
                             Poligono: "",
                             Predefinida:"a"
                         };
                     }
                     else{
                         parametros = {
-                            variables: "1;2;4;5;6;7;8;9;13;14",
+                            variables: "",
                             multiple: true,
                             Poligono: featureSet,
                             Predefinida :" "
