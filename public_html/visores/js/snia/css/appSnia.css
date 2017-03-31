@@ -1111,3 +1111,13 @@ div p {
 .iconColpasarContenidos:focus{
     border: 0 transparent;
 }
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
+
+.ContenidosTree>.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
+}

@@ -1463,3 +1463,13 @@ border: 1px solid red;
     background-repeat: no-repeat; 
     background-position: -25px 0; 
 }*/
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
+
+.ContenidosTree>.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
+}
