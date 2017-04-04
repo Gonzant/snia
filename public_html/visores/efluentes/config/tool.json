@@ -52,7 +52,7 @@
         {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "msgToolTip": "Busca y despliega parcelas rurales y los índices asociados.",
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {

@@ -878,7 +878,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "widgetConfig": {
@@ -965,12 +965,18 @@
                         "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                    {
-                       "Texto":[
+                    {"Texto":[
                         {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
                         }]    
-                    }                        
+                    }, 
+                    {"Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }
                     ]
                 }
             },
@@ -998,20 +1004,20 @@
                          "Texto":[
                             {"Contenido": "Acercar","Estilo": "Normal"},
                             {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
+                              "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }]                           
                         },
                         {"Imagen":{"URL":"../js/snia/img/zoomout.png", "Alto":30}},
                         {"Texto":[{"Contenido": "Alejar", "Estilo": "Titulo3"},
-                            { "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
+                            { "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             } ]                          
                         },
                         {"Imagen":{"URL":"../js/snia/img/pan.png","Alto":30}},
                         {
                          "Texto":[ {"Contenido": "Desplazar","Estilo": "Titulo3"},
-                            {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                            {"Contenido": "Presione el botón primario del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección.",
                               "Estilo": "Normal"
                             }] 
                         },
@@ -1022,7 +1028,7 @@
                            {"Contenido": "Posiciona el mapa en su máxima extensión.","Estilo": "Normal"}
                          ] 
                         },
-                        {"Imagen":{"URL":"js/snia/img/prevextent.png", "Alto":30}},
+                        {"Imagen":{"URL":"../js/snia/img/prevextent.png", "Alto":30}},
                         {"Texto":[{"Contenido": "Vista anterior", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
@@ -1030,7 +1036,7 @@
                             }
                            ] 
                         },
-                        {"Imagen":{"URL":"js/snia/img/sigextent.png","Alto":30}},
+                        {"Imagen":{"URL":"../js/snia/img/sigextent.png","Alto":30}},
                         {"Texto":[
                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
                            { "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
@@ -1064,10 +1070,8 @@
                "id":"4",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           { "Contenido": "Identificar","Estilo": "Indice1" },
-                    "Imagen":
-                            {"URL":"../js/snia/img/identificar.png","Alto":20 }                        
+                    "Texto":{ "Contenido": "Identificar","Estilo": "Indice1" },
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20 }                        
                 },
                "seccionContenido":{
                     "titulo":{

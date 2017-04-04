@@ -36,13 +36,14 @@ define([
     "dijit/Tooltip",
     "dojox/widget/Standby",
     "dojo/dom-construct",
+    "esri/geometry/Extent",
     "dojo/dom-attr",
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, i18n, domClass, domStyle,
     SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, CheckBox, TextBox,
-    DataGrid, ObjectStore, baseArray, Tooltip, Standby, domConstruct) {
+    DataGrid, ObjectStore, baseArray, Tooltip, Standby, domConstruct, Extent) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -78,6 +79,8 @@ define([
             this._tipoFiltros = [];
             this._valoresFiltros = [];
             this._urlQuery = defaults.config.urlQuery;
+            this._tipo = defaults.config.tipo;
+            this._idFiltro = defaults.config.idFiltro; 
             this._areasVisible = defaults.config.areasVisible;
             // classes
             this._css = {
@@ -294,16 +297,22 @@ define([
             this._standby.show();
         },
         _acercarSeleccion : function () {
-            var extent, capa, items;
+            var extent, capa, items, point;
             capa = this._cg3sr;
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item, i) {
-                if (i !== 0) {
-                    extent = extent.union(capa.getGrafico(item.OBJECTID).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
+                if (this._tipo !== "punto"){
+                    if (i !== 0) {
+                        extent = extent.union(capa.getGrafico(item[this._idFiltro]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
+                    } else {
+                        extent = capa.getGrafico(item[this._idFiltro]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
+                        //extent = capa.getGrafico(item[this._idFiltro]).grafico(this.mapa.map.spatialReference.wkid).geometry;
+                    }
                 } else {
-                    extent = capa.getGrafico(item.OBJECTID).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
-                }
-                return item.OBJECTID;
+                    point = capa.getGrafico(item[this._idFiltro]).grafico(this.mapa.map.spatialReference.wkid).geometry;
+                    extent = new Extent(point.x - 100, point.y - 100, point.x + 100, point.y + 100,this.mapa.map.spatialReference );
+                }   
+                return item[this._idFiltro];
             }, this);
             if (extent) {
                 this.mapa.map.setExtent(extent);
@@ -314,8 +323,8 @@ define([
             capa = this._cg3sr;
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item) {
-                capa.removerGrafico(item.OBJECTID);
-                this._store.remove(item.OBJECTID);
+                capa.removerGrafico(item[this._idFiltro]);
+                this._store.remove(item[this._idFiltro]);
             }, this);
             test_store = new ObjectStore({objectStore: this._store});
             this._grid.setStore(test_store);
@@ -333,13 +342,21 @@ define([
                     } else {
                         ext = ext.union(feature.geometry.getExtent());
                     }
-                    indice = feature.attributes.OBJECTID;
-                    feature.attributes.OBJECTID = indice;
+                    indice = feature.attributes[this._idFiltro];
+                    feature.attributes[this._idFiltro] = indice;
                     feature.attributes.id = indice;
-                    this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
+                    this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry));
                     lang.hitch(this, this._setGrid(feature.attributes));
+                    if (this._tipo === "punto"){
+                        //lang.hitch(this, this._setGrid(feature.attributes));
+                    }else {
+                        this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
+                    }
                 }));
-                this.mapa.map.setExtent(ext);
+                if (this._tipo !== "punto"){
+                    this.mapa.map.setExtent(ext);
+                }
+//                
             }
             if (results.features.length === 1) {
                 this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbEncontro  + " " + results.features.length + " " + this._i18n.widgets.BuscarWidget.lbElemento;

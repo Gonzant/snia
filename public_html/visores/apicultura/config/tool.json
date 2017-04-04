@@ -8,7 +8,7 @@
             "toggle": false,
             "widgetConfig": {
                 "mapasBase": [
-					{"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
                     {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
                 ]
             }
@@ -116,7 +116,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "widgetConfig": {
@@ -132,20 +132,11 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Introducción", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Introducción", "Estilo": "Titulo1"}
                     },
                 "elementos":[
                     {
@@ -155,36 +146,25 @@
                             "Estilo": "Normal"
                         }
                       ]
-                    }
-                     
+                    }                     
                 ]
-            }
-            
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Herramientas", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto": {"Contenido": "Herramientas", "Estilo": "Titulo1" }
                 },
                 "elementos": [
                     {
                         "Texto":[
-                            {
-                            "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
+                            {"Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
                             }
                         ]
@@ -198,30 +178,13 @@
                 "id":"2",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Mapa Base", "Estilo": "Indice1" },
+                    "Imagen":{ "URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":30},
+                        "Texto":{"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -237,154 +200,95 @@
                 }
             },
             {
+                "name": "Contenidos",
+                "id":"3",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                    {
+                       "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
+                    }, 
+                    {"Texto":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque necesita realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}] }
+                    ]
+                }
+            },            
+            {
                "name": "Navegar",
                "id":"3",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
+                        "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
-                              "Estilo": "Normal"
-                            }
+                        {"Texto":[
+                            { "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
+                              "Estilo": "Normal"}
                            ]    
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
+                        {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":30}},
+                        {"Texto":[
+                            {"Contenido": "Acercar", "Estilo": "Normal"},
+                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
+                              "Estilo": "Normal"}
+                           ]                            
+                        },
+                        { "Imagen":
+                            {"URL":"../js/snia/img/zoomout.png", "Alto":30}
                         },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
+                            {"Contenido": "Alejar", "Estilo": "Titulo3"},
+                            { "Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }
-                           ] 
-                           
+                           ]                            
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/zoomout.png",
-                              "Alto":30
-                            }
+                        {"Imagen":{"URL":"../js/snia/img/pan.png", "Alto":30 }
                         },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
-                              "Estilo": "Normal"
-                            }
-                           ] 
-                           
-                        },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/pan.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
-                              "Estilo": "Normal"
-                            }
+                        {"Texto":[
+                            {"Contenido": "Desplazar", "Estilo": "Titulo3"},
+                            { "Contenido": "Presione el botón primario del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección",
+                              "Estilo": "Normal"}
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": { "URL":"../js/snia/img/fullextent.png", "Alto":30}                        },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
+                           {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa en su máxima extensión.",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/prevextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/prevextent.png", "Alto":30} },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Vista previa",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
-                              "Estilo": "Normal"
-                            }
-                           ] 
+                            {"Contenido": "Vista previa", "Estilo": "Titulo3" },
+                            {"Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).", "Estilo": "Normal"}
+                           ]      
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{ "URL":"../js/snia/img/sigextent.png", "Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Vista posterior",
-                              "Estilo": "Titulo3"
-                            },
+                            { "Contenido": "Vista posterior", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la vista anterior a la vista previa.",
                               "Estilo": "Normal"
@@ -392,80 +296,20 @@
                            ] 
                         }
                     ]
-                }
-               
-            },
-            {
-               "name": "Tiempo",
-               "id":"4",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Tiempo",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
+                }               
             },
             {
                "name": "Identificar",
                "id":"4",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Identificar", "Estilo": "Indice1"},
+                    "Imagen": { "URL":"../js/snia/img/identificar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{ "URL":"../js/snia/img/identificar.png", "Alto":30 },                        
+                        "Texto":{"Contenido": "Identificar", "Estilo": "Titulo2" }
                     },
                     "elementos": [
                         {
@@ -485,29 +329,15 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Buscar Padrones", "Estilo": "Indice1" },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":20
-                            }
+                            {"URL":"../js/snia/img/buscar.png", "Alto":20}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/buscar.png",  "Alto":30},
+                        "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {"Texto":[
@@ -516,17 +346,12 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón derecho del ratón. Para seleccionar varios mantenga presionado la tecla “ctrl”.",
+                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón secundario del ratón. Para seleccionar varios padrones mantenga presionado la tecla “ctrl”.",
                               "Estilo": "Normal"
                             }
                            ]    
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/acercar.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"../js/snia/img/acercar.png", "Alto":30} },
                         { "Texto":[
                            {
                               "Contenido": "Acercar selección",
@@ -538,14 +363,9 @@
                             }
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/remover.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/remover.png", "Alto":30}},
                         { "Texto":[
-                           {
+                            {
                               "Contenido": "Remover selección",
                               "Estilo": "Titulo3"
                             },
@@ -579,14 +399,16 @@
                             }
                         },
                         { "Texto":[
-                           {
-                              "Contenido": "Croquis selección",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.",
+                            {"Contenido": "Croquis selección", "Estilo": "Titulo3"},
+                            {"Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.",
                               "Estilo": "Normal"
                             }
+                           ]
+                        },
+                        {"Imagen":{"URL":"../js/snia/img/contenido.png", "Alto":30}},
+                        { "Texto":[
+                            {"Contenido": "Porcentaje de grupos CONEAT","Estilo": "Titulo3"},
+                            {"Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.", "Estilo": "Normal" }
                            ]
                         }
                     ]
@@ -598,30 +420,13 @@
                "id":"7",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/medir.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{ "Contenido": "Medir", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/medir.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/regla.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/regla.png", "Alto":30},
+                        "Texto":{ "Contenido": "Medir", "Estilo": "Titulo2" }
                     },
                     "elementos": [
                         {
@@ -733,29 +538,16 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Imprimir", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/identificar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
                          "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/imprimir.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Imprimir",  "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -778,115 +570,17 @@
                     ]
                 }
             },
-        {"name": "Novedades",
-            "id":"17",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Novedades",
-                              "Estilo": "Indice1"
-                            }
-            },
-            "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Novedades",
-                              "Estilo": "Titulo1"
-                            }
-                },
-                "elementos": [
-                    {
-                    "Texto":[
-                    {
-                        "Contenido": "14/07/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Se agrego una herramienta que muestra el cubrimiento de los grupos en un padrón (sin necesidad de generar el croquis) y permite exportar la información a PDF y texto",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Se agrego información referente : 'Prioridad Forestal'",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "28/05/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "23/04/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Se actualizó el mapa base vectorial",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Se actualizó la apariencia de la aplicación",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "03/02/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] En el reporte aparecen los padrones por defecto (1475, 1476, ARTIGAS)",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "20/01/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] La superficie catastral en la ventana de búsqueda siempre muestra 0",
-                        "Estilo": "Normal" 
-                    }, 
-                    {
-                        "Contenido": "[RESUELTO] La superficie catastral en el reporte de padrones esta multiplicada por 10",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[RESUELTO] El reporte se abre en varias ventanas",
-                        "Estilo": "Normal" 
-                    },
-                    {
-                        "Contenido": "[CAMBIO] Simbología del mapa administrativo",
-                        "Estilo": "Normal" 
-                    }, 
-                    {
-                        "Contenido": "15/01/2015",
-                        "Estilo": "Titulo2" 
-                    },
-                    {
-                        "Contenido": "[NUEVO] Primera versión de la Nueva Consulta CONEAT",
-                        "Estilo": "Normal" 
-                    }                    
-                ]
-                    }
-                ]
-            },
-            "padre": "si"
-        },
         {"name": "Atribuciones",
             "id":"18",
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Indice1"
-                            }
-                        
+                           {"Contenido": "Atribuciones", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Titulo1"
-                            }
+                           {"Contenido": "Atribuciones", "Estilo": "Titulo1" }
                 },
                 "elementos":[
                     {

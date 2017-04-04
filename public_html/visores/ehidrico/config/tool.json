@@ -116,7 +116,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre Carta Suelos. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -133,21 +133,12 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Introducción", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
-                    },
+                        "Texto":{"Contenido": "Introducción", "Estilo": "Titulo1"}
+                },
                 "elementos":[
                     {
                       "Texto":[
@@ -183,24 +174,14 @@
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Herramientas", "Estilo": "Indice1"}                       
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Herramientas", "Estilo": "Titulo1"}
                 },
                 "elementos": [
-                    {
-                        "Texto":[
+                    {"Texto":[
                             {
                             "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
@@ -217,29 +198,16 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Mapa Base", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/mapabase.png", "Alto":30},
                         "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        {"Contenido": "Mapa Base", "Estilo": "Titulo2" }
                     },
                     "elementos": [
                     {
@@ -249,8 +217,7 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    }                        
                     ]
                 }
             },
@@ -289,6 +256,13 @@
                         "Texto":[
                         {
                            "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }, 
+                    {"Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
                            "Estilo": "Normal"
                         }
                         ]    

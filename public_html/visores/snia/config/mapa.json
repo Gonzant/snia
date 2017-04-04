@@ -30,9 +30,9 @@
         },
         "dynamicLayers": [             
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
                 "options": {
-                        "id": "Administrativo",
+                        "id": "Limites Administrativos",
                         "opacity": 0.7,
                         "visible": false
                 }
@@ -76,11 +76,43 @@
                         "opacity": 0.7,
                         "visible": false
                 }
+            },  
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Censos_Agropecuarios/MapServer",
+                "options": {
+                        "id": "Censos Agropecuarios",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }, 
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+                "options": {
+                        "id": "Cartografía Agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
                 "options": {
-                        "id": "Cobertura",
+                        "id": "Áreas sensibles para Aplicaciones Fitosanitarias",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+           {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura_7clases/MapServer",
+                "options": {
+                        "id": "7 Temas - Coberturas y Usos de Suelos",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura_17clases/MapServer",
+                "options": {
+                        "id": "17 Clases - Coberturas y Usos de Suelos",
                         "opacity": 0.7,
                         "visible": false
                 }
@@ -102,26 +134,10 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
-                        "id": "Cartografía Agropecuaria",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Relieve/MapServer",
-                "options": {
-                        "id": "Relieve",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
-                "options": {
-                        "id": "Áreas sensibles para Aplicaciones Fitosanitarias",
-                        "opacity": 0.7,
+                        "id": "Topografía",
+                        "opacity": 1.0,
                         "visible": false
                 }
             }							

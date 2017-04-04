@@ -63,9 +63,38 @@
                 "productividad": "IND_CONEAT"
             }
         },
-		{
+        {
+            "widget": "widgets/BuscarParametrizadoWidget",
+            "title": "Buscar por perfil",
+            "msgToolTip": "Busca y despliega por perfil",
+            "icono": "../js/snia/img/AdvaceSearch.png",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/SISU/MapServer/0",
+                "tipo": "punto",
+                "idFiltro": "Perfiles_.OBJECTID",
+                "filtros": [
+                    {
+                    "campoFiltro" : "Perfil1.Perfil_Punto",
+                    "lblcampoFiltro" : "Perfil",
+                    "placeHoldFiltro": "Perfil",
+                    "dependencia": 0,
+                    "combo": 0,
+                    "tipo": "texto"
+                    }
+                ],
+                "columnas" : [
+                            {"name":"Perfil ","field": "Perfil1.Perfil_Punto","width": "150px"},
+                            {"name":"Fotoplano","field": "Perfil1.FotoplanoId","width": "150px"},
+                            {"name":"Orden","field": "Perfil1.CT_Orden_Id","width": "150px"},
+                            {"name":"Clase","field": "Perfil1.Clase_Id","width": "150px"}
+                            
+                    ] 
+          }
+        },
+        {
             "widget": "widgets/InformacionSuelosWidget",
-            "title": "Informacion Suelos Widget",
+            "title": "Informacion Suelos",
             "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
             "icono": "../js/snia/img/infoCartografia.png",
             "toggle": false,
@@ -77,17 +106,17 @@
                 "catastral": "AREAHA",
                 "productividad": "IND_CONEAT",				
 			    "Herramienta": {
-					"CampoEtiquetaUnidadMapeo": "UM",
-					"CampoSimboloSerie": "Serie",
-					"CampoIdPerfilRepresentativo": "Perfil",
+					"CampoEtiquetaUnidadMapeo": "SISU_PROD.dbo.UnidadMapeo.UM_Nombre",
+					"CampoSimboloSerie": "SISU_PROD.dbo.Serie.Serie_Simbolo",
+					"CampoIdPerfilRepresentativo": "SISU_PROD.dbo.Perfil1.Perfil_Punto",
 					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
 					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
 					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/3",
+					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/3",
 					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
-					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
+					"CampoEtiquetaServicioUnidadMapeo": "UM",
 					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
-					"CampoIdServicioPerfil": "Id_Perfil"
+					"CampoIdServicioPerfil": "ID"
 				}
             }
         }, 
@@ -144,7 +173,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre Carta Suelos. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario. ",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -296,29 +325,16 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
+                            {"Contenido": "Contenidos", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/contenido.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/contenido.png",  "Alto":30},
                         "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        {"Contenido": "Contenidos", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
@@ -328,8 +344,15 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    }, 
+                    {
+                        "Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }                        
                     ]
                 }
             },
@@ -339,16 +362,9 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
+                            {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{

@@ -127,7 +127,7 @@
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
-            "msgToolTip": "Muestra el manual de usuario e información sobre CONEAT. ",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
             "startsOpen": false,
@@ -144,20 +144,11 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Introducción", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Introducción",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{"Contenido": "Introducción", "Estilo": "Titulo1"}
                     },
                 "elementos":[
                     {
@@ -187,8 +178,7 @@
                            "Estilo": "Normal" 
                         }
                       ]
-                    }
-                     
+                    }                     
                 ]
             }           
         },       
@@ -196,20 +186,12 @@
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{"Contenido": "Herramientas", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
+                           {"Contenido": "Herramientas", "Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
@@ -230,24 +212,14 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Indice1"
-                            },
+                            {"Contenido": "Mapa Base", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":30
-                        },
+                        {"URL":"../js/snia/img/mapabase.png", "Alto":30},
                         "Texto":
                         {
                               "Contenido": "Mapa Base",
@@ -273,29 +245,14 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
+                           { "Contenido": "Contenidos", "Estilo": "Indice1" },
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/contenido.png", "Alto":20 }                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos", "Estilo": "Titulo2" }
                     },
                     "elementos": [
                     {
@@ -305,8 +262,14 @@
                            "Estilo": "Normal"
                         }
                         ]    
-                    }
-                        
+                    }, 
+                    {"Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }                         
                     ]
                 }
             },
@@ -315,17 +278,8 @@
                "id":"3",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
