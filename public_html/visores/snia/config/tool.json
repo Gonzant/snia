@@ -224,7 +224,7 @@
                     },
                     "elementos": [
                     {
-                        "Texto":[{"Contenido": "Esta herramienta permite seleccionar el mapa de base de entre dos opciones, Vectorial e Imágenes. Simplemente seleccione el que desee visualizar.", "Estilo": "Normal"}]    
+                        "Texto":[{"Contenido": "Esta herramienta permite seleccionar el mapa de base de entre dos opciones, Vectorial e Imágenes. Simplemente seleccione el que desee visualizar..", "Estilo": "Normal"}]    
                     }                        
                     ]
                 }
@@ -268,7 +268,7 @@
                     "elementos": [
                         {
                            "Texto":[
-                           {"Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.", "Estilo": "Normal"}
+                           {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal"}
                            ]    
                         },
                         {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30} },
