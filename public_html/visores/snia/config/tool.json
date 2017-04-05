@@ -52,7 +52,7 @@
         {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "msgToolTip": "Busca y despliega parcelas rurales y los índices asociados.",
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
@@ -66,8 +66,8 @@
         },
         {
             "widget": "widgets/InformacionSuelosWidget",
-            "title": "Informacion Suelos Widget",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "title": "Información Suelos (Carta 1:40.000)",
+            "msgToolTip": "Busca y despliega parcelas rurales y los índices asociados.",
             "icono": "../js/snia/img/infoCartografia.png",
             "toggle": false,
             "widgetConfig": {
@@ -225,13 +225,31 @@
                         "Texto":{"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
+                    { "Texto":[{"Contenido": "Esta herramienta permite seleccionar el mapa de base de entre dos opciones, Vectorial e Imágenes. Simplemente seleccione el que desee visualizar..", "Estilo": "Normal"}]    
+                       
+                    }                        
+                    ]
+                }
+            },
+            {
+                "name": "Contenidos",
+                "id":"3",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
                     {
-                        "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
-                           "Estilo": "Normal"
-                        }
-                        ]    
+                       "Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal" }]    
+                    }, 
+                    {
+                        "Texto":[{"Contenido": "Si Ud. no puede visualizar alguna capa de información es porque necesita realizar mayor zoom en el mapa para que se encienda la capa.", "Estilo": "Normal"}]    
                     }
                         
                     ]
@@ -253,7 +271,7 @@
                     "elementos": [
                         {
                            "Texto":[
-                           {"Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.", "Estilo": "Normal"}
+                           {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal"}
                            ]    
                         },
                         {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30} },
