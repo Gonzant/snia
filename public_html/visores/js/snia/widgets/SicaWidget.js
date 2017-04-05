@@ -188,7 +188,7 @@ define([
                 c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
                 c.label = this._data[i][i];
-                c.value = n ++;
+                c.value = this._data[i].nro;
                 if (this._data[i].esta === true) {
                     this.dynamic.appendChild(c);
                 }
@@ -197,7 +197,7 @@ define([
                 c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
                 c.label = this._data[i][i];
-                c.value = n ++;
+                c.value = this._data[i].nro;
                 if (this._data[i].esta === true) {
                     this._cmbAperturasC1.appendChild(c);
                 }
@@ -206,7 +206,7 @@ define([
                 c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
                 c.label = this._data[i][i];
-                c.value = n ++;
+                c.value = this._data[i].nro;
                 if (this._data[i].esta === true) {
                     this._cmbAperturasC2.appendChild(c);
                 }
@@ -294,6 +294,7 @@ define([
             this._msgAgregarArea.innerHTML = " ";
         },
         _cargarAperturas: function () {
+            this._aperturasSeleccionadasSimple = "";
 //            if (this._i === 0) {
 //                this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
 //            } 
@@ -302,6 +303,12 @@ define([
                     this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
                 }else{                
                     this._msgAgregarArea.innerHTML = " ";
+                    for (var i=0; i<this.dynamic.selectedOptions.length; i++){
+                        this._aperturasSeleccionadasSimple = this._aperturasSeleccionadasSimple + this.dynamic.selectedOptions[i].value;
+                        if(i +1 < this.dynamic.selectedOptions.length){
+                             this._aperturasSeleccionadasSimple = this._aperturasSeleccionadasSimple + ";";
+                        }
+                    }
                     var g, area, featureSet, parametros, areas = [];
                     for (area in this._cpg3SR._gs) {
                         if (this._cpg3SR._gs.hasOwnProperty(area)) {
@@ -322,7 +329,7 @@ define([
                     
                     if(this._dibujoUsuario === 0){
                         parametros = {
-                            variables: "",
+                            variables: this._aperturasSeleccionadasSimple,
                             multiple: false,
                             Poligono: "",
                             Predefinida:"a"
@@ -330,7 +337,7 @@ define([
                     }
                     else{
                         parametros = {
-                            variables: "",
+                            variables: this._aperturasSeleccionadasSimple,
                             multiple: true,
                             Poligono: featureSet,
                             Predefinida :" "
