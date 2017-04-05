@@ -48,12 +48,20 @@
             
         </div>
         <div data-dojo-type="dijit/layout/ContentPane" title="Cruces">
-            <p>Seleccione la apertura: </p>
-            <div> <select id="dynamic1" data-dojo-attach-point = "_cmbAperturasC1" multiple=""></select>
-                <br> <br> 
-                 <div data-dojo-attach-point="_msgAgregarAreaC1"> </div>
+            <p>Dibuje el area en el mapa, doble clic para finalizar.</p>
+            <div data-dojo-attach-point="_dibujarAreaCruces" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo"> 
+                <img src = "../js/snia/img/lapiz.png" class="iconAcercarSeleccionBuscar">
+            </div>
+            <div data-dojo-attach-point="_eliminarAreaCruces" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo"> 
+                <img src = "../js/snia/img/remover.png" class="iconAcercarSeleccionBuscar">
+            </div>
+            <br>  
+            <p><b>Seleccione la apertura: </b></p>
+            <div> <select id="dynamic1" data-dojo-attach-point = "_cmbAperturasC1" ></select>
+                <br> 
+                <div data-dojo-attach-point="_msgAgregarAreaC1"> </div>
                 <br>           
-             <p>Seleccione las aperturas a cruzar: </p>
+                <p><b>Seleccione las aperturas a cruzar: </b></p>
                 <select id="dynamic2" data-dojo-attach-point = "_cmbAperturasC2" multiple=""></select>
                 <br>
                 <div data-dojo-attach-point="_msgAgregarAreaC2"> </div>

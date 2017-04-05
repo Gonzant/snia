@@ -99,7 +99,9 @@ define([
                 this._cargarComboAperturas();
                 this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
+                    on(this._dibujarAreaCruces, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
+                    on(this._eliminarAreaCruces, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
                     on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
                     on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas)),
@@ -351,8 +353,6 @@ define([
         }, 
         
         _cargarAperturasCruces: function () {
-            var parametros;
-            
             this._aperturasSeleccionadasPrimerFiltro ="";
             this._aperturasSeleccionadasSegundoFiltro ="";
             this._aperturasSeleccionadasCruce = "";
@@ -372,11 +372,26 @@ define([
                              this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + ";";
                         }
                     }
+                     var g, area, featureSet, parametros, areas = [];
+                    for (area in this._cpg3SR._gs) {
+                        if (this._cpg3SR._gs.hasOwnProperty(area)) {
+                            g = this._cpg3SR._gs[area].grafico(wkids.UTM);
+                            g.setAttributes({
+                                OBJECTID: 0,
+                                ID: area,
+                                Shape_Length: 0,
+                                Shape_Area: 0
+                            });
+                            areas.push(g);
+                        }
+                    }
+                    featureSet = new FeatureSet();
+                    featureSet.features = areas;
+                    
                     parametros = {
                         variables: this._aperturasSeleccionadasCruce,
                         multiple: true,
-                        Poligono: "",
-                        Predefinida:""
+                        Poligono: featureSet
                     };
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
                 }
@@ -393,7 +408,7 @@ define([
         _gpCroquisResultDataCallBack: function (value) {
             this._standbyAreas.hide();
             var ap = new Object();        
-           for (var i = 0; i < this.dynamic.selectedOptions.length; i = i+1){
+            for (var i = 0; i < this.dynamic.selectedOptions.length; i = i+1){
                ap.id = i;
                ap.label = this.dynamic.selectedOptions[i].innerHTML + "";
                ap.nombre = "" + this.dynamic.selectedOptions[i].label + "";
@@ -417,6 +432,7 @@ define([
         },
         _gpCroquisResultDataCallBackCruces: function (value) {
             
+            this._crucesAperturas = value.value;
             
         },
         _gpCroquisResultDataErrCruces: function (err) {
