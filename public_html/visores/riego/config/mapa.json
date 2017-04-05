@@ -92,6 +92,22 @@
                         "opacity": 0.7,
                         "visible": false
                 }
+            }, 
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/RIEGO/FinanciamientoMGAP/MapServer",
+                "options": {
+                        "id": "Proyecto Riego Financiado por MGAP",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },            
+            {
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/RIEGO/MosaicoLandsatPrimavera2016/MapServer",
+                "options": {
+                        "id": "Mosaico LandSat Primavera 2016",
+                        "opacity": 0.7,
+                        "visible": false
+                }
             }
         ]
     }
