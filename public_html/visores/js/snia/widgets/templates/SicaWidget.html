@@ -1,11 +1,11 @@
-<div data-dojo-attach-point="_principal" style="width: 410px; height: 400px">
+<div data-dojo-attach-point="_principal" style="width: 400px; height: 400px">
   
-    <div data-dojo-attach-point = "_tabPrincipal" data-dojo-type="dijit/layout/TabContainer" style="height: 320px;">
+    <div data-dojo-attach-point = "_tabPrincipal" data-dojo-type="dijit/layout/TabContainer" style="height: 380px;">
         <div data-dojo-type="dijit/layout/ContentPane" title="Simple" data-dojo-props="selected:true">
             <div data-dojo-attach-point="_ruedaEspera" >
                 <p>Seleccione la/s apertura/s: </p>
-                 <select id="dynamic" data-dojo-attach-point = "dynamic" multiple=""></select>
-                    <br><br>
+                <select id="dynamic" data-dojo-attach-point = "dynamic" multiple=""></select>
+                <br><br>
             </div>
             
             <div data-dojo-attach-point = "_tabSimple" data-dojo-type="dijit/layout/TabContainer" style="width: 370px; height: 150px;" tabPosition="left-h" tabStrip="true">
@@ -38,28 +38,34 @@
                         <div>
                             <div data-dojo-attach-point="_textSeleccione"> </div>
                             <select id="dynamic" data-dojo-attach-point = "_select_predef" multiple=""></select>
-<!--                            <button data-dojo-attach-point="_acercarGeometria" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px;"> 
-                                <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> 
-                        </button>-->
+
                         </div>
                 </div>                
-              </div>                  
+              </div>  
+            <button data-dojo-attach-point="_buscarAperturas" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px;"> 
+                <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> Buscar
+            </button>
+            
         </div>
         <div data-dojo-type="dijit/layout/ContentPane" title="Cruces">
             <p>Seleccione la apertura: </p>
-                <div>
-                    <select id="dynamic1" data-dojo-attach-point = "_cmbAperturasC1" multiple=""></select>
-                    <br> <br> <br>
-                    <p>Seleccione las aperturas a cruzar: </p>
-                    <select id="dynamic2" data-dojo-attach-point = "_cmbAperturasC2" multiple=""></select>
-                    <br>
-                 </div>
+            <div> <select id="dynamic1" data-dojo-attach-point = "_cmbAperturasC1" multiple=""></select>
+                <br> <br> 
+                 <div data-dojo-attach-point="_msgAgregarAreaC1"> </div>
+                <br>           
+             <p>Seleccione las aperturas a cruzar: </p>
+                <select id="dynamic2" data-dojo-attach-point = "_cmbAperturasC2" multiple=""></select>
+                <br>
+                <div data-dojo-attach-point="_msgAgregarAreaC2"> </div>
+                
+            </div>
+            <button data-dojo-attach-point="_buscarAperturasCruces" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px;"> 
+                <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> Buscar
+            </button>
         </div>        
     </div>   
  
-<button data-dojo-attach-point="_buscarAperturas" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px;"> 
-            <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> Buscar
-    </button>
+
 </div>
 
 

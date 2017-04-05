@@ -102,7 +102,8 @@ define([
                     on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
                     on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
-                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas))
+                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas)),
+                    on(this._buscarAperturasCruces, a11yclick, lang.hitch(this, this._cargarAperturasCruces))
                 );
             }
         },
@@ -295,7 +296,7 @@ define([
         },
         _cargarAperturas: function () {
             this._aperturasSeleccionadasSimple = "";
-//            if (this._i === 0) {
+//            if (this._i === 0 && this._dibujoUsuario === 1) {
 //                this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
 //            } 
 //            else{
@@ -347,9 +348,47 @@ define([
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
 //            }
-        },       
+        }, 
+        
+        _cargarAperturasCruces: function () {
+            var parametros;
+            
+            this._aperturasSeleccionadasPrimerFiltro ="";
+            this._aperturasSeleccionadasSegundoFiltro ="";
+            this._aperturasSeleccionadasCruce = "";
+            if(this._cmbAperturasC1.selectedOptions.length !== 1){ //no hay ninguna apertura seleccionada
+                this._msgAgregarAreaC1.innerHTML = "Debe seleccionar una apertura (y sólo una).";
+            }else{ //eligio la apertura
+                this._msgAgregarAreaC1.innerHTML = " ";
+                this._aperturasSeleccionadasCruce = this._cmbAperturasC1.selectedOptions[0].value + ";";
+                if(this._cmbAperturasC2.selectedOptions.length === 0){
+                    this._msgAgregarAreaC2.innerHTML = "Debe seleccionar al menos una apertura para cruzar.";
+                }
+                else{
+                    this._msgAgregarAreaC2.innerHTML = " ";
+                    for (var i=0; i < this._cmbAperturasC2.selectedOptions.length; i++){
+                        this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + this._cmbAperturasC2.selectedOptions[i].value;
+                        if(i + 1 < this._cmbAperturasC2.selectedOptions.length){
+                             this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + ";";
+                        }
+                    }
+                    parametros = {
+                        variables: this._aperturasSeleccionadasCruce,
+                        multiple: true,
+                        Poligono: "",
+                        Predefinida:""
+                    };
+                    this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
+                }
+            }
+        },
+        
+        
         _gpCroquisComplete: function (jobInfo) {
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
+        },
+        _gpCroquisCompleteCruces: function (jobInfo) {
+            this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBackCruces), lang.hitch(this, this._gpCroquisResultDataErrCruces));
         },
         _gpCroquisResultDataCallBack: function (value) {
             this._standbyAreas.hide();
@@ -374,6 +413,13 @@ define([
             dialogo.show(); 
         },
         _gpCroquisResultDataErr: function (err) {
+            console.log(err.message);
+        },
+        _gpCroquisResultDataCallBackCruces: function (value) {
+            
+            
+        },
+        _gpCroquisResultDataErrCruces: function (err) {
             console.log(err.message);
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
