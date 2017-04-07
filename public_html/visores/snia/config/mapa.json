@@ -148,7 +148,15 @@
                         "opacity": 1.0,
                         "visible": false
                 }
-            }							
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/INC_Colonizacion/MapServer",
+                "options": {
+                        "id": "Colonización",
+                        "opacity": 1.0,
+                        "visible": false
+                }
+            }
         ]
     }
 }
