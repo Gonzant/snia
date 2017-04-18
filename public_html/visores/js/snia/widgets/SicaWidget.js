@@ -277,12 +277,11 @@ define([
             on(this._dibujo, "dibujo-complete", lang.hitch(this, this._dibujoComplete));  
             var server = "http://web.renare.gub.uy/arcgis/rest/services/Utilities/Geometry/GeometryServer";
             this._geometryService = new GeometryService(server);
-            this._gpCroquis = new Geoprocessor("http://web.renare.gub.uy/arcgis/rest/services/SNIA/Sica2011/GPServer/Sica2011");
+            this._gpCroquis = new Geoprocessor("https://web.renare.gub.uy/arcgis/rest/services/SNIA/Sica2011/GPServer/gpSicaII");
 //            Rueda de espera
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");
-            this._standbyAreas.startup();
-          
+            this._standbyAreas.startup();          
         },
          _dibujoComplete: function (evt) {
             this._i = this._i + 1;
@@ -396,8 +395,7 @@ define([
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
                 }
             }
-        },
-        
+        },       
         
         _gpCroquisComplete: function (jobInfo) {
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
