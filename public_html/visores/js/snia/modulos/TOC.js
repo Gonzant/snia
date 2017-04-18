@@ -190,7 +190,8 @@ define([
         },*/
         _generarNodoSimple: function (l, dataLayer) {
             arrayUtil.forEach(this._data, function (d) {
-                if (d.name === dataLayer.options.id && d.type === 'mapservice'){
+                if (d.name === dataLayer.options.id && d.type === 'mapservice' &&
+                       d.url === dataLayer.url && d.wms === dataLayer.wms ){
                     d.maxScale = l.maxScale;
                     d.minScale = l.minScale; 
                     d.parent = "root";
@@ -584,23 +585,30 @@ define([
                 this._tree._expandNode(node);
             }, this);
         },
-        agregarCapa: function (dataLayer, nodoExistente) {
+        agregarCapa: function (dataLayer, actualizarNodoExistente) {
         // El parametro nodoExistente es opcional, se asume falso
-            var l;
-            if (dataLayer.wms) {
-                esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                l = new WMSLayer(dataLayer.url, dataLayer.options);
-            } else if (dataLayer.wfs) {
-                esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                l = new WFSLayer(dataLayer.url, dataLayer.options);
+            var l, nodoExiste;
+            nodoExiste = typeof this.mapa.map.getLayer(dataLayer.options.id) !== 'undefined';
+            if (actualizarNodoExistente & !nodoExiste){
+                alert("El nodo no existe");
+            } else if (!actualizarNodoExistente & nodoExiste) {
+                alert("El nodo ya existe");
             } else {
-                l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
-            }
-            if (l) {
-                this.mapa.agregarCapa(l);
-                if (!nodoExistente){
-                    this._generarNodoRoot(l, dataLayer);
-                } 
+                if (dataLayer.wms) {
+                    esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
+                    l = new WMSLayer(dataLayer.url, dataLayer.options);
+                } else if (dataLayer.wfs) {
+                    esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
+                    l = new WFSLayer(dataLayer.url, dataLayer.options);
+                } else {
+                    l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
+                }
+                if (l) {
+                    this.mapa.agregarCapa(l);
+                    if (!actualizarNodoExistente){
+                        this._generarNodoRoot(l, dataLayer);
+                    } 
+                }
             }
         },
         actualizarCapa: function (id, url) {
