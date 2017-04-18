@@ -70,7 +70,8 @@ define([
             visible : true,
             data: null,
             aperturas: null,
-            config: {}
+            config: {},
+            cruces: null
         },
         constructor: function (options, srcRefNode) {
            //mezclar opciones usuario y default
@@ -93,11 +94,17 @@ define([
             this._data = defaults.data;
             this._config = defaults.config;
             this._aperturas = defaults.aperturas;
+            this._crucesBuscar = defaults.cruces;
         },
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                this._cargarJSON();
+                if(this._crucesBuscar === false){
+                    this._cargarJSON();
+                }
+                else{
+                    this._cargarTablaCruces();
+                }
             }
         },
         // start widget. called by user
@@ -137,6 +144,43 @@ define([
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
+        
+        _cargarTablaCruces : function (){
+//            var aperturasCruces, layout, a, i=0;
+//            aperturasCruces= this._aperturas.split(";");
+//            this._grid = " ";
+//            
+            
+//            for (i = 0; i < this._data.Cruces.length; i = i + 1) {
+//                for (j = 0; j < this._aperturas.length; j = j + 1) {
+//                    if (this.config.data[i].nombre === this._aperturas[j].label) {
+////                        //estoy en la apertura a recorrer
+//                        this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
+//                        this._store = new ItemFileWriteStore({data: data});
+//                        layout = [{cells: [[], [], []], onBeforeRow: function (inDataIndex, inSubRows) {inSubRows[0].invisible = true; }}];
+//                        for (a = 0; a < this.config.data[i].cantCol + 1; a = a + 1) {
+//                            layout[0].cells[0].push({width: 10});
+//                        }
+//                        for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
+//                            layout[0].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
+//                        }
+//                        for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
+//                            layout[0].cells[2].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
+//                        }
+//                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
+//                        this._grid = new DataGrid({
+//                            store: this._store,
+//                            structure: layout,
+//                            rowSelector: '10px'
+//                        });
+//                        this._grid.placeAt(this._cpTabla);
+//                    }
+//                }
+//            }
+            
+            
+//            this._grid.startup();            
+        },
         _cargarJSON: function () {
             var bD1, bI1, div1, i;
             bD1 = new ContentPane({  //Derecho
@@ -190,6 +234,8 @@ define([
             this._tree.placeAt(div1);
             this._tree.startup();
         },
+        
+        
         _treeClick : function (item) {
             this._cpTabla.containerNode.innerHTML = " ";
             this._cpTabla.containerNode.innerText = " ";

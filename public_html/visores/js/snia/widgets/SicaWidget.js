@@ -414,7 +414,7 @@ define([
                ap = new Object();
            }
             this._cruces = value.value;
-            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config});
+            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config, cruces: false});
             this._aperturasSICAWidget.startup();
             this._aperturasSICAWidget.show();
             var dialogo = new Dialog({
@@ -430,7 +430,18 @@ define([
         },
         _gpCroquisResultDataCallBackCruces: function (value) {
             
-            this._crucesAperturas = value.value;
+            this._cruces = value.value;
+            
+            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true});
+            this._aperturasSICAWidget.startup();
+            this._aperturasSICAWidget.show();
+            var dialogo = new Dialog({
+                title : "Aperturas Cruces",
+                style : "width: 700px",
+                content: this._aperturasSICAWidget
+            });
+            dialogo.startup();
+            dialogo.show();
             
         },
         _gpCroquisResultDataErrCruces: function (err) {
