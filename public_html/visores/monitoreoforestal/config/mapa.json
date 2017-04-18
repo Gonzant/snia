@@ -73,7 +73,7 @@
                 "layers":[0]
             },
             {
-                "url": "http://dlibrary.snia.gub.uy/SOURCES/.WORLDBATH/.bath/X/-58.6/-53.1/RANGE/Y/-35/-30/RANGE/SOURCES/.USGS/.LandDAAC/.uyNDVI_CN/a:/.the_geom/:a:/.promedio_anual/:a/1/index/SOURCES/.Features/.Campo_Natural/.MASCARA_INVERTIDA_CN/.the_geom/SOURCES/.Features/.Political/.Seccionales_Policiales/.the_geom/X/Y/fig-/white/mask/fillby/stroke/grey/fill/black/stroke/-fig/T/last/plotvalue/wms.xml?plotaxislength=520",
+                "url": "http://dlibrary.snia.gub.uy/SOURCES/.IRI/.DSI_scaled/.DSI/X/Y/fig-/colors/-fig/wms.xml",
                 "options": {
                         "id": "DSI",
                         "opacity": 0.7,
