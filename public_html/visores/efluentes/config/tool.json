@@ -92,7 +92,7 @@
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
-                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgo/GPServer/gpRiesgo",
+                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgoMaster/GPServer/gpRiesgo",
                     "configuracion": "OPERACION:Configuracion",
                     "riesgoPredial":"OPERACION:RiesgoPredial;",
                     "riesgoGeo":"OPERACION:RiesgoGeo;",
