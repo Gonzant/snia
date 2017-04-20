@@ -162,17 +162,15 @@ define([
                 }
             }  
             this._store = new ItemFileWriteStore({data: data});
-            layout = [{cells: [[], [], []], onBeforeRow: function (inDataIndex, inSubRows) {inSubRows[0].invisible = true; }}];
+            layout = [{cells: [[], []], onBeforeRow: function (inDataIndex, inSubRows) { }}];
             
             for (var c =0; c < cols.length; c = c+1){
-                for (a = 0; a < this.config.data[cols[c]].cantCol; a = a + 1) {
-                    layout[0].cells[0].push({width: 10});
-                }
-                for (a = 0; a < this.config.data[cols[c]].divisiones.length; a = a + 1) {
-                    layout[0].cells[1].push({name: this.config.data[cols[c]].divisiones[a], field: "", colSpan: this.config.data[cols[c]].subDiv[a]});
-                }
+                
+//                for (a = 0; a < this.config.data[cols[c]].divisiones.length; a = a + 1) {
+//                    layout[0].cells[0].push({name: this.config.data[cols[c]].columnas[a], field: "", colSpan: this.config.data[cols[c]].subDiv[a]});
+//                }
                 for (a = 0; a < this.config.data[cols[c]].columnas.length; a = a + 1) {
-                    layout[0].cells[2].push({name: this.config.data[cols[c]].columnas[a], field : this.config.data[cols[c]].columnasField[a],  width: this.config.data[cols[c]].columnasW[a]});
+                    layout[0].cells[0].push({name: this.config.data[cols[c]].columnas[a], field : this.config.data[cols[c]].columnasField[a],  width: this.config.data[cols[c]].columnasW[a]});
                 }
                 this._grid = new DataGrid({
                     store: this._store,
