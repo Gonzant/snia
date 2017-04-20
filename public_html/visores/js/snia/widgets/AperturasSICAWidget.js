@@ -178,6 +178,8 @@ define([
                     rowSelector: '10px'
                 });
                 this._grid.placeAt(this._cpTabla);
+                
+                
             }                                 
             this._grid.startup();
         },
@@ -279,9 +281,9 @@ define([
                         });
                         this._grid.placeAt(this._cpTabla);
                         largo = this.config.data[i].filas.length;
-                        if(this._error === "1"){
-                            largo = 1;
-                        }
+//                        if(this._error === "1"){
+//                            largo = 1;
+//                        }
                         for (a = 0; a < largo; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
                             case "Apertura1":
