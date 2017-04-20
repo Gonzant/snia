@@ -71,7 +71,8 @@ define([
             data: null,
             aperturas: null,
             config: {},
-            cruces: null
+            cruces: null,
+            error: null
         },
         constructor: function (options, srcRefNode) {
            //mezclar opciones usuario y default
@@ -95,16 +96,12 @@ define([
             this._config = defaults.config;
             this._aperturas = defaults.aperturas;
             this._crucesBuscar = defaults.cruces;
+            this._error = defaults.error;
         },
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                if(this._crucesBuscar === false){
-                    this._cargarJSON();
-                }
-                else{
-                    this._cargarTablaCruces();
-                }
+                this._cargarJSON();
             }
         },
         // start widget. called by user
@@ -144,42 +141,47 @@ define([
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
-        
-        _cargarTablaCruces : function (){
-//            var aperturasCruces, layout, a, i=0;
-//            aperturasCruces= this._aperturas.split(";");
-//            this._grid = " ";
-//            
+        _cargarTablaCruces : function () {
+            var aperturasCruces, layout, a, i = 0, b = 0, filas = 0, cols = [], totalCols, titulo, tip, legendTwo, complete = false, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;
+            aperturasCruces = this._aperturas.split(";");
+            //Busco la primer apertura que me pasan para cargar las filas
+            totalCols = this.config.data[filas].cantCol;
+            this._cpTabla.containerNode.innerText = " ";
+            titulo = "<p class= \"Titulo1\">  </p>";
+            this._grid = " ";
+             //grafico de torta
+            this._grafica.innerHTML = " ";
+            //cargo las columnas          
+            j =0;
+            for (i = 0; i < this.config.data.length; i = i + 1){
+                for (var f = 0; f < aperturasCruces.length; f = f + 1){
+                    if(this.config.data[i].nro === parseInt(aperturasCruces[f])){
+                        cols[j] = i;
+                        j = j+1;
+                    }                 
+                }
+            }  
+            this._store = new ItemFileWriteStore({data: data});
+            layout = [{cells: [[], [], []], onBeforeRow: function (inDataIndex, inSubRows) {inSubRows[0].invisible = true; }}];
             
-//            for (i = 0; i < this._data.Cruces.length; i = i + 1) {
-//                for (j = 0; j < this._aperturas.length; j = j + 1) {
-//                    if (this.config.data[i].nombre === this._aperturas[j].label) {
-////                        //estoy en la apertura a recorrer
-//                        this._tabla = "<p>" + this.config.data[i].tituloTabla + "</p>";
-//                        this._store = new ItemFileWriteStore({data: data});
-//                        layout = [{cells: [[], [], []], onBeforeRow: function (inDataIndex, inSubRows) {inSubRows[0].invisible = true; }}];
-//                        for (a = 0; a < this.config.data[i].cantCol + 1; a = a + 1) {
-//                            layout[0].cells[0].push({width: 10});
-//                        }
-//                        for (a = 0; a < this.config.data[i].divisiones.length; a = a + 1) {
-//                            layout[0].cells[1].push({name: this.config.data[i].divisiones[a], field: "", colSpan: this.config.data[i].subDiv[a]});
-//                        }
-//                        for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
-//                            layout[0].cells[2].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
-//                        }
-//                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
-//                        this._grid = new DataGrid({
-//                            store: this._store,
-//                            structure: layout,
-//                            rowSelector: '10px'
-//                        });
-//                        this._grid.placeAt(this._cpTabla);
-//                    }
-//                }
-//            }
-            
-            
-//            this._grid.startup();            
+            for (var c =0; c < cols.length; c = c+1){
+                for (a = 0; a < this.config.data[cols[c]].cantCol; a = a + 1) {
+                    layout[0].cells[0].push({width: 10});
+                }
+                for (a = 0; a < this.config.data[cols[c]].divisiones.length; a = a + 1) {
+                    layout[0].cells[1].push({name: this.config.data[cols[c]].divisiones[a], field: "", colSpan: this.config.data[cols[c]].subDiv[a]});
+                }
+                for (a = 0; a < this.config.data[cols[c]].columnas.length; a = a + 1) {
+                    layout[0].cells[2].push({name: this.config.data[cols[c]].columnas[a], field : this.config.data[cols[c]].columnasField[a],  width: this.config.data[cols[c]].columnasW[a]});
+                }
+                this._grid = new DataGrid({
+                    store: this._store,
+                    structure: layout,
+                    rowSelector: '10px'
+                });
+                this._grid.placeAt(this._cpTabla);
+            }                                 
+            this._grid.startup();
         },
         _cargarJSON: function () {
             var bD1, bI1, div1, i;
@@ -190,56 +192,59 @@ define([
             this._cpDerSC.addChild(bD1);
             bI1 = new ContentPane({ //Izquierdo
                 region: "center",
-                style: "width: 280px; height: 400px;"
+                style: "width: 180px; height: 400px;"
             });
             this._cpIzqSC.addChild(bI1);
-            div1 = domConstruct.create('div', {}, bI1.containerNode);
-            
-            this._store = new Memory({
-                data: [{ name: "raiz", id: "root"}],
-                getChildren: function (object) {
-                    return this.query({parent: object.id});
+            div1 = domConstruct.create('div', {}, bI1.containerNode);            
+            if(this._crucesBuscar === false){    
+                this._store = new Memory({
+                    data: [{ name: "raiz", id: "root"}],
+                    getChildren: function (object) {
+                        return this.query({parent: object.id});
+                    }
+                });
+                for (i = 0; i < this._aperturas.length; i = i + 1) {
+                    this._store.put({id: i, name: this._aperturas[i].label, parent: "root", nodo: "raiz" });
                 }
-            });
-            for (i = 0; i < this._aperturas.length; i = i + 1) {
-                this._store.put({id: i, name: this._aperturas[i].label, parent: "root", nodo: "raiz" });
-            }
-            this._myModel = new ObjectStoreModel({
-                store: this._store,
-                query: {id:  "root"}
-            });
-            this._tree = new Tree({
-                model: this._myModel,
-                showRoot: false,
-                openOnClick: true,
-                autoExpand: true,
-                getIconClass: function () {
-                    return "custimg";
-                },
-                onOpen: lang.hitch(this, function (item, node) {
-                    var children, c, nodoItem, esHijo;
-                    children = node.getChildren();
-                    for (c in children) {
-                        if (children.hasOwnProperty(c)) {
-                            nodoItem = children[c].get('item');
-                            esHijo = nodoItem.nodo.toString() === "hijo";
-                            if (this._tree && nodoItem && !esHijo) {
-                                this._tree._expandNode(children[c]);
+                this._myModel = new ObjectStoreModel({
+                    store: this._store,
+                    query: {id:  "root"}
+                });
+                this._tree = new Tree({
+                    model: this._myModel,
+                    showRoot: false,
+                    openOnClick: true,
+                    autoExpand: true,
+                    getIconClass: function () {
+                        return "custimg";
+                    },
+                    onOpen: lang.hitch(this, function (item, node) {
+                        var children, c, nodoItem, esHijo;
+                        children = node.getChildren();
+                        for (c in children) {
+                            if (children.hasOwnProperty(c)) {
+                                nodoItem = children[c].get('item');
+                                esHijo = nodoItem.nodo.toString() === "hijo";
+                                if (this._tree && nodoItem && !esHijo) {
+                                    this._tree._expandNode(children[c]);
+                                }
                             }
                         }
-                    }
-                }),
-                onClick: lang.hitch(this, this._treeClick)
-            });
-            this._tree.placeAt(div1);
-            this._tree.startup();
+                    }),
+                    onClick: lang.hitch(this, this._treeClick)
+              });
+                this._tree.placeAt(div1);
+                this._tree.startup();         
+            }
+            else{
+                this._cargarTablaCruces();
+            }
         },
-        
-        
+     
         _treeClick : function (item) {
             this._cpTabla.containerNode.innerHTML = " ";
             this._cpTabla.containerNode.innerText = " ";
-            var titulo, tip, legendTwo, complete = false, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;;
+            var titulo, tip, legendTwo, complete = false, largo=1, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;;
             titulo = "<p class= \"Titulo1\">" + item.name + "</p>";
             this._grid = " ";
              //grafico de torta
@@ -275,7 +280,11 @@ define([
                             rowSelector: '10px'
                         });
                         this._grid.placeAt(this._cpTabla);
-                        for (a = 0; a < this.config.data[i].filas.length; a = a + 1) {
+                        largo = this.config.data[i].filas.length;
+                        if(this._error === "1"){
+                            largo = 1;
+                        }
+                        for (a = 0; a < largo; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
                             case "Apertura1":
                                 totalNum = this._data.Cruces[i].Apertura1[0][0];

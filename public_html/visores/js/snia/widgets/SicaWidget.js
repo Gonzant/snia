@@ -352,6 +352,7 @@ define([
         }, 
         
         _cargarAperturasCruces: function () {
+            this._standbyAreas.startup();
             this._aperturasSeleccionadasPrimerFiltro ="";
             this._aperturasSeleccionadasSegundoFiltro ="";
             this._aperturasSeleccionadasCruce = "";
@@ -392,13 +393,19 @@ define([
                         multiple: true,
                         Poligono: featureSet
                     };
+                    this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
                 }
             }
         },       
         
         _gpCroquisComplete: function (jobInfo) {
+            this._gpCroquis.getResultData(jobInfo.jobId, "Error", lang.hitch(this, this._gpCroquisResultDataCallBackError), lang.hitch(this, this._gpCroquisResultDataErr));
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBack), lang.hitch(this, this._gpCroquisResultDataErr));
+            
+        },
+        _gpCroquisResultDataCallBackError: function(value){
+            this._error = value.value;
         },
         _gpCroquisCompleteCruces: function (jobInfo) {
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBackCruces), lang.hitch(this, this._gpCroquisResultDataErrCruces));
@@ -412,24 +419,28 @@ define([
                ap.nombre = "" + this.dynamic.selectedOptions[i].label + "";
                this._aperturasSeleccionadas[i] = ap;  
                ap = new Object();
-           }
+            }
             this._cruces = value.value;
-            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config, cruces: false});
-            this._aperturasSICAWidget.startup();
-            this._aperturasSICAWidget.show();
-            var dialogo = new Dialog({
-                title : "Aperturas ",
-                style : "width: 800px",
-                content: this._aperturasSICAWidget
-            });
-            dialogo.startup();
-            dialogo.show(); 
+            if(this._error !== "2"){
+                this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config, cruces: false, error: this._error});
+                this._aperturasSICAWidget.startup();
+                this._aperturasSICAWidget.show();
+                var dialogo = new Dialog({
+                    title : "Aperturas ",
+                    style : "width: 800px",
+                    content: this._aperturasSICAWidget
+                });
+                dialogo.startup();
+                dialogo.show(); 
+            }else{
+                this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande - Error fila con 0</p>";                
+            }
         },
         _gpCroquisResultDataErr: function (err) {
             console.log(err.message);
         },
         _gpCroquisResultDataCallBackCruces: function (value) {
-            
+            this._standbyAreas.hide();
             this._cruces = value.value;
             
             this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true});
@@ -437,7 +448,7 @@ define([
             this._aperturasSICAWidget.show();
             var dialogo = new Dialog({
                 title : "Aperturas Cruces",
-                style : "width: 700px",
+                style : "width: 800px",
                 content: this._aperturasSICAWidget
             });
             dialogo.startup();
