@@ -286,12 +286,12 @@ Dialogos:
 
 .claro .dijitDialogTitleBar {
     border: 2px solid;
+    border-color: transparent;
     height: 35px;
     padding-top: 10px;
-    border-color: transparent;
     border-top: none;    
     text-align: center;
-    background-color: #E1E1E1;
+    background-color: #f19607;
     border-radius:4px;
 }
 
@@ -691,9 +691,9 @@ tituloTPAyuda{
 }
 
 .claro .dijitDialogCloseIcon {
-    background-color:#FFC000;
-    border-color: #FFC000;
-    border: 2px;
+    background-color:white;
+    border-color: #f19607;
+    border: 1px;
 }    
 #divStandby {
     width: 100%;
@@ -702,7 +702,12 @@ tituloTPAyuda{
     z-index: 10;
     position: absolute;
 }
+
+
 #divToolbar {
+    padding-top: 8px;
+}
+/*#divToolbar {
     z-index: 2;
     width: 40px;
     position:absolute;
@@ -713,10 +718,11 @@ tituloTPAyuda{
     background-color: #FFC000;
     border-style: solid;
     border-width: 5px;
-    border-color: dimgray;  
+    border-color: transparent;  
     border-radius: 15px;
-/*    height: 88%;*/
-}
+    display: inline;
+    height: 88%;
+}*/
 #divLogoMGAP{
     width: 160px;
     height: 160px;
@@ -846,17 +852,19 @@ tituloTPAyuda{
 
 
 .claro .dijitDialogTitle {
-    color: dimgray;
+    color: white;
     font-weight:bold;
     font-size: 19px;
-    border:2px #FFC000;
+    border:2px #f19607;
+    background-color:transparent
 }
 .claro .dijitDialogPaneContent {
-    background: #E1E1E1 repeat-x top left;
-    border-top: 2px solid #FFC000;
+    background: white repeat-x top left;
+    border-top: 2px solid #f19607;
     padding: 10px 8px;
+    background-color: white;
     position: relative;
-    opacity: 0.9;
+    /*opacity: 0.9;*/
 }
 .claro .dijitDialog {
     border: 1px solid #FFC000; 
@@ -1088,10 +1096,10 @@ div p {
     font-size: 12px;
     word-wrap: break-word;
 }
-.estiloBotonBarra{
+/*.estiloBotonBarra{
    width: 34px; 
    cursor: pointer;    
-}
+}*/
 
 .iconColapsarContenidos{
     width: 27px;

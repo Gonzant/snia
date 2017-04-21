@@ -1,0 +1,331 @@
+/*ARCGis style*/
+ html, body, #viewDiv {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.92em;
+    
+  }
+
+#info{
+    top: 190px;
+    left: 20px;
+    position: absolute;
+    z-index: 99;
+    padding-top: 20px;  
+    /*opacity: 0.7;*/
+}
+.icon{    
+    color: #f19607;
+    padding-top: 8px;
+}
+#botonTabs{
+    width: 50px;
+    height: 48px;
+}
+
+.toggleButton{
+    text-align: center;    
+}
+
+.block{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #FFF;   
+    padding-bottom: 15px;
+}
+
+.ribbon{
+    border-bottom: 5px solid #f19607;
+}
+
+
+.tabs{
+    overflow: hidden;    
+    z-index: 100;
+    width:258px;
+    height: 300px;
+}
+
+/*tabs*/
+.navTabs {
+    list-style-type: none;
+    margin: 0 auto;
+    width: 99%;
+    padding: 0; 
+    overflow: hidden;  
+}
+.navTabItem{
+    float: left;
+    border: 1px solid white;   
+}
+.navTabItem a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 6px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.navTabItem a:active {
+   background-color: #E57500;
+}
+.navTabItem a:hover {
+    background-color: #E57500;
+}
+
+.orangeBackground{
+    background-color: #f19607;
+}
+
+.orangeBackground a:hover {
+    background-color: #E57500;
+}
+
+.iconExpand{
+    width: 65px;
+}
+
+.mainBar{
+    height:50px;
+    position: relative;
+}
+.smallBar{
+    height:30px;
+    border-top: solid 1px; 
+    position: relative;
+}
+.mainBar > a{
+    font-size: 36px;
+}
+.smallBar > a{
+   padding-top: 0;
+    font-size: 30px;
+}
+
+.logo{
+    padding: 5px 0;
+}
+
+
+input[type="range"]{
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.15, #E57500),
+        color-stop(0.15, #C5C5C5)
+    );    
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background-color: #ffffff;
+    border: 3px solid #E57500;
+    border-radius: 10px;
+    height: 15px;
+    width: 15px;
+}  
+.slider{
+    padding-left: 42px;
+    width: 50px;
+}
+
+.tree .treeLi {
+    list-style-type:none;
+    margin:0;
+    padding:10px 5px 0 5px;
+    position:relative
+}
+
+.tree .treeLi::after {
+    border-top:1px solid #999;
+    height:20px;
+    top:25px;
+    width:25px
+}
+.tree .treeLi span {
+  
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none
+}
+.tree .treeLi.parent_li>span {
+    cursor:pointer
+}
+.tree>.treeUl>.treeLi::before, .tree>ul>.treeLi::after {
+    border:0
+}
+.tree .treeLi:last-child::before {
+    height:30px
+}
+
+i{
+    color: #f19607;
+    font-style: normal;
+}
+
+.itemMainMenu{
+    font-style: normal;    
+}
+.icon-bar {
+    width: 100%; 
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.icon-bar a {
+    float: right; 
+    text-align: center; 
+    width: 49px;  
+    transition: all 0.3s ease; 
+    color: white;     
+}
+.secondIcon-Bar{
+    height:17px;
+}
+.secondIcon-bar a {
+    float: right; 
+    text-align: center; 
+    width: 95px;  
+    transition: all 0.3s ease; 
+    color: white;     
+}
+
+
+.itemMainMenu:hover {
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+}
+
+
+.icon-bar .active {
+    background-color: #dadada; 
+}
+.alignRight{
+    /*float: right !important;*/    
+}
+
+.secondarybuttons {
+    display: inline-block;
+    color:#57585A;
+    font-size: 40px !important; 
+    width: 23%      
+}
+.secondarybuttonsContainer{
+    margin: 0 auto;
+    width: 69%;
+}
+
+
+/*
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+        box-sizing: border-box;
+}
+
+
+.navbar-right {
+    float: right!important;
+    margin-right: -15px;
+}
+
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}*/
+
+.MenuIngresar > a {
+    font-style: normal !important;
+    font-size: 16px;
+    padding-top: 13px;
+}
+.MenuIngresar > a:hover {
+   background-color: #FFF;
+}
+
+
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #f19607;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    float: right;
+    border-bottom: 2px solid;
+}
+
+button:hover {
+    opacity: 0.8;
+    background-color: #E57500;
+}
+
+
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+.loginContainer{
+    right:0;
+    margin-top: 48px;
+    width:290px;
+    position: absolute;
+    background-color: white;
+    z-index: 150;
+}
+
+#titleSecond{
+    color: #f19607;
+    margin: 8px;
+    font-size: 21px;
+}
+
+.fa:hover{
+    color:#E57500 ;
+}

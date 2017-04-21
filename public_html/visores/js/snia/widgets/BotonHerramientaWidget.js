@@ -41,6 +41,7 @@ define([
             this._i18n = i18n;
             this._etiqueta = defaults.etiqueta;
             this._icono = defaults.icono;
+            this._icon = defaults.icon;
             this._msgToolTip = defaults.msgToolTip;
             //propiedades
             this.set("herramienta", defaults.herramienta);
@@ -76,10 +77,10 @@ define([
             if (!this.get("loaded")) {
                 this._init();
             }
-            this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '"' + "class=" + '"' + "estiloBotonBarra" + '"' + "> <br>";
+            this._botonNode.innerHTML = "<a class=\"itemMainMenu\" href=\"#\"><i class=\"material-icons\">"+ this._icon + "</i></a>";
             new Tooltip({
                 connectId: [this._botonNode],
-                label: "<b>" + this._etiqueta + "</b>" + "<br>" + "<p> " + this._msgToolTip + "</p>"
+                label: "<b>" + this._etiqueta + "</b>" + "<p> " + this._msgToolTip + "</p>"
             });
         },
         // connections/subscriptions se limpian durante la fase destroy()

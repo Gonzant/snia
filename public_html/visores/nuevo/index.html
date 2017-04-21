@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>SNIA</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
+        <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
+        <link rel="stylesheet" href="../js/snia/css/appSnia.css">
+        <link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" /> <!-- Contenidos -->
+        <link rel="shortcut icon" href="../js/snia/img/logo_1.png" type="image/png" sizes="16x16">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="../js/snia/css/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <script src="script.js"></script>
+        
+        <style>
+            html, body, #mapDiv {
+              padding:0;
+              margin:0;
+              height:100%;
+            }
+
+            #mapDiv {
+              position: relative;
+            }
+
+            #bottomPanel {
+              left: 50%;
+              margin: 0 auto;
+              margin-left: -500px;
+              position: absolute; 
+              bottom: 2.5em;
+            }
+
+            #timeInfo{
+              border-radius: 4px;
+              border: solid 2px #ccc;
+              background-color: #fff;
+              display: block;
+              padding: 5px;
+              position: relative;
+              text-align: center;
+              width: 1000px;
+              z-index: 99;
+            }
+        </style>
+        
+        
+    </head>
+
+    <body class="claro">
+        <div class="icon-bar alignRight mainBar" >
+            <div style="float: left;">
+                <img class="logo" src="images/logoSnia.png" alt="logoSnia" height="40">                
+            </div>
+            <div id="divToolbar" style="float: right"></div>
+           
+        </div>
+        <div id="divStandby">
+            <div id="divContenedorIndex" style="display: none" >    
+                
+                </div>
+                <!--<div id="divLogoMGAP" class="divLogoMGAP"></div>-->
+                <!--<div id="divToolbarTitulo" class="divToolbarTitulo"> </div>-->
+            
+            
+            <div id="divMapa"></div>
+        </div>
+        <!-- Configuro Dojo -->
+        <script type="text/javascript">
+            var dojoConfig = {
+                packages: [
+                    { name: "modulos", location: "/js/visores/js/snia/modulos" },
+                    { name: "widgets", location: "/js/visores/js/snia/widgets" },
+                    { name: "agsjs", location: "/js/visores/js/lib/agsjs" },
+                    { name: "config", location: "/js/visores/nuevo/config" }
+                ]
+//                paths: { agsjs: location.pathname.replace(/\/[^/]+$/, '') + '/js/lib/agsjs'}
+            };
+        </script>
+        <!-- Cargo ESRI -->        
+        <script type="text/javascript" src="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/init.js"></script>        
+        <!-- Cargo JSPDF -->        
+        <script type="text/javascript" src="../js/lib/jspdf/jspdf.min.js"></script>
+        <!-- TODO -->
+        <script type="text/javascript" src="../js/snia/app.js"></script>
+    </body>
+</html>

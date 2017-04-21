@@ -58,7 +58,7 @@ snia.app = {
                 });
             };
             initControles = function () {
-                dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
+//                dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
                 standby.set("text", "Cargando librerias...");
                 var widgetNames = arrayUtil.map(toolConfig.barraHerramientas, function (herramientaConfig) {
                     return herramientaConfig.widget;
@@ -72,6 +72,7 @@ snia.app = {
                             title = herramientaConfig.title,
                             startsOpen = herramientaConfig.startsOpen,
                             icono = herramientaConfig.icono,
+                            icon = herramientaConfig.icon,
                             closable =  (typeof herramientaConfig.closable  === "undefined" ?  true : herramientaConfig.closable),
                             draggable = (typeof herramientaConfig.draggable  === "undefined" ?  true : herramientaConfig.draggable),
                             position = herramientaConfig.position,
@@ -86,6 +87,7 @@ snia.app = {
                                 }),
                                 etiqueta: title,
                                 icono: icono,
+                                icon: icon,
                                 msgToolTip: msgToolTip
                             });
                         }
