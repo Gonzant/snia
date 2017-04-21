@@ -257,6 +257,7 @@ define([
             //this._data - el json que me pasa Fabi
 //            // this._aperturas  - mi json con lo que tengo buscar en el data
             for (i = 0; i < this._data.Cruces.length; i = i + 1) {
+                largo = 0; //inicializo el largo
                 for (j = 0; j < this._aperturas.length; j = j + 1) {
                     if (this.config.data[i].nombre === this._aperturas[j].label &&
                             item.name === this._aperturas[j].label) {
@@ -281,9 +282,13 @@ define([
                         });
                         this._grid.placeAt(this._cpTabla);
                         largo = this.config.data[i].filas.length;
-//                        if(this._error === "1"){
-//                            largo = 1;
-//                        }
+                        if(this._error !== "0"){ //entonces es 1
+                            this._largoFilasAp = this._error.split(";");
+                            for (var c = 1 ; c < this._largoFilasAp.length && largo !== 0; c = c + 1){
+                                if(this.config.data[i].nro === parseInt(this._largoFilasAp[c]))
+                                    largo = 1;
+                            }                           
+                        }
                         for (a = 0; a < largo; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
                             case "Apertura1":

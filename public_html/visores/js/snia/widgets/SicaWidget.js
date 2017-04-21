@@ -421,7 +421,7 @@ define([
                ap = new Object();
             }
             this._cruces = value.value;
-            if(this._error !== "2"){
+            if(this._error !== "1"){
                 this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config, cruces: false, error: this._error});
                 this._aperturasSICAWidget.startup();
                 this._aperturasSICAWidget.show();
