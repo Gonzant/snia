@@ -164,8 +164,7 @@ define([
             this._store = new ItemFileWriteStore({data: data});
             layout = [{cells: [[], []], onBeforeRow: function (inDataIndex, inSubRows) { }}];
             
-            for (var c =0; c < cols.length; c = c+1){
-                
+            for (var c =0; c < cols.length; c = c+1){                
 //                for (a = 0; a < this.config.data[cols[c]].divisiones.length; a = a + 1) {
 //                    layout[0].cells[0].push({name: this.config.data[cols[c]].columnas[a], field: "", colSpan: this.config.data[cols[c]].subDiv[a]});
 //                }
@@ -178,8 +177,9 @@ define([
                     rowSelector: '10px'
                 });
                 this._grid.placeAt(this._cpTabla);
-                
-                
+//                var  myNewItem1 = {Ap1: this.config.data[0].filas[0], Num: this._data.Cruces[i].Apertura1[0][0], PorcN: num.toFixed(0), Hect: this._data.Cruces[i].Apertura1[0][1], PorcH: hectareas.toFixed(0)};
+//                var  myNewItem2 = {Ap2: this.config.data[i].filas[0], Hect: this._data.Cruces[i].Apertura2[0], Porc: hectareas.toFixed(0)};
+//                var total = myNewItem1 + myNewItem2;
             }                                 
             this._grid.startup();
         },
