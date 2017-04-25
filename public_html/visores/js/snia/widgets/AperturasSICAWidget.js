@@ -142,7 +142,7 @@ define([
         /* Funciones Privadas */
         /* ---------------- */
         _cargarTablaCruces : function () {
-            var aperturasCruces, layout, a, i = 0, b = 0, filas = 0, cols = [], totalCols, titulo, tip, legendTwo, complete = false, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;
+            var aperturasCruces, layout, cantCols=0, a, i = 0, b = 0, filas = 0, cols = [], totalCols, titulo, tip, legendTwo, complete = false, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;
             aperturasCruces = this._aperturas.split(";");
             //Busco la primer apertura que me pasan para cargar las filas
             totalCols = this.config.data[filas].cantCol;
@@ -163,24 +163,52 @@ define([
             }  
             this._store = new ItemFileWriteStore({data: data});
             layout = [{cells: [[], []], onBeforeRow: function (inDataIndex, inSubRows) { }}];
-            
+            this._esPrimerAperturaCruces = true; 
             for (var c =0; c < cols.length; c = c+1){                
-//                for (a = 0; a < this.config.data[cols[c]].divisiones.length; a = a + 1) {
-//                    layout[0].cells[0].push({name: this.config.data[cols[c]].columnas[a], field: "", colSpan: this.config.data[cols[c]].subDiv[a]});
-//                }
-                for (a = 0; a < this.config.data[cols[c]].columnas.length; a = a + 1) {
-                    layout[0].cells[0].push({name: this.config.data[cols[c]].columnas[a], field : this.config.data[cols[c]].columnasField[a],  width: this.config.data[cols[c]].columnasW[a]});
+                for (a = 0; a < this.config.data[cols[c]].columnasCruces.length; a = a + 1) {
+                    layout[0].cells[0].push({name: this.config.data[cols[c]].columnasCruces[a], field : this.config.data[cols[c]].columnasCruces[a],  width: "90px"});
                 }
                 this._grid = new DataGrid({
                     store: this._store,
                     structure: layout,
                     rowSelector: '10px'
                 });
-                this._grid.placeAt(this._cpTabla);
-//                var  myNewItem1 = {Ap1: this.config.data[0].filas[0], Num: this._data.Cruces[i].Apertura1[0][0], PorcN: num.toFixed(0), Hect: this._data.Cruces[i].Apertura1[0][1], PorcH: hectareas.toFixed(0)};
-//                var  myNewItem2 = {Ap2: this.config.data[i].filas[0], Hect: this._data.Cruces[i].Apertura2[0], Porc: hectareas.toFixed(0)};
-//                var total = myNewItem1 + myNewItem2;
-            }                                 
+                
+            }
+            
+             for (var c =0; c < cols.length; c = c+1){ 
+                 cantCols = cantCols + this.config.data[cols[c]].columnasCruces.length;
+            }
+            
+            this._data;
+            var valueCruce, porcCruce, fila = 0, i_filas =0, myNewItem, i_cantCols=0;
+            
+            for (i_filas = 0; i_filas < this.config.data[cols[0]].filasCruces.length; i_filas = i_filas +1){ //primer apertura 
+                myNewItem = new Object();
+                i_cantCols =0;
+//                for (var i_cantCols =0; i_cantCols < cantCols; i_cantCols = i_cantCols + 1){
+//                && i_cantCols < cantCols
+                for (var c = 0; c < cols.length ; c = c + 1){  //recorro dentro de las aperturas          
+                    for (var i =0; i < this.config.data[cols[c]].columnasCruces.length; i = i+1){//dentro de cada apertura las columnas
+                        switch (this.config.data[cols[0]].apertura){
+                            case "Apertura1":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura1[i_filas][i_cantCols];
+                                            break;
+                             case "Apertura2":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura2[i_filas][i_cantCols];
+                                            break;
+                        } 
+                        Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i], {value: valueCruce, writable:true, enumerable:true, configurable:true}); 
+                        i_cantCols = i_cantCols +1;
+                    }
+                    
+                        
+//                }  
+            }
+                this._store.newItem(myNewItem);
+            }         
+           
+            this._grid.placeAt(this._cpTabla);                             
             this._grid.startup();
         },
         _cargarJSON: function () {
