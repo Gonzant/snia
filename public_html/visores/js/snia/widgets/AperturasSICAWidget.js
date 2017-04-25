@@ -186,6 +186,7 @@ define([
             for (i_filas = 0; i_filas < this.config.data[cols[0]].filasCruces.length; i_filas = i_filas +1){ //primer apertura 
                 myNewItem = new Object();
                 i_cantCols =0;
+//                Object.defineProperty(myNewItem, this.config.data[cols[c]].filasCruces[i_filas], {value: this.config.data[cols[c]].filasCruces[i_filas], writable:true, enumerable:true, configurable:true}); 
 //                for (var i_cantCols =0; i_cantCols < cantCols; i_cantCols = i_cantCols + 1){
 //                && i_cantCols < cantCols
                 for (var c = 0; c < cols.length ; c = c + 1){  //recorro dentro de las aperturas          
@@ -194,9 +195,33 @@ define([
                             case "Apertura1":
                                             valueCruce = this._data.Cruces[cols[0]].Apertura1[i_filas][i_cantCols];
                                             break;
-                             case "Apertura2":
+                            case "Apertura2":
                                             valueCruce = this._data.Cruces[cols[0]].Apertura2[i_filas][i_cantCols];
                                             break;
+                            case "Apertura4":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura4[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura5":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura5[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura6":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura6[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura7":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura7[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura8":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura8[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura9":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura9[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura13":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura13[i_filas][i_cantCols];
+                                            break;
+                            case "Apertura14":
+                                            valueCruce = this._data.Cruces[cols[0]].Apertura14[i_filas][i_cantCols];
+                                            break;                                            
                         } 
                         Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i], {value: valueCruce, writable:true, enumerable:true, configurable:true}); 
                         i_cantCols = i_cantCols +1;
