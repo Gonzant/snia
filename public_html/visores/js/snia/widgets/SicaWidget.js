@@ -281,7 +281,11 @@ define([
 //            Rueda de espera
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");
-            this._standbyAreas.startup();          
+            this._standbyAreas.startup();  
+            //Rueda de cruces
+            this._standbyAreasCruces = new Standby({target: this._ruedaEsperaCruces});
+            domConstruct.place(this._standbyAreasCruces.domNode, this._ruedaEsperaCruces, "after");
+            this._standbyAreasCruces.startup();
         },
          _dibujoComplete: function (evt) {
             this._i = this._i + 1;
@@ -352,7 +356,7 @@ define([
         }, 
         
         _cargarAperturasCruces: function () {
-            this._standbyAreas.startup();
+//            this._standbyAreas.startup();
             this._aperturasSeleccionadasPrimerFiltro ="";
             this._aperturasSeleccionadasSegundoFiltro ="";
             this._aperturasSeleccionadasCruce = "";
@@ -393,7 +397,7 @@ define([
                         multiple: true,
                         Poligono: featureSet
                     };
-                    this._standbyAreas.show();
+                    this._standbyAreasCruces.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
                 }
             }

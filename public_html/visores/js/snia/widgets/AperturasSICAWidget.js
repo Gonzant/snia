@@ -153,14 +153,19 @@ define([
             this._grafica.innerHTML = " ";
             //cargo las columnas          
             j =0;
-            for (i = 0; i < this.config.data.length; i = i + 1){
-                for (var f = 0; f < aperturasCruces.length; f = f + 1){
+            
+            for (var f = 0; f < aperturasCruces.length; f = f + 1){
+                for (i = 0; i < this.config.data.length; i = i + 1){
                     if(this.config.data[i].nro === parseInt(aperturasCruces[f])){
                         cols[j] = i;
                         j = j+1;
                     }                 
                 }
             }  
+//            for (var f = 0; f < aperturasCruces.length; f = f + 1){
+//                cols[f] = parseInt(aperturasCruces[f]);
+//            }
+            
             this._store = new ItemFileWriteStore({data: data});
             layout = [{cells: [[], []], onBeforeRow: function (inDataIndex, inSubRows) { }}];
             this._esPrimerAperturaCruces = true; 
