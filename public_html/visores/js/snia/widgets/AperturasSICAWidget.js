@@ -151,7 +151,6 @@ define([
             this._grid = " ";
              //grafico de torta
             this._grafica.innerHTML = " ";
-            //cargo las columnas          
             j =0;
             
             for (var f = 0; f < aperturasCruces.length; f = f + 1){
@@ -162,10 +161,6 @@ define([
                     }                 
                 }
             }  
-//            for (var f = 0; f < aperturasCruces.length; f = f + 1){
-//                cols[f] = parseInt(aperturasCruces[f]);
-//            }
-            
             this._store = new ItemFileWriteStore({data: data});
             layout = [{cells: [[], []], onBeforeRow: function (inDataIndex, inSubRows) { }}];
             this._esPrimerAperturaCruces = true; 
@@ -191,11 +186,15 @@ define([
             for (i_filas = 0; i_filas < this.config.data[cols[0]].filasCruces.length; i_filas = i_filas +1){ //primer apertura 
                 myNewItem = new Object();
                 i_cantCols =0;
-//                Object.defineProperty(myNewItem, this.config.data[cols[c]].filasCruces[i_filas], {value: this.config.data[cols[c]].filasCruces[i_filas], writable:true, enumerable:true, configurable:true}); 
+               
 //                for (var i_cantCols =0; i_cantCols < cantCols; i_cantCols = i_cantCols + 1){
 //                && i_cantCols < cantCols
                 for (var c = 0; c < cols.length ; c = c + 1){  //recorro dentro de las aperturas          
                     for (var i =0; i < this.config.data[cols[c]].columnasCruces.length; i = i+1){//dentro de cada apertura las columnas
+                        if(i === 0 && c === 0){
+                            Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i], {value: this.config.data[cols[0]].filasCruces[i_filas], writable:true, enumerable:true, configurable:true}); 
+//                            Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i+1], {value: valueCruce, writable:true, enumerable:true, configurable:true}); 
+                        }else{
                         switch (this.config.data[cols[0]].apertura){
                             case "Apertura1":
                                             valueCruce = this._data.Cruces[cols[0]].Apertura1[i_filas][i_cantCols];
@@ -231,10 +230,11 @@ define([
                         Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i], {value: valueCruce, writable:true, enumerable:true, configurable:true}); 
                         i_cantCols = i_cantCols +1;
                     }
-                    
+                }  
                         
 //                }  
             }
+                
                 this._store.newItem(myNewItem);
             }         
            
