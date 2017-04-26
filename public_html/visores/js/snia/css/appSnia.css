@@ -1110,7 +1110,7 @@ div p {
     border-color: #EBEADB;
     border-right-color: #D5CDB5;
     padding: 2px 2px 2px 2px;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
     font-size: 12px;
     word-wrap: break-word;

@@ -172,23 +172,23 @@ define([
                     store: this._store,
                     structure: layout,
                     rowSelector: '10px'
-                });
-                
+                });                
             }
             
-             for (var c =0; c < cols.length; c = c+1){ 
+            for (var c =0; c < cols.length; c = c+1){ 
                  cantCols = cantCols + this.config.data[cols[c]].columnasCruces.length;
             }
             
             this._data;
-            var valueCruce, porcCruce, fila = 0, i_filas =0, myNewItem, i_cantCols=0;
+            var valueCruce, porcCruce, fila = 0, i_filas =0, myNewItem, i_cantCols=0, largo =0;
+            largo = this.config.data[cols[0]].filasCruces.length; 
+            if(this._error !== "0") //entonces es 1
+                largo = 1;
             
-            for (i_filas = 0; i_filas < this.config.data[cols[0]].filasCruces.length; i_filas = i_filas +1){ //primer apertura 
+            for (i_filas = 0; i_filas < largo; i_filas = i_filas +1){ //primer apertura 
                 myNewItem = new Object();
                 i_cantCols =0;
                
-//                for (var i_cantCols =0; i_cantCols < cantCols; i_cantCols = i_cantCols + 1){
-//                && i_cantCols < cantCols
                 for (var c = 0; c < cols.length ; c = c + 1){  //recorro dentro de las aperturas          
                     for (var i =0; i < this.config.data[cols[c]].columnasCruces.length; i = i+1){//dentro de cada apertura las columnas
                         if(i === 0 && c === 0){
@@ -231,8 +231,6 @@ define([
                         i_cantCols = i_cantCols +1;
                     }
                 }  
-                        
-//                }  
             }
                 
                 this._store.newItem(myNewItem);

@@ -352,11 +352,9 @@ define([
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
-//            }
         }, 
         
         _cargarAperturasCruces: function () {
-//            this._standbyAreas.startup();
             this._aperturasSeleccionadasPrimerFiltro ="";
             this._aperturasSeleccionadasSegundoFiltro ="";
             this._aperturasSeleccionadasCruce = "";
@@ -411,7 +409,11 @@ define([
         _gpCroquisResultDataCallBackError: function(value){
             this._error = value.value;
         },
+        _gpCroquisResultDataCallBackErrorCruces: function(value){
+            this._errorCruces = value.value;
+        },
         _gpCroquisCompleteCruces: function (jobInfo) {
+             this._gpCroquis.getResultData(jobInfo.jobId, "Error", lang.hitch(this, this._gpCroquisResultDataCallBackErrorCruces), lang.hitch(this, this._gpCroquisResultDataErrCruces));
             this._gpCroquis.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, this._gpCroquisResultDataCallBackCruces), lang.hitch(this, this._gpCroquisResultDataErrCruces));
         },
         _gpCroquisResultDataCallBack: function (value) {
@@ -437,7 +439,7 @@ define([
                 dialogo.startup();
                 dialogo.show(); 
             }else{
-                this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande - Error fila con 0</p>";                
+                this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
             }
         },
         _gpCroquisResultDataErr: function (err) {
@@ -446,20 +448,22 @@ define([
         _gpCroquisResultDataCallBackCruces: function (value) {
             this._standbyAreas.hide();
             this._cruces = value.value;
-            
-            this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true});
-            this._aperturasSICAWidget.startup();
-            this._aperturasSICAWidget.show();
-            var dialogo = new Dialog({
-                title : "Aperturas Cruces",
-                style : "width: 800px",
-                content: this._aperturasSICAWidget
-            });
-            dialogo.startup();
-            dialogo.show();
-            
+            if(this._errorCruces !== "1"){
+                this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true, error: this._errorCruces});
+                this._aperturasSICAWidget.startup();
+                this._aperturasSICAWidget.show();
+                var dialogo = new Dialog({
+                    title : "Aperturas Cruces",
+                    style : "width: 800px",
+                    content: this._aperturasSICAWidget
+                });
+                dialogo.startup();
+                dialogo.show();
+            }else{
+                this._msgAgregarAreaCruces.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
+            }
         },
-        _gpCroquisResultDataErrCruces: function (err) {
+        _gpCroquisResultDataErrCruces: function (err) { //_gpCroquisResultDataErrCruces
             console.log(err.message);
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
