@@ -95,7 +95,8 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                this._dibujoUsuario =0; //es 0 si no dibuja y 1 si dibuja
+                this._dibujo =0;
+                this._i =0; //es 0 si no dibuja y 1 si dibuja
                 this._cargarComboAperturas();
                 this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
@@ -261,6 +262,7 @@ define([
             this._aperturasSeleccionadas=[];
             this._visible();
             this._i =0;
+            this._dibujoUsuario =1;
             this.set("loaded", true);
             this.emit("load", {});
             this._markerSymbol = new SimpleMarkerSymbol();
@@ -301,10 +303,10 @@ define([
         },
         _cargarAperturas: function () {
             this._aperturasSeleccionadasSimple = "";
-//            if (this._i === 0 && this._dibujoUsuario === 1) {
-//                this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
-//            } 
-//            else{
+            if (this._i === 0 && this._dibujoUsuario === 1) {
+                this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
+            } 
+            else{
                 if(this.dynamic.selectedOptions.length === 0){ //no hay ninguno seleccionado
                     this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
                 }else{                
@@ -352,51 +354,58 @@ define([
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
+            }
         }, 
         
         _cargarAperturasCruces: function () {
             this._aperturasSeleccionadasPrimerFiltro ="";
             this._aperturasSeleccionadasSegundoFiltro ="";
             this._aperturasSeleccionadasCruce = "";
-            if(this._cmbAperturasC1.selectedOptions.length !== 1){ //no hay ninguna apertura seleccionada
-                this._msgAgregarAreaC1.innerHTML = "Debe seleccionar una apertura (y sólo una).";
-            }else{ //eligio la apertura
-                this._msgAgregarAreaC1.innerHTML = " ";
-                this._aperturasSeleccionadasCruce = this._cmbAperturasC1.selectedOptions[0].value + ";";
-                if(this._cmbAperturasC2.selectedOptions.length === 0){
-                    this._msgAgregarAreaC2.innerHTML = "Debe seleccionar al menos una apertura para cruzar.";
-                }
-                else{
-                    this._msgAgregarAreaC2.innerHTML = " ";
-                    for (var i=0; i < this._cmbAperturasC2.selectedOptions.length; i++){
-                        this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + this._cmbAperturasC2.selectedOptions[i].value;
-                        if(i + 1 < this._cmbAperturasC2.selectedOptions.length){
-                             this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + ";";
-                        }
+            
+            if (this._i === 0 && this._dibujoUsuario === 1) {
+                this._msgAgregarAreaC1.innerHTML = "<p style=\"color:red\";><br>Se necesita al menos un área</p>";
+            } 
+            else{
+                if(this._cmbAperturasC1.selectedOptions.length !== 1){ //no hay ninguna apertura seleccionada
+                    this._msgAgregarAreaC1.innerHTML = "<p style=\"color:red\";><br> Debe seleccionar una apertura</p>";
+                }else{ //eligio la apertura
+                    this._msgAgregarAreaC1.innerHTML = " ";
+                    this._aperturasSeleccionadasCruce = this._cmbAperturasC1.selectedOptions[0].value + ";";
+                    if(this._cmbAperturasC2.selectedOptions.length === 0){
+                        this._msgAgregarAreaC2.innerHTML = "Debe seleccionar al menos una apertura para cruzar.";
                     }
-                     var g, area, featureSet, parametros, areas = [];
-                    for (area in this._cpg3SR._gs) {
-                        if (this._cpg3SR._gs.hasOwnProperty(area)) {
-                            g = this._cpg3SR._gs[area].grafico(wkids.UTM);
-                            g.setAttributes({
-                                OBJECTID: 0,
-                                ID: area,
-                                Shape_Length: 0,
-                                Shape_Area: 0
-                            });
-                            areas.push(g);
+                    else{
+                        this._msgAgregarAreaC2.innerHTML = " ";
+                        for (var i=0; i < this._cmbAperturasC2.selectedOptions.length; i++){
+                            this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + this._cmbAperturasC2.selectedOptions[i].value;
+                            if(i + 1 < this._cmbAperturasC2.selectedOptions.length){
+                                 this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + ";";
+                            }
                         }
+                         var g, area, featureSet, parametros, areas = [];
+                        for (area in this._cpg3SR._gs) {
+                            if (this._cpg3SR._gs.hasOwnProperty(area)) {
+                                g = this._cpg3SR._gs[area].grafico(wkids.UTM);
+                                g.setAttributes({
+                                    OBJECTID: 0,
+                                    ID: area,
+                                    Shape_Length: 0,
+                                    Shape_Area: 0
+                                });
+                                areas.push(g);
+                            }
+                        }
+                        featureSet = new FeatureSet();
+                        featureSet.features = areas;
+
+                        parametros = {
+                            variables: this._aperturasSeleccionadasCruce,
+                            multiple: true,
+                            Poligono: featureSet
+                        };
+                        this._standbyAreasCruces.show();
+                        this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
                     }
-                    featureSet = new FeatureSet();
-                    featureSet.features = areas;
-                    
-                    parametros = {
-                        variables: this._aperturasSeleccionadasCruce,
-                        multiple: true,
-                        Poligono: featureSet
-                    };
-                    this._standbyAreasCruces.show();
-                    this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisCompleteCruces)); 
                 }
             }
         },       
