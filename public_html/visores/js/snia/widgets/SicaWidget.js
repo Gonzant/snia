@@ -459,7 +459,7 @@ define([
             console.log(err.message);
         },
         _gpCroquisResultDataCallBackCruces: function (value) {
-            this._standbyAreas.hide();
+            this._standbyAreasCruces.hide();
             this._cruces = value.value;
             if (this._aperturasSICAWidget) {
                 this._aperturasSICAWidget.destroyRecursive(true);
