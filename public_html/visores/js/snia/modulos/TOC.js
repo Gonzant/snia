@@ -329,6 +329,7 @@ define([
                         l = this.mapa.map.getLayer(item.name + url.url);
                         if (isNodeSelected) {
                             l.show();
+                            this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
                         } else {
                             l.hide();
                         }
@@ -337,6 +338,7 @@ define([
                     l = this.mapa.map.getLayer(item.name);
                     if (isNodeSelected) {
                         l.show();
+                        this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
                     } else {
                         l.hide();
                     }
