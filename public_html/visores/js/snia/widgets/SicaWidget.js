@@ -440,19 +440,23 @@ define([
                ap = new Object();
             }
             this._cruces = value.value;
-            if(this._error !== "1"){
-                this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config, cruces: false, error: this._error});
-                this._aperturasSICAWidget.startup();
-                this._aperturasSICAWidget.show();
-                dialogo = new Dialog({
-                    title : "Aperturas ",
-                    style : "width: 800px",
-                    content: this._aperturasSICAWidget
-                });
-                dialogo.startup();
-                dialogo.show(); 
+            if(this._error !== "3"){
+                if(this._error !== "1"){
+                    this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadas, config: this.config, cruces: false, error: this._error});
+                    this._aperturasSICAWidget.startup();
+                    this._aperturasSICAWidget.show();
+                    dialogo = new Dialog({
+                        title : "Aperturas ",
+                        style : "width: 800px",
+                        content: this._aperturasSICAWidget
+                    });
+                    dialogo.startup();
+                    dialogo.show(); 
+                }else{
+                    this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
+                }
             }else{
-                this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
+                this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Error en script. Contáctese con el administrador</p>";                
             }
         },
         _gpCroquisResultDataErr: function (err) {
@@ -463,20 +467,24 @@ define([
             this._cruces = value.value;
             if (this._aperturasSICAWidget) {
                 this._aperturasSICAWidget.destroyRecursive(true);
-             }
-            if(this._errorCruces !== "1"){
-                this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true, error: this._errorCruces});
-                this._aperturasSICAWidget.startup();
-                this._aperturasSICAWidget.show();
-                var dialogo = new Dialog({
-                    title : "Aperturas Cruces",
-                    style : "width: 800px",
-                    content: this._aperturasSICAWidget
-                });
-                dialogo.startup();
-                dialogo.show();
+            }
+            if(this._error !== "3"){
+                if(this._errorCruces !== "1"){
+                    this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true, error: this._errorCruces});
+                    this._aperturasSICAWidget.startup();
+                    this._aperturasSICAWidget.show();
+                    var dialogo = new Dialog({
+                        title : "Aperturas Cruces",
+                        style : "width: 800px",
+                        content: this._aperturasSICAWidget
+                    });
+                    dialogo.startup();
+                    dialogo.show();
+                }else{
+                    this._msgAgregarAreaCruces.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
+                }
             }else{
-                this._msgAgregarAreaCruces.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
+                this._msgAgregarAreaCruces.innerHTML = "<p style=\"color:red\";>Error en script. Contáctese con el administrador</p>";               
             }
         },
         _gpCroquisResultDataErrCruces: function (err) { //_gpCroquisResultDataErrCruces
