@@ -95,8 +95,8 @@ define([
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
-                this._dibujo =0;
-                this._i =0; //es 0 si no dibuja y 1 si dibuja
+                this._dibujo = 0;
+                this._i = 0; //es 0 si no dibuja y 1 si dibuja
                 this._cargarComboAperturas();
                 this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
@@ -137,7 +137,7 @@ define([
             this._dibujoUsuario = 1;
         },
         _cargarDeptos: function () {
-            var select, i=0, c, departamentosStore;
+            var c, departamentosStore;
             departamentosStore = new Memory({
                 data: [
                     {name: "Artigas", id: "DArtigas"},
@@ -174,20 +174,12 @@ define([
 //                    on(this._acercarGeometria, a11yclick, lang.hitch(this, this._acercarDepto))
 //            );
         },
-        _acercarDepto: function (){
-            var extent, capa, items;
-            capa = this._cpg3SR;
-//            this._queryTask = new QueryTask(this._urlQuery);
-//            this._query = new Query();
-//            this._query.outSpatialReference = new SpatialReference(this.mapa.map.spatialReference.wkid);
-//            this._query.returnGeometry = true;
-//            this._query.outFields = ["*"];
-        },
+       
         _cargarSP: function () {
             this._textSeleccione.innerHTML = "Seleccione la/s SP: ";
         },
         _cargarComboAperturas: function () {
-            var n = 0, i, c;
+            var i, c;
             for (i in this._data) {
                 c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
@@ -197,7 +189,7 @@ define([
                     this.dynamic.appendChild(c);
                 }
             }
-             for (i in this._data) {
+            for (i in this._data) {
                 c = win.doc.createElement('option');
                 c.innerHTML = this._data[i].nombre;
                 c.label = this._data[i][i];
@@ -230,13 +222,12 @@ define([
             this.set("visible", false);
         },
         desactive : function () {
-           this._dibujo.desactivar();
-           this._cpg3SR.removerMapa();
+            this._dibujo.desactivar();
+            this._cpg3SR.removerMapa();
         },
         /* ---------------- */
         /* Funciones Privadas */
         /* ---------------- */
-             
         _visible: function () {
             if (this.get("visible")) {
                 domStyle.set(this.domNode, 'display', 'block');
@@ -247,22 +238,10 @@ define([
         _init: function () {
             this._tabPrincipal.startup();
             this._tabSimple.startup();
-             /*ToolTips*/
-            var TooltipDibujar = new Tooltip({
-                connectId: [this._dibujarArea.domNode],
-                position: ['below'],
-                label: this._i18n.widgets.SicaWidget1.lbDibujar
-            });
-            var TooltipResultado = new Tooltip({
-                connectId: [this._eliminarArea.domNode],
-                position: ['below'],
-                label: this._i18n.widgets.SicaWidget1.lbRemoverDibujos
-            });                      
-            
-            this._aperturasSeleccionadas=[];
+            this._aperturasSeleccionadas = [];
             this._visible();
-            this._i =0;
-            this._dibujoUsuario =1;
+            this._i = 0;
+            this._dibujoUsuario = 1;
             this.set("loaded", true);
             this.emit("load", {});
             this._markerSymbol = new SimpleMarkerSymbol();
@@ -289,35 +268,34 @@ define([
             domConstruct.place(this._standbyAreasCruces.domNode, this._ruedaEsperaCruces, "after");
             this._standbyAreasCruces.startup();
         },
-         _dibujoComplete: function (evt) {
+        _dibujoComplete: function (evt) {
             this._i = this._i + 1;
             var g;
             g = new Graphic(evt.geometry, this._simpleFillSymbol);
             this._cpg3SR.agregarGrafico(" " + this._i, g);
             this._dibujo.desactivar();
-         },
-         _eliminarDibujos: function () {
+        },
+        _eliminarDibujos: function () {
             this._i = 0;
             this._cpg3SR.limpiar();
             this._msgAgregarArea.innerHTML = " ";
         },
         _cargarAperturas: function () {
+            var i, g, area, featureSet, parametros, areas = [];
             this._aperturasSeleccionadasSimple = "";
             if (this._i === 0 && this._dibujoUsuario === 1) {
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
-            } 
-            else{
-                if(this.dynamic.selectedOptions.length === 0){ //no hay ninguno seleccionado
+            } else {
+                if (this.dynamic.selectedOptions.length === 0) { //no hay ninguno seleccionado
                     this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
-                }else{                
+                } else {
                     this._msgAgregarArea.innerHTML = " ";
-                    for (var i=0; i<this.dynamic.selectedOptions.length; i++){
+                    for (i = 0; i < this.dynamic.selectedOptions.length; i = i + 1) {
                         this._aperturasSeleccionadasSimple = this._aperturasSeleccionadasSimple + this.dynamic.selectedOptions[i].value;
-                        if(i +1 < this.dynamic.selectedOptions.length){
-                             this._aperturasSeleccionadasSimple = this._aperturasSeleccionadasSimple + ";";
+                        if (i + 1 < this.dynamic.selectedOptions.length) {
+                            this._aperturasSeleccionadasSimple = this._aperturasSeleccionadasSimple + ";";
                         }
                     }
-                    var g, area, featureSet, parametros, areas = [];
                     for (area in this._cpg3SR._gs) {
                         if (this._cpg3SR._gs.hasOwnProperty(area)) {
                             g = this._cpg3SR._gs[area].grafico(wkids.UTM);
@@ -332,51 +310,45 @@ define([
                     }
                     featureSet = new FeatureSet();
                     featureSet.features = areas;
-                    
                     //no es multiple -> cuando por ejemplo hago departamentos.  
-                    
-                    if(this._dibujoUsuario === 0){
+//                    if(this._dibujoUsuario === 0) {
+//                        parametros = {
+//                            variables: this._aperturasSeleccionadasSimple,
+//                            multiple: false,
+//                            Poligono: "",
+//                            Predefinida: "a"
+//                        };
+//                    } else {
                         parametros = {
                             variables: this._aperturasSeleccionadasSimple,
                             multiple: false,
-                            Poligono: "",
-                            Predefinida:"a"
-                        };
-                    }
-                    else{
-                        parametros = {
-                            variables: this._aperturasSeleccionadasSimple,
-                            multiple: true,
                             Poligono: featureSet,
-                            Predefinida :" "
+                            Predefinida : " "
                         };
-                    }
+//                    }
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
             }
-        }, 
-        
+        },
         _cargarAperturasCruces: function () {
-            this._aperturasSeleccionadasPrimerFiltro ="";
-            this._aperturasSeleccionadasSegundoFiltro ="";
+            var i;
+            this._aperturasSeleccionadasPrimerFiltro = "";
+            this._aperturasSeleccionadasSegundoFiltro = "";
             this._aperturasSeleccionadasCruce = "";
-            
             if (this._i === 0 && this._dibujoUsuario === 1) {
                 this._msgAgregarAreaC1.innerHTML = "<p style=\"color:red\";><br>Se necesita al menos un área</p>";
-            } 
-            else{
-                if(this._cmbAperturasC1.selectedOptions.length !== 1){ //no hay ninguna apertura seleccionada
+            } else {
+                if (this._cmbAperturasC1.selectedOptions.length !== 1) { //no hay ninguna apertura seleccionada
                     this._msgAgregarAreaC1.innerHTML = "<p style=\"color:red\";><br> Debe seleccionar una apertura</p>";
-                }else{ //eligio la apertura
+                } else { //eligio la apertura
                     this._msgAgregarAreaC1.innerHTML = " ";
                     this._aperturasSeleccionadasCruce = this._cmbAperturasC1.selectedOptions[0].value + ";";
-                    if(this._cmbAperturasC2.selectedOptions.length === 0){
+                    if (this._cmbAperturasC2.selectedOptions.length === 0) {
                         this._msgAgregarAreaC2.innerHTML = "Debe seleccionar al menos una apertura para cruzar.";
-                    }
-                    else{
+                    } else {
                         this._msgAgregarAreaC2.innerHTML = " ";
-                        for (var i=0; i < this._cmbAperturasC2.selectedOptions.length; i++){
+                        for (i=0; i < this._cmbAperturasC2.selectedOptions.length; i++){
                             this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + this._cmbAperturasC2.selectedOptions[i].value;
                             if(i + 1 < this._cmbAperturasC2.selectedOptions.length){
                                  this._aperturasSeleccionadasCruce = this._aperturasSeleccionadasCruce + ";";
