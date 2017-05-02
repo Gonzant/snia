@@ -331,7 +331,7 @@ define([
                         for (a = 0; a < this.config.data[i].columnas.length; a = a + 1) {
                             layout[0].cells[2].push({name: this.config.data[i].columnas[a], field : this.config.data[i].columnasField[a],  width: this.config.data[i].columnasW[a]});
                         }
-                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
+                        
                         this._grid = new DataGrid({
                             store: this._store,
                             structure: layout,
@@ -344,8 +344,12 @@ define([
                             for (var c = 1 ; c < this._largoFilasAp.length && largo !== 0; c = c + 1){
                                 if(this.config.data[i].nro === parseInt(this._largoFilasAp[c]))
                                     largo = 1;
+                                    this._tabla = this._tabla + "<br> No se muestra el detalle de datos porque para el área seleccionada no se cumple con el criterio de confidencialidad de los datos por favor realice una nueva consulta. <br>";
                             }                           
                         }
+                        
+//                        this._tabla = this._tabla + "<br> No se muestra el detalle de datos porque para el área seleccionada no se cumple";                        
+                        this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
                         for (a = 0; a < largo; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
                             case "Apertura1":

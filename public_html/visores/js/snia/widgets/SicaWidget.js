@@ -425,7 +425,7 @@ define([
                     dialogo.startup();
                     dialogo.show(); 
                 }else{
-                    this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Debe seleccionar un área más grande</p>";                
+                    this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Su consulta contiene menos de 20 formularios, realice la consulta nuevamente, seleccionando un área mas grande.</p>";                
                 }
             }else{
                 this._msgAgregarArea.innerHTML = "<p style=\"color:red\";>Error en script. Contáctese con el administrador</p>";                
