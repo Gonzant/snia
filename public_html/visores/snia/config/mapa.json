@@ -54,6 +54,14 @@
                 }
             },
             {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/MapadeCalor_agro/MapServer",
+                "options": {
+                        "id": "Concentración de la producción agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
                 "options": {
                         "id": "Cartas de Suelos",
@@ -102,21 +110,13 @@
                 }
             },
            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura_7clases/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AnalisisTerritorial/MapServer",
                 "options": {
-                        "id": "7 Temas - Coberturas y Usos de Suelos",
+                        "id": "Análisis territorial",
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura_17clases/MapServer",
-                "options": {
-                        "id": "17 Clases - Coberturas y Usos de Suelos",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
+            },            
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
                 "options": {
@@ -134,13 +134,21 @@
                 }
             },
             {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
+                "options": {
+                        "id": "Tipología agropecuaria",
+                        "opacity": 1.0,
+                        "visible": false
+                }
+            },
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
                         "id": "Topografía",
                         "opacity": 1.0,
                         "visible": false
                 }
-            }							
+            }
         ]
     }
 }

@@ -15,7 +15,7 @@
             }
         },
         {
-            "widget": "widgets/ContenidosWidget",
+            "widget": "widgets/Contenidos2Widget",
             "title": "Contenidos",
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
@@ -92,7 +92,7 @@
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
-                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgo/GPServer/gpRiesgo",
+                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgoMaster/GPServer/gpRiesgo",
                     "configuracion": "OPERACION:Configuracion",
                     "riesgoPredial":"OPERACION:RiesgoPredial;",
                     "riesgoGeo":"OPERACION:RiesgoGeo;",
