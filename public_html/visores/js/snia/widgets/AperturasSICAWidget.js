@@ -120,7 +120,6 @@ define([
                 }));
             }
         },
-        // connections/subscriptions se limpian durante la fase destroy()
         destroy: function () {
             this.inherited(arguments);
         },
@@ -142,7 +141,8 @@ define([
         /* Funciones Privadas */
         /* ---------------- */
         _cargarTablaCruces : function () {
-            var aperturasCruces, layout, cantCols=0, a, i = 0, b = 0, filas = 0, cols = [], totalCols, titulo, tip, legendTwo, complete = false, mag1, parametrosGrafica = [], t = "", porc, i, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;
+            var aperturasCruces, layout, f = 0, c = 0, cantCols = 0, a, i = 0, b = 0; 
+            var filas = 0, cols = [], totalCols, titulo, complete = false, parametrosGrafica = [], t = "", porc, j, a, layout = [], chart1, data = { items: []  }, myNewItem, totalNum, num = 0, hectareas = 0, totalHec;
             aperturasCruces = this._aperturas.split(";");
             //Busco la primer apertura que me pasan para cargar las filas
             totalCols = this.config.data[filas].cantCol;
@@ -151,23 +151,22 @@ define([
             this._grid = " ";
              //grafico de torta
             this._grafica.innerHTML = " ";
-            j =0;
-            
-            for (var f = 0; f < aperturasCruces.length; f = f + 1){
-                for (i = 0; i < this.config.data.length; i = i + 1){
-                    if(this.config.data[i].nro === parseInt(aperturasCruces[f])){
+            j = 0;
+            for (f = 0; f < aperturasCruces.length; f = f + 1) {
+                for (i = 0; i < this.config.data.length; i = i + 1) {
+                    if (this.config.data[i].nro === parseInt(aperturasCruces[f])) {
                         cols[j] = i;
-                        j = j+1;
-                    }                 
+                        j = j + 1;
+                    }
                 }
-            }  
+            }
             this._store = new ItemFileWriteStore({data: data});
             layout = [{cells: [[], []], onBeforeRow: function (inDataIndex, inSubRows) { }}];
-            this._esPrimerAperturaCruces = true; 
-            for (var c =0; c < cols.length; c = c+1){                
+            this._esPrimerAperturaCruces = true;
+            for (c = 0; c < cols.length; c = c + 1) {
                 for (a = 0; a < this.config.data[cols[c]].columnasCruces.length; a = a + 1) {
-                    if(a===0 && c !== 0){
-                        a = a+1;
+                    if (a === 0 && c !== 0) {
+                        a = a + 1;
                     }
                     layout[0].cells[0].push({name: this.config.data[cols[c]].columnasCruces[a], field : this.config.data[cols[c]].columnasCruces[a],  width: "90px"});
                 }
@@ -175,9 +174,9 @@ define([
                     store: this._store,
                     structure: layout,
                     rowSelector: '10px'
-                });                
-            }            
-            for (var c =0; c < cols.length; c = c+1){ 
+                });
+            }
+            for (c =0; c < cols.length; c = c+1){ 
                  cantCols = cantCols + this.config.data[cols[c]].columnasCruces.length;
             }            
             this._data;
@@ -185,11 +184,11 @@ define([
             largo = this.config.data[cols[0]].filasCruces.length; 
             if(this._error !== "0") //entonces es 1
                 largo = 1;
-//            
+            
             for (i_filas = 0; i_filas < largo; i_filas = i_filas +1){ //primer apertura 
                 myNewItem = new Object();
                 i_cantCols =0;
-               
+            
                 for (var c = 0; c < cols.length ; c = c + 1){  //recorro dentro de las aperturas          
                     for (var i =0; i < this.config.data[cols[c]].columnasCruces.length; i = i+1){//dentro de cada apertura las columnas
                         if(i===0 && c !== 0){
@@ -198,7 +197,6 @@ define([
                         
                         if(i === 0 && c === 0){
                             Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i], {value: this.config.data[cols[0]].filasCruces[i_filas], writable:true, enumerable:true, configurable:true}); 
-//                            Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i+1], {value: valueCruce, writable:true, enumerable:true, configurable:true}); 
                         }else{
                         switch (this.config.data[cols[0]].apertura){
                             case "Apertura1":
@@ -237,10 +235,8 @@ define([
                     }
                 }  
             }
-                
-                this._store.newItem(myNewItem);
+            this._store.newItem(myNewItem);
             }         
-//           
             this._grid.placeAt(this._cpTabla);                             
             this._grid.startup();
         },
