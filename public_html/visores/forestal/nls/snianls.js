@@ -18,7 +18,7 @@ define({
                 lbRemoverResultado: "Remover Seleccion",
                 lbSeleccionarTodo: "Seleccionar Todo",
                 lbCroquisSeleccion: "Croquis de Selección",
-                lbCubrimiento: "Muestra el porcentaje de superficie del padrón cubierto por los grupos coneat",
+                lbCubrimiento: "Muestra el porcentaje de superficie del padrón cubierto por los grupos CONEAT",
                 lbBuscando: "Buscando...",
                 lbIngresePadron:"Por favor ingrese un número de padrón.",
                 lbEncontro: "Se encontro",

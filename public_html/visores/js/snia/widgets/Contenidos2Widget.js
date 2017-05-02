@@ -27,6 +27,7 @@ define([
     "dojox/widget/Standby",
     "dojo/Deferred",
     "esri/IdentityManager",
+    "dijit/Tooltip",
     "dijit/layout/BorderContainer",
     "dijit/layout/ContentPane",
     "dojo/fx",
@@ -35,7 +36,7 @@ define([
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, mapaConfigJSON, domClass, domStyle, focusUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
-    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
+    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId,Tooltip) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -133,6 +134,26 @@ define([
             }
         },
         _init: function () {
+            new Tooltip({
+                connectId: this._colapsarNode.domNode,
+                label: "Comprimir contenido",
+                position: ['below']
+            });
+            new Tooltip({
+                connectId: this._expandirNode.domNode,
+                label: "Expandir contenido",
+                position: ['below']
+            });
+            new Tooltip({
+                connectId: this._descargarCapas.domNode,
+                label: "Descargar",
+                position:['below']
+            }); 
+            new Tooltip({
+                connectId: this.botonAgregarCapaVisible,
+                label: "Agregar capa",
+                position:['below']
+            }); 
             this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);

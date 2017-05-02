@@ -916,7 +916,7 @@
                         {
                           "Texto":[
                               {
-                                "Contenido": "Esta herramienta permite, en función de las condiciones prediales y las geográficas dadas por la localización introducida, el cálculo del riesgo ambiental de contaminación dado por efluentes de tambo o corral de engorde según el caso. Este es un valor indicativo de riesgo de contaminación que se fundamenta en la matriz de riesgo desarrollada por Alejandro La Manna, (La Manna et. al., 2011, INIA, ad. 663, p 8-12.).",
+                                "Contenido": "Esta herramienta permite, en función de las condiciones prediales y las geográficas dadas por la localización introducida, el cálculo del riesgo de contaminación ambiental dado por efluentes de tambo. Este es un valor indicativo de riesgo de contaminación que se fundamenta en la matriz de riesgo desarrollada por Alejandro La Manna, (La Manna et. al., 2011, INIA, ad. 663, p 8-12.).",
                                 "Estilo": "Normal"
                               }
                           ]  
