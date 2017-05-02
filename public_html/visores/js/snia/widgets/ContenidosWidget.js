@@ -152,12 +152,14 @@ define([
             this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);
-            this.emit("load", {});
+            this.emit("load", {});            
+            on(esriId, "dialog-cancel", lang.hitch(this, this._behaviourSignInDialog));            
             this._gpDescargarCapas = new Geoprocessor(this._urlQuery);
             this._active();
             this._standbyAreas = new Standby({target: this._standBy});
             domConstruct.place(this._standbyAreas.domNode, this._standBy, "after");
             this._standbyAreas.startup();
+            
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
@@ -331,6 +333,11 @@ define([
                 deferred.resolve("success");
             }, 2000);
             return deferred.promise;
+        },
+        
+        _behaviourSignInDialog: function(){           
+           dojo.query(".esriSignInDialog").empty();
+           dojo.query(".esriSignInDialog")[0].remove();
         }
     });
     return widget;
