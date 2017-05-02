@@ -67,7 +67,7 @@
                         "esta":true,
                         "largoError" : 0,
                         "nombre": "Tamaño de la majada (Nº de cabezas)",
-                        "filas": ["", "Total", "Menos de 50", "De 50 a 200", "De 201 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "De 2.001 a 3.500", "Mas de 3.500"],
+                        "filas": ["Total", "Menos de 50", "De 50 a 200", "De 201 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "De 2.001 a 3.500", "Mas de 3.500"],
                         "filasCruces": ["Total", "Menos de 50", "De 50 a 200", "De 201 a 500", "De 501 a 1.000", "De 1.001 a 2.000", "De 2.001 a 3.500", "Mas de 3.500"],
                         "columnas": [" ", " ", " ", " ", "Carneros", "Ovejas de cria", "Ovejas de consumo", "Borregas de 2 a 4 dientes", "Corderas (diente de leche)", "Corderos (diente de leche)", "Corder(o/a)s mamone/as"],
                         "columnasCruces": ["Tamaño de la majada (Nº de cabezas)", "Carneros", "Ovejas de cria", "Ovejas de consumo", "Borregas de 2 a 4 dientes", "Corderas (diente de leche)", "Corderos (diente de leche)", "Corder(o/a)s mamone/as"],
