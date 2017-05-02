@@ -36,7 +36,7 @@
                         "filas": ["Bosques artificiales", "Bosques naturales", "Frutas cítricas", "Otros frutales (excluye cítricos)", "Viñedos", "Cultivos de huerta", "Cultivos cerealeros e industriales", "Cultivos cerealeros e industriales", "Tierra preparada pero no sembrada en el año censal", "Tierras de rastrojo", "Praderas artificiales", "Campo natural sembrado en cobertura", "Campo natural fertilizado", "Campo natural", "Tierras improductivas y espejos de agua", "Superficie total"],
                         "filasCruces": ["Bosques artificiales", "Bosques naturales", "Frutas cítricas", "Otros frutales (excluye cítricos)", "Viñedos", "Cultivos de huerta", "Cultivos cerealeros e industriales", "Cultivos cerealeros e industriales", "Tierra preparada pero no sembrada en el año censal", "Tierras de rastrojo", "Praderas artificiales", "Campo natural sembrado en cobertura", "Campo natural fertilizado", "Campo natural", "Tierras improductivas y espejos de agua", "Superficie total"],
                         "columnas": ["Uso de la tierra (ha)", "Hectáreas", "Porcentaje (%)"],
-                        "columnasCruces": ["Hectáreas"],
+                        "columnasCruces": ["Uso de la tierra (ha)", "Hectáreas"],
                         "columnasField":["Ap2", "Hect", "Porc"],
                         "columnasW": ["100px", "100px", "100px"],
                         "subDiv": [1,2],

@@ -166,6 +166,9 @@ define([
             this._esPrimerAperturaCruces = true; 
             for (var c =0; c < cols.length; c = c+1){                
                 for (a = 0; a < this.config.data[cols[c]].columnasCruces.length; a = a + 1) {
+                    if(a===0 && c !== 0){
+                        a = a+1;
+                    }
                     layout[0].cells[0].push({name: this.config.data[cols[c]].columnasCruces[a], field : this.config.data[cols[c]].columnasCruces[a],  width: "90px"});
                 }
                 this._grid = new DataGrid({
@@ -182,13 +185,17 @@ define([
             largo = this.config.data[cols[0]].filasCruces.length; 
             if(this._error !== "0") //entonces es 1
                 largo = 1;
-            
+//            
             for (i_filas = 0; i_filas < largo; i_filas = i_filas +1){ //primer apertura 
                 myNewItem = new Object();
                 i_cantCols =0;
                
                 for (var c = 0; c < cols.length ; c = c + 1){  //recorro dentro de las aperturas          
                     for (var i =0; i < this.config.data[cols[c]].columnasCruces.length; i = i+1){//dentro de cada apertura las columnas
+                        if(i===0 && c !== 0){
+                            i = i+1;
+                        }
+                        
                         if(i === 0 && c === 0){
                             Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i], {value: this.config.data[cols[0]].filasCruces[i_filas], writable:true, enumerable:true, configurable:true}); 
 //                            Object.defineProperty(myNewItem, this.config.data[cols[c]].columnasCruces[i+1], {value: valueCruce, writable:true, enumerable:true, configurable:true}); 
@@ -233,7 +240,7 @@ define([
                 
                 this._store.newItem(myNewItem);
             }         
-           
+//           
             this._grid.placeAt(this._cpTabla);                             
             this._grid.startup();
         },
