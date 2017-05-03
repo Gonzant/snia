@@ -347,8 +347,6 @@ define([
                                     this._tabla = this._tabla + "<br> No se muestra el detalle de datos porque para el área seleccionada no se cumple con el criterio de confidencialidad de los datos por favor realice una nueva consulta. <br>";
                             }                           
                         }
-                        
-//                        this._tabla = this._tabla + "<br> No se muestra el detalle de datos porque para el área seleccionada no se cumple";                        
                         this._divTitulo.innerHTML = "<div style = \"width:500px\" >" + titulo + this._tabla + "<br></div> ";
                         for (a = 0; a < largo; a = a + 1) {
                             switch (this._aperturas[j].nombre) {
@@ -433,7 +431,7 @@ define([
                                 break;
                             case "Apertura14":
                                 myNewItem = {Ap14: this.config.data[i].filas[a], Total: this._data.Cruces[i].Apertura14[a][0], mez: this._data.Cruces[i].Apertura14[a][1], tb: this._data.Cruces[i].Apertura14[a][2], lr: this._data.Cruces[i].Apertura14[a][3], lm: this._data.Cruces[i].Apertura14[a][4], op: this._data.Cruces[i].Apertura14[a][5]};
-                                porc = this._data.Cruces[i].Apertura14[a][0] * 100 / this._data.Cruces[i].Apertura9[0][0];
+                                porc = this._data.Cruces[i].Apertura14[a][0] * 100 / this._data.Cruces[i].Apertura14[0][0];
                                 if (a !== 0) {
                                     t = this._data.Cruces[i].Apertura14[a][0] + " es " + porc.toFixed(0) + "%";
                                     parametrosGrafica.push({y: this._data.Cruces[i].Apertura14[a][0], text: this.config.data[i].filas[a], stroke: "black", tooltip: t});
@@ -451,11 +449,15 @@ define([
                         }
                         complete = true;
                         this._grid.startup();
-                        chart1.addSeries(this._aperturas[j].nombre, parametrosGrafica);
-                        mag1 = new dojox.charting.action2d.MoveSlice(chart1, "default");
-                        chart1.render();
-                        legendTwo = new dojox.charting.widget.Legend({chart: chart1}, "legend");
-                        tip = new Tooltip(chart1, "default");
+                        if (largo !== 1){
+                            chart1.addSeries(this._aperturas[j].nombre, parametrosGrafica);
+                            mag1 = new dojox.charting.action2d.MoveSlice(chart1, "default");
+                            chart1.render();
+                            legendTwo = new dojox.charting.widget.Legend({chart: chart1}, "legend");
+                            tip = new Tooltip(chart1, "default");
+                        }
+                        
+                        
                     }
                 }
             }
