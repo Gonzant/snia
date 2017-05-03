@@ -311,21 +311,13 @@ define([
                     featureSet = new FeatureSet();
                     featureSet.features = areas;
                     //no es multiple -> cuando por ejemplo hago departamentos.  
-//                    if(this._dibujoUsuario === 0) {
-//                        parametros = {
-//                            variables: this._aperturasSeleccionadasSimple,
-//                            multiple: false,
-//                            Poligono: "",
-//                            Predefinida: "a"
-//                        };
-//                    } else {
+
                         parametros = {
                             variables: this._aperturasSeleccionadasSimple,
                             multiple: false,
                             Poligono: featureSet,
                             Predefinida : " "
                         };
-//                    }
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }

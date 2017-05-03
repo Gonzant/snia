@@ -23,7 +23,7 @@
                         "columnasField": ["Ap1", "Num", "PorcN", "Hect", "PorcH"],
                         "columnasW": ["100px", "90px", "90px", "90px", "90px"],
                         "subDiv": [1,2,2],
-                        "divisiones": ["Tamaño de la explotación (ha)", "Explotaciones", "Superficie explotada"], 
+                        "divisiones": [" ", "Explotaciones", "Superficie explotada"], 
                         "cantCol": 4, 
                         "tituloTabla": "Número de explotaciones y superficie explotada, según tamaño de la explotación"
                     },
@@ -40,7 +40,7 @@
                         "columnasField":["Ap2", "Hect", "Porc"],
                         "columnasW": ["100px", "100px", "100px"],
                         "subDiv": [1,2],
-                        "divisiones": ["Uso de la tierra (ha)", "Superficie explotada"], 
+                        "divisiones": [" ", "Superficie explotada"], 
                         "cantCol": 2, 
                         "tituloTabla": "Superficie explotada según aprovechamiento de la tierra"
                     },                    
@@ -357,30 +357,23 @@
             "seccionContenido":{
                 "titulo":{"Texto":{"Contenido": "Introducción","Estilo": "Titulo1" }                    },
                 "elementos":[
-                    {
-                      "Texto":[{ 
+                    { "Texto":[{ 
                             "Contenido": "Servicio de consulta interno. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
                             "Estilo": "Normal"}
                       ]
                     }                     
                 ]
-            }
-            
+            }            
         },       
         {"name": "Herramientas",
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           { "Contenido": "Herramientas","Estilo": "Indice1"}                        
+                    "Texto":{ "Contenido": "Herramientas","Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Herramientas",
-                              "Estilo": "Titulo1"
-                            }
+                        "Texto":{ "Contenido": "Herramientas","Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
@@ -410,21 +403,15 @@
                         "Imagen":{ "URL":"../js/snia/img/mapabase.png", "Alto":30
                         },
                         "Texto":
-                        {
-                              "Contenido": "Mapa Base",
-                              "Estilo": "Titulo2"
-                        }
+                        {"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                     {
                         "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
+                        {"Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
                            "Estilo": "Normal"
-                        }
-                        ]    
-                    }
-                        
+                        }]    
+                    }                        
                     ]
                 }
             },
@@ -434,136 +421,76 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
+                           {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/navegar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
+                        "Imagen":
+                        {"URL":"../js/snia/img/navegar.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Navegar", "Estilo": "Titulo2" }
                     },
                     "elementos": [
                         {
-                           "Texto":[
-                           {
+                           "Texto":[{
                               "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
                               "Estilo": "Normal"
                             }
                            ]    
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30} },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
+                            {"Contenido": "Acercar", "Estilo": "Normal"},
+                            {"Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }
-                           ] 
-                           
+                           ]                            
                         },
-                        { 
-                            "Imagen": { "URL":"../js/snia/img/zoomout.png", "Alto":30}
-                        },
+                        {"Imagen": { "URL":"../js/snia/img/zoomout.png", "Alto":30} },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
+                            {"Contenido": "Alejar", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
                               "Estilo": "Normal"
                             }
-                           ] 
-                           
+                           ]                            
                         },
                         {"Imagen":{ "URL":"../js/snia/img/pan.png", "Alto":30} },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                        {"Texto":[
+                            { "Contenido": "Desplazar","Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"../js/snia/img/fullextent.png", "Alto":30 }},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
+                            {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa en su máxima extensión.",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
+                        {"Imagen":
                             {"URL":"../js/snia/img/prevextent.png", "Alto":30 }
                         },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista previa",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
+                        {"Texto":[
+                            { "Contenido": "Vista previa", "Estilo": "Titulo3" },
+                            { "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
+                        { "Imagen":{"URL":"../js/snia/img/sigextent.png", "Alto":30}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Vista posterior",
-                              "Estilo": "Titulo3"
-                            },
+                           {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la vista anterior a la vista previa.",
                               "Estilo": "Normal"
@@ -580,24 +507,12 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                           {"Contenido": "Identificar","Estilo": "Indice1" },
+                           "Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":20 }                       
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
+                         "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":30},                        
                         "Texto":
                            {
                               "Contenido": "Identificar",
@@ -1026,37 +941,21 @@
                               "Contenido": "Constituyente 1476, Montevideo, Uruguay",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "24104155-58 int. 411",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor ingrese a",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Teléfonos", "Estilo": "Titulo2"},
+                            {"Contenido": "24104155-58 int. 411","Estilo": "Normal"},
+                            {"Contenido": "Consultas y Sugerencias","Estilo": "Titulo2"},
+                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor ingrese a",  "Estilo": "Normal"  }
                         ]
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
-                        }
+                        {"Contenido": "snia@mgap.gub.uy", "URL": "mailto:snia@mgap.gub.uy" }
                     ] 
                     }
                 ]
             },
             "padre": "si"
         }
-        
 ]
             }
         }       
