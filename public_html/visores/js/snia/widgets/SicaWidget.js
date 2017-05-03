@@ -38,6 +38,7 @@ define([
     "dijit/form/Select",
     "dijit/form/MultiSelect",
     "widgets/AperturasSICAWidget",
+    "widgets/AperturasCrucesSICAWidget",
     "dojo/dom",
     "dojo/_base/window",
     "dijit/layout/TabContainer",
@@ -52,7 +53,7 @@ define([
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
     Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect,
-    DataStore, Select, MultiSelect, AperturasSICAWidget, dom, win, TabContainer, domConstruct,
+    DataStore, Select, MultiSelect, AperturasSICAWidget, AperturasCrucesSICAWidget, dom, win, TabContainer, domConstruct,
     ContentPane, Tooltip, FilteringSelect, baseArray) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -429,18 +430,18 @@ define([
         _gpCroquisResultDataCallBackCruces: function (value) {
             this._standbyAreasCruces.hide();
             this._cruces = value.value;
-            if (this._aperturasSICAWidget) {
-                this._aperturasSICAWidget.destroyRecursive(true);
+            if (this._aperturasSICAWidgetCruces) {
+                this._aperturasSICAWidgetCruces.destroyRecursive(true);
             }
             if(this._error !== "3"){
                 if(this._errorCruces !== "1"){
-                    this._aperturasSICAWidget = new AperturasSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true, error: this._errorCruces});
-                    this._aperturasSICAWidget.startup();
-                    this._aperturasSICAWidget.show();
+                    this._aperturasSICAWidgetCruces = new AperturasCrucesSICAWidget({mapa: this.mapa, data: this._cruces, aperturas: this._aperturasSeleccionadasCruce, config: this.config, cruces: true, error: this._errorCruces});
+                    this._aperturasSICAWidgetCruces.startup();
+                    this._aperturasSICAWidgetCruces.show();
                     var dialogo = new Dialog({
                         title : "Aperturas Cruces",
                         style : "width: 800px",
-                        content: this._aperturasSICAWidget
+                        content: this._aperturasSICAWidgetCruces
                     });
                     dialogo.startup();
                     dialogo.show();
