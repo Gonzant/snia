@@ -459,7 +459,11 @@ define([
                 },
                 "callbackParamName": "callback"
             });
-            requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON), this._requestFailed);
+            var reqContext = {
+               "this": this,
+               "url": url
+            };
+            requestHandle.then(lang.hitch(reqContext, this._requestSucceededLegendJSON), this._requestFailed);
         },
         _requestFailed: function (){
              console.log('TOC: Falla al cargar leyendas');
@@ -467,16 +471,16 @@ define([
         _requestSucceededLegendJSON: function (response) {
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
-                tocNode = arrayUtil.filter(this._data, function (item) {
-                    return item.name === layer.layerName && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
-                });
+                tocNode = arrayUtil.filter(this.this._data, function (item) {
+                    return (!item.url || this.url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
                     if (layer.legend.length === 1) { // una hoja
                         tocNode[0].imageData =  layer.legend[0].imageData;
                         tocNode[0].contentType = layer.legend[0].contentType;
                     } else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                            this.this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
                     }
                 }
