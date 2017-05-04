@@ -533,16 +533,9 @@
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":30
-                        },
+                        "Imagen":{"URL":"../js/snia/img/buscar.png", "Alto":30},
                         "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Titulo2"
-                            }
+                           {"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {"Texto":[
@@ -550,8 +543,7 @@
                               "Contenido": "Esta herramienta permite buscar padrones rurales para visualizar sus índices y generar el reporte CONEAT (croquis). Para esto simplemente seleccione el departamento e ingrese el número de padrón, y luego presione el botón buscar. Si el padrón existe aparecerá en la grilla resultado y automáticamente se acercara al mismo en el mapa.",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón derecho del ratón. Para seleccionar varios mantenga presionado la tecla “ctrl”.",
+                            {"Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón derecho del ratón. Para seleccionar varios mantenga presionado la tecla “ctrl”.",
                               "Estilo": "Normal"
                             }
                            ]    
