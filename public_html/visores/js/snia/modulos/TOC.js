@@ -267,7 +267,7 @@ define([
                     if (i >= 0) { //Si es una sub-capa de segundo nivel
                         tParent = tParent +"->" + l.layerInfos[i].name;
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
@@ -459,20 +459,16 @@ define([
                 },
                 "callbackParamName": "callback"
             });
-            var reqContext = {
-               "this": this,
-               "url": url
-            };
-            requestHandle.then(lang.hitch(reqContext, this._requestSucceededLegendJSON), this._requestFailed);
+            requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON, url), this._requestFailed);
         },
         _requestFailed: function (){
              console.log('TOC: Falla al cargar leyendas');
         },
-        _requestSucceededLegendJSON: function (response) {
+        _requestSucceededLegendJSON: function (url, response) {
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
-                tocNode = arrayUtil.filter(this.this._data, function (item) {
-                    return (!item.url || this.url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                tocNode = arrayUtil.filter(this._data, function (item) {
+                    return (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
                     if (layer.legend.length === 1) { // una hoja
@@ -480,7 +476,7 @@ define([
                         tocNode[0].contentType = layer.legend[0].contentType;
                     } else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this.this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                            this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
                     }
                 }
