@@ -452,7 +452,7 @@ define([
                         }
                         complete = true;
                         this._grid.startup();
-                        if (largo !== 1){
+                        if (largo > 1){
                             chart1.addSeries(this._aperturas[j].nombre, parametrosGrafica);
                             mag1 = new dojox.charting.action2d.MoveSlice(chart1, "default");
                             chart1.render();
