@@ -440,7 +440,7 @@ define([
                     this._aperturasSICAWidgetCruces.show();
                     var dialogo = new Dialog({
                         title : "Aperturas Cruces",
-                        style : "width: 800px",
+                        style : "width: 600px",
                         content: this._aperturasSICAWidgetCruces
                     });
                     dialogo.startup();
