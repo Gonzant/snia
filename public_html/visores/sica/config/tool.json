@@ -197,8 +197,7 @@
                     }
                 ]
             }
-        },
-        
+        },        
         {
             "widget": "widgets/MapasBaseWidget",
             "title": "Mapa Base",
@@ -496,8 +495,7 @@
                            ] 
                         }
                     ]
-                }
-               
+                }               
             },
             {
                "name": "Identificar",
@@ -510,18 +508,12 @@
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":30},                        
-                        "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":30},                        
+                        "Texto":{"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón derecho del ratón.",
+                        {"Texto":[
+                            { "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón derecho del ratón.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -535,16 +527,9 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
-                            },
+                            { "Contenido": "Buscar Padrones", "Estilo": "Indice1"},
                     "Imagen":
-                            {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":20
-                            }
-                        
+                            {"URL":"../js/snia/img/buscar.png", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
