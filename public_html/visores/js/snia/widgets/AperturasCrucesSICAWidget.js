@@ -149,8 +149,6 @@ define([
             this._cpTablaCruces.containerNode.innerText = " ";
             titulo = "<p class= \"Titulo1\">  </p>";
             this._gridCruces = " ";
-             //grafico de torta
-            this._grafica.innerHTML = " ";
             j = 0;
             for (f = 0; f < aperturasCruces.length; f = f + 1) {
                 for (i = 0; i < this.config.data.length; i = i + 1) {
@@ -247,58 +245,8 @@ define([
                 style: "width: 280px; height: 400px;"
             });
             this._cpDerSC.addChild(bD1);
-//            bI1 = new ContentPane({ //Izquierdo
-//                region: "center",
-//                style: "width: 180px; height: 400px;"
-//            });
-//            this._cpIzqSC.addChild(bI1);
-//            div1 = domConstruct.create('div', {}, bI1.containerNode);            
-//            if(this._crucesBuscar === false){    
-//                this._store = new Memory({
-//                    data: [{ name: "raiz", id: "root"}],
-//                    getChildren: function (object) {
-//                        return this.query({parent: object.id});
-//                    }
-//                });
-//                for (i = 0; i < this._aperturas.length; i = i + 1) {
-//                    this._store.put({id: i, name: this._aperturas[i].label, parent: "root", nodo: "raiz" });
-//                }
-//                this._myModel = new ObjectStoreModel({
-//                    store: this._store,
-//                    query: {id:  "root"}
-//                });
-//                this._tree = new Tree({
-//                    model: this._myModel,
-//                    showRoot: false,
-//                    openOnClick: true,
-//                    autoExpand: true,
-//                    getIconClass: function () {
-//                        return "custimg";
-//                    },
-//                    onOpen: lang.hitch(this, function (item, node) {
-//                        var children, c, nodoItem, esHijo;
-//                        children = node.getChildren();
-//                        for (c in children) {
-//                            if (children.hasOwnProperty(c)) {
-//                                nodoItem = children[c].get('item');
-//                                esHijo = nodoItem.nodo.toString() === "hijo";
-//                                if (this._tree && nodoItem && !esHijo) {
-//                                    this._tree._expandNode(children[c]);
-//                                }
-//                            }
-//                        }
-//                    }),
-//                    onClick: lang.hitch(this, this._treeClick)
-//              });
-//                this._tree.placeAt(div1);
-//                this._tree.startup();         
-//            }
-//            else{
-                this._cargarTablaCruces();
-//            }
+            this._cargarTablaCruces();
         },
-     
-       
         _visible: function () {
             if (this.get("visible")) {
                 domStyle.set(this.domNode, 'display', 'block');
