@@ -5,8 +5,6 @@
             "title": "Sica II",
             "msgToolTip": "Sica II --- nuevo",
             "icono": "../js/snia/img/sica_gris.png",            
-            "toggle": false,
-            "draggable": true,
             "startsOpen": true,            
             "widgetConfig": {
                 "data": [

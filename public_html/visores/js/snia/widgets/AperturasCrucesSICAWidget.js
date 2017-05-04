@@ -54,9 +54,9 @@ define([
             if (this._cpDerSC) {
                 this._cpDerSC.resize();
             }
-            if (this._cpIzqSC) {
-                this._cpIzqSC.resize();
-            }
+//            if (this._cpIzqSC) {
+//                this._cpIzqSC.resize();
+//            }
             if (this._gridCruces) {
                 this._gridCruces.resize();
             }
@@ -247,12 +247,12 @@ define([
                 style: "width: 280px; height: 400px;"
             });
             this._cpDerSC.addChild(bD1);
-            bI1 = new ContentPane({ //Izquierdo
-                region: "center",
-                style: "width: 180px; height: 400px;"
-            });
-            this._cpIzqSC.addChild(bI1);
-            div1 = domConstruct.create('div', {}, bI1.containerNode);            
+//            bI1 = new ContentPane({ //Izquierdo
+//                region: "center",
+//                style: "width: 180px; height: 400px;"
+//            });
+//            this._cpIzqSC.addChild(bI1);
+//            div1 = domConstruct.create('div', {}, bI1.containerNode);            
 //            if(this._crucesBuscar === false){    
 //                this._store = new Memory({
 //                    data: [{ name: "raiz", id: "root"}],
