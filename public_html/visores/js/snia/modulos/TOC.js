@@ -253,7 +253,7 @@ define([
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip, i, visibleLayers;
+            var sublayerTooltip, i, j, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent;
@@ -264,8 +264,13 @@ define([
                 }
                 if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
                     i = li.parentLayerId;
-                    if (i >= 0) { //Si es una sub-capa de segundo nivel
-                        tParent = tParent +"->" + l.layerInfos[i].name;
+                    if (i >= 0) { //Si es una sub-capa de segundo o tercer nivel
+                        j = l.layerInfos[i].parentLayerId;
+                        if (j >= 0){//Si es de tercer nivel
+                            tParent = tParent +"->" + l.layerInfos[j].name +"->" + l.layerInfos[i].name;
+                        } else { //Si es de segundo nivel
+                            tParent = tParent +"->" + l.layerInfos[i].name;
+                        }
                     }
                     this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
                     //this._borrarGruposDeVisibleLayers(l, li);
