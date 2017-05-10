@@ -23,24 +23,34 @@
                     </div>                  
                 </div>
                 
-                <div data-dojo-type="dijit/layout/ContentPane" title="Predefinido">                    
-                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioDepto" data-dojo-attach-point = "_radioDepto" value="depto"/>
-                         <label for="radioDepto">Departamentos</label> 
-
+                <div data-dojo-type="dijit/layout/ContentPane" title="Predefinido">  
+                    
+                     <div data-dojo-attach-point="_msgPredefinida"> </div>
+                    
+                         <div data-dojo-attach-point="_textSeleccione"> Seleccione el/los departamentos:</div>
+                        <div data-dojo-attach-point= "_selectDeptos"> 
+                            <select data-dojo-attach-point = "_select_predef" multiple=""></select>                            
+                        </div>
+<!--                        <br>
                         <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioSP" data-dojo-attach-point = "_radioSP" value="sp"/>
                         <label for="radioSP">Seccional Policial</label> 
-<!--                        <br>
+                        <br>
                         <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" data-dojo-attach-point = "_radioAS" id="radioAS" value="as"/>
                         <label for="radioAS">Áreas de Supervisión</label>
-
-                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioAE" value="ae"/>
-                        <label for="radioAE">Áreas de Enumeración</label>   
-                        <br> <br>-->
-                        <div>
-                            <div data-dojo-attach-point="_textSeleccione"> </div>
-                            <select id="dynamic" data-dojo-attach-point = "_select_predef" multiple=""></select>
-
-                        </div>
+                        <br>-->
+<!--                        <input data-dojo-attach-point = "_cmbDepto" id="mycheck" name="mycheck" data-dojo-type="dijit/form/CheckBox" value="D"/> 
+                        <label for="mycheck">Departamentos<</label>-->
+                         <!--onChange="alert('onChange called with parameter = ' + arguments[0] + ', and widget value = ' + this.get('value'))"-->
+<!--                        
+                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioAE" data-dojo-attach-point = "_radioAE" value="ae"/>
+                        <label for="radioAE">Áreas de Enumeración</label>   -->
+                        <br> 
+                        <!--<br>-->
+                        <div data-dojo-attach-point = "_msjErrorPredefinida" > </div>
+                                                    
+                        <br>
+                        <!--<div data-dojo-attach-point = "_areasNumeracion"></div>-->
+                        <!--<select data-dojo-attach-point = "_select_o" multiple=""></select>-->   
                 </div>                
               </div>  
             <button data-dojo-attach-point="_buscarAperturas" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px;"> 

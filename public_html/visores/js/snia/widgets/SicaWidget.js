@@ -33,9 +33,11 @@ define([
     "dijit/a11yclick",
     "dojo/store/Memory",
     "dijit/tree/ObjectStoreModel",
+    "dojo/data/ObjectStore",
     "dojox/form/CheckedMultiSelect",
     "dojo/store/DataStore",
     "dijit/form/Select",
+    "dijit/form/CheckBox",
     "dijit/form/MultiSelect",
     "widgets/AperturasSICAWidget",
     "widgets/AperturasCrucesSICAWidget",
@@ -52,8 +54,8 @@ define([
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
-    Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, CheckedMultiSelect,
-    DataStore, Select, MultiSelect, AperturasSICAWidget, AperturasCrucesSICAWidget, dom, win, TabContainer, domConstruct,
+    Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, ObjectStore, CheckedMultiSelect,
+    DataStore, Select, CheckBox, MultiSelect, AperturasSICAWidget, AperturasCrucesSICAWidget, dom, win, TabContainer, domConstruct,
     ContentPane, Tooltip, FilteringSelect, baseArray) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -97,15 +99,17 @@ define([
             this.inherited(arguments);
             if (this.mapa) {
                 this._dibujo = 0;
+                this._esPredefinida = false;
                 this._i = 0; //es 0 si no dibuja y 1 si dibuja
                 this._cargarComboAperturas();
+                this._cargarDeptos();
                 this.own(
                     on(this._dibujarArea, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._dibujarAreaCruces, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._eliminarAreaCruces, a11yclick, lang.hitch(this, this._eliminarDibujos)),
-                    on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
-                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
+//                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
+//                    on(this._radioAE, a11yclick, lang.hitch(this, this._cargarAE)),
                     on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas)),
                     on(this._buscarAperturasCruces, a11yclick, lang.hitch(this, this._cargarAperturasCruces))
                 );
@@ -138,46 +142,84 @@ define([
             this._dibujoUsuario = 1;
         },
         _cargarDeptos: function () {
-            var c, departamentosStore;
+            var c, i, departamentosStore;
             departamentosStore = new Memory({
                 data: [
-                    {name: "Artigas", id: "DArtigas"},
-                    {name: "Canelones", id: "DCanelones"},
-                    {name: "Cerro Largo", id: "DCerroLargo"},
-                    {name: "Colonia", id: "DColonia"},
-                    {name: "Durazno", id: "DDurazno"},
-                    {name: "Flores", id: "DFlores"},
-                    {name: "Florida", id: "DFlorida"},
-                    {name: "Lavalleja", id: "DLavalleja"},
-                    {name: "Maldonado", id: "DMaldonado"},
-                    {name: "Montevideo", id: "DMontevideo"},
-                    {name: "Paysandu", id: "DPaysandu"},
-                    {name: "Rio Negro", id: "DRioNegro"},
-                    {name: "Paysandu", id: "DPaysandu"},
-                    {name: "Rivera", id: "DRivera"},
-                    {name: "Rocha", id: "DRocha"},
-                    {name: "Salto", id: "DSalto"},
-                    {name: "San Jose", id: "DSanJose"},
-                    {name: "Soriano", id: "Dsoriano"},
-                    {name: "Tacuarembo", id: "DTacuarembo"},
-                    {name: "Treinta y tres", id: "DTreintaYTres"}
+                    {name: "Artigas", id: "ARTIGAS"},
+                    {name: "Canelones", id: "CANELONES"},
+                    {name: "Cerro Largo", id: "CERROLARGO"},
+                    {name: "Colonia", id: "COLONIA"},
+                    {name: "Durazno", id: "DURAZNO"},
+                    {name: "Flores", id: "FLORES"},
+                    {name: "Florida", id: "FLORIDA"},
+                    {name: "Lavalleja", id: "LAVALLEJA"},
+                    {name: "Maldonado", id: "MALDONADO"},
+                    {name: "Montevideo", id: "MONTEVIDEO"},
+                    {name: "Paysandu", id: "PAYSANDU"},
+                    {name: "Rio Negro", id: "RIONEGRO"},
+                    {name: "Paysandu", id: "PAYSANDU"},
+                    {name: "Rivera", id: "RIVERA"},
+                    {name: "Rocha", id: "ROCHA"},
+                    {name: "Salto", id: "SALTO"},
+                    {name: "San Jose", id: "SANJOSE"},
+                    {name: "Soriano", id: "SORIANO"},
+                    {name: "Tacuarembo", id: "TACUAREMBO"},
+                    {name: "Treinta y tres", id: "TREINTAYTRES"}
                 ]
             });
             for (i = 0; i < departamentosStore.data.length; i = i + 1) {
                 c = win.doc.createElement('option');
                 c.innerHTML = departamentosStore.data[i].name;
                 c.label = departamentosStore.data[i].name;
-                c.value = i;
+                c.value = departamentosStore.data[i].id;
                 this._select_predef.appendChild(c);
             }
             this._textSeleccione.innerHTML = "Seleccione el/los Depto/s: ";
-//            this.own(
-//                    on(this._acercarGeometria, a11yclick, lang.hitch(this, this._acercarDepto))
-//            );
+            this._esPredefinida = true;
         },
-       
+        _cargarAE:function(){
+            var c, j=0, aeElement ="", deptosSeleccionados=[]; //los deptos seleccionadoss
+            var aEMostrar = [];
+            this._select_o.options.length =0;
+            for (var i = 0; i< this._select_predef.selectedOptions.length; i = i + 1){
+                deptosSeleccionados[i] = this._select_predef.selectedOptions[i].innerText;                
+            }
+            if(deptosSeleccionados.length === 0){
+                this._msjErrorPredefinida.innerHTML = "<p style=\"color:red\";><br> Debe seleccionar al menos 1 departamento</p>";
+                
+            }else{//selecciono al menos un depto
+                for (i = 0; i < deptosSeleccionados.length; i = i+1){
+                    for (j =0; j< this.config.ae.length; j = j+1){// recorro las AE
+                        aeElement = new String (this.config.ae[j][0]);
+                        if(this.config.ae[j][0].indexOf(deptosSeleccionados[i].toUpperCase()) !== -1){
+                            c = win.doc.createElement('option');
+                            c.innerHTML = this.config.ae[j][1];
+                            c.label = this.config.ae[j][1];
+                            c.value = j;
+                            this._select_o.appendChild(c);
+                        }
+                    }
+                }                
+            }
+            this._esPredefinida = true;
+            
+        },
         _cargarSP: function () {
             this._textSeleccione.innerHTML = "Seleccione la/s SP: ";
+            
+            
+            /*
+             * 
+             * for (i = 0; i < departamentosStore.data.length; i = i + 1) {
+                c = win.doc.createElement('option');
+                c.innerHTML = departamentosStore.data[i].name;
+                c.label = departamentosStore.data[i].name;
+                c.value = i;
+                this._select_predef.appendChild(c);
+            }
+             * 
+             */
+            
         },
         _cargarComboAperturas: function () {
             var i, c;
@@ -283,8 +325,8 @@ define([
         },
         _cargarAperturas: function () {
             var i, g, area, featureSet, parametros, areas = [];
-            this._aperturasSeleccionadasSimple = "";
-            if (this._i === 0 && this._dibujoUsuario === 1) {
+            this._aperturasSeleccionadasSimple = "", this.opcionesPredef ="DEPARTAMENTO;";
+            if (this._i === 0 && this._dibujoUsuario === 1 && this._esPredefinida === false) { //dibujo cuando no es predefinida
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } else {
                 if (this.dynamic.selectedOptions.length === 0) { //no hay ninguno seleccionado
@@ -311,14 +353,34 @@ define([
                     }
                     featureSet = new FeatureSet();
                     featureSet.features = areas;
+                    
+                   
+                    for (i = 0; i< this._select_predef.selectedOptions.length; i = i + 1){
+                        this.opcionesPredef = this.opcionesPredef + this._select_predef.selectedOptions[i].value;
+                        if (i + 1 < this._select_predef.selectedOptions.length) {
+                            this.opcionesPredef = this.opcionesPredef + ";";
+                        }
+                    }
+                        
+                   
                     //no es multiple -> cuando por ejemplo hago departamentos.  
-
+                    if(this._esPredefinida === true){
+                        parametros = {
+                            variables: this._aperturasSeleccionadasSimple,
+                            multiple: false,
+                            Poligono: "",
+                            Predefinida : this.opcionesPredef
+                        };
+                    }else{
                         parametros = {
                             variables: this._aperturasSeleccionadasSimple,
                             multiple: false,
                             Poligono: featureSet,
-                            Predefinida : " "
+                            Predefinida : ""
                         };
+                        
+                    }
+                        
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
