@@ -278,6 +278,9 @@ define([
             case 'Inicial':
                 color = gris;
                 break;
+            case '':
+                color = gris;
+                break;
             }
             return color;
         },
@@ -364,7 +367,7 @@ define([
                     domConst.place(etiqueta, divEtiqueta);
                     divCombo = domConst.create("div");
                     comboBox = new ComboBox({
-                        value: this._primerTexto,
+                        value: "",
                         store: this._storeValorTexto[i],
                         searchAttr: "texto",
                         onChange: lang.hitch(this, function () {
@@ -380,15 +383,14 @@ define([
                     this._comboBoxesN.push({combo: comboBox, etiqueta: varN.Etiqueta, id: varN.Id });
                     i = i + 1;
                 }
-            }));
-            console.log(this._storeValorTexto);
+            }));            
 
             this._resultadoRiesgoPredial = domConst.create("div", { innerHTML: ""});
             domConst.place(this._resultadoRiesgoPredial, node);
             domClass.add(this._resultadoRiesgoPredial, "riesgoResultado");
 
             //Se inicializa en Alto el riesgo predial                                
-            objAlto = {"value": 'A'};
+            objAlto = {"value": ''};
             lang.hitch(this, this._setearRiesgoPredial(objAlto));
 
             nodeBoton = domConst.create("div");
@@ -439,8 +441,7 @@ define([
             //Itero sobre las variables Variable2S
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S) {
                 var divEtiqueta, divCombo, comboBox, primero, params2S, posicion, lugar;
-                if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Usuario")) {
-                    console.log(var2S.Etiqueta);
+                if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Usuario")) {                    
                     this._variables2S.push({etiq: var2S.Etiqueta, id: var2S.Id, vt: var2S.ValorTexto});
                     this._ValorTexto = [];
                     posicion = 0;
@@ -471,7 +472,7 @@ define([
 
                     divCombo = domConst.create("div");
                     params2S = {
-                        value: this._primerTexto,
+                        value: "",
                         store: this._storeValorTexto[i],
                         searchAttr: "texto",
                         onChange: lang.hitch(this, function () {
@@ -489,8 +490,7 @@ define([
                     i = i + 1;
                     this._comboBoxes2S.push({combo: comboBox, etiqueta: var2S.Etiqueta, id: var2S.Id, consulta: var2S.Consulta});
                 }
-            }));
-            console.log(this._storeValorTexto);
+            }));            
 
             //Itero sobre las variables Variable2S
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S) {
@@ -540,61 +540,7 @@ define([
                     i = i + 1;
                     this._comboBoxes2S.push({combo: comboBox, etiqueta: var2S.Etiqueta, id: var2S.Id, consulta: var2S.Consulta});
                 }
-            }));
-            console.log(this._storeValorTexto);
-
-            // Itero con las variables compuestas
-            /*
-            arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2C, lang.hitch(this, function (var2C) {
-                if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2C.Id) !== -1)) {                    
-                    var divEtiqueta = domConst.create("div");
-                    domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 330px;">' + var2C.Etiqueta + '</div>');
-                    domConst.place(etiqueta, divEtiqueta);
-                    var divCombo = domConst.create("div");
-                    var params = {
-                        value: this._primerTexto,
-                        store: {id:"1", texto:"texto", valor:"asd"},                        
-                        searchAttr: "texto",
-                        style: {width: '120px'}
-                    };      
-                    params.disabled = "disabled";
-                    params.value = "Automático";
-                    var comboBox = new ComboBox(params);
-                    comboBox.placeAt(divCombo);
-                    domClass.add(divCombo, "riesgoComboBox");
-                    domConst.place(divCombo, divEtiqueta);
-                    domConst.place(divEtiqueta, node);
-
-                    i = i + 1;                    
-                }
-            }));
-            
-            // Itero sobre las variables Variable2S_N
-            arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S_N, lang.hitch(this, function (var2S_N) {
-                if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S_N.Id) !== -1)) {                    
-                    var divEtiqueta = domConst.create("div");
-                    domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 330px;">' + var2S_N.Etiqueta + '</div>');
-                    domConst.place(etiqueta, divEtiqueta);
-                    var divCombo = domConst.create("div");
-                    var params = {
-                        value: this._primerTexto,
-                        store: {id:"1", texto:"texto", valor:"asd"},                        
-                        searchAttr: "texto",
-                        style: {width: '120px'}
-                    };      
-                    params.disabled = "disabled";
-                    params.value = "Automático";
-                    var comboBox = new ComboBox(params);
-                    comboBox.placeAt(divCombo);
-                    domClass.add(divCombo, "riesgoComboBox");
-                    domConst.place(divCombo, divEtiqueta);
-                    domConst.place(divEtiqueta, node);
-
-                    i = i + 1;                    
-                }
-            }));*/
+            }));            
 
             divBotones = domConst.create("div");
             domClass.add(divBotones, "riesgoBotones");
@@ -811,18 +757,21 @@ define([
 
             this.terminoConstruccion = true;
             this.resize();
-            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'none');
-            console.log(this._msjUsuarioMarcarUbicacion);
+            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'none');            
 
             on(this._terminoDib, a11yclick, lang.hitch(this, this._terminoDibujo));
         },
         _terminoDibujo: function () {
-            var featureSet, parametrosN, params, parametrosLlamada;
+            var featureSet, parametrosN, params, parametrosLlamada, esVacio;
+            esVacio = false;
             this._dibujo.desactivar();
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + this._matrizSeleccionadaString + ';';
             arrayUtil.forEach(this._comboBoxes2S, lang.hitch(this, function (cb) {
                 if (cb.consulta === "Usuario") {
                     parametrosLlamada =  parametrosLlamada + cb.id + ':' + cb.combo.value + ';';
+                    if (cb.combo.value.localeCompare("")===0){
+                        esVacio = true;
+                    }
                 }
             }));
             featureSet = new FeatureSet();
@@ -834,8 +783,20 @@ define([
             }));
 
             params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet, "EntradaVariablesN ": parametrosN};
-            this._standby.show();
-            this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
+            
+            if (esVacio){
+                domAttr.set(this._resultadoRiesgoGeo, "innerHTML", "Marque opcion en combo");
+                domStyle.set(this._resultadoRiesgoGeo, "backgroundColor", this._letraBackground("Inicial"));
+                this._standby.hide();
+                domStyle.set(this._advertenciaRiesgoGeo, "display", "none");
+                domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'none');
+
+                domStyle.set(this._riesgoNode, 'display', 'block');
+                this.resize();
+            }else{                            
+                this._standby.show();
+                this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
+            }
         },
         _irRiesgoAmbiental: function (pestana) {
             if (((domAttr.get(this._resultadoRiesgoGeo, "innerHTML")) !== '') &&
@@ -896,10 +857,14 @@ define([
             }
         },
         _cambioValorComboN: function (value) {
-            var parametrosLlamada, params;
+            var parametrosLlamada, params, esVacio;
+            esVacio = false;
             parametrosLlamada = this._gpRiesgoPredial + 'Matriz:' + value + ';';
 
             arrayUtil.forEach(this._comboBoxesN, lang.hitch(this, function (cb) {
+                if (cb.combo.value.localeCompare("")===0){
+                    esVacio = true;
+                };
                 parametrosLlamada =  parametrosLlamada + cb.id + ':' + cb.combo.value + ';';
             }));
 
@@ -908,8 +873,13 @@ define([
                     && ((domAttr.get(this._resultadoRiesgoGeo, "innerHTML")) !== this._msjMarcarUbicacion)) {
                 params = {"Entrada": parametrosLlamada + 'RiesgoGeo:' + domAttr.get(this._resultadoRiesgoGeo, "innerHTML")};
             }
-            this._standby.show();
-            this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariable), lang.hitch(this, this._statusCallback));
+            if (esVacio){
+                domAttr.set(this._resultadoRiesgoPredial, "innerHTML", "Marque todos los combos");
+                domStyle.set(this._resultadoRiesgoPredial, "backgroundColor", this._letraBackground("Inicial"));
+            }else{                            
+                this._standby.show();
+                this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariable), lang.hitch(this, this._statusCallback));
+            }
         },
         _setearRiesgoAmbiental: function (result) {
             domAttr.set(this._resultadoRiesgoAmbiental, "innerHTML", result.value);
@@ -924,14 +894,17 @@ define([
             domAttr.set(this._resultadoRiesgoPredial, "innerHTML", result.value);
             domStyle.set(this._resultadoRiesgoPredial, "backgroundColor", this._letraBackground(result.value));
         },
-        _cambioValorCombo2S: function (value, fabi) {
-            console.log("fabi");
-            console.log(fabi);
-            var parametrosLlamada, params, features, featureSet, parametrosN;
+        _cambioValorCombo2S: function (value, value2) {
+            console.log("asdasd");
+            var parametrosLlamada, params, features, featureSet, parametrosN, esVacio;
+            esVacio = false;
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + value + ';';
             arrayUtil.forEach(this._comboBoxes2S, lang.hitch(this, function (cb) {
                 if (cb.consulta === "Usuario") {
                     parametrosLlamada =  parametrosLlamada + cb.id + ':' + cb.combo.value + ';';
+                    if (cb.combo.value.localeCompare("") === 0 ){
+                        esVacio = true;
+                    }
                 }
             }));
 
@@ -947,9 +920,14 @@ define([
                 }));
 
                 params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet, "EntradaVariablesN": parametrosN};
-                this._standby.show();
-
-                this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
+                
+                if (esVacio){
+                    domAttr.set(this._resultadoRiesgoGeo, "innerHTML", "Marque los combos");
+                    domStyle.set(this._resultadoRiesgoGeo, "backgroundColor", this._letraBackground("Inicial"));
+                }else{
+                    this._standby.show();
+                    this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
+                }
             } else {
                 domAttr.set(this._resultadoRiesgoGeo, "innerHTML", this._msjMarcarUbicacion);
             }
