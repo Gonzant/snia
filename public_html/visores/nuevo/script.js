@@ -20,12 +20,19 @@
     ArcGISDynamicMapServiceLayer,TimeExtent, TimeSlider,arrayUtils,dom
 
   ) {
+    var styleMasMenos = function()
+    {
+       $('.esriSimpleSliderTL').css('right','10px');
+       $('.esriSimpleSliderTL').css('left','auto');
+       $('.esriSimpleSliderTL').css('top','110px');
+    }
+
     var styleScaleBar = function()
     {
         $('.esriScalebar').css('width','165px');
         $('.esriScalebar').css('padding','10px');
         $('.esriScalebar').css('height','33px');
-        $('.esriScalebar').css('background-color','#fff');
+        $('.esriScalebar').css('background-color','rgba(255, 255, 255, 0.80)');      
     }
 
     var styleDoubleSlider = function()
@@ -40,6 +47,16 @@
          
         $('.dijitButtonNode').css('border','0');
         $('.dijitSliderProgressBar').css('background-color','#E57500');
+        $('#timeInfo').css('background-color','rgba(255, 255, 255, 0.80)');
+        $('#timeInfo').css('border-radius','0px');      
+        $('#timeInfo').css('border-top-width','0');
+        $('#timeInfo').css('border-left-width','0');
+        $('#timeInfo').css('border-bottom-width','0');
+        $('#timeInfo').css('border-right-width','0');
+        $('#timeInfo').css('height','45px');
+        $('#timeSliderDiv').css('padding-top','12px');
+
+        $('.esriTimeSlider .tsButton').css('background-image','url(images/time_slider_sprite.png)');     
     }
 
     var map = new Map("viewDiv", {
@@ -103,6 +120,7 @@
 
         styleScaleBar();
         styleDoubleSlider();
+        styleMasMenos();
       }
   });
 
@@ -154,16 +172,18 @@ $(document).ready(function(){
                 );
     });
 
-    $('.MenuIngresar').click(function(){
-        if($(".loginContainer").is(":visible"))        
-             $(".loginContainer").hide('fast');        
-        else
-             $(".loginContainer").show('fast');
+    $('.menuIngresar').click(function(){
+        $(".loginContainer").is(":visible")?$(".loginContainer").hide('fast'):$(".loginContainer").show('fast');
+    });  
+
+    $('.show_menu_btn').click(function(){
+        $(".vertical-menu").is(":visible")?$(".vertical-menu").hide('fast'):$(".vertical-menu").show('fast');
     });
 
-    
-    
-     
+     $('.show_menu_btn_user').click(function(){
+        $(".vertical-menu-user").is(":visible")?$(".vertical-menu-user").hide('fast'):$(".vertical-menu-user").show('fast');
+    });
+
   });
   
 

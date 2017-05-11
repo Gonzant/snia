@@ -23,7 +23,7 @@
             "toggle": false,
             "draggable": false,
             "startsOpen": true,
-            "position": {"left": "20px", "top": "96px"},
+            "position": {"left": "20px", "top": "20%"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],
                 "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"

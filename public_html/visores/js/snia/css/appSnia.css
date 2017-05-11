@@ -1,3 +1,10 @@
+/*Nuevo Estilo*/
+.esriSimpleSliderTL {
+    top: 10%;
+    left: 20px;
+}
+
+/*Fin nuevo*/
 html, body {
     width: 100%;
     height: 100%;
