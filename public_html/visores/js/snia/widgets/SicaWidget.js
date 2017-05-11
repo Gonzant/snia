@@ -331,7 +331,7 @@ define([
             if (this._i === 0 && this._dibujoUsuario === 1 && this._esPredefinida === false) { //dibujo cuando no es predefinida
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } else {
-                if (this.dynamic.selectedOptions.length === 0 || this._select_predef.selectedOptions.length === 0) { //no hay ninguno seleccionado
+                if (this.dynamic.selectedOptions.length === 0) { //no hay ninguno seleccionado
                     this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
                     this._msgPredefinida.innerHTML ="<p style=\"color:red\";><br>Debe seleccionar al menos 1 apertura</p>";
                 } else {
