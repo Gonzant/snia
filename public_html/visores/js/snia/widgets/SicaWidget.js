@@ -110,7 +110,8 @@ define([
                     on(this._eliminarAreaCruces, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
                     on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
-//                    on(this._radioAE, a11yclick, lang.hitch(this, this._cargarAE)),
+                    on(this._radioAE, a11yclick, lang.hitch(this, this._cargarAE)),
+                    on(this._radioAS, a11yclick, lang.hitch(this, this._cargarAS)),
                     on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas)),
                     on(this._buscarAperturasCruces, a11yclick, lang.hitch(this, this._cargarAperturasCruces))
                 );
@@ -186,6 +187,13 @@ define([
             this.opcionesPredef ="AREAENUMERACION;";
             this._esPredefinida = true;
             this._textSeleccione.innerHTML = "Seleccione la/s AE: ";
+            for (i = 0; i < this.config.ae.length; i = i + 1) {
+                c = win.doc.createElement('option');
+                c.innerHTML = this.config.ae[i];
+                c.label = this.config.ae[i];
+                c.value = this.config.ae[i];
+                this._select_predef.appendChild(c);
+            }
         },
         _cargarSP: function () {
             var c, i;
@@ -199,8 +207,21 @@ define([
                 c.label = this.config.sp[i];
                 c.value = this.config.sp[i];
                 this._select_predef.appendChild(c);
-            }            
-            
+            }
+        },
+        _cargarAS: function () {
+            var c, i;
+            this._select_predef.innerHTML = "";
+            this.opcionesPredef ="AREASUPERVISION;";
+            this._esPredefinida = true;
+            this._textSeleccione.innerHTML = "Seleccione la/s AS: ";
+            for (i = 0; i < this.config.as.length; i = i + 1) {
+                c = win.doc.createElement('option');
+                c.innerHTML = this.config.as[i];
+                c.label = this.config.as[i];
+                c.value = this.config.as[i];
+                this._select_predef.appendChild(c);
+            }
         },
         _cargarComboAperturas: function () {
             var i, c;
@@ -337,8 +358,9 @@ define([
                     featureSet.features = areas;
                     
                    if(this._select_predef.selectedOptions.length === 0){                       
-                       this._msjErrorPredefinida.innerHTML ="<p style=\"color:red\";><br>No hay ninguna opción seleccionada</p>";
+                       this._msgPredefinida.innerHTML ="<p style=\"color:red\";><br>No hay ninguna opción seleccionada</p>";
                    }else{
+                       this._msgPredefinida.innerHTML =" ";
                         for (i = 0; i< this._select_predef.selectedOptions.length; i = i + 1){
                             this.opcionesPredef = this.opcionesPredef + this._select_predef.selectedOptions[i].value;
                             if (i + 1 < this._select_predef.selectedOptions.length) {
