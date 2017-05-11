@@ -549,12 +549,6 @@ tituloTPAyuda{
     border-color: transparent;
 }
 
-.claro .dijitTreeIsLast {
-  background: url('../img/mapabase.png') no-repeat;
-  width:40px;
-  height:40px;  
-}
-
 .claro .dijitContentPane {
      padding: 2px; 
     background: transparent;
@@ -1125,4 +1119,14 @@ div p {
 }
 .iconColpasarContenidos:focus{
     border: 0 transparent;
+}
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
+
+.ContenidosTree>.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
 }

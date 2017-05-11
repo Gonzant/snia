@@ -255,7 +255,7 @@ Dialogos:
 
 .claro .dijitDialogTitleBar {
     border: 2px solid;
-    height: 35px;
+    height: 30px;
     padding-top: 10px;
     border-color: transparent;
     border-top: none;    
@@ -509,12 +509,6 @@ tituloTPAyuda{
 .claro .dijitTreeRowHover {
     background-color: transparent;
     border-color: transparent;
-}
-
-.claro .dijitTreeIsLast {
-  background: url('../img/mapabase.png') no-repeat;
-  width:40px;
-  height:40px;  
 }
 
 .claro .dijitContentPane {
@@ -1069,4 +1063,14 @@ div p {
 }
 .iconColpasarContenidos:focus{
     border: 0 transparent;
+}
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
+
+.ContenidosTree>.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
 }
