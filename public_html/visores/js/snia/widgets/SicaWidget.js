@@ -108,7 +108,8 @@ define([
                     on(this._dibujarAreaCruces, a11yclick, lang.hitch(this, this._initDibujo)),
                     on(this._eliminarArea, a11yclick, lang.hitch(this, this._eliminarDibujos)),
                     on(this._eliminarAreaCruces, a11yclick, lang.hitch(this, this._eliminarDibujos)),
-//                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
+                    on(this._radioDepto, a11yclick, lang.hitch(this, this._cargarDeptos)),
+                    on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
 //                    on(this._radioAE, a11yclick, lang.hitch(this, this._cargarAE)),
                     on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas)),
                     on(this._buscarAperturasCruces, a11yclick, lang.hitch(this, this._cargarAperturasCruces))
@@ -143,6 +144,8 @@ define([
         },
         _cargarDeptos: function () {
             var c, i, departamentosStore;
+            this.opcionesPredef ="DEPARTAMENTO;";
+            this._select_predef.innerHTML = "";
             departamentosStore = new Memory({
                 data: [
                     {name: "Artigas", id: "ARTIGAS"},
@@ -178,47 +181,25 @@ define([
             this._esPredefinida = true;
         },
         _cargarAE:function(){
-            var c, j=0, aeElement ="", deptosSeleccionados=[]; //los deptos seleccionadoss
-            var aEMostrar = [];
-            this._select_o.options.length =0;
-            for (var i = 0; i< this._select_predef.selectedOptions.length; i = i + 1){
-                deptosSeleccionados[i] = this._select_predef.selectedOptions[i].innerText;                
-            }
-            if(deptosSeleccionados.length === 0){
-                this._msjErrorPredefinida.innerHTML = "<p style=\"color:red\";><br> Debe seleccionar al menos 1 departamento</p>";
-                
-            }else{//selecciono al menos un depto
-                for (i = 0; i < deptosSeleccionados.length; i = i+1){
-                    for (j =0; j< this.config.ae.length; j = j+1){// recorro las AE
-                        aeElement = new String (this.config.ae[j][0]);
-                        if(this.config.ae[j][0].indexOf(deptosSeleccionados[i].toUpperCase()) !== -1){
-                            c = win.doc.createElement('option');
-                            c.innerHTML = this.config.ae[j][1];
-                            c.label = this.config.ae[j][1];
-                            c.value = j;
-                            this._select_o.appendChild(c);
-                        }
-                    }
-                }                
-            }
+            var c, i;
+            this._select_predef.innerHTML = "";
+            this.opcionesPredef ="AREAENUMERACION;";
             this._esPredefinida = true;
-            
+            this._textSeleccione.innerHTML = "Seleccione la/s AE: ";
         },
         _cargarSP: function () {
+            var c, i;
+            this._select_predef.innerHTML = "";
+            this.opcionesPredef ="SECCIONALPOLICIAL;";
+            this._esPredefinida = true;
             this._textSeleccione.innerHTML = "Seleccione la/s SP: ";
-            
-            
-            /*
-             * 
-             * for (i = 0; i < departamentosStore.data.length; i = i + 1) {
+            for (i = 0; i < this.config.sp.length; i = i + 1) {
                 c = win.doc.createElement('option');
-                c.innerHTML = departamentosStore.data[i].name;
-                c.label = departamentosStore.data[i].name;
-                c.value = i;
+                c.innerHTML = this.config.sp[i];
+                c.label = this.config.sp[i];
+                c.value = this.config.sp[i];
                 this._select_predef.appendChild(c);
-            }
-             * 
-             */
+            }            
             
         },
         _cargarComboAperturas: function () {
@@ -325,12 +306,13 @@ define([
         },
         _cargarAperturas: function () {
             var i, g, area, featureSet, parametros, areas = [];
-            this._aperturasSeleccionadasSimple = "", this.opcionesPredef ="DEPARTAMENTO;";
+            this._aperturasSeleccionadasSimple = "";
             if (this._i === 0 && this._dibujoUsuario === 1 && this._esPredefinida === false) { //dibujo cuando no es predefinida
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } else {
-                if (this.dynamic.selectedOptions.length === 0) { //no hay ninguno seleccionado
+                if (this.dynamic.selectedOptions.length === 0 || this._select_predef.selectedOptions.length === 0) { //no hay ninguno seleccionado
                     this._msgAgregarArea.innerHTML = "Debe seleccionar al menos 1 apertura";
+                    this._msgPredefinida.innerHTML ="<p style=\"color:red\";><br>Debe seleccionar al menos 1 apertura</p>";
                 } else {
                     this._msgAgregarArea.innerHTML = " ";
                     for (i = 0; i < this.dynamic.selectedOptions.length; i = i + 1) {
@@ -354,15 +336,16 @@ define([
                     featureSet = new FeatureSet();
                     featureSet.features = areas;
                     
-                   
-                    for (i = 0; i< this._select_predef.selectedOptions.length; i = i + 1){
-                        this.opcionesPredef = this.opcionesPredef + this._select_predef.selectedOptions[i].value;
-                        if (i + 1 < this._select_predef.selectedOptions.length) {
-                            this.opcionesPredef = this.opcionesPredef + ";";
-                        }
+                   if(this._select_predef.selectedOptions.length === 0){                       
+                       this._msjErrorPredefinida.innerHTML ="<p style=\"color:red\";><br>No hay ninguna opción seleccionada</p>";
+                   }else{
+                        for (i = 0; i< this._select_predef.selectedOptions.length; i = i + 1){
+                            this.opcionesPredef = this.opcionesPredef + this._select_predef.selectedOptions[i].value;
+                            if (i + 1 < this._select_predef.selectedOptions.length) {
+                                this.opcionesPredef = this.opcionesPredef + ";";
+                            }
+                        }                        
                     }
-                        
-                   
                     //no es multiple -> cuando por ejemplo hago departamentos.  
                     if(this._esPredefinida === true){
                         parametros = {

@@ -21,20 +21,23 @@
                     <div data-dojo-attach-point="_eliminarArea" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo"> 
                         <img src = "../js/snia/img/remover.png" class="iconAcercarSeleccionBuscar">
                     </div>                  
-                </div>
-                
-                <div data-dojo-type="dijit/layout/ContentPane" title="Predefinido">  
-                    
-                     <div data-dojo-attach-point="_msgPredefinida"> </div>
-                    
-                         <div data-dojo-attach-point="_textSeleccione"> Seleccione el/los departamentos:</div>
-                        <div data-dojo-attach-point= "_selectDeptos"> 
-                            <select data-dojo-attach-point = "_select_predef" multiple=""></select>                            
-                        </div>
+                </div>                
+                <div data-dojo-type="dijit/layout/ContentPane" title="Predefinido">                      
+                    <div data-dojo-attach-point="_msgPredefinida"> </div><br>
+                    <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioD" data-dojo-attach-point = "_radioDepto" value="depto"/>
+                    <label for="radioD">Departamentos</label> 
+                    <br>
+                    <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioSP" data-dojo-attach-point = "_radioSP" value="sp"/>
+                    <label for="radioSP">Seccional Policial</label> 
+                    <br>
+                      <br>  
+                    <div data-dojo-attach-point="_textSeleccione"> Seleccione el/los departamentos:</div>
+                    <br>
+                    <div data-dojo-attach-point= "_selectDeptos"> 
+                        <select data-dojo-attach-point = "_select_predef" multiple=""></select>                            
+                    </div>
 <!--                        <br>
-                        <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioSP" data-dojo-attach-point = "_radioSP" value="sp"/>
-                        <label for="radioSP">Seccional Policial</label> 
-                        <br>
+                        
                         <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" data-dojo-attach-point = "_radioAS" id="radioAS" value="as"/>
                         <label for="radioAS">Áreas de Supervisión</label>
                         <br>-->
