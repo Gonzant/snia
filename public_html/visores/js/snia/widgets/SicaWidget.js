@@ -179,7 +179,6 @@ define([
                 this._select_predef.appendChild(c);
             }
             this._textSeleccione.innerHTML = "Seleccione el/los Depto/s: ";
-            this._esPredefinida = true;
         },
         _cargarAE:function(){
             var c, i;
@@ -328,7 +327,7 @@ define([
         _cargarAperturas: function () {
             var i, g, area, featureSet, parametros, areas = [];
             this._aperturasSeleccionadasSimple = "";
-            if (this._i === 0 && this._dibujoUsuario === 1 && this._esPredefinida === false) { //dibujo cuando no es predefinida
+            if (this._i === 0 && this._esPredefinida === false) { //dibujo cuando no es predefinida
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } else {
                 if (this.dynamic.selectedOptions.length === 0) { //no hay ninguno seleccionado
