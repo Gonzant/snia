@@ -1,30 +1,29 @@
-<div class='${theme}' data-dojo-attach-point="_contenidosParentNode" style=" max-height: 400px; overflow-x: hidden; overflow-y: hidden;">
+<div data-dojo-attach-point="_contenidosParentNode" style=" max-height: 350px; width: 235px; overflow-x: hidden; overflow-y: hidden; ">
     <div data-dojo-attach-point="_contenidosNode"  style="overflow-y: hidden;overflow-x: hidden;" >
         <button style='background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;'></button>
         <div class="smallText" data-dojo-attach-point="_resultadoNodeContenidos" ></div>
         <div data-dojo-attach-point="_standBy" style="overflow-y: hidden;overflow-x: hidden;"> 
             <button data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" 
-                    data-dojo-attach-point="_colapsarNode" id="colapsarContenidos"> 
-            <img src = "../js/snia/img/collapseAllGris.png" class="iconColapsarContenidos" > </button> 
+                    data-dojo-attach-point="_colapsarNode"> 
+            <i class="material-icons" style="color: white">expand_less</i> </button> 
 
-            <button data-dojo-attach-point="_expandirNode" data-dojo-type="dijit/form/Button" id="buttonId" 
+            <button data-dojo-attach-point="_expandirNode" data-dojo-type="dijit/form/Button" 
                     class="SmallButtonTransparentAmarillo" > 
-                <img src = "../js/snia/img/expandAllGris.png" class="iconExpandContenidos" >
+                <i class="material-icons" style="color: white">expand_more</i>
             </button> 
             <button data-dojo-attach-point="_descargarCapas" data-dojo-type="dijit/form/Button" 
                     class="SmallButtonTransparentAmarillo" > 
-                <img src = "../js/snia/img/download.png" class="iconDownload" >
+                <i class="material-icons" style="color: white">file_download</i>
             </button> 
             <div data-dojo-attach-point="_bAgregarCapa" style="display: none;">
-            <button  data-dojo-type="dijit/form/Button" 
-                    class="SmallButtonTransparentAmarillo" onClick="agregarCapaDialog.show();"> 
+            <button  data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" onClick="agregarCapaDialog.show();"> 
                     Agregar Capa
             </button> 
             </div>
         </div>
     </div>
-    <br><br>
-    <div data-dojo-attach-point="tocDiv" class="agsjsTOCRootLayerLabel2 ContenidosTree" style="max-width: 200px; max-height:300px; overflow-x: auto; overflow-y: auto;"></div>
+    
+    <div data-dojo-attach-point="tocDiv" class="agsjsTOCRootLayerLabel2 ContenidosTree" style="max-width: 235px; max-height:300px; overflow-x: auto; overflow-y: auto;"></div>
     <br>
     <div data-dojo-type="dijit/Dialog" data-dojo-id="agregarCapaDialog" title="Agregar Capa">
        <table class="dijitDialogPaneContentArea">

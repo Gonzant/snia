@@ -164,6 +164,7 @@ define([
             this._comboBoxImprimir = new ComboBox({
                 name: "template",
                 value: "A4 Vertical",
+                readOnly: false,
                 store: templateStore,
                 searchAttr: "name"
             });

@@ -15,57 +15,28 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <script src="script.js"></script>
-        
-        <style>
-            html, body, #mapDiv {
-              padding:0;
-              margin:0;
-              height:100%;
-            }
-
-            #mapDiv {
-              position: relative;
-            }
-
-            #bottomPanel {
-              left: 50%;
-              margin: 0 auto;
-              margin-left: -500px;
-              position: absolute; 
-              bottom: 2.5em;
-            }
-
-            #timeInfo{
-              border-radius: 4px;
-              border: solid 2px #ccc;
-              background-color: #fff;
-              display: block;
-              padding: 5px;
-              position: relative;
-              text-align: center;
-              width: 1000px;
-              z-index: 99;
-            }
-        </style>
-        
-        
+       
     </head>
 
     <body class="claro">
-        <div class="icon-bar alignRight mainBar" >
+        <nav class="icon-bar alignRight mainBar">
             <div style="float: left;">
                 <img class="logo" src="images/logoSnia.png" alt="logoSnia" height="40">                
             </div>
+            <a class="itemMainMenu menuIngresar" style="position: relative;cursor: pointer;">            
+                <div style="color: #f19607;position: absolute;padding: 7px;font-size: 24px;">Ingresar</div>
+                <i class="material-icons" style="float: right;position: absolute;padding-top: 15px;padding-left: 40px;">keyboard_arrow_down</i>
+            </a> 
             <div id="divToolbar" style="float: right"></div>
-           
-        </div>
-        <div id="divStandby">
-            <div id="divContenedorIndex" style="display: none" >    
-                
-                </div>
-                <!--<div id="divLogoMGAP" class="divLogoMGAP"></div>-->
-                <!--<div id="divToolbarTitulo" class="divToolbarTitulo"> </div>-->
             
+        </nav>
+        <div class="secondIcon-bar alignRight smallBar">
+         <div id="titleSecond" style="float: left;"><b>Uruguay Integrado</b></div>
+      </div>
+        
+        <div id="divStandby">
+            <div id="divContenedorIndex" style="display: none" >  
+            </div>          
             
             <div id="divMapa"></div>
         </div>
