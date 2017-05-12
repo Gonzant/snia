@@ -36,14 +36,16 @@ define([
     "dijit/Dialog",
     "widgets/RiesgoReporteWidget",
     "modulos/Dibujo", "esri/toolbars/draw",
-    "modulos/CapaGrafica3SR"
+    "modulos/CapaGrafica3SR", "dijit/TooltipDialog",
+    "dijit/popup"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, a11yclick, domClass, domStyle, ComboBox, TabContainer,
     ContentPane, domConst, arrayUtil, Memory,
     Graphic, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color,
     Button, Geoprocessor, FeatureSet, domAttr, Standby,
-    Dialog, RiesgoReporteWidget, Dibujo, Draw, CapaGrafica3SR
+    Dialog, RiesgoReporteWidget, Dibujo, Draw, CapaGrafica3SR, TooltipDialog,
+    popup
     ) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -242,37 +244,46 @@ define([
             case 'A':
                 color = rojo;
                 break;
-            case 'AA':
+            case 'a':
+                color = rojo;
+                break;    
+            case 'aA':
                 color = rojo;
                 break;
-            case 'AM':
+            case 'aM':
                 color = amarillo;
                 break;
-            case 'AB':
+            case 'aB':
                 color = amarillo;
                 break;
             case 'M':
                 color = amarillo;
                 break;
-            case 'MA':
+            case 'm':
+                color = amarillo;
+                break;            
+            case 'mA':
                 color = naranja;
                 break;
-            case 'MM':
+            case 'mM':
                 color = amarillo;
                 break;
-            case 'MB':
+            case 'mB':
                 color = verde;
                 break;
             case 'B':
                 color = verde;
                 break;
-            case 'BA':
-                color = naranja;
-                break;
-            case 'BM':
+            case 'b':
                 color = verde;
                 break;
-            case 'BB':
+            case 'bA':
+                color = naranja;
+                break;
+            case 'bM':
+                color = verde;
+                break;
+            case 'bB':
                 color = verde;
                 break;
             case 'Inicial':
@@ -363,7 +374,7 @@ define([
                     divEtiqueta = domConst.toDom('<div></div>');
                     //divEtiqueta = domConst.create("div", { innerHTML: varN.Etiqueta});
                     domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;">' + varN.Etiqueta + '</div>');
+                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;"><a href="#">' + varN.Etiqueta + '</a></div>');
                     domConst.place(etiqueta, divEtiqueta);
                     divCombo = domConst.create("div");
                     comboBox = new ComboBox({
@@ -379,6 +390,20 @@ define([
                     domClass.add(divCombo, "riesgoComboBox");
                     domConst.place(divCombo, divEtiqueta);
                     domConst.place(divEtiqueta, node);
+                    
+                    var myTooltipDialog = new TooltipDialog({                        
+                        style: "width: 300px;",
+                        content: "<p>"+varN.Tooltip+"</p>",
+                        onMouseLeave: function(){
+                            popup.close(myTooltipDialog);
+                        }
+                    });
+                    on(divEtiqueta, 'click', function(){
+                        popup.open({
+                            popup: myTooltipDialog,
+                            around: divEtiqueta
+                        });
+                    });
 
                     this._comboBoxesN.push({combo: comboBox, etiqueta: varN.Etiqueta, id: varN.Id });
                     i = i + 1;
@@ -467,7 +492,7 @@ define([
                     divEtiqueta = domConst.toDom('<div></div>');
                     //divEtiqueta = domConst.create("div", { innerHTML: varN.Etiqueta});
                     domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;">' + var2S.Etiqueta + '</div>');
+                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;"><a href="#">' + var2S.Etiqueta + '</a></div>');
                     domConst.place(etiqueta, divEtiqueta);
 
                     divCombo = domConst.create("div");
@@ -486,6 +511,20 @@ define([
                     domClass.add(divCombo, "riesgoComboBox");
                     domConst.place(divCombo, divEtiqueta);
                     domConst.place(divEtiqueta, node);
+                    
+                    var myTooltipDialog = new TooltipDialog({                        
+                        style: "width: 300px;",
+                        content: "<p>"+var2S.Tooltip+"</p>",
+                        onMouseLeave: function(){
+                            popup.close(myTooltipDialog);
+                        }
+                    });
+                    on(divEtiqueta, 'click', function(){
+                        popup.open({
+                            popup: myTooltipDialog,
+                            around: divEtiqueta
+                        });
+                    });
 
                     i = i + 1;
                     this._comboBoxes2S.push({combo: comboBox, etiqueta: var2S.Etiqueta, id: var2S.Id, consulta: var2S.Consulta});
@@ -518,7 +557,7 @@ define([
 
                     divEtiqueta = domConst.create("div");
                     domClass.add(divEtiqueta, "riesgoEtiqCombo");
-                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;">' + var2S.Etiqueta + '</div>');
+                    etiqueta = domConst.toDom('<div style="float:left;width: 500px;"><a href="#">' + var2S.Etiqueta + '</a></div>');
                     domConst.place(etiqueta, divEtiqueta);
                     divCombo = domConst.create("div");
                     params = {
@@ -536,6 +575,20 @@ define([
                     domClass.add(divCombo, "riesgoComboBox");
                     domConst.place(divCombo, divEtiqueta);
                     domConst.place(divEtiqueta, node);
+                    
+                    var myTooltipDialog = new TooltipDialog({                        
+                        style: "width: 300px;",
+                        content: "<p>"+ var2S.Tooltip + "</p>",
+                        onMouseLeave: function(){
+                            popup.close(myTooltipDialog);
+                        }
+                    });
+                    on(divEtiqueta, 'click', function(){
+                        popup.open({
+                            popup: myTooltipDialog,
+                            around: divEtiqueta
+                        });
+                    });
 
                     i = i + 1;
                     this._comboBoxes2S.push({combo: comboBox, etiqueta: var2S.Etiqueta, id: var2S.Id, consulta: var2S.Consulta});
@@ -547,8 +600,10 @@ define([
 
             divBM = domConst.create("div");
             domStyle.set(divBM, "float", "left");
+            domStyle.set(divBM, "margin-top", "8px");
             divBD = domConst.create("div");
             domStyle.set(divBD, "float", "left");
+            domStyle.set(divBD, "margin-top", "8px");
 
             //Se crea el boton para marcar la referencia              
             botonMarcar = new Button({
@@ -894,8 +949,7 @@ define([
             domAttr.set(this._resultadoRiesgoPredial, "innerHTML", result.value);
             domStyle.set(this._resultadoRiesgoPredial, "backgroundColor", this._letraBackground(result.value));
         },
-        _cambioValorCombo2S: function (value, value2) {
-            console.log("asdasd");
+        _cambioValorCombo2S: function (value, value2) {            
             var parametrosLlamada, params, features, featureSet, parametrosN, esVacio;
             esVacio = false;
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + value + ';';

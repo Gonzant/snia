@@ -182,8 +182,18 @@ html, body {
 }
 
 .riesgoEtiqCombo{
-    height: 35px;
+    height: 20px;
     margin-left: 10px;    
+    margin-top: 13px;
+}
+
+.riesgoEtiqCombo a:link{
+    text-decoration: none;
+    color:black;
+}
+
+.riesgoEtiqCombo a:hover{
+    text-decoration: none;
 }
 
 .riesgoComboBox{
@@ -196,6 +206,7 @@ html, body {
     height: 20px;
     text-align: center;
     margin: 10px;
+    margin-top:18px;
     font-weight: bold;
     padding-top: 5px;
 }
