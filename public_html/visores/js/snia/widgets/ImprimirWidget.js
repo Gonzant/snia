@@ -144,9 +144,8 @@ define([
                 content: "<p>Para imprimir el mapa realice menos zoom<p>"
             });
             this._botonImprimir = new Button({
-                iconClass: "iconImprimir",
                 showLabel: true,
-                label: this._lbImprimir,
+                label: "<i class=\"material-icons\" style=\"color: white\">print</i>" + this._lbImprimir,
                 disabled: false,
                 onClick: lang.hitch(this, this._imprimirClick)
             });
