@@ -1,9 +1,17 @@
 <div class='${theme}'>
-    <div>
-        <label>Nro. Dicose</label>
-        <input type="text" name="dicose" value=""
-            data-dojo-type="dijit/form/TextBox"
-            data-dojo-attach-point="_dicoseInputNode" />
+    <div data-dojo-attach-point="_ruedaEspera" style="width: 100%; background-color: #BDBDBD; border-style: solid; border-width: 1px;">
+        <div>
+            <label>Nro. DICOSE</label>
+            <input type="text" name="dicose" value=""
+                data-dojo-type="dijit/form/TextBox"
+                data-dojo-attach-point="_dicoseInputNode" />
+        </div>
+        <div>
+            <label>Nro. Padrón</label>
+            <input type="text" name="padron" value=""
+                data-dojo-type="dijit/form/TextBox"
+                data-dojo-attach-point="_padronInputNode" />
+        </div>
+        <div data-dojo-attach-point="_reporteButtonNode"></div>
     </div>
-    <div data-dojo-attach-point="_reporteButtonNode"></div>
 </div>

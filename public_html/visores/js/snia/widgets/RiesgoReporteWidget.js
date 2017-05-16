@@ -21,10 +21,12 @@ define([
     "esri/tasks/PrintParameters",
     "esri/tasks/PrintTask",
     "esri/tasks/PrintTemplate",
+    "dojox/widget/Standby",
+    "dojo/dom-construct",
     "jspdf/jspdf.min"
 ], function (on, Evented, declare, lang, _WidgetBase, _TemplatedMixin,
     _WidgetsInTemplateMixin, template, i18n, domClass, domStyle, arrayUtil,
-    Button, PrintParameters, PrintTask, PrintTemplate) {
+    Button, PrintParameters, PrintTask, PrintTemplate, Standby, domConst) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -92,6 +94,10 @@ define([
 
                 );
             }
+            //Rueda de espera
+            this._standby = new Standby({target: this._ruedaEspera});
+            domConst.place(this._standby.domNode, this._ruedaEspera, "after");
+            this._standby.startup();
         },
         _activar: function () {
             this.emit("active-changed");
@@ -157,6 +163,7 @@ define([
             var url, printTask, params, templatePrint, etqPred, valPred, listEtiqPred,
                 etqLoc, valLoc, listEtiqGeoU;
             url = 'https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/Template_Efluentes/GPServer/Export%20Web%20Map';
+
             printTask = new PrintTask(url);
             params = new PrintParameters();
             templatePrint = new PrintTemplate();
@@ -219,68 +226,78 @@ define([
                     {"9Vl": valLoc[8]},
                     {"10Ll": etqLoc[9]},
                     {"10Vl": valLoc[9]},
-                    {"Rp": this.resultadoPredial},
-                    {"Rl": this.resultadoGeo},
-                    {"Ra": this.resultadoAmbiental}
+                    {"Rp": this._letraColorTexto(this.resultadoPredial)},
+                    {"Rl": this._letraColorTexto(this.resultadoGeo)},
+                    {"Ra": this._letraColorTexto(this.resultadoAmbiental)},
+                    {"padron": this._padronInputNode.value},
+                    {"dicose": this._dicoseInputNode.value}
                 ]
             };
             params.template = templatePrint;
-            printTask.execute(params, lang.hitch(this, this._imprimirCompletado), lang.hitch(this, this._imprimirError));
+            this._standby.show();
+            printTask.execute(params, lang.hitch(this, this._imprimirCompletado), lang.hitch(this, this._imprimirError));            
         },
         _imprimirCompletado: function (result) {
+            this._standby.hide();
             window.open(result.url);
             //this._hyperlinkClick();
         },
         _imprimirError: function (result) {
+            this._standby.hide();
             console.log(result);
         },
         _letraColorTexto: function (letra) {
             var verde, amarillo, naranja, rojo, ret;
-            verde = this._verde;
-            amarillo = this._amarillo;
-            naranja = this._naranja;
-            rojo = this._rojo;
-            ret = {color: null, texto: ''};
-            ret.texto = letra;
+            verde = 'red = "' + this._verde[0] + '" green ="' + this._verde[1] + '" blue="' + this._verde[2] + '"';
+            amarillo = 'red = "' + this._amarillo[0] + '" green ="' + this._amarillo[1] + '" blue="' + this._amarillo[2] + '"';
+            naranja = 'red = "' + this._naranja[0] + '" green ="' + this._naranja[1] + '" blue="' + this._naranja[2] + '"';
+            rojo = 'red = "' + this._rojo[0] + '" green ="' + this._rojo[1] + '" blue="' + this._rojo[2] + '"';
+            ret = "";
             switch (letra) {
             case 'A':
-                ret.color = rojo;
-                ret.texto = 'Alto';
+                ret = "<CLR " + rojo + ">" + letra + "</CLR>";
                 break;
-            case 'AA':
-                ret.color = rojo;
+            case 'a':
+                ret = "<CLR " + rojo + ">" + letra + "</CLR>";
                 break;
-            case 'AM':
-                ret.color = amarillo;
+            case 'aA':
+                ret = "<CLR " + rojo + ">" + letra + "</CLR>";
                 break;
-            case 'AB':
-                ret.color = amarillo;
+            case 'aM':
+                ret = "<CLR " + amarillo + ">" + letra + "</CLR>";
+                break;
+            case 'aB':
+                ret = "<CLR " + amarillo + ">" + letra + "</CLR>";
                 break;
             case 'M':
-                ret.color = amarillo;
-                ret.texto = 'Medio';
+                ret = "<CLR " + amarillo + ">" + letra + "</CLR>";
                 break;
-            case 'MA':
-                ret.color = naranja;
+            case 'm':
+                ret = "<CLR " + amarillo + ">" + letra + "</CLR>";
                 break;
-            case 'MM':
-                ret.color = amarillo;
+            case 'mA':
+                ret = "<CLR " + naranja + ">" + letra + "</CLR>";
                 break;
-            case 'MB':
-                ret.color = verde;
+            case 'mM':
+                ret = "<CLR " + amarillo + ">" + letra + "</CLR>";
+                break;
+            case 'mB':
+                ret = "<CLR " + verde + ">" + letra + "</CLR>";
                 break;
             case 'B':
-                ret.color = verde;
-                ret.texto = 'Bajo';
+                ret = "<CLR " + verde + ">" + letra + "</CLR>";
                 break;
-            case 'BA':
-                ret.color = naranja;
+            case 'b':
+                ret = "<CLR " + verde + ">" + letra + "</CLR>";
                 break;
-            case 'BM':
-                ret.color = verde;
+            case 'bA':
+                ret = "<CLR " + naranja + ">" + letra + "</CLR>";
                 break;
-            case 'BB':
-                ret.color = verde;
+            case 'bM':
+                ret = "<CLR " + verde + ">" + letra + "</CLR>";
+                break;
+            case 'bB':
+                ret = "<CLR " + verde + ">" + letra + "</CLR>";
                 break;
             }
             return ret;

@@ -23,8 +23,7 @@ define([
     "dojo/dom-construct",
     "dojo/_base/array",
     "dojo/store/Memory",
-    "esri/graphic",
-    "esri/symbols/SimpleMarkerSymbol",
+    "esri/graphic",    
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleFillSymbol",
     "esri/Color",
@@ -42,7 +41,7 @@ define([
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, a11yclick, domClass, domStyle, ComboBox, TabContainer,
     ContentPane, domConst, arrayUtil, Memory,
-    Graphic, SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color,
+    Graphic, SimpleLineSymbol, SimpleFillSymbol, Color,
     Button, Geoprocessor, FeatureSet, domAttr, Standby,
     Dialog, RiesgoReporteWidget, Dibujo, Draw, CapaGrafica3SR, TooltipDialog,
     popup
@@ -246,7 +245,7 @@ define([
                 break;
             case 'a':
                 color = rojo;
-                break;    
+                break;
             case 'aA':
                 color = rojo;
                 break;
@@ -261,7 +260,7 @@ define([
                 break;
             case 'm':
                 color = amarillo;
-                break;            
+                break;
             case 'mA':
                 color = naranja;
                 break;
@@ -348,7 +347,7 @@ define([
             i = 0;
             //Itero sobre las variables N
             arrayUtil.forEach(this._archivoJSON.Herramienta.VariableN, lang.hitch(this, function (varN) {
-                var primero, divEtiqueta, divCombo, comboBox, posicion, lugar;
+                var primero, divEtiqueta, divCombo, comboBox, posicion, lugar, myTooltipDialog;
                 if (arrayUtil.indexOf(this._riesgoPredialVar.Id, varN.Id) !== -1) {
                     this._variablesN.push({etiq: varN.Etiqueta, id: varN.Id, vt: varN.ValorTexto});
                     this._ValorTexto = [];
@@ -390,15 +389,15 @@ define([
                     domClass.add(divCombo, "riesgoComboBox");
                     domConst.place(divCombo, divEtiqueta);
                     domConst.place(divEtiqueta, node);
-                    
-                    var myTooltipDialog = new TooltipDialog({                        
+
+                    myTooltipDialog = new TooltipDialog({
                         style: "width: 300px;",
-                        content: "<p>"+varN.Tooltip+"</p>",
-                        onMouseLeave: function(){
+                        content: "<p>" + varN.Tooltip + "</p>",
+                        onMouseLeave: function () {
                             popup.close(myTooltipDialog);
                         }
                     });
-                    on(divEtiqueta, 'click', function(){
+                    on(divEtiqueta, 'click', function () {
                         popup.open({
                             popup: myTooltipDialog,
                             around: divEtiqueta
@@ -408,7 +407,7 @@ define([
                     this._comboBoxesN.push({combo: comboBox, etiqueta: varN.Etiqueta, id: varN.Id });
                     i = i + 1;
                 }
-            }));            
+            }));
 
             this._resultadoRiesgoPredial = domConst.create("div", { innerHTML: ""});
             domConst.place(this._resultadoRiesgoPredial, node);
@@ -465,8 +464,8 @@ define([
 
             //Itero sobre las variables Variable2S
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S) {
-                var divEtiqueta, divCombo, comboBox, primero, params2S, posicion, lugar;
-                if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Usuario")) {                    
+                var divEtiqueta, divCombo, comboBox, primero, params2S, posicion, lugar, myTooltipDialog;
+                if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Usuario")) {
                     this._variables2S.push({etiq: var2S.Etiqueta, id: var2S.Id, vt: var2S.ValorTexto});
                     this._ValorTexto = [];
                     posicion = 0;
@@ -511,15 +510,15 @@ define([
                     domClass.add(divCombo, "riesgoComboBox");
                     domConst.place(divCombo, divEtiqueta);
                     domConst.place(divEtiqueta, node);
-                    
-                    var myTooltipDialog = new TooltipDialog({                        
+
+                    myTooltipDialog = new TooltipDialog({
                         style: "width: 300px;",
-                        content: "<p>"+var2S.Tooltip+"</p>",
-                        onMouseLeave: function(){
+                        content: "<p>" + var2S.Tooltip + "</p>",
+                        onMouseLeave: function () {
                             popup.close(myTooltipDialog);
                         }
                     });
-                    on(divEtiqueta, 'click', function(){
+                    on(divEtiqueta, 'click', function () {
                         popup.open({
                             popup: myTooltipDialog,
                             around: divEtiqueta
@@ -529,11 +528,11 @@ define([
                     i = i + 1;
                     this._comboBoxes2S.push({combo: comboBox, etiqueta: var2S.Etiqueta, id: var2S.Id, consulta: var2S.Consulta});
                 }
-            }));            
+            }));
 
             //Itero sobre las variables Variable2S
             arrayUtil.forEach(this._archivoJSON.Herramienta.Variable2S, lang.hitch(this, function (var2S) {
-                var divEtiqueta, divCombo, comboBox, primero, params, posicion, lugar;
+                var divEtiqueta, divCombo, comboBox, primero, params, posicion, lugar, myTooltipDialog;
                 if ((arrayUtil.indexOf(this._riesgoGeoVar.Id, var2S.Id) !== -1) && (var2S.Consulta === "Capa")) {
                     this._variables2S.push({etiq: var2S.Etiqueta, id: var2S.Id, vt: var2S.ValorTexto});
                     this._ValorTexto = [];
@@ -575,15 +574,15 @@ define([
                     domClass.add(divCombo, "riesgoComboBox");
                     domConst.place(divCombo, divEtiqueta);
                     domConst.place(divEtiqueta, node);
-                    
-                    var myTooltipDialog = new TooltipDialog({                        
+
+                    myTooltipDialog = new TooltipDialog({
                         style: "width: 300px;",
-                        content: "<p>"+ var2S.Tooltip + "</p>",
-                        onMouseLeave: function(){
+                        content: "<p>" + var2S.Tooltip + "</p>",
+                        onMouseLeave: function () {
                             popup.close(myTooltipDialog);
                         }
                     });
-                    on(divEtiqueta, 'click', function(){
+                    on(divEtiqueta, 'click', function () {
                         popup.open({
                             popup: myTooltipDialog,
                             around: divEtiqueta
@@ -593,7 +592,7 @@ define([
                     i = i + 1;
                     this._comboBoxes2S.push({combo: comboBox, etiqueta: var2S.Etiqueta, id: var2S.Id, consulta: var2S.Consulta});
                 }
-            }));            
+            }));
 
             divBotones = domConst.create("div");
             domClass.add(divBotones, "riesgoBotones");
@@ -812,9 +811,28 @@ define([
 
             this.terminoConstruccion = true;
             this.resize();
-            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'none');            
+            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'none');
 
             on(this._terminoDib, a11yclick, lang.hitch(this, this._terminoDibujo));
+            on(this._cancelarDib, a11yclick, lang.hitch(this, this._cancelarDibujo));
+            on(this._atrasDib, a11yclick, lang.hitch(this, this._atrasDibujo));
+        },
+        _cancelarDibujo: function () {
+            var c;
+            for (c = 0; c < this._count; c = c + 1) {
+                this._cg3sr.removerGrafico(c.toString());
+            }
+            this._count = 0;
+            this._puntoGrafico = undefined;
+            this._features = undefined;
+            this._features = [];
+        },
+        _atrasDibujo: function () {
+            domStyle.set(this._advertenciaRiesgoGeo, "display", "none");
+            domStyle.set(this._msjUsuarioMarcarUbicacion, 'display', 'none');
+
+            domStyle.set(this._riesgoNode, 'display', 'block');
+            this.resize();
         },
         _terminoDibujo: function () {
             var featureSet, parametrosN, params, parametrosLlamada, esVacio;
@@ -824,7 +842,7 @@ define([
             arrayUtil.forEach(this._comboBoxes2S, lang.hitch(this, function (cb) {
                 if (cb.consulta === "Usuario") {
                     parametrosLlamada =  parametrosLlamada + cb.id + ':' + cb.combo.value + ';';
-                    if (cb.combo.value.localeCompare("")===0){
+                    if (cb.combo.value.localeCompare("") === 0) {
                         esVacio = true;
                     }
                 }
@@ -838,8 +856,8 @@ define([
             }));
 
             params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet, "EntradaVariablesN ": parametrosN};
-            
-            if (esVacio){
+
+            if (esVacio) {
                 domAttr.set(this._resultadoRiesgoGeo, "innerHTML", "Marque opcion en combo");
                 domStyle.set(this._resultadoRiesgoGeo, "backgroundColor", this._letraBackground("Inicial"));
                 this._standby.hide();
@@ -848,7 +866,7 @@ define([
 
                 domStyle.set(this._riesgoNode, 'display', 'block');
                 this.resize();
-            }else{                            
+            } else {
                 this._standby.show();
                 this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
             }
@@ -869,9 +887,17 @@ define([
         },
         _generarReporte: function (matriz) {
             var node, newDiv, titulo, coordenadas, etiquetasPredial,
-                etiquetasGeoUsuario, resultadoPredial, etiquetasGeo,
-                resultadoGeo, resultadoAmbiental, dialogo;
-            if (this._puntoGrafico) {
+                etiquetasGeoUsuario, resultadoPredial, etiquetasGeo, c,
+                resultadoGeo, resultadoAmbiental, dialogo, capa, extent;
+            if (!(((domAttr.get(this._resultadoRiesgoPredial, "innerHTML")) === 'a') ||
+                ((domAttr.get(this._resultadoRiesgoPredial, "innerHTML")) === 'm') ||
+                ((domAttr.get(this._resultadoRiesgoPredial, "innerHTML")) === 'b'))) {
+                this._tabContainer.selectChild(this._pestanas[0]);
+            } else if (!(((domAttr.get(this._resultadoRiesgoGeo, "innerHTML")) === 'A') ||
+                ((domAttr.get(this._resultadoRiesgoGeo, "innerHTML")) === 'M') ||
+                ((domAttr.get(this._resultadoRiesgoGeo, "innerHTML")) === 'B'))) {
+                this._tabContainer.selectChild(this._pestanas[1]);
+            } else {
                 node = domConst.create("div");
                 newDiv = domConst.place("<div></div>", node, "after");
                 titulo = this._etiqDialogReporte.titulo + ' ' + matriz.substr(6);
@@ -880,11 +906,11 @@ define([
                 //strY = this._cg3sr._gs[0]._g_utm.geometry.y.toString();
                 //coordenadas = strX.substring(0, strX.indexOf(".") + 3) + '; ' + strY.substring(0, strY.indexOf(".") + 3);
                 coordenadas = "";
-                etiquetasPredial = '';
+                etiquetasPredial = "";
                 arrayUtil.forEach(this._comboBoxesN, lang.hitch(this, function (cb) {
                     etiquetasPredial =  etiquetasPredial + cb.etiqueta + ':' + cb.combo.value + ';';
                 }));
-                etiquetasGeoUsuario = '';
+                etiquetasGeoUsuario = "";
                 arrayUtil.forEach(this._comboBoxes2S, lang.hitch(this, function (cb) {
                     etiquetasGeoUsuario =  etiquetasGeoUsuario + cb.etiqueta + ':' + cb.combo.value + ';';
                 }));
@@ -894,6 +920,21 @@ define([
                 resultadoGeo = domAttr.get(this._resultadoRiesgoGeo, "innerHTML");
                 resultadoAmbiental = domAttr.get(this._resultadoRiesgoAmbiental, "innerHTML");
 
+                capa = this._cg3sr;
+                for (c = 0; c < this._count; c = c + 1) {
+                    if (c !== 0) {
+                        extent = extent.union(capa.getGrafico(c.toString()).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
+                    } else {
+                        extent = capa.getGrafico("0").grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent();
+                    }
+                }
+                if (extent) {
+                    this.mapa.map.setExtent(extent.expand(2));
+                }
+                // Control de zoom por mapa
+                if (((this.mapa.baseMapLayer.url === "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer") || (this.mapa.baseMapLayer.url === "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer")) && (this.mapa.map.getZoom() > 17)) {
+                    this.mapa.map.setZoom(17);
+                }
                 //Se crea el widget con los parametros
                 this._riesgoReporteWidget = new RiesgoReporteWidget({mapa: this.mapa, titulo: titulo, coordenadas: coordenadas,
                     etiquetasPredial: etiquetasPredial, resultadoPredial: resultadoPredial, etiquetasGeo: etiquetasGeo, etiquetasGeoU: etiquetasGeoUsuario, resultadoGeo: resultadoGeo,
@@ -907,8 +948,6 @@ define([
                 });
                 dialogo.startup();
                 dialogo.show();
-            } else {
-                lang.hitch(this, this._marcarUbicacion(matriz));
             }
         },
         _cambioValorComboN: function (value) {
@@ -917,9 +956,9 @@ define([
             parametrosLlamada = this._gpRiesgoPredial + 'Matriz:' + value + ';';
 
             arrayUtil.forEach(this._comboBoxesN, lang.hitch(this, function (cb) {
-                if (cb.combo.value.localeCompare("")===0){
+                if (cb.combo.value.localeCompare("") === 0) {
                     esVacio = true;
-                };
+                }
                 parametrosLlamada =  parametrosLlamada + cb.id + ':' + cb.combo.value + ';';
             }));
 
@@ -928,10 +967,10 @@ define([
                     && ((domAttr.get(this._resultadoRiesgoGeo, "innerHTML")) !== this._msjMarcarUbicacion)) {
                 params = {"Entrada": parametrosLlamada + 'RiesgoGeo:' + domAttr.get(this._resultadoRiesgoGeo, "innerHTML")};
             }
-            if (esVacio){
+            if (esVacio) {
                 domAttr.set(this._resultadoRiesgoPredial, "innerHTML", "Marque todos los combos");
                 domStyle.set(this._resultadoRiesgoPredial, "backgroundColor", this._letraBackground("Inicial"));
-            }else{                            
+            } else {
                 this._standby.show();
                 this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariable), lang.hitch(this, this._statusCallback));
             }
@@ -949,14 +988,14 @@ define([
             domAttr.set(this._resultadoRiesgoPredial, "innerHTML", result.value);
             domStyle.set(this._resultadoRiesgoPredial, "backgroundColor", this._letraBackground(result.value));
         },
-        _cambioValorCombo2S: function (value, value2) {            
+        _cambioValorCombo2S: function (value, value2) {
             var parametrosLlamada, params, features, featureSet, parametrosN, esVacio;
             esVacio = false;
             parametrosLlamada = this._gpRiesgoGeo + 'Matriz:' + value + ';';
             arrayUtil.forEach(this._comboBoxes2S, lang.hitch(this, function (cb) {
                 if (cb.consulta === "Usuario") {
                     parametrosLlamada =  parametrosLlamada + cb.id + ':' + cb.combo.value + ';';
-                    if (cb.combo.value.localeCompare("") === 0 ){
+                    if (cb.combo.value.localeCompare("") === 0) {
                         esVacio = true;
                     }
                 }
@@ -974,11 +1013,11 @@ define([
                 }));
 
                 params = {"Entrada": parametrosLlamada + "RiesgoPredial:" + domAttr.get(this._resultadoRiesgoPredial, "innerHTML"), "Punto": featureSet, "EntradaVariablesN": parametrosN};
-                
-                if (esVacio){
+
+                if (esVacio) {
                     domAttr.set(this._resultadoRiesgoGeo, "innerHTML", "Marque los combos");
                     domStyle.set(this._resultadoRiesgoGeo, "backgroundColor", this._letraBackground("Inicial"));
-                }else{
+                } else {
                     this._standby.show();
                     this._gp.submitJob(params, lang.hitch(this, this._completeCambioVariableGeo), lang.hitch(this, this._statusCallback));
                 }
@@ -1031,12 +1070,11 @@ define([
             this._cg3sr.agregarMapa(this.mapa);
         },
         _dibujoComplete: function (evt) {
-            var fillSymbol, markerSymbol;
-            fillSymbol = new SimpleFillSymbol();
-            markerSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CROSS, 10,
-                    new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-                        new Color([0, 0, 0]), 1),
-                    new Color([0, 0, 0, 0.25]));
+            var fillSymbol;
+            fillSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+                new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                    new Color([255, 192, 0]), 1),
+                new Color([255, 192, 0, 0.25]));
             this._puntoGrafico = new Graphic(evt.geometry, fillSymbol);
             this._cg3sr.agregarGrafico(this._count.toString(), this._puntoGrafico);
             this._count = this._count + 1;
@@ -1050,6 +1088,8 @@ define([
             this._count = 0;
             this._dibujo.desactivar();
             this._puntoGrafico = undefined;
+            this._features = undefined;
+            this._features = [];
             domAttr.set(this._resultadoRiesgoGeo, "innerHTML", '');
             domStyle.set(this._resultadoRiesgoGeo, "backgroundColor", this._letraBackground('Inicial'));
             domAttr.set(this._resultadoRiesgoAmbiental, "innerHTML", '');
