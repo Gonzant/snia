@@ -173,7 +173,6 @@ define([
                     {name: "Montevideo", id: "MONTEVIDEO"},
                     {name: "Paysandu", id: "PAYSANDU"},
                     {name: "Rio Negro", id: "RIONEGRO"},
-                    {name: "Paysandu", id: "PAYSANDU"},
                     {name: "Rivera", id: "RIVERA"},
                     {name: "Rocha", id: "ROCHA"},
                     {name: "Salto", id: "SALTO"},
