@@ -191,12 +191,6 @@ define([
                         
                         div2.innerHTML = titulo + contenido;                             
                     }
-//                   if(this.options.config.data[0].titulo === "Estadisticas" ){
-//                       var comun =  this.options.config.data[1];
-//                        var contenido ="<p></p>"; //"<p>"+ comun.seccionContenido.elementos[0].Texto[0].Contenido + "</p>" ;
-//                        var titulo = "<p class=\"Titulo1\">Uruguay</p>";
-//                        div2.innerHTML = titulo + contenido;                             
-//                   }
                 }),
                 onClick: lang.hitch(this, function () {
                     var comun, i, j;
@@ -213,7 +207,7 @@ define([
                         } else {
                             if (comun[i].Imagen) {
                                 rutaImg = comun[i].Imagen.URL;
-                                imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagen.Ancho + 'px"' + " height=" + '"' + comun[i].Imagen.Alto + 'px>"';
+                                imagen = "<i class=\"material-icons\" style=\"color: #f19607\">" + rutaImg + "</i>";
                                 contenido = contenido + imagen + " <br> ";
                             } else {
                                 if (comun[i].Enlace) {
@@ -257,9 +251,9 @@ define([
                     }
                     if (this._tree.get("selectedItems")[0].seccionContenido.titulo.Imagen) {
                         rutaImg = this._tree.get("selectedItems")[0].seccionContenido.titulo.Imagen.URL;
-                        imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + "30px" + '"' + " height=" + '"' + "30px" + '" ' + titulo + " ";
-                        contenido = contenido + "<br>  <br>";
-                        div2.innerHTML = imagen + contenido;
+                        imagen = "<i class=\"material-icons\" style=\"color: #f19607\">" + rutaImg + "</i>";
+                        contenido = contenido + "<br>";
+                        div2.innerHTML = imagen + titulo + contenido;
                     } else {
                         div2.innerHTML = titulo + contenido;
                     }

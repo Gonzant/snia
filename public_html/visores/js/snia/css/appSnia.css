@@ -42,6 +42,13 @@
     background-color: white;
 }
 
+.Titulo1{
+    font-family: sans-serif;
+    font-size:18px;
+    color: #f19607;
+    font-weight:bold;
+}
+
 /*Fin nuevo*/
 html, body {
     width: 100%;
@@ -599,12 +606,6 @@ tituloTPAyuda{
      padding: 1px; 
 }
 
-.Titulo1{
-    font-family: sans-serif;
-    font-size:18px;
-    color: #f19607;
-    font-weight:bold;
-}
 
 .Negrita{
     font-family: sans-serif;
@@ -743,7 +744,7 @@ tituloTPAyuda{
 
 
 #divToolbar {
-    padding-top: 8px;
+    padding-top: 10px;
 }
 /*#divToolbar {
     z-index: 2;
@@ -819,25 +820,7 @@ tituloTPAyuda{
   }
 
 
-#divToolbarTitulo{
-    font-size: 22px;
-    margin-top: 6px;
-    z-index: 3;
-    right: 64px;
-    padding: 7px;
-    padding-right: 90px;
-    padding-left: 15px;
-    position:absolute;
-    border-color: dimgray;
-    border-style: solid;
-    border-width: 5px;  
-    background-color:#FFC000;
-    font-size: 22px;
-    font-family:inherit;
-    color:dimgray;
-    font-weight:bold;
-    border-radius: 130px;
-}
+
 
 .SmallButtonTransparent {
     cursor:pointer;
@@ -924,9 +907,10 @@ tituloTPAyuda{
     border-width: 6px;
     background-color:#FFC000;
     border-radius: 130px;
+}
 /*    background-image: url('../img/logo.png')*/
     
-  }
+/*  }
 #divToolbarTitulo{
     margin-top: 6px;
     z-index: 3;
@@ -944,7 +928,7 @@ tituloTPAyuda{
     color:dimgray;
     font-weight:bold;
     border-radius: 130px;
-}
+}*/
 
 /*
  * SNIA General

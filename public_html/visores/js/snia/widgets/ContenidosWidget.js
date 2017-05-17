@@ -147,8 +147,8 @@ define([
             new Tooltip({
                 connectId: this._descargarCapas.domNode,
                 label: "Descargar",
-                position:['below']
-            });            
+                position: ['below']
+            });
             this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);
@@ -159,7 +159,6 @@ define([
             this._standbyAreas = new Standby({target: this._standBy});
             domConstruct.place(this._standbyAreas.domNode, this._standBy, "after");
             this._standbyAreas.startup();
-            
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
             if (this.get("loaded")) {
@@ -189,9 +188,9 @@ define([
             this.emit("active-changed", {});
             // Quitar foco de boton por defecto al activar el widget
             var fHandler = focusUtil.watch("curNode", function () {
-                    focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
-                    fHandler.unwatch(); //Desactivar handler
-                });
+                focusUtil.curNode && focusUtil.curNode.blur(); //Quitar foco
+                fHandler.unwatch(); //Desactivar handler
+            });
         },
         _colapsarClick: function () {
             arrayUtil.forEach(this._toc._rootLayerTOCs, lang.hitch(this, function (item) {

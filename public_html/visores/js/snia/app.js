@@ -1,6 +1,5 @@
 /*jslint browser: true*/
 /*global document, alert, require*/
-
 /*
  * js/snia/app
  * 

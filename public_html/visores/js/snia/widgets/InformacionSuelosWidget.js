@@ -79,7 +79,6 @@ define([
             this.inherited(arguments);
             if (this.mapa) {
                 this.own(
-                    //on(this.mapa, "reload", lang.hitch(this, this._mapaReload)),
                     on(this._buscarNode, a11yclick, lang.hitch(this, this._filtroSelect)),
                     on(this._acercarUnidadMapeoNode, a11yclick, lang.hitch(this, this._acercarSeleccionUnidadMapeo)),
                     on(this._acercarPerfilSeleccionadoNode, a11yclick, lang.hitch(this, this._acercarSeleccionPerfil)),
@@ -246,7 +245,7 @@ define([
         _acercarSeleccionUnidadMapeo : function () {
             this._cg3sr.limpiar();
             this._resultadoNode.innerHTML = this._i18n.widgets.BuscarWidget.lbBuscando;
-            this._query.where = "UM = '" + this._elemento[this._config.CampoEtiquetaUnidadMapeo]+ "'";
+            this._query.where = "UM = '" + this._elemento[this._config.CampoEtiquetaUnidadMapeo] + "'";
             this._query.returnGeometry = true;
             this._queryTaskUnaidadMapeo.execute(this._query, lang.hitch(this, this._queryTaskCallbackGeometry),
                 lang.hitch(this, this._queryTaskErrbackGeometry));
@@ -309,8 +308,6 @@ define([
             case 0:
                 this._elemento = rowData;
                 elemento = rowData[this._config.CampoEtiquetaUnidadMapeo];
-//                elemento = elemento.replace(/\+/g, ".");
-//                elemento = elemento.replace(/\//g, ",");
                 url = this._config.UrlUnidadMapeo + "/" + elemento + ".pdf";
                 break;
             case 1:
@@ -378,7 +375,7 @@ define([
                         ext = feature.geometry.getExtent();
                     } else {
                         ext = ext.union(feature.geometry.getExtent());
-                    };
+                    }
                     indice = feature.attributes.OBJECTID;
                     this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
                 }));
@@ -407,8 +404,8 @@ define([
             return null;
         },
         _createLink: function (){
-    return ("<a href="+data+">"+data+"</a>");
-}
+            return ("<a href="+data+">"+data+"</a>");
+        }
     });
     return widget;
 });
