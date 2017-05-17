@@ -243,9 +243,9 @@ i{
 
 
 .itemMainMenu:hover {
-    -moz-box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 15px #888;
     -webkit-box-shadow: 0 0 5px #888;
-    box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 15px #888;
 }
 
 
