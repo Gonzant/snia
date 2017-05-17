@@ -187,15 +187,17 @@ define([
             this._elemento = null;
             new Tooltip({
                 connectId: [this._acercarUnidadMapeoNode.domNode],
-                label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbAcercarUnidadMapeo + "<br>"
+                label: this._i18n.widgets.InformacionSuelosWidget.lbAcercarUnidadMapeo,
+                position: ['below']
             });
             new Tooltip({
                 connectId: [this._acercarPerfilSeleccionadoNode.domNode],
-                label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbAcercarPerfil + "<br>"
+                label: this._i18n.widgets.InformacionSuelosWidget.lbAcercarPerfil,
+                position: ['below']
             });
             new Tooltip({
                 connectId: [this._limpiarSeleccionNode.domNode],
-                label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbLimpiar + "<br>"
+                label: this._i18n.widgets.InformacionSuelosWidget.lbLimpiar +"<br>"
             });
         },
         _excecute : function () {

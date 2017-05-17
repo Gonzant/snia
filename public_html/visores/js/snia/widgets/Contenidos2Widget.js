@@ -21,6 +21,7 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "modulos/TOC",
+    "dijit/Tooltip",
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/tasks/Geoprocessor",
     "dojo/dom-construct",
@@ -34,7 +35,7 @@ define([
     "dojo/domReady!"
 ], function (on,
     Evented, declare, lang, arrayUtil, template, i18n, mapaConfigJSON, domClass, domStyle, focusUtil,
-    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC,
+    _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip,
     ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
 
     //"use strict";
@@ -133,6 +134,22 @@ define([
             }
         },
         _init: function () {
+            new Tooltip({
+                connectId: this._colapsarNode.domNode,
+                label: "Comprimir contenido",
+                position: ['below']
+            });
+            new Tooltip({
+                connectId: this._expandirNode.domNode,
+                label: "Expandir contenido",
+                position: ['below']
+            });
+            new Tooltip({
+                connectId: this._descargarCapas.domNode,
+                label: "Descargar",
+                position:['below']
+            }); 
+            
             this._resultadoNodeContenidos.innerHTML = "";
             this._visible();
             this.set("loaded", true);
