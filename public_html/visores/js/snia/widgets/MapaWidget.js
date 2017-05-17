@@ -181,7 +181,7 @@ define([
             this.emit("load", {});
             this._scalebar = new Scalebar({
                 map: this.map,
-                scalebarUnit: "metric"
+                scalebarUnit: "dual"
             });
             this._mapUpdateImg();
         },
@@ -220,11 +220,6 @@ define([
                 arrayUtil.forEach(this.mapLayers, lang.hitch(this, function (layer) {
                     this.map.addLayer(layer);
                 }));
-                this._scalebar.destroy();
-                this._scalebar = new Scalebar({
-                    map: this.map,
-                    scalebarUnit: "metric"
-                });
             }
         },
         _reinit: function () {

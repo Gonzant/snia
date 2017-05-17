@@ -49,6 +49,28 @@
     font-weight:bold;
 }
 
+.esriScalebar {
+    z-index: 30;
+    position: absolute;
+    width: 0px;
+    height: 20px;
+    left: 25px;
+    width: 135px;
+    padding: 10px;
+    height: 33px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.scalebar_bottom-left {
+    left: 25px;
+    bottom: 10px;
+    top: 582px;
+    /*width: 165px;*/
+    padding: 8px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
 /*Fin nuevo*/
 html, body {
     width: 100%;
@@ -260,13 +282,13 @@ html, body {
     width: 570px;
     height: 60px;
 }
-.esriScalebarLabel{
+/*.esriScalebarLabel{
     color:black;
     width: 15%;
     height: 20px;
     font-size: 13px;
-}
-
+}*/
+/*
 .esriScalebarRuler {
     width: 125%;
     height: 9px;
@@ -286,11 +308,11 @@ html, body {
 }
 esriScalebarLabel {    
     color: black;
-}
-
+}*/
+/*
 .escala{
     
-/*    z-index: 21;
+    z-index: 21;
     width: 80px;
     height: 30px;
     position:absolute;
@@ -298,8 +320,8 @@ esriScalebarLabel {
     padding-top: 14px;
     padding-bottom: 1px;
     left: 60px;
-    background-color: #fff;*/
-}
+    background-color: #fff;
+}*/
 
 /*
  * mapa

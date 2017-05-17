@@ -27,13 +27,7 @@
        $('.esriSimpleSliderTL').css('top','110px');
     }
 
-    var styleScaleBar = function()
-    {
-        $('.esriScalebar').css('width','165px');
-        $('.esriScalebar').css('padding','10px');
-        $('.esriScalebar').css('height','33px');
-        $('.esriScalebar').css('background-color','rgba(255, 255, 255, 0.80)');      
-    }
+    
 
     var styleDoubleSlider = function()
     {  
