@@ -27,6 +27,7 @@ define([
     "esri/tasks/GeometryService",
     "esri/tasks/Geoprocessor",
     "dijit/Dialog",
+    "dojo/aspect",
     "esri/tasks/FeatureSet",
     "dojox/widget/Standby",
     "modulos/Grafico3SR",
@@ -54,7 +55,7 @@ define([
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Color, GeometryService, Geoprocessor,
-    Dialog, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, ObjectStore, CheckedMultiSelect,
+    Dialog, aspect, FeatureSet, Standby, Grafico3SR, a11yclick, Memory, ObjectStoreModel, ObjectStore, CheckedMultiSelect,
     DataStore, Select, CheckBox, MultiSelect, AperturasSICAWidget, AperturasCrucesSICAWidget, dom, win, TabContainer, domConstruct,
     ContentPane, Tooltip, FilteringSelect, baseArray) {
     //"use strict";
@@ -112,7 +113,8 @@ define([
                     on(this._radioSP, a11yclick, lang.hitch(this, this._cargarSP)),
                     on(this._radioAE, a11yclick, lang.hitch(this, this._cargarAE)),
                     on(this._radioAS, a11yclick, lang.hitch(this, this._cargarAS)),
-                    on(this._buscarAperturas, a11yclick, lang.hitch(this, this._cargarAperturas)),
+                    on(this._buscarAperturasDibujar, a11yclick, lang.hitch(this, this._buscarAperturasDibujo)),
+                    on(this._buscarAperturasPredefinidas, a11yclick, lang.hitch(this, this._buscarAperturasPredef)),
                     on(this._buscarAperturasCruces, a11yclick, lang.hitch(this, this._cargarAperturasCruces))
                 );
             }
@@ -143,6 +145,16 @@ define([
             this._cpg3SR.seleccionarGraficoClickeado();
             this._dibujoUsuario = 1;
         },
+        
+        _buscarAperturasDibujo: function(){
+            this._esPredefinida = false;
+            this._cargarAperturas();            
+        },
+        _buscarAperturasPredef: function(){
+            this._esPredefinida = true;
+            this._cargarAperturas();            
+        },
+        
         _cargarDeptos: function () {
             var c, i, departamentosStore;
             this.opcionesPredef ="DEPARTAMENTO;";
@@ -327,6 +339,11 @@ define([
         _cargarAperturas: function () {
             var i, g, area, featureSet, parametros, areas = [];
             this._aperturasSeleccionadasSimple = "";
+//            var tabContainer1 = registry.byId("tabContainer1");
+//            var contentPane1 = registry.byId("contentPane1");
+
+            
+            
             if (this._i === 0 && this._esPredefinida === false) { //dibujo cuando no es predefinida
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } else {
