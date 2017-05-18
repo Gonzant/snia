@@ -39,8 +39,7 @@
             },
             {
                 "multiple": [
-                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
-                        "tooltip": "aaaa"
+                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer"                        
                     },
                     {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer"                        
                     }
@@ -50,8 +49,10 @@
                         "id": "Información base",
                         "opacity": 0.7,
                         "visible": false
+                },
+                "sublayersTooltips":{
+                    "Colonizacion (INC)": "aaaa"
                 }
-            
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
