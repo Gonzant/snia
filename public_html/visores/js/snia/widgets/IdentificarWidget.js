@@ -33,12 +33,16 @@ define([
     "esri/tasks/IdentifyTask",
     "dojo/store/Observable",
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/WMSLayer",
+    "dojo/request/xhr", "dojo/dom", "dojo/dom-construct", "dojo/json",
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle,
     CapaGrafica3SR, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory,
-    DataGrid, ObjectStore, ObjectStoreModel, Tree, Dibujo, Draw, IdentifyParameters, IdentifyTask, Observable, ArcGISDynamicMapServiceLayer) {
+    DataGrid, ObjectStore, ObjectStoreModel, Tree, Dibujo, Draw, IdentifyParameters, IdentifyTask, 
+    Observable, ArcGISDynamicMapServiceLayer, WMSLayer,
+    xhr, dom, domConst, JSON) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -255,7 +259,9 @@ define([
             haycapas = false;
             this._ext = 0;
             arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
+                console.log(layer);
                 if (layer instanceof ArcGISDynamicMapServiceLayer) {
+                    console.log("arcgis");
                     this._identify = new IdentifyTask(layer.url);
                     this._identifyParams = new IdentifyParameters();
                     this._identifyParams.mapExtent = this.mapa.map.extent;
@@ -271,6 +277,32 @@ define([
                             lang.hitch(this, this._queryTaskErrback));
                         this._cantLlamadas = this._cantLlamadas + 1;
                     }
+                } else if (layer instanceof WMSLayer){
+                    console.log("wms");
+                    console.log(evt.geometry);     
+                    //https://geoserver.snia.gub.uy/geoserver/cite/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=cite%3Adepartamentos&STYLES&LAYERS=cite%3Adepartamentos&info_format=application/json&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A32721&WIDTH=101&HEIGHT=101&BBOX=492925.0316953364%2C6128273.659230868%2C616308.9925410092%2C6251657.620076542
+                    //Pruebo con el link https://geoserver.snia.gub.uy/geoserver/cite/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=cite%3Adepartamentos&STYLES&LAYERS=cite%3Adepartamentos&INFO_FORMAT=text%2Fhtml&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A32721&WIDTH=101&HEIGHT=101&BBOX=689606.3950235873%2C6354273.98355215%2C812990.35586926%2C6477657.944397824
+                    xhr("https://geoserver.snia.gub.uy/geoserver/cite/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&FORMAT=image%2Fpng&TRANSPARENT=true&QUERY_LAYERS=cite%3Adepartamentos&STYLES&LAYERS=cite%3Adepartamentos&info_format=application/json&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A32721&WIDTH=101&HEIGHT=101&BBOX=492925.0316953364%2C6128273.659230868%2C616308.9925410092%2C6251657.620076542", {                        
+                        method: "GET",
+                        sync: true
+                      }).then(function(data){                          
+                        // Do something with the handled data
+                        //console.log(data);
+                        // aca se parsea la respuesta del getfeatureinfo si es json
+                        var responseJSON = JSON.parse(data);
+                        
+                        for(var i=0; i<responseJSON.features.length; i++){
+                            console.log(responseJSON.features[i]);
+                        }
+                        
+                      }, function(err){
+                        // Handle the error condition
+                        console.log(err);
+                      }, function(evt){
+                        // Handle a progress event from the request if the
+                        // browser supports XHR2
+                        console.log(evt);
+                      });
                 }
             }));
             if (haycapas) {
@@ -296,6 +328,8 @@ define([
         },
         //auxiliares
         _queryTaskCallback: function (results) {
+            console.log("results");
+            console.log(results);
             var currentCapa, flag;
             currentCapa = 0;
             flag = 0;
