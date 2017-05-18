@@ -152,6 +152,14 @@ define([
         },
         _buscarAperturasPredef: function(){
             this._esPredefinida = true;
+            if(this.opcionesPredef.includes("DEPARTAMENTO;"))
+                this.opcionesPredef = "DEPARTAMENTO;";
+            if(this.opcionesPredef.includes("AREAENUMERACION;"))
+                this.opcionesPredef = "AREAENUMERACION;";  
+            if(this.opcionesPredef.includes("SECCIONALPOLICIAL;"))
+                this.opcionesPredef = "SECCIONALPOLICIAL;"; 
+            if(this.opcionesPredef.includes("AREASUPERVISION;"))
+                this.opcionesPredef = "AREASUPERVISION;";
             this._cargarAperturas();            
         },
         
@@ -337,12 +345,7 @@ define([
         },
         _cargarAperturas: function () {
             var i, g, area, featureSet, parametros, areas = [];
-            this._aperturasSeleccionadasSimple = "";
-//            var tabContainer1 = registry.byId("tabContainer1");
-//            var contentPane1 = registry.byId("contentPane1");
-
-            
-            
+            this._aperturasSeleccionadasSimple = "";   
             if (this._i === 0 && this._esPredefinida === false) { //dibujo cuando no es predefinida
                 this._msgAgregarArea.innerHTML = "Se necesita al menos un área";
             } else {

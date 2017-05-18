@@ -1,4 +1,4 @@
-<div data-dojo-attach-point="_principal" style="width: 400px; height: 400px">
+<div data-dojo-attach-point="_principal" style="width: 420px; height: 400px">
   
     <div data-dojo-attach-point = "_tabPrincipal" data-dojo-type="dijit/layout/TabContainer" style="height: 380px;">
         <div data-dojo-type="dijit/layout/ContentPane" title="Simple" data-dojo-props="selected:true">
@@ -6,12 +6,11 @@
             <div data-dojo-attach-point="_ruedaEspera" >
                 <p>Seleccione la/s apertura/s: </p>
                 <select id="dynamic" data-dojo-attach-point = "dynamic" multiple=""></select>
-                <br><br>
-            </div>
-            
-            <div data-dojo-attach-point = "_tabSimple" data-dojo-type="dijit/layout/TabContainer" style="width: 370px; height: 180px;" tabPosition="left-h" tabStrip="true">
+                <br>
+            </div>  
+            <br>
+            <div data-dojo-attach-point = "_tabSimple" data-dojo-type="dijit/layout/TabContainer" style="width: 400px; height: 220px;" tabPosition="left-h" tabStrip="true">
                 <div data-dojo-attach-point = "_cpDibujar" data-dojo-type="dijit/layout/ContentPane" title="Dibujar" selected="true" style="margin-left: 10px; width: 300px;">
-                    <br>
                     <div data-dojo-attach-point = "_msjErrorNoSeleccionadas"> </div>
                     <div data-dojo-attach-point="_msgAgregarArea"> </div>
                     <div data-dojo-attach-point="_dibujarArea" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo"> 
@@ -22,15 +21,13 @@
                     </div> 
                     <button data-dojo-attach-point="_buscarAperturasDibujar" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 60px; margin-left: 30px;"> 
                         <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> Buscar
-                    </button>
-                    
+                    </button>                    
                 </div>                
                 <div data-dojo-type="dijit/layout/ContentPane" title="Predefinido" data-dojo-attach-point = "_cpPredefinido">                       
                     <div data-dojo-attach-point="_msgPredefinida"> </div><br>
                     <div data-dojo-attach-point = "_msjErrorPredefinida" > </div> 
                     <input type="radio" checked='true' data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioD" data-dojo-attach-point = "_radioDepto" value="depto"/>
                     <label for="radioD">Departamentos</label> 
-                    <br>
                     <input type="radio" data-dojo-type="dijit/form/RadioButton" name="radioP" id="radioSP" data-dojo-attach-point = "_radioSP" value="sp"/>
                     <label for="radioSP">Seccional Policial</label> 
                     <br>
@@ -42,14 +39,12 @@
                     <div data-dojo-attach-point="_textSeleccione"> Seleccione el/los departamentos:</div>                    
                     <div data-dojo-attach-point= "_selectDeptos"> 
                         <select data-dojo-attach-point = "_select_predef" multiple=""></select>                            
-                    </div>                                             
-                    <br>
-                    <button data-dojo-attach-point="_buscarAperturasPredefinidas" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 50px; margin-left: 60px;"> 
+                    </div> 
+                    <button data-dojo-attach-point="_buscarAperturasPredefinidas" data-dojo-type="dijit/form/Button" class="SmallButtonTransparentAmarillo" style="margin-top: 30px; margin-left: 80px;"> 
                         <img src = "../js/snia/img/acercarGris.png" class="iconAcercarSeleccionBuscar"> Buscar
                     </button>
                 </div>                
-              </div>  
-            
+              </div>             
             
         </div>
         <div data-dojo-type="dijit/layout/ContentPane" title="Cruces">
