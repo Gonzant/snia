@@ -29,7 +29,7 @@
             }
         },
         "dynamicLayers": [ 
-			{
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/CuencaSantaLucia/MapServer",
                 "options": {
                         "id": "BASE",
@@ -52,6 +52,24 @@
                         "opacity": 0.7,
                         "visible": false
                 }
+            },            
+            {
+                "url": "http://www.dinama.gub.uy/geoserver/u19600217/wms?service=WMS&version=1.1.0&request=GetCapabilities",
+                "options": {
+                        "id": "Localidades",
+                        "opacity": 0.7,
+                        "visible": false
+                },
+                "wms": true
+            },
+            {
+                "url": "http://geoserver.snia.gub.uy/geoserver/cite/wms?service=WMS&version=1.1.0&request=GetCapabilities",
+                "options": {
+                        "id": "WMSPrueba",
+                        "opacity": 0.7,
+                        "visible": false
+                },
+                "wms": true
             }
         ]
     }
