@@ -38,12 +38,20 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+                "multiple": [
+                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
+                            "sublayersTooltips":{"Colonizacion (INC)": "Versión preliminar"}                        
+                    },
+                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer"                        
+                    }
+                ],               
+
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
                         "visible": false
                 }
+               
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
@@ -63,6 +71,7 @@
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
+                "layers":[2,3,4,5,6],
                 "options": {
                         "id": "Cartas de Suelos",
                         "opacity": 0.7,
@@ -130,14 +139,6 @@
                 "options": {
                         "id": "Logística (Producción)",
                         "opacity": 0.7,
-                        "visible": false
-                }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
-                "options": {
-                        "id": "Tipología agropecuaria",
-                        "opacity": 1.0,
                         "visible": false
                 }
             },
