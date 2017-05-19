@@ -217,7 +217,6 @@ define([
         _generarNodoMultiple: function (dataLayer) {
             this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
             arrayUtil.forEach(dataLayer.multiple, function (dataLayer1) {
-                this._getLegendJSON(dataLayer1.url + "/legend"); //Traigo todo
                 var l = this.mapa.map.getLayer(dataLayer.options.id + dataLayer1.url);
                 if (l !== null) {
                     if (l.loaded) {
