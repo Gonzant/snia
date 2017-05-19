@@ -1,7 +1,7 @@
 /*Nuevo Estilo*/
 .esriSimpleSliderTL {
-    top: 15%;
-    left: 20px;
+    top: 16%;
+    left: 96%;
 }
 
 .claro .dijitDialog {
@@ -160,66 +160,9 @@ html, body {
     border: none;    
 }
 
-.iconAyuda {
-    background-image: url('../img/ayuda.png');    
-    background-repeat: no-repeat; 
-    background-size: 2px 20px;
-    width: 20px;
-    height: 20px;     
-}
-
 .iconVentana{    
     height: 20px; 
 }
-
-.iconPDFCubrimientoBuscar{
-    background-image: url('../img/pdf.png');
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 45px;
-    border:0px;
-    background-color: transparent;
-}
-
-.iconTXTCubrimientoBuscar{
-    background-image: url('../img/txt.png');    
-    background-repeat: no-repeat; 
-    background-size: 40px 40px;
-    width: 40px;
-    height: 45px; 
-    border:0px;
-    background-color: #FFC000;
-}
-.iconAcercarSeleccionBuscar{
-    width: 27px;
-    height: 27px; 
-    border: none;
-}
-.iconDesSeleccionBuscar{
-    width: 27px;
-    height: 27px; 
-    border: none;
-}
-.iconDeleccionarTodoBuscar{
-    width: 27px;
-    height: 27px; 
-    border: none;
-}
-
-.iconCroquisBuscar{
-    width: 27px;
-    height: 27px; 
-    border: none;
-}
-
-.iconCubrimientoBuscar{
-    width: 27px;
-    height: 27px; 
-    border: 27px;
-}
-
-
 .riesgoTitulo{
     font-size: 16px;
     font-weight: bold;
@@ -353,10 +296,6 @@ esriScalebarLabel {
 Dialogos: 
 */
 
-.dijitButtonNode:hover {
-    background: #f19607;
-    border: 0px solid transparent;
-}
 
 .claro .dijitDialogTitleBar {
     border: 0px solid;
@@ -428,9 +367,7 @@ Dialogos:
 	position:relative;
 	top:1px;
 }
-.BigButton:hover {
-	background-color:#ffec64;
-}
+
 .VBigButton {
 	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
 	box-shadow: 0px 0px 0px 0px #ffec64;
@@ -456,11 +393,6 @@ Dialogos:
     cursor: pointer;    
     border-radius:5px;
     border: 1px;
-}
-.BigButtonMapaBase:hover{
-    border-color: #ffffff;
-    border-style: solid;
-    border: 2px;
 }
 
 /*Botones con Texto*/
@@ -993,21 +925,12 @@ Dialogos:
     padding:1px;
     border-color: transparent !important
 }
-.SmallButtonBH:hover{
-    border-color: #f19607;
-    border-style: solid;
-}
 
 .SmallButton {
     border-radius:5px;
     background-color: #f19607;
     padding:3px 1px;
     border-color: transparent !important
-}
-.SmallButton:hover{
-    border-color: #ffffff;
-    border-style: solid;
-    border-width: 1px;
 }
 
 .Indice1{
