@@ -161,8 +161,7 @@ define([
             if(this.opcionesPredef.includes("AREASUPERVISION;"))
                 this.opcionesPredef = "AREASUPERVISION;";
             this._cargarAperturas();            
-        },
-        
+        },        
         _cargarDeptos: function () {
             var c, i, departamentosStore;
             this.opcionesPredef ="DEPARTAMENTO;";
@@ -400,10 +399,8 @@ define([
                             multiple: false,
                             Poligono: featureSet,
                             Predefinida : ""
-                        };
-                        
-                    }
-                        
+                        };                        
+                    }                        
                     this._standbyAreas.show();
                     this._gpCroquis.submitJob(parametros, lang.hitch(this, this._gpCroquisComplete));                
                 }
