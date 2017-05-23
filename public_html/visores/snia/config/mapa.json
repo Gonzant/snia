@@ -5,6 +5,18 @@
             "logo": false
         },
         "baseMapLayer": {
+            "url":"http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "extent": {
+                "xmin": -37867.16314808361,
+                "ymin": 5957313.020605681,
+                "xmax": 1220493.68690695,
+                "ymax": 6874864.455708552,
+                "spatialReference": {
+                    "wkid":32721
+		}
+            }
+        },
+        "baseMapLayerBackup": {
             "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
                 "xmin": -6364316,
@@ -13,18 +25,6 @@
                 "ymax": -3364316,
                 "spatialReference": {
                     "wkid":102100
-                }
-            }
-        },
-        "baseMapLayerBackup": {
-            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-            "extent": {
-                "xmin": -37867.16314808361,
-                "ymin": 5957313.020605681,
-                "xmax": 1220493.68690695,
-                "ymax": 6874864.455708552,
-                "spatialReference": {
-                    "wkid":32721
                 }
             }
         },
@@ -38,20 +38,12 @@
                 }
             },
             {
-                "multiple": [
-                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
-                            "sublayersTooltips":{"Colonizacion (INC)": "Versión preliminar"}                        
-                    },
-                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer"                        
-                    }
-                ],               
-
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
                         "visible": false
                 }
-               
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
@@ -71,7 +63,6 @@
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
-                "layers":[2,3,4,5,6],
                 "options": {
                         "id": "Cartas de Suelos",
                         "opacity": 0.7,
@@ -139,6 +130,14 @@
                 "options": {
                         "id": "Logística (Producción)",
                         "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
+                "options": {
+                        "id": "Tipología agropecuaria",
+                        "opacity": 1.0,
                         "visible": false
                 }
             },
