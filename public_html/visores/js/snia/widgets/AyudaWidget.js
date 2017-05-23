@@ -238,8 +238,13 @@ define([
                                                         for (j = 0; j < comun[i].TextoNegrita.length; j = j + 1) {
                                                             contenido = contenido + "<b><p class=" + '"' + comun[i].TextoNegrita[j].Estilo + '"' + ">" + comun[i].TextoNegrita[j].Contenido + "</p></b>";
                                                         }
-                                                    }
-                                                    
+                                                    }else{
+                                                        if (comun[i].Imagenes) {
+                                                            rutaImg = comun[i].Imagenes.URL;
+                                                            imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagenes.Ancho + 'px"' + " height=" + '"' + comun[i].Imagenes.Alto + 'px>"';
+                                                            contenido = contenido + imagen + " <br> ";
+                                                        }                                                       
+                                                    }                                                    
                                                 }
                                             }
                                         }
