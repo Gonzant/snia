@@ -3,24 +3,40 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Forestal</title>
  
-        <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
-        <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
+        <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
         <link rel="stylesheet" href="../js/snia/css/appSnia.css">
         <link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" /> <!-- Contenidos -->
+        <link rel="shortcut icon" href="../js/snia/img/logo_1.png" type="image/png" sizes="16x16">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="../js/snia/css/style.css">
+        <link rel="stylesheet" href="../js/lib/nuevoEstilo/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
 
     <body class="claro" >
-        <div id="divStandby">
-            <div id="divContenedorIndex" style="display: none" >
-                <div id="divToolbar" class="divToolbar"></div>
-                <div id="divLogoMGAP" class="divLogoMGAP">
-                    <img id="logoMGAP" src="../js/snia/img/logoSnia.png">
-                </div>
-                <div id="divToolbarTitulo" class="divToolbarTitulo"> </div>
-            </div>
+       <nav class="icon-bar alignRight mainBar">
+             <div style="float: left;"> <img class="logo" src="../js/snia/img/logoSnia_1.png" alt="logoSnia" width="40%"> </div>
+<!--            <a class="itemMainMenu menuIngresar" style="position: relative;cursor: pointer;">            
+                <div style="color: #f19607;position: absolute;padding: 7px;font-size: 24px;">Ingresar</div>
+                <i class="material-icons" style="float: right;position: absolute;padding-top: 15px;padding-left: 40px;">keyboard_arrow_down</i>
+             </a>            -->
             
-            <div id="divMapa">
-            </div>
+            <div id= "divToolbar" class="icon-bar alignRight mainBar" style="float: right; width: 10%"></div>
+            
+        </nav>
+        <div class="secondIcon-bar alignRight smallBar">
+         <div id="titleSecond" style="float: left;"><b>FORESTAL</b></div>
+        </div>
+        
+        <div id="divStandby">
+            <div id="divContenedorIndex" style="display: none" >  
+            </div>          
+            
+            <div id="divMapa"></div>
         </div>
         <!-- Configuro Dojo -->
         <script type="text/javascript">
