@@ -5,6 +5,7 @@
             "title": "Mapa Base",
             "msgToolTip": "Permite seleccionar el mapa de base.",
             "icono": "../js/snia/img/base.png",
+            "icon":"map",
             "toggle": false,
             "widgetConfig": {
                 "mapasBase": [
@@ -19,6 +20,7 @@
             "title": "Contenidos",
             "msgToolTip": "Permite visualizar diferentes capas",
             "icono": "../js/snia/img/contenido.png",
+            "icon":"layers",
             "toggle": false,
             "startsOpen": true,
             "draggable": false,
@@ -32,7 +34,8 @@
             "widget": "widgets/NavegarWidget",
             "title": "Navegar",
             "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
-            "icono": "../js/snia/img/navegar.png",            
+            "icono": "../js/snia/img/navegar.png",   
+            "icon": "near_me",
             "toggle": false,
             "widgetConfig": {
                 
@@ -42,7 +45,8 @@
             "widget": "widgets/IdentificarWidget",
             "title": "Identificar",
             "msgToolTip": "Muestra la información de los elementos en un punto.",
-            "icono": "../js/snia/img/identificar.png",            
+            "icono": "../js/snia/img/identificar.png", 
+            "icon": "info_outline",
             "toggle": false,
             "widgetConfig": {
                 "campo": "id",
@@ -53,7 +57,8 @@
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
             "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
-            "icono": "../js/snia/img/buscar.png",            
+            "icono": "../js/snia/img/buscar.png",   
+            "icon": "search",
             "toggle": false,
             "widgetConfig": {
                 "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
@@ -69,6 +74,7 @@
             "title": "Medir",
             "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
             "icono": "../js/snia/img/regla.png",
+            "icon": "straighten",
             "toggle": false,
             "widgetConfig": {
                 
@@ -78,7 +84,8 @@
             "widget": "widgets/CoordenadasWidget",
             "title": "Coordenadas",
             "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
-            "icono": "../js/snia/img/coordenadas.png",            
+            "icono": "../js/snia/img/coordenadas.png",   
+            "icon": "my_location",
             "toggle": false,
             "widgetConfig": {
                 
@@ -89,6 +96,7 @@
             "title": "Riesgo Ambiental",
             "msgToolTip": "Calcula el riesgo ambiental para un punto geográfico.",
             "icono": "../js/snia/img/calculoRiesgo_gris.png",
+            "icon": "assistant_photo",
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
@@ -154,7 +162,8 @@
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
             "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png",            
+            "icono": "../js/snia/img/referencia.png",  
+            "icon": "place", 
             "toggle": false,
             "widgetConfig": {                
             }
@@ -164,6 +173,7 @@
             "title": "Imprimir",
             "msgToolTip": "Imprime el mapa actual en distintos formatos.",
             "icono": "../js/snia/img/imprimir.png",
+            "icon": "local_printshop",
             "toggle": false,
             "widgetConfig": {
                 "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
@@ -185,6 +195,7 @@
             "title": "Ayuda",
             "msgToolTip": "Muestra el manual de usuario e información sobre EFLUENTES. ",
             "icono": "../js/snia/img/ayuda.png",
+            "icon": "help_outline",
             "toggle": false,
             "widgetConfig": {
                 "data": [
