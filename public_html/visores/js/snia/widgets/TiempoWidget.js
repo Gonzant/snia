@@ -277,12 +277,18 @@ define([
            this._filtro.startup();
         },
         _setYearTimeSlider: function (state) {
+            var year;
             this._startYear = state;
             if (state !== 0) {
                 this._sTime = new Date();
                 this._eTime = new Date();
                 this._sTime.setFullYear(this._startYear, 0, 1);
-                this._eTime.setFullYear(this._startYear, 11, 31);                
+                year = this._sTime.getYear() + 1900;
+                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)){
+                    this._eTime.setFullYear(this._startYear+1, 0, 6);
+                }else{
+                    this._eTime.setFullYear(this._startYear, 11, 31);  
+                }
             } else {
                 this._sTime = new Date(this._sTimeAbs);
                 this._eTime = new Date(this._eTimeAbs);
