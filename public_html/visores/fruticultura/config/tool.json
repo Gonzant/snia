@@ -483,10 +483,7 @@
                 "elementos": [
                     {
                         "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
+                            {"Contenido": "Dirección", "Estilo": "Titulo2"},
                             {
                               "Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
                               "Estilo": "Normal"
