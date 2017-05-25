@@ -143,12 +143,6 @@ html, body, #mapDiv {
     font-size: 30px;
 }
 
-.logo{
-    padding: 5px 0;
-    padding-left: 20px;
-}
-
-
 input[type="range"]{
     -webkit-appearance: none;
     -moz-apperance: none;

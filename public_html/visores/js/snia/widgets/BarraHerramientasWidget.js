@@ -113,9 +113,9 @@ define([
         },
         _initBotonHerramienta: function (herramientaOptions) {
             var tipo, node, node2, boton;
-            tipo = this.get('vertical') ? '<div></div>' : '<div> <td width=10px> </div>';
+            tipo = this.get('vertical') ? '<div></div>' : '<div> </div>';
             node = domConstruct.toDom(tipo);
-            node2 = domConstruct.place('<div></div>', node);
+            node2 = domConstruct.place('<a></a>', node);
             domConstruct.place(node, this._rootNode);
             boton = new BotonHerramientaWidget(herramientaOptions, node2);
             boton.startup();

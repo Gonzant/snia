@@ -1,196 +1,6 @@
 {        
     "barraHerramientas": [
         {
-            "widget": "widgets/MapasBaseWidget",
-            "title": "Mapa Base",
-            "msgToolTip": "Permite seleccionar el mapa de base.",
-            "icono": "../js/snia/img/base.png",
-            "icon":"map",
-            "toggle": false,
-            "widgetConfig": {
-                "mapasBase": [
-                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
-					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
-                ]
-            }
-        },
-        {
-            "widget": "widgets/Contenidos2Widget",
-            "title": "Contenidos",
-            "msgToolTip": "Permite visualizar diferentes capas",
-            "icono": "../js/snia/img/contenido.png",
-            "icon":"layers",
-            "toggle": false,
-            "startsOpen": true,
-            "draggable": false,
-            "position": {"left": "20px", "top": "96px"},
-            "widgetConfig": {
-                "dynamicMapServiceLayers": [],
-                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
-            }
-        },
-        {
-            "widget": "widgets/NavegarWidget",
-            "title": "Navegar",
-            "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
-            "icono": "../js/snia/img/navegar.png",   
-            "icon": "near_me",
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/IdentificarWidget",
-            "title": "Identificar",
-            "msgToolTip": "Muestra la información de los elementos en un punto.",
-            "icono": "../js/snia/img/identificar.png", 
-            "icon": "info_outline",
-            "toggle": false,
-            "widgetConfig": {
-                "campo": "id",
-                "valor": "valor"  
-            }
-        },
-        {
-            "widget": "widgets/BuscarWidget",
-            "title": "Buscar",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
-            "icono": "../js/snia/img/buscar.png",   
-            "icon": "search",
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
-                "departamento": "DEPTO",
-                "padron": "PADRON",
-                "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
-            }
-        }, 
-        {
-            "widget": "widgets/MedirWidget",
-            "title": "Medir",
-            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
-            "icono": "../js/snia/img/regla.png",
-            "icon": "straighten",
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/CoordenadasWidget",
-            "title": "Coordenadas",
-            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
-            "icono": "../js/snia/img/coordenadas.png",   
-            "icon": "my_location",
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/RiesgoWidget",
-            "title": "Riesgo Ambiental",
-            "msgToolTip": "Calcula el riesgo ambiental para un punto geográfico.",
-            "icono": "../js/snia/img/calculoRiesgo_gris.png",
-            "icon": "assistant_photo",
-            "toggle": false,
-            "widgetConfig": {
-                "gpRiesgo":{
-                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgoMaster/GPServer/gpRiesgo",
-                    "configuracion": "OPERACION:Configuracion",
-                    "riesgoPredial":"OPERACION:RiesgoPredial;",
-                    "riesgoGeo":"OPERACION:RiesgoGeo;",
-                    "paramSalida": "Salida",
-                    "paramSalidaAmbiental": "RiesgoAmbiental",
-                    "paramSalidaVarEtiq": "VariablesEtiquetas",
-                    "colores":{
-                        "verde":"#24801C",
-                        "amarillo":"#FFF400",
-                        "naranja":"#FFA500",
-                        "rojo":"#FF0000",
-                        "gris":"#707070"
-                    }                    
-                },
-                "riesgoPredial": "Riesgo Predial",
-                "riesgoGeo": "Riesgo Geográfico",
-                "riesgoAmbiental": "Riesgo Ambiental",
-                "marcarUbicacion": "Marcar ubicación",
-                "mensajeMarcarUbicacion":"Por favor marque ubicación",
-                "desmarcarUbicacion": "Cancelar marcar ubicación",
-                "informacion": "Información",
-                "reporte": "Generar reporte",
-                "ayuda": "Ayuda",
-                "dialogReporte":{
-                    "width": "300px",
-                    "nombre" : "Reporte Riesgo",
-                    "titulo": "Reporte Matriz de Riesgo",
-                    "marcarPunto": "Marque el punto en el mapa."
-                },
-                "dialogInformacion":{
-                    "width": "300px",
-                    "titulo": "Información"
-                },
-                "widgetReporte":{
-                    "botonAceptar" : "Aceptar",
-                    "verde": [128, 255, 0],
-                    "amarillo": [255, 255, 0],
-                    "naranja": [255, 128, 0],
-                    "rojo": [255, 0, 0],
-                    "pdf":{
-                        "columnaDerecha" : "135",
-                        "columnaIzquierda" : "8",
-                        "letraGrande" : "22",
-                        "letraChica" : "13",
-                        "fila": "20",
-                        "mgap" : "MGAP",
-                        "dicose": "DICOSE",
-                        "coordenadas":"Coordenadas (x ; y) UTM21S",
-                        "infoPredial":"INFORMACION PREDIAL",                        
-                        "infoGeo":"INFORMACION GEOGRAFICA",
-                        "riesgo":"RIESGO",
-                        "riesgoAmbiental": "RIESGO AMBIENTAL",
-                        "nombrePdf":"ReporteRiesgo.pdf"
-                    }
-                }
-            }
-        },
-           {
-            "widget": "widgets/MapaReferenciaWidget",
-            "title": "Mapa Referencia",
-            "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png",  
-            "icon": "place", 
-            "toggle": false,
-            "widgetConfig": {                
-            }
-        },
-        {
-            "widget": "widgets/ImprimirWidget",
-            "title": "Imprimir",
-            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
-            "icono": "../js/snia/img/imprimir.png",
-            "icon": "local_printshop",
-            "toggle": false,
-            "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
-                "lbImprimir": "Imprimir",
-                "lbImprimiendo":"Imprimiendo",
-                "data": 
-                    [
-                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
-                    ]
-            }
-        },
-        {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
             "msgToolTip": "Muestra el manual de usuario e información sobre EFLUENTES. ",
@@ -1107,6 +917,196 @@
         
 ]
             }
-        }       
+        },        
+        {
+            "widget": "widgets/ImprimirWidget",
+            "title": "Imprimir",
+            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
+            "icono": "../js/snia/img/imprimir.png",
+            "icon": "local_printshop",
+            "toggle": false,
+            "widgetConfig": {
+                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "lbImprimir": "Imprimir",
+                "lbImprimiendo":"Imprimiendo",
+                "data": 
+                    [
+                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
+                    ]
+            }
+        },
+        {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png",  
+            "icon": "place", 
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
+        {
+            "widget": "widgets/RiesgoWidget",
+            "title": "Riesgo Ambiental",
+            "msgToolTip": "Calcula el riesgo ambiental para un punto geográfico.",
+            "icono": "../js/snia/img/calculoRiesgo_gris.png",
+            "icon": "assistant_photo",
+            "toggle": false,
+            "widgetConfig": {
+                "gpRiesgo":{
+                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgoMaster/GPServer/gpRiesgo",
+                    "configuracion": "OPERACION:Configuracion",
+                    "riesgoPredial":"OPERACION:RiesgoPredial;",
+                    "riesgoGeo":"OPERACION:RiesgoGeo;",
+                    "paramSalida": "Salida",
+                    "paramSalidaAmbiental": "RiesgoAmbiental",
+                    "paramSalidaVarEtiq": "VariablesEtiquetas",
+                    "colores":{
+                        "verde":"#24801C",
+                        "amarillo":"#FFF400",
+                        "naranja":"#FFA500",
+                        "rojo":"#FF0000",
+                        "gris":"#707070"
+                    }                    
+                },
+                "riesgoPredial": "Riesgo Predial",
+                "riesgoGeo": "Riesgo Geográfico",
+                "riesgoAmbiental": "Riesgo Ambiental",
+                "marcarUbicacion": "Marcar ubicación",
+                "mensajeMarcarUbicacion":"Por favor marque ubicación",
+                "desmarcarUbicacion": "Cancelar marcar ubicación",
+                "informacion": "Información",
+                "reporte": "Generar reporte",
+                "ayuda": "Ayuda",
+                "dialogReporte":{
+                    "width": "300px",
+                    "nombre" : "Reporte Riesgo",
+                    "titulo": "Reporte Matriz de Riesgo",
+                    "marcarPunto": "Marque el punto en el mapa."
+                },
+                "dialogInformacion":{
+                    "width": "300px",
+                    "titulo": "Información"
+                },
+                "widgetReporte":{
+                    "botonAceptar" : "Aceptar",
+                    "verde": [128, 255, 0],
+                    "amarillo": [255, 255, 0],
+                    "naranja": [255, 128, 0],
+                    "rojo": [255, 0, 0],
+                    "pdf":{
+                        "columnaDerecha" : "135",
+                        "columnaIzquierda" : "8",
+                        "letraGrande" : "22",
+                        "letraChica" : "13",
+                        "fila": "20",
+                        "mgap" : "MGAP",
+                        "dicose": "DICOSE",
+                        "coordenadas":"Coordenadas (x ; y) UTM21S",
+                        "infoPredial":"INFORMACION PREDIAL",                        
+                        "infoGeo":"INFORMACION GEOGRAFICA",
+                        "riesgo":"RIESGO",
+                        "riesgoAmbiental": "RIESGO AMBIENTAL",
+                        "nombrePdf":"ReporteRiesgo.pdf"
+                    }
+                }
+            }
+        },
+        {
+            "widget": "widgets/CoordenadasWidget",
+            "title": "Coordenadas",
+            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
+            "icono": "../js/snia/img/coordenadas.png",   
+            "icon": "my_location",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/MedirWidget",
+            "title": "Medir",
+            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
+            "icono": "../js/snia/img/regla.png",
+            "icon": "straighten",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/BuscarWidget",
+            "title": "Buscar",
+            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "icono": "../js/snia/img/buscar.png",   
+            "icon": "search",
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "departamento": "DEPTO",
+                "padron": "PADRON",
+                "catastral": "AREAHA",
+                "productividad": "IND_CONEAT"
+            }
+        }, 
+        {
+            "widget": "widgets/IdentificarWidget",
+            "title": "Identificar",
+            "msgToolTip": "Muestra la información de los elementos en un punto.",
+            "icono": "../js/snia/img/identificar.png", 
+            "icon": "info_outline",
+            "toggle": false,
+            "widgetConfig": {
+                "campo": "id",
+                "valor": "valor"  
+            }
+        },
+        {
+            "widget": "widgets/NavegarWidget",
+            "title": "Navegar",
+            "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
+            "icono": "../js/snia/img/navegar.png",   
+            "icon": "near_me",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },        
+        {
+            "widget": "widgets/Contenidos2Widget",
+            "title": "Contenidos",
+            "msgToolTip": "Permite visualizar diferentes capas",
+            "icono": "../js/snia/img/contenido.png",
+            "icon":"layers",
+            "toggle": false,
+            "startsOpen": true,
+            "draggable": false,
+            "position": {"left": "20px", "top": "20%"},
+            "widgetConfig": {
+                "dynamicMapServiceLayers": [],
+                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+            }
+        },
+        {
+            "widget": "widgets/MapasBaseWidget",
+            "title": "Mapa Base",
+            "msgToolTip": "Permite seleccionar el mapa de base.",
+            "icono": "../js/snia/img/base.png",
+            "icon":"map",
+            "toggle": false,
+            "widgetConfig": {
+                "mapasBase": [
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
+					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
+                ]
+            }
+        }
     ]
 }

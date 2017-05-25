@@ -80,6 +80,7 @@ define([
             this._botonNode.innerHTML = "<a class=\"itemMainMenu\" href=\"#\"><i class=\"material-icons\">"+ this._icon + "</i></a>";
             new Tooltip({
                 connectId: [this._botonNode],
+                position:['below'],
                 label: "<b>" + this._etiqueta + "</b>" + "<p> " + this._msgToolTip + "</p>"
             });
         },
