@@ -281,8 +281,8 @@ define([
             if (state !== 0) {
                 this._sTime = new Date();
                 this._eTime = new Date();
-                this._sTime.setFullYear(this._startYear, 1, 1);
-                this._eTime.setFullYear(this._startYear + 1, 1, 1);
+                this._sTime.setFullYear(this._startYear, 0, 1);
+                this._eTime.setFullYear(this._startYear + 1, 0, 1);
             } else {
                 this._sTime = new Date(this._sTimeAbs);
                 this._eTime = new Date(this._eTimeAbs);
