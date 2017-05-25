@@ -414,19 +414,12 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Indice1"
-                            }
-                        
+                            {"Contenido": "Atribuciones","Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Titulo1"
-                            }
+                            {"Contenido": "Atribuciones", "Estilo": "Titulo1"}
                 },
                 "elementos":[
                     {
@@ -438,12 +431,7 @@
                       ]  
                     },
                     {
-                    "Enlace":[
-                        {
-                            "Contenido": "SIT",
-                            "URL": "http://sit.mvotma.gub.uy"
-                        }
-                    ] 
+                    "Enlace":[{"Contenido": "SIT","URL": "http://sit.mvotma.gub.uy"}] 
                     },
                     {
                     "Texto":[
@@ -455,10 +443,7 @@
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
+                        {"Contenido": "ESRI", "URL": "http://www.esri.com" }
                     ]
                     },
                     {
@@ -471,21 +456,14 @@
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
+                        {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}
                     ]
                     },
                     {
                     "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
+                        {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/" }
                     ]
-                    }
-                    
+                    }                    
                 ]
             },
             "padre": "si"
@@ -495,19 +473,12 @@
             "parent":"root",
             "seccionTitulo":{
                     "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                            { "Contenido": "Contacto", "Estilo": "Indice1"}                        
             },
             "seccionContenido":{
                 "titulo":{
                         "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
+                            {"Contenido": "Contacto", "Estilo": "Titulo1"}
                 },
                 "elementos": [
                     {
@@ -550,7 +521,7 @@
             },
             "padre": "si"
         }        
-]
+        ]
             }
         },
         {
