@@ -282,7 +282,7 @@ define([
                 this._sTime = new Date();
                 this._eTime = new Date();
                 this._sTime.setFullYear(this._startYear, 0, 1);
-                this._eTime.setFullYear(this._startYear + 1, 0, 1);
+                this._eTime.setFullYear(this._startYear, 11, 31);                
             } else {
                 this._sTime = new Date(this._sTimeAbs);
                 this._eTime = new Date(this._eTimeAbs);
