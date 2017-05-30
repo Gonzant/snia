@@ -432,7 +432,7 @@ define([
             if (args.item.parent === "root") { //Si está en el primer nivel
                 slider = new HorizontalSlider({
                     showButtons: false,
-                    style: "float:left;max-width:130px;margin-left:50px;",
+                    style: "float:left;max-width:130px;margin-left:30px;",
                    // layoutAlign: 'right',
                     value: args.item.opacity * 100,
                     onChange: lang.hitch(this, function (value) {
@@ -477,14 +477,14 @@ define([
                     return (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    if (layer.legend.length === 1) { // una hoja
-                        tocNode[0].imageData =  layer.legend[0].imageData;
-                        tocNode[0].contentType = layer.legend[0].contentType;
-                    } else { // multiples hojas
+                    //if (layer.legend.length === 1) { // una hoja
+                    //    tocNode[0].imageData =  layer.legend[0].imageData;
+                    //    tocNode[0].contentType = layer.legend[0].contentType;
+                    //} else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
                             this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
-                    }
+                    //}
                 }
             }, this);
             //this.refreshTree();
