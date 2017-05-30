@@ -45,7 +45,7 @@
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
             "draggable": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "position": {"bottom": "20px", "left":"240px"},
             "widgetConfig": {
                 "fechaAtributo": "DIA",
@@ -143,7 +143,7 @@
             "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
             "icono": "../js/snia/img/ayuda.png",
             "toggle": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "widgetConfig": {
                 "data": [
     {

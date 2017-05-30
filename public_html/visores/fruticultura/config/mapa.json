@@ -62,9 +62,17 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/PlagasReestringido/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/ManejoRegionalPlagas/MapServer",
                 "options": {
-                        "id": "Plagas Restringido",
+                        "id": "Manejo regional de plagas",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/Danio/MapServer",
+                "options": {
+                        "id": "Daño previo a cosecha (%)",
                         "opacity": 0.7,
                         "visible": false
                 }

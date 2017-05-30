@@ -38,12 +38,20 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+                "multiple": [
+                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/TipologiaAgropecuaria/MapServer",
+                            "sublayersTooltips":{"Colonizacion (INC)": "Versión preliminar"}                        
+                    },
+                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer"                        
+                    }
+                ],               
+
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
                         "visible": false
                 }
+               
             },
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
@@ -54,7 +62,16 @@
                 }
             },
             {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/MapadeCalor_agro/MapServer",
+                "options": {
+                        "id": "Concentración de la producción agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
+                "layers":[2,3,4,5,6],
                 "options": {
                         "id": "Cartas de Suelos",
                         "opacity": 0.7,
@@ -102,21 +119,13 @@
                 }
             },
            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura_7clases/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AnalisisTerritorial/MapServer",
                 "options": {
-                        "id": "7 Temas - Coberturas y Usos de Suelos",
+                        "id": "Análisis territorial",
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
-            {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura_17clases/MapServer",
-                "options": {
-                        "id": "17 Clases - Coberturas y Usos de Suelos",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
+            },            
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
                 "options": {
@@ -140,7 +149,7 @@
                         "opacity": 1.0,
                         "visible": false
                 }
-            }							
+            }
         ]
     }
 }
