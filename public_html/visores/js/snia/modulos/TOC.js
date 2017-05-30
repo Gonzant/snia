@@ -430,7 +430,7 @@ define([
             if (args.item.parent === "root") { //Si está en el primer nivel
                 slider = new HorizontalSlider({
                     showButtons: false,
-                    style: "float:left;max-width:130px;margin-left:35px;",
+                    style: "float:left;max-width:130px;margin-left:30px;",
                    // layoutAlign: 'right',
                     value: args.item.opacity * 100,
                     onChange: lang.hitch(this, function (value) {

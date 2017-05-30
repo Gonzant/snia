@@ -1122,3 +1122,7 @@ div p {
 .dijitTreeContent>.dijitFolderClosed{
     width: 0px;
 }
+
+.dijitTreeLabel {
+    margin: 0 0px;
+}
