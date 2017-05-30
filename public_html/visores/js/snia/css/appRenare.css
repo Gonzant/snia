@@ -1070,7 +1070,9 @@ div p {
    opacity:.5;
 }
 
-.ContenidosTree>.dijitTree{
-    height: 100%;
-    overflow-y: hidden;
+.dijitTreeContent>.dijitFolderOpened{
+    width: 0px;
+}
+.dijitTreeContent>.dijitFolderClosed{
+    width: 0px;
 }

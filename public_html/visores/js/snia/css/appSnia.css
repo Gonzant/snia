@@ -1115,3 +1115,10 @@ div p {
     height: 100%;
     overflow-y: hidden;
 }
+
+.dijitTreeContent>.dijitFolderOpened{
+    width: 0px;
+}
+.dijitTreeContent>.dijitFolderClosed{
+    width: 0px;
+}

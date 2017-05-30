@@ -470,14 +470,14 @@ define([
                     return item.name === layer.layerName && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 });
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    if (layer.legend.length === 1) { // una hoja
-                        tocNode[0].imageData =  layer.legend[0].imageData;
-                        tocNode[0].contentType = layer.legend[0].contentType;
-                    } else { // multiples hojas
+                    //if (layer.legend.length === 1) { // una hoja
+                    //    tocNode[0].imageData =  layer.legend[0].imageData;
+                    //    tocNode[0].contentType = layer.legend[0].contentType;
+                    //} else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
                             this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
-                    }
+                    //}
                 }
             }, this);
             //this.refreshTree();
