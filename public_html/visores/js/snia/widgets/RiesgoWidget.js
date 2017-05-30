@@ -281,7 +281,7 @@ define([
             var nodeAyuda, nMatriz, nodeAyudaTexto;
             this._archivoJSON = result.value;
             this._tabContainer = new TabContainer({
-                style: "height: 520px; width: 520px;"
+                style: "height: 530px; width: 680px;"
             }, this._riesgoTabContainerNode);
 
             //Inicializacion de variables
@@ -507,7 +507,7 @@ define([
             nodeAyuda = domConst.toDom("<div>" + this._etiqRiesgoAmbiental + "</div>");
             domClass.add(nodeAyuda, "riesgoTitulo");
 
-            nodeAyudaTexto = domConst.toDom("<div> <br>" + this._archivoJSON.Herramienta.Ayuda.texto + "</div>");
+            nodeAyudaTexto = domConst.toDom("<div>" + this._archivoJSON.Herramienta.Ayuda.texto + "</div>");
             domClass.add(nodeAyudaTexto, "riesgoAyudaTexto");
 
             domConst.place(nodeAyudaTexto, nodeAyuda);
