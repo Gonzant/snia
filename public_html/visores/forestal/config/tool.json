@@ -44,7 +44,7 @@
             "icono": "../js/snia/img/tiempo_gris.png",            
             "toggle": false,
             "draggable": false,
-            "startsOpen": true,                        
+            "startsOpen": false,                        
             "position": {"left":"20px", "bottom": "10px"},
             "widgetConfig": {                
                 "fechaAtributo": "acq",
