@@ -89,6 +89,7 @@ snia.app = {
                 });
             };
             initControles = function () {
+                var estilo = appConfig.estilo;
                 dom.byId("divToolbarTitulo").innerHTML = appConfig.app.titulo;
                 standby.set("text", "Cargando librerias...");
                 var widgetNames = arrayUtil.map(toolConfig.barraHerramientas, function (herramientaConfig) {
@@ -103,6 +104,7 @@ snia.app = {
                             title = herramientaConfig.title,
                             startsOpen = herramientaConfig.startsOpen,
                             icono = herramientaConfig.icono,
+                            icon = herramientaConfig.icon,							  
                             closable =  (typeof herramientaConfig.closable  === "undefined" ?  true : herramientaConfig.closable),
                             draggable = (typeof herramientaConfig.draggable  === "undefined" ?  true : herramientaConfig.draggable),
                             position = herramientaConfig.position,
@@ -112,18 +114,20 @@ snia.app = {
                                 herramienta: new HerramientaDialog({
                                     startsOpen: startsOpen,
                                     position: position,
-                                    widget: new WidgetClass({ mapa: mapa, config: widgetConfig }),
+                                    widget: new WidgetClass({ mapa: mapa, config: widgetConfig, estilo: estilo }),
                                     dialogParams: { title : title, closable: closable, draggable: draggable}
                                 }),
                                 etiqueta: title,
                                 icono: icono,
+                                icon: icon,
                                 msgToolTip: msgToolTip
                             });
                         }
                     });
                     barra = new BarraHerramientasWidget({
                         herramientasOptions: herramientas,
-                        vertical: false
+                        vertical: estilo,
+                        estilo: estilo
                     }, 'divToolbar');
                     barra.startup();
                 });

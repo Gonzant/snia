@@ -1,0 +1,1075 @@
+/*Nuevo Estilo*/
+.esriSimpleSliderTL {
+    top: 16%;
+    left: 96%;
+}
+
+.claro .dijitDialog {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 5px solid #f19607;
+}
+.claro .dijitSelect .dijitInputField, .claro .dijitTextBox .dijitInputField {
+    padding: 0px 0px;
+}
+.claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
+    border: 1px solid #f19607;
+    padding: 0px 0px 0px 0px;
+    background-color: #f19607;
+}
+
+.claro .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
+    border: 1px solid transparent; 
+    padding: 0px 0px 0px 0px; 
+    color: black;
+    -moz-border-radius: 4px;
+    border-radius: 2px;
+}
+.dijitSelect, .dijitSelect *, .dijitButtonNode, .dijitButtonNode * {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    color: black;
+}
+.dijitSelect .dijitButtonContents {
+    padding: 0;
+    white-space: nowrap;
+    text-align: left;
+    /* border-style: none solid none none; */
+    border-width: 0px;
+    /* color: rgb(253, 253, 253); */
+    background-color: white;
+}
+.claro .dijitSelectLabel, .claro .dijitTextBox .dijitInputInner, .claro .dijitValidationTextBox .dijitValidationContainer {
+    padding: 1px 0;
+    background-color: white;
+}
+
+.Titulo1{
+    font-family: sans-serif;
+    font-size:18px;
+    color: #f19607;
+    font-weight:bold;
+}
+
+.esriScalebar {
+    z-index: 30;
+    position: absolute;
+    width: 0px;
+    height: 20px;
+    left: 25px;
+    width: 135px;
+    padding: 10px;
+    height: 33px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.scalebar_bottom-left {
+    left: 25px;
+    bottom: 10px;
+    top: 582px;
+    /*width: 165px;*/
+    padding: 8px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/*Fin nuevo*/
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    overflow:hidden;
+    font: 12px Arial,clean,sans-serif;
+}
+#logoMGAPchico{
+    z-index: 20;
+    width: 110px;
+    position: absolute;
+    right: 23px;
+    top: 6px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 110px;
+/*    background-image: url('../img/logo.png')*/ 
+}
+#logochiquitoMiem{
+    z-index: 20;
+    width: 60px;
+    height: 40px;
+    position: absolute;
+    right: 75px;
+    top:73px;
+    border-width: 1px;
+    background-color:#FFC000;
+    border-radius: 12px;
+}
+#logochiquitoMvotma{
+    z-index: 20;
+    width: 70px;
+    position: absolute;
+    right: 5px;
+    top: 77px;
+    border-width: 1px;
+    background-color:#FFC000;
+    border-radius: 8px;
+}
+.iconAgregarAreas {
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+.iconCancelarAgregarAreas {
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+.iconCroquisAreas {
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+
+.iconRemoverTodasAreasArea {
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+
+.iconMarcarUbicacion {
+    background-image: url('../img/IconBandera.png');    
+    background-repeat: no-repeat;
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+
+.iconCancelarAgregar {
+    background-image: url('../img/cancelarAgregarGris.png');    
+    background-repeat: no-repeat;
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
+    border: none;  
+}
+
+.iconReporte {
+    background-image: url('../img/reporteGris.png');    
+    background-repeat: no-repeat;
+    background-size: 27px 27px;
+    width: 27px;
+    height: 27px; 
+    border: none;    
+}
+
+.iconVentana{    
+    height: 20px; 
+}
+.riesgoTitulo{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.riesgoEtiqCombo{
+    height: 25px;
+    margin-left: 10px;
+}
+
+.riesgoComboBox{
+    float: right;
+    margin-right: 10px;
+}
+
+.riesgoResultado{
+    height: 20px;
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.riesgoAyudaTexto{
+    font-size: 12px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.riesgoBotones{
+    height: 40px;
+    width: 250px;        
+    margin-left: 10px;    
+}
+
+.iconImprimir{
+    background-image: url('../img/imprimir.png');    
+    background-repeat: no-repeat; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.lbImprimir{
+    float:left;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.lbEscala{
+    float:left;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.timpoWidget{
+    width: 570px;
+    height: 90px;
+}
+/*.esriScalebarLabel{
+    color:black;
+    width: 15%;
+    height: 20px;
+    font-size: 13px;
+}*/
+/*
+.esriScalebarRuler {
+    width: 125%;
+    height: 9px;
+}
+.esriScalebar {
+    z-index: 30;
+    position: absolute;
+    color:black;    
+    background: transparent;    
+    width: 150px;
+    position:absolute;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 5px;
+    background-color: transparent;   
+}
+esriScalebarLabel {    
+    color: black;
+}*/
+/*
+.escala{
+    
+    z-index: 21;
+    width: 80px;
+    height: 30px;
+    position:absolute;
+    bottom: 40px;
+    padding-top: 14px;
+    padding-bottom: 1px;
+    left: 60px;
+    background-color: #fff;
+}*/
+
+/*
+ * mapa
+ */
+
+.map {
+    height: 100%;
+    width: 100%;
+}
+#divMapa {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    float:left;
+}
+
+.divEstilos{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+ * SNIA General
+ */
+
+/*
+Dialogos: 
+*/
+
+
+.claro .dijitDialogTitleBar {
+    border: 0px solid;
+    border-color: transparent;
+    height: 30px;
+    padding-top: 10px;
+    border-top: none;    
+    text-align: center;
+    background-color: #f19607 !important;
+}
+
+.dijitDialogPaneContent {
+    background: solid #E1E1E1 !important;  
+    border-style: solid;
+    border-width: 0px;
+    border-bottom: 3px solid #f19607;
+}
+.BC{
+    border: 0px;
+    border-color: transparent;
+}
+/**Fin de dialogos*/  
+
+.sniaWidget {
+    background: transparent;
+}
+/*
+ * para que los dialogos de dojo sean no modales
+ */
+.dijitDialogUnderlayWrapper{
+    display:none !important
+}
+
+ #nav1, #nav2, #nav3, #nav4, #nav5 {margin: 10px; }
+
+/*Imagenes*/
+.dijitButtonText {
+    border: 0px;
+    border-color: #f19607;
+    padding: 0 0.0em;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    background-color: #f19607;
+
+}
+
+.MediumButton {
+    -moz-box-shadow: 0px 0px 0px 0px #3dc21b;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    cursor:pointer;
+    background-color: #f19607;
+    padding:5px 5px;
+}
+
+.BigButton {
+	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
+	box-shadow: 0px 0px 0px 0px #ffec64;
+	background-color: #ffec64;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #ffec64;
+	display:inline-block;
+	cursor:pointer;
+	padding:12px 12px;
+}
+.BigButton:active {
+	position:relative;
+	top:1px;
+}
+
+.VBigButton {
+	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
+	box-shadow: 0px 0px 0px 0px #ffec64;
+	background-color:#ffec64;
+	-moz-border-radius:5px;
+	border-radius:6px;
+	border:1px solid #ffec64;
+	display:inline-block;
+	cursor:pointer;
+	padding:18px 18px;
+	
+}
+.VBigButton:active {
+	position:relative;
+	top:1px;
+}
+
+.BigButtonMapaBase {
+    background-color: #f19607;
+    color: white;
+    padding: 1px;
+    margin: 8px 0;
+    cursor: pointer;    
+    border-radius:5px;
+    border: 1px;
+}
+
+/*Botones con Texto*/
+
+.STextButton {
+	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
+	box-shadow: 0px 0px 0px 0px #ffec64;
+	background-color:#E1E1E1;
+	-moz-border-radius:5px;
+	border-radius:6px;
+	border:1px solid #ffec64;
+	display:inline-block;
+	cursor:pointer;
+	padding:5px 11px;
+        color:black;
+	font-family:Arial;
+	font-size:11px;
+        font-weight:bold;	
+}
+
+.MTextButton {
+	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
+	box-shadow: 0px 0px 0px 0px #ffec64;
+	background-color:#E1E1E1;
+	-moz-border-radius:5px;
+	border-radius:6px;
+	border:1px solid #ffec64;
+	display:inline-block;
+	cursor:pointer;
+	padding:7px 15px;
+        color:black;
+	font-family:Arial;
+	font-size:15px;
+        font-weight:bold;	
+}
+.MTextButton:active {
+	position:relative;
+	top:1px;
+}
+.GTextButton {
+	-moz-box-shadow: 0px 0px 0px 0px #3dc21b;
+	box-shadow: 0px 0px 0px 0px #ffec64;
+	background-color:#E1E1E1;
+	-moz-border-radius:5px;
+	border-radius:6px;
+	border:1px solid #ffec64;
+	display:inline-block;
+	cursor:pointer;
+	padding:10px 17px;
+        color:black;
+	font-family:Arial;
+	font-size:17px;
+        font-weight:bold;	
+}
+
+/*--- Texto ---*/
+
+.verySmallText{
+    font-family:Arial;
+    font-size:9px;
+    font-weight:bold;
+    text-indent:1cm;    
+}
+
+.smallText{
+    font-family:inherit;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.smallTextIdentacion{
+    text-indent: 2cm;
+ 
+}
+
+.bigText{
+    font-family:Arial;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.smallRadioButton{
+    font-family:Arial;
+    font-size:10px;   
+}
+
+.mediumRadioButton{
+    font-family:Arial;
+    font-size:14px;   
+}
+
+.bigRadioButton{
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    
+}
+
+.simpleText{
+    font-family:Arial;
+    font-size:12px;
+}
+
+/*--- Combo Box ---*/
+
+.smallCombo{
+    font-size: 8pt;
+    font-family : arial;
+}
+.mediumCombo{
+    font-size: 10pt;
+    font-family : arial;
+}
+.bigCombo{
+    font-size: 12pt;
+    font-family : arial;
+}
+.vBigCombo{
+    font-size: 15pt;
+    font-family : arial;
+}
+
+.tabAyudaCSS{
+    background-color: transparent;    
+}
+
+element.style {
+    left: 0px; 
+    top: 0px; 
+}
+/*Titulo TittlePane Ayuda    linear-gradient(transparent)*/
+tituloTPAyuda{
+    font-size: 14pt;
+    color: #3dc21b;
+}
+
+.claro .dijitTitlePaneContentOuter {
+    background: #E1E1E1;
+}
+.claro .dijitBorderContainer-dijitContentPane {
+    background-color: #E1E1E1;
+}
+.claro .dijitTreeRowSelected {
+    background-color: transparent;
+    border-color: transparent;
+}
+.claro .dijitTreeRow{
+    font-weight:bold;
+    color:dimgray;
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+.claro .dijitTreeRowHover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.claro .dijitContentPane {
+/*     padding: 2px; */
+    background: transparent;
+}
+
+.claro .dijitBorderContainer {
+     padding: 1px; 
+}
+
+
+.Negrita{
+    font-family: sans-serif;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.MargenTextoIzq{
+  margin-left: 50px;
+}
+
+.Titulo2{
+    font-family:cursive;
+    font-size:15px;
+    color: dimgray;
+    font-weight:bold;
+}
+
+.Indice1{
+    font-family:cursive;
+    font-size:15px;
+    color: dimgray;
+    font-weight:bold;
+}
+
+.tree_root
+ {
+    color: #f19607;
+    font-family: sans-serif;
+    font-size:14px;
+    background-image: none;
+ }
+ 
+.enabled
+ {
+        color: black;
+        cursor: pointer;
+ }
+ 
+ .disabled
+ {
+        color:gray;
+        cursor: not-allowed;
+       background-color: transparent !important;
+ }
+ .custimg {   
+    background-image: url('../img/mapabase.png');   
+    background-repeat: no-repeat;   
+    width: 16px;
+    height: 16px;
+    background-position: -35px 0;         
+}
+.pageOverlay {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+    display: block;
+}
+
+.loadingOverlay {
+    opacity: 0.9;
+    background:  #BDBDBD;
+}
+.claseloadingOverlay {
+    top: 50px;
+    left: 50%;
+    height: 300px;
+    width: 300px;
+    opacity: 1;
+    z-index: 1101;
+    display: block;
+    background:  #BDBDBD url('//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/images/loadingAnimation.gif') no-repeat 10px 23px;
+}
+.loadingMessage {
+    opacity: 1;
+    padding: 25px 40px;
+    /* color: #999; */
+}
+.gridDivInfoSuelos {
+	width: 400px;
+	height: 165px;
+       
+}
+.gridDiv {
+	width: 480px;
+	height: 165px;        
+}
+.gridDivIdentificar {
+	width: 300px;
+	height: 165px;
+        
+}
+.gridDivBuscar {
+	width: 490px;
+	height: 230px;
+        font-size: small;
+}
+
+.BuscarParametrizado {
+
+        padding-right: 10px;
+}
+#info {
+        top: 20px;
+        color: #444;
+        height: auto;
+        font-family: arial;
+        right: 20px;
+        margin: 5px;
+        padding: 10px;
+        width: 115px;
+        z-index: 40;
+        border: solid 2px #666;
+        border-radius: 4px;
+        background-color: #fff;
+      }
+.claro {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+.claro .dijitDialogCloseIcon {
+    background-color:white;
+    border-color: #f19607;
+    border: 1px;
+}    
+#divStandby {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 10;
+    position: absolute;
+}
+
+
+/*#divToolbar {
+    padding-top: 10px;
+}
+#divToolbar {
+    z-index: 2;
+    width: 40px;
+    position:absolute;
+    top: 140px;
+    padding-top: 14px;
+    padding-bottom: 1px;
+    right: 35px;
+    background-color: #FFC000;
+    border-style: solid;
+    border-width: 5px;
+    border-color: transparent;  
+    border-radius: 15px;
+    display: inline;
+    height: 88%;
+}*/
+#divLogoMGAP{
+    width: 160px;
+    height: 160px;
+    z-index: 4;
+    position:absolute;    
+    top:6px;
+    padding: 10px;
+    right: 11px;
+    border-color: dimgray;
+    border-style: solid;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 130px;
+}
+#divLogoMGAPSnia{
+    width: 160px;
+    height: 160px;
+    z-index: 4;
+    position:absolute;    
+    top:6px;
+    padding: 10px;
+    right: 11px;
+    border-color: dimgray;
+    border-style: solid;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 130px;
+}
+
+#logoMGAP{
+    z-index: 20;
+    width: 139px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 120px;
+/*    background-image: url('../img/logo.png')*/ 
+  }  
+.colorLabels{
+    color:dimgray;
+    font-size: 14px;
+}
+
+#logoMGAPSnia{
+    z-index: 20;
+    width: 139px;
+    height:100px;  
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 100px;
+  }
+
+
+
+
+.SmallButtonTransparent {
+    cursor:pointer;
+    border: 0px #f19607 solid;
+    background-color: transparent;
+    padding:0px 0px 0px 0px;
+/*    height: 30px;*/
+}
+
+.SmallButtonTransparentAmarillo {
+
+    background-color: #f19607;
+    color: white;
+    padding: 0px 0px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    
+}
+.agsjsTOCRootLayerLabel {
+    font-size: 12pt;
+    font-weight: bold;
+    color: dimgray;
+}
+.claro .dijitDialogTitle {
+    color: white;
+    font-weight:bold;
+    font-size: 19px;
+    border:0px #f19607;
+    background-color:transparent
+}
+.claro .dijitDialogPaneContent {
+    background: white repeat-x top left;
+    border-top: 2px solid #f19607;
+    padding: 10px 8px;
+    background-color: rgba(255, 255, 255, 0.80);
+    position: relative;
+    opacity: 0.9;
+}
+
+
+/**Fin de dialogos*/    
+     
+/*
+ * para que los dialogos de dojo sean no modales
+ */
+.dijitDialogUnderlayWrapper{
+    display:none !important
+}
+
+ #nav1, #nav2, #nav3, #nav4, #nav5 {margin: 10px; }
+
+/*Botones con Texto*/
+.Indice1{
+    font-family:cursive;
+    font-size:15px;
+    color: dimgray;
+    font-weight:bold;
+}
+/*
+ * mapa
+ */
+#divLogoMGAP{
+    width: 130px;
+    height: 130px;
+    z-index: 4;
+    position:absolute;    
+    top:0px;
+    padding: 10px;
+    right: 0px;
+    border-color: dimgray;
+    border-style: solid;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 130px;
+}
+
+#logoMGAP{
+    z-index: 20;
+    width: 140px;
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    border-width: 6px;
+    background-color:#FFC000;
+    border-radius: 130px;
+}
+
+.logo{
+    padding: 5px;
+    padding-left: 20px;
+}
+/*    background-image: url('../img/logo.png')*/
+    
+/*  }
+#divToolbarTitulo{
+    margin-top: 6px;
+    z-index: 3;
+    right: 64px;
+    padding: 7px;
+    padding-right: 90px;
+    padding-left: 15px;
+    position:absolute;
+    border-color: dimgray;
+    border-style: solid;
+    border-width: 5px;  
+    background-color:#FFC000;
+    font-size: 22px;
+    font-family:inherit;
+    color:dimgray;
+    font-weight:bold;
+    border-radius: 130px;
+}*/
+
+/*
+ * SNIA General
+ */
+
+/*
+Dialogos: 
+*/
+
+.dijitDialogPaneContent {
+    border-style: solid;
+    background: #E1E1E1 no-repeat top left;
+    border-width: 2px;
+    /*border-radius: 5px;*/
+    border:1px #FFC000;
+    border-top: 1px solid #FFC000; 
+    opacity: 0,8;
+    border-top: 1px solid #FFC000;
+    padding: 10px 8px;
+    position: relative;    
+}
+
+/**Fin de dialogos*/    
+     
+/*
+ * para que los dialogos de dojo sean no modales
+ */
+.dijitDialogUnderlayWrapper{
+    display:none !important
+}
+
+.SmallButtonBH {
+    border-radius:4px;
+    background-color: #f19607;
+    padding:1px;
+    border-color: transparent !important
+}
+
+.SmallButton {
+    border-radius:5px;
+    background-color: #f19607;
+    padding:3px 1px;
+    border-color: transparent !important
+}
+
+.Indice1{
+    font-family:cursive;
+    font-size:15px;
+    color: dimgray;
+    font-weight:bold;
+}
+
+div p {
+        margin: 12px 0 0 0;
+      }
+      #leftPane {
+        font-family: sans-serif;
+        font-size: 1.1em;
+        width: 300px;
+      }
+      #map {
+        height: 100%;
+        padding:0;
+      }
+      .undoButtons{
+        margin: 0 auto;
+        padding-top: 0.5em;
+      }
+/* El tooltip */
+.cssToolTip span {
+ background: #ffffff right 2px no-repeat; 
+ border: solid #87cefa;
+ border-radius: 5px;
+ box-shadow: 5px 5px 5px #333;
+ color: #87cefa;
+ display: none; /* El tooltip por defecto estara oculto */
+ font-size: 0.8em;
+ max-width: 600px;
+ top: 15px; /* Posicion apartir de la parte superior del primer elemento padre con posicion relativa */
+ left: 100px; /* Posicion apartir de la parte izquierda del primer elemento padre con posicion relativa */
+ z-index: 100; /* Poner un z-index alto para que aparezca por encima del resto de elementos */
+}
+ 
+/* El tooltip cuando se muestra */
+.cssToolTip:hover span {
+ display: inline; /* Para mostrarlo simplemente usamos display block por ejemplo */
+}
+
+.dijitIconSave, .dijitIconSearch, .dijitIconApplication, .dijitIconChart, .dijitIconConnector, .dijitIconDocuments, .dijitIconMail, .dijitLeaf, .dijitIconFile, .dijitIconFunction, .dijitIconKey, .dijitIconPackage, .dijitIconSample, .dijitIconUsers, .dijitFolderClosed, .dijitIconFolderClosed, .dijitFolderOpened, .dijitIconFolderOpen, .dijitIconError {
+    background-image: none;
+    width: 15px;
+    height: 14px;
+}
+.dojoxGrid .table {
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: 10px;
+    font-variant: normal;
+    font-style: normal;
+}
+.dojoxGrid {
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: 10px;
+    font-variant: normal;
+    font-style: normal;
+}
+.grid {
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: 10px;
+    font-variant: normal;
+    font-style: normal;
+}
+
+.dojoxGridHeader {
+    background-color: #E8E1CF;
+    font-size: 10px;
+}
+.th, var {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+}
+
+.dojoxGrid .dojoxGridCell {
+    border: 1px solid;
+    border-color: #EBEADB;
+    border-right-color: #D5CDB5;
+    padding: 3px 3px 3px 3px;
+    text-align: left;
+    overflow: hidden;
+    font-size: 12px;
+    word-wrap: break-word;
+}
+/*.estiloBotonBarra{
+   width: 34px; 
+   cursor: pointer;    
+}*/
+
+.iconColapsarContenidos{
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+.iconExpandContenidos{
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+.iconDownload{
+    width: 27px;
+    height: 27px; 
+    border: none;
+}
+.iconColpasarContenidos:focus{
+    border: 0 transparent;
+}
+
+.TOCOutOfScale{
+   color:grey;
+   opacity:.5;
+}
+
+.ContenidosTree>.dijitTree{
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.dijitTreeContent>.dijitFolderOpened{
+    width: 0px;
+}
+.dijitTreeContent>.dijitFolderClosed{
+    width: 0px;
+}
+
+.dijitTreeLabel {
+    margin: 0 0px;
+}

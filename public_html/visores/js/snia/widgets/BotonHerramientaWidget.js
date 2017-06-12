@@ -14,13 +14,14 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "dojo/text!./templates/BotonHerramientaWidget.html",
+    "dojo/text!./templates/estilo2017/botonHerramientaWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
     "dijit/Tooltip"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    template, i18n, domClass, domStyle, Tooltip) {
+    template, newTemplate, i18n, domClass, domStyle, Tooltip) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -30,10 +31,11 @@ define([
             visible: true,
             active: true,
             icono: 'xxx',
+            icon: '',
             etiqueta: 'xxx', //nombre boton,
             msgToolTip: 'xxx'
         },
-        constructor: function (options, srcRefNode) {
+        constructor: function (options, srcRefNode, estilo) {
             //mezclar opciones usuario y default
             var defaults = lang.mixin({}, this.options, options);
             //nodo del widget
@@ -41,12 +43,18 @@ define([
             this._i18n = i18n;
             this._etiqueta = defaults.etiqueta;
             this._icono = defaults.icono;
+            this._icon = defaults.icon;						   
             this._msgToolTip = defaults.msgToolTip;
             //propiedades
             this.set("herramienta", defaults.herramienta);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
-            this.set("active", defaults.active);
+            this.set("estilo", estilo);
+            this.set("active", defaults.active);            
+            if (this.estilo){
+                this.set("templateString", newTemplate);
+            }
+            
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -76,11 +84,21 @@ define([
             if (!this.get("loaded")) {
                 this._init();
             }
-            this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '"' + "class=" + '"' + "estiloBotonBarra" + '"' + "> <br>";
-            new Tooltip({
-                connectId: [this._botonNode],
-                label: "<b>" + this._etiqueta + "</b>" + "<br>" + "<p> " + this._msgToolTip + "</p>"
-            });
+            
+            if (this.estilo){                
+                this._botonNode.innerHTML = "<a class=\"itemMainMenu\" href=\"#\"><i class=\"material-icons\">"+ this._icon + "</i></a>";
+                new Tooltip({
+                    connectId: [this._botonNode],
+                    position:['below'],
+                    label: "<b>" + this._etiqueta + "</b>" + "<p> " + this._msgToolTip + "</p>"
+                });
+            }else{
+                this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '"' + "class=" + '"' + "estiloBotonBarra" + '"' + "> <br>";
+                new Tooltip({
+                    connectId: [this._botonNode],
+                    label: "<b>" + this._etiqueta + "</b>" + "<br>" + "<p> " + this._msgToolTip + "</p>"
+                });
+            }                
         },
         // connections/subscriptions se limpian durante la fase destroy()
         destroy: function () {

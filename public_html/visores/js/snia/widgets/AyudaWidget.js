@@ -55,6 +55,7 @@ define([
             this.set("mapa", this.options.mapa);
             this.set("theme", this.options.theme);
             this.set("visible", this.options.visible);
+            this.set("estilo", this.options.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -213,7 +214,11 @@ define([
                         } else {
                             if (comun[i].Imagen) {
                                 rutaImg = comun[i].Imagen.URL;
-                                imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagen.Ancho + 'px"' + " height=" + '"' + comun[i].Imagen.Alto + 'px>"';
+                                if (this.estilo){
+                                    imagen = "<i class=\"material-icons\" style=\"color: #f19607\">" + rutaImg + "</i>";
+                                } else {
+                                    imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagen.Ancho + 'px"' + " height=" + '"' + comun[i].Imagen.Alto + 'px>"';
+                                }                                
                                 contenido = contenido + imagen + " <br> ";
                             } else {
                                 if (comun[i].Enlace) {
@@ -244,7 +249,13 @@ define([
                                                         for (j = 0; j < comun[i].TextoNegrita.length; j = j + 1) {
                                                             contenido = contenido + "<b><p class=" + '"' + comun[i].TextoNegrita[j].Estilo + '"' + ">" + comun[i].TextoNegrita[j].Contenido + "</p></b>";
                                                         }
-                                                    }
+                                                    } else{
+                                                        if (comun[i].Imagenes) {
+                                                            rutaImg = comun[i].Imagenes.URL;
+                                                            imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagenes.Ancho + 'px"' + " height=" + '"' + comun[i].Imagenes.Alto + 'px>"';
+                                                            contenido = contenido + imagen + " <br> ";
+                                                        }                                                       
+                                                    } 
                                                     
                                                 }
                                             }
@@ -257,9 +268,15 @@ define([
                     }
                     if (this._tree.get("selectedItems")[0].seccionContenido.titulo.Imagen) {
                         rutaImg = this._tree.get("selectedItems")[0].seccionContenido.titulo.Imagen.URL;
-                        imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + "30px" + '"' + " height=" + '"' + "30px" + '" ' + titulo + " ";
-                        contenido = contenido + "<br>  <br>";
-                        div2.innerHTML = imagen + contenido;
+                        if (this.estilo){
+                            imagen = "<i class=\"material-icons\" style=\"color: #f19607\">" + rutaImg + "</i>";
+                            contenido = contenido + "<br>";
+                            div2.innerHTML = imagen + titulo + contenido;
+                        } else {
+                            imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + "30px" + '"' + " height=" + '"' + "30px" + '" ' + titulo + " ";
+                            contenido = contenido + "<br>  <br>";
+                            div2.innerHTML = imagen + contenido;
+                        }                        
                     } else {
                         div2.innerHTML = titulo + contenido;
                     }

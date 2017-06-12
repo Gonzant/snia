@@ -14,13 +14,14 @@ define([
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dojo/text!./templates/BarraHerramientasWidget.html",
+    "dojo/text!./templates/estilo2017/BarraHerramientasWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
     "widgets/BotonHerramientaWidget"
 ], function (domConstruct, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
-    template, i18n, domClass, domStyle,
+    template, newTemplate, i18n, domClass, domStyle,
     BotonHerramientaWidget
     ) {
     //"use strict";
@@ -44,6 +45,7 @@ define([
             //propiedades
             this.set("herramientasOptions", defaults.herramientasOptions);
             this.set("vertical", defaults.vertical);
+            this.set("estilo", defaults.estilo);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
@@ -53,6 +55,10 @@ define([
             this.watch("active", this._active);
             // classes
             this._css = { };
+            
+            if (this.estilo){
+                this.set("templateString", newTemplate);
+            }
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -113,11 +119,15 @@ define([
         },
         _initBotonHerramienta: function (herramientaOptions) {
             var tipo, node, node2, boton;
-            tipo = this.get('vertical') ? '<div></div>' : '<div> <td width=10px> </div>';
+            tipo = this.get('vertical') ? '<div></div>' : '<div>  </div>';
             node = domConstruct.toDom(tipo);
-            node2 = domConstruct.place('<div></div>', node);
+            if (this.estilo){
+                node2 = domConstruct.place('<a></a>', node);                
+            } else {
+                node2 = domConstruct.place('<div></div>', node);
+            }            
             domConstruct.place(node, this._rootNode);
-            boton = new BotonHerramientaWidget(herramientaOptions, node2);
+            boton = new BotonHerramientaWidget(herramientaOptions, node2, this.estilo);
             boton.startup();
             this._botones.push(boton);
 
