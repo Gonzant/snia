@@ -307,7 +307,8 @@ Dialogos:
     padding-top: 10px;
     border-top: none;    
     text-align: center;
-    background-color: #f19607 !important;
+    background-color: #f19607;
+    background-image: none;
 }
 
 .dijitDialogPaneContent {
