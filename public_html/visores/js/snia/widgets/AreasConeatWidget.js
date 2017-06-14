@@ -13,6 +13,7 @@ define([
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dojo/text!./templates/AreasConeatWidget.html",
+    "dojo/text!./templates/estilo2017/AreasConeatWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
@@ -36,7 +37,7 @@ define([
     "dojo/domReady!"
 ], function (on, Evented, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
-    template, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
+    template, newTemplate, i18n, domClass, domStyle, Graphic, Dibujo, CapaGrafica3SR, wkids, Draw,
     SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol,
     Color, Tooltip, a11yclick, GeometryService, AreasAndLengthsParameters, Geoprocessor, FeatureSet,
     Standby, domConstruct) {
@@ -60,6 +61,7 @@ define([
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -68,6 +70,9 @@ define([
             this._css = {
                // baseClassRadioButton: "sniaRadioButton"
             };
+            if (this.estilo){
+                this.templateString = newTemplate;
+            }
         },
         postCreate: function () {
             this.inherited(arguments);

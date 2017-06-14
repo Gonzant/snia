@@ -16,6 +16,7 @@
 .claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
     border: 1px solid #f19607;
     padding: 0px 0px 0px 0px;
+    border-radius: 0px;
     background-color: #f19607;
 }
 
@@ -82,6 +83,11 @@ html, body {
     overflow:hidden;
     font: 12px Arial,clean,sans-serif;
 }
+
+.logoSupIzq{
+    margin-top:-7px;
+}
+
 #logoMGAPchico{
     z-index: 20;
     width: 110px;
@@ -392,11 +398,9 @@ Dialogos:
 .BigButtonMapaBase {
     background-color: #f19607;
     color: white;
-    padding: 1px;
-    margin: 8px 0;
-    cursor: pointer;    
-    border-radius:5px;
-    border: 1px;
+    padding: 0px;
+    width: 65px;
+    cursor: pointer;        
 }
 
 /*Botones con Texto*/
@@ -1073,4 +1077,24 @@ div p {
 
 .dijitTreeLabel {
     margin: 0 0px;
+}
+
+.iconPDFCubrimientoBuscar{
+    background-image: url('../img/pdf.png');
+    background-repeat: no-repeat; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 45px;
+    border:0px;
+    background-color: transparent;
+}
+
+.iconTXTCubrimientoBuscar{
+    background-image: url('../img/txt.png');    
+    background-repeat: no-repeat; 
+    background-size: 40px 40px;
+    width: 40px;
+    height: 45px; 
+    border:0px;
+    background-color: #FFC000;
 }

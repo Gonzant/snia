@@ -15,6 +15,7 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "dojo/text!./templates/InformacionSuelosWidget.html",
+    "dojo/text!./templates/estilo2017/InformacionSuelosWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
@@ -38,7 +39,7 @@ define([
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    template, i18n, domClass, domStyle,
+    template, newTemplate, i18n, domClass, domStyle,
     SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect,
     DataGrid, ObjectStore, baseArray, Tooltip, JSON, domConstruct, Standby ) {
 //"use strict";
@@ -68,12 +69,16 @@ define([
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             // classes
             this.ConfigJSON = defaults.config.Herramienta;
+            if (this.estilo){
+                this.templateString = newTemplate;
+            }
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -185,18 +190,35 @@ define([
             this._excecute();
             this._n = 0;
             this._elemento = null;
-            new Tooltip({
-                connectId: [this._acercarUnidadMapeoNode.domNode],
-                label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbAcercarUnidadMapeo + "<br>"
-            });
-            new Tooltip({
-                connectId: [this._acercarPerfilSeleccionadoNode.domNode],
-                label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbAcercarPerfil + "<br>"
-            });
-            new Tooltip({
-                connectId: [this._limpiarSeleccionNode.domNode],
-                label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbLimpiar + "<br>"
-            });
+            if (this.estilo){
+                new Tooltip({
+                    connectId: [this._acercarUnidadMapeoNode.domNode],
+                    label: this._i18n.widgets.InformacionSuelosWidget.lbAcercarUnidadMapeo,
+                    position: ['below']
+                });
+                new Tooltip({
+                    connectId: [this._acercarPerfilSeleccionadoNode.domNode],
+                    label: this._i18n.widgets.InformacionSuelosWidget.lbAcercarPerfil,
+                    position: ['below']
+                });
+                new Tooltip({
+                    connectId: [this._limpiarSeleccionNode.domNode],
+                    label: this._i18n.widgets.InformacionSuelosWidget.lbLimpiar +"<br>"
+                });
+            } else {            
+                new Tooltip({
+                    connectId: [this._acercarUnidadMapeoNode.domNode],
+                    label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbAcercarUnidadMapeo + "<br>"
+                });
+                new Tooltip({
+                    connectId: [this._acercarPerfilSeleccionadoNode.domNode],
+                    label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbAcercarPerfil + "<br>"
+                });
+                new Tooltip({
+                    connectId: [this._limpiarSeleccionNode.domNode],
+                    label: "<b>" + this._i18n.widgets.InformacionSuelosWidget.lbLimpiar + "<br>"
+                });
+            }
         },
         _excecute : function () {
             this._query.where = " 1 = 1 ";

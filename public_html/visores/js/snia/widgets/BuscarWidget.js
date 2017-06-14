@@ -15,6 +15,7 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "dojo/text!./templates/BuscarWidget.html",
+    "dojo/text!./templates/estilo2017/BuscarWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
@@ -40,7 +41,7 @@ define([
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    template, i18n, domClass, domStyle,
+    template, newTemplate, i18n, domClass, domStyle,
     SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, CheckBox,
     DataGrid, ObjectStore, baseArray, Tooltip, Geoprocessor, Dialog, CubrimientoConeatWidget, dom) {
 //"use strict";
@@ -70,6 +71,7 @@ define([
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -89,6 +91,10 @@ define([
                 productividad: defaults.config.productividad,
                 valorreal: defaults.config.valorreal
             };
+            
+            if (this.estilo){
+                this.templateString = newTemplate;
+            }
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -438,7 +444,7 @@ define([
                 this._cubrimientoConeatWidget.show();
                 dialogo = new Dialog({
                     title : "Porcentaje de Grupos Coneat",
-                    style : "width: 280px",
+                    style : "width: 335px",
                     content: this._cubrimientoConeatWidget
                 });
                 dialogo.startup();

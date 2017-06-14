@@ -214,7 +214,7 @@ define([
                         } else {
                             if (comun[i].Imagen) {
                                 rutaImg = comun[i].Imagen.URL;
-                                if (this.estilo){
+                                if (this.estilo && !(this.options.config.estiloViejo)){
                                     imagen = "<i class=\"material-icons\" style=\"color: #f19607\">" + rutaImg + "</i>";
                                 } else {
                                     imagen = "<img src=" + '"' + rutaImg + '" ' + " width=" + '"' + comun[i].Imagen.Ancho + 'px"' + " height=" + '"' + comun[i].Imagen.Alto + 'px>"';

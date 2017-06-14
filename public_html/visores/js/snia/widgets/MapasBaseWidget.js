@@ -52,6 +52,7 @@ define([
             this.set("visible", defaults.visible);
             this.set("config", defaults.config);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -79,12 +80,21 @@ define([
                     domConstruct.place(td, tr);
                    
 //                    //boton para seleccionar mapa
-                    boton = new Button({
-                        id: item.nombre,
-                        disabled: false,
-                        innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65"> <br>' + item.nombre,
-                        name: "mapasBaseOptions"
-                    });
+                    if (this.estilo){
+                        boton = new Button({
+                            id: item.nombre,
+                            disabled: false,
+                            innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65">' + item.nombre,
+                            name: "mapasBaseOptions"
+                        });
+                    } else {
+                        boton = new Button({
+                            id: item.nombre,
+                            disabled: false,
+                            innerHTML: '<button class="BigButtonMapaBase"><img src=' + item.icono + ' height="65" width="65"> <br>' + item.nombre,
+                            name: "mapasBaseOptions"
+                        });
+                    }
                     boton.placeAt(td).startup();
                     
                     this._botones.push(boton);

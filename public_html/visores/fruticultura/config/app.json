@@ -1,5 +1,5 @@
 {
-	"app": {
+    "app": {
         "titulo": "FRUTICULTURA",
         "proxyRules":[
             {
@@ -7,5 +7,6 @@
                 "proxyUrl": "https://web.renare.gub.uy/proxy/proxy.ashx?"
             }
         ]
-    }
+    },
+    "estilo": "true"
 }

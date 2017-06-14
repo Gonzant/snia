@@ -1,6 +1,7 @@
 {
-	"app": {
+    "app": {
         "titulo": "FORESTAL",
         "proxyRules":[]
-    }
+    },
+    "estilo":"true"
 }

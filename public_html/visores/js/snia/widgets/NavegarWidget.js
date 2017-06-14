@@ -15,6 +15,7 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "dojo/text!./templates/NavegarWidget.html",
+    "dojo/text!./templates/estilo2017/NavegarWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
@@ -26,7 +27,7 @@ define([
     "dijit/form/Button"
 ], function (on, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    template, i18n, domClass, domStyle,
+    template, newTemplate, i18n, domClass, domStyle,
     Draw, Graphic,
     Dibujo, Grafico3SR) {
     //"use strict";
@@ -53,13 +54,17 @@ define([
             this.set("extensionesPosteriores", []);
             this.set("_esAnteriorOPosterior", false);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
-            this.watch("active", this._active);
+            this.watch("active", this._active);            
             this.watch("dibujoEnable", this._dibujoEnabledChanged);
             // classes
             this._css = { };
+            if (this.estilo){
+                this.templateString = newTemplate;
+            }
         },
         postCreate: function () {
             this.inherited(arguments);

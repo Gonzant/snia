@@ -1,7 +1,6 @@
 {
-	"app": {
+    "app": {
         "titulo": "CONEAT",
         "proxyRules":[]
-    },
-	"estilo": "true"
+    }
 }

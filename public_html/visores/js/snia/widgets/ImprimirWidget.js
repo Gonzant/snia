@@ -50,6 +50,7 @@ define([
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             this.set("_urlPrintTask", defaults.config.urlPrintTask);
             this.set("_lbImprimir", defaults.config.lbImprimir);
             this.set("_lbImprimiendo", defaults.config.lbImprimiendo);
@@ -143,13 +144,23 @@ define([
                 style: "width: 300px;",
                 content: "<p>Para imprimir el mapa realice menos zoom<p>"
             });
-            this._botonImprimir = new Button({
+            if (this.estilo){
+                this._botonImprimir = new Button({										  
+                    showLabel: true,
+                    label: "<i class=\"material-icons\" style=\"color: white\">print</i>  "+ this._lbImprimir ,
+                    disabled: false,
+                    onClick: lang.hitch(this, this._imprimirClick)
+                });
+            } else {
+                this._botonImprimir = new Button({
                 iconClass: "iconImprimir",
                 showLabel: true,
                 label: this._lbImprimir,
                 disabled: false,
                 onClick: lang.hitch(this, this._imprimirClick)
             });
+            }
+            
 
             this._imprimirNode.appendChild(this._botonImprimir.domNode);
             domStyle.set(this._imprimirNode, "margin-left", "122px");

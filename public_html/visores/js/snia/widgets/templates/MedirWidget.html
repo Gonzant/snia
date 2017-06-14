@@ -1,17 +1,17 @@
 <div>
-    <div data-dojo-attach-point="_distanciaNode"
-         data-dojo-type="dijit/form/ToggleButton" style="width: 100px;">
-        ${_i18n.widgets.MedirWidget.lbDistancia}</div>
-    <div data-dojo-attach-point="_areaNode"
-         data-dojo-type="dijit/form/ToggleButton" style="width: 100px;">
-        ${_i18n.widgets.MedirWidget.lbArea}</div>
-    <br>
-    <br>
+    <div style="margin-bottom: 10px;">
+        <div data-dojo-attach-point="_distanciaNode"
+             data-dojo-type="dijit/form/ToggleButton">
+            ${_i18n.widgets.MedirWidget.lbDistancia}</div>
+        <div data-dojo-attach-point="_areaNode"
+             data-dojo-type="dijit/form/ToggleButton">
+            ${_i18n.widgets.MedirWidget.lbArea}</div>
+    </div>
     <select data-dojo-attach-point="_unidadNode" style="width: 200px;"
             data-dojo-type="dijit/form/Select">
     </select>
     <div data-dojo-attach-point="_resultadoNode" class="smallText">
-        <table>
+        <table style="margin-top: 10px;">
             <tr>
                 <td data-dojo-attach-point="_resultadoMedidaNode" style="width:100px;;text-align:center;"></td>
                 <td data-dojo-attach-point="_resultadoUnidadNode" style="width:100px;text-align:center;"></td>

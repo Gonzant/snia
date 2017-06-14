@@ -220,8 +220,9 @@ define([
             timeExtent = new TimeExtent();
             timeExtent.startTime = new Date(this._sTime);
             timeExtent.endTime = new Date(this._eTime);
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "<\/i>");
+            domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "</i>");
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
+            domStyle.set(this._tiempoTexto, 'margin-top', '10px');
             this.timeSlider.setThumbCount(2);
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
             if (this._timeSlider.defecto) {
@@ -253,7 +254,7 @@ define([
             var startValString, endValString;
             startValString = evt.startTime.getUTCDate() + "/" + (evt.startTime.getUTCMonth() + 1) + "/" + evt.startTime.getUTCFullYear();
             endValString = evt.endTime.getUTCDate() + "/" + (evt.endTime.getUTCMonth() + 1) + "/" + evt.endTime.getUTCFullYear();
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i>" + startValString + "-" + endValString  + "<\/i>");
+            domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString + "-" + endValString  + "<\/i>");
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
