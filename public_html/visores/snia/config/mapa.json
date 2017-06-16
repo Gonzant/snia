@@ -60,7 +60,7 @@
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
+            },            
             {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/MapadeCalor_agro/MapServer",
                 "options": {
@@ -106,6 +106,14 @@
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
                 "options": {
                         "id": "Cartografía Agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgExcesoHidricoLitoral/MapServer",
+                "options": {
+                        "id": "Exceso Hídrico Litoral (Imagenes)",
                         "opacity": 0.7,
                         "visible": false
                 }

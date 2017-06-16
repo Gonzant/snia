@@ -1,59 +1,471 @@
 {        
     "barraHerramientas": [                                        
+                
+       
         
-        {
-            "widget": "widgets/MedirWidget",
-            "title": "Medir",
-            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
-            "icono": "../js/snia/img/regla.png",
-            "icon": "straighten",
-            "toggle": false,
-            "widgetConfig": {
+        
                 
-            }
-        },
         {
-            "widget": "widgets/CoordenadasWidget",
-            "title": "Coordenadas",
-            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
-            "icono": "../js/snia/img/coordenadas.png", 
-            "icon": "my_location",
+            "widget": "widgets/AyudaWidget",
+            "title": "Ayuda",
+            "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
+            "icono": "../js/snia/img/ayuda.png",
+            "icon": "help_outline",
             "toggle": false,
             "widgetConfig": {
-                
+                "data": [
+    {
+        "name": "Ayuda",
+	"id": "root",
+        "titulo":"prueba",
+        "esPadre": true
+	
+    },
+        {"name": "Introducción",
+            "id":"0",
+            "parent":"root",
+            "seccionTitulo":{
+                    "Texto":{"Contenido": "Introducción","Estilo": "Indice1"} },
+            "seccionContenido":{
+                "titulo":{
+                        "Texto":{"Contenido": "Introducción","Estilo": "Titulo1"}
+                    },
+                "elementos":[
+                    {
+                      "Texto":[ { 
+                            "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                            "Estilo": "Normal"}
+                      ]
+                    }                     
+                ]
+            }            
+        },       
+        {"name": "Herramientas",
+            "id":"1",
+            "parent":"root",
+            "seccionTitulo":{
+                    "Texto":
+                           {"Contenido": "Herramientas", "Estilo": "Indice1" }                        
+            },
+            "seccionContenido":{
+                "titulo":{ "Texto": { "Contenido": "Herramientas", "Estilo": "Titulo1" }},
+                "elementos": [
+                    {
+                        "Texto":[
+                            { "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
+                            "Estilo": "Normal" 
+                            }
+                        ]
+                    }
+                ],
+                "esPadre": true
             }
         },
-           {
-            "widget": "widgets/MapaReferenciaWidget",
-            "title": "Mapa Referencia",
-            "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png", 
-            "icon": "place",
-            "toggle": false,
-            "widgetConfig": {                
-            }
-        },
-        {
-            "widget": "widgets/ImprimirWidget",
-            "title": "Imprimir",
-            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
-            "icono": "../js/snia/img/imprimir.png",
-            "icon": "local_printshop",
-            "toggle": false,
-            "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
-                "lbImprimir": "Imprimir",
-                "lbImprimiendo":"Imprimiendo",
-                "data": 
-                    [
-                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
+            {
+                "name": "Mapa Base",
+                "id":"2",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto": { "Contenido": "Mapa Base","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{"URL":"map"},
+                        "Texto":{"Contenido": "Mapa Base","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                    {"Texto":[ {
+                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
+                           "Estilo": "Normal"
+                        }]    
+                    } ]
+                }
+            },
+            {
+                "name": "Contenidos",
+                "id":"4",
+                "parent":"1",
+                "seccionTitulo":{
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"layers"}                         
+                },
+                "seccionContenido":{
+                    "titulo":{
+                        "Imagen": {"URL":"layers"},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                    {"Texto":[
+                        {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
+                           "Estilo": "Normal"
+                        }]    
+                    }, 
+                    {"Texto":[
+                        {
+                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
+                           "Estilo": "Normal"
+                        }
+                        ]    
+                    }
                     ]
-            }
+                }
+            },
+            {
+               "name": "Navegar",
+               "id":"3",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"near_me"}                          
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{ "URL":"near_me"},
+                        "Texto":{"Contenido": "Navegar", "Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {"Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal"} ] },
+                        {"Imagen": {"URL":"zoom_in", "Alto":30} },
+                        {
+                         "Texto":[
+                            {"Contenido": "Acercar", "Estilo": "Normal" },
+                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.", "Estilo": "Normal"}
+                           ] 
+                        },
+                        {"Imagen": {"URL":"zoom_out"}},
+                        {
+                         "Texto":[
+                            {"Contenido": "Alejar", "Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.", "Estilo": "Normal"}
+                           ] 
+                        },
+                        {"Imagen":{"URL":"open_with"} },
+                        {
+                         "Texto":[
+                            {"Contenido": "Desplazar", "Estilo": "Titulo3"},
+                            {
+                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
+                              "Estilo": "Normal"
+                            }
+                           ] 
+                        },
+                        {"Imagen": {"URL":"public"}},
+                        {"Texto":[
+                            {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
+                            {"Contenido": "Posiciona el mapa en su máxima extensión.", "Estilo": "Normal"}
+                           ] 
+                        },
+                        {"Imagen":{"URL":"arrow_back"}},
+                        {"Texto":[
+                            {"Contenido": "Vista previa","Estilo": "Titulo3"},
+                            {
+                              "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
+                              "Estilo": "Normal"
+                            }
+                           ] 
+                        },
+                        {"Imagen":{"URL":"arrow_forward"}},
+                        {
+                         "Texto":[
+                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
+                            {"Contenido": "Posiciona el mapa a la vista anterior a la vista previa.","Estilo": "Normal"}
+                           ] 
+                        }
+                    ]
+                }               
+            },            
+            {
+               "name": "Identificar",
+               "id":"6",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":{"Contenido": "Identificar", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
+                },
+               "seccionContenido":{
+                    "titulo":
+                        {"Imagen":{"URL":"info_outline"},                        
+                        "Texto": {"Contenido": "Identificar", "Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {"Texto":[
+                           {"Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón secundario del ratón.",
+                              "Estilo": "Normal"
+                            }]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Buscar Padrones",
+               "id":"7",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto": {"Contenido": "Buscar Padrones", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"search"}                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{"URL":"search"},
+                        "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {"Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite buscar padrones rurales para visualizar sus índices y generar el reporte CONEAT (croquis). Para esto simplemente seleccione el departamento e ingrese el número de padrón, y luego presione el botón buscar. Si el padrón existe aparecerá en la grilla resultado y automáticamente se acercara al mismo en el mapa.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón secundario del ratón. Para seleccionar varios padrones mantenga presionado la tecla “ctrl”.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        },
+                        {"Imagen": {"URL":"zoom_in"}},
+                        { "Texto":[
+                            {"Contenido": "Acercar selección", "Estilo": "Titulo3"},
+                            {"Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.", "Estilo": "Normal"}
+                           ]
+                        },
+                        {"Imagen":{"URL":"remove"}},
+                        { "Texto":[
+                            {"Contenido": "Remover selección", "Estilo": "Titulo3"},
+                            {"Contenido": "Remueve de la lista de resultados los padrones seleccionados.", "Estilo": "Normal"}
+                            ]
+                        },
+                        {"Imagen": {"URL":"refresh"}},
+                        { "Texto":[
+                            {"Contenido": "Seleccionar todo", "Estilo": "Titulo3"},
+                            {"Contenido": "Selecciona todos los padrones de la lista de resultados.", "Estilo": "Normal"}
+                           ]
+                        },
+                        {"Imagen":{"URL":"description"}},
+                        { "Texto":[
+                            {"Contenido": "Croquis selección","Estilo": "Titulo3"},
+                            {"Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.", "Estilo": "Normal" }
+                           ]
+                        }, 
+                        {"Imagen":{"URL":"chrome_reader_mode"}},
+                        { "Texto":[
+                            {"Contenido": "Porcentaje de grupos CONEAT","Estilo": "Titulo3"},
+                            {"Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.", "Estilo": "Normal" }
+                           ]
+                        }
+                    ]
+                },
+               "hijos": "no"
+            },                                    
+            {
+               "name": "Medir",
+               "id":"7",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":{"Contenido": "Medir", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"straighten"}
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{ "URL":"straighten"},
+                        "Texto":{"Contenido": "Medir", "Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {"Texto":[{"Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.", "Estilo": "Normal" },
+                            {"Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
+                              "Estilo": "Normal"
+                            },
+                            {"Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón secundario del ratón sobre el mapa.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Coordenadas",
+               "id":"8",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":{"Contenido": "Coordenadas", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"my_location"}                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen": {"URL":"my_location"},
+                        "Texto": {"Contenido": "Coordenadas","Estilo": "Titulo2"}                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar las coordenadas del punto del mapa indicado por el puntero del ratón, en tres sistemas de referencia espacial, UTM 21 sur, coordenadas geográficas y Web Mercator.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Mapa de Referencia",
+               "id":"9",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                            { "Contenido": "Mapa de Referencia", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"place"}
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{"URL":"place"},
+                        "Texto":{"Contenido": "Mapa de Referencia", "Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {
+                          "Texto":[
+                              {
+                                "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
+                                "Estilo": "Normal"
+                              }
+                          ]  
+                        }
+                    ]
+                }
+            },
+            {
+               "name": "Imprimir",
+               "id":"10",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto": { "Contenido": "Imprimir", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"local_printshop"}
+                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{"URL":"local_printshop"},
+                        "Texto": {"Contenido": "Imprimir","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite obtener una impresión del mapa, y para esto despliega una ventana con una vista previa permitiendo al usuario visualizar como quedaría la impresión.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite además agregar la leyenda y el mapa de referencia.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "Es muy importante configurar la impresora con el formato de la vista previa al momento de imprimir.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }
+                        
+                    ]
+                }
+            },
+            {
+               "name": "Datos de Bosques 2011",
+               "id":"10",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":{ "Contenido": "Datos de Bosques 2011", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"insert_chart"}                        
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{"URL":"insert_chart"},
+                        "Texto":{"Contenido": "Datos de Bosques 2011","Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {
+                           "Texto":[
+                           {
+                              "Contenido": "Esta herramienta permite la visualización de datos de bosques naturales y plantados (con sus distintos estratos), tanto a nivel Nacional como a nivel Departamental.",
+                              "Estilo": "Normal"
+                            },
+                            {
+                              "Contenido": "  A su vez, se muestran los bosques según el suelo donde se encuentre, ya sea de prioridad forestal o no.",
+                              "Estilo": "Normal"
+                            }
+                           ]    
+                        }                        
+                    ]
+                }
+            },
+        {"name": "Atribuciones",
+            "id":"18",
+            "parent":"root",
+            "seccionTitulo":{
+                    "Texto":{ "Contenido": "Atribuciones","Estilo": "Indice1"}                        
+            },
+            "seccionContenido":{
+                "titulo":{ "Texto":{"Contenido": "Atribuciones","Estilo": "Titulo1"}},
+                "elementos":[
+                    {
+                    "Texto":[
+                        { "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
+                            "Estilo": "Normal"}
+                      ]  
+                    },
+                    {"Enlace":[{"Contenido": "SIT","URL": "http://sit.mvotma.gub.uy"}] },
+                    {"Texto":[
+                      {"Contenido": "El servicio de imagenes es de ESRI","Estilo": "Normal"}
+                    ]
+                    },
+                    {"Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]},
+                    {
+                    "Texto":[
+                      {
+                        "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
+                        "Estilo": "Normal"
+                      }
+                    ]},
+                    { "Enlace":[ {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}]
+                    },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}] }, 
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGF", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-forestal"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGRN", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-de-recursos-naturales"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "SNIA", "URL": "http://snia.gub.uy/"}]  }
+                ]
+            },
+            "padre": "si"
+        },
+        {"name": "Contacto",
+            "id":"19",
+            "parent":"root",
+            "seccionTitulo":{
+                    "Texto": {"Contenido": "Contacto","Estilo": "Indice1" }                        
+            },
+            "seccionContenido":{
+                "titulo":{"Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}},
+                "elementos": [
+                    {
+                        "Texto":[{"Contenido": "Dirección","Estilo": "Titulo2"},
+                            {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
+                              "Estilo": "Normal"},
+                            {"Contenido": "Teléfonos","Estilo": "Titulo2"},
+                            { "Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                            {"Contenido": "Consultas y Sugerencias","Estilo": "Titulo2"},
+                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
+                              "Estilo": "Normal"
+                            }
+                        ]
+                    },
+                    {"Enlace":[{"Contenido": "snia@mgap.gub.uy","URL": "mailto:snia@mgap.gub.uy"}]}
+                ]
+            },
+            "padre": "si"
+        }
+       ]
+          }
         },
         {
             "widget": "widgets/AyudaWidget",
@@ -797,468 +1209,60 @@
                     }
                 ]
             }
-        },        
+        },
         {
-            "widget": "widgets/AyudaWidget",
-            "title": "Ayuda",
-            "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
-            "icono": "../js/snia/img/ayuda.png",
-            "icon": "help_outline",
+            "widget": "widgets/ImprimirWidget",
+            "title": "Imprimir",
+            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
+            "icono": "../js/snia/img/imprimir.png",
+            "icon": "local_printshop",
             "toggle": false,
             "widgetConfig": {
-                "data": [
-    {
-        "name": "Ayuda",
-	"id": "root",
-        "titulo":"prueba",
-        "esPadre": true
-	
-    },
-        {"name": "Introducción",
-            "id":"0",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto":{"Contenido": "Introducción","Estilo": "Indice1"} },
-            "seccionContenido":{
-                "titulo":{
-                        "Texto":{"Contenido": "Introducción","Estilo": "Titulo1"}
-                    },
-                "elementos":[
-                    {
-                      "Texto":[ { 
-                            "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
-                            "Estilo": "Normal"}
-                      ]
-                    }                     
-                ]
-            }            
-        },       
-        {"name": "Herramientas",
-            "id":"1",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto":
-                           {"Contenido": "Herramientas", "Estilo": "Indice1" }                        
-            },
-            "seccionContenido":{
-                "titulo":{ "Texto": { "Contenido": "Herramientas", "Estilo": "Titulo1" }},
-                "elementos": [
-                    {
-                        "Texto":[
-                            { "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
-                            "Estilo": "Normal" 
-                            }
-                        ]
-                    }
-                ],
-                "esPadre": true
+                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "lbImprimir": "Imprimir",
+                "lbImprimiendo":"Imprimiendo",
+                "data": 
+                    [
+                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
+                    ]
             }
         },
-            {
-                "name": "Mapa Base",
-                "id":"2",
-                "parent":"1",
-                "seccionTitulo":{
-                    "Texto": { "Contenido": "Mapa Base","Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
-                },
-                "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"map"},
-                        "Texto":{"Contenido": "Mapa Base","Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                    {"Texto":[ {
-                           "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
-                           "Estilo": "Normal"
-                        }]    
-                    } ]
-                }
-            },
-            {
-                "name": "Contenidos",
-                "id":"4",
-                "parent":"1",
-                "seccionTitulo":{
-                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
-                    "Imagen": {"URL":"layers"}                         
-                },
-                "seccionContenido":{
-                    "titulo":{
-                        "Imagen": {"URL":"layers"},
-                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                    {"Texto":[
-                        {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
-                           "Estilo": "Normal"
-                        }]    
-                    }, 
-                    {"Texto":[
-                        {
-                           "Contenido": "Si Ud. no puede visualizar alguna capa de información es porque debe realizar mayor zoom en el mapa para que se prenda la capa.",
-                           "Estilo": "Normal"
-                        }
-                        ]    
-                    }
-                    ]
-                }
-            },
-            {
-               "name": "Navegar",
-               "id":"3",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
-                    "Imagen":{ "URL":"near_me"}                          
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{ "URL":"near_me"},
-                        "Texto":{"Contenido": "Navegar", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {"Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal"} ] },
-                        {"Imagen": {"URL":"zoom_in", "Alto":30} },
-                        {
-                         "Texto":[
-                            {"Contenido": "Acercar", "Estilo": "Normal" },
-                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.", "Estilo": "Normal"}
-                           ] 
-                        },
-                        {"Imagen": {"URL":"zoom_out"}},
-                        {
-                         "Texto":[
-                            {"Contenido": "Alejar", "Estilo": "Titulo3"},
-                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.", "Estilo": "Normal"}
-                           ] 
-                        },
-                        {"Imagen":{"URL":"open_with"} },
-                        {
-                         "Texto":[
-                            {"Contenido": "Desplazar", "Estilo": "Titulo3"},
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
-                              "Estilo": "Normal"
-                            }
-                           ] 
-                        },
-                        {"Imagen": {"URL":"public"}},
-                        {"Texto":[
-                            {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
-                            {"Contenido": "Posiciona el mapa en su máxima extensión.", "Estilo": "Normal"}
-                           ] 
-                        },
-                        {"Imagen":{"URL":"arrow_back"}},
-                        {"Texto":[
-                            {"Contenido": "Vista previa","Estilo": "Titulo3"},
-                            {
-                              "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
-                              "Estilo": "Normal"
-                            }
-                           ] 
-                        },
-                        {"Imagen":{"URL":"arrow_forward"}},
-                        {
-                         "Texto":[
-                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
-                            {"Contenido": "Posiciona el mapa a la vista anterior a la vista previa.","Estilo": "Normal"}
-                           ] 
-                        }
-                    ]
-                }               
-            },            
-            {
-               "name": "Identificar",
-               "id":"6",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":{"Contenido": "Identificar", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
-                },
-               "seccionContenido":{
-                    "titulo":
-                        {"Imagen":{"URL":"info_outline"},                        
-                        "Texto": {"Contenido": "Identificar", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {"Texto":[
-                           {"Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón secundario del ratón.",
-                              "Estilo": "Normal"
-                            }]    
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Buscar Padrones",
-               "id":"7",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto": {"Contenido": "Buscar Padrones", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"search"}                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"search"},
-                        "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {"Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite buscar padrones rurales para visualizar sus índices y generar el reporte CONEAT (croquis). Para esto simplemente seleccione el departamento e ingrese el número de padrón, y luego presione el botón buscar. Si el padrón existe aparecerá en la grilla resultado y automáticamente se acercara al mismo en el mapa.",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón secundario del ratón. Para seleccionar varios padrones mantenga presionado la tecla “ctrl”.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {"Imagen": {"URL":"zoom_in"}},
-                        { "Texto":[
-                            {"Contenido": "Acercar selección", "Estilo": "Titulo3"},
-                            {"Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.", "Estilo": "Normal"}
-                           ]
-                        },
-                        {"Imagen":{"URL":"remove"}},
-                        { "Texto":[
-                            {"Contenido": "Remover selección", "Estilo": "Titulo3"},
-                            {"Contenido": "Remueve de la lista de resultados los padrones seleccionados.", "Estilo": "Normal"}
-                            ]
-                        },
-                        {"Imagen": {"URL":"refresh"}},
-                        { "Texto":[
-                            {"Contenido": "Seleccionar todo", "Estilo": "Titulo3"},
-                            {"Contenido": "Selecciona todos los padrones de la lista de resultados.", "Estilo": "Normal"}
-                           ]
-                        },
-                        {"Imagen":{"URL":"description"}},
-                        { "Texto":[
-                            {"Contenido": "Croquis selección","Estilo": "Titulo3"},
-                            {"Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.", "Estilo": "Normal" }
-                           ]
-                        }, 
-                        {"Imagen":{"URL":"chrome_reader_mode"}},
-                        { "Texto":[
-                            {"Contenido": "Porcentaje de grupos CONEAT","Estilo": "Titulo3"},
-                            {"Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.", "Estilo": "Normal" }
-                           ]
-                        }
-                    ]
-                },
-               "hijos": "no"
-            },                                    
-            {
-               "name": "Medir",
-               "id":"7",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":{"Contenido": "Medir", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"straighten"}
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{ "URL":"straighten"},
-                        "Texto":{"Contenido": "Medir", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {"Texto":[{"Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.", "Estilo": "Normal" },
-                            {"Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
-                              "Estilo": "Normal"
-                            },
-                            {"Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón secundario del ratón sobre el mapa.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Coordenadas",
-               "id":"8",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":{"Contenido": "Coordenadas", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"my_location"}                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen": {"URL":"my_location"},
-                        "Texto": {"Contenido": "Coordenadas","Estilo": "Titulo2"}                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar las coordenadas del punto del mapa indicado por el puntero del ratón, en tres sistemas de referencia espacial, UTM 21 sur, coordenadas geográficas y Web Mercator.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Mapa de Referencia",
-               "id":"9",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                            { "Contenido": "Mapa de Referencia", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"place"}
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"place"},
-                        "Texto":{"Contenido": "Mapa de Referencia", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {
-                          "Texto":[
-                              {
-                                "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
-                                "Estilo": "Normal"
-                              }
-                          ]  
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Imprimir",
-               "id":"10",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto": { "Contenido": "Imprimir", "Estilo": "Indice1"},
-                    "Imagen":{ "URL":"local_printshop"}
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"local_printshop"},
-                        "Texto": {"Contenido": "Imprimir","Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite obtener una impresión del mapa, y para esto despliega una ventana con una vista previa permitiendo al usuario visualizar como quedaría la impresión.",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "La herramienta permite seleccionar el formato y la escala a la cual se desea visualizar el mapa. Permite además agregar la leyenda y el mapa de referencia.",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Es muy importante configurar la impresora con el formato de la vista previa al momento de imprimir.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                        
-                    ]
-                }
-            },
-            {
-               "name": "Datos de Bosques 2011",
-               "id":"10",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":{ "Contenido": "Datos de Bosques 2011", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"insert_chart"}                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"insert_chart"},
-                        "Texto":{"Contenido": "Datos de Bosques 2011","Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite la visualización de datos de bosques naturales y plantados (con sus distintos estratos), tanto a nivel Nacional como a nivel Departamental.",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "  A su vez, se muestran los bosques según el suelo donde se encuentre, ya sea de prioridad forestal o no.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }                        
-                    ]
-                }
-            },
-        {"name": "Atribuciones",
-            "id":"18",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto":{ "Contenido": "Atribuciones","Estilo": "Indice1"}                        
-            },
-            "seccionContenido":{
-                "titulo":{ "Texto":{"Contenido": "Atribuciones","Estilo": "Titulo1"}},
-                "elementos":[
-                    {
-                    "Texto":[
-                        { "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
-                            "Estilo": "Normal"}
-                      ]  
-                    },
-                    {"Enlace":[{"Contenido": "SIT","URL": "http://sit.mvotma.gub.uy"}] },
-                    {"Texto":[
-                      {"Contenido": "El servicio de imagenes es de ESRI","Estilo": "Normal"}
-                    ]
-                    },
-                    {"Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]},
-                    {
-                    "Texto":[
-                      {
-                        "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
-                        "Estilo": "Normal"
-                      }
-                    ]},
-                    { "Enlace":[ {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}]
-                    },
-                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
-                    { "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}] }, 
-                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
-                    { "Enlace":[ {"Contenido": "DGF", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-forestal"}] },
-                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
-                    { "Enlace":[ {"Contenido": "DGRN", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-de-recursos-naturales"}] },
-                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
-                    { "Enlace":[ {"Contenido": "SNIA", "URL": "http://snia.gub.uy/"}]  }
-                ]
-            },
-            "padre": "si"
+        {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png", 
+            "icon": "place",
+            "toggle": false,
+            "widgetConfig": {                
+            }
         },
-        {"name": "Contacto",
-            "id":"19",
-            "parent":"root",
-            "seccionTitulo":{
-                    "Texto": {"Contenido": "Contacto","Estilo": "Indice1" }                        
-            },
-            "seccionContenido":{
-                "titulo":{"Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}},
-                "elementos": [
-                    {
-                        "Texto":[{"Contenido": "Dirección","Estilo": "Titulo2"},
-                            {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
-                              "Estilo": "Normal"},
-                            {"Contenido": "Teléfonos","Estilo": "Titulo2"},
-                            { "Contenido": "23096008, 23097025", "Estilo": "Normal"},
-                            {"Contenido": "Consultas y Sugerencias","Estilo": "Titulo2"},
-                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
-                              "Estilo": "Normal"
-                            }
-                        ]
-                    },
-                    {"Enlace":[{"Contenido": "snia@mgap.gub.uy","URL": "mailto:snia@mgap.gub.uy"}]}
-                ]
-            },
-            "padre": "si"
-        }
-       ]
-          }
+        {
+            "widget": "widgets/CoordenadasWidget",
+            "title": "Coordenadas",
+            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
+            "icono": "../js/snia/img/coordenadas.png", 
+            "icon": "my_location",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/MedirWidget",
+            "title": "Medir",
+            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
+            "icono": "../js/snia/img/regla.png",
+            "icon": "straighten",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
         },
         {
             "widget": "widgets/BuscarWidget",

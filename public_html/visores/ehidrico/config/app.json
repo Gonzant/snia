@@ -1,6 +1,7 @@
 {
-	"app": {
-        "titulo": "Excesos Hídricos 2016",
+    "app": {
+        "titulo": "Exceso Hídrico",
         "proxyRules":[]
-    }
+    },
+    "estilo":true
 }

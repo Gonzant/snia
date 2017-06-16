@@ -3,24 +3,39 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Apicultura</title>
  
-        <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
-        <link rel="stylesheet" type="text/css" href="https://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
-        <link rel="stylesheet" href="../js/snia/css/appSnia.css">
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/dijit/themes/claro/claro.css"/>
+        <link rel="stylesheet" type="text/css" href="http://web.renare.gub.uy/arcgis_js_api/library/3.14/3.14/esri/css/esri.css" />
+        <link rel="stylesheet" href="../js/snia/css/snia2017.css">
         <link rel="stylesheet" type="text/css" href="../js/lib/agsjs/dijit/css/TOC.css" /> <!-- Contenidos -->
+        <link rel="shortcut icon" href="../js/snia/img/logo_1.png" type="image/png" sizes="16x16">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="../js/snia/css/style.css">
+        <link rel="stylesheet" href="../js/snia/css/font-awesome.min.css">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
 
     <body class="claro" >
+        <div id="divToolbarTitulo" style="display: none" class="divToolbarTitulo"> </div>
+        <nav class="icon-bar alignRight mainBar">            
+            <div style="float: left;"> <a href="http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-de-la-granja"> <img class="logoSupIzq" src="../js/snia/img/logoDIGEGRA.png" alt="logoDIGEGRA" height="50"> </a> </div>
+
+            <div id="divToolbar" class="icon-bar alignRight mainBar" style="float: right"></div>            
+        </nav>
+        <div class="secondIcon-bar alignRight smallBar">
+            <div id="titleSecond" style="float: left;"><b>Apicultura</b></div>
+            <div style="float: right; margin-right: 110px;">
+                <a href="http://www.snia.gub.uy">
+                    <img src="../js/snia/img/logoSnia_1.png" alt="logoSnia" height="40">
+                </a>
+            </div>
+        </div>       
+        
         <div id="divStandby">
-            <div id="divContenedorIndex" style="display: none" >
-                <div id="divToolbar" class="divToolbar"></div>
-                <div id="divLogoMGAP" class="divLogoMGAP">
-                    <img id="logoMGAP" src="../js/snia/img/logoSnia.png">
-                </div>
-                <div id="divToolbarTitulo" class="divToolbarTitulo"> </div>
-            </div>
-            
-            <div id="divMapa">
-            </div>
+            <div id="divContenedorIndex" style="display: none" ></div>                      
+            <div id="divMapa"></div>
         </div>
         <!-- Configuro Dojo -->
         <script type="text/javascript">

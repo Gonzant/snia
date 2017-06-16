@@ -1,123 +1,14 @@
 {        
     "barraHerramientas": [
-        {
-            "widget": "widgets/MapasBaseWidget",
-            "title": "Mapa Base",
-            "msgToolTip": "Permite seleccionar el mapa de base.",
-            "icono": "../js/snia/img/base.png",
-            "toggle": false,
-            "widgetConfig": {
-                "mapasBase": [
-                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
-                ]
-            }
-        },
-        {
-            "widget": "widgets/Contenidos2Widget",
-            "title": "Contenidos",
-            "msgToolTip": "Permite visualizar diferentes capas",
-            "icono": "../js/snia/img/contenido.png",
-            "toggle": false,
-            "startsOpen": false,
-            "draggable": false,
-            "position": {"left": "20px", "top": "96px"},
-            "widgetConfig": {
-                "dynamicMapServiceLayers": [],
-                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
-            }
-        },
-        {
-            "widget": "widgets/NavegarWidget",
-            "title": "Navegar",
-            "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
-            "icono": "../js/snia/img/navegar.png",            
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/IdentificarWidget",
-            "title": "Identificar",
-            "msgToolTip": "Muestra la información de los elementos en un punto.",
-            "icono": "../js/snia/img/identificar.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "campo": "id",
-                "valor": "valor"  
-            }
-        },
-        {
-            "widget": "widgets/BuscarWidget",
-            "title": "Buscar",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
-            "icono": "../js/snia/img/buscar.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
-                "departamento": "DEPTO",
-                "padron": "PADRON",
-                "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
-            }
-        }, 
-        {
-            "widget": "widgets/MedirWidget",
-            "title": "Medir",
-            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
-            "icono": "../js/snia/img/regla.png",
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/CoordenadasWidget",
-            "title": "Coordenadas",
-            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
-            "icono": "../js/snia/img/coordenadas.png",            
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-           {
-            "widget": "widgets/MapaReferenciaWidget",
-            "title": "Mapa Referencia",
-            "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png",            
-            "toggle": false,
-            "widgetConfig": {                
-            }
-        },
-        {
-            "widget": "widgets/ImprimirWidget",
-            "title": "Imprimir",
-            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
-            "icono": "../js/snia/img/imprimir.png",
-            "toggle": false,
-            "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
-                "lbImprimir": "Imprimir",
-                "lbImprimiendo":"Imprimiendo",
-                "data": 
-                    [
-                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
-                    ]
-            }
-        },
+
+        
+        
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
             "msgToolTip": "Muestra el contenido de información y el manual de usuario",
             "icono": "../js/snia/img/ayuda.png",
+            "icon": "help_outline",
             "toggle": false,
             "widgetConfig": {
                 "data": [
@@ -179,11 +70,11 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto": {"Contenido": "Mapa Base", "Estilo": "Indice1" },
-                    "Imagen":{ "URL":"../js/snia/img/mapabase.png", "Alto":20}                        
+                    "Imagen":{ "URL":"map"}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":30},
+                        "Imagen":{"URL":"map"},
                         "Texto":{"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -205,11 +96,11 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
-                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
+                    "Imagen": {"URL":"layers"}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Imagen": {"URL":"layers"},
                         "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -228,11 +119,11 @@
                     "Texto":
                            {"Contenido": "Navegar", "Estilo": "Indice1"},
                     "Imagen":
-                            {"URL":"../js/snia/img/navegar.png", "Alto":20}                        
+                            {"URL":"near_me"}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/navegar.png", "Alto":30},
+                        "Imagen":{"URL":"near_me"},
                         "Texto":
                            {"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
@@ -242,7 +133,7 @@
                               "Estilo": "Normal"}
                            ]    
                         },
-                        {"Imagen":{"URL":"../js/snia/img/zoomin.png", "Alto":30}},
+                        {"Imagen":{"URL":"zoom_in", "Alto":30}},
                         {"Texto":[
                             {"Contenido": "Acercar", "Estilo": "Normal"},
                             {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
@@ -250,7 +141,7 @@
                            ]                            
                         },
                         { "Imagen":
-                            {"URL":"../js/snia/img/zoomout.png", "Alto":30}
+                            {"URL":"zoom_out", "Alto":30}
                         },
                         {
                          "Texto":[
@@ -260,7 +151,7 @@
                             }
                            ]                            
                         },
-                        {"Imagen":{"URL":"../js/snia/img/pan.png", "Alto":30 }
+                        {"Imagen":{"URL":"open_with", "Alto":30 }
                         },
                         {"Texto":[
                             {"Contenido": "Desplazar", "Estilo": "Titulo3"},
@@ -268,7 +159,7 @@
                               "Estilo": "Normal"}
                            ] 
                         },
-                        {"Imagen": { "URL":"../js/snia/img/fullextent.png", "Alto":30}                        },
+                        {"Imagen": { "URL":"public"}                        },
                         {
                          "Texto":[
                            {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
@@ -278,14 +169,14 @@
                             }
                            ] 
                         },
-                        {"Imagen":{"URL":"../js/snia/img/prevextent.png", "Alto":30} },
+                        {"Imagen":{"URL":"arrow_back"} },
                         {
                          "Texto":[
                             {"Contenido": "Vista previa", "Estilo": "Titulo3" },
                             {"Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).", "Estilo": "Normal"}
                            ]      
                         },
-                        {"Imagen":{ "URL":"../js/snia/img/sigextent.png", "Alto":30}},
+                        {"Imagen":{ "URL":"arrow_forward"}},
                         {
                          "Texto":[
                             { "Contenido": "Vista posterior", "Estilo": "Titulo3"},
@@ -308,7 +199,7 @@
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{ "URL":"../js/snia/img/identificar.png", "Alto":30 },                        
+                        "Imagen":{ "URL":"info_outline" },                        
                         "Texto":{"Contenido": "Identificar", "Estilo": "Titulo2" }
                     },
                     "elementos": [
@@ -331,12 +222,12 @@
                     "Texto":
                            {"Contenido": "Buscar Padrones", "Estilo": "Indice1" },
                     "Imagen":
-                            {"URL":"../js/snia/img/buscar.png", "Alto":20}
+                            {"URL":"search"}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/buscar.png",  "Alto":30},
+                        "Imagen":{"URL":"search"},
                         "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -351,7 +242,7 @@
                             }
                            ]    
                         },
-                        {"Imagen": {"URL":"../js/snia/img/acercar.png", "Alto":30} },
+                        {"Imagen": {"URL":"zoom_in", "Alto":30} },
                         { "Texto":[
                            {
                               "Contenido": "Acercar selección",
@@ -363,7 +254,7 @@
                             }
                            ]
                         },
-                        {"Imagen":{"URL":"../js/snia/img/remover.png", "Alto":30}},
+                        {"Imagen":{"URL":"remove"}},
                         { "Texto":[
                             {
                               "Contenido": "Remover selección",
@@ -377,7 +268,7 @@
                         },
                         {"Imagen":
                             {
-                              "URL":"../js/snia/img/todo.png",
+                              "URL":"refresh",
                               "Alto":30
                             }
                         },
@@ -394,7 +285,7 @@
                         },
                         {"Imagen":
                             {
-                              "URL":"../js/snia/img/reporte.png",
+                              "URL":"description",
                               "Alto":30
                             }
                         },
@@ -405,7 +296,7 @@
                             }
                            ]
                         },
-                        {"Imagen":{"URL":"../js/snia/img/contenido.png", "Alto":30}},
+                        {"Imagen":{"URL":"chrome_reader_mode"}},
                         { "Texto":[
                             {"Contenido": "Porcentaje de grupos CONEAT","Estilo": "Titulo3"},
                             {"Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.", "Estilo": "Normal" }
@@ -421,11 +312,11 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":{ "Contenido": "Medir", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/medir.png", "Alto":20}                        
+                    "Imagen":{"URL":"straighten"}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/regla.png", "Alto":30},
+                        "Imagen":{"URL":"straighten"},
                         "Texto":{ "Contenido": "Medir", "Estilo": "Titulo2" }
                     },
                     "elementos": [
@@ -460,7 +351,7 @@
                             },
                     "Imagen":
                             {
-                              "URL":"../js/snia/img/identificar.png",
+                              "URL":"my_location",
                               "Alto":20
                             }
                         
@@ -469,7 +360,7 @@
                     "titulo":{
                          "Imagen":
                         {
-                              "URL":"../js/snia/img/coordenadas.png",
+                              "URL":"my_location",
                               "Alto":30
                         },
                         "Texto":
@@ -502,7 +393,7 @@
                             },
                     "Imagen":
                             {
-                              "URL":"../js/snia/img/mapabase.png",
+                              "URL":"place",
                               "Alto":20
                             }
                         
@@ -511,7 +402,7 @@
                     "titulo":{
                         "Imagen":
                         {
-                              "URL":"../js/snia/img/referencia.png",
+                              "URL":"place",
                               "Alto":30
                         },
                         "Texto":
@@ -540,12 +431,12 @@
                     "Texto":
                            {"Contenido": "Imprimir", "Estilo": "Indice1"},
                     "Imagen":
-                            {"URL":"../js/snia/img/identificar.png", "Alto":20}                        
+                            {"URL":"local_printshop", "Alto":20}                        
                 },
                "seccionContenido":{
                     "titulo":{
                          "Imagen":
-                        {"URL":"../js/snia/img/imprimir.png", "Alto":30},
+                        {"URL":"local_printshop", "Alto":30},
                         "Texto":
                            {"Contenido": "Imprimir",  "Estilo": "Titulo2"}
                     },
@@ -707,6 +598,128 @@
         
 ]
             }
-        }       
+        },
+        {
+            "widget": "widgets/ImprimirWidget",
+            "title": "Imprimir",
+            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
+            "icono": "../js/snia/img/imprimir.png",
+            "icon": "local_printshop",
+            "toggle": false,
+            "widgetConfig": {
+                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "lbImprimir": "Imprimir",
+                "lbImprimiendo":"Imprimiendo",
+                "data": 
+                    [
+                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
+                    ]
+            }
+        },
+        {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png", 
+            "icon": "place",
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
+        {
+            "widget": "widgets/CoordenadasWidget",
+            "title": "Coordenadas",
+            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
+            "icono": "../js/snia/img/coordenadas.png",   
+            "icon": "my_location",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/MedirWidget",
+            "title": "Medir",
+            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
+            "icono": "../js/snia/img/regla.png",
+            "icon": "straighten",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/BuscarWidget",
+            "title": "Buscar",
+            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "icono": "../js/snia/img/buscar.png",  
+            "icon": "search",
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "departamento": "DEPTO",
+                "padron": "PADRON",
+                "catastral": "AREAHA",
+                "productividad": "IND_CONEAT"
+            }
+        },
+        {
+            "widget": "widgets/IdentificarWidget",
+            "title": "Identificar",
+            "msgToolTip": "Muestra la información de los elementos en un punto.",
+            "icono": "../js/snia/img/identificar.png",  
+            "icon": "info_outline",
+            "toggle": false,
+            "widgetConfig": {
+                "campo": "id",
+                "valor": "valor"  
+            }
+        },
+        {
+            "widget": "widgets/NavegarWidget",
+            "title": "Navegar",
+            "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
+            "icono": "../js/snia/img/navegar.png",  
+            "icon": "near_me",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/Contenidos2Widget",
+            "title": "Contenidos",
+            "msgToolTip": "Permite visualizar diferentes capas",
+            "icono": "../js/snia/img/contenido.png",
+            "icon":"layers",
+            "toggle": false,
+            "startsOpen": false,
+            "draggable": false,
+            "position": {"left": "20px", "top": "120px"},
+            "widgetConfig": {
+                "dynamicMapServiceLayers": [],
+                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+            }
+        },
+        {
+            "widget": "widgets/MapasBaseWidget",
+            "title": "Mapa Base",
+            "msgToolTip": "Permite seleccionar el mapa de base.",
+            "icono": "../js/snia/img/base.png",
+            "icon":"map",
+            "toggle": false,
+            "widgetConfig": {
+                "mapasBase": [
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"}
+                ]
+            }
+        }
     ]
 }

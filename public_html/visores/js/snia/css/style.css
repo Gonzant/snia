@@ -317,7 +317,7 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+/*@media screen and (max-width: 300px) {
     span.psw {
        display: block;
        float: none;
@@ -327,6 +327,27 @@ span.psw {
     }
 }
 
+@media screen and (max-width: 1000px) {        
+ .itemMainMenu{ display: none; }
+ .smallBar a{ display: none; }
+ .show_menu_btn{ display: block; } 
+ .show_menu_btn_user{ display: block; } 
+ #titleSecond{font-size: 17px;}
+ /*.scalebar_bottom-left{bottom:100px;}*/
+ /*#timeInfo{left: 24px;}
+}
+
+@media screen and (min-width: 1001px) {
+ .show_menu_btn { display: none; }
+ .show_menu_btn_user{ display: none; } 
+ .itemMainMenu{ display: block; }  
+ .smallBar a{ display: block; }
+ #titleSecond{font-size: 21px;}
+ .scalebar_bottom-left{bottom:31px}
+ 
+}
+
+*/
 .loginContainer{
     right:0;
     margin-top: 48px;
@@ -347,25 +368,7 @@ span.psw {
     color:#E57500 ;
 }
 
-@media screen and (max-width: 1000px) {        
- .itemMainMenu{ display: none; }
- .smallBar a{ display: none; }
- .show_menu_btn{ display: block; } 
- .show_menu_btn_user{ display: block; } 
- #titleSecond{font-size: 17px;}
- /*.scalebar_bottom-left{bottom:100px;}*/
- #timeInfo{left: 24px;}
-}
 
-@media screen and (min-width: 1001px) {
- .show_menu_btn { display: none; }
- .show_menu_btn_user{ display: none; } 
- .itemMainMenu{ display: block; }  
- .smallBar a{ display: block; }
- #titleSecond{font-size: 21px;}
- .scalebar_bottom-left{bottom:31px}
- 
-}
 
 
 .vertical-menu {

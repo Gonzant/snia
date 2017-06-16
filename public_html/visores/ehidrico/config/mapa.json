@@ -29,30 +29,37 @@
             }
         },
         "dynamicLayers": [ 
-			{
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
-                "options": {
-                        "id": "Administrativo",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-			{
-				"url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Rio_Yi/MapServer",
-				"options": {
-						"id": "Rio Yi",
-						"opacity": 0.7,
-						"visible": false
-				}
-			},
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Info_Base/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
                 "options": {
-                        "id": "Información Base",
+                        "id": "Límites administrativos",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
+            {
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",                
+                "options": {
+                        "id": "Información base",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {                
+                "multiple": [ 
+                    {
+                        "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer"
+                    },
+                    {
+                        "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/CuencaRioUruguay/MapServer"
+                    }
+                ],
+                "options": {
+                        "id": "Hidrografía",
+                        "opacity": 0.4,
+                        "visible": true
+                }
+            }, 
             {
                 "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Vulnerabilidad/MapServer",
                 "options": {
@@ -60,52 +67,37 @@
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
+            },    
+            
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2017/MapServer",
                 "options": {
-                        "id": "Situación Hídrica",
+                        "id": "Situación Hídrica 2017",
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
-			{
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgMediaResolucionAbril2016/MapServer",
-                "options": {
-                        "id": "Imagen media resolución Abril 2016",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
-			{
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgMediaResolucionMayo2015/MapServer",
-                "options": {
-                        "id": "Imagen media resolución Marzo 2015",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },
+            },            
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgBajaResolucion/MapServer",
+                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgExcesoHidricoLitoral/MapServer",
                 "options": {
-                        "id": "Imagen baja resolución",
+                        "id": "Exceso Hídrico Litoral (Imagenes)",
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
+            },                                  
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Imagenes_Baja_Resoluci%C3%B3n500_Julio/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2016/MapServer",
                 "options": {
-                        "id": "Imagenes Baja Resolución (500 mts)",
+                        "id": "Exceso Hidrico 2016",
                         "opacity": 0.7,
                         "visible": false
                 }
-            },
+            },            
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Imagen_Radar/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
-                        "id": "Imagen Radar (60 mts)",
-                        "opacity": 0.7,
+                        "id": "Topografía",
+                        "opacity": 1.0,
                         "visible": false
                 }
             }

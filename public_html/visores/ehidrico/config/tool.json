@@ -1,125 +1,21 @@
 {        
     "barraHerramientas": [
-        {
-            "widget": "widgets/MapasBaseWidget",
-            "title": "Mapa Base",
-            "msgToolTip": "Permite seleccionar el mapa de base.",
-            "icono": "../js/snia/img/base.png",
-            "toggle": false,
-            "widgetConfig": {
-                "mapasBase": [
-                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
-                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
-					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
-                ]
-            }
-        },
-        {
-            "widget": "widgets/Contenidos2Widget",
-            "title": "Contenidos",
-            "msgToolTip": "Permite visualizar diferentes capas",
-            "icono": "../js/snia/img/contenido.png",
-            "toggle": false,
-            "startsOpen": true,
-            "draggable": false,
-            "position": {"left": "20px", "top": "96px"},
-            "widgetConfig": {
-                "dynamicMapServiceLayers": []
-            }
-        },
-        {
-            "widget": "widgets/NavegarWidget",
-            "title": "Navegar",
-            "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
-            "icono": "../js/snia/img/navegar.png",            
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/IdentificarWidget",
-            "title": "Identificar",
-            "msgToolTip": "Muestra la información de los elementos en un punto.",
-            "icono": "../js/snia/img/identificar.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "campo": "id",
-                "valor": "valor"  
-            }
-        },
-        {
-            "widget": "widgets/BuscarWidget",
-            "title": "Buscar",
-            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
-            "icono": "../js/snia/img/buscar.png",            
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
-                "departamento": "DEPTO",
-                "padron": "PADRON",
-                "catastral": "AREAHA",
-                "productividad": "IND_CONEAT"
-            }
-        },
-        {
-            "widget": "widgets/MedirWidget",
-            "title": "Medir",
-            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
-            "icono": "../js/snia/img/regla.png",
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-        {
-            "widget": "widgets/CoordenadasWidget",
-            "title": "Coordenadas",
-            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
-            "icono": "../js/snia/img/coordenadas.png",            
-            "toggle": false,
-            "widgetConfig": {
-                
-            }
-        },
-           {
-            "widget": "widgets/MapaReferenciaWidget",
-            "title": "Mapa Referencia",
-            "msgToolTip": "Muestra la referencia de la posición actual",
-            "icono": "../js/snia/img/referencia.png",            
-            "toggle": false,
-            "widgetConfig": {                
-            }
-        },
-        {
-            "widget": "widgets/ImprimirWidget",
-            "title": "Imprimir",
-            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
-            "icono": "../js/snia/img/imprimir.png",
-            "toggle": false,
-            "widgetConfig": {
-                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
-                "lbImprimir": "Imprimir",
-                "lbImprimiendo":"Imprimiendo",
-                "data": 
-                    [
-                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
-                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
-                    ]
-            }
-        },
+        
+        
+       
+        
+       
+        
+       
+           
+        
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
             "msgToolTip": "Muestra el contenido de información y el manual de usuario.",
             "icono": "../js/snia/img/ayuda.png",
+            "icon": "help_outline",
             "toggle": false,
-            "startsOpen": false,
             "widgetConfig": {
                 "data": [
     {
@@ -133,40 +29,18 @@
             "id":"0",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":{"Contenido": "Introducción", "Estilo": "Indice1"}                        
-            },
+                    "Texto":{"Contenido": "Introducción","Estilo": "Indice1"} },
             "seccionContenido":{
                 "titulo":{
-                        "Texto":{"Contenido": "Introducción", "Estilo": "Titulo1"}
-                },
+                        "Texto":{"Contenido": "Introducción","Estilo": "Titulo1"}
+                    },
                 "elementos":[
                     {
-                      "Texto":[
-                        { 
-                            "Contenido": "Relevamiento de excesos hídricos mediante imagenes MODIS y LANDSAT 2016. ",
-                            "Estilo": "Normal"
-                        },
-                        { 
-                           "Contenido": "",
-                           "Estilo": "Normal" 
-                        }
+                      "Texto":[ { 
+                            "Contenido": "Servicio de consulta interno del registro de lugares de producción y monitoreo de plagas para frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca y a técnicos autorizados.",
+                            "Estilo": "Normal"}
                       ]
-                    },
-                    {
-                        "Texto":[
-                           {
-                              "Contenido": "Ver términos y condiciones en",
-                              "Estilo": "Normal"
-                            }]
-                    },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "www.snia.gub.uy",
-                            "URL": "http://www.snia.gub.uy"
-                        }
-                    ] 
-                   }
+                    }                     
                 ]
             }            
         },       
@@ -174,91 +48,62 @@
             "id":"1",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":{"Contenido": "Herramientas", "Estilo": "Indice1"}                       
+                    "Texto":
+                           {"Contenido": "Herramientas", "Estilo": "Indice1" }                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":{"Contenido": "Herramientas", "Estilo": "Titulo1"}
-                },
+                "titulo":{ "Texto": { "Contenido": "Herramientas", "Estilo": "Titulo1" }},
                 "elementos": [
-                    {"Texto":[
-                            {
-                            "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
+                    {
+                        "Texto":[
+                            { "Contenido": "En esta sección se describe y se explica como se utilizan las herramientas de la aplicación.",
                             "Estilo": "Normal" 
                             }
                         ]
                     }
-                ]
-            },
-            "esPadre": true
+                ],
+                "esPadre": true
+            }
         },
             {
                 "name": "Mapa Base",
                 "id":"2",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {"Contenido": "Mapa Base", "Estilo": "Indice1"},
-                    "Imagen":
-                            {"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
+                    "Texto": { "Contenido": "Mapa Base","Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":20}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {"URL":"../js/snia/img/mapabase.png", "Alto":30},
-                        "Texto":
-                        {"Contenido": "Mapa Base", "Estilo": "Titulo2" }
+                        "Imagen":{"URL":"map"},
+                        "Texto":{"Contenido": "Mapa Base","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                    {
-                        "Texto":[
-                        {
+                    {"Texto":[ {
                            "Contenido": "Esta herramienta permite seleccionar el mapa de base de entre tres opciones, Vectorial, Imágenes y Relieve. Simplemente seleccione el que desee visualizar.",
                            "Estilo": "Normal"
-                        }
-                        ]    
-                    }                        
-                    ]
+                        }]    
+                    } ]
                 }
             },
             {
                 "name": "Contenidos",
-                "id":"3",
+                "id":"4",
                 "parent":"1",
                 "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
+                    "Imagen": {"URL":"layers"}                         
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/contenido.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                        {
-                              "Contenido": "Contenidos",
-                              "Estilo": "Titulo2"
-                        }
+                        "Imagen": {"URL":"layers"},
+                        "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
-                    {
-                        "Texto":[
-                        {
-                           "Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
+                    {"Texto":[
+                        {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.",
                            "Estilo": "Normal"
-                        }
-                        ]    
+                        }]    
                     }, 
                     {"Texto":[
                         {
@@ -267,240 +112,107 @@
                         }
                         ]    
                     }
-                        
                     ]
                 }
             },
             {
                "name": "Navegar",
-               "id":"4",
+               "id":"3",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"near_me"}                          
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{ "URL":"near_me"},
+                        "Texto":{"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana con las herramientas básicas para navegar en el mapa, es decir acercar, alejar, desplazar, vista anterior y posterior.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomin.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Texto":[{"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal"} ] },
+                        {"Imagen": {"URL":"zoom_in", "Alto":30} },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Acercar",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Acercar", "Estilo": "Normal" },
+                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.", "Estilo": "Normal"}
                            ] 
-                           
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/zoomout.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"zoom_out"}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Alejar",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Presione el botón derecho del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Alejar", "Estilo": "Titulo3"},
+                            {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.", "Estilo": "Normal"}
                            ] 
-                           
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/pan.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"open_with"} },
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Desplazar",
-                              "Estilo": "Titulo3"
-                            },
+                            {"Contenido": "Desplazar", "Estilo": "Titulo3"},
                             {
                               "Contenido": "Presione el botón derecho del ratón y desplace en una dirección, libere el botón para terminar. El mapa se desplazara en la dirección seleccionada.",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/fullextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Extensión máxima",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa en su máxima extensión.",
-                              "Estilo": "Normal"
-                            }
+                        {"Imagen": {"URL":"public"}},
+                        {"Texto":[
+                            {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
+                            {"Contenido": "Posiciona el mapa en su máxima extensión.", "Estilo": "Normal"}
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/prevextent.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                         "Texto":[
-                           {
-                              "Contenido": "Vista anterior",
-                              "Estilo": "Titulo3"
-                            },
+                        {"Imagen":{"URL":"arrow_back"}},
+                        {"Texto":[
+                            {"Contenido": "Vista previa","Estilo": "Titulo3"},
                             {
                               "Contenido": "Posiciona el mapa a la última vista (anterior al último acercamiento, alejamiento o desplazamiento).",
                               "Estilo": "Normal"
                             }
                            ] 
                         },
-                        { 
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/sigextent.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"arrow_forward"}},
                         {
                          "Texto":[
-                           {
-                              "Contenido": "Vista posterior",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Posiciona el mapa a la vista previa a la vista anterior.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
+                            {"Contenido": "Posiciona el mapa a la vista anterior a la vista previa.","Estilo": "Normal"}
                            ] 
                         }
                     ]
-                }
-               
-            },
+                }               
+            },            
             {
                "name": "Identificar",
-               "id":"5",
+               "id":"6",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Identificar", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"../js/snia/img/identificar.png","Alto":20}                        
                 },
                "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":30
-                        },                        
-                        "Texto":
-                           {
-                              "Contenido": "Identificar",
-                              "Estilo": "Titulo2"
-                            }
+                    "titulo":
+                        {"Imagen":{"URL":"info_outline"},                        
+                        "Texto": {"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón derecho del ratón.",
+                        {"Texto":[
+                           {"Contenido": "Esta herramienta despliega una ventana donde se puede visualizar la información de los elementos de las capas prendidas en un punto del mapa. Simplemente active la herramienta y luego marque un punto del mapa utilizando el botón secundario del ratón.",
                               "Estilo": "Normal"
-                            }
-                           ]    
+                            }]    
                         }
                     ]
                 }
             },
             {
                "name": "Buscar Padrones",
-               "id":"6",
+               "id":"7",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto": {"Contenido": "Buscar Padrones", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"search"}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/buscar.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Buscar Padrones",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"search"},
+                        "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {"Texto":[
@@ -509,281 +221,64 @@
                               "Estilo": "Normal"
                             },
                             {
-                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón derecho del ratón. Para seleccionar varios mantenga presionado la tecla “ctrl”.",
+                              "Contenido": "Si hay varios resultados de búsquedas en la grilla de resultados y desea acercarse a uno o generar el reporte de uno en particular, simplemente seleccione en la grilla el padrón con el botón secundario del ratón. Para seleccionar varios padrones mantenga presionado la tecla “ctrl”.",
                               "Estilo": "Normal"
                             }
                            ]    
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/acercar.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen": {"URL":"zoom_in"}},
                         { "Texto":[
-                           {
-                              "Contenido": "Acercar selección",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Acercar selección", "Estilo": "Titulo3"},
+                            {"Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.", "Estilo": "Normal"}
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/remover.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"remove"}},
                         { "Texto":[
-                           {
-                              "Contenido": "Remover selección",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Remueve de la lista de resultados los padrones seleccionados.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Remover selección", "Estilo": "Titulo3"},
+                            {"Contenido": "Remueve de la lista de resultados los padrones seleccionados.", "Estilo": "Normal"}
+                            ]
+                        },
+                        {"Imagen": {"URL":"refresh"}},
+                        { "Texto":[
+                            {"Contenido": "Seleccionar todo", "Estilo": "Titulo3"},
+                            {"Contenido": "Selecciona todos los padrones de la lista de resultados.", "Estilo": "Normal"}
                            ]
                         },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/todo.png",
-                              "Alto":30
-                            }
-                        },
+                        {"Imagen":{"URL":"description"}},
                         { "Texto":[
-                           {
-                              "Contenido": "Seleccionar todo",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Selecciona todos los padrones de la lista de resultados.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Croquis selección","Estilo": "Titulo3"},
+                            {"Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.", "Estilo": "Normal" }
                            ]
-                        },
-                        {"Imagen":
-                            {
-                              "URL":"../js/snia/img/reporte.png",
-                              "Alto":30
-                            }
-                        },
+                        }, 
+                        {"Imagen":{"URL":"chrome_reader_mode"}},
                         { "Texto":[
-                           {
-                              "Contenido": "Croquis selección",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.",
-                              "Estilo": "Normal"
-                            }
+                            {"Contenido": "Porcentaje de grupos CONEAT","Estilo": "Titulo3"},
+                            {"Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.", "Estilo": "Normal" }
                            ]
                         }
                     ]
-                }
-            },
+                },
+               "hijos": "no"
+            },                                    
             {
-               "name": "Navegar",
+               "name": "Medir",
                "id":"7",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Navegar",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/navegar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Medir", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"straighten"}
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/areas.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Áreas CONEAT",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{ "URL":"straighten"},
+                        "Texto":{"Contenido": "Medir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite al usuario dibujar polígonos en el mapa para luego obtener el reporte CONEAT de los mismos.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                             "Imagen":
-                            {
-                              "URL":"../js/snia/img/agregar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Agregar área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Permite dibujar una nueva área en el mapa. Para esto indique en forma de anillo los puntos del polígono utilizando el botón derecho del ratón, para finalizar haga doble clic derecho. Vera el área ingresada en el mapa.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                             "Imagen":
-                            {
-                              "URL":"../js/snia/img/cancelarAgregar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Cancelar agregar área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Permite cancelar el proceso de dibujo del área, simplemente en medio del proceso de ingresar una nueva área presione esta opción.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                             "Imagen":
-                            {
-                              "URL":"../js/snia/img/deseleccionar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Desmarcar área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Permite desmarcar el área seleccionada.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/remover.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Remover área",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Elimina el área marcada. Para marcar un área simplemente utilice el botón derecho del ratón sobre el área en el mapa.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/limpiar.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Remover todas las áreas",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Elimina todas las áreas dibujadas.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        },
-                        {
-                            "Imagen":
-                            {
-                              "URL":"../js/snia/img/reporte.png",
-                              "Alto":30
-                            }
-                        },
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Croquis de las áreas",
-                              "Estilo": "Titulo3"
-                            },
-                            {
-                              "Contenido": "Genera un reporte con todas las áreas dibujadas.",
-                              "Estilo": "Normal"
-                            }
-                           ]    
-                        }
-                    ]
-                }
-            },
-            {
-               "name": "Medir",
-               "id":"8",
-               "parent":"1",
-               "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/medir.png",
-                              "Alto":20
-                            }
-                        
-                },
-               "seccionContenido":{
-                    "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/regla.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Medir",
-                              "Estilo": "Titulo2"
-                            }
-                    },
-                    "elementos": [
-                        {
-                           "Texto":[
-                           {
-                              "Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.",
+                        {"Texto":[{"Contenido": "Esta herramienta permite obtener distintas mediciones ya sea dibujando en el mapa o seleccionado elementos del mismo.", "Estilo": "Normal" },
+                            {"Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
                               "Estilo": "Normal"
                             },
-                            {
-                              "Contenido": "Si la elección es dibujar, la herramienta brinda distintas geometrías a utilizar, y una vez dibujadas en el mapa despliega los datos correspondientes permitiendo seleccionar la unidad de medida.",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón derecho del ratón sobre el mapa.",
+                            {"Contenido": "Si hubiera capas prendidas entonces la herramienta permite obtener medidas de elementos del mapa. Para esto seleccione la capa de los elementos que desea medir y posteriormente seleccione los elementos utilizando el botón secundario del ratón sobre el mapa.",
                               "Estilo": "Normal"
                             }
                            ]    
@@ -793,34 +288,16 @@
             },
             {
                "name": "Coordenadas",
-               "id":"9",
+               "id":"8",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
-                        
+                    "Texto":{"Contenido": "Coordenadas", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"my_location"}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/coordenadas.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Coordenadas",
-                              "Estilo": "Titulo2"
-                            }
-                    },
+                        "Imagen": {"URL":"my_location"},
+                        "Texto": {"Contenido": "Coordenadas","Estilo": "Titulo2"}                    },
                     "elementos": [
                         {
                            "Texto":[
@@ -834,34 +311,44 @@
                 }
             },
             {
+               "name": "Mapa de Referencia",
+               "id":"9",
+               "parent":"1",
+               "seccionTitulo":{
+                    "Texto":
+                            { "Contenido": "Mapa de Referencia", "Estilo": "Indice1"},
+                    "Imagen":{"URL":"place"}
+                },
+               "seccionContenido":{
+                    "titulo":{
+                        "Imagen":{"URL":"place"},
+                        "Texto":{"Contenido": "Mapa de Referencia", "Estilo": "Titulo2"}
+                    },
+                    "elementos": [
+                        {
+                          "Texto":[
+                              {
+                                "Contenido": "Esta herramienta despliega una ventana con el mapa de referencia.",
+                                "Estilo": "Normal"
+                              }
+                          ]  
+                        }
+                    ]
+                }
+            },
+            {
                "name": "Imprimir",
                "id":"10",
                "parent":"1",
                "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Indice1"
-                            },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
+                    "Texto": { "Contenido": "Imprimir", "Estilo": "Indice1"},
+                    "Imagen":{ "URL":"local_printshop"}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
-                        "Texto":
-                           {
-                              "Contenido": "Imprimir",
-                              "Estilo": "Titulo2"
-                            }
+                        "Imagen":{"URL":"local_printshop"},
+                        "Texto": {"Contenido": "Imprimir","Estilo": "Titulo2"}
                     },
                     "elementos": [
                         {
@@ -884,83 +371,45 @@
                     ]
                 }
             },
+            
         {"name": "Atribuciones",
-            "id":"12",
+            "id":"18",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto":{ "Contenido": "Atribuciones","Estilo": "Indice1"}                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Atribuciones",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{ "Texto":{"Contenido": "Atribuciones","Estilo": "Titulo1"}},
                 "elementos":[
                     {
                     "Texto":[
-                        {
-                            "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
-                            "Estilo": "Normal"
-                        }
+                        { "Contenido": "Esta aplicación utiliza el servicio vectorial y de relieve del Sistema de Ordenamiento Territorial",
+                            "Estilo": "Normal"}
                       ]  
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "SIT",
-                            "URL": "http://sit.mvotma.gub.uy"
-                        }
-                    ] 
-                    },
-                    {
-                    "Texto":[
-                      {
-                        "Contenido": "El servicio de imagenes es de ESRI",
-                        "Estilo": "Normal"
-                      }
+                    {"Enlace":[{"Contenido": "SIT","URL": "http://sit.mvotma.gub.uy"}] },
+                    {"Texto":[
+                      {"Contenido": "El servicio de imagenes es de ESRI","Estilo": "Normal"}
                     ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "ESRI",
-                            "URL": "http://www.esri.com"
-                        }
-                    ]
-                    },
+                    {"Enlace":[ { "Contenido": "ESRI", "URL": "http://www.esri.com"}]},
                     {
                     "Texto":[
                       {
                         "Contenido": "Los íconos originales fueron hechos por Freepik de Flaticon, están bajo licencia CC BY 3.0",
                         "Estilo": "Normal"
                       }
-                    ]
+                    ]},
+                    { "Enlace":[ {"Contenido": "Flaticon", "URL": "http://www.flaticon.com"}]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "Flaticon",
-                            "URL": "http://www.flaticon.com"
-                        }
-                    ]
-                    },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "CC BY 3.0",
-                            "URL": "http://creativecommons.org/licenses/by/3.0/"
-                        }
-                    ]
-                    }
-                    
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "CC BY 3.0", "URL": "http://creativecommons.org/licenses/by/3.0/"}] }, 
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGF", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-forestal"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "DGRN", "URL": "http://www.mgap.gub.uy/unidad-ejecutora/direccion-general-de-recursos-naturales"}] },
+                    {"Texto":[{"Contenido": " <br>","Estilo": "Normal"}]},
+                    { "Enlace":[ {"Contenido": "SNIA", "URL": "http://snia.gub.uy/"}]  }
                 ]
             },
             "padre": "si"
@@ -969,64 +418,152 @@
             "id":"19",
             "parent":"root",
             "seccionTitulo":{
-                    "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Indice1"
-                            }
-                        
+                    "Texto": {"Contenido": "Contacto","Estilo": "Indice1" }                        
             },
             "seccionContenido":{
-                "titulo":{
-                        "Texto":
-                           {
-                              "Contenido": "Contacto",
-                              "Estilo": "Titulo1"
-                            }
-                },
+                "titulo":{"Texto":{"Contenido": "Contacto","Estilo": "Titulo1"}},
                 "elementos": [
                     {
-                        "Texto":[
-                            {
-                              "Contenido": "Dirección",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Constituyente 1476, Montevideo, Uruguay",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Teléfonos",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "24104155-58 int. 411",
-                              "Estilo": "Normal"
-                            },
-                            {
-                              "Contenido": "Consultas y Sugerencias",
-                              "Estilo": "Titulo2"
-                            },
-                            {
-                              "Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor ingrese a",
+                        "Texto":[{"Contenido": "Dirección","Estilo": "Titulo2"},
+                            {"Contenido": "Avenida Garzón 456, Montevideo, Uruguay (CP 11900)",
+                              "Estilo": "Normal"},
+                            {"Contenido": "Teléfonos","Estilo": "Titulo2"},
+                            { "Contenido": "23096008, 23097025", "Estilo": "Normal"},
+                            {"Contenido": "Consultas y Sugerencias","Estilo": "Titulo2"},
+                            {"Contenido": "Nos interesa su opinión, cualquier consulta, crítica o sugerencia por favor escribanos a",
                               "Estilo": "Normal"
                             }
                         ]
                     },
-                    {
-                    "Enlace":[
-                        {
-                            "Contenido": "snia@mgap.gub.uy",
-                            "URL": "mailto:snia@mgap.gub.uy"
-                        }
-                    ] 
-                    }
+                    {"Enlace":[{"Contenido": "snia@mgap.gub.uy","URL": "mailto:snia@mgap.gub.uy"}]}
+                ]
+            },
+            "padre": "si"
+        }
+       ]
+          }
+        }, 
+        {
+            "widget": "widgets/ImprimirWidget",
+            "title": "Imprimir",
+            "msgToolTip": "Imprime el mapa actual en distintos formatos.",
+            "icono": "../js/snia/img/imprimir.png",
+            "icon": "local_printshop",
+            "toggle": false,
+            "widgetConfig": {
+                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "lbImprimir": "Imprimir",
+                "lbImprimiendo":"Imprimiendo",
+                "data": 
+                    [
+                        {"name": "A4 Vertical", "width": "595" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A4 Horizontal", "width": "842" , "height": "595", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Vertical", "width": "842" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A3 Horizontal", "width": "1191" , "height": "842", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A2 Horizontal", "width": "1648" , "height": "1191", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"},
+                        {"name": "A1 Horizontal", "width": "2384" , "height": "1648", "dpi": "72", "format":"PDF", "layout":"MAP_ONLY"}
+                    ]
+            }
+        },
+        {
+            "widget": "widgets/MapaReferenciaWidget",
+            "title": "Mapa Referencia",
+            "msgToolTip": "Muestra la referencia de la posición actual",
+            "icono": "../js/snia/img/referencia.png", 
+            "icon": "place",
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
+        {
+            "widget": "widgets/CoordenadasWidget",
+            "title": "Coordenadas",
+            "msgToolTip": "Muestra las coordenadas del puntero del mouse. ",
+            "icono": "../js/snia/img/coordenadas.png",  
+            "icon": "my_location",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/MedirWidget",
+            "title": "Medir",
+            "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
+            "icono": "../js/snia/img/regla.png",
+            "icon": "straighten",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+         {
+            "widget": "widgets/BuscarWidget",
+            "title": "Buscar",
+            "msgToolTip": "Busca y despliega parcelas rurales y los indices asociados.",
+            "icono": "../js/snia/img/buscar.png",
+            "icon": "search",            
+            "toggle": false,
+            "widgetConfig": {
+                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "departamento": "DEPTO",
+                "padron": "PADRON",
+                "catastral": "AREAHA",
+                "productividad": "IND_CONEAT"
+            }
+        },
+        {
+            "widget": "widgets/IdentificarWidget",
+            "title": "Identificar",
+            "msgToolTip": "Muestra la información de los elementos en un punto.",
+            "icono": "../js/snia/img/identificar.png",  
+            "icon": "info_outline",
+            "toggle": false,
+            "widgetConfig": {
+                "campo": "id",
+                "valor": "valor"  
+            }
+        },
+         {
+            "widget": "widgets/NavegarWidget",
+            "title": "Navegar",
+            "msgToolTip": "Herramienta para acercar, alejar, desplazar el mapa.",
+            "icono": "../js/snia/img/navegar.png",  
+            "icon": "near_me",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
+            "widget": "widgets/Contenidos2Widget",
+            "title": "Contenidos",
+            "msgToolTip": "Permite visualizar diferentes capas",
+            "icono": "../js/snia/img/contenido.png",
+            "icon":"layers",
+            "toggle": false,
+            "startsOpen": true,
+            "draggable": false,
+            "position": {"left": "20px", "top": "120px"},
+            "widgetConfig": {
+                "dynamicMapServiceLayers": []
+            }
+        },
+        {
+            "widget": "widgets/MapasBaseWidget",
+            "title": "Mapa Base",
+            "msgToolTip": "Permite seleccionar el mapa de base.",
+            "icono": "../js/snia/img/base.png",
+            "icon":"map",
+            "toggle": false,
+            "widgetConfig": {
+                "mapasBase": [
+                    {"nombre": "Vectorial", "icono": "../js/snia/img/vectorial.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer"},
+                    {"nombre": "Imagen", "icono": "../js/snia/img/imagen.png", "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"},
+					{"nombre": "Relieve", "icono": "../js/snia/img/relieve.png", "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/Dinot_Vectorial_Hillshade/MapServer"}
                 ]
             }
         }
-        
-]
-            }
-        }       
     ]
 }
