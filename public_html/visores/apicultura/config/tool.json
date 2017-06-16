@@ -1,8 +1,5 @@
 {        
-    "barraHerramientas": [
-
-        
-        
+    "barraHerramientas": [               
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
