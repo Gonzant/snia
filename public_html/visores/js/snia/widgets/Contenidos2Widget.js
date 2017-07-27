@@ -23,7 +23,7 @@ define([
     "dijit/a11yclick",
     "modulos/TOC",
     "dijit/Tooltip",				
-    "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/DynamicMapServiceLayer",
     "esri/tasks/Geoprocessor",
     "dojo/dom-construct",
     "dojox/widget/Standby",
@@ -37,7 +37,7 @@ define([
 ], function (on,
     Evented, declare, lang, arrayUtil, template, newTemplate, i18n, mapaConfigJSON, domClass, domStyle, focusUtil,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick, TOC, Tooltip,
-    ArcGISDynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
+    DynamicMapServiceLayer, Geoprocessor, domConstruct, Standby, Deferred, esriId) {
 
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
@@ -215,7 +215,7 @@ define([
             cantCapas = 0;
             primero = true;
             arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
-                if (layer instanceof ArcGISDynamicMapServiceLayer) {
+                if (layer instanceof DynamicMapServiceLayer) {
                     if (layer.visible) {
                         cantCapas = layer.visibleLayers.length;
                         if ((cantCapas > 0) && (layer.visibleLayers[0] !== -1)) {

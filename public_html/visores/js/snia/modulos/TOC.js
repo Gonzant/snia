@@ -18,6 +18,7 @@ define([
     "dijit/form/HorizontalSlider",
     "dijit/form/CheckBox",
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/ArcGISImageServiceLayer",
     "esri/config",
     "esri/layers/WMSLayer",
     "esri/layers/WFSLayer",
@@ -603,10 +604,9 @@ define([
                 if (dataLayer.wms) {
                     esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                     l = new WMSLayer(dataLayer.url, dataLayer.options);
-                } else if (dataLayer.wfs) {
-                    esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                    l = new WFSLayer(dataLayer.url, dataLayer.options);
-                } else {
+                } else if (dataLayer.imageService) {
+                    l = new ArcGISImageServiceLayer(dataLayer.url, dataLayer.options);
+                } else { // default = DynamicMap
                     l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                 }
                 if (l) {
