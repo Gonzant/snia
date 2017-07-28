@@ -199,7 +199,7 @@ define([
             var dataLayer = {
                 url: this._urlCapa.value, //"http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Vulnerabilidad/MapServer",
                 wms: (this._formatoCapa.value === "WMS"),
-                imageService: (this._formatoCapa.value === "ArcGISImageMap"),
+                imageService: (this._formatoCapa.value === "Image Service"),
                 options: {
                         id: this._nombreCapa.value || "undefined",
                         opacity: 0.7,
@@ -226,7 +226,6 @@ define([
                                     capasUrl = layer.url + "/" + entry;
                                     capasNombre = layer.layerInfos[entry].name;
                                     capasNombre = capasNombre.replace(/[\. ,:-]+/g, "-");
-
                                 } else {
                                     capasUrl += ";" + layer.url + "/" + entry;
                                     capasNombre += ";" + layer.layerInfos[entry].name;

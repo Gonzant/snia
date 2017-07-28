@@ -21,7 +21,6 @@ define([
     "esri/layers/ArcGISImageServiceLayer",
     "esri/config",
     "esri/layers/WMSLayer",
-    "esri/layers/WFSLayer",
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
@@ -30,7 +29,7 @@ define([
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
-     ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
+     ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
@@ -169,7 +168,7 @@ define([
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
         _generarNodoRoot: function (l, dataLayer) {
-            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, imageService: dataLayer.imageService, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
             if (l.loaded) {
                 this._generarNodoSimple(l, dataLayer);
             } else {
@@ -255,6 +254,7 @@ define([
             var sublayerTooltip, i, j, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
+                
                 var tParent = parent;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
@@ -470,23 +470,21 @@ define([
              console.log('TOC: Falla al cargar leyendas');
         },
         _requestSucceededLegendJSON: function (url, response) {
-            var tocNode;
+            var tocNode, findImageService;
             arrayUtil.forEach(response.layers, function (layer) {
+                var layerName = layer.layerName; //Nombre de la capa en el arbol
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                    findImageService = item.imageService && (!item.url || url === item.url + "/legend");
+                    if (findImageService) layerName = item.name;
+                    return findImageService || (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    //if (layer.legend.length === 1) { // una hoja
-                    //    tocNode[0].imageData =  layer.legend[0].imageData;
-                    //    tocNode[0].contentType = layer.legend[0].contentType;
-                    //} else { // multiples hojas
-                        arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
-                        }, this);
-                    //}
+                    arrayUtil.forEach(layer.legend, function (layerLegend) {
+                        this._data.push({ id: tocNode[0].parent + "->" + layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                    }, this);
                 }
             }, this);
-            //this.refreshTree();
+            if (findImageService) this.refreshTree();
         },
         _nodeAdjustVisibility: function (node, scale) {
             if (node.hasChildren()){
@@ -609,9 +607,9 @@ define([
                 }
                 if (l) {
                     this.mapa.agregarCapa(l);
-                    if (!actualizarNodoExistente){
+                    if (!actualizarNodoExistente) {
                         this._generarNodoRoot(l, dataLayer);
-                    } 
+                    }
                 }
             }
         },
