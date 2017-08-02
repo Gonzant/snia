@@ -182,7 +182,7 @@ define([
             arrayUtil.forEach(this.mapa.map.layerIds, lang.hitch(this, function (item) {
                 var l, st, et;
                 l  = this.mapa.map.getLayer(item);
-                if (l.hasOwnProperty("timeInfo")) {
+                if (l.hasOwnProperty("timeInfo") && l.timeInfo) {
                     st = new Date(l.timeInfo.timeExtent.startTime);
                     et = new Date(l.timeInfo.timeExtent.endTime);
                     if (primero) {
