@@ -144,7 +144,7 @@ define([
             myModel = new ObjectStoreModel({
                 store: myStore,
                 query: {id: 'root'},
-                mayHaveChildren: function (item) { return myStore.query({parent: item.id}).length > 0; }
+                mayHaveChildren: function (item) { return (myStore.query({parent: item.id}).length > 0) || item.parent === "root" ; }
             });
             // Crear el arbol
             this._tree = new Tree({
@@ -484,7 +484,7 @@ define([
                     }, this);
                 }
             }, this);
-            if (findImageService) this.refreshTree();
+            //if (findImageService) this.refreshTree();
         },
         _nodeAdjustVisibility: function (node, scale) {
             if (node.hasChildren()){
