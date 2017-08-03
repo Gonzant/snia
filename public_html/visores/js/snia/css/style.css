@@ -364,6 +364,13 @@ span.psw {
     padding-left: 15px;
 }
 
+#titleSecondBeta{
+    color: blue;    
+    font-style: italic;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
 .fa:hover{
     color:#E57500 ;
 }
