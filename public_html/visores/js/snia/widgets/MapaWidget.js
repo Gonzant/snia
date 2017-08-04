@@ -21,7 +21,7 @@ define([
     "esri/dijit/Scalebar",
     "esri/graphic",
     "esri/layers/ArcGISTiledMapServiceLayer",
-    "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/DynamicMapServiceLayer",
     "esri/layers/WMSLayer",
     "esri/layers/WFSLayer",
     "esri/layers/FeatureLayer",
@@ -29,7 +29,7 @@ define([
 ], function (on, dom, Evented, declare, lang, arrayUtil,
     _WidgetBase, _TemplatedMixin,
     template, i18n, domClass, domStyle,
-    Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, WMSLayer, WFSLayer, FeatureLayer,
+    Map, Scalebar, Graphic, ArcGISTiledMapServiceLayer, DynamicMapServiceLayer, WMSLayer, WFSLayer, FeatureLayer,
     Grafico3SR) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, Evented], {
@@ -51,7 +51,7 @@ define([
             this.set("mapOptions", defaults.mapOptions);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
-            //ArcGisDynamicMapServiceLayer y FeatureLayer
+            //DynamicMapServiceLayer y FeatureLayer
             this.set("mapLayers", defaults.mapLayers);
             this.set("baseMapLayer", defaults.baseMapLayer);
             this.set("dibujoEnable", null);
@@ -108,8 +108,8 @@ define([
             this.set("visible", false);
         },
         agregarCapa: function (layer, index) {
-            if (layer && (layer instanceof ArcGISDynamicMapServiceLayer
-                    || layer instanceof FeatureLayer || layer instanceof WMSLayer || layer instanceof WFSLayer)) {
+            if (layer && (layer instanceof DynamicMapServiceLayer
+                    || layer instanceof FeatureLayer )) {
                 if (typeof index !== 'undefined') {
                     this.mapLayers.splice(index, 0, layer);
                     this.map.addLayer(layer, index);

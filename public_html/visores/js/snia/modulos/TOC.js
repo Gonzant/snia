@@ -18,9 +18,9 @@ define([
     "dijit/form/HorizontalSlider",
     "dijit/form/CheckBox",
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/ArcGISImageServiceLayer",
     "esri/config",
     "esri/layers/WMSLayer",
-    "esri/layers/WFSLayer",
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
@@ -29,7 +29,7 @@ define([
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
-     ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
+     ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
@@ -144,7 +144,7 @@ define([
             myModel = new ObjectStoreModel({
                 store: myStore,
                 query: {id: 'root'},
-                mayHaveChildren: function (item) { return myStore.query({parent: item.id}).length > 0; }
+                mayHaveChildren: function (item) { return (myStore.query({parent: item.id}).length > 0) || item.parent === "root" ; }
             });
             // Crear el arbol
             this._tree = new Tree({
@@ -167,8 +167,8 @@ define([
             }));
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
-        _generarNodoRoot: function (l, dataLayer){
-            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
+        _generarNodoRoot: function (l, dataLayer) {
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, imageService: dataLayer.imageService, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
             if (l.loaded) {
                 this._generarNodoSimple(l, dataLayer);
             } else {
@@ -190,10 +190,9 @@ define([
         },*/
         _generarNodoSimple: function (l, dataLayer) {
             arrayUtil.forEach(this._data, function (d) {
-                if (d.name === dataLayer.options.id && d.type === 'mapservice' &&
-                       d.url === dataLayer.url && d.wms === dataLayer.wms ){
+                if (d.name === dataLayer.options.id && d.type === 'mapservice' && d.url === dataLayer.url && d.wms === dataLayer.wms) {
                     d.maxScale = l.maxScale;
-                    d.minScale = l.minScale; 
+                    d.minScale = l.minScale;
                     d.parent = "root";
                 }
             }, this);
@@ -239,10 +238,10 @@ define([
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
-                this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, visLayId:li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
                 if (li.subLayers.length > 0) {
                     arrayUtil.forEach(li.subLayers, function (sl) {
-                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: sl.title, visLayId:sl.name, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
+                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: sl.title, visLayId: sl.name, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
                     }, this);
                 } else {
                     this._data.push({ id: tParent + "->" + li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
@@ -255,6 +254,7 @@ define([
             var sublayerTooltip, i, j, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
+                
                 var tParent = parent;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
@@ -265,10 +265,10 @@ define([
                     i = li.parentLayerId;
                     if (i >= 0) { //Si es una sub-capa de segundo o tercer nivel
                         j = l.layerInfos[i].parentLayerId;
-                        if (j >= 0){//Si es de tercer nivel
-                            tParent = tParent +"->" + l.layerInfos[j].name +"->" + l.layerInfos[i].name;
+                        if (j >= 0) {//Si es de tercer nivel
+                            tParent = tParent + "->" + l.layerInfos[j].name + "->" + l.layerInfos[i].name;
                         } else { //Si es de segundo nivel
-                            tParent = tParent +"->" + l.layerInfos[i].name;
+                            tParent = tParent + "->" + l.layerInfos[i].name;
                         }
                     }
                     this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
@@ -299,7 +299,7 @@ define([
             }
         },*/
         _generarData: function () {
-            var mapaConfig, dynLayers, l;
+            var dynLayers, l;
             this._data = [{ id: 'root'}];
             this.mapaConfig = JSON.parse(this.mapaConfigJSON);
             dynLayers = this.mapaConfig.mapa.dynamicLayers;
@@ -333,7 +333,7 @@ define([
                         l = this.mapa.map.getLayer(item.name + url.url);
                         if (isNodeSelected) {
                             l.show();
-                            this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
+                            this.mapa.map.reorderLayer(l, this.mapa.map.layerIds.length - 1);
                         } else {
                             l.hide();
                         }
@@ -352,10 +352,9 @@ define([
                 visibleLayers = lang.clone(l.visibleLayers);
                 if (isNodeSelected && item.index >= 0) {
                     //Si hay que activarlo
-                    if (l.layerInfos[item.index].subLayerIds ) {
+                    if (l.layerInfos[item.index].subLayerIds) {
                         //Si es nodo de segundo nivel con hijos
                         this._prenderPadresTree(node); //Activo al padre
-                        
                         //Activo los hijos
                         nodes = node.getChildren();
                         arrayUtil.forEach(nodes, function (n) {
@@ -363,7 +362,7 @@ define([
                                 hijosActivos = true;
                             }
                         }, this);
-                        if (!hijosActivos){
+                        if (!hijosActivos) {
                             arrayUtil.forEach(nodes, function (n) {
                                 n.checkBox.set('checked', true);
                                 //this._onItemClick(n.item, n);
@@ -374,8 +373,8 @@ define([
                             l.setVisibleLayers(visibleLayers);
                         }
                         //FIXME: Para wms las subcapas están en SubLayers
-                    } 
-                    if (!l.layerInfos[item.index].subLayerIds){
+                    }
+                    if (!l.layerInfos[item.index].subLayerIds) {
                     //Si es de segundo o tercer nivel sin hijos
                         if (visibleLayers.indexOf(item.visLayId) === -1) {
                             //Si no está visible la hago visible
@@ -471,23 +470,21 @@ define([
              console.log('TOC: Falla al cargar leyendas');
         },
         _requestSucceededLegendJSON: function (url, response) {
-            var tocNode;
+            var tocNode, findImageService;
             arrayUtil.forEach(response.layers, function (layer) {
+                var layerName = layer.layerName; //Nombre de la capa en el arbol
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                    findImageService = item.imageService && (!item.url || url === item.url + "/legend");
+                    if (findImageService) layerName = item.name;
+                    return findImageService || (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    //if (layer.legend.length === 1) { // una hoja
-                    //    tocNode[0].imageData =  layer.legend[0].imageData;
-                    //    tocNode[0].contentType = layer.legend[0].contentType;
-                    //} else { // multiples hojas
-                        arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
-                        }, this);
-                    //}
+                    arrayUtil.forEach(layer.legend, function (layerLegend) {
+                        this._data.push({ id: tocNode[0].parent + "->" + layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                    }, this);
                 }
             }, this);
-            //this.refreshTree();
+            //if (findImageService) this.refreshTree();
         },
         _nodeAdjustVisibility: function (node, scale) {
             if (node.hasChildren()){
@@ -536,11 +533,11 @@ define([
                 arrayUtil.forEach(this._tree.rootNode.getChildren(), function (node) {
                     var itemNode;
                     //Busco el nodo
-                    if (node.item.id === item.id){//Si encuentro el nodo en los hijos de root
+                    if (node.item.id === item.id) {//Si encuentro el nodo en los hijos de root
                         itemNode = node;
-                    } else if (node.item.id === item.parent){ //Si encuentro al padre del nodo entre los hijos de root
+                    } else if (node.item.id === item.parent) { //Si encuentro al padre del nodo entre los hijos de root
                         arrayUtil.forEach(node.getChildren(), function (snode) {
-                            if (snode.item.id === item.id){
+                            if (snode.item.id === item.id) {
                                 itemNode = snode;
                             } 
                         }, this);
@@ -603,17 +600,16 @@ define([
                 if (dataLayer.wms) {
                     esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                     l = new WMSLayer(dataLayer.url, dataLayer.options);
-                } else if (dataLayer.wfs) {
-                    esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
-                    l = new WFSLayer(dataLayer.url, dataLayer.options);
-                } else {
+                } else if (dataLayer.imageService) {
+                    l = new ArcGISImageServiceLayer(dataLayer.url, dataLayer.options);
+                } else { // default = DynamicMap
                     l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                 }
                 if (l) {
                     this.mapa.agregarCapa(l);
-                    if (!actualizarNodoExistente){
+                    if (!actualizarNodoExistente) {
                         this._generarNodoRoot(l, dataLayer);
-                    } 
+                    }
                 }
             }
         },
@@ -624,8 +620,11 @@ define([
             var dynLayers = this.mapaConfig.mapa.dynamicLayers;
             arrayUtil.forEach(dynLayers, function (dataLayer) {
                 if (dataLayer.options.id === id) { //Nodo a partir de un map service
-                    var l = this.mapa.map.getLayer(dataLayer.options.id), 
-                    nodoExistente = true, visibleLayers, newl, visible;
+                    var l = this.mapa.map.getLayer(dataLayer.options.id),
+                        nodoExistente = true, 
+                        visibleLayers, 
+                        newl, 
+                        visible;
                     if ((typeof l !== 'undefined') && (l !== null)) {
                         visibleLayers = lang.clone(l.visibleLayers);
                         visible = l.visible;
