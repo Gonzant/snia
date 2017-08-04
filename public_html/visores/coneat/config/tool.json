@@ -24,6 +24,7 @@
             "draggable": false,
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
+                "botonAgregarCapa": true
             }
         },
         {
