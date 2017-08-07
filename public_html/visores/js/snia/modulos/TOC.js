@@ -255,11 +255,15 @@ define([
             var sublayerTooltip, i, j, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
-                var tParent = parent;
+                var tParent = parent, 
+                name = li.name;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
                 } else {
                     sublayerTooltip = "";
+                }
+                if (dataLayer.changeNames && dataLayer.changeNames[li.name]) { 
+                    name = dataLayer.changeNames[li.name]; //Cambiar nombre de subnodo
                 }
                 if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
                     i = li.parentLayerId;
@@ -271,7 +275,7 @@ define([
                             tParent = tParent +"->" + l.layerInfos[i].name;
                         }
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: li.name, url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility, changeNames: dataLayer.changeNames });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
@@ -474,7 +478,7 @@ define([
             var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                    return (!item.url || url === item.url + "/legend") && (item.name_ori === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
                     //if (layer.legend.length === 1) { // una hoja
@@ -482,7 +486,11 @@ define([
                     //    tocNode[0].contentType = layer.legend[0].contentType;
                     //} else { // multiples hojas
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            this._data.push({ id: tocNode[0].parent + "->" + layer.layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                            var name = layerLegend.label;
+                            if (tocNode[0].changeNames && tocNode[0].changeNames[name]) {
+                                name = tocNode[0].changeNames[name];//Cambiar nombre de leyenda
+                            }
+                            this._data.push({ id: tocNode[0].parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  tocNode[0].parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
                         }, this);
                     //}
                 }
