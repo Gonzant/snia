@@ -230,7 +230,8 @@ define([
         _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip;
             arrayUtil.forEach(l.layerInfos, function (li, index) {
-                var tParent = parent;
+                var tParent = parent,
+                show_name = li.title;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
                 } else {
@@ -239,10 +240,17 @@ define([
                 if (li.parentLayerId >= 0) {
                     tParent = l.layerInfos[li.parentLayerId].name;
                 }
-                this._data.push({ id: "root->" + tParent + "->" + li.title, name: li.title, visLayId:li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                if (dataLayer.changeNames && dataLayer.changeNames[li.title]) { 
+                    show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
+                }
+
+                this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId:li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
                 if (li.subLayers.length > 0) {
                     arrayUtil.forEach(li.subLayers, function (sl) {
-                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: sl.title, visLayId:sl.name, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
+                        if (dataLayer.changeNames && dataLayer.changeNames[sl.title]) { 
+                            show_name = dataLayer.changeNames[sl.title]; //Cambiar nombre de subnodo
+                        }
+                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: show_name, visLayId:sl.name, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
                     }, this);
                 } else {
                     this._data.push({ id: tParent + "->" + li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
