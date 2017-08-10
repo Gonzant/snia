@@ -411,3 +411,88 @@ span.psw {
   z-index: 1000;
   right:0; 																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															
 }
+
+/* ============================================================================
+   Estilos footer
+============================================================================ */
+
+.footer {
+    /*height: calc(100% - 150px);*/
+    /*display: block;*/
+    /*text-transform: uppercase;*/    
+    position: fixed;
+    bottom: 6px;
+    left: 50%;
+    z-index: 2;
+    width: 164px;
+    /* margin izquierdo la mitad del width total del div */
+    margin: 0 0 0 -82px;
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+    font-family: helvetica,tahoma,verdana,sans-serif;
+    background-color: #1e1e1e !important;
+    height: 16px;
+    line-height: 16px;
+}
+
+.footer:hover {
+    background-color: #878800 !important;
+}
+div p {
+        margin: 0 0 0 0;
+      }
+.footer p {
+    font-size: 10px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+
+/*i.fa.fa-arrow-circle-up {
+    font-size: 10px !important;
+}*/
+
+i.fa.fa-envelope {
+    font-size: 10px !important;
+}
+
+/* ============================================================================
+   Popup de contacto divisiÃ³n informaciÃ³n ambiental
+============================================================================ */
+
+#dialogInfo {
+    display: none;
+    min-height: 50px !important;
+    overflow-y: hidden;
+}
+
+#dialogInfo p {
+    /*padding-top: 5px;*/
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+#dialogInfo.ui-widget-content a {
+    outline: none;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 10px auto 10px auto;
+}
+
+#dialogInfo.ui-widget-content a:hover {
+    background: gainsboro;
+    border-radius: 3px;
+}
+
+#dialogInfo i.fa.fa-envelope.sobreNegro {
+    color: #1e1e1e;
+    font-size: 12px !important;
+}

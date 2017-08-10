@@ -25,12 +25,17 @@
             <div id="divToolbar" class="icon-bar alignRight mainBar" style="float: right"></div>            
         </nav>
         <div class="secondIcon-bar alignRight smallBar">
-            <div id="titleSecond" style="float: left;"><b>Uruguay Agro </b><sub id="titleSecondBeta">versión Beta</sub></div>
+            <div id="titleSecond" style="float: left;"><b>UY - Agropecuario</b></div>
         </div>       
         
         <div id="divStandby">
             <div id="divContenedorIndex" style="display: none" ></div>                      
             <div id="divMapa"></div>
+             <div class="footer" id="opener">
+                <a href="#">
+                    <p><i class="fa fa-envelope"></i> VERSIÓN BETA </p>
+                </a>
+            </div>
         </div>
         <!-- Configuro Dojo -->
         <script type="text/javascript">
@@ -39,7 +44,7 @@
                     { name: "modulos", location: "/js/visores/js/snia/modulos" },
                     { name: "widgets", location: "/js/visores/js/snia/widgets" },
                     { name: "agsjs", location: "/js/visores/js/lib/agsjs" },
-                    { name: "config", location: "/js/visores/snia/config" }
+                    { name: "config", location: "/js/visores/uyagropecuario/config" }
                 ]
 //                paths: { agsjs: location.pathname.replace(/\/[^/]+$/, '') + '/js/lib/agsjs'}
             };
@@ -50,5 +55,6 @@
         <script type="text/javascript" src="../js/lib/jspdf/jspdf.min.js"></script>
         <!-- TODO -->
         <script type="text/javascript" src="../js/snia/app.js"></script>
+       
     </body>
 </html>
