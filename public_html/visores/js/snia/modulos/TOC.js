@@ -227,6 +227,20 @@ define([
                 }
             }, this);
         },
+        _generarSubSubcapasWMS: function (parent, tParent, dataLayer, vparent) {
+            if (parent.subLayers.length > 0) {
+                arrayUtil.forEach(parent.subLayers, function (sl, index) {
+                    var show_name = sl.title;
+                    if (dataLayer.changeNames && dataLayer.changeNames[sl.title]) {
+                        show_name = dataLayer.changeNames[sl.title]; //Cambiar nombre de subnodo
+                    }
+                    this._data.push({ id: "root->" + tParent + "->" + parent.title + "->" + sl.title, name: show_name, visLayId: sl.name, type: 'layer', parent: "root->" + tParent + "->" + parent.title, vparent: vparent, index: index});
+                    this._generarSubSubcapasWMS(sl, tParent + "->" + parent.title, dataLayer, vparent);
+                }, this);
+            } else {
+                this._data.push({ id:  "root->" + tParent + "->" + parent.title + "->", name: "", type: 'layer', parent: "root->" +  tParent + "->" + parent.title, legend: true, legendURL: parent.legendURL });
+            }
+        },
         _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip;
             arrayUtil.forEach(l.layerInfos, function (li, index) {
@@ -244,17 +258,8 @@ define([
                     show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
                 }
 
-                this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId:li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
-                if (li.subLayers.length > 0) {
-                    arrayUtil.forEach(li.subLayers, function (sl) {
-                        if (dataLayer.changeNames && dataLayer.changeNames[sl.title]) { 
-                            show_name = dataLayer.changeNames[sl.title]; //Cambiar nombre de subnodo
-                        }
-                        this._data.push({ id: tParent + "->" + li.title + "->" + sl.title, name: show_name, visLayId:sl.name, type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: sl.legendURL });
-                    }, this);
-                } else {
-                    this._data.push({ id: tParent + "->" + li.title + "->", name: "", type: 'layer', parent:  tParent + "->" + li.title, legend: true, legendURL: li.legendURL });
-                }
+                this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                this._generarSubSubcapasWMS(li, tParent, dataLayer, vparent);
                 //this._borrarGruposDeVisibleLayers(l, li);
             }, this);
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
@@ -364,10 +369,9 @@ define([
                 visibleLayers = lang.clone(l.visibleLayers);
                 if (isNodeSelected && item.index >= 0) {
                     //Si hay que activarlo
-                    if (l.layerInfos[item.index].subLayerIds ) {
+                    if (l.layerInfos[item.index].subLayerIds) {
                         //Si es nodo de segundo nivel con hijos
                         this._prenderPadresTree(node); //Activo al padre
-                        
                         //Activo los hijos
                         nodes = node.getChildren();
                         arrayUtil.forEach(nodes, function (n) {
@@ -386,7 +390,7 @@ define([
                             l.setVisibleLayers(visibleLayers);
                         }
                         //FIXME: Para wms las subcapas están en SubLayers
-                    } 
+                    }
                     if (!l.layerInfos[item.index].subLayerIds){
                     //Si es de segundo o tercer nivel sin hijos
                         if (visibleLayers.indexOf(item.visLayId) === -1) {
@@ -412,7 +416,7 @@ define([
                         if (n.checkBox){
                             n.checkBox.set('checked', false);
                         }
-                    }, this);                
+                    }, this);
                     l.setVisibleLayers(visibleLayers);                    
                 }
             }
