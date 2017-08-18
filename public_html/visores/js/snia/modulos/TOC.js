@@ -24,13 +24,14 @@ define([
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
+    "dojox",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang, arrayUtil,
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
      ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
-    esriRequest) {
+    esriRequest, dojox) {
     "use strict";
     var TOC = declare([Evented], {
         options : {
@@ -89,6 +90,15 @@ define([
         _statusCallback:  function (jobInfo) {
             console.log(jobInfo.jobStatus);
         },
+        _preloadimages: function (arr){
+            //preload imagenes
+            var newimages = [];
+            arr = (typeof arr!=="object")? [arr] : arr; //force arr parameter to always be an array
+            for (var i=0; i<arr.length; i++){
+                    newimages[i]=new Image();
+                    newimages[i].src=arr[i];
+            }
+        }, 
         _completeCallback: function (jobInfo) {
             this._gpXMLInfo.getResultData(jobInfo.jobId, "Resultado", lang.hitch(this, function (json) {
                 this._setScalesMinMax(json);
@@ -226,7 +236,7 @@ define([
                     }
                 }
             }, this);
-        },
+        },    
         _generarSubSubcapasWMS: function (parent, tParent, dataLayer, vparent) {
             if (parent.subLayers.length > 0) {
                 arrayUtil.forEach(parent.subLayers, function (sl, index) {
@@ -239,6 +249,7 @@ define([
                 }, this);
             } else {
                 this._data.push({ id:  "root->" + tParent + "->" + parent.title + "->", name: "", type: 'layer', parent: "root->" +  tParent + "->" + parent.title, legend: true, legendURL: parent.legendURL });
+                this._preloadimages([parent.legendURL]);
             }
         },
         _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
