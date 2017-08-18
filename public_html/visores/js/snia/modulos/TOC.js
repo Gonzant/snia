@@ -257,21 +257,23 @@ define([
             arrayUtil.forEach(l.layerInfos, function (li, index) {
                 var tParent = parent,
                 show_name = li.title;
-                if (dataLayer.sublayersTooltips) {
-                    sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
-                } else {
-                    sublayerTooltip = "";
-                }
-                if (li.parentLayerId >= 0) {
-                    tParent = l.layerInfos[li.parentLayerId].name;
-                }
-                if (dataLayer.changeNames && dataLayer.changeNames[li.title]) { 
-                    show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
-                }
+                if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, index) >= 0) {
+                    if (dataLayer.sublayersTooltips) {
+                        sublayerTooltip = dataLayer.sublayersTooltips[li.title] || "";
+                    } else {
+                        sublayerTooltip = "";
+                    }
+                    if (li.parentLayerId >= 0) {
+                        tParent = l.layerInfos[li.parentLayerId].name;
+                    }
+                    if (dataLayer.changeNames && dataLayer.changeNames[li.title]) { 
+                        show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
+                    }
 
-                this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
-                this._generarSubSubcapasWMS(li, tParent, dataLayer, vparent);
-                //this._borrarGruposDeVisibleLayers(l, li);
+                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                    this._generarSubSubcapasWMS(li, tParent, dataLayer, vparent);
+                    //this._borrarGruposDeVisibleLayers(l, li);
+                }
             }, this);
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
@@ -289,7 +291,8 @@ define([
                 if (dataLayer.changeNames && dataLayer.changeNames[li.name]) { 
                     name = dataLayer.changeNames[li.name]; //Cambiar nombre de subnodo
                 }
-                if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) {
+                if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) 
+                {
                     i = li.parentLayerId;
                     if (i >= 0) { //Si es una sub-capa de segundo o tercer nivel
                         j = l.layerInfos[i].parentLayerId;
