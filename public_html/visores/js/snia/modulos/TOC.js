@@ -248,8 +248,10 @@ define([
                     this._generarSubSubcapasWMS(sl, tParent + "->" + parent.title, dataLayer, vparent);
                 }, this);
             } else {
-                this._data.push({ id:  "root->" + tParent + "->" + parent.title + "->", name: "", type: 'layer', parent: "root->" +  tParent + "->" + parent.title, legend: true, legendURL: parent.legendURL });
-                this._preloadimages([parent.legendURL]);
+                if (parent.legendURL){
+                    this._data.push({ id:  "root->" + tParent + "->" + parent.title + "->", name: "", type: 'layer', parent: "root->" +  tParent + "->" + parent.title, legend: true, legendURL: parent.legendURL });
+                    this._preloadimages([parent.legendURL]);
+                }
             }
         },
         _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
