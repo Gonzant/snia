@@ -502,21 +502,14 @@ define([
             arrayUtil.forEach(response.layers, function (layer) {
                 var layerName = layer.layerName; //Nombre de la capa en el arbol
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    return (!item.url || url === item.url + "/legend") && (item.name_ori === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                    findImageService = item.imageService && (!item.url || url === item.url + "/legend");
+                    if (findImageService) layerName = item.name;
+                    return findImageService || (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                 if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    //if (layer.legend.length === 1) { // una hoja
-                    //    tocNode[0].imageData =  layer.legend[0].imageData;
-                    //    tocNode[0].contentType = layer.legend[0].contentType;
-                    //} else { // multiples hojas
-                        arrayUtil.forEach(layer.legend, function (layerLegend) {
-                            var name = layerLegend.label;
-                            if (tocNode[0].changeNames && tocNode[0].changeNames[name]) {
-                                name = tocNode[0].changeNames[name];//Cambiar nombre de leyenda
-                            }
-                            this._data.push({ id: tocNode[0].parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  tocNode[0].parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
-                        }, this);
-                    //}
+                    arrayUtil.forEach(layer.legend, function (layerLegend) {
+                        this._data.push({ id: tocNode[0].parent + "->" + layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                    }, this);
                 }
             }, this);
             //if (findImageService) this.refreshTree();
