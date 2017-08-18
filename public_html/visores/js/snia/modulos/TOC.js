@@ -24,14 +24,13 @@ define([
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
-    "dojox",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang, arrayUtil,
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
      ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
-    esriRequest, dojox) {
+    esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
         options : {
