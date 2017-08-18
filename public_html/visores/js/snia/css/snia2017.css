@@ -1068,10 +1068,7 @@ div p {
     overflow-y: hidden;
 }
 
-.dijitTreeContent>.dijitFolderOpened{
-    width: 0px;
-}
-.dijitTreeContent>.dijitFolderClosed{
+.dijitTreeContent>.dijitTreeIcon{
     width: 0px;
 }
 
