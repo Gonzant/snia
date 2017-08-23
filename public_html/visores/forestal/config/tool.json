@@ -1287,6 +1287,8 @@
             "icono": "../js/snia/img/identificar.png",   
             "icon": "info_outline",
             "toggle": false,
+            "draggable": false,
+            "position": {"right": "20px", "top": "180px"},
             "widgetConfig": {
                 "campo": "id",
                 "valor": "valor"  
