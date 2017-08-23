@@ -30,12 +30,13 @@ define([
             herramienta: null,
             visible: true,
             active: true,
+            mapa : null,
             icono: 'xxx',
             icon: '',
             etiqueta: 'xxx', //nombre boton,
             msgToolTip: 'xxx'
         },
-        constructor: function (options, srcRefNode, estilo) {
+        constructor: function (options, srcRefNode, estilo, mapa) {
             //mezclar opciones usuario y default
             var defaults = lang.mixin({}, this.options, options);
             //nodo del widget
@@ -48,6 +49,7 @@ define([
             //propiedades
             this.set("herramienta", defaults.herramienta);
             this.set("theme", defaults.theme);
+            this.set("mapa", mapa);
             this.set("visible", defaults.visible);
             this.set("estilo", estilo);
             this.set("active", defaults.active);            
@@ -59,6 +61,12 @@ define([
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
             this.watch("active", this._active);
+            if (this._etiqueta =="Identificar"){
+                this.own(
+                on(this.mapa.map, a11yclick, lang.hitch(this, this._botonClick))
+                );
+            };
+            
             // classes
             this._css = { };
         },
@@ -158,6 +166,11 @@ define([
             this._botonEnabled = !this.herramienta.canExecute;
         },
         _bBotonClick: function () {
+            if (this._botonEnable) {
+                this.herramienta.execute();
+            }
+        },
+        _botonClick: function (evt) {
             if (this._botonEnable) {
                 this.herramienta.execute();
             }

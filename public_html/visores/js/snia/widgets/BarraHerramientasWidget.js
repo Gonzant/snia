@@ -28,6 +28,7 @@ define([
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
         options : {
+            mapa: null,
             theme: "sitWidget",
             herramientasOptions: null,
             vertical: true,
@@ -45,6 +46,7 @@ define([
             //propiedades
             this.set("herramientasOptions", defaults.herramientasOptions);
             this.set("vertical", defaults.vertical);
+            this.set("mapa", defaults.mapa);
             this.set("estilo", defaults.estilo);
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
@@ -127,7 +129,7 @@ define([
                 node2 = domConstruct.place('<div></div>', node);
             }            
             domConstruct.place(node, this._rootNode);
-            boton = new BotonHerramientaWidget(herramientaOptions, node2, this.estilo);
+            boton = new BotonHerramientaWidget( herramientaOptions, node2, this.estilo,this.mapa);
             boton.startup();
             this._botones.push(boton);
 

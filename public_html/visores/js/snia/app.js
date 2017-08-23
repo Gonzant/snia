@@ -125,6 +125,7 @@ snia.app = {
                         }
                     });
                     barra = new BarraHerramientasWidget({
+                        mapa: mapa,
                         herramientasOptions: herramientas,
                         vertical: estilo,
                         estilo: estilo
