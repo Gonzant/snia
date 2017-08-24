@@ -173,6 +173,7 @@ define([
         _botonClick: function (evt) {
             if (this._botonEnable) {
                 this.herramienta.execute();
+                    this.emit("dibujo-complete", evt);
             }
         }
     });
