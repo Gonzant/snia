@@ -25,6 +25,7 @@ snia.app = {
             "esri/layers/ArcGISTiledMapServiceLayer",
             "esri/layers/ArcGISDynamicMapServiceLayer",
             "esri/layers/ArcGISImageServiceLayer",
+            "esri/layers/GraphicsLayer/FeatureLayer",
             "esri/layers/WMSLayer",
             "esri/layers/WFSLayer",
             "modulos/HerramientaDialog",
@@ -37,7 +38,7 @@ snia.app = {
             "esri/urlUtils",
             "esri/geometry/Extent",
             "dojo/domReady!"], function (on, dom, parser, lang, arrayUtil, JSON, Standby,
-            esriConfig, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, WMSLayer, WFSLayer,
+            esriConfig, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, FeatureLayer, WMSLayer, WFSLayer,
             HerramientaDialog,
             BarraHerramientasWidget,
             MapaWidget, appConfigJSON, mapaConfigJSON, toolConfigJSON,
@@ -59,6 +60,8 @@ snia.app = {
                             l = new WMSLayer(dataLayer.url, dataLayer.options);                     
                         } else if (dataLayer.imageService) {
                             l = new ArcGISImageServiceLayer(dataLayer.url, dataLayer.options);
+                        }  else if (dataLayer.featureLayer) {
+                            l = new FeatureLayer(dataLayer.url, dataLayer.options);
                         } else { // default = DynamicMap
                             l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                         }
@@ -81,6 +84,8 @@ snia.app = {
                                 l = new WMSLayer(dataLayer2.url, dataLayerOptions);
                             } else if (dataLayer.imageService) {
                                 l = new ArcGISImageServiceLayer(dataLayer2.url, dataLayerOptions);
+                            } else if (dataLayer.featureLayer) {
+                                l = new FeatureLayer(dataLayer2.url, dataLayer2.options);
                             } else {
                                 l = new ArcGISDynamicMapServiceLayer(dataLayer2.url, dataLayerOptions);
                             }

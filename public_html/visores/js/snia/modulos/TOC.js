@@ -19,6 +19,7 @@ define([
     "dijit/form/CheckBox",
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/layers/ArcGISImageServiceLayer",
+    "esri/layers/GraphicsLayer/FeatureLayer",
     "esri/config",
     "esri/layers/WMSLayer",
     "esri/geometry/scaleUtils",
@@ -29,7 +30,7 @@ define([
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
-     ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
+     ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, FeatureLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
@@ -602,6 +603,8 @@ define([
                     l = new WMSLayer(dataLayer.url, dataLayer.options);
                 } else if (dataLayer.imageService) {
                     l = new ArcGISImageServiceLayer(dataLayer.url, dataLayer.options);
+                } else if (dataLayer.featureLayer) {
+                    l = new FeatureLayer(dataLayer.url, dataLayer.options);
                 } else { // default = DynamicMap
                     l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                 }
