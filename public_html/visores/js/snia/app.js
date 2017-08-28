@@ -105,16 +105,18 @@ snia.app = {
                             widgetConfig = herramientaConfig.widgetConfig,
                             title = herramientaConfig.title,
                             startsOpen = herramientaConfig.startsOpen,
+                            invisibleOpen = herramientaConfig.invisibleOpen,
                             icono = herramientaConfig.icono,
                             icon = herramientaConfig.icon,							  
                             closable =  (typeof herramientaConfig.closable  === "undefined" ?  true : herramientaConfig.closable),
                             draggable = (typeof herramientaConfig.draggable  === "undefined" ?  true : herramientaConfig.draggable),
-                            position = herramientaConfig.position,
+                            position = herramientaConfig.position,                            
                             msgToolTip = herramientaConfig.msgToolTip;
                         if (WidgetClass) {
                             herramientas.push({
                                 herramienta: new HerramientaDialog({
                                     startsOpen: startsOpen,
+                                    invisibleOpen: invisibleOpen,
                                     position: position,
                                     widget: new WidgetClass({ mapa: mapa, config: widgetConfig, estilo: estilo }),
                                     dialogParams: { title : title, closable: closable, draggable: draggable}

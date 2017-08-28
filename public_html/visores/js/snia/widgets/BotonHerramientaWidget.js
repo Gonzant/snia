@@ -44,7 +44,7 @@ define([
             this._i18n = i18n;
             this._etiqueta = defaults.etiqueta;
             this._icono = defaults.icono;
-            this._icon = defaults.icon;						   
+            this._icon = defaults.icon;
             this._msgToolTip = defaults.msgToolTip;
             //propiedades
             this.set("herramienta", defaults.herramienta);
@@ -52,11 +52,11 @@ define([
             this.set("mapa", mapa);
             this.set("visible", defaults.visible);
             this.set("estilo", estilo);
-            this.set("active", defaults.active);            
-            if (this.estilo){
+            this.set("active", defaults.active);
+            if (this.estilo) {
                 this.set("templateString", newTemplate);
             }
-            
+
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -92,21 +92,20 @@ define([
             if (!this.get("loaded")) {
                 this._init();
             }
-            
-            if (this.estilo){                
-                this._botonNode.innerHTML = "<a class=\"itemMainMenu\" href=\"#\"><i class=\"material-icons\">"+ this._icon + "</i></a>";
+            if (this.estilo) {
+                this._botonNode.innerHTML = "<a class=\"itemMainMenu\" href=\"#\"><i class=\"material-icons\">" + this._icon + "</i></a>";
                 new Tooltip({
                     connectId: [this._botonNode],
-                    position:['below'],
+                    position: ['below'],
                     label: "<b>" + this._etiqueta + "</b>" + "<p> " + this._msgToolTip + "</p>"
                 });
-            }else{
+            } else {
                 this._botonNode.innerHTML = "<img src=" + '"' + this._icono + '"' + "class=" + '"' + "estiloBotonBarra" + '"' + "> <br>";
                 new Tooltip({
                     connectId: [this._botonNode],
                     label: "<b>" + this._etiqueta + "</b>" + "<br>" + "<p> " + this._msgToolTip + "</p>"
                 });
-            }                
+            }
         },
         // connections/subscriptions se limpian durante la fase destroy()
         destroy: function () {

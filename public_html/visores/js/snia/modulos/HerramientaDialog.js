@@ -16,6 +16,7 @@ define([
         options : {
             modoToggle: false,
             startsOpen: false,
+            invisibleOpen: false,
             widget: null,
             dialogParams: null,
             dialogSrcNodeRef: null
@@ -36,7 +37,7 @@ define([
                 this._dialog = new Dialog(dialogParams, this.options.dialogSrcNodeRef);
                 //Si se define una posicion fija no ubica el Dialog centrado
                 if (this.options.position) {
-                    this._dialog._position = lang.hitch(this, function(){
+                    this._dialog._position = lang.hitch(this, function () {
                         domStyle.set(this._dialog.domNode, this.options.position);
                     });
                 }
@@ -44,7 +45,12 @@ define([
                 this.options.widget.on('dibujo-enabled-changed', lang.hitch(this, this._widgetDibujoEnabledChanged));
                 this.canExecute = true;
                 if (this.options.startsOpen) {
-                   this.execute(); 
+                    this.execute();
+                }
+                if (this.options.invisibleOpen) {
+                    this._visible = false;
+                    this._dialog.hide();
+                    this.options.widget.on('show-changed', lang.hitch(this, this._widgetShow));
                 }
             } else {
                 this.canExecute = false;
@@ -63,7 +69,6 @@ define([
         },
         //privadas
         _init: function () {
-            
         },
         _widgetActiveChanged: function () {
             if (!this.options.widget.get('active') && this._visible) {
@@ -85,6 +90,10 @@ define([
         },
         _widgetDibujoEnabledChanged: function () {
             this.options.widget.set('active', false);
+        },
+        _widgetShow: function () {
+            this._dialog.show();
+            this._visible = true;
         }
     });
 });

@@ -1,16 +1,5 @@
 {       
     "barraHerramientas": [
-        
-        
-        
-        
-        
-        
-        
-        
-        
-              
-        
         {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
@@ -708,7 +697,9 @@
             "icon": "info_outline",
             "toggle": false,
             "draggable": false,
-            "position": {"right": "20px", "top": "180px"},
+            "startsOpen": true,
+            "invisibleOpen": true,
+            "position": {"right": "20px", "top": "175px"},
             "widgetConfig": {
                 "campo": "id",
                 "valor": "valor"  
