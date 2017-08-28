@@ -153,7 +153,7 @@ define([
                 this._cg3sr.agregarMapa(this.mapa);
                 if (this._dibujo) {
                     this._dibujo.activar(Draw.POINT);
-                    this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
+                    //this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
                 }
             }
             this.emit("active-changed", {});
