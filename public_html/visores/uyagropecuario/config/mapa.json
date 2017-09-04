@@ -1,0 +1,170 @@
+{
+	"mapa": {
+        "mapConfig": {
+            "slider": false,
+            "logo": false
+        },
+        "baseMapLayer": {
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "extent": {
+                "xmin": -6464316,
+                "ymin": -4294316,
+                "xmax": -6000316,
+                "ymax": -3294316,
+                "spatialReference": {
+                    "wkid":102100
+                }
+            }
+        },
+        "baseMapLayerBackup": {
+            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "extent": {
+                "xmin": -37867.16314808361,
+                "ymin": 5957313.020605681,
+                "xmax": 1220493.68690695,
+                "ymax": 6874864.455708552,
+                "spatialReference": {
+                    "wkid":32721
+                }
+            }
+        },
+        "dynamicLayers": [             
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+                "layers":[14,9,10,8,5,6,7],
+				"options": {
+                        "id": "Limites Administrativos",
+                        "opacity": 0.7,
+                        "visible": false
+						}
+			},
+			
+            {
+                "multiple": [
+                    {"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",                      
+                    "layers":[2,4]
+					},
+					{
+					"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+					"layers":[0,1,2,7]
+					},
+					{
+					"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
+					"layers":[3]
+					},
+
+					{
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Censos_Agropecuarios/MapServer",
+                "options": {
+                        "id": "Censos Agropecuarios",
+                        "opacity": 0.7,
+                        "visible": false
+						}
+					}
+                ],               
+
+                "options": {
+                        "id": "Información base",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+               
+            },
+            {
+                "multiple": [
+                    {
+					"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
+					"layers":[6]
+                     },
+					 {"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
+					 },
+					 {
+					"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer"
+					 },
+					{
+					"url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+					"options": {
+                        "id": "Topografía",
+                        "opacity": 1.0,
+                        "visible": false
+						}
+					}
+                ],               
+
+                "options": {
+                        "id": "Suelos",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+               
+            },
+       		{
+                "multiple": [
+                    {
+					"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+					"options": {
+                        "id": "NDVI a href=url",
+                        "opacity": 0.7,
+                        "visible": false
+                },
+				"wms": true
+            },
+			{
+					"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
+					"layers":[8,9],
+					"options": {
+                        "id": "Cartas Temáticas",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }	
+
+                ],               
+
+                "options": {
+                        "id": "Sequía",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+               
+            },
+			{
+				"multiple": [
+					{
+					"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
+					"layers":[0,7],
+					"options": {
+                        "id": "Cartas Temáticas",
+                        "opacity": 0.7,
+                        "visible": false
+					}	
+				}
+                ],               
+
+                "options": {
+                        "id": "Inundación",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+               
+            },
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+                "options": {
+                        "id": "Cartografía Agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+                        {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
+                "options": {
+                        "id": "Áreas sensibles para Aplicaciones Fitosanitarias",
+                        "opacity": 0.7,
+                        "visible": true
+                }
+            }
+           
+        ]
+    }
+}
