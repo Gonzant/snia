@@ -46,6 +46,7 @@ define([
             var defaults = lang.mixin({}, this.options, options);
             this.domNode = srcRefNode;
             this._data = [];
+            this._requestedLegends = [];
             this._tree = false;
             this.mapa = defaults.mapa;
             this.mapaConfigJSON = defaults.mapaConfigJSON;
@@ -488,14 +489,18 @@ define([
             return tnode;
         },
         _getLegendJSON: function (url) {
-            var requestHandle = esriRequest({
-                "url": url,
-                "content": {
-                    "f": "pjson"
-                },
-                "callbackParamName": "callback"
-            });
-            requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON, url), this._requestFailed);
+            if (arrayUtil.indexOf(this._requestedLegends, url) === -1) {
+                //Busco la leyenda sólo si no fue traida antes desde otro nodo
+                var requestHandle = esriRequest({
+                    "url": url,
+                    "content": {
+                        "f": "pjson"
+                    },
+                    "callbackParamName": "callback"
+                });
+                requestHandle.then(lang.hitch(this, this._requestSucceededLegendJSON, url), this._requestFailed);        
+                this._requestedLegends.push(url);
+            }
         },
         _requestFailed: function (){
              console.log('TOC: Falla al cargar leyendas');
