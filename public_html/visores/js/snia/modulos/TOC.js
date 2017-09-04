@@ -19,7 +19,7 @@ define([
     "dijit/form/CheckBox",
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/layers/ArcGISImageServiceLayer",
-    "esri/layers/GraphicsLayer/FeatureLayer",
+    "esri/layers/FeatureLayer",
     "esri/config",
     "esri/layers/WMSLayer",
     "esri/geometry/scaleUtils",

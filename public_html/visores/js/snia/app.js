@@ -25,7 +25,7 @@ snia.app = {
             "esri/layers/ArcGISTiledMapServiceLayer",
             "esri/layers/ArcGISDynamicMapServiceLayer",
             "esri/layers/ArcGISImageServiceLayer",
-            "esri/layers/GraphicsLayer/FeatureLayer",
+            "esri/layers/FeatureLayer",
             "esri/layers/WMSLayer",
             "esri/layers/WFSLayer",
             "modulos/HerramientaDialog",
