@@ -7,10 +7,10 @@
 		"baseMapLayer": {
 			"url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
 			"extent": {
-				"xmin": -6464316,
-                                "ymin": -4294316,
-                                "xmax": -6000316,
-                                "ymax": -3294316,
+				"xmin": -6364316,
+				"ymin": -4364316,
+				"xmax": -5900316,
+				"ymax": -3364316,
 				"spatialReference": {
 					"wkid": 102100
 				}
@@ -30,6 +30,8 @@
 		},
 		"dynamicLayers": [{
 			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+			"sublayersTooltips": {
+				" Padrones Rurales": "Visible a escala 1:50.000"},
 			"layers": [0,
 			1,
 			6,
@@ -90,6 +92,10 @@
 		},
 		{
 			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
+			"sublayersTooltips": {
+				" Vuelos de las Abejas (m) ": "Distancia en metros desde el apiario"
+							},
+			
 			"layers": [0,
 			1,
 			2,
@@ -106,37 +112,38 @@
 			15,
 			16,
 			17],
-			"sublayersTooltips": {
-				" Vuelos de las Abejas (m) ": "Distancia en metros desde el apiario"
-			},
+			
 			"options": {
 				"id": "Áreas sensibles para Aplicaciones Fitosanitarias",
 				"opacity": 0.7,
 				"visible": false
 			}
 		},
+		
 		{
-			"multiple": [{
-				"url": "https://web.snig.gub.uy/arcgis1041/rest/services/IDSE/Indicadores/MapServer",
-				"options": {
-					"id": "DJ16_SNIG",
-					"opacity": 0.7,
-					"visible": false
-				}
-			},
+			"multiple": [			
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
 				"sublayersTooltips": {
-					"Apicultura": "Registro Nacional Apicola",
-					"Vitivinicultura": "oscar Nacional Apicola",
-					"Agricultura - Planes de Uso": "Descripción Apicola"
+					" Apicultura - SINATPA": "Registro Nacional Apicola",
+					" Vitivinicultura": "Registro Vitivinícola",
+					" Agricultura - Planes de Uso ": "Descripción Apicola"
 				},
 				"options": {
 					"id": "Cartografía Agropecuaria",
 					"opacity": 0.8,
 					"visible": false
 				}
-			}],
+			},
+			{
+				"url": "https://web.snig.gub.uy/arcgis1041/rest/services/ServiciosSeguros/Dicose_por_actividad/MapServer",
+				"options": {
+					"id": "DJ16_SNIG",
+					"opacity": 0.7,
+					"visible": false
+				}
+			}
+			],
 			"options": {
 				"id": "Cartografía Agropecuaria",
 				"opacity": 0.7,
@@ -154,46 +161,31 @@
 				}
 			},
 			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
+			},
+			
+			
+			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"
 			},
 			{
 				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
 				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDVI 26 Jun 2017 - 11 Jul 2017": "NDVI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
-				},
-				"options": {
-					"id": "NDVI a href=url",
-					"opacity": 0.7,
-					"visible": false
-				},
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
+				},				
 				"wms": true,
 				"changeNames": {
-					"USGS LandDAAC uy250m_II NDVI 28 Jul 2017 - 12 Aug 2017": "NDVI"
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "Índice Verde (NDVI)"
 				}
 			},
 			{
 				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/a-/-a/X/Y/fig-/colors/-fig/%28T%29cvn/5314.0/plotvalue/%28plotaxislength%29cvn/432/psdef/%28plotborder%29cvn/72/psdef/wms.xml",
 				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDVI 26 Jun 2017 - 11 Jul 2017": "NDVI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
-				},
-				"options": {
-					"id": "NDWI",
-					"opacity": 0.7,
-					"visible": false
-				},
+					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
+				},				
 				"wms": true,
 				"changeNames": {
-					"NDWI": "Índice Verde (NDVI)"
-				}
-			},
-			{
-				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/SOURCES/.Features/.Political/.Paises_limitrofes/.the_geom/SOURCES/.Features/.Hydrological/.Espejos_de_agua/.the_geom/SOURCES/.Features/.Political/.Seccionales_Policiales/.the_geom/SOURCES/.Features/.Political/.Departamentos_MTOP/.the_geom/X/Y/fig-/colors/grey/fill/cyan/fill/white/stroke/yellow/thinnish/stroke/-fig/wms.xml?plotaxislength=540",
-				"wms": true,
-				"layers": [1],
-				"options": {
-					"id": "NodoPruebaCambioNombre",
-					"opacity": 0.7,
-					"visible": false
+					"USGS LandDAAC uy250m_II NDWI": "Índice de agua normalizado (NDWI)"
 				}
 			}],
 			"options": {
@@ -206,12 +198,7 @@
 			"multiple": [{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
 				"layers": [0,
-				7],
-				"options": {
-					"id": "Cartas Temáticas",
-					"opacity": 0.7,
-					"visible": false
-				}
+				7]
 			}],
 			"options": {
 				"id": "Inundación",
@@ -219,10 +206,10 @@
 				"visible": false
 			}
 		},
-		{
-			"multiple": [],
+		{			
+			"url": "https://web.snig.gub.uy/arcgis1041/rest/services/ServiciosSeguros/Enfermedades/MapServer",				
 			"options": {
-				"id": "Sanidad",
+				"id": "Sanidad Animal",
 				"opacity": 0.7,
 				"visible": false
 			}
