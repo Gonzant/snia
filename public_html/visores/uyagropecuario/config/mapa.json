@@ -7,10 +7,10 @@
 		"baseMapLayer": {
 			"url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
 			"extent": {
-				"xmin": -6364316,
-				"ymin": -4364316,
-				"xmax": -5900316,
-				"ymax": -3364316,
+				"xmin": -6464316,
+                                "ymin": -4294316,
+                                "xmax": -6000316,
+                                "ymax": -3294316,
 				"spatialReference": {
 					"wkid": 102100
 				}
@@ -62,7 +62,9 @@
 				4,
 				5,
 				6,
-				7]
+				7],
+                            "sublayersTooltips": {
+				" Cuencas Hidrográficas": "Cuencas Hidrográficas (Niveles 1, 2, 3 y 4)"}                            
 			}],
 			"options": {
 				"id": "Información base",
@@ -75,7 +77,13 @@
 				"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
 			},
 			{
-				"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer"
+				"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
+                                "changeNames": {
+					"Productividad": "Índice de Productividad"
+				},
+                                "sublayersTooltips": {
+					"Productividad": "Índice de Productividad"
+				}
 			},
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
@@ -87,15 +95,18 @@
 			"options": {
 				"id": "Suelos",
 				"opacity": 0.7,
-				"visible": false
-			}
+				"visible": false,
+                                "tooltip": "Por mayor información: <a target='_blank' href='https://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>"
+			}                                                 
 		},
 		{
 			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
 			"sublayersTooltips": {
-				" Vuelos de las Abejas (m) ": "Distancia en metros desde el apiario"
-							},
-			
+				" Vuelos de las Abejas (m) ": "Distancia en metros desde el apiario",
+                                "    750 m":"Buffer de radio de vuelo de la abeja de 750 m",
+                                " 1.500 m":"Buffer de radio de vuelo de la abeja de 1.500 m",
+                                " 3.000 m":"Buffer de radio de vuelo de la abeja de 3.000 m"
+                        },			
 			"layers": [0,
 			1,
 			2,
@@ -114,7 +125,7 @@
 			17],
 			
 			"options": {
-				"id": "Áreas sensibles para Aplicaciones Fitosanitarias",
+				"id": "Áreas Sensibles para Aplicaciones Fitosanitarias",
 				"opacity": 0.7,
 				"visible": false
 			}
@@ -127,7 +138,7 @@
 				"sublayersTooltips": {
 					" Apicultura - SINATPA": "Registro Nacional Apicola",
 					" Vitivinicultura": "Registro Vitivinícola",
-					" Agricultura - Planes de Uso ": "Descripción Apicola"
+					" Agricultura - Planes de Uso ": "Descripción de Planes de Uso - DGRN presentados en 2015-2016"
 				},
 				"options": {
 					"id": "Cartografía Agropecuaria",
