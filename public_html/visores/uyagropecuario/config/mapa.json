@@ -74,10 +74,10 @@
 		},
 		{
 			"multiple": [{
-				"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
 			},
 			{
-				"url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
                                 "changeNames": {
 					"Productividad": "Índice de Productividad"
 				},
@@ -164,7 +164,7 @@
 		{
 			"multiple": [
                         {
-				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
 				"sublayersTooltips": {
 					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
 				},				
@@ -174,10 +174,10 @@
 				}
 			},
 			{
-				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/a-/-a/X/Y/fig-/colors/-fig/%28T%29cvn/5314.0/plotvalue/%28plotaxislength%29cvn/432/psdef/%28plotborder%29cvn/72/psdef/wms.xml",
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/a-/-a/X/Y/fig-/colors/-fig/%28T%29cvn/5314.0/plotvalue/%28plotaxislength%29cvn/432/psdef/%28plotborder%29cvn/72/psdef/wms.xml",
 				"sublayersTooltips": {
 					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
-				},				
+				}, 				
 				"wms": true,
 				"changeNames": {
 					"USGS LandDAAC uy250m_II NDWI": "Índice de agua normalizado (NDWI)"
