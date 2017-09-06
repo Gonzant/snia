@@ -92,11 +92,12 @@
 				},
 				"layers": [0]
 			}],
+                        "tooltip": "Por mayor información: <a target='_blank' href='http://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
 			"options": {
 				"id": "Suelos",
 				"opacity": 0.7,
-				"visible": false,
-                                "tooltip": "Por mayor información: <a target='_blank' href='https://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>"
+				"visible": false
+                                
 			}                                                 
 		},
 		{
