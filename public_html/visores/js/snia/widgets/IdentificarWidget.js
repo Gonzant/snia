@@ -71,6 +71,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("dibujoEnable", this._dibujoEnabledChanged);
+            on("active-changed", lang.hitch(this, this._cambioActivar));
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
@@ -176,6 +177,9 @@ define([
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-changed", {});
+        },
+        _cambioActivar: function (){
+            console.log("cambio activar");
         },
         _init: function () {
             this._symbol = new SimpleFillSymbol("solid",
