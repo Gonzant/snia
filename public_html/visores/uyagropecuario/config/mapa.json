@@ -92,11 +92,11 @@
 				},
 				"layers": [0]
 			}],
+                        "tooltip": "Por mayor información: <a target='_blank' href='https://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
 			"options": {
 				"id": "Suelos",
 				"opacity": 0.7,
-				"visible": false,
-                                "tooltip": "Por mayor información: <a target='_blank' href='https://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>"
+				"visible": false                                
 			}                                                 
 		},
 		{
@@ -166,7 +166,7 @@
                         {
 				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
 				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
 				},				
 				"wms": true,
 				"changeNames": {
@@ -176,7 +176,7 @@
 			{
 				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/a-/-a/X/Y/fig-/colors/-fig/%28T%29cvn/5314.0/plotvalue/%28plotaxislength%29cvn/432/psdef/%28plotborder%29cvn/72/psdef/wms.xml",
 				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://www.snia.gub.uy'>link</a>"
+					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDWI/NDWI_250m/NDWI.html'>NDWI Histórico</a>"
 				}, 				
 				"wms": true,
 				"changeNames": {
