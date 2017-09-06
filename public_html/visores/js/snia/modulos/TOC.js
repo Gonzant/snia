@@ -155,7 +155,7 @@ define([
                 getIconStyle: function (item) {
                     if (item.imageData) {//Arcgis
                         var imgUri = "url(data:" + item.contentType  + ";base64," + item.imageData + ")";
-                        return {backgroundImage: imgUri, backgroundRepeat: "no-repeat", backgroundPosition: "left center",  backgroundSize: "16px 16px"};
+                        return {backgroundImage: imgUri, backgroundRepeat: "no-repeat", backgroundPosition: "left center",  backgroundSize: "16px 16px", margin:"0px 5px 0px 0px"};
                     } //Si es WMS no se usa el icono
                 }
             });
