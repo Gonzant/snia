@@ -139,9 +139,10 @@
 					" Apicultura - SINATPA": "Sistema Nacional de Trazabilidad de la Miel y Productos Apícolas",
 					" Vitivinicultura": "Registro Vitivinícola",
 					" Agricultura - Planes de Uso ": "Descripción de Planes de Uso - DGRN presentados en 2015-2016",
-                                        " Fruticultura - RNHF": "Registro Nacional Horti - Frutícola",
-                                        " Horticultura - RNHF": "Registro Nacional Horti - Frutícola",
-                                        " Citricultura - SCFFC": "Sistema de Certificación Fitosanitaria de Fruta Cítrica"
+                                        " Fruticultura - RNHF": "Plantaciones registradas en el Registro Nacional Horti-Frutícola",
+                                        " Horticultura - RNHF": "Plantaciones registradas en el Registro Nacional Horti-Frutícola",
+                                        " Citricultura - SCFFC": "Sistema de Certificación Fitosanitaria de Fruta Cítrica",
+                                        " Forestación ": "Capa realizada por la empresa Aeroterra S.A."
 				},
 				"options": {
 					"id": "Cartografía Agropecuaria",

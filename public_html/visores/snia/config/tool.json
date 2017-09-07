@@ -91,7 +91,7 @@
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/mapabase.png", "Alto":30},
+                        "Imagen":{"URL":"map"},
                         "Texto":{"Contenido": "Mapa Base", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -107,11 +107,11 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
-                    "Imagen": {"URL":"../js/snia/img/contenido.png","Alto":20}                        
+                    "Imagen": {"URL":"layers"}                      
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen": {"URL":"../js/snia/img/contenido.png", "Alto":30},
+                        "Imagen": {"URL":"layers"},
                         "Texto":{"Contenido": "Contenidos","Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -131,11 +131,11 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":{"Contenido": "Navegar", "Estilo": "Indice1"},
-                    "Imagen":{ "URL":"../js/snia/img/navegar.png", "Alto":20}                        
+                    "Imagen":{ "URL":"near_me"}                          
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{ "URL":"../js/snia/img/navegar.png", "Alto":30},
+                        "Imagen":{ "URL":"near_me"}   ,
                         "Texto":{"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -144,21 +144,21 @@
                            {"Contenido": "Esta herramienta permite el manejo de capas, muestra la leyenda de capas y permite prender y apagar las mismas. También admite manejar la opacidad de las diferentes capas por separado.", "Estilo": "Normal"}
                            ]    
                         },
-                        {"Imagen": {"URL":"../js/snia/img/zoomin.png", "Alto":30} },
+                        {"Imagen": {"URL":"zoom_in", "Alto":30} },
                         {
                          "Texto":[
                             {"Contenido": "Acercar", "Estilo": "Normal" },
                             {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se acercara al área dibujada alineándose al centro de la misma.", "Estilo": "Normal"}
                            ] 
                         },
-                        {"Imagen": {"URL":"../js/snia/img/zoomout.png", "Alto":30}},
+                        {"Imagen": {"URL":"zoom_out"}},
                         {
                          "Texto":[
                             {"Contenido": "Alejar", "Estilo": "Titulo3"},
                             {"Contenido": "Presione el botón primario o secundario del ratón y desplace dibujando un rectángulo, libere el botón para terminar. El mapa se alejara de forma proporcional al área dibujada y alineándose al centro de la misma.", "Estilo": "Normal"}
                            ] 
                         },
-                        {"Imagen":{"URL":"../js/snia/img/pan.png", "Alto":30} },
+                        {"Imagen":{"URL":"open_with"} },
                         {
                          "Texto":[
                            {
@@ -171,13 +171,13 @@
                             }
                            ] 
                         },
-                        {"Imagen": {"URL":"../js/snia/img/fullextent.png", "Alto":30}},
+                        {"Imagen": {"URL":"public"}},
                         {"Texto":[
                             {"Contenido": "Extensión máxima", "Estilo": "Titulo3"},
                             {"Contenido": "Posiciona el mapa en su máxima extensión.", "Estilo": "Normal"}
                            ] 
                         },
-                        {"Imagen":{"URL":"../js/snia/img/prevextent.png","Alto":30}},
+                        {"Imagen":{"URL":"arrow_back"}},
                         {"Texto":[
                             {"Contenido": "Vista previa","Estilo": "Titulo3"},
                             {
@@ -186,7 +186,7 @@
                             }
                            ] 
                         },
-                        {"Imagen":{"URL":"../js/snia/img/sigextent.png", "Alto":30}},
+                        {"Imagen":{"URL":"arrow_forward"}},
                         {
                          "Texto":[
                             {"Contenido": "Vista posterior", "Estilo": "Titulo3"},
@@ -207,7 +207,7 @@
                 },
                "seccionContenido":{
                     "titulo":
-                        {"Imagen":{"URL":"../js/snia/img/identificar.png", "Alto":30},                        
+                        {"Imagen":{"URL":"info_outline"},                        
                         "Texto": {"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -225,11 +225,11 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto": {"Contenido": "Buscar Padrones", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/buscar.png", "Alto":20}                        
+                    "Imagen":{"URL":"search"}                        
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/buscar.png", "Alto":30},
+                        "Imagen":{"URL":"search"},
                         "Texto":{"Contenido": "Buscar Padrones", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -244,31 +244,31 @@
                             }
                            ]    
                         },
-                        {"Imagen": {"URL":"../js/snia/img/acercar.png", "Alto":30}},
+                        {"Imagen": {"URL":"zoom_in"}},
                         { "Texto":[
                             {"Contenido": "Acercar selección", "Estilo": "Titulo3"},
                             {"Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.", "Estilo": "Normal"}
                            ]
                         },
-                        {"Imagen":{"URL":"../js/snia/img/remover.png", "Alto":30}},
+                        {"Imagen":{"URL":"remove"}},
                         { "Texto":[
                             {"Contenido": "Remover selección", "Estilo": "Titulo3"},
                             {"Contenido": "Remueve de la lista de resultados los padrones seleccionados.", "Estilo": "Normal"}
                             ]
                         },
-                        {"Imagen": {"URL":"../js/snia/img/todo.png", "Alto":30}},
+                        {"Imagen": {"URL":"refresh"}},
                         { "Texto":[
                             {"Contenido": "Seleccionar todo", "Estilo": "Titulo3"},
                             {"Contenido": "Selecciona todos los padrones de la lista de resultados.", "Estilo": "Normal"}
                            ]
                         },
-                        {"Imagen":{"URL":"../js/snia/img/reporte.png", "Alto":30}},
+                        {"Imagen":{"URL":"description"}},
                         { "Texto":[
                             {"Contenido": "Croquis selección","Estilo": "Titulo3"},
                             {"Contenido": "Genera el reporte CONEAT con los padrones seleccionados de la lista de resultados.", "Estilo": "Normal" }
                            ]
                         }, 
-                        {"Imagen":{"URL":"../js/snia/img/contenido.png", "Alto":30}},
+                        {"Imagen":{"URL":"chrome_reader_mode"}},
                         { "Texto":[
                             {"Contenido": "Porcentaje de grupos CONEAT","Estilo": "Titulo3"},
                             {"Contenido": "Esta herramienta muestra el porcentaje de superficie del padrón cubierto por cada grupo CONEAT.", "Estilo": "Normal" }
@@ -284,11 +284,11 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto":{"Contenido": "Información de suelos (Carta 1:40.000)", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/infoCartografia.png", "Alto":20}                        
+                    "Imagen":{"URL":"find_replace"}                        
                 },
                 "seccionContenido":{
                     "titulo":{
-                        "Imagen":{"URL":"../js/snia/img/infoCartografia.png", "Alto":30},
+                        "Imagen":{"URL":"find_replace"},
                         "Texto":{"Contenido": "Información de suelos (Carta 1:40.000)", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -302,11 +302,11 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto":{"Contenido": "Medir", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"../js/snia/img/medir.png", "Alto":20}
+                    "Imagen":{"URL":"straighten"}
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{ "URL":"../js/snia/img/regla.png", "Alto":30},
+                        "Imagen":{"URL":"straighten"},
                         "Texto":{"Contenido": "Medir", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -332,20 +332,12 @@
                               "Contenido": "Coordenadas",
                               "Estilo": "Indice1"
                             },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
+                    "Imagen":{"URL":"my_location"}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/coordenadas.png",
-                              "Alto":30
-                        },
+                        "Imagen":{"URL":"my_location"},
                         "Texto":
                            {
                               "Contenido": "Coordenadas",
@@ -374,20 +366,12 @@
                               "Contenido": "Mapa de Referencia",
                               "Estilo": "Indice1"
                             },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/mapabase.png",
-                              "Alto":20
-                            }
+                    "Imagen":{"URL":"place"}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":
-                        {
-                              "URL":"../js/snia/img/referencia.png",
-                              "Alto":30
-                        },
+                        "Imagen":{"URL":"place"},
                         "Texto":
                            {
                               "Contenido": "Mapa de Referencia",
@@ -416,20 +400,12 @@
                               "Contenido": "Imprimir",
                               "Estilo": "Indice1"
                             },
-                    "Imagen":
-                            {
-                              "URL":"../js/snia/img/identificar.png",
-                              "Alto":20
-                            }
+                    "Imagen":{ "URL":"local_printshop"}
                         
                 },
                "seccionContenido":{
                     "titulo":{
-                         "Imagen":
-                        {
-                              "URL":"../js/snia/img/imprimir.png",
-                              "Alto":30
-                        },
+                        "Imagen":{ "URL":"local_printshop"},
                         "Texto":
                            {
                               "Contenido": "Imprimir",
