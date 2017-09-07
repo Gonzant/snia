@@ -92,7 +92,7 @@
 				},
 				"layers": [0]
 			}],
-                        "tooltip": "Por mayor información: <a target='_blank' href='https://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
+                        "tooltip": "Por mayor información: <a target='_blank' href='http://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
 			"options": {
 				"id": "Suelos",
 				"opacity": 0.7,
@@ -136,9 +136,12 @@
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
 				"sublayersTooltips": {
-					" Apicultura - SINATPA": "Registro Nacional Apicola",
+					" Apicultura - SINATPA": "Sistema Nacional de Trazabilidad de la Miel y Productos Apícolas",
 					" Vitivinicultura": "Registro Vitivinícola",
-					" Agricultura - Planes de Uso ": "Descripción de Planes de Uso - DGRN presentados en 2015-2016"
+					" Agricultura - Planes de Uso ": "Descripción de Planes de Uso - DGRN presentados en 2015-2016",
+                                        " Fruticultura - RNHF": "Registro Nacional Horti - Fruticola",
+                                        " Horticultura - RNHF": "Registro Nacional Horti - Fruticola",
+                                        " Citricultura - SCFFC": "Sistema de Certificación Fitosanitaria de Fruta Cítrica"
 				},
 				"options": {
 					"id": "Cartografía Agropecuaria",
