@@ -91,6 +91,10 @@ define({
             "ContenidosWidget": {
                 bColapsar: "Colapsar",
                 bExpandir: "Expandir"
+            },
+            "TiempoWidget": {
+                lbSelectAño: "Seleccione año",
+                 lbAño: "año"
             }
         }
     })

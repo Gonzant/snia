@@ -1,15 +1,5 @@
 {       
-    "barraHerramientas": [
-        
-        
-        
-        
-        
-        
-        
-        
-        
-              
+    "barraHerramientas": [             
         
         {
             "widget": "widgets/AyudaWidget",
@@ -613,7 +603,29 @@
                 
             }
         },
-        
+        {
+           "widget": "widgets/TiempoWidget",
+           "title": "Tiempo",
+           "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
+           "icono": "../js/snia/img/tiempo_gris.png",
+           "icon": "date_range",            
+           "toggle": false,
+           "draggable": true,
+           "startsOpen": false,           
+           "widgetConfig": {
+               "fechaAtributo": "Fecha",
+               "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
+               "timeSlider": {
+                   "unidad":"esriTimeUnitsDays",
+                   "cantidad": "10",
+                   "velocidad": "1000",
+                   "ultimaSemana": "True"
+               },
+               "manual": {                    
+                   "inicioTiempo": "2017-08-01"                    
+               }
+           }
+        },
         {
             "widget": "widgets/BuscarWidget",
             "title": "Buscar",
