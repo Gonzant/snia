@@ -621,6 +621,17 @@
             }
         },
         {
+            "widget": "widgets/InfoWidget",
+            "title": "Información gral",
+            "msgToolTip": "Muestra información útil para el usuario al inicio de sesión. ",             
+            "toggle": false,
+            "startsOpen": true,
+            "hideInToolbar": true,
+            "widgetConfig": {
+                
+            }
+        },
+        {
             "widget": "widgets/MedirWidget",
             "title": "Medir",
             "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
