@@ -71,7 +71,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("dibujoEnable", this._dibujoEnabledChanged);
-            on("active-changed", lang.hitch(this, this._cambioActivar));
+            this._primerLlamado = true;
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
@@ -84,13 +84,14 @@ define([
                 campo: defaults.config.campo,
                 valor: defaults.config.valor
             };
+            //this.mapa.on("dibujo-enabled-change", lang.hitch(this, this._cambioDibujar));
         },
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
                 this.own(
                 );
-            }
+            };            
         },
         // start widget. called by user
         startup: function () {
@@ -178,8 +179,14 @@ define([
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-changed", {});
         },
-        _cambioActivar: function (){
-            console.log("cambio activar");
+        _cambioDibujar: function (){
+            if (this._primerLlamado){
+                console.log("primera vez");
+                this._primerLlamado = false;
+            } else {
+                console.log("cambio dibujar");
+            }            
+            //this._dibujo.desactivar();            
         },
         _init: function () {
             this._symbol = new SimpleFillSymbol("solid",

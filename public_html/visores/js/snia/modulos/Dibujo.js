@@ -23,7 +23,7 @@ define([
         //publico
         constructor : function (options) {
             //mezclar opciones usuario y default
-            this.options = lang.mixin({}, this.options, options);
+            this.options = lang.mixin({}, this.options, options);            
         },
         /*Mapa*/
         agregarMapa : function (mapa) {

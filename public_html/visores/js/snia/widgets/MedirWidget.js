@@ -128,6 +128,7 @@ define([
                 this._unidadNode.set('disabled', false);
                 this._cg3sr.agregarMapa(this.mapa);
                 this._activarDibujo();
+                this.emit("dibujo-enabled-changed", {});
             } else {
                 this._areaNode.set('disabled', true);
                 this._distanciaNode.set('disabled', true);
@@ -144,7 +145,7 @@ define([
             this._initDibujo();
             this._reset();
             this._actUnidades();
-            this._active();
+            this.activar();
             this.set("loaded", true);
             this.emit("load", {});
         },
@@ -245,6 +246,7 @@ define([
             this._actMensaje();
         },
         _dibujoEnabledChanged: function () {
+            console.log("test");
             this.emit("dibujo-enabled-changed", {});
         }
     });
