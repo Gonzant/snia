@@ -1,0 +1,290 @@
+{
+	"mapa": {
+		"mapConfig": {
+			"slider": false,
+			"logo": false
+		},
+		"baseMapLayer": {
+			"url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+			"extent": {
+				"xmin": -6464316,
+                                "ymin": -4294316,
+                                "xmax": -6000316,
+                                "ymax": -3294316,
+				"spatialReference": {
+					"wkid": 102100
+				}
+			}
+		},
+		"baseMapLayerBackup": {
+			"url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+			"extent": {
+				"xmin": -37867.16314808361,
+				"ymin": 5957313.020605681,
+				"xmax": 1220493.68690695,
+				"ymax": 6874864.455708552,
+				"spatialReference": {
+					"wkid": 32721
+				}
+			}
+		},
+		"dynamicLayers": [{
+			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+			
+			"sublayersTooltips": {
+				" Padrones Rurales": "Visible a escala 1:50.000"},
+			"layers": [0,
+			1,
+			6,
+			7],
+			"options": {
+				"id": "Límites Administrativos",
+				"opacity": 1.0,
+				"visible": true
+			}
+		},
+		{
+			"multiple": [
+								
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+				"layers": [1,
+				0,
+				2]
+			},
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+				"layers": [0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8],
+                            "sublayersTooltips": {
+				" Cuencas Hidrográficas": "Cuencas Hidrográficas (Niveles 1, 2, 3, 4 y 5)"}                            
+			},
+			{
+                "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
+								"changeNames": {
+					"World Transportation": "Caminería"
+										}
+                
+            }			
+			],
+			"options": {
+				"id": "Información base",
+				"opacity": 0.7,
+				"visible": false
+			}
+		},
+		{
+			"multiple": [
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
+				"layers": [6]
+			},
+			
+			
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
+				
+			},
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
+                                "changeNames": {
+					"Productividad": "Índice de Productividad"
+				},
+                                "sublayersTooltips": {
+					"Productividad": "Índice de Productividad"
+				}
+			},
+			{
+			
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
+				"sublayersTooltips": {
+								"Agua Disponible": "Escala 1:1.000.000 <a target='_blank' href='http://www.mgap.gub.uy/sites/default/files/multimedia/agua_disponible_de_las_tierras_del_uruguay.pdf'>Trabajo Molfino</a>",
+                                "Estimación de Agua Disponible, según grupos Coneat": "Escala 1:40.000 <a target='_blank' href='http://www.mgap.gub.uy/sites/default/files/multimedia/estimacion_de_agua_disponible_en_los_grupos_coneat_metodologia_empleada.pdf'>Trabajo Molfino</a>"
+                        },			
+				"layers": [0,
+				7,8,9]
+			},
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+				"sublayersTooltips": {
+					"Curvas Topográficas": "Curvas de Nivel a 10 mts"
+				},
+				"layers": [0]
+			}
+			],
+			"tooltip": "Por mayor información: <a target='_blank' href='http://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
+			"options": {
+				"id": "Suelos",
+				"opacity": 0.7,
+				"visible": false
+                                
+			}                                                 
+		},
+		{
+			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
+			"sublayersTooltips": {
+				" Vuelos de las Abejas (m) ": "Distancia en metros desde el apiario",
+                                "    750 m":"Buffer de radio de vuelo de la abeja de 750 m",
+                                " 1.500 m":"Buffer de radio de vuelo de la abeja de 1.500 m",
+                                " 3.000 m":"Buffer de radio de vuelo de la abeja de 3.000 m"
+                        },			
+			"layers": [0,
+			1,
+			2,
+			3,
+			4,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			13,
+			14,
+			15,
+			16,
+			17],
+			
+			"options": {
+				"id": "Áreas Sensibles para Aplicaciones Fitosanitarias",
+				"opacity": 0.7,
+				"visible": false
+			}
+		},
+				
+		{
+			"multiple": [
+                        {
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+				"sublayersTooltips": {
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>Monitoreo NDVI</a>"
+				},				
+				"wms": true,
+				"changeNames": {
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "Índice Verde (NDVI)"
+				}
+			},
+			{
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/a-/-a/X/Y/fig-/colors/-fig/%28T%29cvn/5314.0/plotvalue/%28plotaxislength%29cvn/432/psdef/%28plotborder%29cvn/72/psdef/wms.xml",
+				"sublayersTooltips": {
+					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDWI/NDWI_250m/NDWI.html'>Monitoreo NDWI</a>"
+				}, 				
+				"wms": true,
+				"changeNames": {
+					"USGS LandDAAC uy250m_II NDWI": "Índice de agua normalizado (NDWI)"
+				}
+			},                        
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
+			},
+			{
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"
+			}
+			
+			],
+			"options": {
+				"id": "Monitoreo Agropecuario",
+				"opacity": 0.7,
+				"visible": false
+			}
+		},
+		{
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/MapadeCalor_agro/MapServer",
+                "options": {
+                        "id": "Concentración de la producción agropecuaria",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+        },
+		{
+			"multiple": [
+                        {
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+				"sublayersTooltips": {
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>Monitoreo NDVI</a>"
+				},				
+				"wms": true,
+				"changeNames": {
+					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "Índice Verde (NDVI)"
+				}
+			},		
+			{
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDWI/a-/-a/X/Y/fig-/colors/-fig/%28T%29cvn/5314.0/plotvalue/%28plotaxislength%29cvn/432/psdef/%28plotborder%29cvn/72/psdef/wms.xml",
+				"sublayersTooltips": {
+					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDWI/NDWI_250m/NDWI.html'>Monitoreo NDWI</a>"
+				}, 				
+				"wms": true,
+				"changeNames": {
+					"USGS LandDAAC uy250m_II NDWI": "Índice de agua normalizado (NDWI)"
+				}
+			},
+			{
+				"url": "http://dlibrary.snia.gub.uy/SOURCES/.WORLDBATH/.bath/X/-58.6/-53.1/RANGE/Y/-35/-30/RANGE/SOURCES/.MGAP/.IPA/.CARGA_SEGURA/a:/.the_geom/:a:/.carga/:a/1/index/SOURCES/.Features/.Political/.Seccionales_Policiales/.the_geom/X/Y/fig-/white/mask/fillby/thinnish/stroke/grey/stroke/-fig/wms.xml?plotaxislength=540",
+				"sublayersTooltips": {
+					"USGS LandDAAC uy250m_II NDWI": "NDWI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDWI/NDWI_250m/NDWI.html'>Monitoreo NDWI</a>"
+				}, 				
+				"wms": true,
+				"layers": [1],
+				"changeNames": {
+					"USGS LandDAAC uy250m_II NDWI": "Índice de agua normalizado (NDWI)"
+				}
+			}			
+			
+			],
+			"tooltip": "Si quiere utilizar el Simulador Ganadero, click <a target='_blank' href='https://pganad.snia.gub.uy/PGanad/'>aquí</a>",
+			"options": {
+				"id": "Ganadería",
+				"opacity": 0.7,
+				"visible": false
+			}
+		},
+		
+		
+		{
+			"multiple": [
+                     {
+				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uyLST_ll/.LST_Daily_Night/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/%28Celsius_scale%29unitconvert/SOURCES/.Features/.Political/.Paises_limitrofes/.the_geom/SOURCES/.Features/.Hydrological/.Espejos_de_agua/.the_geom/SOURCES/.Features/.Political/.Seccionales_Policiales/.the_geom/SOURCES/.Features/.Political/.Departamentos_MTOP/.the_geom/X/Y/fig-/colors/grey/fill/cyan/fill/grey/stroke/black/thinnish/stroke/-fig/wms.xml?plotaxislength=520",
+				"sublayersTooltips": {
+					"LST_Daily_Night": "Temperatura Diaria superficie Terrestre <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Clima/LST/LST_Daily/LST_Daily_Night.html'>Monitoreo Diario</a>"
+				},				
+				"wms": true,
+				"layers": [0],
+			
+				"changeNames": {
+					"LST_Daily_Night": "Temperatura Diaria superficie Terrestre"
+				}
+				
+			},
+									
+					
+						{
+				"url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uyLST_ll/.LST_Night/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/%28Celsius_scale%29unitconvert/SOURCES/.Features/.Political/.Paises_limitrofes/.the_geom/SOURCES/.Features/.Hydrological/.Espejos_de_agua/.the_geom/SOURCES/.Features/.Political/.Seccionales_Policiales/.the_geom/SOURCES/.Features/.Political/.Departamentos_MTOP/.the_geom/X/Y/fig-/colors/grey/fill/cyan/fill/grey/stroke/black/thinnish/stroke/-fig/wms.xml?plotaxislength=520&layers=LST_Night",
+				"sublayersTooltips": {
+					"LST_Night": "Temperatura Semanal superficie Terrestre <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Clima/LST/LST_Weekly/LST_Weekly_Night.html'>Monitoreo Semanal</a>"
+				},				
+				"wms": true,
+				"layers": [2],
+			
+				"changeNames": {
+					"LST_Night": "Temperatura Semanal superficie Terrestre"
+				}
+				
+			}
+			],
+			"tooltip": "Si quiere utilizar el Simulador de Cultivos, click <a target='_blank' href='http://simagri.snia.gub.uy/webapp/'>aquí</a>",
+			"options": {
+				"id": "Agricultura",
+				"opacity": 0.7,
+				"visible": false
+			
+			}
+		}]
+	}
+}
