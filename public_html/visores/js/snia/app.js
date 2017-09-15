@@ -108,7 +108,6 @@ snia.app = {
                             invisibleOpen = herramientaConfig.invisibleOpen,
                             icono = herramientaConfig.icono,
                             icon = herramientaConfig.icon,							  
-                            hideInToolbar =  (typeof herramientaConfig.hideInToolbar  === "undefined" ?  false : herramientaConfig.hideInToolbar),
                             closable =  (typeof herramientaConfig.closable  === "undefined" ?  true : herramientaConfig.closable),
                             draggable = (typeof herramientaConfig.draggable  === "undefined" ?  true : herramientaConfig.draggable),
                             position = herramientaConfig.position,                            
@@ -119,7 +118,6 @@ snia.app = {
                                     startsOpen: startsOpen,
                                     invisibleOpen: invisibleOpen,
                                     position: position,
-                                    hideInToolbar: hideInToolbar,
                                     widget: new WidgetClass({ mapa: mapa, config: widgetConfig, estilo: estilo }),
                                     dialogParams: { title : title, closable: closable, draggable: draggable}
                                 }),

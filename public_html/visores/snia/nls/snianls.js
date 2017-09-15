@@ -5,10 +5,6 @@ define({
                 rbVectorial: "Vectorial",
                 rbImagen: "Imagen"
             },
-            "InfoWidget": {
-                message: "Momentaneamente los GeoServicios no estan funcionando   ",
-                message2: "Estamos trabajando en ello, disculpe los inconvenientes   "
-            },
             "CoordenadasWidget": {
                 lbUTM: "UTM21S/WGS84  ",
                 lbGEO: "Geog/WGS84    ",
