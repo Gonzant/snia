@@ -271,7 +271,7 @@ define([
                         show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
                     }
 
-                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility  });
                     this._generarSubSubcapasWMS(li, tParent, dataLayer, vparent);
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
@@ -281,6 +281,11 @@ define([
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
             var sublayerTooltip, i, j, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
+            if (dataLayer.disableDefaultVisibility){
+                visibleLayers = [];
+                visibleLayers.push(-1);
+                l.setVisibleLayers(visibleLayers);
+            }
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent, 
                 name = li.name;
@@ -303,7 +308,7 @@ define([
                             tParent = tParent + "->" + l.layerInfos[i].name;
                         }
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility, changeNames: dataLayer.changeNames });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility , changeNames: dataLayer.changeNames });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
