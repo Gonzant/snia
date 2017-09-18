@@ -622,7 +622,7 @@
         },
         {
             "widget": "widgets/InfoWidget",
-            "title": "Información gral",
+            "title": "Información",
             "msgToolTip": "Muestra información útil para el usuario al inicio de sesión. ",             
             "toggle": false,
             "startsOpen": true,
