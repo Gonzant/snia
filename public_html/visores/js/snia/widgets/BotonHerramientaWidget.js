@@ -60,13 +60,7 @@ define([
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
-            this.watch("active", this._active);
-            if (this._etiqueta ==="Identificar"){
-                this.own(
-                on(this.mapa.map, a11yclick, lang.hitch(this, this._botonClick))
-                );
-            };
-            
+            this.watch("active", this._active);                        
             // classes
             this._css = { };
         },
