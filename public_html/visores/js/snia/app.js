@@ -105,7 +105,7 @@ snia.app = {
                             startsOpen = herramientaConfig.startsOpen,
                             icono = herramientaConfig.icono,
                             icon = herramientaConfig.icon,							  
-                            hideInToolbar =  (typeof herramientaConfig.hideInToolbar  === "undefined" ?  false : herramientaConfig.hideInToolbar),
+                            hideInToolbar = (typeof herramientaConfig.hideInToolbar  === "undefined" ?  false : herramientaConfig.hideInToolbar),
                             closable =  (typeof herramientaConfig.closable  === "undefined" ?  true : herramientaConfig.closable),
                             draggable = (typeof herramientaConfig.draggable  === "undefined" ?  true : herramientaConfig.draggable),
                             position = herramientaConfig.position,

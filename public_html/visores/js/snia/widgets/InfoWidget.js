@@ -46,8 +46,7 @@ define([
             };
         },
         postCreate: function () {
-           // this.inherited(arguments);
-           
+           // this.inherited(arguments);           
         },
         // start widget. called by user
         startup: function () {
@@ -88,8 +87,7 @@ define([
         },
         /* ---------------- */
         /* Funciones Privadas */
-        /* ---------------- */
-       
+        /* ---------------- */       
         _visible: function () {
             if (this.get("visible")) {
                 domStyle.set(this.domNode, 'display', 'block');
