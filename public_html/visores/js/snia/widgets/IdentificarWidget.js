@@ -176,7 +176,7 @@ define([
             this.emit("dibujo-enabled-changed", {});
         },
         _cambioDibujar: function (evt) {
-            if (!evt.dibujo) {
+            if (evt.dibujo) {
                 this._dibujo.activar(Draw.POINT);
             } else {
                 this._dibujo.desactivar();
