@@ -84,7 +84,7 @@ define([
                 campo: defaults.config.campo,
                 valor: defaults.config.valor
             };
-            //this.mapa.on("dibujo-enabled-change", lang.hitch(this, this._cambioDibujar));
+            this.mapa.on("dibujo-enabled-change", lang.hitch(this, this._cambioDibujar));
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -150,11 +150,11 @@ define([
                     model: this._myModel,
                     showRoot: false
                 });
-                //this._dibujo.desactivar();
+                this._dibujo.desactivar();
             } else {
                 this._cg3sr.agregarMapa(this.mapa);
                 if (this._dibujo) {
-                    //this._dibujo.activar(Draw.POINT);
+                    this._dibujo.activar(Draw.POINT);
                     //this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
                 }
             }
@@ -218,7 +218,7 @@ define([
             this._cg3sr.limpiar();
             lang.hitch(this, this._initDibujo());
             lang.hitch(this, this._initGrid());            
-            this._activar();
+            //this._activar();
             this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
         },
         _initDibujo: function () {
