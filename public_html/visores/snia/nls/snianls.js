@@ -7,8 +7,8 @@ define({
             },
             
             "InfoWidget": {
-                message: "Momentaneamente los GeoServicios no estan funcionando   ",
-                message2: "Estamos trabajando en ello, disculpe los inconvenientes   "
+                message: "Momentaneamente los GeoServicios no estan funcionando.   ",
+                message2: "Estamos trabajando en ello, sepa disculpar los inconvenientes.   "
             },
             "CoordenadasWidget": {
                 lbUTM: "UTM21S/WGS84  ",
