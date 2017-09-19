@@ -230,10 +230,6 @@ html, body {
     margin-top: 3px;
 }
 
-.timpoWidget{
-    width: 570px;
-    height: 90px;
-}
 /*.esriScalebarLabel{
     color:black;
     width: 15%;
@@ -1072,6 +1068,9 @@ div p {
     width: 0px;
 }
 .dijitTreeContent>.dijitFolderClosed{
+    width: 0px;
+}
+.dijitTreeExpando.dijitTreeExpandoLeaf{
     width: 0px;
 }
 

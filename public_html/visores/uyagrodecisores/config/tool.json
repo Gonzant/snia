@@ -1,15 +1,5 @@
 {       
-    "barraHerramientas": [
-        
-        
-        
-        
-        
-        
-        
-        
-        
-              
+    "barraHerramientas": [             
         
         {
             "widget": "widgets/AyudaWidget",
@@ -107,7 +97,7 @@
                 "parent":"1",
                 "seccionTitulo":{
                     "Texto": { "Contenido": "Contenidos", "Estilo": "Indice1"},
-                    "Imagen": {"URL":"layers"}                      
+                    "Imagen": {"URL":"layers"}                        
                 },
                 "seccionContenido":{
                     "titulo":{
@@ -135,7 +125,7 @@
                 },
                "seccionContenido":{
                     "titulo":{
-                        "Imagen":{ "URL":"near_me"}   ,
+                        "Imagen":{ "URL":"near_me"},   
                         "Texto":{"Contenido": "Navegar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -207,7 +197,7 @@
                 },
                "seccionContenido":{
                     "titulo":
-                        {"Imagen":{"URL":"info_outline"},                        
+                        {"Imagen":{"URL":"info_outline"},                         
                         "Texto": {"Contenido": "Identificar", "Estilo": "Titulo2"}
                     },
                     "elementos": [
@@ -225,7 +215,7 @@
                "parent":"1",
                "seccionTitulo":{
                     "Texto": {"Contenido": "Buscar Padrones", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"search"}                        
+                    "Imagen":{"URL":"search"}                       
                 },
                "seccionContenido":{
                     "titulo":{
@@ -244,7 +234,7 @@
                             }
                            ]    
                         },
-                        {"Imagen": {"URL":"zoom_in"}},
+                       {"Imagen": {"URL":"zoom_in"}},
                         { "Texto":[
                             {"Contenido": "Acercar selección", "Estilo": "Titulo3"},
                             {"Contenido": "Acerca el mapa de manera de incluir todos los padrones seleccionados.", "Estilo": "Normal"}
@@ -277,25 +267,7 @@
                     ]
                 },
                "hijos": "no"
-            },            
-            {
-                "name": "Información de suelos (Carta 1:40.000)",
-                "id":"12",
-                "parent":"1",
-                "seccionTitulo":{
-                    "Texto":{"Contenido": "Información de suelos (Carta 1:40.000)", "Estilo": "Indice1"},
-                    "Imagen":{"URL":"find_replace"}                        
-                },
-                "seccionContenido":{
-                    "titulo":{
-                        "Imagen":{"URL":"find_replace"},
-                        "Texto":{"Contenido": "Información de suelos (Carta 1:40.000)", "Estilo": "Titulo2"}
-                    },
-                    "elementos": [
-                    {"Texto":[{"Contenido": "Esta herramienta es un buscador específico que utiliza los atributos de los perfiles de suelo. ", "Estilo": "Normal"}]}                        
-                    ]
-                }
-            },            
+            },                                 
             {
                "name": "Medir",
                "id":"7",
@@ -632,33 +604,27 @@
             }
         },
         {
-            "widget": "widgets/InformacionSuelosWidget",
-            "title": "Información Suelos (Carta 1:40.000)",
-            "msgToolTip": "Busca y despliega parcelas rurales y los índices asociados.",
-            "icono": "../js/snia/img/infoCartografia.png",
-            "icon": "find_replace",
-            "toggle": false,
-            "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
-                "departamento": "DEPTO",
-                "padron": "PADRON",
-                "catastral": "AREAHA",
-                "productividad": "IND_CONEAT",				
-			    "Herramienta": {
-					"CampoEtiquetaUnidadMapeo": "UnidadDeMapeoEtiqueta",
-					"CampoSimboloSerie": "SerieSimbolo",
-					"CampoIdPerfilRepresentativo": "SeriePerfilRepresentativo",
-					"UrlUnidadMapeo": "https://web.renare.gub.uy/Cartografia/UnidadesMapeo",
-					"UrlSerie": "https://web.renare.gub.uy/Cartografia/Series",
-					"UrlPerfil": "https://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "https://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/1",
-					"ServicioUnidadMapeo": "https://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
-					"CampoEtiquetaServicioUnidadMapeo": "Etiqueta",
-					"ServicioPerfil": "https://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
-					"CampoIdServicioPerfil": "Id_Perfil"
-				}
-            }
+           "widget": "widgets/TiempoWidget",
+           "title": "Tiempo",
+           "msgToolTip": "Herramienta para manejar el espacio temporal de la información del mapa.",
+           "icono": "../js/snia/img/tiempo_gris.png",
+           "icon": "date_range",            
+           "toggle": false,
+           "draggable": true,
+           "startsOpen": false,           
+           "widgetConfig": {
+               "fechaAtributo": "Fecha",
+               "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
+               "timeSlider": {
+                   "unidad":"esriTimeUnitsDays",
+                   "cantidad": "10",
+                   "velocidad": "1000",
+                   "ultimaSemana": "True"
+               },
+               "manual": {                    
+                   "inicioTiempo": "2017-08-01"                    
+               }
+           }
         },
         {
             "widget": "widgets/BuscarWidget",
@@ -683,6 +649,10 @@
             "icono": "../js/snia/img/identificar.png", 
             "icon": "info_outline",
             "toggle": false,
+            "draggable": false,
+            "startsOpen": false,
+            "invisibleOpen": true,
+            "position": {"right": "20px", "top": "175px"},
             "widgetConfig": {
                 "campo": "id",
                 "valor": "valor"  
@@ -710,7 +680,7 @@
             "startsOpen": true,
             "position": {"left": "20px", "top": "120px"},
             "widgetConfig": {
-                "dynamicMapServiceLayers": [],
+                "botonAgregarCapa": true,
                 "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
