@@ -128,7 +128,6 @@ define([
                 this._unidadNode.set('disabled', false);
                 this._cg3sr.agregarMapa(this.mapa);
                 this._activarDibujo();
-                //this._cambio();
             } else {
                 this._areaNode.set('disabled', true);
                 this._distanciaNode.set('disabled', true);
@@ -136,6 +135,7 @@ define([
                 this._cg3sr.removerMapa();
                 this._desactivarDibujo();
             }
+            this._dibujoIdentificar(!this.get("active"));
             this.emit("active-changed");
         },
         _init: function () {
@@ -245,9 +245,8 @@ define([
             this._cg3sr.agregarGrafico("0", g);
             this._actMensaje();
         },
-        _cambio: function () {
-            console.log("test");
-            this.mapa.emit("dibujo-enabled-change", {});
+        _dibujoIdentificar: function (es_identificar) {                      
+            this.mapa.emit("desactivar-identificar", {"dibujo": es_identificar});
         }
     });
     return widget;

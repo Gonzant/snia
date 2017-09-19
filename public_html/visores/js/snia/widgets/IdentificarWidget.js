@@ -84,14 +84,14 @@ define([
                 campo: defaults.config.campo,
                 valor: defaults.config.valor
             };
-            this.mapa.on("dibujo-enabled-change", lang.hitch(this, this._cambioDibujar));
+            this.mapa.on("desactivar-identificar", lang.hitch(this, this._cambioDibujar));
         },
         postCreate: function () {
             this.inherited(arguments);
             if (this.mapa) {
                 this.own(
                 );
-            };            
+            }
         },
         // start widget. called by user
         startup: function () {
@@ -150,13 +150,9 @@ define([
                     model: this._myModel,
                     showRoot: false
                 });
-                this._dibujo.desactivar();
+                //this._dibujo.desactivar();
             } else {
                 this._cg3sr.agregarMapa(this.mapa);
-                if (this._dibujo) {
-                    this._dibujo.activar(Draw.POINT);
-                    //this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
-                }
             }
             this.emit("active-changed", {});
         },
@@ -179,14 +175,12 @@ define([
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-changed", {});
         },
-        _cambioDibujar: function (){
-            if (this._primerLlamado){
-                console.log("primera vez");
-                this._primerLlamado = false;
+        _cambioDibujar: function (evt) {
+            if (!evt.dibujo) {
+                this._dibujo.activar(Draw.POINT);
             } else {
-                console.log("cambio dibujar");
-            }            
-            //this._dibujo.desactivar();            
+                this._dibujo.desactivar();
+            }
         },
         _init: function () {
             this._symbol = new SimpleFillSymbol("solid",
@@ -217,7 +211,7 @@ define([
             this.emit("load", {});
             this._cg3sr.limpiar();
             lang.hitch(this, this._initDibujo());
-            lang.hitch(this, this._initGrid());            
+            lang.hitch(this, this._initGrid());
             //this._activar();
             this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
         },
