@@ -135,6 +135,7 @@ define([
                 this._cg3sr.removerMapa();
                 this._desactivarDibujo();
             }
+            this._dibujoIdentificar(!this.get("active"));
             this.emit("active-changed");
         },
         _init: function () {
@@ -144,7 +145,7 @@ define([
             this._initDibujo();
             this._reset();
             this._actUnidades();
-            this._active();
+            this.activar();
             this.set("loaded", true);
             this.emit("load", {});
         },
@@ -244,8 +245,8 @@ define([
             this._cg3sr.agregarGrafico("0", g);
             this._actMensaje();
         },
-        _dibujoEnabledChanged: function () {
-            this.emit("dibujo-enabled-changed", {});
+        _dibujoIdentificar: function (es_identificar) {                      
+            this.mapa.emit("desactivar-identificar", {"dibujo": es_identificar});
         }
     });
     return widget;

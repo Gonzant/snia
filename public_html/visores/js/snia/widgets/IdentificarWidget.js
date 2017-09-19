@@ -71,6 +71,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("dibujoEnable", this._dibujoEnabledChanged);
+            this._primerLlamado = true;
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
@@ -83,6 +84,7 @@ define([
                 campo: defaults.config.campo,
                 valor: defaults.config.valor
             };
+            this.mapa.on("desactivar-identificar", lang.hitch(this, this._cambioDibujar));
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -151,10 +153,6 @@ define([
                 //this._dibujo.desactivar();
             } else {
                 this._cg3sr.agregarMapa(this.mapa);
-                if (this._dibujo) {
-                    //this._dibujo.activar(Draw.POINT); 
-                    //this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
-                }
             }
             this.emit("active-changed", {});
         },
@@ -176,6 +174,13 @@ define([
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-changed", {});
+        },
+        _cambioDibujar: function (evt) {
+            if (!evt.dibujo) {
+                this._dibujo.activar(Draw.POINT);
+            } else {
+                this._dibujo.desactivar();
+            }
         },
         _init: function () {
             this._symbol = new SimpleFillSymbol("solid",
@@ -206,8 +211,8 @@ define([
             this.emit("load", {});
             this._cg3sr.limpiar();
             lang.hitch(this, this._initDibujo());
-            lang.hitch(this, this._initGrid());            
-            this._activar();
+            lang.hitch(this, this._initGrid());
+            //this._activar();
             this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
         },
         _initDibujo: function () {
