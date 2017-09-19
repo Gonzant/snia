@@ -120,19 +120,20 @@ define([
             }
         },
         _initBotonHerramienta: function (herramientaOptions) {
-            var tipo, node, node2, boton;
-            tipo = this.get('vertical') ? '<div></div>' : '<div>  </div>';
-            node = domConstruct.toDom(tipo);
-            if (this.estilo){
-                node2 = domConstruct.place('<a></a>', node);                
-            } else {
-                node2 = domConstruct.place('<div></div>', node);
-            }            
-            domConstruct.place(node, this._rootNode);
-            boton = new BotonHerramientaWidget(herramientaOptions, node2, this.estilo);
-            boton.startup();
-            this._botones.push(boton);
-
+            if(!herramientaOptions.herramienta.options.hideInToolbar){
+                var tipo, node, node2, boton;
+                tipo = this.get('vertical') ? '<div></div>' : '<div>  </div>';
+                node = domConstruct.toDom(tipo);
+                if (this.estilo){
+                    node2 = domConstruct.place('<a></a>', node);                
+                } else {
+                    node2 = domConstruct.place('<div></div>', node);
+                }            
+                domConstruct.place(node, this._rootNode);
+                boton = new BotonHerramientaWidget(herramientaOptions, node2, this.estilo);
+                boton.startup();
+                this._botones.push(boton);
+                }
         },
         _init: function () {
             this._visible();
