@@ -272,7 +272,7 @@ define([
                     this._identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;
                     this._identifyParams.tolerance = 2;
                     this._identifyParams.layerIds = layer.visibleLayers;
-                    if (layer.visible && layer.visibleLayers.length > 0) {
+                    if (layer.visible && layer.visibleLayers.length > 0) { 
                         haycapas = true;
                         this._identifyParams.geometry = evt.geometry;
                         this._identify.execute(this._identifyParams, lang.hitch(this, this._queryTaskCallback),
