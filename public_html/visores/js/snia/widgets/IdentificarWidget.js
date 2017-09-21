@@ -264,6 +264,9 @@ define([
                     this._identify = new IdentifyTask(layer.url);
                     this._identifyParams = new IdentifyParameters();
                     this._identifyParams.mapExtent = this.mapa.map.extent;
+                    this._identifyParams.width = this.mapa.map.width;
+                    this._identifyParams.height = this.mapa.map.height;
+                    
                     this._identifyParams.returnGeometry = true;
                     this._identifyParams.timeExtent = this.mapa.map.timeExtent;
                     this._identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;
