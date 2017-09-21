@@ -64,6 +64,8 @@
 				6,
 				7],
                             "sublayersTooltips": {
+                                " Cursos de agua": "Visible a partir de la escala 1:2,000,000",
+                                " Espejos de agua": "Visible a partir de la escala 1:2,000,000",
 				" Cuencas Hidrográficas": "Cuencas Hidrográficas (Niveles 1, 2, 3 y 4)"}                            
 			}],
 			"options": {
