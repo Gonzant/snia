@@ -392,7 +392,10 @@ define([
                     if (l.layerInfos[item.index].subLayerIds) {
                         //Si es nodo de segundo nivel con hijos
                         this._prenderPadresTree(node); //Activo al padre
+                        /*
                         //Activo los hijos
+                        //Se deshabilitó esta opción, es posible que a futuro se requiera configurable
+                        //En caso de volver a utilizarlo, hay que verificar que las capas ocultas en el menu no se deben visualizar
                         nodes = node.getChildren();
                         arrayUtil.forEach(nodes, function (n) {
                             if (n.checkBox.get('checked')){
@@ -410,6 +413,7 @@ define([
                             l.setVisibleLayers(visibleLayers);
                         }
                         //FIXME: Para wms las subcapas están en SubLayers
+                        */
                     }
                     if (!l.layerInfos[item.index].subLayerIds){
                     //Si es de segundo o tercer nivel sin hijos
