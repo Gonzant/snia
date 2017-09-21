@@ -520,6 +520,10 @@
             "icono": "../js/snia/img/identificar.png",  
             "icon": "info_outline",
             "toggle": false,
+            "draggable": false,
+            "startsOpen": true,
+            "invisibleOpen": true,
+            "position": {"right": "20px", "top": "175px"},
             "widgetConfig": {
                 "campo": "id",
                 "valor": "valor"  

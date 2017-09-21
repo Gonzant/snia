@@ -650,7 +650,7 @@
             "icon": "info_outline",
             "toggle": false,
             "draggable": false,
-            "startsOpen": false,
+            "startsOpen": true,
             "invisibleOpen": true,
             "position": {"right": "20px", "top": "175px"},
             "widgetConfig": {
