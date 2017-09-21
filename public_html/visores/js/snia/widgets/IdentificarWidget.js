@@ -32,13 +32,13 @@ define([
     "esri/tasks/IdentifyParameters",
     "esri/tasks/IdentifyTask",
     "dojo/store/Observable",
-    "esri/layers/DynamicMapServiceLayer",
+    "esri/layers/ArcGISDynamicMapServiceLayer",
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle,
     CapaGrafica3SR, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory,
-    DataGrid, ObjectStore, ObjectStoreModel, Tree, Dibujo, Draw, IdentifyParameters, IdentifyTask, Observable, DynamicMapServiceLayer) {
+    DataGrid, ObjectStore, ObjectStoreModel, Tree, Dibujo, Draw, IdentifyParameters, IdentifyTask, Observable, ArcGISDynamicMapServiceLayer) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -260,10 +260,13 @@ define([
             haycapas = false;
             this._ext = 0;
             arrayUtil.forEach(this.mapa.mapLayers, lang.hitch(this, function (layer) {
-                if (layer instanceof DynamicMapServiceLayer) {
+                if (layer instanceof ArcGISDynamicMapServiceLayer) {
                     this._identify = new IdentifyTask(layer.url);
                     this._identifyParams = new IdentifyParameters();
                     this._identifyParams.mapExtent = this.mapa.map.extent;
+                    this._identifyParams.width = this.mapa.map.width;
+                    this._identifyParams.height = this.mapa.map.height;
+                    
                     this._identifyParams.returnGeometry = true;
                     this._identifyParams.timeExtent = this.mapa.map.timeExtent;
                     this._identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;
