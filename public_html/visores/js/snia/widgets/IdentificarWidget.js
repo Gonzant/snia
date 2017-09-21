@@ -71,6 +71,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("dibujoEnable", this._dibujoEnabledChanged);
+            this._primerLlamado = true;
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
@@ -83,6 +84,7 @@ define([
                 campo: defaults.config.campo,
                 valor: defaults.config.valor
             };
+            this.mapa.on("desactivar-identificar", lang.hitch(this, this._cambioDibujar));
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -148,13 +150,9 @@ define([
                     model: this._myModel,
                     showRoot: false
                 });
-                this._dibujo.desactivar();
+                //this._dibujo.desactivar();
             } else {
                 this._cg3sr.agregarMapa(this.mapa);
-                if (this._dibujo) {
-                    this._dibujo.activar(Draw.POINT);
-                    this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
-                }
             }
             this.emit("active-changed", {});
         },
@@ -176,6 +174,13 @@ define([
         },
         _dibujoEnabledChanged: function () {
             this.emit("dibujo-enabled-changed", {});
+        },
+        _cambioDibujar: function (evt) {
+            if (!evt.dibujo) {
+                this._dibujo.activar(Draw.POINT);
+            } else {
+                this._dibujo.desactivar();
+            }
         },
         _init: function () {
             this._symbol = new SimpleFillSymbol("solid",
@@ -207,7 +212,7 @@ define([
             this._cg3sr.limpiar();
             lang.hitch(this, this._initDibujo());
             lang.hitch(this, this._initGrid());
-            this._activar();
+            //this._activar();
             this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbClicIdentificar;
         },
         _initDibujo: function () {
@@ -239,7 +244,7 @@ define([
                     for (c in children) {
                         if (children.hasOwnProperty(c)) {
                             nodoItem = children[c].get('item');
-                            esHijo = nodoItem.nodo.toString()==="hijo";
+                            esHijo = nodoItem.nodo.toString() === "hijo";
                             if (this._tree && nodoItem && !esHijo) {
                                 this._tree._expandNode(children[c]);
                             }
@@ -278,6 +283,10 @@ define([
             } else {
                 this._resultadoNodeIdentificar.innerHTML = this._i18n.widgets.IdentificarWidget.lbNoCapas;
             }
+            //domStyle.set(this.domNode, 'display', 'block');
+            this.active = true;
+            this._activar();
+            this.emit("show-changed", {});
         },
         _treeClick : function (item) {
             var key, indice;
@@ -299,7 +308,7 @@ define([
             var currentCapa, flag;
             currentCapa = 0;
             flag = 0;
-            this._contador++;
+            this._contador ++;
             if (results.length > 0) {
                 arrayUtil.forEach(results, lang.hitch(this, function (feature) {
                     if ((flag === 0) || (feature.layerId !== currentCapa)) {
