@@ -190,8 +190,11 @@
 				}
 			},
                         {
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
-				"layers": [9]				
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
+                                "layers": [9],
+                                "sublayersTooltips": {
+                                    "Estimación de Agua Disponible, según grupos Coneat": " Por mayor información: <a target='_blank' href='http://www.mgap.gub.uy/sites/default/files/multimedia/estimacion_de_agua_disponible_en_los_grupos_coneat_metodologia_empleada.pdf'>Molfino, J. 2009</a>"
+                                }				
 			},
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
