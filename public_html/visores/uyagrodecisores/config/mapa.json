@@ -170,9 +170,9 @@
 		{
 			"multiple": [
                         {
-				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
 				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
+					"USGS LandDAAC uy250m_II NDVI": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
 				},				
 				"wms": true,
 				"changeNames": {
