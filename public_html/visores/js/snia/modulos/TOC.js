@@ -282,9 +282,17 @@ define([
             var sublayerTooltip, i, j, visibleLayers;
             this._getLegendJSON(dataLayer.url + "/legend");
             if (dataLayer.disableDefaultVisibility){
-                visibleLayers = [];
-                visibleLayers.push(-1);
-                l.setVisibleLayers(visibleLayers);
+                l.setVisibleLayers([-1]);
+            } else {
+                    //Dejo visibles solo los nodos que no son capas
+                    visibleLayers = [];
+                    arrayUtil.forEach(l.visibleLayers, function (laux) {
+                        var layer_id = parseInt(laux);
+                        if (l.layerInfos[layer_id].subLayerIds || l.layerInfos[layer_id].parentLayerId === -1) {
+                            visibleLayers.push(parseInt(layer_id));
+                        }
+                    }, this);
+                    l.setVisibleLayers(visibleLayers);
             }
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent, 
@@ -354,91 +362,79 @@ define([
         },
         _prenderPadresTree: function (node) {
             var p = node.getParent();
-            if (p && (p.item.id !== "root") && p.checkBox && !p.checkBox.get('checked')) {
-                p.checkBox.set('checked', true);
-                this._onItemClick(p.item, p);
-                //this._prenderPadresTree(p);
+            if (p && (p.item.id !== "root")) {
+                if (p.checkBox && !p.checkBox.get('checked')) {
+                    p.checkBox.set('checked', true);
+                }
+                if (p.item.parent === "root") {
+                    this._onItemClick(p.item, p);
+                } else {
+                    this._prenderPadresTree(p);
+                }
             }
         },
+        _hideSubLayer: function (item, l){
+            var visibleLayers = []; 
+            arrayUtil.forEach(l.visibleLayers, function (laux) {
+                if (laux !== item.visLayId && laux !== "") {//Agrego todos menos el nodo
+                    if (!l.layerInfos[item.index].subLayerIds || l.layerInfos[item.index].subLayerIds.indexOf(parseInt(laux))=== -1){// Y sus hijos tampoco
+                        visibleLayers.push(laux);
+                    }
+                }
+            });
+            l.setVisibleLayers(visibleLayers);
+        },
+        _showSubLayer: function (item, l){
+            var visibleLayers = lang.clone(l.visibleLayers);
+            if (visibleLayers.indexOf(item.visLayId) === -1){
+                visibleLayers.push(item.visLayId);
+            }
+            l.setVisibleLayers(visibleLayers);
+        },
+        _updateMapService: function (isNodeSelected, name){
+            var l = this.mapa.map.getLayer(name);
+            if (l){
+                if (isNodeSelected) {
+                    l.show();
+                    this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
+                } else {
+                    l.hide();
+                }
+            }
+        },
+        _updateSubLayers: function (activar, node, l) {
+            if  (!l.layerInfos[node.item.index].subLayerIds) {//Si es una layer (no group layer)
+               if (activar && node.checkBox.get('checked')) {
+                   this._showSubLayer(node.item, l);
+                   this._prenderPadresTree(node);
+               } else { //Desactivar
+                   this._hideSubLayer(node.item, l);
+               }
+            } else { //Si es un group layer
+                var nodes = node.getChildren();
+                if (activar && node.checkBox.get('checked')) {
+                    this._prenderPadresTree(node);
+                }
+                arrayUtil.forEach(nodes, function (n) {
+                    this._updateSubLayers(activar &&  n.checkBox.get('checked'), n, l);
+                }, this);
+            }
+        },        
         _onItemClick: function (item, node) {
-            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, nodes, hijosActivos = false;
+            var isNodeSelected = node.checkBox.get('checked'), l;
             //Despliego su contenido
             this._tree._expandNode(node);
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
-                        l = this.mapa.map.getLayer(item.name + url.url);
-                        if (isNodeSelected) {
-                            l.show();
-                            this.mapa.map.reorderLayer(l, this.mapa.map.layerIds.length - 1);
-                        } else {
-                            l.hide();
-                        }
+                        this._updateMapService(isNodeSelected, item.name + url.url);
                     }, this);
                 } else {
-                    l = this.mapa.map.getLayer(item.name);
-                    if (isNodeSelected) {
-                        l.show();
-                        this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
-                    } else {
-                        l.hide();
-                    }
+                    this._updateMapService(isNodeSelected, item.name);
                 }
-            } else { //Si es un nodo de segundo o tercer nivel
+            } else { //Si es un nodo de segundo nivel o mas
                 l = this.mapa.map.getLayer(item.vparent);
-                visibleLayers = lang.clone(l.visibleLayers);
-                if (isNodeSelected && item.index >= 0) {
-                    //Si hay que activarlo
-                    if (l.layerInfos[item.index].subLayerIds) {
-                        //Si es nodo de segundo nivel con hijos
-                        this._prenderPadresTree(node); //Activo al padre
-                        //Activo los hijos
-                        nodes = node.getChildren();
-                        arrayUtil.forEach(nodes, function (n) {
-                            if (n.checkBox.get('checked')){
-                                hijosActivos = true;
-                            }
-                        }, this);
-                        if (!hijosActivos) {
-                            arrayUtil.forEach(nodes, function (n) {
-                                n.checkBox.set('checked', true);
-                                //this._onItemClick(n.item, n);
-                            }, this);
-                            arrayUtil.forEach( l.layerInfos[item.index].subLayerIds, function (laux) {
-                                    visibleLayers.push(parseInt(laux));
-                                }, this);
-                            l.setVisibleLayers(visibleLayers);
-                        }
-                        //FIXME: Para wms las subcapas están en SubLayers
-                    }
-                    if (!l.layerInfos[item.index].subLayerIds){
-                    //Si es de segundo o tercer nivel sin hijos
-                        if (visibleLayers.indexOf(item.visLayId) === -1) {
-                            //Si no está visible la hago visible
-                            visibleLayers.push(item.visLayId);
-                            l.setVisibleLayers(visibleLayers);
-                        }
-                    }
-                    this._prenderPadresTree(node);
-                } else {
-                    //Si hay que desactivarlo
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (laux !== item.visLayId && laux !== "") {//Agrego todos menos el nodo
-                            if (!l.layerInfos[item.index].subLayerIds || l.layerInfos[item.index].subLayerIds.indexOf(parseInt(laux))=== -1){// Y sus hijos tampoco
-                                visibleLayers.push(laux);
-                            }
-                        }
-                    }, this);
-                    //Uncheck hijos
-                    nodes = node.getChildren();
-                    arrayUtil.forEach(nodes, function (n) {
-                        if (n.checkBox){
-                            n.checkBox.set('checked', false);
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);                    
-                }
+                this._updateSubLayers(isNodeSelected, node, l);
             }
         },
         _createTreeNode: function (args) {
@@ -519,11 +515,15 @@ define([
                     if (findImageService) layerName = item.name;
                     return findImageService || (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
-                if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    arrayUtil.forEach(layer.legend, function (layerLegend) {
-                        this._data.push({ id: tocNode[0].parent + "->" + layerName + "->" + layerLegend.label, name: layerLegend.label, legend: true, parent:  tocNode[0].parent + "->" + layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                    arrayUtil.forEach(tocNode, function(node) {
+                        arrayUtil.forEach(layer.legend, function (layerLegend) {
+                            var name = layerLegend.label;
+                            if (node.changeNames && node.changeNames[name]) {
+                                name = node.changeNames[name];//Cambiar nombre de leyenda
+                            }
+                            this._data.push({ id: node.parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  node.parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                        }, this);                        
                     }, this);
-                }
             }, this);
             //if (findImageService) this.refreshTree();
         },
