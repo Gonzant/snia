@@ -511,20 +511,15 @@ define([
                 tocNode = arrayUtil.filter(this._data, function (item) {
                     return (!item.url || url === item.url + "/legend") && (item.name_ori === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
-                if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    //if (layer.legend.length === 1) { // una hoja
-                    //    tocNode[0].imageData =  layer.legend[0].imageData;
-                    //    tocNode[0].contentType = layer.legend[0].contentType;
-                    //} else { // multiples hojas
+                    arrayUtil.forEach(tocNode, function(node) {
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
                             var name = layerLegend.label;
-                            if (tocNode[0].changeNames && tocNode[0].changeNames[name]) {
-                                name = tocNode[0].changeNames[name];//Cambiar nombre de leyenda
+                            if (node.changeNames && node.changeNames[name]) {
+                                name = node.changeNames[name];//Cambiar nombre de leyenda
                             }
-                            this._data.push({ id: tocNode[0].parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  tocNode[0].parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
-                        }, this);
-                    //}
-                }
+                            this._data.push({ id: node.parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  node.parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                        }, this);                        
+                    }, this);
             }, this);
             //this.refreshTree();
         },
