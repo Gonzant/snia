@@ -388,7 +388,7 @@ define([
         _showSubLayer: function (item, l){
             var visibleLayers = lang.clone(l.visibleLayers);
             if (visibleLayers.indexOf(item.visLayId) === -1){
-                visibleLayers.push(parseInt(item.visLayId));
+                visibleLayers.push(item.visLayId);
             }
             l.setVisibleLayers(visibleLayers);
         },
