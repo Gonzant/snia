@@ -394,12 +394,14 @@ define([
         },
         _updateMapService: function (isNodeSelected, name){
             var l = this.mapa.map.getLayer(name);
-            if (isNodeSelected) {
-                l.show();
-                this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
-            } else {
-                l.hide();
-            }            
+            if (l){
+                if (isNodeSelected) {
+                    l.show();
+                    this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
+                } else {
+                    l.hide();
+                }
+            }
         },
         _updateSubLayers: function (activar, node, l) {
             if  (!l.layerInfos[node.item.index].subLayerIds) {//Si es una layer (no group layer)
