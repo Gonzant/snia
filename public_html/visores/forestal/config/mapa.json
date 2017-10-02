@@ -5,7 +5,19 @@
             "logo": false
         },
         "baseMapLayer": {
-            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
+            "extent": {
+                "xmin": -37867.16314808361,
+                "ymin": 6030313.020605681,
+                "xmax": 1220493.68690695,
+                "ymax": 6874864.455708552,
+                "spatialReference": {
+                    "wkid":32721
+                }
+            }
+        },
+        "baseMapLayerBackup": {
+            "url":"https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
             "extent": {
                 "xmin": -6364316,
                 "ymin": -4364316,
@@ -14,39 +26,33 @@
                 "spatialReference": {
                     "wkid":102100
                 }
-            }
-        },
-        "baseMapLayerBackup": {
-            "url": "http://sit.mvotma.gub.uy/arcgis/rest/services/MAPASBASE/MAPA_BASE_2014/MapServer",
-            "extent": {
-                "xmin": -37867.16314808361,
-                "ymin": 5957313.020605681,
-                "xmax": 1220493.68690695,
-                "ymax": 6874864.455708552,
-                "spatialReference": {
-                    "wkid":32721
-                }
-            }
+            }                                    
         },
         "dynamicLayers": [ 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+                "sublayersTooltips": {
+                        " Padrones Rurales": "Visible a escala 1:50.000"},
+                "layers": [0,
+                1,
+                6,
+                7],
                 "options": {
-                        "id": "Administrativo",
-                        "opacity": 0.7,
-                        "visible": false
+                        "id": "Límites Administrativos",
+                        "opacity": 1.0,
+                        "visible": true
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
                 "options": {
                         "id": "Información Base",
                         "opacity": 0.7,
                         "visible": false
                 }
-            },            
+            },                                               
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografía",
                         "opacity": 0.7,
@@ -54,7 +60,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
                 "options": {
                         "id": "Suelos",
                         "opacity": 0.7,
@@ -62,7 +68,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer",
                 "options": {
                         "id": "Focos de calor",
                         "opacity": 0.7,
@@ -70,7 +76,15 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/CartografiaForestal/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/padron_bosque/MapServer",
+                "options": {
+                        "id": "Registro de bosque",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }, 
+            {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/CartografiaForestal/MapServer",
                 "options": {
                         "id": "Cartografía Forestal",
                         "opacity": 0.7,
@@ -78,7 +92,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/UsosdeSuelo/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/UsosdeSuelo/MapServer",
                 "options": {
                         "id": "Cobertura y Usos",
                         "opacity": 0.7,
@@ -86,7 +100,7 @@
                 }
             },         
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/Logistica_Produccion/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/Logistica_Produccion/MapServer",
                 "options": {
                         "id": "Logística (Producción)",
                         "opacity": 0.7,
@@ -94,7 +108,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
                         "id": "Topografía",
                         "opacity": 0.7,
