@@ -47,6 +47,7 @@ define([
             this.domNode = srcRefNode;
             this._data = [];
             this._requestedLegends = [];
+            this._iniVisibles = [];
             this._tree = false;
             this.mapa = defaults.mapa;
             this.mapaConfigJSON = defaults.mapaConfigJSON;
@@ -279,25 +280,25 @@ define([
             }, this);
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
-        _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip, i, j, visibleLayers;
-            this._getLegendJSON(dataLayer.url + "/legend");
-            if (dataLayer.disableDefaultVisibility){
-                l.setVisibleLayers([-1]);
+        _isSubLayerDefaultVisible: function (l, id){
+            //Retorna true sii la capa es visible y todos sus padres son visibles (sin contar al nodo principal que se maneja diferente)
+            if (l.layerInfos[id].defaultVisibility) { //Si por defecto debe estar prendido
+                if (l.layerInfos[id].parentLayerId !== -1){ //Si es parte de un grupo
+                    return this._isSubLayerDefaultVisible(l, l.layerInfos[id].parentLayerId);
+                } else {
+                    return true;
+                }
             } else {
-                    //Dejo visibles solo los nodos que no son capas
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        var layer_id = parseInt(laux);
-                        if (l.layerInfos[layer_id].subLayerIds || l.layerInfos[layer_id].parentLayerId === -1) {
-                            visibleLayers.push(parseInt(layer_id));
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);
+                return false;
             }
+        },
+        _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
+            var sublayerTooltip, i, j, startChecked, visibleLayers = [];
+            this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent, 
                 name = li.name;
+                startChecked = li.defaultVisibility && !dataLayer.disableDefaultVisibility;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
                 } else {
@@ -317,21 +318,16 @@ define([
                             tParent = tParent +"->" + l.layerInfos[i].name;
                         }
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility , changeNames: dataLayer.changeNames });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: startChecked , changeNames: dataLayer.changeNames });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
-                if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
-                    //ocultarla si por defecto esta visbile pero no se incluye en la lista
-                    li.defaultVisibility = false;
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (parseInt(laux) !== parseInt(li.id) && laux !== "") {
-                            visibleLayers.push(parseInt(laux));
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);
+                if (!dataLayer.disableDefaultVisibility && this._isSubLayerDefaultVisible(l, li.id)) {
+                    //Si en mapa.json no se deshabilitó la opción de default visibility
+                    //y la capa está prendida por defecto (además de todos sus padres)
+                    visibleLayers.push(li.id);
                 }
             }, this);
+            l.setVisibleLayers(visibleLayers);
         },
         /*_borrarGruposDeVisibleLayers: function (l, li){
             //FIXME: eliminarla si no hace falta
