@@ -18,9 +18,9 @@ define([
     "dijit/form/HorizontalSlider",
     "dijit/form/CheckBox",
     "esri/layers/ArcGISDynamicMapServiceLayer",
-    "esri/layers/ArcGISImageServiceLayer",
     "esri/config",
     "esri/layers/WMSLayer",
+    "esri/layers/WFSLayer",
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
@@ -29,7 +29,7 @@ define([
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox,
-     ArcGISDynamicMapServiceLayer, ArcGISImageServiceLayer, esriConfig, WMSLayer, scaleUtils, Geoprocessor,
+     ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
     var TOC = declare([Evented], {
@@ -47,6 +47,7 @@ define([
             this.domNode = srcRefNode;
             this._data = [];
             this._requestedLegends = [];
+            this._iniVisibles = [];
             this._tree = false;
             this.mapa = defaults.mapa;
             this.mapaConfigJSON = defaults.mapaConfigJSON;
@@ -154,7 +155,7 @@ define([
             myModel = new ObjectStoreModel({
                 store: myStore,
                 query: {id: 'root'},
-                mayHaveChildren: function (item) { return (myStore.query({parent: item.id}).length > 0) || item.parent === "root" ; }
+                mayHaveChildren: function (item) { return myStore.query({parent: item.id}).length > 0; }
             });
             // Crear el arbol
             this._tree = new Tree({
@@ -177,8 +178,8 @@ define([
             }));
             on(this.mapa.map, 'update-end', lang.hitch(this, this._adjustVisibility));
         },
-        _generarNodoRoot: function (l, dataLayer) {
-            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, imageService: dataLayer.imageService, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
+        _generarNodoRoot: function (l, dataLayer){
+            this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, wms: dataLayer.wms, wfs: dataLayer.wfs, tooltip: dataLayer.tooltip || "", type: 'mapservice', parent: 'DUMMY', opacity: dataLayer.options.opacity, url: dataLayer.url, startChecked: dataLayer.options.visible });
             if (l.loaded) {
                 this._generarNodoSimple(l, dataLayer);
             } else {
@@ -200,9 +201,10 @@ define([
         },*/
         _generarNodoSimple: function (l, dataLayer) {
             arrayUtil.forEach(this._data, function (d) {
-                if (d.name === dataLayer.options.id && d.type === 'mapservice' && d.url === dataLayer.url && d.wms === dataLayer.wms) {
+                if (d.name === dataLayer.options.id && d.type === 'mapservice' &&
+                       d.url === dataLayer.url && d.wms === dataLayer.wms ){
                     d.maxScale = l.maxScale;
-                    d.minScale = l.minScale;
+                    d.minScale = l.minScale; 
                     d.parent = "root";
                 }
             }, this);
@@ -278,25 +280,25 @@ define([
             }, this);
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
-        _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip, i, j, visibleLayers;
-            this._getLegendJSON(dataLayer.url + "/legend");
-            if (dataLayer.disableDefaultVisibility){
-                l.setVisibleLayers([-1]);
+        _isSubLayerDefaultVisible: function (l, id){
+            //Retorna true sii la capa es visible y todos sus padres son visibles (sin contar al nodo principal que se maneja diferente)
+            if (l.layerInfos[id].defaultVisibility) { //Si por defecto debe estar prendido
+                if (l.layerInfos[id].parentLayerId !== -1){ //Si es parte de un grupo
+                    return this._isSubLayerDefaultVisible(l, l.layerInfos[id].parentLayerId);
+                } else {
+                    return true;
+                }
             } else {
-                    //Dejo visibles solo los nodos que no son capas
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        var layer_id = parseInt(laux);
-                        if (l.layerInfos[layer_id].subLayerIds || l.layerInfos[layer_id].parentLayerId === -1) {
-                            visibleLayers.push(parseInt(layer_id));
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);
+                return false;
             }
+        },
+        _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
+            var sublayerTooltip, i, j, startChecked, visibleLayers = [];
+            this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent, 
                 name = li.name;
+                startChecked = li.defaultVisibility && !dataLayer.disableDefaultVisibility;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
                 } else {
@@ -310,27 +312,22 @@ define([
                     i = li.parentLayerId;
                     if (i >= 0) { //Si es una sub-capa de segundo o tercer nivel
                         j = l.layerInfos[i].parentLayerId;
-                        if (j >= 0) {//Si es de tercer nivel
-                            tParent = tParent + "->" + l.layerInfos[j].name + "->" + l.layerInfos[i].name;
+                        if (j >= 0){//Si es de tercer nivel
+                            tParent = tParent +"->" + l.layerInfos[j].name +"->" + l.layerInfos[i].name;
                         } else { //Si es de segundo nivel
-                            tParent = tParent + "->" + l.layerInfos[i].name;
+                            tParent = tParent +"->" + l.layerInfos[i].name;
                         }
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility , changeNames: dataLayer.changeNames });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: startChecked , changeNames: dataLayer.changeNames });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
-                if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
-                    //ocultarla si por defecto esta visbile pero no se incluye en la lista
-                    li.defaultVisibility = false;
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (parseInt(laux) !== parseInt(li.id) && laux !== "") {
-                            visibleLayers.push(parseInt(laux));
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);
+                if (!dataLayer.disableDefaultVisibility && this._isSubLayerDefaultVisible(l, li.id)) {
+                    //Si en mapa.json no se deshabilitó la opción de default visibility
+                    //y la capa está prendida por defecto (además de todos sus padres)
+                    visibleLayers.push(li.id);
                 }
             }, this);
+            l.setVisibleLayers(visibleLayers);
         },
         /*_borrarGruposDeVisibleLayers: function (l, li){
             //FIXME: eliminarla si no hace falta
@@ -344,7 +341,7 @@ define([
             }
         },*/
         _generarData: function () {
-            var dynLayers, l;
+            var mapaConfig, dynLayers, l;
             this._data = [{ id: 'root'}];
             this.mapaConfig = JSON.parse(this.mapaConfigJSON);
             dynLayers = this.mapaConfig.mapa.dynamicLayers;
@@ -507,13 +504,10 @@ define([
              console.log('TOC: Falla al cargar leyendas');
         },
         _requestSucceededLegendJSON: function (url, response) {
-            var tocNode, findImageService;
+            var tocNode;
             arrayUtil.forEach(response.layers, function (layer) {
-                var layerName = layer.layerName; //Nombre de la capa en el arbol
                 tocNode = arrayUtil.filter(this._data, function (item) {
-                    findImageService = item.imageService && (!item.url || url === item.url + "/legend");
-                    if (findImageService) layerName = item.name;
-                    return findImageService || (!item.url || url === item.url + "/legend") && (item.name === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
+                    return (!item.url || url === item.url + "/legend") && (item.name_ori === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
                     arrayUtil.forEach(tocNode, function(node) {
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
@@ -525,7 +519,7 @@ define([
                         }, this);                        
                     }, this);
             }, this);
-            //if (findImageService) this.refreshTree();
+            //this.refreshTree();
         },
         _nodeAdjustVisibility: function (node, scale) {
             if (node.hasChildren()){
@@ -574,11 +568,11 @@ define([
                 arrayUtil.forEach(this._tree.rootNode.getChildren(), function (node) {
                     var itemNode;
                     //Busco el nodo
-                    if (node.item.id === item.id) {//Si encuentro el nodo en los hijos de root
+                    if (node.item.id === item.id){//Si encuentro el nodo en los hijos de root
                         itemNode = node;
-                    } else if (node.item.id === item.parent) { //Si encuentro al padre del nodo entre los hijos de root
+                    } else if (node.item.id === item.parent){ //Si encuentro al padre del nodo entre los hijos de root
                         arrayUtil.forEach(node.getChildren(), function (snode) {
-                            if (snode.item.id === item.id) {
+                            if (snode.item.id === item.id){
                                 itemNode = snode;
                             } 
                         }, this);
@@ -641,16 +635,17 @@ define([
                 if (dataLayer.wms) {
                     esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
                     l = new WMSLayer(dataLayer.url, dataLayer.options);
-                } else if (dataLayer.imageService) {
-                    l = new ArcGISImageServiceLayer(dataLayer.url, dataLayer.options);
-                } else { // default = DynamicMap
+                } else if (dataLayer.wfs) {
+                    esriConfig.defaults.io.corsEnabledServers.push(dataLayer.url);
+                    l = new WFSLayer(dataLayer.url, dataLayer.options);
+                } else {
                     l = new ArcGISDynamicMapServiceLayer(dataLayer.url, dataLayer.options);
                 }
                 if (l) {
                     this.mapa.agregarCapa(l);
-                    if (!actualizarNodoExistente) {
+                    if (!actualizarNodoExistente){
                         this._generarNodoRoot(l, dataLayer);
-                    }
+                    } 
                 }
             }
         },
@@ -661,11 +656,8 @@ define([
             var dynLayers = this.mapaConfig.mapa.dynamicLayers;
             arrayUtil.forEach(dynLayers, function (dataLayer) {
                 if (dataLayer.options.id === id) { //Nodo a partir de un map service
-                    var l = this.mapa.map.getLayer(dataLayer.options.id),
-                        nodoExistente = true, 
-                        visibleLayers, 
-                        newl, 
-                        visible;
+                    var l = this.mapa.map.getLayer(dataLayer.options.id), 
+                    nodoExistente = true, visibleLayers, newl, visible;
                     if ((typeof l !== 'undefined') && (l !== null)) {
                         visibleLayers = lang.clone(l.visibleLayers);
                         visible = l.visible;
