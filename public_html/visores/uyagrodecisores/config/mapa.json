@@ -154,6 +154,7 @@
 			},
 			{
 				"url": "https://web.snig.gub.uy/arcgis1041/rest/services/ServiciosSeguros/Dicose_por_actividad/MapServer",
+                                "disableDefaultVisibility": true,
 				"options": {
 					"id": "DJ16_SNIG",
 					"opacity": 0.7,
@@ -225,7 +226,8 @@
 			}
 		},
 		{			
-			"url": "https://web.snig.gub.uy/arcgis1041/rest/services/ServiciosSeguros/Enfermedades/MapServer",				
+			"url": "https://web.snig.gub.uy/arcgis1041/rest/services/ServiciosSeguros/Enfermedades/MapServer",
+                        "disableDefaultVisibility": true,
 			"options": {
 				"id": "Sanidad Animal",
 				"opacity": 0.7,

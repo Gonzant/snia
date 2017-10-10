@@ -47,6 +47,7 @@ define([
             this.domNode = srcRefNode;
             this._data = [];
             this._requestedLegends = [];
+            this._iniVisibles = [];
             this._tree = false;
             this.mapa = defaults.mapa;
             this.mapaConfigJSON = defaults.mapaConfigJSON;
@@ -272,19 +273,32 @@ define([
                         show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
                     }
 
-                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility  });
+                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility  });
                     this._generarSubSubcapasWMS(li, tParent, dataLayer, vparent);
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
             }, this);
             this._executeGP(dataLayer.url); //Obtener escalas máximas y mínimas
         },
+        _isSubLayerDefaultVisible: function (l, id){
+            //Retorna true sii la capa es visible y todos sus padres son visibles (sin contar al nodo principal que se maneja diferente)
+            if (l.layerInfos[id].defaultVisibility) { //Si por defecto debe estar prendido
+                if (l.layerInfos[id].parentLayerId !== -1){ //Si es parte de un grupo
+                    return this._isSubLayerDefaultVisible(l, l.layerInfos[id].parentLayerId);
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        },
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip, i, j, visibleLayers;
+            var sublayerTooltip, i, j, startChecked, visibleLayers = [];
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent, 
                 name = li.name;
+                startChecked = li.defaultVisibility && !dataLayer.disableDefaultVisibility;
                 if (dataLayer.sublayersTooltips) {
                     sublayerTooltip = dataLayer.sublayersTooltips[li.name] || "";
                 } else {
@@ -304,21 +318,16 @@ define([
                             tParent = tParent +"->" + l.layerInfos[i].name;
                         }
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility, changeNames: dataLayer.changeNames });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: startChecked , changeNames: dataLayer.changeNames });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
-                if (dataLayer.layers && !(arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) && li.defaultVisibility) {
-                    //ocultarla si por defecto esta visbile pero no se incluye en la lista
-                    li.defaultVisibility = false;
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (parseInt(laux) !== parseInt(li.id) && laux !== "") {
-                            visibleLayers.push(parseInt(laux));
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);
+                if (!dataLayer.disableDefaultVisibility && this._isSubLayerDefaultVisible(l, li.id)) {
+                    //Si en mapa.json no se deshabilitó la opción de default visibility
+                    //y la capa está prendida por defecto (además de todos sus padres)
+                    visibleLayers.push(li.id);
                 }
             }, this);
+            l.setVisibleLayers(visibleLayers);
         },
         /*_borrarGruposDeVisibleLayers: function (l, li){
             //FIXME: eliminarla si no hace falta
@@ -350,91 +359,79 @@ define([
         },
         _prenderPadresTree: function (node) {
             var p = node.getParent();
-            if (p && (p.item.id !== "root") && p.checkBox && !p.checkBox.get('checked')) {
-                p.checkBox.set('checked', true);
-                this._onItemClick(p.item, p);
-                //this._prenderPadresTree(p);
+            if (p && (p.item.id !== "root")) {
+                if (p.checkBox && !p.checkBox.get('checked')) {
+                    p.checkBox.set('checked', true);
+                }
+                if (p.item.parent === "root") {
+                    this._onItemClick(p.item, p);
+                } else {
+                    this._prenderPadresTree(p);
+                }
             }
         },
+        _hideSubLayer: function (item, l){
+            var visibleLayers = []; 
+            arrayUtil.forEach(l.visibleLayers, function (laux) {
+                if (laux !== item.visLayId && laux !== "") {//Agrego todos menos el nodo
+                    if (!l.layerInfos[item.index].subLayerIds || l.layerInfos[item.index].subLayerIds.indexOf(parseInt(laux))=== -1){// Y sus hijos tampoco
+                        visibleLayers.push(laux);
+                    }
+                }
+            });
+            l.setVisibleLayers(visibleLayers);
+        },
+        _showSubLayer: function (item, l){
+            var visibleLayers = lang.clone(l.visibleLayers);
+            if (visibleLayers.indexOf(item.visLayId) === -1){
+                visibleLayers.push(item.visLayId);
+            }
+            l.setVisibleLayers(visibleLayers);
+        },
+        _updateMapService: function (isNodeSelected, name){
+            var l = this.mapa.map.getLayer(name);
+            if (l){
+                if (isNodeSelected) {
+                    l.show();
+                    this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
+                } else {
+                    l.hide();
+                }
+            }
+        },
+        _updateSubLayers: function (activar, node, l) {
+            if  (!l.layerInfos[node.item.index].subLayerIds) {//Si es una layer (no group layer)
+               if (activar && node.checkBox.get('checked')) {
+                   this._showSubLayer(node.item, l);
+                   this._prenderPadresTree(node);
+               } else { //Desactivar
+                   this._hideSubLayer(node.item, l);
+               }
+            } else { //Si es un group layer
+                var nodes = node.getChildren();
+                if (activar && node.checkBox.get('checked')) {
+                    this._prenderPadresTree(node);
+                }
+                arrayUtil.forEach(nodes, function (n) {
+                    this._updateSubLayers(activar &&  n.checkBox.get('checked'), n, l);
+                }, this);
+            }
+        },        
         _onItemClick: function (item, node) {
-            var isNodeSelected = node.checkBox.get('checked'), l, visibleLayers, nodes, hijosActivos = false;
+            var isNodeSelected = node.checkBox.get('checked'), l;
             //Despliego su contenido
             this._tree._expandNode(node);
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
                     arrayUtil.forEach(item.multiple, function (url) {
-                        l = this.mapa.map.getLayer(item.name + url.url);
-                        if (isNodeSelected) {
-                            l.show();
-                            this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
-                        } else {
-                            l.hide();
-                        }
+                        this._updateMapService(isNodeSelected, item.name + url.url);
                     }, this);
                 } else {
-                    l = this.mapa.map.getLayer(item.name);
-                    if (isNodeSelected) {
-                        l.show();
-                        this.mapa.map.reorderLayer(l,this.mapa.map.layerIds.length - 1);
-                    } else {
-                        l.hide();
-                    }
+                    this._updateMapService(isNodeSelected, item.name);
                 }
-            } else { //Si es un nodo de segundo o tercer nivel
+            } else { //Si es un nodo de segundo nivel o mas
                 l = this.mapa.map.getLayer(item.vparent);
-                visibleLayers = lang.clone(l.visibleLayers);
-                if (isNodeSelected && item.index >= 0) {
-                    //Si hay que activarlo
-                    if (l.layerInfos[item.index].subLayerIds) {
-                        //Si es nodo de segundo nivel con hijos
-                        this._prenderPadresTree(node); //Activo al padre
-                        //Activo los hijos
-                        nodes = node.getChildren();
-                        arrayUtil.forEach(nodes, function (n) {
-                            if (n.checkBox.get('checked')){
-                                hijosActivos = true;
-                            }
-                        }, this);
-                        if (!hijosActivos){
-                            arrayUtil.forEach(nodes, function (n) {
-                                n.checkBox.set('checked', true);
-                                //this._onItemClick(n.item, n);
-                            }, this);
-                            arrayUtil.forEach( l.layerInfos[item.index].subLayerIds, function (laux) {
-                                    visibleLayers.push(parseInt(laux));
-                                }, this);
-                            l.setVisibleLayers(visibleLayers);
-                        }
-                        //FIXME: Para wms las subcapas están en SubLayers
-                    }
-                    if (!l.layerInfos[item.index].subLayerIds){
-                    //Si es de segundo o tercer nivel sin hijos
-                        if (visibleLayers.indexOf(item.visLayId) === -1) {
-                            //Si no está visible la hago visible
-                            visibleLayers.push(item.visLayId);
-                            l.setVisibleLayers(visibleLayers);
-                        }
-                    }
-                    this._prenderPadresTree(node);
-                } else {
-                    //Si hay que desactivarlo
-                    visibleLayers = [];
-                    arrayUtil.forEach(l.visibleLayers, function (laux) {
-                        if (laux !== item.visLayId && laux !== "") {//Agrego todos menos el nodo
-                            if (!l.layerInfos[item.index].subLayerIds || l.layerInfos[item.index].subLayerIds.indexOf(parseInt(laux))=== -1){// Y sus hijos tampoco
-                                visibleLayers.push(laux);
-                            }
-                        }
-                    }, this);
-                    //Uncheck hijos
-                    nodes = node.getChildren();
-                    arrayUtil.forEach(nodes, function (n) {
-                        if (n.checkBox){
-                            n.checkBox.set('checked', false);
-                        }
-                    }, this);
-                    l.setVisibleLayers(visibleLayers);                    
-                }
+                this._updateSubLayers(isNodeSelected, node, l);
             }
         },
         _createTreeNode: function (args) {
@@ -512,20 +509,15 @@ define([
                 tocNode = arrayUtil.filter(this._data, function (item) {
                     return (!item.url || url === item.url + "/legend") && (item.name_ori === layer.layerName) && (!item.type ||  item.type !== "mapservice") && (!item.index || item.index === layer.layerId);
                 }, this);
-                if (tocNode.length > 0) { //Si la capa está incluida en la tabla de contenidos
-                    //if (layer.legend.length === 1) { // una hoja
-                    //    tocNode[0].imageData =  layer.legend[0].imageData;
-                    //    tocNode[0].contentType = layer.legend[0].contentType;
-                    //} else { // multiples hojas
+                    arrayUtil.forEach(tocNode, function(node) {
                         arrayUtil.forEach(layer.legend, function (layerLegend) {
                             var name = layerLegend.label;
-                            if (tocNode[0].changeNames && tocNode[0].changeNames[name]) {
-                                name = tocNode[0].changeNames[name];//Cambiar nombre de leyenda
+                            if (node.changeNames && node.changeNames[name]) {
+                                name = node.changeNames[name];//Cambiar nombre de leyenda
                             }
-                            this._data.push({ id: tocNode[0].parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  tocNode[0].parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
-                        }, this);
-                    //}
-                }
+                            this._data.push({ id: node.parent + "->" +  layer.layerName + "->" + layerLegend.label, name: name, legend: true, parent:  node.parent + "->" +  layer.layerName, imageData:  layerLegend.imageData, contentType: layerLegend.contentType });
+                        }, this);                        
+                    }, this);
             }, this);
             //this.refreshTree();
         },
