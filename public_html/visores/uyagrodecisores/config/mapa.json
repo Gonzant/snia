@@ -213,11 +213,11 @@
 		{
 			"multiple": [{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
-				 "sublayersTooltips": {
-                                    "Suelos Inundables (Duración Inundación)": "Suelos Inundables (según frecuencia y duración de las inundaciones)"
-                                },	
-                                "layers": [0,
+				 "layers": [0,
 				7]
+			},
+                        {
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
 			}],
 			"options": {
 				"id": "Inundación",
