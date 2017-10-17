@@ -64,6 +64,8 @@
 				6,
 				7],
                             "sublayersTooltips": {
+                                " Cursos de agua": "Visible a partir de la escala 1:2,000,000",
+                                " Espejos de agua": "Visible a partir de la escala 1:2,000,000",
 				" Cuencas Hidrográficas": "Cuencas Hidrográficas (Niveles 1, 2, 3 y 4)"}                            
 			}],
 			"options": {
@@ -169,9 +171,9 @@
 		{
 			"multiple": [
                         {
-				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/T/%28last%29VALUES/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
 				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
+					"USGS LandDAAC uy250m_II NDVI": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
 				},				
 				"wms": true,
 				"changeNames": {
@@ -189,8 +191,11 @@
 				}
 			},
                         {
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
-				"layers": [9]				
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
+                                "layers": [9],
+                                "sublayersTooltips": {
+                                    "Estimación de Agua Disponible, según grupos Coneat": " Por mayor información: <a target='_blank' href='http://www.mgap.gub.uy/sites/default/files/multimedia/estimacion_de_agua_disponible_en_los_grupos_coneat_metodologia_empleada.pdf'>Molfino, J. 2009</a>"
+                                }				
 			},
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
@@ -208,8 +213,11 @@
 		{
 			"multiple": [{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
-				"layers": [0,
+				 "layers": [0,
 				7]
+			},
+                        {
+				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
 			}],
 			"options": {
 				"id": "Inundación",

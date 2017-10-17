@@ -423,7 +423,9 @@ define([
             this._tree._expandNode(node);
             if (item.parent === "root") { //Si es un map service
                 if (item.type === "multiple") {
-                    arrayUtil.forEach(item.multiple, function (url) {
+                    var reverseArray = lang.clone(item.multiple);
+                    reverseArray.reverse(); //Los de mas arriba en la lista mas arriba en el mapa
+                    arrayUtil.forEach(reverseArray, function (url) {
                         this._updateMapService(isNodeSelected, item.name + url.url);
                     }, this);
                 } else {
