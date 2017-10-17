@@ -282,7 +282,7 @@ define([
         },
         _isSubLayerDefaultVisible: function (l, id){
             //Retorna true sii la capa es visible y todos sus padres son visibles (sin contar al nodo principal que se maneja diferente)
-            if (l.layerInfos[id].defaultVisibility) { //Si por defecto debe estar prendido
+            if (l && l.layerInfos && l.layerInfos[id] && l.layerInfos[id].defaultVisibility) { //Si por defecto debe estar prendido
                 if (l.layerInfos[id].parentLayerId !== -1){ //Si es parte de un grupo
                     return this._isSubLayerDefaultVisible(l, l.layerInfos[id].parentLayerId);
                 } else {
