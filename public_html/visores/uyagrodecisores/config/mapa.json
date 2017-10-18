@@ -177,7 +177,7 @@
 				},				
 				"wms": true,
 				"changeNames": {
-					"USGS LandDAAC uy250m_II NDVI 13-28 Aug 2017": "Índice Verde (NDVI)"
+					"USGS LandDAAC uy250m_II NDVI": "Índice Verde (NDVI)"
 				}
 			},
 			{
