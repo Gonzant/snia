@@ -17,6 +17,7 @@ define([
     "dijit/Tooltip",
     "dijit/form/HorizontalSlider",
     "dijit/form/CheckBox",
+    "dijit/form/Button",
     "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/config",
     "esri/layers/WMSLayer",
@@ -28,7 +29,7 @@ define([
 ], function (on, Evented, declare, lang, arrayUtil,
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
-     Tooltip, HorizontalSlider, CheckBox,
+     Tooltip, HorizontalSlider, CheckBox, Button,
      ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
     esriRequest) {
     "use strict";
@@ -239,13 +240,19 @@ define([
             }, this);
         },    
         _generarSubSubcapasWMS: function (parent, tParent, dataLayer, vparent) {
+            var boton;
             if (parent.subLayers.length > 0) {
                 arrayUtil.forEach(parent.subLayers, function (sl, index) {
                     var show_name = sl.title;
                     if (dataLayer.changeNames && dataLayer.changeNames[sl.title]) {
                         show_name = dataLayer.changeNames[sl.title]; //Cambiar nombre de subnodo
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + parent.title + "->" + sl.title, name: show_name, visLayId: sl.name, type: 'layer', parent: "root->" + tParent + "->" + parent.title, vparent: vparent, index: index});
+                    if (sl.subLayers.length === 0) { //Si es una hoja
+                        boton = dataLayer.url;
+                    } else {
+                        boton = false;
+                    }
+                    this._data.push({ id: "root->" + tParent + "->" + parent.title + "->" + sl.title, name: show_name, visLayId: sl.name, type: 'layer', parent: "root->" + tParent + "->" + parent.title, vparent: vparent, index: index, boton: boton});
                     this._generarSubSubcapasWMS(sl, tParent + "->" + parent.title, dataLayer, vparent);
                 }, this);
             } else {
@@ -256,7 +263,7 @@ define([
             }
         },
         _generarSubcapasWMS: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip;
+            var sublayerTooltip, boton;
             arrayUtil.forEach(l.layerInfos, function (li, index) {
                 var tParent = parent,
                 show_name = li.title;
@@ -272,8 +279,12 @@ define([
                     if (dataLayer.changeNames && dataLayer.changeNames[li.title]) { 
                         show_name = dataLayer.changeNames[li.title]; //Cambiar nombre de subnodo
                     }
-
-                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility  });
+                    if (li.subLayers.length === 0) { //Si es una hoja
+                        boton = dataLayer.url;
+                    } else {
+                        boton = false;
+                    }
+                    this._data.push({ id: "root->" + tParent + "->" + li.title, name: show_name, visLayId: li.name, index: index, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale || 0, minScale: li.minScale || 0, parent:  "root->" + tParent, vparent: vparent, startChecked: li.defaultVisibility && !dataLayer.disableDefaultVisibility, boton: boton  });
                     this._generarSubSubcapasWMS(li, tParent, dataLayer, vparent);
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
@@ -293,7 +304,7 @@ define([
             }
         },
         _generarSubcapasArcgis: function (l, dataLayer, parent, vparent) {
-            var sublayerTooltip, i, j, startChecked, visibleLayers = [];
+            var sublayerTooltip, i, j, startChecked, visibleLayers = [], boton;
             this._getLegendJSON(dataLayer.url + "/legend");
             arrayUtil.forEach(l.layerInfos, function (li) {
                 var tParent = parent, 
@@ -307,6 +318,11 @@ define([
                 if (dataLayer.changeNames && dataLayer.changeNames[li.name]) { 
                     name = dataLayer.changeNames[li.name]; //Cambiar nombre de subnodo
                 }
+                if (!li.subLayerIds) { //Si es una hoja
+                    boton = dataLayer.url + "/" + li.id;
+                } else {
+                    boton = false;
+                }
                 if (!dataLayer.layers || arrayUtil.indexOf(dataLayer.layers, li.id) >= 0) 
                 {
                     i = li.parentLayerId;
@@ -318,7 +334,7 @@ define([
                             tParent = tParent +"->" + l.layerInfos[i].name;
                         }
                     }
-                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: startChecked , changeNames: dataLayer.changeNames });
+                    this._data.push({ id: "root->" + tParent + "->" + li.name, name: name, name_ori: li.name,  url: dataLayer.url, visLayId: li.id, index: li.id, tooltip: sublayerTooltip, type: 'layer', maxScale: li.maxScale, minScale: li.minScale, parent:  "root->" + tParent, vparent: vparent, startChecked: startChecked , changeNames: dataLayer.changeNames, boton: boton  });
                     //this._borrarGruposDeVisibleLayers(l, li);
                 }
                 if (!dataLayer.disableDefaultVisibility && this._isSubLayerDefaultVisible(l, li.id)) {
@@ -435,7 +451,7 @@ define([
             }
         },
         _createTreeNode: function (args) {
-            var tnode = new Tree._TreeNode(args), cb, slider, l, tooltip, t;
+            var tnode = new Tree._TreeNode(args), cb, slider, l, tooltip, t, b;
             //domStyle.set(tnode.containerNode, "max-width", "200px");
             tnode.labelNode.innerHTML = args.label;
             if (!args.item.tooltip || args.item.tooltip === "") {
@@ -457,6 +473,16 @@ define([
             }
             if (args.item.legendURL) {
                 tnode.labelNode.innerHTML =  "<img src='" + args.item.legendURL + "'>" + args.item.name;
+            }
+            if (args.item.boton) {
+                b = new Button({
+                    label: "i",
+                    onClick: function(){
+                        alert( "Acá se debería desplegar info sobre: " + args.item.boton);
+                    }
+                });
+                b.placeAt(tnode.labelNode, "last");
+                b.startup();
             }
             if (args.item.parent === "root") { //Si está en el primer nivel
                 slider = new HorizontalSlider({
