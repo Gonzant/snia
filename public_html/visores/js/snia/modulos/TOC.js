@@ -25,13 +25,15 @@ define([
     "esri/geometry/scaleUtils",
     "esri/tasks/Geoprocessor",
     "esri/request",
+    "widgets/MetadataWidget",
+    "dijit/Dialog",
     "dojo/domReady!"
 ], function (on, Evented, declare, lang, arrayUtil,
      domClass, domStyle, domConstruct,
      Memory, Tree, ObjectStoreModel,
      Tooltip, HorizontalSlider, CheckBox, Button,
      ArcGISDynamicMapServiceLayer, esriConfig, WMSLayer, WFSLayer, scaleUtils, Geoprocessor,
-    esriRequest) {
+    esriRequest, MetadataWidget, Dialog) {
     "use strict";
     var TOC = declare([Evented], {
         options : {
@@ -478,7 +480,9 @@ define([
                 b = new Button({
                     label: "i",
                     onClick: function(){
-                        alert( "Acá se debería desplegar info sobre: " + args.item.boton);
+                        var metaW = new MetadataWidget({url:args.item.boton});
+                        metaW.startup();
+                        metaW.show();                        
                     }
                 });
                 b.placeAt(tnode.labelNode, "last");
@@ -495,6 +499,7 @@ define([
                             if (args.item.type === "mapservice") {//Si es un map service
                                 l = this.mapa.map.getLayer(args.item.name);
                                 l.setOpacity(value / 100);
+                                console.log(l);
                             } else { //Si es un nodo múltiple args.item.type === "multiple"
                                 arrayUtil.forEach(args.item.multiple, function (dataLayer) {
                                     l = this.mapa.map.getLayer(args.item.name + dataLayer.url);
