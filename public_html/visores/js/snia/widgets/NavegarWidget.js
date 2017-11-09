@@ -16,7 +16,7 @@ define([
     "dijit/a11yclick",
     "dojo/text!./templates/NavegarWidget.html",
     "dojo/text!./templates/estilo2017/NavegarWidget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
     "esri/toolbars/draw",

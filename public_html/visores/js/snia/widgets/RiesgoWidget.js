@@ -13,7 +13,7 @@ define([
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dojo/text!./templates/RiesgoWidget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dijit/a11yclick",
     "dojo/dom-class",
     "dojo/dom-style",

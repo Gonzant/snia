@@ -16,7 +16,7 @@ define([
     "dijit/a11yclick",
     "dojo/text!./templates/BuscarWidget.html",
     "dojo/text!./templates/estilo2017/BuscarWidget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
     "esri/SpatialReference",
