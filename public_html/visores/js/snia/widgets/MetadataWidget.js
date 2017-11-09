@@ -1,5 +1,5 @@
 /*
- * js/snia/widgets/RiesgoInformacionWidget
+ * js/snia/widgets/MetadataWidget
  * 
  */
 /*global define, console*/
@@ -14,8 +14,8 @@ define([
     "dojo/text!./templates/MetadataWidget.html",
     "dojo/i18n!./nls/snianls.js",
     "dojo/dom-class",
-    "dojo/dom-style",    
-    "dojo/on",    
+    "dojo/dom-style",
+    "dojo/on",
     "dojo/dom-construct",
     "esri/request",
     "dijit/Dialog"
@@ -37,7 +37,7 @@ define([
             visible : true,
             json: null,
             active: false,
-            url:null
+            url: null
         },
         constructor: function (options, srcRefNode) {
             //mezclar opciones usuario y default
@@ -72,8 +72,8 @@ define([
             }
         },
         // start widget. called by user
-        startup: function () {                                                         
-            this._init();                           
+        startup: function () {
+            this._init();
         },
         // connections/subscriptions se limpian durante la fase destroy()
         destroy: function () {
@@ -126,26 +126,30 @@ define([
                 "callbackParamName": "callback"
             });
             requestHandle.then(
-                function (data) {                                
-                    var tiempo = "";
-                    var escala = "";
-                    if (data.timeExtent){
-                        tiempo = "<div>Tiempo desde: " + data.timeExtent.Extent[0] +"</div><br/>"
-                        +"<div>Tiempo hasta: "+ data.timeExtent[1]+"</div><br/>";
+                function (data) {
+                    var tiempo, minEscala, maxEscala, node, dialogo;
+                    tiempo = "";
+                    minEscala = "";
+                    maxEscala = "";
+                    if (data.timeExtent) {
+                        tiempo = "<div>Tiempo desde: " + data.timeExtent.Extent[0] + "</div><br/>"
+                            + "<div>Tiempo hasta: " + data.timeExtent[1] + "</div><br/>";
                     }
-                    if (data.minScale != 0 || data.minScale!=0){
-                        escala = "<div>Mínima escala: " + data.minScale + "</div><br/>"
-                        +"<div>Máxima escala:" + data.maxScale + "</div><br/>";
+                    if (data.minScale != 0) {
+                        minEscala = "<div>Mínima escala: 1:" + data.minScale + "</div><br/>";                        
                     }
-                    var node = domConstruct.toDom(
+                    if (data.minScale != 0) {
+                        maxEscala = "<div>Máxima escala: 1:" + data.maxScale + "</div><br/>";
+                    }
+                    node = domConstruct.toDom(
                         "<div>Nombre: " + data.name + "</div><br/>"
-                        +"<div>Descripción: " + data.description + "</div><br/>"
-                        +"<div>Fuente: " + data.copyrightText + "</div><br/>"
-                        + escala
-                        + tiempo                                 
-                            );
-                    var dialogo = new Dialog({
-                        title : data.name,                            
+                            + "<div>Descripción: " + data.description + "</div><br/>"
+                            + "<div>Fuente: " + data.copyrightText + "</div><br/>"
+                            + minEscala + maxEscala
+                            + tiempo
+                    );
+                    dialogo = new Dialog({
+                        title : data.name,
                         content: node
                     });
                     dialogo.startup();
@@ -154,7 +158,7 @@ define([
                 function (error) {
                     console.log("Error: ", error.message);
                 }
-            );                                                 
+            );
         }
     });
     return widget;
