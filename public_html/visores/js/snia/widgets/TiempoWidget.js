@@ -56,6 +56,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("reload", this._reload);
+             on(this.mapa, "pepe",  lang.hitch(this, this._activar));
             // classes
             this._css = {
                // baseClassRadioButton: "sniaRadioButton"

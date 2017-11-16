@@ -383,6 +383,11 @@ define([
         },
         _showSubLayer: function (item, l){
             var visibleLayers = lang.clone(l.visibleLayers);
+            if (l.hasOwnProperty("timeInfo")){
+                alert ("emitiendo pepe !!!");
+                this.mapa.emit("pepe", {});
+                
+            }
             if (visibleLayers.indexOf(item.visLayId) === -1){
                 visibleLayers.push(item.visLayId);
             }
@@ -422,8 +427,8 @@ define([
             //Despliego su contenido
             this._tree._expandNode(node);
             if (item.parent === "root") { //Si es un map service
-                if (item.type === "multiple") {
-                    arrayUtil.forEach(item.multiple, function (url) {
+                if (item.type === "multiple") { 
+                   arrayUtil.forEach(item.multiple, function (url) {
                         this._updateMapService(isNodeSelected, item.name + url.url);
                     }, this);
                 } else {
