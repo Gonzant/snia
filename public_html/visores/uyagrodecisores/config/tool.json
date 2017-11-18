@@ -611,7 +611,8 @@
            "icon": "date_range",            
            "toggle": false,
            "draggable": true,
-           "startsOpen": false,           
+           "startsOpen": true,           
+           "invisibleOpen": true,
            "widgetConfig": {
                "fechaAtributo": "Fecha",
                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",

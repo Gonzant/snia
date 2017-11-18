@@ -384,8 +384,8 @@ define([
         _showSubLayer: function (item, l){
             var visibleLayers = lang.clone(l.visibleLayers);
             if (l.hasOwnProperty("timeInfo")){
-                alert ("emitiendo pepe !!!");
-                this.mapa.emit("pepe", {});
+                //alert ("emitiendo pepe !!!");
+                this.mapa.emit("activarTiempo", {});
                 
             }
             if (visibleLayers.indexOf(item.visLayId) === -1){

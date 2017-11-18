@@ -56,7 +56,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("reload", this._reload);
-             on(this.mapa, "pepe",  lang.hitch(this, this._activar));
+             on(this.mapa, "activarTiempo",  lang.hitch(this, this._activar));
             // classes
             this._css = {
                // baseClassRadioButton: "sniaRadioButton"
@@ -66,6 +66,8 @@ define([
             this._yearsFiltroStore = new Memory({});
             this._startYear = "";
         },
+        
+        
         _activar: function () {
             this.emit("active-changed");
             if (this.get("active")) {
