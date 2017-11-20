@@ -614,7 +614,7 @@
             "title": "Información",
             "msgToolTip": "Muestra información útil para el usuario al inicio de sesión. ",             
             "toggle": false,
-            "startsOpen": true,
+            "startsOpen": false,
             "hideInToolbar": true,
             "widgetConfig": {
                 
