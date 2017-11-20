@@ -13,7 +13,7 @@ define([
     "dojo/_base/array",
     "dojo/text!./templates/Contenidos2Widget.html",
     "dojo/text!./templates/estilo2017/Contenidos2Widget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/text!config/mapa.json",
     "dojo/dom-class", "dojo/dom-style",
     "dijit/focus",

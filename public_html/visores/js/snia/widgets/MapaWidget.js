@@ -14,7 +14,7 @@ define([
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/MapaWidget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
     "esri/map",
