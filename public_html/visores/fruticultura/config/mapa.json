@@ -78,6 +78,14 @@
                 }
             },
             {
+                "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/AnalisisCE/MapServer",
+                "options": {
+                        "id": "Cercanía a CE (zafra 2017-2018)",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
                 "url": "https://web.renare.gub.uy/arcgis/rest/services/HUERTA/HuertaBase/MapServer",
                 "options": {
                         "id": "Base",
