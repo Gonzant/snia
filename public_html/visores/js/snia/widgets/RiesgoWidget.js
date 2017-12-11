@@ -817,7 +817,7 @@ define([
                     domClass.add(nodeTexto, "riesgoNormativaTexto");
                 }
                 if (nvtJson.Valor) {
-                    nodeValor = domConst.toDom('<div><a href="' + nvtJson.Valor + '" target="_blank" >(enlace)</a></div>');
+                    nodeValor = domConst.toDom("<div><a href=" + nvtJson.Valor + " target=\"_blank\" >"+nvtJson.Valor+"</a></div>");
                     domConst.place(nodeValor, nodeSeccion);
                     domClass.add(nodeValor, "riesgoNormativaValor");
                 }
@@ -864,7 +864,7 @@ define([
                         domConst.place(nodeTexto, nodeAyuda3);
                     }
                     if (ay.Valor) {
-                        nodeValor = domConst.toDom("<div><a href=" + ay.Valor + " target=\"_blank\">(enlace)</a></div>");
+                        nodeValor = domConst.toDom("<div><a href=" + ay.Valor + " target=\"_blank\">(enlace)</a>&nbsp;</div>");
                         domConst.place(nodeValor, nodeAyuda3);
                     }
                 }));
