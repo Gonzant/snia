@@ -1,16 +1,40 @@
 <div class='${theme}'>
     <div data-dojo-attach-point="_ruedaEspera" style="width: 100%; background-color: #BDBDBD; border-style: solid; border-width: 1px;">
         <div class="reporteDiv">
-            <label>Nro. DICOSE</label>
-            <input type="text" name="dicose" value=""
-                data-dojo-type="dijit/form/TextBox"
-                data-dojo-attach-point="_dicoseInputNode" class="reporteInput"/>
+            <label>Departamento</label>
+            <select data-dojo-type="dijit/form/ComboBox" data-dojo-attach-point="_departamentoInputNode" name="departamento" class="reporteInput">
+                <option>Artigas</option>
+                <option>Canelones</option>
+                <option>Cerro Largo</option>
+                <option>Colonia</option>
+                <option>Durazno</option>
+                <option>Flores</option>
+                <option>Florida</option>
+                <option>Lavalleja </option>
+                <option>Maldonado </option>
+                <option>Montevideo</option>
+                <option>Paysandú </option>
+                <option>Río Negro</option>
+                <option>Rivera</option>
+                <option>Rocha</option>
+                <option>Salto</option>
+                <option>San José</option>
+                <option>Soriano</option>
+                <option>Tacuarembó</option>
+                <option>Treinta y Tres</option>
+            </select>         
         </div>
         <div class="reporteDiv">
             <label>Nro. Padrón</label>
             <input type="text" name="padron" value=""
                 data-dojo-type="dijit/form/TextBox"
                 data-dojo-attach-point="_padronInputNode" class="reporteInput"/>
+        </div>
+        <div class="reporteDiv">
+            <label>Nro. DICOSE</label>
+            <input type="text" name="dicose" value=""
+                data-dojo-type="dijit/form/TextBox"
+                data-dojo-attach-point="_dicoseInputNode" class="reporteInput"/>
         </div>
         <div class="reporteDiv">
             <div data-dojo-attach-point="_reporteButtonNode"></div>

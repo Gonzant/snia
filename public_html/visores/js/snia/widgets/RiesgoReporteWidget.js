@@ -234,7 +234,8 @@ define([
                     {"Rl": this._letraColorTexto(this.resultadoGeo)},
                     {"Ra": this._letraColorTexto(this.resultadoAmbiental)},
                     {"padron": this._padronInputNode.value},
-                    {"dicose": this._dicoseInputNode.value}
+                    {"dicose": this._dicoseInputNode.value},
+                    {"departamento": this._departamentoInputNode.value},
                 ]
             };
             params.template = templatePrint;

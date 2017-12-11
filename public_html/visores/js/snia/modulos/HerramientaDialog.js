@@ -36,12 +36,14 @@ define([
                 this._dialog = new Dialog(dialogParams, this.options.dialogSrcNodeRef);
                 //Si se define una posicion fija no ubica el Dialog centrado
                 if (this.options.position) {
-                    this._dialog._position = lang.hitch(this, function(){
+                    this._dialog._position = lang.hitch(this, function () {
                         domStyle.set(this._dialog.domNode, this.options.position);
                     });
                 }
                 this.options.widget.on('active-changed', lang.hitch(this, this._widgetActiveChanged));
                 this.options.widget.on('dibujo-enabled-changed', lang.hitch(this, this._widgetDibujoEnabledChanged));
+                this.options.widget.on('esconder-dialog', lang.hitch(this, this._esconderDialog));
+                this.options.widget.on('mostrar-dialog', lang.hitch(this, this._mostrarDialog));
                 this.canExecute = true;
                 if (this.options.startsOpen) {
                    this.execute(); 
@@ -63,7 +65,7 @@ define([
         },
         //privadas
         _init: function () {
-            
+
         },
         _widgetActiveChanged: function () {
             if (!this.options.widget.get('active') && this._visible) {
@@ -76,6 +78,14 @@ define([
             this.options.widget.set('active', false);
             this._visible = false;
             this._updateCanExecute();
+        },
+        _esconderDialog: function () {
+            this._dialog.hide();
+            this._visible = false;
+        },
+        _mostrarDialog: function () {
+            this._dialog.show();
+            this._visible = true;
         },
         _updateCanExecute: function () {
             if (!this.options.modoToggle) {
