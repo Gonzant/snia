@@ -229,7 +229,7 @@ define([
             this._data.push({ id: 'root->' + dataLayer.options.id, name: dataLayer.options.id, tooltip: dataLayer.tooltip || "", type: 'multiple', multiple: dataLayer.multiple, parent: 'root', opacity: dataLayer.options.opacity });
             arrayUtil.forEach(dataLayer.multiple, function (dataLayer1) {
                 var l = this.mapa.map.getLayer(dataLayer.options.id + dataLayer1.url);
-                if (l !== null) {
+                if (l !== null && typeof l !== 'undefined') {
                     if (l.loaded) {
                         this._generarSubcapasNodoMultiple(l, dataLayer, dataLayer1);
                     } else {
@@ -383,6 +383,11 @@ define([
         },
         _showSubLayer: function (item, l){
             var visibleLayers = lang.clone(l.visibleLayers);
+            if (l.hasOwnProperty("timeInfo")){
+                //alert ("emitiendo pepe !!!");
+                this.mapa.emit("activarTiempo", {});
+                
+            }
             if (visibleLayers.indexOf(item.visLayId) === -1){
                 visibleLayers.push(item.visLayId);
             }

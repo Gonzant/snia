@@ -56,6 +56,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("reload", this._reload);
+             on(this.mapa, "activarTiempo",  lang.hitch(this, this._activarTiempo));
             // classes
             this._css = {
                // baseClassRadioButton: "sniaRadioButton"
@@ -64,6 +65,12 @@ define([
             this._resetOnClose = false;
             this._yearsFiltroStore = new Memory({});
             this._startYear = "";
+        },
+        
+         _activarTiempo: function () {     
+             //la busqueda quedo dependiente del nombre del icono
+            $( "a:contains('date_range')")[0].click();
+            //document.getElementById("uniqName_0_16").click();
         },
         _activar: function () {
             this.emit("active-changed");
