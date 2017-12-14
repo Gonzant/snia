@@ -68,9 +68,8 @@ define([
         },
         
          _activarTiempo: function () {     
-             //la busqueda quedo dependiente del nombre del icono
-            $( "a:contains('date_range')")[0].click();
-            //document.getElementById("uniqName_0_16").click();
+            //$( "a:contains('date_range')")[0].click();       //la busqueda quedo dependiente del nombre del icono        
+            this.emit("click-manual",{});
         },
         _activar: function () {
             this.emit("active-changed");
