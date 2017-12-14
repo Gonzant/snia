@@ -170,6 +170,17 @@
 		},
 		{
 			"multiple": [
+                        
+                        {
+                            "url": "http://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/ANOMALIAS/.NDVIa/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/X/Y/fig-/colors/-fig/wms.xml",
+                            "sublayersTooltips": {
+                                    "USGS LandDAAC uy250m_II ANOMALIAS NDVIa": "NDVIa Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_A/NDVIa.html'>NDVIa Histórico</a>"
+                            },				
+                            "wms": true,
+                            "changeNames": {
+                                    "USGS LandDAAC uy250m_II ANOMALIAS NDVIa": "Anomalías del NDVI"
+                            }
+                        },
                         {
 				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
 				"sublayersTooltips": {
