@@ -43,6 +43,7 @@ define([
                 }
                 this.options.widget.on('active-changed', lang.hitch(this, this._widgetActiveChanged));
                 this.options.widget.on('dibujo-enabled-changed', lang.hitch(this, this._widgetDibujoEnabledChanged));
+                this.options.widget.on('click-manual', lang.hitch(this, this.execute));
                 this.canExecute = true;
                 if (this.options.startsOpen) {
                     this.execute();
