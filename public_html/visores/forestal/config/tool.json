@@ -1218,7 +1218,7 @@
             "icon": "local_printshop",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "https://dgrn.mgap.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 
@@ -1272,8 +1272,8 @@
             "icon": "search",
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -1308,7 +1308,7 @@
             "position": {"left":"280px", "bottom": "10px"},
             "widgetConfig": {                
                 "fechaAtributo": "acq",
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer/0",
+                "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer/0",
                 "timeSlider": {
                     "unidad":"esriTimeUnitsWeeks",
                     "cantidad": "1",

@@ -30,7 +30,7 @@
         },
         "dynamicLayers": [ 
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -38,7 +38,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/FORESTAL/InformacionBase/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FORESTAL/InformacionBase/MapServer",
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
@@ -46,7 +46,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografia",
                         "opacity": 0.7,
@@ -54,7 +54,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SUELOS/CartasSuelos/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SUELOS/CartasSuelos/MapServer",
                 "options": {
                         "id": "Cartas de suelos",
                         "opacity": 0.7,
@@ -62,7 +62,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
                 "options": {
                         "id": "Suelos",
                         "opacity": 0.7,
@@ -70,7 +70,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
                 "options": {
                         "id": "Cartografia Agropecuaria",
                         "opacity": 0.7,
@@ -78,7 +78,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/INC/colonias/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/INC/colonias/MapServer",
                 "options": {
                         "id": "Colonias",
                         "opacity": 0.7,

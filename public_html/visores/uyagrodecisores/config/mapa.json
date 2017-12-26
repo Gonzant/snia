@@ -29,7 +29,7 @@
 			}
 		},
 		"dynamicLayers": [{
-			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+			"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
 			"sublayersTooltips": {
 				" Padrones Rurales": "Visible a escala 1:50.000"},
 			"layers": [0,
@@ -44,17 +44,17 @@
 		},
 		{
 			"multiple": [{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Zonificacion/MapServer",
 				"layers": [3]
 			},
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
 				"layers": [1,
 				0,
 				2]
 			},
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
 				"layers": [0,
 				1,
 				2,
@@ -76,10 +76,10 @@
 		},
 		{
 			"multiple": [{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer"
 			},
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
                                 "changeNames": {
 					"Productividad": "Índice de Productividad"
 				},
@@ -88,13 +88,13 @@
 				}
 			},
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
 				"sublayersTooltips": {
 					"Curvas Topográficas": "Curvas de Nivel a 10 mts"
 				},
 				"layers": [0]
 			}],
-                        "tooltip": "Por mayor información: <a target='_blank' href='http://web.renare.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
+                        "tooltip": "Por mayor información: <a target='_blank' href='http://dgrn.mgap.gub.uy/js/visores/cartasuelos/'>Carta de Suelos</a>",
 			"options": {
 				"id": "Suelos",
 				"opacity": 0.7,
@@ -102,7 +102,7 @@
 			}                                                 
 		},
 		{
-			"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
+			"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/AplicacionesFitosanitarias/MapServer",
 			"sublayersTooltips": {
 				" Vuelos de las Abejas (m) ": "Distancia en metros desde el apiario",
                                 "    750 m":"Buffer de radio de vuelo de la abeja de 750 m",
@@ -136,7 +136,7 @@
 		{
 			"multiple": [			
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartografiaAgropecuaria/MapServer",
 				"sublayersTooltips": {
 					" Apicultura - SINATPA": "Sistema Nacional de Trazabilidad de la Miel y Productos Apícolas",
 					" Vitivinicultura": "Registro Vitivinícola",
@@ -191,17 +191,17 @@
 				}
 			},
                         {
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
                                 "layers": [9],
                                 "sublayersTooltips": {
                                     "Estimación de Agua Disponible, según grupos Coneat": " Por mayor información: <a target='_blank' href='http://www.mgap.gub.uy/sites/default/files/multimedia/estimacion_de_agua_disponible_en_los_grupos_coneat_metodologia_empleada.pdf'>Molfino, J. 2009</a>"
                                 }				
 			},
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
 			},
 			{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"
 			}
 			],
 			"options": {
@@ -212,12 +212,12 @@
 		},
 		{
 			"multiple": [{
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
 				 "layers": [0,
 				7]
 			},
                         {
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
 			}],
 			"options": {
 				"id": "Inundación",

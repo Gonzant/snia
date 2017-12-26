@@ -557,7 +557,7 @@
             "icon": "local_printshop",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "https://dgrn.mgap.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 
@@ -614,7 +614,7 @@
            "startsOpen": false,           
            "widgetConfig": {
                "fechaAtributo": "Fecha",
-               "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
+               "urlQuery": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
                "timeSlider": {
                    "unidad":"esriTimeUnitsDays",
                    "cantidad": "10",
@@ -634,8 +634,8 @@
             "icon": "search",
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -681,7 +681,7 @@
             "position": {"left": "20px", "top": "120px"},
             "widgetConfig": {
                 "botonAgregarCapa": true,
-                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+                "urlDescargarCapas": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
         {
