@@ -25,7 +25,7 @@
             "position": {"left": "20px", "top": "96px"},
             "widgetConfig": {
                 "dynamicMapServiceLayers": [],
-                "urlDescargarCapas": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+                "urlDescargarCapas": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
         {
@@ -56,8 +56,8 @@
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"https://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -92,7 +92,7 @@
             "toggle": false,
             "widgetConfig": {
                 "gpRiesgo":{
-                    "url":"https://web.renare.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgoMaster/GPServer/gpRiesgo",
+                    "url":"https://dgrn.mgap.gub.uy/arcgis/rest/services/EFLUENTES/gpRiesgoMaster/GPServer/gpRiesgo",
                     "configuracion": "OPERACION:Configuracion",
                     "riesgoPredial":"OPERACION:RiesgoPredial;",
                     "riesgoGeo":"OPERACION:RiesgoGeo;",
@@ -166,7 +166,7 @@
             "icono": "../js/snia/img/imprimir.png",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "https://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "https://dgrn.mgap.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 

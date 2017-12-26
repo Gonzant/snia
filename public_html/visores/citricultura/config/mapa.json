@@ -30,7 +30,7 @@
         },
         "dynamicLayers": [             
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
                 "options": {
                         "id": "Limites administrativos",
                         "opacity": 0.7,
@@ -38,7 +38,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
@@ -46,7 +46,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografía",
                         "opacity": 0.7,
@@ -54,7 +54,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartadeSuelos/MapServer",
                 "options": {
                         "id": "Carta de Suelos",
                         "opacity": 0.7,
@@ -62,7 +62,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
                 "options": {
                         "id": "Cartas Temáticas",
                         "opacity": 0.7,
@@ -70,7 +70,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/CITRICULTURA/CuadroEspecie/MapServer",                
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CITRICULTURA/CuadroEspecie/MapServer",                
                 "options": {
                         "id": "Citricultura",
                         "opacity": 0.7,
@@ -78,7 +78,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/CITRICULTURA/Diaphorina/MapServer",                
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CITRICULTURA/Diaphorina/MapServer",                
                 "options": {
                         "id": "Monitoreo Diaphorina",
                         "opacity": 0.7,
@@ -86,7 +86,7 @@
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
                         "id": "Topografía",
                         "opacity": 0.7,

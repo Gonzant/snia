@@ -55,8 +55,8 @@
             "icono": "../js/snia/img/buscar.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -70,7 +70,7 @@
             "icono": "../js/snia/img/AdvaceSearch.png",            
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/SUELOS/SISU/MapServer/0",
+                "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SUELOS/SISU/MapServer/0",
                 "tipo": "punto",
                 "idFiltro": "Perfiles_.OBJECTID",
                 "filtros": [
@@ -99,8 +99,8 @@
             "icono": "../js/snia/img/infoCartografia.png",
             "toggle": false,
             "widgetConfig": {
-                "urlQuery": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
-                "urlgeoProcesor":"http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
+                "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer/0",
+                "urlgeoProcesor":"http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/gpCroquisParcelas/GPServer/CroquisParcelas",
                 "departamento": "DEPTO",
                 "padron": "PADRON",
                 "catastral": "AREAHA",
@@ -109,13 +109,13 @@
 					"CampoEtiquetaUnidadMapeo": "SISU.USISUPROD.%UnidadMapeo.UM_Nombre",
 					"CampoSimboloSerie": "SISU.USISUPROD.%Serie.Serie_Simbolo",
 					"CampoIdPerfilRepresentativo": "SISU.USISUPROD.%Perfil1.Perfil_Punto",
-					"UrlUnidadMapeo": "http://web.renare.gub.uy/Cartografia/UnidadesMapeo",
-					"UrlSerie": "http://web.renare.gub.uy/Cartografia/Series",
-					"UrlPerfil": "http://web.renare.gub.uy/Cartografia/Perfiles",
-					"Servicio": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/1",
-					"ServicioUnidadMapeo": "http://web.renare.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
+					"UrlUnidadMapeo": "http://dgrn.mgap.gub.uy/Cartografia/UnidadesMapeo",
+					"UrlSerie": "http://dgrn.mgap.gub.uy/Cartografia/Series",
+					"UrlPerfil": "http://dgrn.mgap.gub.uy/Cartografia/Perfiles",
+					"Servicio": "http://dgrn.mgap.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/ConsultaCartografia/MapServer/1",
+					"ServicioUnidadMapeo": "http://dgrn.mgap.gub.uy/arcgis/rest/services/ESTUDIOS_BASICOS/CartaSuelos/MapServer/1",
 					"CampoEtiquetaServicioUnidadMapeo": "UM",
-					"ServicioPerfil": "http://web.renare.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
+					"ServicioPerfil": "http://dgrn.mgap.gub.uy/arcgis/rest/services//ESTUDIOS_BASICOS/CartaSuelos/MapServer/0",
 					"CampoIdServicioPerfil": "ID"
 				}
             }
@@ -156,7 +156,7 @@
             "icono": "../js/snia/img/imprimir.png",
             "toggle": false,
             "widgetConfig": {
-                "urlPrintTask": "http://web.renare.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+                "urlPrintTask": "http://dgrn.mgap.gub.uy/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                 "lbImprimir": "Imprimir",
                 "lbImprimiendo":"Imprimiendo",
                 "data": 

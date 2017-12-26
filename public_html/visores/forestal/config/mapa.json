@@ -30,7 +30,13 @@
         },
         "dynamicLayers": [ 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
+                "sublayersTooltips": {
+                        " Padrones Rurales": "Visible a escala 1:50.000"},
+                "layers": [0,
+                1,
+                6,
+                7],
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -38,7 +44,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
                 "options": {
                         "id": "Información Base",
                         "opacity": 0.7,
@@ -46,7 +52,7 @@
                 }
             },            
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografía",
                         "opacity": 0.7,
@@ -54,7 +60,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
                 "options": {
                         "id": "Suelos",
                         "opacity": 0.7,
@@ -62,7 +68,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FORESTAL/FocosCalor/MapServer",
                 "options": {
                         "id": "Focos de calor",
                         "opacity": 0.7,
@@ -70,15 +76,24 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/CartografiaForestal/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FORESTAL/padron_bosque/MapServer",
                 "options": {
-                        "id": "Cartografía Forestal",
+                        "id": "Registro de bosque",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            }, 
+            {
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FORESTAL/CartografiaForestal/MapServer",
+                "tooltip": "En base al trabajo de Aeroterra 2011",
+                "options": {
+                        "id": "Cartografía Forestal 2011",
                         "opacity": 0.7,
                         "visible": false
                 }
             },
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Cobertura/MapServer",
                 "options": {
                         "id": "Cobertura y Usos",
                         "opacity": 0.7,
@@ -91,7 +106,7 @@
                 5]
             },         
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FORESTAL/Logistica_Produccion/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FORESTAL/Logistica_Produccion/MapServer",
                 "options": {
                         "id": "Logística (Producción)",
                         "opacity": 0.7,
@@ -99,7 +114,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
                         "id": "Topografía",
                         "opacity": 0.7,

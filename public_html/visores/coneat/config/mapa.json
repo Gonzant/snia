@@ -30,7 +30,7 @@
         },
         "dynamicLayers": [ 
 			{
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/BASE/Administrativo/MapServer",
                 "options": {
                         "id": "Administrativo",
                         "opacity": 0.7,
@@ -38,7 +38,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/IndicesConeat/MapServer",
                 "options": {
                         "id": "Indices",
                         "opacity": 0.7,
@@ -46,7 +46,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/SuelosConeat/MapServer",
                 "options": {
                         "id": "Suelos",
                         "opacity": 0.7,
