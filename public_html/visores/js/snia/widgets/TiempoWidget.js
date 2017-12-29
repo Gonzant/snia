@@ -264,6 +264,38 @@ define([
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
+            this.mapa.emit("time-change",{tiempo:evt});
+            //Recorrer todas las capas para cambiar la url
+            var l;
+            arrayUtil.forEach(this.mapa.mapLayers, function (dataLayer) {
+                console.log(dataLayer);
+                if ("Sequíahttps://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/ANOMALIAS/.NDVIa/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/X/Y/fig-/colors/-fig/wms.xml" === dataLayer.id){
+                    l = this.mapa.map.getLayer("Sequíahttps://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/ANOMALIAS/.NDVIa/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/X/Y/fig-/colors/-fig/wms.xml")
+                } 
+            });
+            l.url = "https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r-t.cgi?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=nexrad-n0r-wmst&TIME=2017-12-28T17%3A00%3A00.000Z&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&STYLES=&BBOX=-10175297.205322662%2C5009377.085697312%2C-10018754.171394622%2C5165920.119625353";
+            
+            //hacer el loop
+//            var l = this.mapa.map.getLayer(dataLayer.options.id), 
+//            nodoExistente = true, visibleLayers, newl, visible;
+//            if ((typeof l !== 'undefined') && (l !== null)) {
+//                visibleLayers = lang.clone(l.visibleLayers);
+//                visible = l.visible;
+//                this.mapa.removerCapa(l);
+//                dataLayer.url = url;
+//                this.agregarCapa(dataLayer, nodoExistente);
+//                //Intento obtener la nueva capa y definir las subcapas visibles
+//                newl = this.mapa.map.getLayer(dataLayer.options.id);
+//                if ((typeof newl !== 'undefined') && (newl !== null)) {
+//                    newl.setVisibleLayers(visibleLayers);
+//                    if (visible){
+//                        newl.show();
+//                    } else {
+//                        newl.hide();
+//                    }
+//                }
+//            }                       
+            
         },
         _comboYears: function (evt) {
             var start, end, i;
