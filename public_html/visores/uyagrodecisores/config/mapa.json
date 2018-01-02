@@ -51,7 +51,8 @@
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
 				"layers": [1,
 				0,
-				2]
+				2,
+                                7]
 			},
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
