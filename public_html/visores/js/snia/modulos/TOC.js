@@ -81,11 +81,16 @@ define([
             this._crearTree();
             domStyle.set(this._tree.dndController.node, "overflow", "hidden");
             domStyle.set(this._tree.dndController.node, "display", "inline-block");
-            //this.mapa.on('time-change', lang.hitch(this, this._cambio));
+            this.mapa.on('time-change', lang.hitch(this, this._cambioTiempo));
         },
-        _cambio: function (evt) {
-            //console.log(evt);
-            //this.actualizarCapa("","https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r-t.cgi?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=nexrad-n0r-wmst&TIME=2017-12-28T17%3A00%3A00.000Z&WIDTH=256&HEIGHT=256&CRS=EPSG%3A3857&STYLES=&BBOX=-10175297.205322662%2C5009377.085697312%2C-10018754.171394622%2C5165920.119625353")
+        _cambioTiempo: function (parametro) {
+            var dynLayers = this.mapa.map.layerIds;
+            arrayUtil.forEach(dynLayers, lang.hitch(this, function (dataLayer) {
+                var l = this.mapa.map.getLayer(dataLayer);
+                if (l instanceof WMSLayer) {
+                    l.setCustomParameters(parametro);
+                };
+            }));
         },
         _executeGP: function (url) {
             this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);
