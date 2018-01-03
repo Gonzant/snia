@@ -53,7 +53,7 @@
 				0,
 				2,
                                 7]
-			},
+			},                        
 			{
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
 				"layers": [0,
