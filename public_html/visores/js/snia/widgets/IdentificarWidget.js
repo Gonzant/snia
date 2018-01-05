@@ -33,12 +33,19 @@ define([
     "esri/tasks/IdentifyTask",
     "dojo/store/Observable",
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/WMSLayer",
+    "dojo/request/xhr",
+    "esri/geometry/Point",
+    "esri/SpatialReference",
+    "esri/geometry/Polygon",
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
     template, i18n, domClass, domStyle,
     CapaGrafica3SR, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory,
-    DataGrid, ObjectStore, ObjectStoreModel, Tree, Dibujo, Draw, IdentifyParameters, IdentifyTask, Observable, ArcGISDynamicMapServiceLayer) {
+    DataGrid, ObjectStore, ObjectStoreModel, Tree, Dibujo, Draw, IdentifyParameters, 
+    IdentifyTask, Observable, ArcGISDynamicMapServiceLayer, WMSLayer, xhr,
+    Point, SpatialReference, Polygon) {
     //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -276,6 +283,63 @@ define([
                             lang.hitch(this, this._queryTaskErrback));
                         this._cantLlamadas = this._cantLlamadas + 1;
                     }
+                }
+                if (layer instanceof WMSLayer) {
+                    if (layer.visible && layer.visibleLayers.length > 0) {
+                        haycapas = true;
+                        var gfiu = layer.getFeatureInfoURL;                            
+                        var bbox = this.mapa.map.extent.xmin + "," + this.mapa.map.extent.ymin + "," +
+                                this.mapa.map.extent.xmax + "," + this.mapa.map.extent.ymax;
+                        var point = new Point(evt.geographicGeometry.x, evt.geographicGeometry.y, new SpatialReference({ wkid: evt.geographicGeometry.spatialReference.wkid }));
+                        var screenPoint = this.mapa.map.toScreen(point);                        
+                        arrayUtil.forEach(layer.layerInfos, lang.hitch(this, function (l) {
+                            //if visible
+                            if (arrayUtil.indexOf(layer.visibleLayers,l.name) != -1 ){
+                                var getUrl = gfiu + "?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo"+
+                                        "&QUERY_LAYERS="+l.name+"&LAYERS="+l.name+
+                                        "&TILED=true&INFO_FORMAT=application/json&"+
+                                        "I="+screenPoint.x+"&J="+screenPoint.y+
+                                        "&WIDTH="+this.mapa.map.width+"&HEIGHT="+this.mapa.map.height+"&"+
+                                        "CRS=EPSG:"+this.mapa.baseMapLayer.spatialReference.latestWkid+"&STYLES="+
+                                        "&BBOX="+bbox;
+                                this.capa = l;
+                                xhr(getUrl, {
+                                    handleAs: "json",
+                                    sync: true
+                                }).then(lang.hitch(this, function(data){
+                                    // Do something with the handled data
+                                    console.log(data);
+                                    var geom;
+                                    // Falta poner de más geometrias // NO EXISTE MULTIPOLYGON
+                                    if (data.features[0].geometry){
+                                        if (data.features[0].geometry.type==="MultiPolygon"){
+                                            geom = new Polygon(data.features[0].geometry.coordinates[0][0]);
+                                        };
+                                    }
+                                    //recorro las features                                    
+                                    var result = [
+                                        {
+                                            layerId: this.capa.name,
+                                            layerName: this.capa.title,
+                                            feature:{
+                                                attributes: data.features[0].properties,  
+                                                geometry: geom
+                                            },
+                                            value: data.features[0].properties.name
+                                        }
+                                    ];
+                                    result[0].feature.attributes["OBJECTID"] = data.features[0].id;
+                                    this._queryTaskCallback(result);
+                                }), function(err){
+                                  // Handle the error condition
+                                }, function(evt){
+                                  // Handle a progress event from the request if the
+                                  // browser supports XHR2
+                                });
+                            }
+                        }));
+                        this._cantLlamadas = this._cantLlamadas + 1;  
+                    }                                      
                 }
             }));
             if (haycapas) {
