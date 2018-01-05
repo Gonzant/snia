@@ -12,7 +12,7 @@ define([
     "dojo/_base/lang",
     "dojo/_base/array",
     "dojo/text!./templates/ContenidosWidget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/dom-class", "dojo/dom-style",
     "dijit/focus",
     "dijit/_WidgetBase",

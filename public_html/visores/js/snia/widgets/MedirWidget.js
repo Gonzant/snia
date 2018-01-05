@@ -20,7 +20,7 @@ define([
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleFillSymbol",
     "dojo/text!./templates/MedirWidget.html",
-    "dojo/i18n!./nls/snianls.js",
+    "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
     "modulos/Dibujo",

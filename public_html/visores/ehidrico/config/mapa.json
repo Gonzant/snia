@@ -30,7 +30,7 @@
         },
         "dynamicLayers": [ 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Administrativo/MapServer",
                 "options": {
                         "id": "Límites administrativos",
                         "opacity": 0.7,
@@ -38,7 +38,7 @@
                 }
             },
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",                
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",                
                 "options": {
                         "id": "Información base",
                         "opacity": 0.7,
@@ -48,10 +48,10 @@
             {                
                 "multiple": [ 
                     {
-                        "url": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer"
+                        "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer"
                     },
                     {
-                        "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/CuencaRioUruguay/MapServer"
+                        "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/CuencaRioUruguay/MapServer"
                     }
                 ],
                 "options": {
@@ -61,7 +61,7 @@
                 }
             }, 
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/Vulnerabilidad/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/Vulnerabilidad/MapServer",
                 "options": {
                         "id": "Vulnerabilidad",
                         "opacity": 0.7,
@@ -70,7 +70,7 @@
             },    
             
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2017/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2017/MapServer",
                 "options": {
                         "id": "Situación Hídrica 2017",
                         "opacity": 0.7,
@@ -78,7 +78,7 @@
                 }
             },            
             {
-                "url": "http://web.renare.gub.uy/arcgis/rest/services/Inundacion/ImgExcesoHidricoLitoral/MapServer",
+                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/ImgExcesoHidricoLitoral/MapServer",
                 "options": {
                         "id": "Exceso Hídrico Litoral (Imagenes)",
                         "opacity": 0.7,
@@ -86,7 +86,7 @@
                 }
             },                                  
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2016/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2016/MapServer",
                 "options": {
                         "id": "Exceso Hidrico 2016",
                         "opacity": 0.7,
@@ -94,7 +94,7 @@
                 }
             },            
             {
-                "url": "https://web.renare.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/FOTOPLANOS/Topografia/MapServer",
                 "options": {
                         "id": "Topografía",
                         "opacity": 1.0,

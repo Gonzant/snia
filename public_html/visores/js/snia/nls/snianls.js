@@ -18,7 +18,7 @@ define({
                 lbRemoverResultado: "Remover Seleccion",
                 lbSeleccionarTodo: "Seleccionar Todo",
                 lbCroquisSeleccion: "Croquis de Selección",
-                lbCubrimiento: "Muestra el porcentaje de superficie del padrón cubierto por los grupos coneat",
+                lbCubrimiento: "Muestra el porcentaje de superficie del padrón cubierto por los grupos CONEAT",
                 lbBuscando: "Buscando...",
                 lbIngresePadron:"Por favor ingrese un número de padrón.",
                 lbEncontro: "Se encontro",
@@ -28,7 +28,7 @@ define({
                 lbErrorBuscar: "Error al buscar.",
                 lbErrorNoSeleccionCroquis: "Se necesita al menos un elemento seleccionado para el croquis.",
                 lbErrorNoSeleccionCubrimiento: "Se necesita al menos un elemento seleccionado para el cubrimiento.",
-                lbMantenerGeo: "Mantener geometría"               
+                lbMantenerGeo: "Mantener geometría"
             },
             "NavegarWidget": {
                 tbAlejar: "Alejar",
@@ -40,7 +40,7 @@ define({
             },
             "ImprimirWidget": {
                 lbTemplateSelect: "Formato",
-                lbEscala: "Escala"                
+                lbEscala: "Escala"
             },
             "EstilosWidget": {
                 tTabMenu: "Menu",
@@ -68,7 +68,12 @@ define({
                 
             },
             "AreasConeatWidget": {
-                
+                lbMantenerGeo: "Mantener geometría",
+                lbTtAgregar: "Agregar Area",  
+                lbTtCancelar: "Cancelar Area",
+                lbTtRemoverT: "Remover todas las áreas",
+                lbTtCroquis: "Croquis de las áreas",
+                msgAgregarArea: "Se necesita al menos un área para el croquis"
             },
             "MedirWidget": {
                 lbArea: "Area",
@@ -91,6 +96,10 @@ define({
             "ContenidosWidget": {
                 bColapsar: "Colapsar",
                 bExpandir: "Expandir"
+            },                        
+            "TiempoWidget": {
+                lbSelectAño: "Seleccione año",
+                lbAño: "año"
             }
         }
     })

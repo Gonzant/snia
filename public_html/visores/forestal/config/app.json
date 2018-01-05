@@ -4,7 +4,7 @@
         "proxyRules":[
             {
                 "urlPrefix": "http://sit.mvotma.gub.uy/arcgis",
-                "proxyUrl": "https://web.renare.gub.uy/proxy/proxy.ashx?"
+                "proxyUrl": "https://dgrn.mgap.gub.uy/proxy/proxy.ashx?"
             }
         ]
     },
