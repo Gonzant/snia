@@ -213,7 +213,7 @@
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
 			},
                         {
-				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/SeguroGanadero/MapServer"
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/SeguroGanadero/MapServer"
 			},
 			{
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"
