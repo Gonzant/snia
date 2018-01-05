@@ -46,7 +46,7 @@ define([
             visible : true,
             active: false,
             config: {
-                "urlDescargarCapas": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
+                "urlDescargarCapas": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas"
             }
         },
         constructor: function (options, srcRefNode) {
@@ -69,7 +69,7 @@ define([
             this.watch("active", this._active);
             this._urlQuery = defaults.config.urlDescargarCapas;
             if (!this._urlQuery) {
-                this._urlQuery = "http://web.renare.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas";
+                this._urlQuery = "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/descargarCapas/GPServer/DescargarCapas";
             }
             // classes
             this._css = {
