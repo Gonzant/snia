@@ -76,15 +76,7 @@
                         "opacity": 0.7,
                         "visible": false
                 }
-            },            
-            {
-                "url": "http://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/ImgExcesoHidricoLitoral/MapServer",
-                "options": {
-                        "id": "Exceso Hídrico Litoral (Imagenes)",
-                        "opacity": 0.7,
-                        "visible": false
-                }
-            },                                  
+            },                                             
             {
                 "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/Inundacion/SituacionHidrica2016/MapServer",
                 "options": {
