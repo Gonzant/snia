@@ -188,17 +188,13 @@
                         { 
                             "Contenido": "Servicio de consulta del programa  'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.",
                             "Estilo": "Normal"
-                        }                                                                        
+                        },
+                        {
+                            "Contenido": "Tutorial de uso de la herramienta",
+                            "Estilo": "Titulo2"
+                        }
                       ]
-                    },   
-                    {
-                      "Texto":[
-                        { 
-                            "Contenido": "Servicio de consulta del programa  'Manejo Regional de Plagas' para el monitoreo de plagas de frutales de hoja caduca. Dirigido a autoridades del Ministerio de Agricultura Ganadería y Pesca, productores que integran el programa y a técnicos autorizados.",
-                            "Estilo": "Normal"
-                        }                                                                        
-                      ]
-                    },
+                    },                   
                     { 
                             "Video":
                             {
