@@ -578,6 +578,7 @@
             "icono": "../js/snia/img/referencia.png",  
             "icon": "place",
             "toggle": false,
+            "position": {"margin-top":"29%","margin-left":"83%"},
             "widgetConfig": {                
             }
         },
@@ -613,6 +614,7 @@
            "draggable": true,
            "startsOpen": true,           
            "invisibleOpen": true,
+           "position": {"margin-top":"35%","margin-left":"35%"},
            "widgetConfig": {
                "fechaAtributo": "Fecha",
                "urlQuery": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
