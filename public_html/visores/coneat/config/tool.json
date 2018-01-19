@@ -579,21 +579,20 @@
                 }
             },
             {
-               "name": "Navegar",
+               "name": "Áreas CONEAT",
                "id":"6",
                "parent":"1",
                "seccionTitulo":{
                     "Texto":
                            {
-                              "Contenido": "Navegar",
+                              "Contenido": "Áreas CONEAT",
                               "Estilo": "Indice1"
                             },
                     "Imagen":
                             {
-                              "URL":"../js/snia/img/navegar.png",
+                              "URL":"../js/snia/img/areas.png",
                               "Alto":20
-                            }
-                        
+                            }                        
                 },
                "seccionContenido":{
                     "titulo":{

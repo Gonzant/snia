@@ -51,8 +51,9 @@
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/InformacionBase/MapServer",
 				"layers": [1,
 				0,
-				2]
-			},
+				2,
+                                7]
+			},                        
 			{
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
 				"layers": [0,
@@ -210,6 +211,9 @@
 			},
 			{
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
+			},
+                        {
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/SeguroGanadero/MapServer"
 			},
 			{
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"

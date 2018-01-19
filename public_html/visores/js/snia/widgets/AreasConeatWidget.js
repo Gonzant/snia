@@ -220,12 +220,12 @@ define([
             on(this._dibujo, "dibujo-complete", lang.hitch(this, this._dibujoComplete));
             this.set("loaded", true);
             this.emit("load", {});
-            server = "http://web.renare.gub.uy/arcgis/rest/services/Utilities/Geometry/GeometryServer";
+            server = "http://dgrn.mgap.gub.uy/arcgis/rest/services/Utilities/Geometry/GeometryServer";
             this._geometryService = new GeometryService(server);
             this._geometryService.on("area-and-lengths-complete", lang.hitch(this, this._outputAreaAndLength));
             this._areasAndLengthParams.areaUnit = GeometryService.UNIT_ACRES;
             this._areasAndLengthParams.calculationType = "geodesic";
-            this._gpCroquis = new Geoprocessor("http://web.renare.gub.uy/arcgis/rest/services/CONEAT/gpCroquisAreas/GPServer/CroquisAreas");
+            this._gpCroquis = new Geoprocessor("http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/gpCroquisAreas/GPServer/CroquisAreas");
             //Rueda de espera
             this._standbyAreas = new Standby({target: this._ruedaEspera});
             domConstruct.place(this._standbyAreas.domNode, this._ruedaEspera, "after");

@@ -113,7 +113,7 @@ define([
             this._visible();
             this.set("loaded", true);
             this.emit("load", {});
-            this._queryTask = new QueryTask("http://web.renare.gub.uy/arcgis/rest/services/CONEAT/" + this._capa + "/MapServer/0");
+            this._queryTask = new QueryTask("http://dgrn.mgap.gub.uy/arcgis/rest/services/CONEAT/" + this._capa + "/MapServer/0");
             this._query = new Query();
             this._query.outSpatialReference = new SpatialReference(wkids.UTM);
             this._query.returnGeometry = false;

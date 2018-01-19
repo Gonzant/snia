@@ -37,7 +37,7 @@ define([
             mapa : null,
             mapaConfigJSON: null,
             config: {
-                "proxyXML2JSON": "http://web.renare.gub.uy/arcgis/rest/services/SNIA/gpXMLToJSON/GPServer/XmlToJSON"
+                "proxyXML2JSON": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/gpXMLToJSON/GPServer/XmlToJSON"
             }
         },
         //publico
