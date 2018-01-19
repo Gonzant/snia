@@ -37,13 +37,15 @@ define([
     "esri/tasks/Geoprocessor",
     "dijit/Dialog",
     "widgets/CubrimientoConeatWidget",
+    "widgets/BuscarParametrizadoWidget",
     "dojo/dom",
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
     template, newTemplate, i18n, domClass, domStyle,
     SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, CheckBox,
-    DataGrid, ObjectStore, baseArray, Tooltip, Geoprocessor, Dialog, CubrimientoConeatWidget, dom) {
+    DataGrid, ObjectStore, baseArray, Tooltip, Geoprocessor, Dialog, CubrimientoConeatWidget,
+    BuscarParametrizadoWidget, dom) {
 //"use strict";
     var widget = declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], {
         templateString: template,
@@ -240,7 +242,23 @@ define([
             }
         },
         _templateIni : function () {
-            var select, departamentosStore;
+            var select, selectTipo, departamentosStore, tipoStore;
+            tipoStore = new Memory({
+                data: [
+                    {name: "Padrón rural", id: "P"},
+                    {name: "Seccional policial", id: "SP"},
+                    {name: "Área de enumeración", id: "AE"}                    
+                ]
+            });
+            selectTipo = new FilteringSelect({
+                name: "tipoBusqueda",
+                placeHolder: "Seleccione tipo de busqueda",
+                value: "P",
+                readonly: "True",
+                onChange: lang.hitch(this, this._cambioTipo),
+                store: tipoStore
+            }, this._tipoCombo);
+            selectTipo.startup();
             departamentosStore = new Memory({
                 data: [
                     {name: "Artigas", id: "G"},
@@ -285,6 +303,16 @@ define([
                     this._mantenerGeom = b;
                 })
             }, this._mantenerGeo).startup();
+        },
+        _cambioTipo: function (evt) {                        
+            domStyle.set(this.contentBusqueda, 'display', 'none');
+            if (evt === "SP"){
+                
+            } else if (evt === "AE"){
+                
+            } else if (evt === "P"){
+                domStyle.set(this.contentBusqueda, 'display', 'block');
+            }
         },
         _buscarClick : function () {
             var i, departamento, padrones, padronesArreglo, query;
