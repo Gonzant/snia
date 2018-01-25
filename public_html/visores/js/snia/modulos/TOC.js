@@ -81,6 +81,16 @@ define([
             this._crearTree();
             domStyle.set(this._tree.dndController.node, "overflow", "hidden");
             domStyle.set(this._tree.dndController.node, "display", "inline-block");
+            this.mapa.on('time-change', lang.hitch(this, this._cambioTiempo));
+        },
+        _cambioTiempo: function (parametro) {
+            var dynLayers = this.mapa.map.layerIds;
+            arrayUtil.forEach(dynLayers, lang.hitch(this, function (dataLayer) {
+                var l = this.mapa.map.getLayer(dataLayer);
+                if (l instanceof WMSLayer) {
+                    l.setCustomParameters(parametro);
+                };
+            }));
         },
         _executeGP: function (url) {
             this._gpXMLInfo = new Geoprocessor(this.proxyXML2JSON);

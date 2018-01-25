@@ -56,7 +56,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("reload", this._reload);
-             on(this.mapa, "activarTiempo",  lang.hitch(this, this._activarTiempo));
+            on(this.mapa, "activarTiempo",  lang.hitch(this, this._activarTiempo));
             // classes
             this._css = {
                // baseClassRadioButton: "sniaRadioButton"
@@ -66,10 +66,9 @@ define([
             this._yearsFiltroStore = new Memory({});
             this._startYear = "";
         },
-        
-         _activarTiempo: function () {     
+        _activarTiempo: function () {
             //$( "a:contains('date_range')")[0].click();       //la busqueda quedo dependiente del nombre del icono        
-            this.emit("click-manual",{});
+            this.emit("click-manual", {});
         },
         _activar: function () {
             this.emit("active-changed");
@@ -264,6 +263,7 @@ define([
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
+            this.mapa.emit("time-change", {TIME: evt.startTime.getUTCFullYear() + '-' + (evt.startTime.getUTCMonth() + 1) + "-" + evt.startTime.getUTCDate()});
         },
         _comboYears: function (evt) {
             var start, end, i;
@@ -280,8 +280,8 @@ define([
                     lang.hitch(this, this._setYearTimeSlider(state));
                 }),
                 store: this._yearsFiltroStore
-           }, this._yearsFilter);
-           this._filtro.startup();
+            }, this._yearsFilter);
+            this._filtro.startup();
         },
         _setYearTimeSlider: function (state) {
             var year;
@@ -291,10 +291,10 @@ define([
                 this._eTime = new Date();
                 this._sTime.setFullYear(this._startYear, 0, 1);
                 year = this._sTime.getYear() + 1900;
-                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)){
-                    this._eTime.setFullYear(this._startYear+1, 0, 6);
-                }else{
-                    this._eTime.setFullYear(this._startYear, 11, 31);  
+                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
+                    this._eTime.setFullYear(this._startYear + 1, 0, 6);
+                } else {
+                    this._eTime.setFullYear(this._startYear, 11, 31);
                 }
             } else {
                 this._sTime = new Date(this._sTimeAbs);
