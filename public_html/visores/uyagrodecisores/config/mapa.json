@@ -31,8 +31,7 @@
 		"dynamicLayers": [{
 			"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer",
 			"sublayersTooltips": {
-				" Padrones Rurales": "Visible a escala 1:50.000"},
-			"wms": true,
+				" Padrones Rurales": "Visible a escala 1:50.000"},			
 			"options": {
 				"id": "Límites Administrativos",
 				"opacity": 1.0,
