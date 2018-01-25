@@ -197,7 +197,11 @@
 				"changeNames": {
 					"USGS LandDAAC uy250m_II NDWI": "Índice de agua normalizado (NDWI)"
 				}
-			},
+			},                        
+                        {
+				"url": "https://geoserver.snia.gub.uy/geoserver/SNIA/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",				
+				"wms": true				
+			},                        
                         {
 				"url": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
                                 "layers": [9],

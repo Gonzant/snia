@@ -263,7 +263,7 @@ define([
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
-            this.mapa.emit("time-change", {TIME: evt.startTime.getUTCFullYear() + '-' + (evt.startTime.getUTCMonth() + 1) + "-" + evt.startTime.getUTCDate() + "T00:00:00.000Z"});
+            this.mapa.emit("time-change", {TIME: evt.startTime.getUTCFullYear() + '-' + (evt.startTime.getUTCMonth() + 1) + "-" + evt.startTime.getUTCDate()});
         },
         _comboYears: function (evt) {
             var start, end, i;
