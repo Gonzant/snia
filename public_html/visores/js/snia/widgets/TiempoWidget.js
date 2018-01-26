@@ -172,7 +172,7 @@ define([
                 this._eTime = new Date(this._manual.finTiempo);
             } else {
                 today = new Date();
-                if (this._manual.ultimoDia !== "True"){               
+                if (this._manual.ultimoDia !== "True") {
                     today.setDate(today.getDate() - today.getDay());
                 }
                 this._eTime = new Date(today);
