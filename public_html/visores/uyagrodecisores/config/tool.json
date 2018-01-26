@@ -623,7 +623,8 @@
                    "ultimaSemana": "True"
                },
                "manual": {
-                   "inicioTiempo": "2015-01-06"                    
+                   "inicioTiempo": "2015-01-06",
+                   "ultimoDia": "True"
                }
            }
         },
