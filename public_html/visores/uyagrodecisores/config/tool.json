@@ -9,8 +9,8 @@
             "icon": "help_outline",
             "toggle": false,
             "startsOpen": false,
-            "widgetConfig": {
-                "data": [
+            "widgetConfig": { 
+               "data": [
     {
         "name": "Ayuda",
 	"id": "root",
@@ -616,13 +616,14 @@
            "widgetConfig": {
                "fechaAtributo": "Fecha",
                "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
+               "numberTicks": "1",
                "timeSlider": {
                    "unidad":"esriTimeUnitsDays",
-                   "cantidad": "10",
+                   "cantidad": "1",
                    "velocidad": "1000",
                    "ultimaSemana": "True"
                },
-               "manual": {                    
+               "manual": {
                    "inicioTiempo": "2015-01-06"                    
                }
            }
