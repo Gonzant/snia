@@ -615,8 +615,7 @@
            "invisibleOpen": true,
            "widgetConfig": {
                "fechaAtributo": "Fecha",
-               "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
-               "numberTicks": "1",
+               "urlQuery": "https://web.renare.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",               
                "timeSlider": {
                    "unidad":"esriTimeUnitsDays",
                    "cantidad": "1",
