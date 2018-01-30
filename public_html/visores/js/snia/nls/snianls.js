@@ -10,6 +10,9 @@ define({
                 lbGEO: "Geog/WGS84    ",
                 lbWM:  "Web Mercator  "
             },
+            "LoginWidget": {
+                lbLogIn: "Ingresar al Sistema  "
+            },
             "BuscarWidget": {
                 lbID2: "Nro Padrón(*):",
                 bBuscar: "Buscar",

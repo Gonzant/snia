@@ -159,6 +159,7 @@ define([
             this.set("loaded", true);
             this.emit("load", {});
             on(esriId, "dialog-cancel", lang.hitch(this, this._behaviourSignInDialog)); 
+            on(esriId, "dialog-create", lang.hitch(this, this.emit("signInDialog",{})));
             this._gpDescargarCapas = new Geoprocessor(this._urlQuery);
             this._active();
             this._standbyAreas = new Standby({target: this._standBy});

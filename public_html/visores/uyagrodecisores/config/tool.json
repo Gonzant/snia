@@ -2,6 +2,17 @@
     "barraHerramientas": [             
         
         {
+            "widget": "widgets/LoginWidget",
+            "title": "Login",
+            "msgToolTip": "Muestra y oculta el cuadro de logueo. ",
+            "icono": "../js/snia/img/agregar.png",   
+            "icon": "perm_identity",
+            "toggle": false,
+            "widgetConfig": {
+                
+            }
+        },
+        {
             "widget": "widgets/AyudaWidget",
             "title": "Ayuda",
             "msgToolTip": "Muestra el contenido de información y el manual de usuario",
