@@ -82,6 +82,8 @@ define([
             this._urlgeoProcesor = defaults.config.urlgeoProcesor;
             this._areasVisible = defaults.config.areasVisible;
             this._croquisVisible = defaults.config.croquisVisible;
+            this._configSP = defaults.config.configSP;
+            this._configAE = defaults.config.configAE;
             // classes
             this._css = {
                 baseClassRadioButton: "sniaRadioButton"
@@ -93,8 +95,8 @@ define([
                 productividad: defaults.config.productividad,
                 valorreal: defaults.config.valorreal
             };
-            
-            if (this.estilo){
+
+            if (this.estilo) {
                 this.templateString = newTemplate;
             }
         },
@@ -148,7 +150,7 @@ define([
         },
         _activar: function () {
             if (!this.get("active")) {
-                if (!this._mantenerGeom){
+                if (!this._mantenerGeom) {
                     this._cg3sr.removerMapa();
                 }
             } else {
@@ -240,14 +242,34 @@ define([
             if (this._areasVisible === "0") {
                 domStyle.set(this._cubrimientoNode.domNode, 'display', 'none');
             }
+            this._initSP();
+            this._initAE();
+        },
+        _initSP: function () {
+            this._sp = new BuscarParametrizadoWidget({
+                "mapa": this.mapa,
+                "estilo": this.estilo,
+                "active": true,
+                "config": this._configSP
+            }, this._spNode);
+            this._sp.startup();
+        },
+        _initAE: function () {
+            this._ae = new BuscarParametrizadoWidget({
+                "mapa": this.mapa,
+                "estilo": this.estilo,
+                "active": true,
+                "config": this._configAE
+            }, this._aeNode);
+            this._ae.startup();
         },
         _templateIni : function () {
-            var select, selectTipo, departamentosStore, tipoStore;
+            var select, selectTipo, departamentosStore, tipoStore, data;
             tipoStore = new Memory({
                 data: [
                     {name: "Padrón rural", id: "P"},
                     {name: "Seccional policial", id: "SP"},
-                    {name: "Área de enumeración", id: "AE"}                    
+                    {name: "Área de enumeración", id: "AE"}
                 ]
             });
             selectTipo = new FilteringSelect({
@@ -293,7 +315,7 @@ define([
                 store: departamentosStore
             }, this._departamentosCombo);
             select.startup();
-            var data = select.store.data;
+            data = select.store.data;
             lang.hitch(this, this._initGrid());
             new CheckBox({
                 name: "checkBox",
@@ -304,14 +326,30 @@ define([
                 })
             }, this._mantenerGeo).startup();
         },
-        _cambioTipo: function (evt) {                        
-            domStyle.set(this.contentBusqueda, 'display', 'none');
-            if (evt === "SP"){
-                
-            } else if (evt === "AE"){
-                
-            } else if (evt === "P"){
+        _cambioTipo: function (evt) {
+            if (evt === "SP") {
+                domStyle.set(this.contentBusqueda, 'display', 'none');
+                domStyle.set(this._aeNode, 'display', 'none');
+                domStyle.set(this._spNode, 'display', 'block');
+                domStyle.set(this._spNode, 'visibility', 'visible');
+                this._ae.hide();
+                this._sp.show();
+                this._sp.resize();
+            } else if (evt === "AE") {
+                domStyle.set(this.contentBusqueda, 'display', 'none');
+                domStyle.set(this._spNode, 'display', 'none');
+                domStyle.set(this._aeNode, 'display', 'block');
+                domStyle.set(this._aeNode, 'visibility', 'visible');
+                this._sp.hide();
+                this._ae.show();
+                this._ae.resize();
+            } else if (evt === "P") {
+                domStyle.set(this._aeNode, 'display', 'none');
+                domStyle.set(this._spNode, 'display', 'none');
                 domStyle.set(this.contentBusqueda, 'display', 'block');
+                this._sp.hide();
+                this._ae.hide();
+                this.resize();
             }
         },
         _buscarClick : function () {

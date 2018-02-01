@@ -1,15 +1,15 @@
 <div style="width:500px;">
     <br>
     <label for="tipoBusqueda"> Buscar por: </label>
-    <input data-dojo-attach-point="_tipoCombo">
-    
+    <input data-dojo-attach-point="_tipoCombo">         
      
-       <br><br>
+    <br>
+    <div data-dojo-attach-point="contentBusqueda">
     <label for="id2">${_i18n.widgets.BuscarWidget.lbdepartamento}</label>
     
-    <input data-dojo-attach-point="_departamentosCombo">
+    <input data-dojo-attach-point="_departamentosCombo">        
     <br><br>
-    <div data-dojo-attach-point="contentBusqueda">
+
         <label>${_i18n.widgets.BuscarWidget.lbID2}</label>
         <input type="text" name="id2"
             data-dojo-type="dijit/form/TextBox"
@@ -49,5 +49,8 @@
                 <i class="material-icons" style="color: white">chrome_reader_mode</i>
             </button> 
         </div>
-    </div>
+    </div>    
+    <div data-dojo-attach-point="_spNode"></div>        
+    <div data-dojo-attach-point="_aeNode"></div>    
 </div>
+
