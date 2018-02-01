@@ -15,6 +15,7 @@ define([
     "dijit/_WidgetsInTemplateMixin",
     "dijit/a11yclick",
     "dojo/text!./templates/BuscarParametrizadoWidget.html",
+    "dojo/text!./templates/estilo2017/BuscarParametrizadoWidget.html",
     "dojo/i18n!../js/snia/nls/snianls.js",
     "dojo/dom-class",
     "dojo/dom-style",
@@ -41,7 +42,7 @@ define([
     "dojo/domReady!"
 ], function (on, Evented, arrayUtil, declare, lang,
     _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, a11yclick,
-    template, i18n, domClass, domStyle,
+    template, newTemplate, i18n, domClass, domStyle,
     SpatialReference, CapaGrafica3SR, Query, QueryTask, Color, Graphic, SimpleLineSymbol, SimpleFillSymbol, Memory, FilteringSelect, CheckBox, TextBox,
     DataGrid, ObjectStore, baseArray, Tooltip, Standby, domConstruct, Extent) {
     //"use strict";
@@ -71,6 +72,7 @@ define([
             this.set("theme", defaults.theme);
             this.set("visible", defaults.visible);
             this.set("active", defaults.active);
+            this.set("estilo", defaults.estilo);
             //listeners
             this.watch("theme", this._updateThemeWatch);
             this.watch("visible", this._visible);
@@ -80,7 +82,7 @@ define([
             this._valoresFiltros = [];
             this._urlQuery = defaults.config.urlQuery;
             this._tipo = defaults.config.tipo;
-            this._idFiltro = defaults.config.idFiltro; 
+            this._idFiltro = defaults.config.idFiltro;
             this._areasVisible = defaults.config.areasVisible;
             // classes
             this._css = {
@@ -95,6 +97,10 @@ define([
             this._placeHoldFiltro = defaults.config.placeHoldFiltro;
             this._placeHoldFiltro2 = defaults.config.placeHoldFiltro2;
             this._standbyCount = 0;
+
+            if (this.estilo) {
+                this.templateString = newTemplate;
+            }
         },
         postCreate: function () {
             this.inherited(arguments);
@@ -144,7 +150,7 @@ define([
         },
         _activar: function () {
             if (!this.get("active")) {
-                if (!this._mantenerGeom){
+                if (!this._mantenerGeom) {
                     this._cg3sr.removerMapa();
                 }
             } else {
@@ -226,7 +232,7 @@ define([
                         name: feature.campoFiltro,
                         placeHolder: feature.placeHoldFiltro,
                         readonly: "True",
-                        id: index,
+                       // id: index,
     //                    required :"False",
                         onChange: lang.hitch(this, function (state) {
                             lang.hitch(this, this._cambioComboTexto(state, index));
@@ -301,7 +307,7 @@ define([
             capa = this._cg3sr;
             items = this._grid.selection.getSelected();
             baseArray.map(items, function (item, i) {
-                if (this._tipo !== "punto"){
+                if (this._tipo !== "punto") {
                     if (i !== 0) {
                         extent = extent.union(capa.getGrafico(item[this._idFiltro]).grafico(this.mapa.map.spatialReference.wkid).geometry.getExtent());
                     } else {
@@ -310,8 +316,8 @@ define([
                     }
                 } else {
                     point = capa.getGrafico(item[this._idFiltro]).grafico(this.mapa.map.spatialReference.wkid).geometry;
-                    extent = new Extent(point.x - 100, point.y - 100, point.x + 100, point.y + 100,this.mapa.map.spatialReference );
-                }   
+                    extent = new Extent(point.x - 100, point.y - 100, point.x + 100, point.y + 100, this.mapa.map.spatialReference);
+                }
                 return item[this._idFiltro];
             }, this);
             if (extent) {
@@ -345,15 +351,15 @@ define([
                     indice = feature.attributes[this._idFiltro];
                     feature.attributes[this._idFiltro] = indice;
                     feature.attributes.id = indice;
-                    this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry));
+                    lang.hitch(this, this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry)));
                     lang.hitch(this, this._setGrid(feature.attributes));
-                    if (this._tipo === "punto"){
+                    if (this._tipo === "punto") {
                         //lang.hitch(this, this._setGrid(feature.attributes));
-                    }else {
-                        this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol));
+                    } else {
+                        lang.hitch(this, this._cg3sr.agregarGrafico(indice, new Graphic(feature.geometry, this._symbol)));
                     }
                 }));
-                if (this._tipo !== "punto"){
+                if (this._tipo !== "punto") {
                     this.mapa.map.setExtent(ext);
                 }
 //                
@@ -400,13 +406,22 @@ define([
             return null;
         },
         _initGrid: function () {
-            var grid, estructura, estructuraMem;
+            var grid, estructura, estructuraMem, test;
             estructuraMem = new Memory();
             arrayUtil.forEach(this._columnas, lang.hitch(this, function (feature) {
                 estructuraMem.put({name: feature.name, field: feature.field, width: feature.width });
             }));
             estructura = [estructuraMem.data];
+//            test = {
+//                'DEPTONOM':"",
+//                'SP_2010': "",
+//                'AREA_HAS': "",
+//                'id': "",
+//                'OBJECTID': "",
+//                'OBJECTID1': ""
+//            };
             grid = new DataGrid({
+               // store: test,
                 structure: estructura,
                 rowSelector: '20px'
             });

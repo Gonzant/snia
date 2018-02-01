@@ -60,7 +60,61 @@
                "departamento": "DEPTO",
                "padron": "PADRON",
                "catastral": "AREAHA",
-               "productividad": "IND_CONEAT"
+               "productividad": "IND_CONEAT",
+                "configSP": {                    
+                    "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer/6",
+                    "idFiltro": "OBJECTID",
+                    "filtros": [
+                        {
+                            "campoFiltro" : "DEPTONOM",
+                            "lblcampoFiltro" : "Departamento",
+                            "placeHoldFiltro": "Departamento:",
+                            "dependencia": 0,
+                            "combo": 1,
+                            "tipo": "texto"
+                        },
+                        {
+                            "campoFiltro" : "SP_2010",
+                            "lblcampoFiltro" : "Seccional policial",
+                            "placeHoldFiltro": "Seccional policial:",
+                            "dependencia": 1,
+                            "combo": 1,
+                            "tipo": "texto"
+                        }
+                    ],
+                    "columnas" : [
+                        {"name": "Departamento", "field": "DEPTONOM", "width": "150px"},
+                        {"name": "Seccional Policial", "field": "SP_2010", "width": "150px"},
+                        {"name": "Área (ha)", "field": "AREA_HAS", "width": "150px"}
+                    ]                
+                },
+                "configAE": {
+                    "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer/14",
+                    "idFiltro": "OBJECTID",
+                    "filtros": [
+                        {
+                            "campoFiltro" : "NOMDEPTO",
+                            "lblcampoFiltro" : "Departamento",
+                            "placeHoldFiltro": "Departamento:",
+                            "dependencia": 0,
+                            "combo": 1,
+                            "tipo": "texto"
+                        },
+                        {
+                            "campoFiltro" : "AREAENUM",
+                            "lblcampoFiltro" : "Área de enumeración",
+                            "placeHoldFiltro": "Área de enumeración:",
+                            "dependencia": 1,
+                            "combo": 1,
+                            "tipo": "texto"
+                        }
+                    ],
+                    "columnas" : [
+                        {"name": "Departamento", "field": "NOMDEPTO", "width": "150px"},
+                        {"name": "Área de enumeración", "field": "AREAENUM", "width": "150px"},
+                        {"name": "Área (hs)", "field": "sniagdb.SNIAEDITOR.FA_AreasEnumeracion.Area", "width": "150px"}
+                    ]
+                }
            }
        }, 
        {

@@ -1,8 +1,10 @@
 <div style="width:500px;">
-    
-       <br>
-    <label for="id2">${_i18n.widgets.BuscarWidget.lbdepartamento}</label>
-    
+    <br>
+    <label for="tipoBusqueda"> Buscar por: </label>
+    <input data-dojo-attach-point="_tipoCombo">    
+    <br>     
+    <div data-dojo-attach-point="contentBusqueda">
+    <label for="id2">${_i18n.widgets.BuscarWidget.lbdepartamento}</label>    
     <input data-dojo-attach-point="_departamentosCombo">
     <br><br>
     <label>${_i18n.widgets.BuscarWidget.lbID2}</label>
@@ -44,5 +46,7 @@
             <img src = "../js/snia/img/contenido-gris.png" class="iconCubrimientoBuscar" >
         </button> 
     </div>
-
+    </div>
+    <div data-dojo-attach-point="_spNode"></div>        
+    <div data-dojo-attach-point="_aeNode"></div>  
 </div>
