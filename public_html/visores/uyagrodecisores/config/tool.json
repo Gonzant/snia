@@ -622,12 +622,13 @@
                    "unidad":"esriTimeUnitsDays",
                    "cantidad": "1",
                    "velocidad": "1000",
-                   "ultimaSemana": "True"
+                   "ultimaSemana": "True",
+                   "thumb": 1
                },
                "manual": {
                    "inicioTiempo": "2015-01-06",
                    "ultimoDia": "True"
-               }
+               }              
            }
         },
         {
