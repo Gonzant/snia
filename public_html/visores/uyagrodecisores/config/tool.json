@@ -599,7 +599,7 @@
             "msgToolTip": "Herramienta para obtener medidas en el mapa. ",
             "icono": "../js/snia/img/regla.png",
             "icon": "straighten",
-            "toggle": false,
+            "toggle": false, 
             "widgetConfig": {
                 
             }
