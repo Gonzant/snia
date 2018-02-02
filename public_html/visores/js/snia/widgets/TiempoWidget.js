@@ -80,7 +80,11 @@ define([
                     this.timeSlider.pause();
                 }
                 this._resetOnClose = true;
-                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                if (this._timeSlider.thumb) {
+                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 1]);
+                } else {
+                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                }
             }
         },
         _reload: function () {
@@ -156,7 +160,11 @@ define([
             if (this.get("active")) {
                 this.timeSlider.setThumbIndexes(this._intervaloTiempo);
             } else {
-                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                if (this._timeSlider.thumb) {
+                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 1]);
+                } else {
+                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                }
             }
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
@@ -172,7 +180,7 @@ define([
                 this._eTime = new Date(this._manual.finTiempo);
             } else {
                 today = new Date();
-                if (this._manual.ultimoDia !== "True"){               
+                if (this._manual.ultimoDia !== "True") {
                     today.setDate(today.getDate() - today.getDay());
                 }
                 this._eTime = new Date(today);
@@ -227,18 +235,40 @@ define([
             timeExtent = new TimeExtent();
             timeExtent.startTime = new Date(this._sTime);
             timeExtent.endTime = new Date(this._eTime);
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "</i>");
+            if (this._timeSlider.thumb) {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "</i>");
+            } else {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "</i>");
+            }
+
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             // domStyle.set(this._tiempoTexto, 'margin-top', '10px');
-            this.timeSlider.setThumbCount(2);
+            if (this._timeSlider.thumb) {
+                this.timeSlider.setThumbCount(1);
+                this.timeSlider.singleThumbAsTimeInstant(true);
+            } else {
+                this.timeSlider.setThumbCount(2);
+            }
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
             if (this._timeSlider.defecto) {
-                this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
+                if (this._timeSlider.thumb) {
+                    this.timeSlider.setThumbIndexes([this._timeSlider.defecto.final]);
+                } else {
+                    this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
+                }
             } else {
                 if (this._timeSlider.ultimaSemana === "True" && this._filtro.value === 0) {
-                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2, this.timeSlider._numTicks - 1]);
+                    if (this._timeSlider.thumb) {
+                        this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2]);
+                    } else {
+                        this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2, this.timeSlider._numTicks - 1]);
+                    }
                 } else {
-                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                    if (this._timeSlider.thumb) {
+                        this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2]);
+                    } else {
+                        this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                    }
                 }
             }
             this._intervaloTiempo = this.timeSlider.thumbIndexes;
@@ -261,7 +291,11 @@ define([
             var startValString, endValString;
             startValString = evt.startTime.getUTCDate() + "/" + (evt.startTime.getUTCMonth() + 1) + "/" + evt.startTime.getUTCFullYear();
             endValString = evt.endTime.getUTCDate() + "/" + (evt.endTime.getUTCMonth() + 1) + "/" + evt.endTime.getUTCFullYear();
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString + "-" + endValString  + "<\/i>");
+            if (this._timeSlider.thumb) {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString  + "<\/i>");
+            } else {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString + "-" + endValString  + "<\/i>");
+            }
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
