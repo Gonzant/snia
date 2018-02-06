@@ -56,7 +56,7 @@ define([
             this.watch("visible", this._visible);
             this.watch("active", this._activar);
             this.watch("reload", this._reload);
-             on(this.mapa, "activarTiempo",  lang.hitch(this, this._activarTiempo));
+            on(this.mapa, "activarTiempo",  lang.hitch(this, this._activarTiempo));
             // classes
             this._css = {
                // baseClassRadioButton: "sniaRadioButton"
@@ -66,10 +66,9 @@ define([
             this._yearsFiltroStore = new Memory({});
             this._startYear = "";
         },
-        
-         _activarTiempo: function () {     
+        _activarTiempo: function () {
             //$( "a:contains('date_range')")[0].click();       //la busqueda quedo dependiente del nombre del icono        
-            this.emit("click-manual",{});
+            this.emit("click-manual", {});
         },
         _activar: function () {
             this.emit("active-changed");
@@ -81,7 +80,11 @@ define([
                     this.timeSlider.pause();
                 }
                 this._resetOnClose = true;
-                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                if (this._timeSlider.thumb) {
+                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 1]);
+                } else {
+                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                }
             }
         },
         _reload: function () {
@@ -157,7 +160,11 @@ define([
             if (this.get("active")) {
                 this.timeSlider.setThumbIndexes(this._intervaloTiempo);
             } else {
-                this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                if (this._timeSlider.thumb) {
+                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 1]);
+                } else {
+                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                }
             }
         },
         _updateThemeWatch: function (attr, oldVal, newVal) {
@@ -173,7 +180,9 @@ define([
                 this._eTime = new Date(this._manual.finTiempo);
             } else {
                 today = new Date();
-                today.setDate(today.getDate() - today.getDay());
+                if (this._manual.ultimoDia !== "True") {
+                    today.setDate(today.getDate() - today.getDay());
+                }
                 this._eTime = new Date(today);
             }
             this._sTimeAbs = this._sTime.toUTCString();
@@ -226,18 +235,40 @@ define([
             timeExtent = new TimeExtent();
             timeExtent.startTime = new Date(this._sTime);
             timeExtent.endTime = new Date(this._eTime);
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "</i>");
+            if (this._timeSlider.thumb) {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "</i>");
+            } else {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + timeExtent.startTime.getUTCDate() + "/" + (timeExtent.startTime.getUTCMonth() + 1) + "/" + timeExtent.startTime.getUTCFullYear() + "-" + timeExtent.endTime.getUTCDate() + "/" + (timeExtent.endTime.getUTCMonth() + 1) + "/" + timeExtent.endTime.getUTCFullYear() + "</i>");
+            }
+
             domStyle.set(this._tiempoTexto, 'text-align', 'center');
             // domStyle.set(this._tiempoTexto, 'margin-top', '10px');
-            this.timeSlider.setThumbCount(2);
+            if (this._timeSlider.thumb) {
+                this.timeSlider.setThumbCount(1);
+                this.timeSlider.singleThumbAsTimeInstant(true);
+            } else {
+                this.timeSlider.setThumbCount(2);
+            }
             this.timeSlider.createTimeStopsByTimeInterval(timeExtent, this._timeSlider.cantidad, this._timeSlider.unidad);
             if (this._timeSlider.defecto) {
-                this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
+                if (this._timeSlider.thumb) {
+                    this.timeSlider.setThumbIndexes([this._timeSlider.defecto.final]);
+                } else {
+                    this.timeSlider.setThumbIndexes([this._timeSlider.defecto.inicial, this._timeSlider.defecto.final]);
+                }
             } else {
                 if (this._timeSlider.ultimaSemana === "True" && this._filtro.value === 0) {
-                    this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2, this.timeSlider._numTicks - 1]);
+                    if (this._timeSlider.thumb) {
+                        this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2]);
+                    } else {
+                        this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2, this.timeSlider._numTicks - 1]);
+                    }
                 } else {
-                    this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                    if (this._timeSlider.thumb) {
+                        this.timeSlider.setThumbIndexes([this.timeSlider._numTicks - 2]);
+                    } else {
+                        this.timeSlider.setThumbIndexes([0, this.timeSlider._numTicks - 1]);
+                    }
                 }
             }
             this._intervaloTiempo = this.timeSlider.thumbIndexes;
@@ -260,10 +291,15 @@ define([
             var startValString, endValString;
             startValString = evt.startTime.getUTCDate() + "/" + (evt.startTime.getUTCMonth() + 1) + "/" + evt.startTime.getUTCFullYear();
             endValString = evt.endTime.getUTCDate() + "/" + (evt.endTime.getUTCMonth() + 1) + "/" + evt.endTime.getUTCFullYear();
-            domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString + "-" + endValString  + "<\/i>");
+            if (this._timeSlider.thumb) {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString  + "<\/i>");
+            } else {
+                domAttr.set(this._tiempoTexto, "innerHTML", "<i style=\"color:black\">" + startValString + "-" + endValString  + "<\/i>");
+            }
             if (!this._resetOnClose) {
                 this._intervaloTiempo = this.timeSlider.thumbIndexes;
             }
+            this.mapa.emit("time-change", {TIME: evt.startTime.getUTCFullYear() + '-' + (evt.startTime.getUTCMonth() + 1) + "-" + evt.startTime.getUTCDate()});
         },
         _comboYears: function (evt) {
             var start, end, i;
@@ -280,8 +316,8 @@ define([
                     lang.hitch(this, this._setYearTimeSlider(state));
                 }),
                 store: this._yearsFiltroStore
-           }, this._yearsFilter);
-           this._filtro.startup();
+            }, this._yearsFilter);
+            this._filtro.startup();
         },
         _setYearTimeSlider: function (state) {
             var year;
@@ -291,10 +327,10 @@ define([
                 this._eTime = new Date();
                 this._sTime.setFullYear(this._startYear, 0, 1);
                 year = this._sTime.getYear() + 1900;
-                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)){
-                    this._eTime.setFullYear(this._startYear+1, 0, 6);
-                }else{
-                    this._eTime.setFullYear(this._startYear, 11, 31);  
+                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
+                    this._eTime.setFullYear(this._startYear + 1, 0, 6);
+                } else {
+                    this._eTime.setFullYear(this._startYear, 11, 31);
                 }
             } else {
                 this._sTime = new Date(this._sTimeAbs);

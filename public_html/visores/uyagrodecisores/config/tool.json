@@ -9,8 +9,8 @@
             "icon": "help_outline",
             "toggle": false,
             "startsOpen": false,
-            "widgetConfig": {
-                "data": [
+            "widgetConfig": { 
+               "data": [
     {
         "name": "Ayuda",
 	"id": "root",
@@ -618,13 +618,15 @@
                "urlQuery": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer/0",
                "timeSlider": {
                    "unidad":"esriTimeUnitsDays",
-                   "cantidad": "10",
+                   "cantidad": "1",
                    "velocidad": "1000",
-                   "ultimaSemana": "True"
+                   "ultimaSemana": "True",
+                   "thumb": 1
                },
-               "manual": {                    
-                   "inicioTiempo": "2015-01-06"                    
-               }
+               "manual": {
+                   "inicioTiempo": "2015-01-06",
+                   "ultimoDia": "True"
+               }              
            }
         },
         {
