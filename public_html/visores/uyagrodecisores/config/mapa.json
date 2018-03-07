@@ -226,14 +226,6 @@
 			}
 		},
                 {
-                    "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/anomaliasPrecip/MapServer",
-                    "options": {
-                        "id": "Anomalias de Precipitación",
-                        "opacity": 0.7,
-                        "visible": false
-                    }
-                },
-		{
                     "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/IPE/MapServer",
                     "options": {
                         "id": "Indice de precipitación estandarizado",
@@ -241,6 +233,14 @@
                         "visible": false
                     }
 		},	
+                {
+                    "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/anomaliasPrecip/MapServer",
+                    "options": {
+                        "id": "Anomalias de Precipitación",
+                        "opacity": 0.7,
+                        "visible": false
+                    }
+                },		
 		{
 			"multiple": [{
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
