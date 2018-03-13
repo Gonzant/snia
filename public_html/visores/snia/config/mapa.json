@@ -34,7 +34,7 @@
                 "options": {
                         "id": "Limites Administrativos",
                         "opacity": 0.7,
-                        "visible": false
+                        "visible": true
                 }
             },
             {
