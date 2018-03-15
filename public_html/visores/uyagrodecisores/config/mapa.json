@@ -248,7 +248,7 @@
                         "opacity": 0.7,
                         "visible": false
                     }
-                },	
+                }, 	
                 {
                     "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/201802_SojaExtrema/MapServer",
                     "options": {
