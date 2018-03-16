@@ -694,9 +694,10 @@
                         }
                     ],
                     "columnas" : [
-                        {"name": "Departamento", "field": "NOMDEPTO", "width": "150px"},
-                        {"name": "Área de enumeración", "field": "AREAENUM", "width": "150px"},
-                        {"name": "Área (hs)", "field": "sniagdb.SNIAEDITOR.FA_AreasEnumeracion.Area", "width": "150px"}
+                        {"name": "Departamento", "field": "NOMDEPTO", "width": "100px"},
+                        {"name": "Área de supervisión", "field": "AREASUP", "width": "100px"},
+                        {"name": "Área de enumeración", "field": "AREAENUM", "width": "100px"},
+                        {"name": "Área (hs)", "field": "sniagdb.SNIAEDITOR.FA_AreasEnumeracion.Area", "width": "100px"}
                     ]
                 }
             }
