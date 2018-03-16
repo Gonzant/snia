@@ -673,7 +673,7 @@
                     ]                
                 },
                 "configAE": {
-                    "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer/14",
+                    "urlQuery": "http://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/LimitesAdministrativos/MapServer/15",
                     "idFiltro": "OBJECTID",
                     "filtros": [
                         {
