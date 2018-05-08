@@ -265,7 +265,9 @@
 				7]
 			},
                         {
-				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer"
+				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer",
+                                 "layers": [0,
+				1]
 			}],
 			"options": {
 				"id": "Inundación",
