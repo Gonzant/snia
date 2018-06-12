@@ -82,14 +82,23 @@ define([
             domStyle.set(this._tree.dndController.node, "overflow", "hidden");
             domStyle.set(this._tree.dndController.node, "display", "inline-block");
             this.mapa.on('time-change', lang.hitch(this, this._cambioTiempo));
+            this.mapa.on('p-acumulado', lang.hitch(this, this._parametroAcumulado));
+        },
+        _parametroAcumulado: function (objeto) {
+            this.acumulado = objeto;
         },
         _cambioTiempo: function (parametro) {
             var dynLayers = this.mapa.map.layerIds;
             arrayUtil.forEach(dynLayers, lang.hitch(this, function (dataLayer) {
                 var l = this.mapa.map.getLayer(dataLayer);
                 if (l instanceof WMSLayer) {
+                    if (this.acumulado != null) {                                                                                            
+                        if (l.url == this.acumulado.layer) {
+                            parametro["viewparams"] = this.acumulado.cantidad;
+                        }
+                    }
                     l.setCustomParameters(parametro);
-                };
+                }
             }));
         },
         _executeGP: function (url) {
@@ -104,7 +113,7 @@ define([
         _preloadimages: function (arr){
             //preload imagenes
             var newimages = [];
-            arr = (typeof arr!=="object")? [arr] : arr; //force arr parameter to always be an array
+            arr = (typeof arr !== "object") ? [arr] : arr; //force arr parameter to always be an array
             for (var i=0; i<arr.length; i++){
                     newimages[i]=new Image();
                     newimages[i].src=arr[i];

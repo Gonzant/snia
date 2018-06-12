@@ -572,6 +572,16 @@
             }
         },
         {
+            "widget": "widgets/PrecipitacionesAcumuladasWidget",
+            "title": "Precipitaciones Acumuladas",
+            "msgToolTip": "Muestra las precipitaciones acumuladas en los dias ingresados.",
+            "icono": "../js/snia/img/referencia.png",  
+            "icon": "opacity",
+            "toggle": false,
+            "widgetConfig": {                
+            }
+        },
+        {
             "widget": "widgets/MapaReferenciaWidget",
             "title": "Mapa Referencia",
             "msgToolTip": "Muestra la referencia de la posición actual",

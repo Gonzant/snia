@@ -200,7 +200,10 @@
 			},                        
                         {
 				"url": "https://geoserver.snia.gub.uy/geoserver/SNIA/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",				
-				"wms": true				
+				"wms": true,
+                                "sublayersTooltips": {
+                                    "Precipitación acumulada": "Para cambiar la cantidad de días a acumular utilice la herramienta de Precipitaciones Acumuladas. Por defecto son 5 días a acumular."
+                                }
 			},                        
                         {
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
