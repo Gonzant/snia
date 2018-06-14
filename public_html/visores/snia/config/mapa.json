@@ -34,7 +34,7 @@
                 "options": {
                         "id": "Limites Administrativos",
                         "opacity": 0.7,
-                        "visible": false
+                        "visible": true
                 }
             },
             {
@@ -57,6 +57,14 @@
                 "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/Hidrografia/MapServer",
                 "options": {
                         "id": "Hidrografía",
+                        "opacity": 0.7,
+                        "visible": false
+                }
+            },
+            {
+                "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/EmergenciaAgropecuaria2018/MapServer",
+                "options": {
+                        "id": "Emergencia Agropecuaria 2018",
                         "opacity": 0.7,
                         "visible": false
                 }
