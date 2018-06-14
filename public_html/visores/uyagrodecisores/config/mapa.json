@@ -63,7 +63,14 @@
 				0,
 				2,
                                 7]
-			}                        
+			},
+                        {
+                            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
+                            
+                            "changeNames": {
+                                "World Transportation":"Camineria ESRI"
+                            }
+                        }                        
 			],
 			"options": {
 				"id": "Información base",
@@ -164,16 +171,7 @@
                                 "Seccionales Policiales Afectadas":"Emergencia agropecuaria 2018"
                             }
                         },                        
-                        {
-				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
-				"sublayersTooltips": {
-					"USGS LandDAAC uy250m_II NDVI": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
-				},				
-				"wms": true,
-				"changeNames": {
-					"USGS LandDAAC uy250m_II NDVI": "Índice Verde (NDVI)"
-				}
-			},			                                                                    
+                        			                                                                    
                         {
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",					
                                 "layers": [9],
@@ -183,12 +181,8 @@
 			},                        
 			{
 				"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/DeficitHidrico/MapServer"
-			},
-                        {      
-                            "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer",
-                            "layers": [1]
-			
-			}],
+			}
+                        ],
 			"options": {
 				"id": "Sequía",
 				"opacity": 0.7,
@@ -205,21 +199,49 @@
 				"visible": false
 			}
                 },
-                {                   
-                        "url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/ANOMALIAS/.NDVIa/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/X/Y/fig-/colors/-fig/wms.xml",
-                        "sublayersTooltips": {
-                                "USGS LandDAAC uy250m_II ANOMALIAS NDVIa": "NDVIa Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_A/NDVIa.html'>NDVIa Histórico</a>"
-                        },				
-                        "wms": true,
-                        "changeNames": {
-                                "USGS LandDAAC uy250m_II ANOMALIAS NDVIa": "Anomalías del NDVI"
+                {       
+                    "multiple":
+                            [
+                        {
+				"url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/.NDVI/a-/-a/X/Y/fig-/colors/-fig/wms.xml?plotaxislength=540",
+				"sublayersTooltips": {
+					"USGS LandDAAC uy250m_II NDVI": "NDVI Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_250m/NDVI.html'>NDVI Histórico</a>"
+				},				
+				"wms": true,
+				"changeNames": {
+					"USGS LandDAAC uy250m_II NDVI": "Índice Verde (NDVI)"
+				}
+			},
+                        {
+                            "url": "https://dlibrary.snia.gub.uy/SOURCES/.USGS/.LandDAAC/.uy250m_II/ANOMALIAS/.NDVIa/X/-58.6/-53.1/RANGEEDGES/Y/-35/-30/RANGEEDGES/X/Y/fig-/colors/-fig/wms.xml",
+                            "sublayersTooltips": {
+                                    "USGS LandDAAC uy250m_II ANOMALIAS NDVIa": "NDVIa Actual <a target='_blank' href='http://dlibrary.snia.gub.uy/maproom/Monitoreo_Agroclimatico/INDICES_VEGETACION/NDVI/NDVI_A/NDVIa.html'>NDVIa Histórico</a>"
+                            },				
+                            "wms": true,
+                            "changeNames": {
+                                    "USGS LandDAAC uy250m_II ANOMALIAS NDVIa": "Anomalías NDVI"
+                            }
                         },
+                        {      
+                            "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/PAD/MapServer",
+                            "layers": [1]			
+			}
+                        ],
+                        
                         "options": {
-				"id": "Anomalía de NDVI",
+				"id": "NDVI",
 				"opacity": 0.7,
 				"visible": false
 			}                    
-                },                                
+                },                
+                {
+                    "url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/IPE/MapServer",
+                    "options": {
+                        "id": "Indice de precipitación estandarizado",
+                        "opacity": 0.7,
+                        "visible": false
+                    }
+		},
 		{
 			"url": "https://dgrn.mgap.gub.uy/arcgis/rest/services/SNIA/CartaTematica/MapServer",
                         "layers": [0,
